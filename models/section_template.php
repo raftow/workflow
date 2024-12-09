@@ -5,24 +5,24 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class PageSection extends WorkflowObject{
+class SectionTemplate extends WorkflowObject{
 
-        public static $MY_ATABLE_ID=13937; 
+        public static $MY_ATABLE_ID=13935; 
   
         public static $DATABASE		= "pmu_workflow";
         public static $MODULE		        = "workflow";        
-        public static $TABLE			= "page_section";
+        public static $TABLE			= "section_template";
 
 	    public static $DB_STRUCTURE = null;
 	
 	    public function __construct(){
-		parent::__construct("page_section","id","workflow");
-            WorkflowPageSectionAfwStructure::initInstance($this);    
+		parent::__construct("section_template","id","workflow");
+            WorkflowSectionTemplateAfwStructure::initInstance($this);    
 	    }
         
         public static function loadById($id)
         {
-           $obj = new PageSection();
+           $obj = new SectionTemplate();
            $obj->select_visibilite_horizontale();
            if($obj->load($id))
            {
@@ -39,7 +39,33 @@ class PageSection extends WorkflowObject{
                     return 0;
                 }
         
-        
+        public static function loadByMainIndex($lookup_code,$create_obj_if_not_found=false)
+        {
+           if(!$lookup_code) throw new AfwRuntimeException("loadByMainIndex : lookup_code is mandatory field");
+
+
+           $obj = new SectionTemplate();
+           $obj->select("lookup_code",$lookup_code);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("lookup_code",$lookup_code);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
+
+
         public function getDisplay($lang="ar")
         {
                return $this->getVal("name_$lang");
@@ -107,12 +133,12 @@ class PageSection extends WorkflowObject{
 
                         
                    // FK part of me - deletable 
-                       // workflow.page_item-قسم الصفحة	page_section_id  حقل يفلتر به
+                       // workflow.page_section-النموذج	section_template_id  حقل يفلتر به
                         if(!$simul)
                         {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::removeWhere("page_section_id='$id'");
-                            // $this->execQuery("delete from ${server_db_prefix}workflow.page_item where page_section_id = '$id' ");
+                            // require_once "../workflow/page_section.php";
+                            PageSection::removeWhere("section_template_id='$id'");
+                            // $this->execQuery("delete from ${server_db_prefix}workflow.page_section where section_template_id = '$id' ");
                             
                         } 
                         
@@ -129,12 +155,12 @@ class PageSection extends WorkflowObject{
                else
                {
                         // FK on me 
-                       // workflow.page_item-قسم الصفحة	page_section_id  حقل يفلتر به
+                       // workflow.page_section-النموذج	section_template_id  حقل يفلتر به
                         if(!$simul)
                         {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::updateWhere(array('page_section_id'=>$id_replace), "page_section_id='$id'");
-                            // $this->execQuery("update ${server_db_prefix}workflow.page_item set page_section_id='$id_replace' where page_section_id='$id' ");
+                            // require_once "../workflow/page_section.php";
+                            PageSection::updateWhere(array('section_template_id'=>$id_replace), "section_template_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.page_section set section_template_id='$id_replace' where section_template_id='$id' ");
                             
                         }
                         

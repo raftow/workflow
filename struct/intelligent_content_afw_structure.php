@@ -1,31 +1,36 @@
 <?php
 
 
-class WorkflowContentAfwStructure
+class WorkflowIntelligentContentAfwStructure
 {
         // token separator = §
         public static function initInstance(&$obj)
         {
-                if ($obj instanceof Content) {
+                if ($obj instanceof IntelligentContent) {
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
                         $obj->DISPLAY_FIELD = "name_ar";
-                        $obj->UNIQUE_KEY = array('lookup_code');
+
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
-                        $obj->ORDER_BY_FIELDS = "name_ar";
+                        $obj->ORDER_BY_FIELDS = "module_id, lookup_code, content_type_enum";
+
+
+
+                        $obj->UNIQUE_KEY = array('module_id', 'lookup_code', 'content_type_enum');
+
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
                         // $obj->after_save_edit = array("class"=>'Road',"attribute"=>'road_id', "currmod"=>'btb',"currstep"=>9);
-                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'Content', "submit" => true);
+                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'IntelligentContent', "submit" => true);
                 } else {
-                        ContentArTranslator::initData();
-                        ContentEnTranslator::initData();
+                        IntelligentContentArTranslator::initData();
+                        IntelligentContentEnTranslator::initData();
                 }
         }
 
 
-        public static $DB_STRUCTURE = array(
-
+        public static $DB_STRUCTURE =
+        array(
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
 
@@ -103,23 +108,25 @@ class WorkflowContentAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'content_type_enum' => array(
-                        'SHORTNAME' => 'type',
+                'module_id' => array(
+                        'SHORTNAME' => 'module',
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => false,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
-                        'QEDIT' => false,
+                        'QEDIT' => true,
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'MANDATORY' => true,
                         'UTF8' => false,
-                        'TYPE' => 'ENUM',
-                        'ANSWER' => 'FUNCTION',
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'module',
+                        'ANSMODULE' => 'ums',
+                        'RELATION' => 'ManyToOne',
                         'READONLY' => false,
                         'CSS' => 'width_pct_50',
                 ),
@@ -143,32 +150,24 @@ class WorkflowContentAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'contentItemList' => array(
-                        'SHORTNAME' => 'contentItems',
-                        'SHOW' => true,
-                        'FORMAT' => 'retrieve',
-                        'ICONS' => true,
-                        'DELETE-ICON' => true,
-                        'BUTTONS' => true,
-                        'SEARCH' => false,
+                'content_type_enum' => array(
+                        'SHORTNAME' => 'type',
+                        'SEARCH' => true,
                         'QSEARCH' => false,
+                        'SHOW' => true,
                         'AUDIT' => false,
                         'RETRIEVE' => false,
-                        'EDIT' => false,
+                        'EDIT' => true,
                         'QEDIT' => false,
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => false,
+                        'MANDATORY' => true,
                         'UTF8' => false,
-                        'TYPE' => 'FK',
-                        'CATEGORY' => 'ITEMS',
-                        'ANSWER' => 'content_item',
-                        'ANSMODULE' => 'workflow',
-                        'ITEM' => 'content_id',
-                        'READONLY' => true,
-                        'CAN-BE-SETTED' => true,
+                        'TYPE' => 'ENUM',
+                        'ANSWER' => '',
+                        'READONLY' => false,
                         'CSS' => 'width_pct_50',
                 ),
 

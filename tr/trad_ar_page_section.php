@@ -12,7 +12,7 @@ class PageSectionArTranslator{
 		$trad["page_section"]["desc_ar"] = "وصف  بالعربية";
 		$trad["page_section"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["page_section"]["desc_en"] = "وصف  بالانجليزية";
-		$trad["page_section"]["model_id"] = "التطبيق";
+		$trad["page_section"]["module_id"] = "التطبيق";
 		$trad["page_section"]["section_template_id"] = "النموذج";
 		$trad["page_section"]["content_id"] = "المحتوى";
 		$trad["page_section"]["page_theme_id"] = "الثيم";

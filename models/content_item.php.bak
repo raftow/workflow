@@ -5,24 +5,24 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class PageSection extends WorkflowObject{
+class ContentItem extends WorkflowObject{
 
-        public static $MY_ATABLE_ID=13937; 
+        public static $MY_ATABLE_ID=13939; 
   
         public static $DATABASE		= "pmu_workflow";
         public static $MODULE		        = "workflow";        
-        public static $TABLE			= "page_section";
+        public static $TABLE			= "content_item";
 
 	    public static $DB_STRUCTURE = null;
 	
 	    public function __construct(){
-		parent::__construct("page_section","id","workflow");
-            WorkflowPageSectionAfwStructure::initInstance($this);    
+		parent::__construct("content_item","id","workflow");
+            WorkflowContentItemAfwStructure::initInstance($this);    
 	    }
         
         public static function loadById($id)
         {
-           $obj = new PageSection();
+           $obj = new ContentItem();
            $obj->select_visibilite_horizontale();
            if($obj->load($id))
            {
@@ -47,7 +47,14 @@ class PageSection extends WorkflowObject{
         
         
         
+/*        public function list_of_content_type_enum() { 
+            $list_of_items = array(); 
+            $list_of_items[1] = "";  //     code : ... not defined ... 
+           return  $list_of_items;
+        } 
 
+
+*/
         
         protected function getOtherLinksArray($mode,$genereLog=false,$step="all")      
         {
@@ -107,16 +114,6 @@ class PageSection extends WorkflowObject{
 
                         
                    // FK part of me - deletable 
-                       // workflow.page_item-قسم الصفحة	page_section_id  حقل يفلتر به
-                        if(!$simul)
-                        {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::removeWhere("page_section_id='$id'");
-                            // $this->execQuery("delete from ${server_db_prefix}workflow.page_item where page_section_id = '$id' ");
-                            
-                        } 
-                        
-                        
 
                    
                    // FK not part of me - replaceable 
@@ -129,15 +126,6 @@ class PageSection extends WorkflowObject{
                else
                {
                         // FK on me 
-                       // workflow.page_item-قسم الصفحة	page_section_id  حقل يفلتر به
-                        if(!$simul)
-                        {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::updateWhere(array('page_section_id'=>$id_replace), "page_section_id='$id'");
-                            // $this->execQuery("update ${server_db_prefix}workflow.page_item set page_section_id='$id_replace' where page_section_id='$id' ");
-                            
-                        }
-                        
 
                         
                         // MFK

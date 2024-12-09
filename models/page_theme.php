@@ -5,24 +5,24 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class PageSection extends WorkflowObject{
+class PageTheme extends WorkflowObject{
 
-        public static $MY_ATABLE_ID=13937; 
+        public static $MY_ATABLE_ID=13943; 
   
         public static $DATABASE		= "pmu_workflow";
         public static $MODULE		        = "workflow";        
-        public static $TABLE			= "page_section";
+        public static $TABLE			= "page_theme";
 
 	    public static $DB_STRUCTURE = null;
 	
 	    public function __construct(){
-		parent::__construct("page_section","id","workflow");
-            WorkflowPageSectionAfwStructure::initInstance($this);    
+		parent::__construct("page_theme","id","workflow");
+            WorkflowPageThemeAfwStructure::initInstance($this);    
 	    }
         
         public static function loadById($id)
         {
-           $obj = new PageSection();
+           $obj = new PageTheme();
            $obj->select_visibilite_horizontale();
            if($obj->load($id))
            {
@@ -107,12 +107,12 @@ class PageSection extends WorkflowObject{
 
                         
                    // FK part of me - deletable 
-                       // workflow.page_item-قسم الصفحة	page_section_id  حقل يفلتر به
+                       // workflow.page-الثيم	page_theme_id  حقل يفلتر به
                         if(!$simul)
                         {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::removeWhere("page_section_id='$id'");
-                            // $this->execQuery("delete from ${server_db_prefix}workflow.page_item where page_section_id = '$id' ");
+                            // require_once "../workflow/page.php";
+                            Page::removeWhere("page_theme_id='$id'");
+                            // $this->execQuery("delete from ${server_db_prefix}workflow.page where page_theme_id = '$id' ");
                             
                         } 
                         
@@ -120,6 +120,13 @@ class PageSection extends WorkflowObject{
 
                    
                    // FK not part of me - replaceable 
+                       // workflow.page_section-الثيم	page_theme_id  حقل يفلتر به
+                        if(!$simul)
+                        {
+                            // require_once "../workflow/page_section.php";
+                            PageSection::updateWhere(array('page_theme_id'=>$id_replace), "page_theme_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.page_section set page_theme_id='$id_replace' where page_theme_id='$id' ");
+                        }
 
                         
                    
@@ -129,15 +136,22 @@ class PageSection extends WorkflowObject{
                else
                {
                         // FK on me 
-                       // workflow.page_item-قسم الصفحة	page_section_id  حقل يفلتر به
+                       // workflow.page-الثيم	page_theme_id  حقل يفلتر به
                         if(!$simul)
                         {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::updateWhere(array('page_section_id'=>$id_replace), "page_section_id='$id'");
-                            // $this->execQuery("update ${server_db_prefix}workflow.page_item set page_section_id='$id_replace' where page_section_id='$id' ");
+                            // require_once "../workflow/page.php";
+                            Page::updateWhere(array('page_theme_id'=>$id_replace), "page_theme_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.page set page_theme_id='$id_replace' where page_theme_id='$id' ");
                             
                         }
                         
+                       // workflow.page_section-الثيم	page_theme_id  حقل يفلتر به
+                        if(!$simul)
+                        {
+                            // require_once "../workflow/page_section.php";
+                            PageSection::updateWhere(array('page_theme_id'=>$id_replace), "page_theme_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.page_section set page_theme_id='$id_replace' where page_theme_id='$id' ");
+                        }
 
                         
                         // MFK

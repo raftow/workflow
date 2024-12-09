@@ -5,24 +5,24 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class PageSection extends WorkflowObject{
+class Publication extends WorkflowObject{
 
-        public static $MY_ATABLE_ID=13937; 
+        public static $MY_ATABLE_ID=13941; 
   
         public static $DATABASE		= "pmu_workflow";
         public static $MODULE		        = "workflow";        
-        public static $TABLE			= "page_section";
+        public static $TABLE			= "publication";
 
 	    public static $DB_STRUCTURE = null;
 	
 	    public function __construct(){
-		parent::__construct("page_section","id","workflow");
-            WorkflowPageSectionAfwStructure::initInstance($this);    
+		parent::__construct("publication","id","workflow");
+            WorkflowPublicationAfwStructure::initInstance($this);    
 	    }
         
         public static function loadById($id)
         {
-           $obj = new PageSection();
+           $obj = new Publication();
            $obj->select_visibilite_horizontale();
            if($obj->load($id))
            {
@@ -39,10 +39,47 @@ class PageSection extends WorkflowObject{
                     return 0;
                 }
         
-        
+        public static function loadByMainIndex($module_id, $name_ar,$create_obj_if_not_found=false)
+        {
+           if(!$module_id) throw new AfwRuntimeException("loadByMainIndex : module_id is mandatory field");
+           if(!$name_ar) throw new AfwRuntimeException("loadByMainIndex : name_ar is mandatory field");
+
+
+           $obj = new Publication();
+           $obj->select("module_id",$module_id);
+           $obj->select("name_ar",$name_ar);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("module_id",$module_id);
+                $obj->set("name_ar",$name_ar);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
+
+
         public function getDisplay($lang="ar")
         {
-               return $this->getVal("name_$lang");
+               if($this->getVal("name_$lang")) return $this->getVal("name_$lang");
+               $data = array();
+               $link = array();
+               
+
+               list($data[0],$link[0]) = $this->displayAttribute("title_ar",false, $lang);
+
+               
+               return implode(" - ",$data);
         }
         
         
@@ -107,12 +144,12 @@ class PageSection extends WorkflowObject{
 
                         
                    // FK part of me - deletable 
-                       // workflow.page_item-Ù‚Ø³Ù… Ø§Ù„ØµÙØ­Ø©	page_section_id  Ø­Ù‚Ù„ ÙŠÙÙ„ØªØ± Ø¨Ù‡
+                       // workflow.content_item-ÇáãäÔæÑ	publication_id  ÍÞá íÝáÊÑ Èå
                         if(!$simul)
                         {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::removeWhere("page_section_id='$id'");
-                            // $this->execQuery("delete from ${server_db_prefix}workflow.page_item where page_section_id = '$id' ");
+                            // require_once "../workflow/content_item.php";
+                            ContentItem::removeWhere("publication_id='$id'");
+                            // $this->execQuery("delete from ${server_db_prefix}workflow.content_item where publication_id = '$id' ");
                             
                         } 
                         
@@ -129,12 +166,12 @@ class PageSection extends WorkflowObject{
                else
                {
                         // FK on me 
-                       // workflow.page_item-Ù‚Ø³Ù… Ø§Ù„ØµÙØ­Ø©	page_section_id  Ø­Ù‚Ù„ ÙŠÙÙ„ØªØ± Ø¨Ù‡
+                       // workflow.content_item-ÇáãäÔæÑ	publication_id  ÍÞá íÝáÊÑ Èå
                         if(!$simul)
                         {
-                            // require_once "../workflow/page_item.php";
-                            PageItem::updateWhere(array('page_section_id'=>$id_replace), "page_section_id='$id'");
-                            // $this->execQuery("update ${server_db_prefix}workflow.page_item set page_section_id='$id_replace' where page_section_id='$id' ");
+                            // require_once "../workflow/content_item.php";
+                            ContentItem::updateWhere(array('publication_id'=>$id_replace), "publication_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.content_item set publication_id='$id_replace' where publication_id='$id' ");
                             
                         }
                         

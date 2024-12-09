@@ -5,7 +5,7 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class ContentItem extends AFWObject{
+class ContentItem extends WorkflowObject{
 
         public static $MY_ATABLE_ID=13939; 
   
@@ -39,10 +39,43 @@ class ContentItem extends AFWObject{
                     return 0;
                 }
         
-        
+        public static function loadByMainIndex($content_id,$create_obj_if_not_found=false)
+        {
+           if(!$content_id) throw new AfwRuntimeException("loadByMainIndex : content_id is mandatory field");
+
+
+           $obj = new ContentItem();
+           $obj->select("content_id",$content_id);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("content_id",$content_id);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
+
+
         public function getDisplay($lang="ar")
         {
-               return $this->getVal("name_$lang");
+               if($this->getVal("name_$lang")) return $this->getVal("name_$lang");
+               $data = array();
+               $link = array();
+               
+
+
+               
+               return implode(" - ",$data);
         }
         
         
@@ -89,49 +122,7 @@ class ContentItem extends AFWObject{
             return $pbms;
         }
         
-        public function fld_CREATION_USER_ID()
-        {
-                return "created_by";
-        }
-
-        public function fld_CREATION_DATE()
-        {
-                return "created_at";
-        }
-
-        public function fld_UPDATE_USER_ID()
-        {
-        	return "updated_by";
-        }
-
-        public function fld_UPDATE_DATE()
-        {
-        	return "updated_at";
-        }
         
-        public function fld_VALIDATION_USER_ID()
-        {
-        	return "validated_by";
-        }
-
-        public function fld_VALIDATION_DATE()
-        {
-                return "validated_at";
-        }
-        
-        public function fld_VERSION()
-        {
-        	return "version";
-        }
-
-        public function fld_ACTIVE()
-        {
-        	return  "active";
-        }
-        
-        public function isTechField($attribute) {
-            return (($attribute=="created_by") or ($attribute=="created_at") or ($attribute=="updated_by") or ($attribute=="updated_at") or ($attribute=="validated_by") or ($attribute=="validated_at") or ($attribute=="version"));  
-        }
         
         
         public function beforeDelete($id,$id_replace) 

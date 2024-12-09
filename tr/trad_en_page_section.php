@@ -12,7 +12,7 @@ class PageSectionEnTranslator{
 		$trad["page_section"]["desc_ar"] = "Arabic Page section description";
 		$trad["page_section"]["name_en"] = "English Page section name";
 		$trad["page_section"]["desc_en"] = "English Page section description";
-		$trad["page_section"]["model_id"] = "model";
+		$trad["page_section"]["module_id"] = "model";
 		$trad["page_section"]["section_template_id"] = "template";
 		$trad["page_section"]["content_id"] = "Content";
         // steps
