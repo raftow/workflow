@@ -54,47 +54,51 @@ class WorkflowObject extends AFWObject{
         }
 
 
-        public static function code_of_training_period_enum($lkp_id=null)
+        public static function code_of_content_type_enum($lkp_id=null)
         {
             global $lang;
-            if($lkp_id) return self::training_period()['code'][$lkp_id];
-            else return self::training_period()['code'];
+            if($lkp_id) return self::content_type()['code'][$lkp_id];
+            else return self::content_type()['code'];
         }
 
-        public static function name_of_training_period_enum($training_period_enum, $lang="ar")
+        public static function name_of_content_type_enum($content_type_enum, $lang="ar")
         {
-            return self::training_period()[$lang][$training_period_enum];            
+            return self::content_type()[$lang][$content_type_enum];            
         }
         
 
-        
-        
-        public static function list_of_training_period_enum()
+        public static function list_of_content_type_enum()
         {
             global $lang;
-            return self::training_period()[$lang];
+            return self::content_type()[$lang];
         }
         
-        public static function training_period()
+        public static function content_type()
         {
-                $arr_list_of_training_period = array();
+                $arr_list_of_content_type = array();
                 
                         
-                $arr_list_of_training_period["en"][1] = "Morning";
-                $arr_list_of_training_period["ar"][1] = "صباحي";
-                $arr_list_of_training_period["code"][1] = "Morning";
+                $arr_list_of_content_type["en"][1] = "Picture";
+                $arr_list_of_content_type["ar"][1] = "صورة";
+                $arr_list_of_content_type["code"][1] = "Picture";
 
-                $arr_list_of_training_period["en"][2] = "Evening";
-                $arr_list_of_training_period["ar"][2] = "مسائي";
-                $arr_list_of_training_period["code"][2] = "Evening";
-
-                /*
-                $arr_list_of_training_period["en"][3] = "Online";
-                $arr_list_of_training_period["ar"][3] = "عن بعد";
-                $arr_list_of_training_period["code"][3] = "Online";*/
+                $arr_list_of_content_type["en"][2] = "Publication";
+                $arr_list_of_content_type["ar"][2] = "منشور";
+                $arr_list_of_content_type["code"][2] = "Publication";
 
                 
-                return $arr_list_of_training_period;
+                $arr_list_of_content_type["en"][3] = "Banner";
+                $arr_list_of_content_type["ar"][3] = "صورة عرضية";
+                $arr_list_of_content_type["code"][3] = "Banner";
+
+                $arr_list_of_content_type["en"][4] = "Intelligent content";
+                $arr_list_of_content_type["ar"][4] = "محتوى ذكي";
+                $arr_list_of_content_type["code"][4] = "icontent";
+
+                
+
+                
+                return $arr_list_of_content_type;
         } 
 
         public static function list_of_religion_enum()

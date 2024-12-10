@@ -15,6 +15,9 @@ class WorkflowContentAfwStructure
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 2;
+                        
                         // $obj->after_save_edit = array("class"=>'Road',"attribute"=>'road_id', "currmod"=>'btb',"currstep"=>9);
                         $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'Content', "submit" => true);
                 } else {
@@ -48,24 +51,6 @@ class WorkflowContentAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'desc_ar' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
                 'name_en' => array(
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -85,6 +70,26 @@ class WorkflowContentAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
+                'desc_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'ROWS' => 4,
+                        'CSS' => 'width_pct_100',
+                ),
+
+                
+
                 'desc_en' => array(
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -99,8 +104,8 @@ class WorkflowContentAfwStructure
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'UTF8' => false,
                         'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
+                        'ROWS' => 4,
+                        'CSS' => 'width_pct_100',
                 ),
 
                 'content_type_enum' => array(
@@ -144,6 +149,7 @@ class WorkflowContentAfwStructure
                 ),
 
                 'contentItemList' => array(
+                        'STEP' => 2,
                         'SHORTNAME' => 'contentItems',
                         'SHOW' => true,
                         'FORMAT' => 'retrieve',

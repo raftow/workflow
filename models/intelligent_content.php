@@ -1,10 +1,27 @@
 <?php 
 
+                
+$file_dir_name = dirname(__FILE__); 
+                
 // require_once("$file_dir_name/../afw/afw.php");
 
 class IntelligentContent extends WorkflowObject{
 
         public static $MY_ATABLE_ID=13940; 
+        // إحصائيات المحتويات 
+        public static $BF_STATS_INTELLIGENT_CONTENT = 104849; 
+        // إدارة المحتويات 
+        public static $BF_QEDIT_INTELLIGENT_CONTENT = 104844; 
+        // إنشاء  الذكية 
+        public static $BF_EDIT_INTELLIGENT_CONTENT = 104843; 
+        // البحث في المحتويات 
+        public static $BF_SEARCH_INTELLIGENT_CONTENT = 104847; 
+        // المحتويات 
+        public static $BF_QSEARCH_INTELLIGENT_CONTENT = 104848; 
+        // عرض تفاصيل  الذكية 
+        public static $BF_DISPLAY_INTELLIGENT_CONTENT = 104846; 
+        // مسح  الذكية 
+        public static $BF_DELETE_INTELLIGENT_CONTENT = 104845; 
   
         public static $DATABASE		= "pmu_workflow";
         public static $MODULE		        = "workflow";        
@@ -119,61 +136,69 @@ class IntelligentContent extends WorkflowObject{
         }
         
         
-
-
-
-
-
-    public function beforeDelete($id, $id_replace)
-    {
-        $server_db_prefix = AfwSession::config("db_prefix", "pmu_");
-
-        if (!$id) {
-            $id = $this->getId();
-            $simul = true;
-        } else {
-            $simul = false;
-        }
-
-        if ($id) {
-            if ($id_replace == 0) {
-                // FK part of me - not deletable 
-
-
-                // FK part of me - deletable 
-
-
-                // FK not part of me - replaceable 
-                // workflow.content_item-����� �����	intelligent_content_id  ��� ����� ��
-                if (!$simul) {
-                    // require_once "../workflow/content_item.php";
-                    ContentItem::updateWhere(array('intelligent_content_id' => $id_replace), "intelligent_content_id='$id'");
-                    // $this->execQuery("update ${server_db_prefix}workflow.content_item set intelligent_content_id='$id_replace' where intelligent_content_id='$id' ");
-                }
-
-
-
-                // MFK
-
-            } else {
-                // FK on me 
-                // workflow.content_item-����� �����	intelligent_content_id  ��� ����� ��
-                if (!$simul) {
-                    // require_once "../workflow/content_item.php";
-                    ContentItem::updateWhere(array('intelligent_content_id' => $id_replace), "intelligent_content_id='$id'");
-                    // $this->execQuery("update ${server_db_prefix}workflow.content_item set intelligent_content_id='$id_replace' where intelligent_content_id='$id' ");
-                }
-
-
-                // MFK
-
-
+        
+        
+        public function beforeDelete($id,$id_replace) 
+        {
+            $server_db_prefix = AfwSession::config("db_prefix","pmu_");
+            
+            if(!$id)
+            {
+                $id = $this->getId();
+                $simul = true;
             }
-            return true;
-        }
-    }
+            else
+            {
+                $simul = false;
+            }
+            
+            if($id)
+            {   
+               if($id_replace==0)
+               {
+                   // FK part of me - not deletable 
+
+                        
+                   // FK part of me - deletable 
+
+                   
+                   // FK not part of me - replaceable 
+                       // workflow.content_item-محتوى الذكي	intelligent_content_id  حقل يفلتر به
+                        if(!$simul)
+                        {
+                            // require_once "../workflow/content_item.php";
+                            ContentItem::updateWhere(array('intelligent_content_id'=>$id_replace), "intelligent_content_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.content_item set intelligent_content_id='$id_replace' where intelligent_content_id='$id' ");
+                        }
+
+                        
+                   
+                   // MFK
+
+               }
+               else
+               {
+                        // FK on me 
+                       // workflow.content_item-محتوى الذكي	intelligent_content_id  حقل يفلتر به
+                        if(!$simul)
+                        {
+                            // require_once "../workflow/content_item.php";
+                            ContentItem::updateWhere(array('intelligent_content_id'=>$id_replace), "intelligent_content_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.content_item set intelligent_content_id='$id_replace' where intelligent_content_id='$id' ");
+                        }
+
+                        
+                        // MFK
+
+                   
+               } 
+               return true;
+            }    
+	}
+             
 }
 
 
 
 // errors 
+
