@@ -546,7 +546,7 @@
         104848 => 
         array (
           'id' => '104848',
-          'menu_name' => 'المحتويات',
+          'menu_name' => 'المحتويات الذكية',
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=IntelligentContent&currmod=workflow',
           'css' => 'bf',
           'icon' => ' bficon-104848 bfc-',

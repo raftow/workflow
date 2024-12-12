@@ -41,6 +41,7 @@ class WorkflowPublicationAfwStructure
 			'SIZE' => 32,
 			'MAXLENGTH' => 32,
 			'MIN-SIZE' => 1,
+			'DEFAULT' => 1282,
 			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
 			'MANDATORY' => true,
 			'UTF8' => false,

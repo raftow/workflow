@@ -14,6 +14,9 @@ class ContentItemEnTranslator{
 		$trad["content_item"]["desc_en"] = "English Content item description";
 		$trad["content_item"]["content_id"] = "Content";
 		$trad["content_item"]["content_type_enum"] = "Content type enum";
+		$trad["content_item"]["workflow_file_id"] = "The file";
+		$trad["content_item"]["publication_id"] = "The publication";
+		$trad["content_item"]["intelligent_content_id"] = "The intelligent content";
         // steps
         return $trad;
     }

@@ -12,7 +12,9 @@ class WorkflowPageAfwStructure
 
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                         $obj->ORDER_BY_FIELDS = "module_id, name_ar";
-                        $obj->UNIQUE_KEY = array('module_id', 'name_ar');
+                        $obj->UNIQUE_KEY = array('module_id', 'lookup_code');
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 2;
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
@@ -43,6 +45,7 @@ class WorkflowPageAfwStructure
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
+                        'DEFAULT' => 1282,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'MANDATORY' => true,
                         'UTF8' => false,
@@ -50,6 +53,25 @@ class WorkflowPageAfwStructure
                         'ANSWER' => 'module',
                         'ANSMODULE' => 'ums',
                         'RELATION' => 'ManyToOne',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'lookup_code' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 16,
+                        'MAXLENGTH' => 16,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
                         'READONLY' => false,
                         'CSS' => 'width_pct_50',
                 ),
@@ -67,24 +89,6 @@ class WorkflowPageAfwStructure
                         'MIN-SIZE' => 5,
                         'CHAR_TEMPLATE' => "ARABIC-CHARS,SPACE",
                         'MANDATORY' => true,
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'desc_ar' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'UTF8' => true,
                         'TYPE' => 'TEXT',
                         'READONLY' => false,
@@ -109,6 +113,26 @@ class WorkflowPageAfwStructure
                         'READONLY' => false,
                         'CSS' => 'width_pct_50',
                 ),
+
+                'desc_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                
 
                 'desc_en' => array(
                         'SEARCH' => true,
@@ -151,7 +175,7 @@ class WorkflowPageAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'pageItemList' => array(
+                'pageItemList' => array('STEP' => 2,
                         'SHORTNAME' => 'pageItems',
                         'SHOW' => true,
                         'FORMAT' => 'retrieve',
@@ -177,7 +201,7 @@ class WorkflowPageAfwStructure
                         'MANDATORY' => false,
                         'READONLY' => true,
                         'CAN-BE-SETTED' => true,
-                        'CSS' => 'width_pct_50',
+                        'CSS' => 'width_pct_100',
                 ),
 
 

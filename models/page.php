@@ -93,15 +93,19 @@ class Page extends WorkflowObject{
 
              $otherLinksArray = $this->getOtherLinksArrayStandard($mode,$genereLog,$step);
              $my_id = $this->getId();
-             $displ = $this->getDisplay($lang);
+             // $displ = $this->getDisplay($lang);
              
              if($mode=="mode_pageItemList")
              {
+                $objAS = new PageItem();
+                $objAS->select("page_id", $my_id);
+                $nextItemNum = AfwSqlHelper::aggregFunction($objAS, "max(item_num)")+1;
+
                    unset($link);
                    $link = array();
                    $title = "إضافة عنصر صفحة جديد";
-                   $title_detailed = $title ."لـ : ". $displ;
-                   $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=PageItem&currmod=workflow&sel_page_id=$my_id";
+                   // $title_detailed = $title ."لـ : ". $displ;
+                   $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=PageItem&currmod=workflow&sel_page_id=$my_id&sel_item_num=$nextItemNum";
                    $link["TITLE"] = $title;
                    $link["UGROUPS"] = array();
                    $otherLinksArray[] = $link;

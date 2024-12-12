@@ -11,13 +11,13 @@ class WorkflowPageItemAfwStructure
                         $obj->DISPLAY_FIELD = "name_ar";
                         $obj->UNIQUE_KEY = array('page_id', 'item_num');
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
-                        $obj->ORDER_BY_FIELDS = "name_ar";
+                        $obj->ORDER_BY_FIELDS = "page_id, item_num";
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
-                        // $obj->after_save_edit = array("class"=>'Road',"attribute"=>'road_id', "currmod"=>'btb',"currstep"=>9);
-                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'PageItem', "submit" => true);
+                        $obj->after_save_edit = array("class"=>'Page',"attribute"=>'page_id', "currmod"=>'workflow',"currstep"=>2);
+                        // $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'PageItem', "submit" => true);
                 } else {
                         PageItemArTranslator::initData();
                         PageItemEnTranslator::initData();
@@ -28,81 +28,6 @@ class WorkflowPageItemAfwStructure
         public static $DB_STRUCTURE =
         array(
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
-
-
-                'name_ar' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => 128,
-                        'MAXLENGTH' => 128,
-                        'MIN-SIZE' => 5,
-                        'CHAR_TEMPLATE' => "ARABIC-CHARS,SPACE",
-                        'MANDATORY' => true,
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'desc_ar' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'name_en' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => 128,
-                        'MAXLENGTH' => 128,
-                        'MIN-SIZE' => 5,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => true,
-                        'UTF8' => false,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'desc_en' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'UTF8' => false,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
 
                 'page_id' => array(
                         'SHORTNAME' => 'page_id',
@@ -146,6 +71,84 @@ class WorkflowPageItemAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
+                'name_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 128,
+                        'MAXLENGTH' => 128,
+                        'MIN-SIZE' => 3,
+                        'CHAR_TEMPLATE' => "ARABIC-CHARS,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                
+                'name_en' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 128,
+                        'MAXLENGTH' => 128,
+                        'MIN-SIZE' => 3,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'desc_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+
+                'desc_en' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                
+
                 'page_section_id' => array(
                         'SHORTNAME' => 'section',
                         'SEARCH' => true,
@@ -159,7 +162,7 @@ class WorkflowPageItemAfwStructure
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => true,
+                        // 'MANDATORY' => true,
                         'UTF8' => false,
                         'TYPE' => 'FK',
                         'ANSWER' => 'page_section',
