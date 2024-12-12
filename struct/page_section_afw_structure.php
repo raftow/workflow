@@ -97,6 +97,28 @@ class WorkflowPageSectionAfwStructure
 			'CSS' => 'width_pct_50',
 		),
 
+		'page_theme_id' => array(
+			'SHORTNAME' => 'theme',
+			'SEARCH' => true,
+			'QSEARCH' => false,
+			'SHOW' => true,
+			'AUDIT' => false,
+			'RETRIEVE' => true,
+			'EDIT' => true,
+			'QEDIT' => true,
+			'SIZE' => 32,
+			'MAXLENGTH' => 32,
+			'MIN-SIZE' => 1,
+			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+			'UTF8' => false,
+			'TYPE' => 'FK',
+			'ANSWER' => 'page_theme',
+			'ANSMODULE' => 'workflow',
+			'RELATION' => 'ManyToOne',
+			'READONLY' => false,
+			'CSS' => 'width_pct_50',
+		),
+
 		'name_ar' => array(
 			'SEARCH' => true,
 			'QSEARCH' => true,
@@ -135,27 +157,7 @@ class WorkflowPageSectionAfwStructure
 			'CSS' => 'width_pct_50',
 		),
 
-		'page_theme_id' => array(
-			'SHORTNAME' => 'theme',
-			'SEARCH' => true,
-			'QSEARCH' => false,
-			'SHOW' => true,
-			'AUDIT' => false,
-			'RETRIEVE' => true,
-			'EDIT' => true,
-			'QEDIT' => true,
-			'SIZE' => 32,
-			'MAXLENGTH' => 32,
-			'MIN-SIZE' => 1,
-			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-			'UTF8' => false,
-			'TYPE' => 'FK',
-			'ANSWER' => 'page_theme',
-			'ANSMODULE' => 'workflow',
-			'RELATION' => 'ManyToOne',
-			'READONLY' => false,
-			'CSS' => 'width_pct_50',
-		),
+		
 
 
 		'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),
