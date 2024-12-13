@@ -1,7 +1,7 @@
 <?php
 
-
-class WorkflowIntelligentContentAfwStructure
+/*
+class XXWorkflowIntelligentContentAfwStructure
 {
         // token separator = §
         public static function initInstance(&$obj)
@@ -11,11 +11,11 @@ class WorkflowIntelligentContentAfwStructure
                         $obj->DISPLAY_FIELD = "name_ar";
 
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
-                        $obj->ORDER_BY_FIELDS = "module_id, lookup_code"; // , content_type_enum
+                        $obj->ORDER_BY_FIELDS = "module_id, lookup_code, content_type_enum";
 
 
 
-                        $obj->UNIQUE_KEY = array('module_id', 'lookup_code'); // , 'content_type_enum'
+                        $obj->UNIQUE_KEY = array('module_id', 'lookup_code', 'content_type_enum');
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
@@ -31,8 +31,82 @@ class WorkflowIntelligentContentAfwStructure
 
         public static $DB_STRUCTURE =
         array(
-                'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => true,
-                                'QEDIT' => true, 'TYPE' => 'PK'),
+                'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
+
+
+                'name_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 128,
+                        'MAXLENGTH' => 128,
+                        'MIN-SIZE' => 5,
+                        'CHAR_TEMPLATE' => "ARABIC-CHARS,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'desc_ar' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'name_en' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 128,
+                        'MAXLENGTH' => 128,
+                        'MIN-SIZE' => 5,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'desc_en' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 'AREA',
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
 
                 'module_id' => array(
                         'SHORTNAME' => 'module',
@@ -47,6 +121,7 @@ class WorkflowIntelligentContentAfwStructure
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
                         'DEFAULT' => 1282,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'MANDATORY' => true,
                         'UTF8' => false,
                         'TYPE' => 'FK',
@@ -76,91 +151,13 @@ class WorkflowIntelligentContentAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                
-
-                'name_ar' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => true,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => 128,
-                        'MAXLENGTH' => 128,
-                        'MIN-SIZE' => 5,
-                        'CHAR_TEMPLATE' => "ARABIC-CHARS,SPACE",
-                        'MANDATORY' => true,
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'name_en' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => true,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => 128,
-                        'MAXLENGTH' => 128,
-                        'MIN-SIZE' => 5,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => true,
-                        'UTF8' => false,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'description' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                
-
-                'tokens' => array(
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => false,
-                        'EDIT' => true,
-                        'QEDIT' => false,
-                        'SIZE' => 'AREA',
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'UTF8' => false,
-                        'TYPE' => 'TEXT',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
-                ),
-
-                'content_category_enum' => array(
+                'content_type_enum' => array(
                         'SHORTNAME' => 'type',
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => true,
+                        'RETRIEVE' => false,
                         'EDIT' => true,
                         'QEDIT' => false,
                         'SIZE' => 32,
@@ -170,12 +167,10 @@ class WorkflowIntelligentContentAfwStructure
                         'MANDATORY' => true,
                         'UTF8' => false,
                         'TYPE' => 'ENUM',
-                        'ANSWER' => 'FUNCTION',
+                        'ANSWER' => '',
                         'READONLY' => false,
                         'CSS' => 'width_pct_50',
                 ),
-
-                
 
 
                 'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),
@@ -194,7 +189,7 @@ class WorkflowIntelligentContentAfwStructure
                 'tech_notes'               => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'TYPE' => 'TEXT', 'CATEGORY' => 'FORMULA', "SHOW-ADMIN" => true, 'TOKEN_SEP' => "§", 'READONLY' => true, "NO-ERROR-CHECK" => true, 'FGROUP' => 'tech_fields'),
         );
 }
-    
+*/    
 
 
 // errors 

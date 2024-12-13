@@ -53,7 +53,7 @@ class ContentItem extends WorkflowObject
         throw new AfwRuntimeException("Unknown content_type_enum=$content_type_enum in this content item Id : ".$this->id);
     }
 
-    public static function loadByMainIndex($content_id, $content_type_enum, $publication_id, $workflow_file_id, $intelligent_content_id, $create_obj_if_not_found = false)
+    public static function loadByMainIndex($content_id, $content_type_enum, $publication_id, $workflow_file_id, $intelligent_content_id, $lookup_code, $create_obj_if_not_found = false)
     {
         if (!$content_id) throw new AfwRuntimeException("loadByMainIndex : content_id is mandatory field");
         if (!$content_type_enum) throw new AfwRuntimeException("loadByMainIndex : content_type_enum is mandatory field");
@@ -64,7 +64,7 @@ class ContentItem extends WorkflowObject
         $obj->select("content_type_enum", $content_type_enum);
         $obj->select("publication_id", $publication_id);
         $obj->select("workflow_file_id", $workflow_file_id);
-        $obj->select("intelligent_content_id", $intelligent_content_id);
+        $obj->select("lookup_code", $lookup_code);
 
         if ($obj->load()) {
             if ($create_obj_if_not_found) $obj->activate();
@@ -75,6 +75,7 @@ class ContentItem extends WorkflowObject
             $obj->set("publication_id", $publication_id);
             $obj->set("workflow_file_id", $workflow_file_id);
             $obj->set("intelligent_content_id", $intelligent_content_id);
+            $obj->set("lookup_code", $lookup_code);
 
             $obj->insertNew();
             if (!$obj->id) return null; // means beforeInsert rejected insert operation

@@ -106,32 +106,28 @@ class WorkflowObject extends AFWObject{
                 return $arr_list_of_content_type;
         } 
 
-        public static function list_of_religion_enum()
+        public static function list_of_content_category_enum()
         {
             global $lang;
-            return self::religion_enum()[$lang];
+            return self::content_category_enum()[$lang];
         }
         
-        public static function religion_enum()
+        public static function content_category_enum()
         {
-                $arr_list_of_religion_enum = array();
+                $arr_list_of_content_category_enum = array();
                 
                         
-                $arr_list_of_religion_enum["en"][1] = "Islam";
-                $arr_list_of_religion_enum["ar"][1] = "الإسلام";
-                $arr_list_of_religion_enum["code"][1] = "Islam";
+                $arr_list_of_content_category_enum["en"][1] = "Stats";
+                $arr_list_of_content_category_enum["ar"][1] = "الإحصائيات";
+                $arr_list_of_content_category_enum["code"][1] = "stats";
 
-                $arr_list_of_religion_enum["en"][2] = "People of book";
-                $arr_list_of_religion_enum["ar"][2] = "أهل الكتاب";
-                $arr_list_of_religion_enum["code"][2] = "Book";
-
-                
-                $arr_list_of_religion_enum["en"][3] = "Other religion";
-                $arr_list_of_religion_enum["ar"][3] = "دين آخر";
-                $arr_list_of_religion_enum["code"][3] = "Other";
+                $arr_list_of_content_category_enum["en"][2] = "Business entity description";
+                $arr_list_of_content_category_enum["ar"][2] = "وصف كيان أعمال";
+                $arr_list_of_content_category_enum["code"][2] = "entity";
 
                 
-                return $arr_list_of_religion_enum;
+                
+                return $arr_list_of_content_category_enum;
         }
 
         public static function list_of_application_status_enum()

@@ -51,6 +51,27 @@ class Content extends WorkflowObject
         } else return null;
     }
 
+    public static function loadByMainIndex($lookup_code, $create_obj_if_not_found = false)
+    {
+        if (!$lookup_code) throw new AfwRuntimeException("loadByMainIndex : lookup_code is mandatory field");
+
+
+        $obj = new Content();
+        $obj->select("lookup_code", $lookup_code);
+
+        if ($obj->load()) {
+            if ($create_obj_if_not_found) $obj->activate();
+            return $obj;
+        } elseif ($create_obj_if_not_found) {
+            $obj->set("lookup_code", $lookup_code);
+
+            $obj->insertNew();
+            if (!$obj->id) return null; // means beforeInsert rejected insert operation
+            $obj->is_new = true;
+            return $obj;
+        } else return null;
+    }
+
     /**
      * @param SectionTemplate $templateObj 
      */
@@ -210,20 +231,17 @@ class Content extends WorkflowObject
     {
         $tokens = [];
         $contentItemList = $this->get("contentItemList");
-        foreach($contentItemList as $contentItem)
-        {
+        foreach ($contentItemList as $contentItem) {
             $item_lookup_code = $contentItem->getVal("lookup_code");
             $contentTheItem = $contentItem->getTheItem();
-            if(!$contentTheItem) 
-            {
-                $errorMessage = "content item ".$contentItem->id." doesn't contain a real content element";
+            if (!$contentTheItem) {
+                $errorMessage = "content item " . $contentItem->id . " doesn't contain a real content element";
                 AfwSession::pushError($errorMessage);
-                return ["error"=>$errorMessage];
+                return ["error" => $errorMessage];
             }
             $item_tokens = $contentTheItem->getTokens($lang);
-            foreach($item_tokens as $itcode => $itvalue)
-            {
-                $tokens[$item_lookup_code."_".$itcode] = $itvalue;
+            foreach ($item_tokens as $itcode => $itvalue) {
+                $tokens[$item_lookup_code . "_" . $itcode] = $itvalue;
             }
         }
 

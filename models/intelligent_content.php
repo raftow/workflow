@@ -53,17 +53,15 @@ class IntelligentContent extends ContentElement
         return 0;
     }
 
-    public static function loadByMainIndex($module_id, $lookup_code, $content_type_enum, $create_obj_if_not_found = false)
+    public static function loadByMainIndex($module_id, $lookup_code, $create_obj_if_not_found = false)
     {
         if (!$module_id) throw new AfwRuntimeException("loadByMainIndex : module_id is mandatory field");
         if (!$lookup_code) throw new AfwRuntimeException("loadByMainIndex : lookup_code is mandatory field");
-        if (!$content_type_enum) throw new AfwRuntimeException("loadByMainIndex : content_type_enum is mandatory field");
 
 
         $obj = new IntelligentContent();
         $obj->select("module_id", $module_id);
         $obj->select("lookup_code", $lookup_code);
-        $obj->select("content_type_enum", $content_type_enum);
 
         if ($obj->load()) {
             if ($create_obj_if_not_found) $obj->activate();
@@ -71,7 +69,6 @@ class IntelligentContent extends ContentElement
         } elseif ($create_obj_if_not_found) {
             $obj->set("module_id", $module_id);
             $obj->set("lookup_code", $lookup_code);
-            $obj->set("content_type_enum", $content_type_enum);
 
             $obj->insertNew();
             if (!$obj->id) return null; // means beforeInsert rejected insert operation
@@ -115,15 +112,14 @@ class IntelligentContent extends ContentElement
         return $otherLinksArray;
     }
 
-    protected function getPublicMethods()
+    protected function getMyPublicMethods()
     {
-
         $pbms = array();
 
         $color = "green";
-        $title_ar = "xxxxxxxxxxxxxxxxxxxx";
-        $methodName = "mmmmmmmmmmmmmmmmmmmmmmm";
-        //$pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
+        $title_ar = "أضفني كمحتوى مستقل";
+        $methodName = "AddMeAsContent";
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
 
 
 
@@ -182,11 +178,50 @@ class IntelligentContent extends ContentElement
         }
     }
 
-    public function AddMeAsContentItemIn($content_id, $lang="ar")
+    public function AddMeAsContentItemIn($content_id, $lookup_code, $lang = "ar")
     {
-        $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_icontent, $this->id, 0, 0, true);
-        return ["", "publication content item object created with id = ".$obj->id];
+        $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_icontent, 0, 0, $this->id, $lookup_code, true);
+        return ["", "publication content item object created with id = " . $obj->id];
     }
+
+    public function proposeLookupCode()
+    {
+        return $this->getVal("lookup_code");
+    }
+
+    public function AddMeAsContent($lang = "ar")
+    {
+        $icontent_lookup_code = $this->getVal("lookup_code");
+        $objContent = Content::loadByMainIndex($icontent_lookup_code, true);
+        $objContent->set("name_en", $this->getVal("name_en"));
+        $objContent->set("name_ar", $this->getVal("name_ar"));
+        $objContent->commit();
+        return $this->AddMeAsContentItemIn($objContent->id, $icontent_lookup_code, $lang);
+    }
+
+    public function getTokens($lang)
+    {
+        $icontent_module_code = UmsManager::decodeModuleCodeOrIdToModuleCode($this->getVal("module_id"));
+        $icontent_lookup_code = $this->getVal("lookup_code");
+        $file_dir_name = dirname(__FILE__); 
+        $icontent_full_path_name = "$file_dir_name/../../$icontent_module_code/content/icontent_$icontent_lookup_code.php";
+        if(!file_exists($icontent_full_path_name))
+        {
+            throw new AfwRuntimeException("intelligent content php file $icontent_full_path_name not found");
+        }
+        $tokens = include($icontent_full_path_name);
+        if(count($tokens)==0)
+        {
+            throw new AfwRuntimeException("intelligent content php file $icontent_full_path_name returned empty tokens array");
+        }
+        $tokens['title'] = $this->getVal("name_$lang");
+        // $tokens['description'] = $this->getVal("description"); it is technical no sens to show it in content
+        // die("intelligent content php file $icontent_full_path_name returned tokens = ".var_export($tokens,true));
+        return $tokens;
+    }
+
+
+    
 }
 
 

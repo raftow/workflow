@@ -562,9 +562,9 @@ zoomWindowOffety:-200
         }
         
 
-        public function AddMeAsContentItemIn($content_id, $lang="ar")
+        public function AddMeAsContentItemIn($content_id, $lookup_code, $lang="ar")
         {
-            $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_picture, 0, $this->id, 0, true);
+            $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_picture, 0, $this->id, 0, $lookup_code, true);
             return ["", "publication content item object created with id = ".$obj->id];
         }
 

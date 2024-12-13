@@ -37,6 +37,10 @@ class SectionTemplate extends WorkflowObject{
             $lookup_code = $this->getVal("lookup_code");
             $file_dir_name = dirname(__FILE__); 
             $template_full_path_name = "$file_dir_name/../../$module_code/tpl/template_$lookup_code.php";
+            if(!file_exists($template_full_path_name))
+            {
+                throw new AfwRuntimeException("section template php file $template_full_path_name not found");
+            }
             ob_start();
             include($template_full_path_name);
             $return = ob_get_clean();
@@ -48,9 +52,15 @@ class SectionTemplate extends WorkflowObject{
 
         public static function decodeTokens($templateHtml, $token_arr)
         {
+            $old_templateHtml = $templateHtml;
             foreach ($token_arr as $token => $val_token) {
                 //if($token=="[travelStationList.no_icons]") die("for the token $token value is $val_token , token_arr = ".var_export($token_arr,true)." text_to_decode=$text_to_decode");
                 $templateHtml = str_replace("[$token]", $val_token, $templateHtml);
+            }
+
+            if($old_templateHtml==$templateHtml)
+            {
+                throw new AfwRuntimeException("The html template given has't much any token from given tokens = ".var_export($token_arr,true));
             }
     
             return $templateHtml;
