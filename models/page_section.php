@@ -46,7 +46,15 @@ class PageSection extends WorkflowObject{
         }
         
         
-        
+        public function showSectionHtml($lang, $module_code, $pageThemeObj)
+        {
+            $templateObj = $this->het('section_template_id');
+            /**
+             * @var Content $contentObj
+             */
+            $contentObj = $this->het('content_id');
+            return $contentObj->showContentHtml($lang, $module_code, $templateObj, $pageThemeObj);
+        }
 
         
         protected function getOtherLinksArray($mode,$genereLog=false,$step="all")      

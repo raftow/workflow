@@ -29,15 +29,19 @@ class WorkflowContentAfwStructure
 
         public static $DB_STRUCTURE = array(
 
-                'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
+                'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => true, 'TYPE' => 'PK',
+                                'CSS' => 'width_pct_50'),
 
+                'draft' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => true, 'QEDIT' => true, 
+                                  "DEFAULT" => 'Y', 'TYPE' => 'YN',
+                                  'CSS' => 'width_pct_50'),
 
                 'name_ar' => array(
                         'SEARCH' => true,
                         'QSEARCH' => true,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => false,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SIZE' => 128,
@@ -56,7 +60,7 @@ class WorkflowContentAfwStructure
                         'QSEARCH' => true,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => false,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SIZE' => 128,
@@ -69,7 +73,7 @@ class WorkflowContentAfwStructure
                         'READONLY' => false,
                         'CSS' => 'width_pct_50',
                 ),
-
+                /*
                 'desc_ar' => array(
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -127,7 +131,7 @@ class WorkflowContentAfwStructure
                         'ANSWER' => 'FUNCTION',
                         'READONLY' => false,
                         'CSS' => 'width_pct_50',
-                ),
+                ),*/
 
                 'lookup_code' => array(
                         'SEARCH' => true,
@@ -175,7 +179,7 @@ class WorkflowContentAfwStructure
                         'ITEM' => 'content_id',
                         'READONLY' => true,
                         'CAN-BE-SETTED' => true,
-                        'CSS' => 'width_pct_50',
+                        'CSS' => 'width_pct_100',
                 ),
 
 
@@ -187,7 +191,6 @@ class WorkflowContentAfwStructure
                 'validated_at'       => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'),
                 'active'             => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'EDIT' => false, 'QEDIT' => false, "DEFAULT" => 'Y', 'TYPE' => 'YN', 'FGROUP' => 'tech_fields'),
                 'version'            => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'INT', 'FGROUP' => 'tech_fields'),
-                'draft'             => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'EDIT' => false, 'QEDIT' => false, "DEFAULT" => 'Y', 'TYPE' => 'YN', 'FGROUP' => 'tech_fields'),
                 'update_groups_mfk' => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'ANSWER' => 'ugroup', 'ANSMODULE' => 'ums', 'TYPE' => 'MFK', 'FGROUP' => 'tech_fields'),
                 'delete_groups_mfk' => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'ANSWER' => 'ugroup', 'ANSMODULE' => 'ums', 'TYPE' => 'MFK', 'FGROUP' => 'tech_fields'),
                 'display_groups_mfk' => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'RETRIEVE' => false, 'QEDIT' => false, 'ANSWER' => 'ugroup', 'ANSMODULE' => 'ums', 'TYPE' => 'MFK', 'FGROUP' => 'tech_fields'),

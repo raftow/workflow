@@ -34,20 +34,38 @@ class Page extends WorkflowObject{
         
 
         public function getScenarioItemId($currstep)
-                {
-                    
-                    return 0;
-                }
+        {
+            return 0;
+        }
+
+        public static function showPage($module_code, $lookup_code, $lang)
+        {
+            $html = "";
+            $module_id = UmsManager::decodeModuleCodeOrIdToModuleId($module_code);
+            $pageObj = self::loadByMainIndex($module_id, $lookup_code);
+            if(!$pageObj) return "page mcd=$module_code/id=$module_id/pcd=$lookup_code not found";
+            $pageItemList = $pageObj->get("pageItemList");
+            $pageThemeObj = $pageObj->het("page_theme_id");
+            /**
+             * @var PageItem $pageItem
+             */
+            foreach($pageItemList as $pageItem)
+            {                
+                $html .= $pageItem->showMyHtml($lang, $module_code, $pageThemeObj);
+            }
+
+            return $html;
+        }
         
-        public static function loadByMainIndex($module_id, $name_ar,$create_obj_if_not_found=false)
+        public static function loadByMainIndex($module_id, $lookup_code,$create_obj_if_not_found=false)
         {
            if(!$module_id) throw new AfwRuntimeException("loadByMainIndex : module_id is mandatory field");
-           if(!$name_ar) throw new AfwRuntimeException("loadByMainIndex : name_ar is mandatory field");
+           if(!$lookup_code) throw new AfwRuntimeException("loadByMainIndex : lookup_code is mandatory field");
 
 
            $obj = new Page();
            $obj->select("module_id",$module_id);
-           $obj->select("name_ar",$name_ar);
+           $obj->select("lookup_code",$lookup_code);
 
            if($obj->load())
            {
@@ -57,7 +75,7 @@ class Page extends WorkflowObject{
            elseif($create_obj_if_not_found)
            {
                 $obj->set("module_id",$module_id);
-                $obj->set("name_ar",$name_ar);
+                $obj->set("lookup_code",$lookup_code);
 
                 $obj->insertNew();
                 if(!$obj->id) return null; // means beforeInsert rejected insert operation

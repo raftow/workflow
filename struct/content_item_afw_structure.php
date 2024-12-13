@@ -30,7 +30,7 @@ class WorkflowContentItemAfwStructure
 
 	public static $DB_STRUCTURE =
 	array(
-		'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
+		'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => true, 'CSS' => 'width_pct_50', 'TYPE' => 'PK'),
 
 		'content_id' => array(
 			'SHORTNAME' => 'content',
@@ -54,6 +54,45 @@ class WorkflowContentItemAfwStructure
 			'READONLY' => true,
 			'CSS' => 'width_pct_50',
 		),
+
+		'item_num' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+						'DEFAULT' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'REQUIRED' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'INT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+					),
+
+		'lookup_code' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 16,
+                        'MAXLENGTH' => 16,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'READONLY' => false,
+                        'CSS' => 'width_pct_50',
+                ),
                 
 		'content_type_enum' => array(
 			'SHORTNAME' => 'type',
@@ -61,7 +100,7 @@ class WorkflowContentItemAfwStructure
 			'QSEARCH' => false,
 			'SHOW' => true,
 			'AUDIT' => false,
-			'RETRIEVE' => false,
+			'RETRIEVE' => true,
 			'EDIT' => true,
 			'QEDIT' => true,
 			'SIZE' => 32,
@@ -70,7 +109,7 @@ class WorkflowContentItemAfwStructure
 			'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
 			'UTF8' => false,
 			'TYPE' => 'ENUM',
-			'ANSWER' => '',
+			'ANSWER' => 'FUNCTION',
 			'READONLY' => true,
 			'MANDATORY' => true,
 			'CSS' => 'width_pct_50',
@@ -82,7 +121,7 @@ class WorkflowContentItemAfwStructure
 			'QSEARCH' => false,
 			'SHOW' => false,
 			'AUDIT' => false,
-			'RETRIEVE' => false,
+			'RETRIEVE' => true,
 			'EDIT' => true,
 			'QEDIT' => true,
 			'SIZE' => 128,
@@ -145,6 +184,7 @@ class WorkflowContentItemAfwStructure
 			'CSS' => 'width_pct_50',
 		),
 
+		/*
 		'name_ar' => array(
 			'SEARCH' => true,
 			'QSEARCH' => true,
@@ -183,7 +223,7 @@ class WorkflowContentItemAfwStructure
 			'TYPE' => 'TEXT',
 			'READONLY' => false,
 			'CSS' => 'width_pct_50',
-		),
+		),*/
 
 
 		'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),

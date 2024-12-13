@@ -106,7 +106,7 @@
 
 		'preview' => array(
 				'TYPE' => 'TEXT',  
-				'CATEGORY' => 'FORMULA',  'SHOW' => true,  'RETRIEVE' => false,  'EDIT-HIDDEN' => true,  'EDIT' => true,  'QEDIT' => false,  'READONLY' => true,  'SIZE' => 128,  'RO_DIV_CLASS' => 'preview_file',  'EAGER' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
+				'CATEGORY' => 'FORMULA',  'SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  'READONLY' => true,  'SIZE' => 128,  'RO_DIV_CLASS' => 'preview_file',  'EAGER' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
@@ -118,7 +118,7 @@
 
 		'pic_view' => array(
 				'TYPE' => 'TEXT',  
-				'CATEGORY' => 'FORMULA',  'SHOW' => true,  'RETRIEVE' => true,  'EDIT-HIDDEN' => true,  'EDIT' => true,  'QEDIT' => true,  'READONLY' => true,  'SIZE' => 128,  'RO_DIV_CLASS' => 'preview_file',  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
+				'CATEGORY' => 'FORMULA',  'SHOW' => true,  'RETRIEVE' => true, 'EDIT-HIDDEN' => true,   'EDIT' => true,  'QEDIT' => true,  'READONLY' => true,  'SIZE' => 128,  'RO_DIV_CLASS' => 'preview_file',  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 

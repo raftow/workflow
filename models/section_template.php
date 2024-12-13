@@ -30,14 +30,53 @@ class SectionTemplate extends WorkflowObject{
            }
            else return null;
         }
+
+        public function calcHtml_template_body($module_code="")
+        {
+            if(!$module_code) $module_code = AfwUrlManager::currentURIModule();
+            $lookup_code = $this->getVal("lookup_code");
+            $file_dir_name = dirname(__FILE__); 
+            $template_full_path_name = "$file_dir_name/../../$module_code/tpl/template_$lookup_code.php";
+            ob_start();
+            include($template_full_path_name);
+            $return = ob_get_clean();
+
+            if(!$return) $return = "$template_full_path_name returned empty html";
+
+            return $return;
+        }
+
+        public static function decodeTokens($templateHtml, $token_arr)
+        {
+            foreach ($token_arr as $token => $val_token) {
+                //if($token=="[travelStationList.no_icons]") die("for the token $token value is $val_token , token_arr = ".var_export($token_arr,true)." text_to_decode=$text_to_decode");
+                $templateHtml = str_replace("[$token]", $val_token, $templateHtml);
+            }
+    
+            return $templateHtml;
+        }
         
         
+        public function showTemplateHtml($lang, $module_code, $pageThemeObj, $tokens)
+        {
+            $theme = $pageThemeObj->getVal("lookup_code");
+            $html = "<link rel='stylesheet' href='../$module_code/css/theme_$theme"."_$lang.css'>\n";
+            $tokens["curr_lang"] = $lang;
+            $tokens["curr_theme"] = $theme;
+            $tokens["curr_module"] = $module_code;
+            $templateHtml = $this->calcHtml_template_body($module_code);
+            $templateHtml = self::decodeTokens($templateHtml, $tokens);
+            $html .= $templateHtml;
+            //$html = "lang=$lang ".$templateHtml . var_export($tokens,true);
+
+            return $html;
+        }
+
 
         public function getScenarioItemId($currstep)
-                {
-                    
-                    return 0;
-                }
+        {
+            return 0;
+        }
         
         public static function loadByMainIndex($lookup_code,$create_obj_if_not_found=false)
         {
@@ -179,4 +218,5 @@ class SectionTemplate extends WorkflowObject{
 
 
 // errors 
+
 

@@ -13,6 +13,8 @@ class ContentItemArTranslator{
 		$trad["content_item"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["content_item"]["desc_en"] = "وصف  بالانجليزية";
 		$trad["content_item"]["content_id"] = "المحتوى";
+		$trad["content_item"]["item_num"] = "رقم العنصر";
+		$trad["content_item"]["lookup_code"] = "الرمز";
 		$trad["content_item"]["content_type_enum"] = "نوع المحتوى";
 		$trad["content_item"]["publication_id"] = "المنشور";
 		$trad["content_item"]["workflow_file_id"] = "الملف";

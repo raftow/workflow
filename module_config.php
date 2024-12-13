@@ -8,7 +8,7 @@
     
     $file_box_css_class = "rea_filebox";  // by default filebox
     
-    $file_type_ids = "2,3,4,5,6,7,10,12,13,15";
+    $file_type_ids = "1,9,10,12,13,17,18,27";
     
     $module_config_token = array();
     $module_config_token["file_types"] = $file_type_ids;

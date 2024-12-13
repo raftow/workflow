@@ -33,21 +33,23 @@
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
 		
-		'name_ar' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'name_ar' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  
+                                'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => "ARABIC-CHARS,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
+				'TYPE' => 'TEXT',  'READONLY' => false, 
+				'CSS' => 'width_pct_50', ),
+
+		'name_en' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  
+                                'RETRIEVE' => true,  
+				'EDIT' => true,  'QEDIT' => true,  
+				'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
 				'TYPE' => 'TEXT',  'READONLY' => false, 
 				'CSS' => 'width_pct_50', ),
 
 		'desc_ar' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
 				'SIZE' => 'AREA',  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'UTF8' => true,  
-				'TYPE' => 'TEXT',  'READONLY' => false, 
-				'CSS' => 'width_pct_50', ),
-
-		'name_en' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
-				'EDIT' => true,  'QEDIT' => true,  
-				'SIZE' => 128,  'MAXLENGTH' => 128,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
 				'TYPE' => 'TEXT',  'READONLY' => false, 
 				'CSS' => 'width_pct_50', ),
 
@@ -59,7 +61,7 @@
 
 		'lookup_code' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
-				'SIZE' => 16,  'MAXLENGTH' => 16,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
+				'SIZE' => 32,  'MAXLENGTH' => 64,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
 				'TYPE' => 'TEXT',  'READONLY' => false, 
 				'CSS' => 'width_pct_50', ),
 

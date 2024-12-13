@@ -5,7 +5,7 @@ $file_dir_name = dirname(__FILE__);
                 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class Publication extends WorkflowObject{
+class Publication extends ContentElement{
 
         public static $MY_ATABLE_ID=13941; 
   
@@ -15,8 +15,8 @@ class Publication extends WorkflowObject{
 
 	    public static $DB_STRUCTURE = null;
 	
-	    public function __construct(){
-		parent::__construct("publication","id","workflow");
+	    public function __construct() {
+		    parent::__construct("publication","id","workflow");
             WorkflowPublicationAfwStructure::initInstance($this);    
 	    }
         
@@ -104,22 +104,25 @@ class Publication extends WorkflowObject{
              return $otherLinksArray;
         }
         
-        protected function getPublicMethods()
+        
+        public function getTokens($lang)
         {
+            $tokens = [];
+            $tokens["title"] = $this->getVal("title_$lang");
+            $tokens["summary"] = $this->getVal("summary_$lang");
+            $tokens["body"] = $this->getVal("desc_$lang");
             
-            $pbms = array();
-            
-            $color = "green";
-            $title_ar = "xxxxxxxxxxxxxxxxxxxx"; 
-            $methodName = "mmmmmmmmmmmmmmmmmmmmmmm";
-            //$pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
-            
-            
-            
-            return $pbms;
+            return $tokens;
         }
         
         
+        public function AddMeAsContentItemIn($content_id, $lang="ar")
+        {
+            $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_publication, $this->id, 0, 0, true);
+            return ["", "publication content item object created with id = ".$obj->id];
+        }
+        
+
         
         
         public function beforeDelete($id,$id_replace) 
@@ -144,7 +147,7 @@ class Publication extends WorkflowObject{
 
                         
                    // FK part of me - deletable 
-                       // workflow.content_item-ÇáãäÔæÑ	publication_id  ÍÞá íÝáÊÑ Èå
+                       // workflow.content_item-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	publication_id  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
                         if(!$simul)
                         {
                             // require_once "../workflow/content_item.php";
@@ -166,7 +169,7 @@ class Publication extends WorkflowObject{
                else
                {
                         // FK on me 
-                       // workflow.content_item-ÇáãäÔæÑ	publication_id  ÍÞá íÝáÊÑ Èå
+                       // workflow.content_item-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	publication_id  ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
                         if(!$simul)
                         {
                             // require_once "../workflow/content_item.php";

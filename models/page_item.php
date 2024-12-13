@@ -46,7 +46,17 @@ class PageItem extends WorkflowObject
     }
 
 
-
+    public function showMyHtml($lang, $module_code, $pageThemeObj)
+    {
+        $item_num = $this->getVal("item_num");
+        $item_name_en = $this->getVal("name_en");
+        $page_sectionObj = $this->het("page_section_id");
+        if(!$page_sectionObj) return "<!-- page item : $item_num [$item_name_en] has no page section defined -->";
+        /**
+         * @var PageSection $page_sectionObj
+         */
+        return $page_sectionObj->showSectionHtml($lang, $module_code, $pageThemeObj);
+    }
 
 
     protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")

@@ -13,6 +13,22 @@ class WorkflowFileArTranslator{
 		$trad["workflow_file"]["afile_time"] = "وقت تحميل الملف";
 		$trad["workflow_file"]["afile_name"] = "مسمى الملف";
 		$trad["workflow_file"]["is_ok"] = "التثبت الآلي من صحة البيانات";
+
+		$trad["workflow_file"]["original_name"] = "الاسم الأصلي للملف";
+		$trad["workflow_file"]["afile_ext"] = "امتداد الملف";
+		$trad["workflow_file"]["afile_type"] = "نوع الملف";
+		$trad["workflow_file"]["picture"] = "صورة ؟";
+		$trad["workflow_file"]["afile_size"] = "حجم الملف";
+		
+		$trad["workflow_file"]["owner_id"] = "صاحب الملف";
+		$trad["workflow_file"]["stakeholder_id"] = "الجهة المعنية";
+		$trad["workflow_file"]["download"] = "تحميل الملف";
+		$trad["workflow_file"]["preview"] = "معاينة الملف";
+		
+		$trad["workflow_file"]["avail"] = "التفعيل";
+		$trad["workflow_file"]["avail-YES"] = "مفعل";
+		$trad["workflow_file"]["avail-NO"] = "حذف";
+		$trad["workflow_file"]["avail-EUH"] = "غير مفعل";
         // steps
         return $trad;
     }

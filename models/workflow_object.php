@@ -2,6 +2,11 @@
 
 class WorkflowObject extends AFWObject{
 
+        public static $content_type_picture = 1;
+        public static $content_type_publication = 2;
+        public static $content_type_banner = 3;
+        public static $content_type_icontent = 4;
+
         public function fld_CREATION_USER_ID()
         {
                 return "created_by";
