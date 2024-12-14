@@ -8,7 +8,7 @@ $config_arr = array(
                                   
         'no_menu_for_login' => true,
 
-        'enable_language_switch' => false,
+        'enable_language_switch' => true,
 
         'notify_customer' => array("new_request" => array("sms"=>true, "email" => false, "web" => false, "whatsup" => false),
         
