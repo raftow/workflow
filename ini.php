@@ -1,6 +1,5 @@
 <?php
-// should become obsolete
-/*
-$NOM_SITE["ar"] = 'ادارة أعمال القبول';
-$NOM_SITE["en"] = 'Admissions management';
-$NOM_SITE["fr"] = 'Admissions management';*/
+
+$NOM_SITE["ar"] = 'أدوات العمل';
+$NOM_SITE["en"] = 'work tools';
+$NOM_SITE["fr"] = 'Outils de travail';
