@@ -31,7 +31,7 @@ class SectionTemplate extends WorkflowObject{
            else return null;
         }
 
-        public function calcHtml_template_body($module_code="")
+        public function get_template_full_path($module_code="")
         {
             if(!$module_code) $module_code = AfwUrlManager::currentURIModule();
             $lookup_code = $this->getVal("lookup_code");
@@ -41,6 +41,13 @@ class SectionTemplate extends WorkflowObject{
             {
                 throw new AfwRuntimeException("section template php file $template_full_path_name not found");
             }
+
+            return $template_full_path_name;            
+        }
+
+        public function calcHtml_template_body($module_code="")
+        { 
+            $template_full_path_name = $this->get_template_full_path($module_code);   
             ob_start();
             include($template_full_path_name);
             $return = ob_get_clean();
@@ -50,17 +57,17 @@ class SectionTemplate extends WorkflowObject{
             return $return;
         }
 
-        public static function decodeTokens($templateHtml, $token_arr)
+        public static function decodeTokens($template_full_path_name, $templateHtml, $token_arr)
         {
             $old_templateHtml = $templateHtml;
             foreach ($token_arr as $token => $val_token) {
                 //if($token=="[travelStationList.no_icons]") die("for the token $token value is $val_token , token_arr = ".var_export($token_arr,true)." text_to_decode=$text_to_decode");
                 $templateHtml = str_replace("[$token]", $val_token, $templateHtml);
             }
-
+            
             if($old_templateHtml==$templateHtml)
             {
-                throw new AfwRuntimeException("The html template given has't much any token from given tokens = ".var_export($token_arr,true));
+                throw new AfwRuntimeException("The html template $template_full_path_name given has't much any token from given tokens = ".var_export($token_arr,true));
             }
     
             return $templateHtml;
@@ -69,13 +76,14 @@ class SectionTemplate extends WorkflowObject{
         
         public function showTemplateHtml($lang, $module_code, $pageThemeObj, $tokens)
         {
+            $template_full_path_name = $this->get_template_full_path($module_code); 
             $theme = $pageThemeObj->getVal("lookup_code");
             $html = "<link rel='stylesheet' href='../$module_code/css/theme_$theme"."_$lang.css'>\n";
             $tokens["curr_lang"] = $lang;
             $tokens["curr_theme"] = $theme;
             $tokens["curr_module"] = $module_code;
             $templateHtml = $this->calcHtml_template_body($module_code);
-            $templateHtml = self::decodeTokens($templateHtml, $tokens);
+            $templateHtml = self::decodeTokens($template_full_path_name, $templateHtml, $tokens);
             $html .= $templateHtml;
             //$html = "lang=$lang ".$templateHtml . var_export($tokens,true);
 
