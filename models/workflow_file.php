@@ -174,7 +174,7 @@ class WorkflowFile extends ContentElement {
                         $file_path = $this->getFileHttpPath();
                         $afile_ext = $this->getVal("afile_ext");
                         
-                        $url = AfwHtmlHelper::getLightDownloadUrl("$file_path/$new_name", $afile_ext);
+                        $url = AfwHtmlHelper::getLightDownloadUrl("$file_path/$new_name", $afile_ext, "very-small");
 			return $url;
 		    break;
                     
