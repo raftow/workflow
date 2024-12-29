@@ -22,7 +22,7 @@ class WorkflowFileArTranslator{
 		
 		$trad["workflow_file"]["owner_id"] = "صاحب الملف";
 		$trad["workflow_file"]["stakeholder_id"] = "الجهة المعنية";
-		$trad["workflow_file"]["download"] = "تحميل الملف";
+		$trad["workflow_file"]["download_light"] = "تحميل الملف";
 		$trad["workflow_file"]["preview"] = "معاينة الملف";
 		
 		$trad["workflow_file"]["avail"] = "التفعيل";

@@ -124,7 +124,7 @@
 
 		'download' => array(
 				'TYPE' => 'TEXT',  
-				'CATEGORY' => 'FORMULA',  'SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  'QEDIT' => false,  'READONLY' => true,  'RO_DIV_CLASS' => 'empty_div',  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
+				'CATEGORY' => 'FORMULA',  'SHOW' => false,  'RETRIEVE' => false,  'EDIT' => false,  'QEDIT' => false,  'READONLY' => true,  'RO_DIV_CLASS' => 'empty_div',  'SEARCH-BY-ONE' => '',  'DISPLAY' => false,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 

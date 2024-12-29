@@ -13,6 +13,8 @@ class WorkflowFileEnTranslator{
 		$trad["workflow_file"]["afile_time"] = "File upload time";
 		$trad["workflow_file"]["afile_name"] = "File name";
 		$trad["workflow_file"]["is_ok"] = "Data is ok";
+		$trad["workflow_file"]["download_light"] = "download";
+		
         // steps
         return $trad;
     }
