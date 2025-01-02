@@ -1,5 +1,5 @@
 <?php
 
-$NOM_SITE["ar"] = 'أدوات العمل';
-$NOM_SITE["en"] = 'work tools';
-$NOM_SITE["fr"] = 'Outils de travail';
+$NOM_SITE["ar"] = 'منظم أعمال';
+$NOM_SITE["en"] = 'work organizer';
+$NOM_SITE["fr"] = 'organisateur de travail';

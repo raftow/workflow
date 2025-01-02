@@ -37,17 +37,20 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
+			'doc_type_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true,  'SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  'QEDIT' => true,  'SIZE' => 40,  'SEARCH-ADMIN' => true,  'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
+				'TYPE' => 'FK',  'ANSWER' => 'doc_type',  'ANSMODULE' => 'ums',  
+				'FORMAT-INPUT' => 'btn-bootstrap',
+				'WHERE' => "id in (§module_config_token_file_types§) and concat(',',valid_ext,',') like '%,§afile_ext§,%'", 
+				 'DEFAUT' => 0,  'QSEARCH' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
+				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 'CSS' => 'width_pct_100',
+				),	
+
 			'afile_ext' => array('SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  
 				'TYPE' => 'TEXT',  'UTF8' => true,  'SHORTNAME' => 'ext',  'SIZE' => 5,  'READONLY' => true,  'SEARCH' => true,  'QSEARCH' => true,  'NO-COTE' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
-			'doc_type_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true,  'SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  'QEDIT' => true,  'SIZE' => 40,  'SEARCH-ADMIN' => true,  'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
-				'TYPE' => 'FK',  'ANSWER' => 'doc_type',  'ANSMODULE' => 'ums',  
-				'WHERE' => "id in (§module_config_token_file_types§) and concat(',',valid_ext,',') like '%,§afile_ext§,%'", 
-				 'DEFAUT' => 0,  'QSEARCH' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
-				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
-				),
+			
 
 			'afile_type' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  'QEDIT' => false,  
 				'TYPE' => 'TEXT',  'UTF8' => true,  'SHORTNAME' => 'type',  'SIZE' => 16,  'READONLY' => true,  'SEARCH' => true,  'QSEARCH' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
@@ -140,7 +143,7 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
-			'active' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true, 'QEDIT' => true, 'DEFAUT' => 'Y',  
+		'active' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true, 'QEDIT' => true, 'DEFAUT' => 'Y',  
                 'TYPE' => 'YN',    'FORMAT' => 'icon',  'STEP' => 99,  
                 'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
                 'CSS' => 'width_pct_25',),

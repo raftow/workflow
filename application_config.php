@@ -4,7 +4,7 @@ $config_arr = array(
 
         'application_code' => 'workflow',
 
-        'application_name' => ['ar' => 'سير العمل', 'en' => 'work flow',],
+        'application_name' => ['ar' => 'منظم أعمال', 'en' => 'work organizer',],
                                   
         'no_menu_for_login' => true,
 
