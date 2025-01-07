@@ -74,12 +74,18 @@ class WorkflowFile extends ContentElement {
         
         public function getFileHCode() 
         {
-               $afile_ext = $this->getVal("afile_ext");
-               $afile_size = $this->getVal("afile_size");
+               //$afile_ext = $this->getVal("afile_ext");
+               //$afile_size = $this->getVal("afile_size");
                $original_name = $this->getVal("original_name");
                $fhcode = substr(md5($original_name),0,5);
                //die("afile_ext=$afile_ext, afile_size=$afile_size, getFileHCode=".$fhcode);
                return $fhcode; 
+        }
+
+        public function getParsedText()
+        {
+                // to implement an iuntelligent algorithm that parse pdfs / pictures and take containing text
+                return "** to implement  **";
         }
         
         public function getNewName() 

@@ -9,7 +9,7 @@
 						$obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 0;
 						$obj->DISPLAY_FIELD = "afile_name";
 						$obj->ORDER_BY_FIELDS = "created_at desc";
-						$obj->UNIQUE_KEY = array('afile_name');
+						$obj->UNIQUE_KEY = array('owner_type', 'owner_id', 'afile_name');
 						$obj->public_display = true;
 						$obj->IS_LOOKUP = true;
 
@@ -32,6 +32,18 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
+			'owner_type' => array('SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  
+				'TYPE' => 'TEXT',  'UTF8' => false,  'SHORTNAME' => 'ext',  'SIZE' => 8,  
+				'READONLY' => true,  'SEARCH' => true,  'QSEARCH' => true,  'NO-COTE' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
+				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
+				),				
+
+			'owner_id' => array('SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  
+				'TYPE' => 'INT',  'UTF8' => false,  'SIZE' => 10,  
+				'READONLY' => true,  'SEARCH' => true,  'QSEARCH' => true,  'NO-COTE' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
+				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
+				),								
+
 			'afile_name' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  
 				'TYPE' => 'TEXT',  'UTF8' => true,  'SHORTNAME' => 'name',  'SIZE' => 64,  'SEARCH' => true,  'QSEARCH' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
@@ -46,7 +58,7 @@
 				),	
 
 			'afile_ext' => array('SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  
-				'TYPE' => 'TEXT',  'UTF8' => true,  'SHORTNAME' => 'ext',  'SIZE' => 5,  'READONLY' => true,  'SEARCH' => true,  'QSEARCH' => true,  'NO-COTE' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
+				'TYPE' => 'TEXT',  'UTF8' => false,  'SHORTNAME' => 'ext',  'SIZE' => 5,  'READONLY' => true,  'SEARCH' => true,  'QSEARCH' => true,  'NO-COTE' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
