@@ -11,6 +11,48 @@ class WorkflowFile extends ContentElement {
 		parent::__construct("workflow_file","id","workflow");
                 WorkflowWorkflowFileAfwStructure::initInstance($this);
 	}
+
+        public static function loadById($id)
+        {
+           $obj = new WorkflowFile();
+           $obj->select_visibilite_horizontale();
+           if($obj->load($id))
+           {
+                return $obj;
+           }
+           else return null;
+        }
+
+        public static function loadByMainIndex($original_name, $owner_type, $owner_id, $afile_size,$create_obj_if_not_found=false)
+        {
+
+
+           $obj = new WorkflowFile();
+           $obj->select("original_name",$original_name);
+           $obj->select("owner_type",$owner_type);
+           $obj->select("owner_id",$owner_id);
+           $obj->select("afile_size",$afile_size);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("original_name",$original_name);
+                $obj->set("owner_type",$owner_type);
+                $obj->set("owner_id",$owner_id);
+                $obj->set("afile_size",$afile_size);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
         
         public function getWideDisplay($lang="ar") 
         {
@@ -526,10 +568,16 @@ zoomWindowOffety:-200
               return 0;
         }
         
+        /**
+         * @param Auser $auser
+         */
+
         public function userCanDeleteMeSpecial($auser)
         {
                 if(!$auser) return false;
                 if($auser->getId()==$this->getVal("created_by")) return true;
+                if(!$this->getVal("created_by")) return true;
+                if($auser->isSuperAdmin()) return true;
                 
                 return false;
         }
@@ -583,6 +631,93 @@ zoomWindowOffety:-200
             // die("tokens preview 2 = ".$tokens["preview"]);
             return $tokens;
         }
+
+        public function disableTheUploadedFile()
+        {
+                $new_name =  $this->getNewName();
+                $uploads_root_path = AfwSession::config("uploads_root_path", "");
+                if(!$uploads_root_path) throw new AfwRuntimeException("uploads_root_path is not defined correctly in system config");
+                $mv_from_file = $uploads_root_path . $new_name;
+                $dt = date("YmdHis");
+                $mv_to_file = $uploads_root_path . $new_name . ".$dt.old";
+                if (rename($mv_from_file, $mv_to_file)) 
+                {
+                        return true;
+                }
+                else 
+                {
+                        // throw new AfwRuntimeException("rename from=$mv_from_file to=$mv_to_file failed");
+                        return false;
+                }
+        }
+
+        public function beforeDelete($id,$id_replace) 
+        {
+                $server_db_prefix = AfwSession::config("db_prefix","pmu_");
+                
+                if(!$id)
+                {
+                        $id = $this->getId();
+                        $simul = true;
+                }
+                else
+                {
+                        $simul = false;
+                }
+                
+                if($id)
+                {   
+
+                        if(!$simul)
+                        {
+                                $workfile_settings_arr = AfwSession::config("workfile_settings", []);
+                                foreach($workfile_settings_arr as $className => $classSettingsRow)
+                                {
+                                        $fields_to_update_arr = $classSettingsRow["fields"];
+                                        foreach($fields_to_update_arr as $field_to_update)
+                                        {
+                                                $className::updateWhere(array($field_to_update=>$id_replace), "$field_to_update='$id'");                            
+                                        }
+                                }
+                        }
+
+                        if($id_replace==0)
+                        {
+                                // FK part of me - not deletable 
+
+
+                                // FK part of me - deletable 
+
+                        
+                                // FK not part of me - replaceable 
+                                
+                                // MFK
+
+                        }
+                        else
+                        {
+                                // FK on me 
+                                // workflow.content_item-الملف	workflow_file_id  حقل يفلتر به
+                                if(!$simul)
+                                {
+                                        // require_once "../workflow/content_item.php";
+                                        ContentItem::updateWhere(array('workflow_file_id'=>$id_replace), "workflow_file_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.content_item set workflow_file_id='$id_replace' where workflow_file_id='$id' ");
+                                }
+                                // MFK
+
+                                
+                        }
+                        
+                        if(!$simul)
+                        {
+                                $this->disableTheUploadedFile();
+                        }
+                        return true;
+                }    
+	}
+
+
         
 }
 ?>

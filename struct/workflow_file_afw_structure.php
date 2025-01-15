@@ -9,9 +9,10 @@
 						$obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 0;
 						$obj->DISPLAY_FIELD = "afile_name";
 						$obj->ORDER_BY_FIELDS = "created_at desc";
-						$obj->UNIQUE_KEY = array('owner_type', 'owner_id', 'afile_name');
+						
+						$obj->UNIQUE_KEY = array('owner_type', 'owner_id', 'original_name', 'afile_size');
 						$obj->public_display = true;
-						$obj->IS_LOOKUP = true;
+						$obj->IS_LOOKUP = false;
 
 						$obj->showQeditErrors = true;
 						//$this->qedit_minibox = true;
