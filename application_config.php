@@ -1,7 +1,7 @@
 <?php
 $config_arr = array(
         'application_id' => 1283,
-
+        'workflow_application_id' => 1283,
         'application_code' => 'workflow',
 
         'application_name' => ['ar' => 'منظم أعمال', 'en' => 'work organizer',],
