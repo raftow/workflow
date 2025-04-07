@@ -119,7 +119,7 @@ class IntelligentContent extends ContentElement
         $color = "green";
         $title_ar = "أضفني كمحتوى مستقل";
         $methodName = "AddMeAsContent";
-        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
+        $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD" => $methodName, "COLOR" => $color, "LABEL_AR" => $title_ar, "ADMIN-ONLY" => true, "BF-ID" => "", 'STEP' => $this->stepOfAttribute("xxyy"));
 
 
 
@@ -203,15 +203,13 @@ class IntelligentContent extends ContentElement
     {
         $icontent_module_code = UmsManager::decodeModuleCodeOrIdToModuleCode($this->getVal("module_id"));
         $icontent_lookup_code = $this->getVal("lookup_code");
-        $file_dir_name = dirname(__FILE__); 
+        $file_dir_name = dirname(__FILE__);
         $icontent_full_path_name = "$file_dir_name/../../$icontent_module_code/content/icontent_$icontent_lookup_code.php";
-        if(!file_exists($icontent_full_path_name))
-        {
+        if (!file_exists($icontent_full_path_name)) {
             throw new AfwRuntimeException("intelligent content php file $icontent_full_path_name not found");
         }
         $tokens = include($icontent_full_path_name);
-        if(count($tokens)==0)
-        {
+        if (count($tokens) == 0) {
             throw new AfwRuntimeException("intelligent content php file $icontent_full_path_name returned empty tokens array");
         }
         $tokens['title'] = $this->getVal("name_$lang");
@@ -219,9 +217,6 @@ class IntelligentContent extends ContentElement
         // die("intelligent content php file $icontent_full_path_name returned tokens = ".var_export($tokens,true));
         return $tokens;
     }
-
-
-    
 }
 
 
