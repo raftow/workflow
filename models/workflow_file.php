@@ -405,7 +405,7 @@ zoomWindowOffety:-200
               $file_path = $this->getFilePath().$new_name; 
               if(!file_exists($file_path))
               { 
-                  if(($objme) and ($objme->isSuperWorkflowin()))
+                  if(($objme) and ($objme->isSuperAdmin()))
                      $file_full_path = $file_path;
                   else $file_full_path = "";   
                   $sp_errors["afile_name"] = "الملف غير موجود بالمعرض $file_full_path";  
