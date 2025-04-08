@@ -93,7 +93,7 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
-			'afile_size' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  'QEDIT' => false,  
+			'afile_size' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  'QEDIT' => true,  
 				'TYPE' => 'INT',  'SHORTNAME' => 'size',  'READONLY' => true,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
