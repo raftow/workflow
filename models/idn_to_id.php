@@ -35,6 +35,7 @@ class IdnToId extends AFWObject
             self::$array_conversion[$code_idn] = $objI2I->id;
             unset($objI2I);
         }
+        // die("self::array_conversion[$code_idn]=".self::$array_conversion[$code_idn]);
         return self::$array_conversion[$code_idn];
     }
 
