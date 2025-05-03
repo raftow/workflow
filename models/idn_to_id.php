@@ -72,7 +72,14 @@ class IdnToId extends AFWObject
        
     }
 
+    protected function afterSetAttribute($attribute)
+    {
+            if (($attribute == "idn_type_id") and ($this->getVal("idn_type_id")==3)) {
+                throw new AfwRuntimeException("idn_type_id = 3 how can be ???");
+            }
 
+            
+    }
     
 
 
