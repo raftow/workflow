@@ -61,7 +61,7 @@ class WorkflowObject extends AFWObject{
 
         public static function code_of_content_type_enum($lkp_id=null)
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             if($lkp_id) return self::content_type()['code'][$lkp_id];
             else return self::content_type()['code'];
         }
@@ -74,7 +74,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_content_type_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::content_type()[$lang];
         }
         
@@ -108,7 +108,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_content_category_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::content_category_enum()[$lang];
         }
         
@@ -132,7 +132,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_application_status_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::application_status_enum()[$lang];
         }
         
@@ -158,7 +158,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_desire_status_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::desire_status_enum()[$lang];
         }
         
@@ -188,7 +188,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_application_admission_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::application_admission_enum()[$lang];
         }
         
@@ -212,7 +212,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_agreement_scope_type_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::agreement_scope_type_enum()[$lang];
         }
         
@@ -234,7 +234,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_marital_status_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::marital_status_enum()[$lang];
         }
         
@@ -266,7 +266,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_address_type_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::address_type_enum()[$lang];
         }
         
@@ -301,7 +301,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_employer_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::employer_enum()[$lang];
         }
         
@@ -322,7 +322,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_relationship_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::relationship_enum()[$lang];
         }
         
@@ -371,7 +371,7 @@ class WorkflowObject extends AFWObject{
 
         public static function code_of_language_enum($lkp_id=null)
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             if($lkp_id) return self::language()['code'][$lkp_id];
             else return self::language()['code'];
         }
@@ -383,7 +383,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_language_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::language()[$lang];
         }
         
@@ -412,7 +412,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_level_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::level()[$lang];
         }
         
@@ -437,7 +437,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_job_status_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::job_status()[$lang];
         }
         
@@ -461,7 +461,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_genre_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::genre()[$lang];
         }
         
@@ -485,7 +485,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_gender_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::gender()[$lang];
         }
         
@@ -514,7 +514,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_genders_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::genders()[$lang];
         }
         
@@ -544,7 +544,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_training_mode_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::training_mode()[$lang];
         }
         
@@ -571,7 +571,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_lor_status_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::lor_status()[$lang];
         }
         
@@ -598,7 +598,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_notification_type_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::notification_type()[$lang];
         }
         
@@ -624,7 +624,7 @@ class WorkflowObject extends AFWObject{
 
         public static function code_of_term_mode_enum($lkp_id=null)
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             if($lkp_id) return self::term_mode()['code'][$lkp_id];
             else return self::term_mode()['code'];
         }
@@ -632,7 +632,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_term_mode_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::term_mode()[$lang];
         }
         
@@ -664,7 +664,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_afield_set_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::afield_set()[$lang];
         }
         
@@ -698,7 +698,7 @@ class WorkflowObject extends AFWObject{
         } 
         public static function list_of_afield_type_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::afield_type()[$lang];
         }
         public static function afield_type()
@@ -805,7 +805,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_entry_type_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::entry_type()[$lang];
         }
         
@@ -840,7 +840,7 @@ class WorkflowObject extends AFWObject{
         
         public static function list_of_payment_status_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::payment_status()[$lang];
         }
         
@@ -871,7 +871,7 @@ class WorkflowObject extends AFWObject{
         }
         public static function list_of_payment_method_enum()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::payment_method()[$lang];
         }
         
@@ -944,7 +944,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_application_table_id()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::application_table()[$lang];
         }
         
@@ -972,7 +972,7 @@ class WorkflowObject extends AFWObject{
 
         public static function list_of_answer_table_id()
         {
-            global $lang;
+            $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::answer_table()[$lang];
         }
         

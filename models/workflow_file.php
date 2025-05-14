@@ -299,7 +299,7 @@ zoomWindowOffety:-200
         
         public function showMySelf($style="")
         {
-           global $lang;
+           $lang = AfwLanguageHelper::getGlobalLanguage();
                $my_id = $this->getId();
                $float_class = $this->float_class;
                $display = $this->getShortDisplay($lang);
