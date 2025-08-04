@@ -1,6 +1,6 @@
 <?php
 if(!class_exists("AfwSession")) die("Denied access");
-$server_db_prefix = AfwSession::config("db_prefix", "default_db_");
+$server_db_prefix = AfwSession::currentDBPrefix();
 
 
 AfwDatabase::db_query("ALTER TABLE ".$server_db_prefix."workflow.`workflow_file` CHANGE `afile_size` `afile_size` INT(11) NULL DEFAULT NULL;");
