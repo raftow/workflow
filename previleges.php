@@ -1,43 +1,47 @@
 <?php
 
 	$tab_info = array (
-  13936 => 
+  13956 => 
   array (
     'name' => 'content',
   ),
-  13939 => 
+  13955 => 
   array (
     'name' => 'content_item',
   ),
-  13940 => 
+  13932 => 
+  array (
+    'name' => 'idn_to_id',
+  ),
+  13958 => 
   array (
     'name' => 'intelligent_content',
   ),
-  13934 => 
+  13959 => 
   array (
     'name' => 'page',
   ),
-  13938 => 
+  13961 => 
   array (
     'name' => 'page_item',
   ),
-  13937 => 
+  13962 => 
   array (
     'name' => 'page_section',
   ),
-  13943 => 
+  13960 => 
   array (
     'name' => 'page_theme',
   ),
-  13941 => 
+  13957 => 
   array (
     'name' => 'publication',
   ),
-  13935 => 
+  13963 => 
   array (
     'name' => 'section_template',
   ),
-  13945 => 
+  13936 => 
   array (
     'name' => 'workflow_file',
   ),
@@ -45,26 +49,26 @@
 	$tbf_info = array (
   'content' => 
   array (
-    'id' => '13936',
+    'id' => '13956',
     'display' => 
     array (
-      'id' => '104832',
+      'id' => '104963',
     ),
     'search' => 
     array (
-      'id' => '104833',
+      'id' => '104964',
     ),
     'qsearch' => 
     array (
-      'id' => '104834',
+      'id' => '105027',
     ),
     'edit' => 
     array (
-      'id' => '104829',
+      'id' => '104966',
     ),
     'qedit' => 
     array (
-      'id' => '104830',
+      'id' => '104967',
     ),
     'crossed' => 
     array (
@@ -72,7 +76,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104835',
+      'id' => '104968',
     ),
     'ddb' => 
     array (
@@ -84,31 +88,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104831',
+      'id' => '104969',
     ),
   ),
   'content_item' => 
   array (
-    'id' => '13939',
+    'id' => '13955',
     'display' => 
     array (
-      'id' => '104839',
+      'id' => '104970',
     ),
     'search' => 
     array (
-      'id' => '104840',
+      'id' => '104971',
     ),
     'qsearch' => 
     array (
-      'id' => '104841',
+      'id' => '105030',
     ),
     'edit' => 
     array (
-      'id' => '104836',
+      'id' => '104973',
     ),
     'qedit' => 
     array (
-      'id' => '104837',
+      'id' => '104974',
     ),
     'crossed' => 
     array (
@@ -116,7 +120,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104842',
+      'id' => '104975',
     ),
     'ddb' => 
     array (
@@ -128,31 +132,75 @@
     ),
     'delete' => 
     array (
-      'id' => '104838',
+      'id' => '104976',
+    ),
+  ),
+  'idn_to_id' => 
+  array (
+    'id' => '13932',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
     ),
   ),
   'intelligent_content' => 
   array (
-    'id' => '13940',
+    'id' => '13958',
     'display' => 
     array (
-      'id' => '104846',
+      'id' => '104977',
     ),
     'search' => 
     array (
-      'id' => '104847',
+      'id' => '104978',
     ),
     'qsearch' => 
     array (
-      'id' => '104848',
+      'id' => '105031',
     ),
     'edit' => 
     array (
-      'id' => '104843',
+      'id' => '104980',
     ),
     'qedit' => 
     array (
-      'id' => '104844',
+      'id' => '104981',
     ),
     'crossed' => 
     array (
@@ -160,7 +208,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104849',
+      'id' => '104982',
     ),
     'ddb' => 
     array (
@@ -172,31 +220,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104845',
+      'id' => '104983',
     ),
   ),
   'page' => 
   array (
-    'id' => '13934',
+    'id' => '13959',
     'display' => 
     array (
-      'id' => '104853',
+      'id' => '104984',
     ),
     'search' => 
     array (
-      'id' => '104854',
+      'id' => '104985',
     ),
     'qsearch' => 
     array (
-      'id' => '104855',
+      'id' => '105026',
     ),
     'edit' => 
     array (
-      'id' => '104850',
+      'id' => '104987',
     ),
     'qedit' => 
     array (
-      'id' => '104851',
+      'id' => '104988',
     ),
     'crossed' => 
     array (
@@ -204,7 +252,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104856',
+      'id' => '104989',
     ),
     'ddb' => 
     array (
@@ -216,31 +264,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104852',
+      'id' => '104990',
     ),
   ),
   'page_item' => 
   array (
-    'id' => '13938',
+    'id' => '13961',
     'display' => 
     array (
-      'id' => '104860',
+      'id' => '104991',
     ),
     'search' => 
     array (
-      'id' => '104861',
+      'id' => '104992',
     ),
     'qsearch' => 
     array (
-      'id' => '104862',
+      'id' => '105029',
     ),
     'edit' => 
     array (
-      'id' => '104857',
+      'id' => '104994',
     ),
     'qedit' => 
     array (
-      'id' => '104858',
+      'id' => '104995',
     ),
     'crossed' => 
     array (
@@ -248,7 +296,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104863',
+      'id' => '104996',
     ),
     'ddb' => 
     array (
@@ -260,31 +308,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104859',
+      'id' => '104997',
     ),
   ),
   'page_section' => 
   array (
-    'id' => '13937',
+    'id' => '13962',
     'display' => 
     array (
-      'id' => '104867',
+      'id' => '104998',
     ),
     'search' => 
     array (
-      'id' => '104868',
+      'id' => '104999',
     ),
     'qsearch' => 
     array (
-      'id' => '104869',
+      'id' => '105028',
     ),
     'edit' => 
     array (
-      'id' => '104864',
+      'id' => '105001',
     ),
     'qedit' => 
     array (
-      'id' => '104865',
+      'id' => '105002',
     ),
     'crossed' => 
     array (
@@ -292,7 +340,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104870',
+      'id' => '105003',
     ),
     'ddb' => 
     array (
@@ -304,31 +352,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104866',
+      'id' => '105004',
     ),
   ),
   'page_theme' => 
   array (
-    'id' => '13943',
+    'id' => '13960',
     'display' => 
     array (
-      'id' => '104874',
+      'id' => '105005',
     ),
     'search' => 
     array (
-      'id' => '104875',
+      'id' => '105006',
     ),
     'qsearch' => 
     array (
-      'id' => '104876',
+      'id' => '105032',
     ),
     'edit' => 
     array (
-      'id' => '104871',
+      'id' => '105008',
     ),
     'qedit' => 
     array (
-      'id' => '104872',
+      'id' => '105009',
     ),
     'crossed' => 
     array (
@@ -336,7 +384,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104877',
+      'id' => '105010',
     ),
     'ddb' => 
     array (
@@ -348,31 +396,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104873',
+      'id' => '105011',
     ),
   ),
   'publication' => 
   array (
-    'id' => '13941',
+    'id' => '13957',
     'display' => 
     array (
-      'id' => '104881',
+      'id' => '105012',
     ),
     'search' => 
     array (
-      'id' => '104882',
+      'id' => '105013',
     ),
     'qsearch' => 
     array (
-      'id' => '104883',
+      'id' => '105014',
     ),
     'edit' => 
     array (
-      'id' => '104878',
+      'id' => '105015',
     ),
     'qedit' => 
     array (
-      'id' => '104879',
+      'id' => '105016',
     ),
     'crossed' => 
     array (
@@ -380,7 +428,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104884',
+      'id' => '105017',
     ),
     'ddb' => 
     array (
@@ -392,31 +440,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104880',
+      'id' => '105018',
     ),
   ),
   'section_template' => 
   array (
-    'id' => '13935',
+    'id' => '13963',
     'display' => 
     array (
-      'id' => '104888',
+      'id' => '105019',
     ),
     'search' => 
     array (
-      'id' => '104889',
+      'id' => '105020',
     ),
     'qsearch' => 
     array (
-      'id' => '104890',
+      'id' => '105021',
     ),
     'edit' => 
     array (
-      'id' => '104885',
+      'id' => '105022',
     ),
     'qedit' => 
     array (
-      'id' => '104886',
+      'id' => '105023',
     ),
     'crossed' => 
     array (
@@ -424,7 +472,7 @@
     ),
     'stats' => 
     array (
-      'id' => '104891',
+      'id' => '105024',
     ),
     'ddb' => 
     array (
@@ -436,31 +484,31 @@
     ),
     'delete' => 
     array (
-      'id' => '104887',
+      'id' => '105025',
     ),
   ),
   'workflow_file' => 
   array (
-    'id' => '13945',
+    'id' => '13936',
     'display' => 
     array (
-      'id' => -1,
+      'id' => '104959',
     ),
     'search' => 
     array (
-      'id' => -1,
+      'id' => '104960',
     ),
     'qsearch' => 
     array (
-      'id' => -1,
+      'id' => '104961',
     ),
     'edit' => 
     array (
-      'id' => -1,
+      'id' => '104956',
     ),
     'qedit' => 
     array (
-      'id' => -1,
+      'id' => '104957',
     ),
     'crossed' => 
     array (
@@ -468,7 +516,7 @@
     ),
     'stats' => 
     array (
-      'id' => -1,
+      'id' => '104962',
     ),
     'ddb' => 
     array (
@@ -480,84 +528,41 @@
     ),
     'delete' => 
     array (
-      'id' => -1,
+      'id' => '104958',
     ),
   ),
 );
 	$role_info = array (
-  388 => 
+  391 => 
   array (
+    'code' => 'goal-files',
     'name' => 
     array (
-      'ar' => 'ادارة المحتوى',
-      'en' => 'content management',
+      'ar' => 'الملفات',
+      'en' => 'arole.391',
     ),
     'menu' => 
     array (
       'need_admin' => false,
-      'id' => '388',
-      'menu_name' => 'ادارة المحتوى',
-      'page' => 'main.php?Main_Page=fm.php&a=1283&r=388',
+      'id' => '391',
+      'menu_name_ar' => 'الملفات',
+      'menu_name_en' => 'arole.391',
+      'page' => 'main.php?Main_Page=fm.php&a=1283&r=391',
       'css' => 'info',
-      'icon' => ' icon-388',
+      'icon' => ' icon-391',
       'showme' => true,
       'items' => 
       array (
-        104855 => 
+        104961 => 
         array (
-          'id' => '104855',
-          'menu_name' => 'الصفحات',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Page&currmod=workflow',
+          'id' => '104961',
+          'code' => 'f2-a-workflow_file/qsearch',
+          'level' => '1',
+          'menu_name_ar' => 'الملفات',
+          'menu_name_en' => 'Files',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowFile&currmod=workflow',
           'css' => 'bf',
-          'icon' => ' bficon-104855 bfc-',
-        ),
-        104834 => 
-        array (
-          'id' => '104834',
-          'menu_name' => 'محتويات',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Content&currmod=workflow',
-          'css' => 'bf',
-          'icon' => ' bficon-104834 bfc-',
-        ),
-        104869 => 
-        array (
-          'id' => '104869',
-          'menu_name' => 'أقسام الصفحات',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageSection&currmod=workflow',
-          'css' => 'bf',
-          'icon' => ' bficon-104869 bfc-',
-        ),
-        104862 => 
-        array (
-          'id' => '104862',
-          'menu_name' => 'عناصر الصفحات',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageItem&currmod=workflow',
-          'css' => 'bf',
-          'icon' => ' bficon-104862 bfc-',
-        ),
-        104841 => 
-        array (
-          'id' => '104841',
-          'menu_name' => 'عناصر المحتوى',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=ContentItem&currmod=workflow',
-          'css' => 'bf',
-          'icon' => ' bficon-104841 bfc-',
-        ),
-        104848 => 
-        array (
-          'id' => '104848',
-          'menu_name' => 'المحتويات الذكية',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=IntelligentContent&currmod=workflow',
-          'css' => 'bf',
-          'icon' => ' bficon-104848 bfc-',
-        ),
-        104876 => 
-        array (
-          'id' => '104876',
-          'menu_name' => 'الثيمات',
-          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageTheme&currmod=workflow',
-          'css' => 'bf',
-          'icon' => ' bficon-104876 bfc-',
+          'icon' => 'bficon-104961 bfc-',
         ),
       ),
       'sub-folders' => 
