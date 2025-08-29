@@ -578,7 +578,7 @@ zoomWindowOffety:-200
                 if($auser->getId()==$this->getVal("created_by")) return true;
                 if(!$this->getVal("created_by")) return true;
                 if($auser->isSuperAdmin()) return true;
-                
+                if($auser->isAdmin()) return true;
                 return false;
         }
         
