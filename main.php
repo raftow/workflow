@@ -11,4 +11,13 @@ else
 {
     $Main_Page = "home.php";
 }
-AfwMainPage::echoMainPage($MODULE, $Main_Page, $file_dir_name);
+
+if($_REQUEST["options"])
+{
+    $options = $_REQUEST["options"];
+}
+else
+{
+    $options = [];
+}
+AfwMainPage::echoMainPage($MODULE, $Main_Page, $file_dir_name, $options);
