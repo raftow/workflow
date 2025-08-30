@@ -565,6 +565,75 @@
           'icon' => 'bficon-104961 bfc-',
         ),
       ),
+      'otherbfs' => 
+      array (
+        104956 => 
+        array (
+          'id' => '104956',
+          'code' => 'f2-a-workflow_file/edit',
+          'level' => '1',
+          'menu_name_ar' => 'إنشاء ملف',
+          'menu_name_en' => 'create File',
+          'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowFile&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-104956 bfc-',
+        ),
+        104957 => 
+        array (
+          'id' => '104957',
+          'code' => 'f2-a-workflow_file/qedit',
+          'level' => '1',
+          'menu_name_ar' => 'إدارة الملفات',
+          'menu_name_en' => 'Files administration',
+          'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowFile&currmod=workflow&ids=all&newo=3',
+          'css' => 'bf',
+          'icon' => 'bficon-104957 bfc-',
+        ),
+        104958 => 
+        array (
+          'id' => '104958',
+          'code' => 'f2-a-workflow_file/delete',
+          'level' => '1',
+          'menu_name_ar' => 'مسح ملف',
+          'menu_name_en' => 'delete File',
+          'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowFile&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-104958 bfc-',
+        ),
+        104959 => 
+        array (
+          'id' => '104959',
+          'code' => 'f2-a-workflow_file/display',
+          'level' => '1',
+          'menu_name_ar' => 'عرض تفاصيل ملف',
+          'menu_name_en' => 'display details of File',
+          'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowFile&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-104959 bfc-',
+        ),
+        104960 => 
+        array (
+          'id' => '104960',
+          'code' => 'f2-a-workflow_file/search',
+          'level' => '1',
+          'menu_name_ar' => 'البحث في الملفات',
+          'menu_name_en' => 'Files search',
+          'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowFile&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-104960 bfc-',
+        ),
+        104961 => 
+        array (
+          'id' => '104961',
+          'code' => 'f2-a-workflow_file/qsearch',
+          'level' => '1',
+          'menu_name_ar' => 'الملفات',
+          'menu_name_en' => 'Files',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowFile&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-104961 bfc-',
+        ),
+      ),
       'sub-folders' => 
       array (
       ),
