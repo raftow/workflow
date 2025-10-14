@@ -29,6 +29,8 @@ class WorkflowFileArTranslator{
 		$trad["workflow_file"]["avail-YES"] = "مفعل";
 		$trad["workflow_file"]["avail-NO"] = "حذف";
 		$trad["workflow_file"]["avail-EUH"] = "غير مفعل";
+		$trad["workflow_file"]['stored_file_name'] = 'اسم الملف على الخادم';
+
         // steps
         return $trad;
     }

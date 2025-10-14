@@ -156,6 +156,12 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
 				),
 
+		'stored_file_name' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true,  
+				'TYPE' => 'TEXT',  'UTF8' => true,  'SHORTNAME' => 'name',  'SIZE' => 256,  'SEARCH' => true,  'QSEARCH' => true,  'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
+				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
+		),
+
+
 		'active' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true, 'QEDIT' => true, 'DEFAUT' => 'Y',  
                 'TYPE' => 'YN',    'FORMAT' => 'icon',  'STEP' => 99,  
                 'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 

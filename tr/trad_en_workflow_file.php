@@ -14,6 +14,7 @@ class WorkflowFileEnTranslator{
 		$trad["workflow_file"]["afile_name"] = "File name";
 		$trad["workflow_file"]["is_ok"] = "Data is ok";
 		$trad["workflow_file"]["download_light"] = "download";
+		$trad["workflow_file"]['stored_file_name'] = 'stored file name';
 		
         // steps
         return $trad;
