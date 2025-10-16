@@ -129,6 +129,29 @@ class WorkflowObject extends AFWObject{
                 
                 return $arr_list_of_content_category_enum;
         }
+        public static function list_of_role_category_enum()
+        {
+            $lang = AfwLanguageHelper::getGlobalLanguage();
+            return self::role_category_enum()[$lang];
+        }
+        
+        public static function role_category_enum()
+        {
+                $arr_list_of_role_category_enum = array();
+                
+                        
+                $arr_list_of_role_category_enum["en"][1] = "ُEmployee";
+                $arr_list_of_role_category_enum["ar"][1] = "موظف";
+                $arr_list_of_role_category_enum["code"][1] = "EMP";
+
+                $arr_list_of_role_category_enum["en"][2] = "Committee";
+                $arr_list_of_role_category_enum["ar"][2] = "لجنة";
+                $arr_list_of_role_category_enum["code"][2] = "COM";
+
+                
+                
+                return $arr_list_of_role_category_enum;
+        }
 
         public static function list_of_application_status_enum()
         {

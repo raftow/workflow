@@ -7,5 +7,6 @@ $migrations = [
     //'00000' => ['by'=>'rafik', 'title' => 'init application'],
     '00001' => ['by'=>'rafik', 'title' => 'workflow file prepare step1'],
     '00003' => ['by'=>'medali', 'title' => 'add stored file name to workflow_file'],
+    '00004' => ['by'=>'medali', 'title' => 'add some workflow tables'],
 
 ];
