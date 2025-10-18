@@ -33,7 +33,7 @@ class WorkflowApplicant extends AdmObject
         public function __construct()
         {
                 parent::__construct("workflow_applicant", "id", "workflow");
-                WorkflowApplicantAfwStructure::initInstance($this);
+                WorkflowWorkflowApplicantAfwStructure::initInstance($this);
         }
 
 
