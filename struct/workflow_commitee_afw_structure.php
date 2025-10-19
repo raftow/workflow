@@ -72,7 +72,7 @@
         'CSS' => 'width_pct_50', ),	
 
 
-'secretary_employee_id ' => array(
+'secretary_employee_id' => array(
         'IMPORTANT' => 'IN',
         'SHOW' => true,
         'RETRIEVE' => false,
