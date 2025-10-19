@@ -19,8 +19,8 @@ class WorkflowApplicantArTranslator{
 		$trad["workflow_applicant"]["applicationList"] = "طلبات التقديم";
 		
 
-		$trad["workflow_applicant"]["workflow_applicant.single"] = "متقدم";
-		$trad["workflow_applicant"]["workflow_applicant.new"] = "جديد";
+		$trad["workflow_applicant"]["workflowapplicant.single"] = "متقدم";
+		$trad["workflow_applicant"]["workflowapplicant.new"] = "جديد";
 		$trad["workflow_applicant"]["workflow_applicant"] = "المتقدمون";
 		$trad["workflow_applicant"]["workflow_applicant_"] = "المتقدمين";
 		$trad["workflow_applicant"]["workflow_applicant.short_"] = "المتقدمين";
