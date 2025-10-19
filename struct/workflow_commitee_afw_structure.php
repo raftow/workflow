@@ -13,8 +13,8 @@
                                 // $obj->public_display = true;
                                 // $obj->IS_LOOKUP = true;
 
-                                $obj->editByStep = false;
-                                //$obj->editNbSteps = 1; 
+                                $obj->editByStep = true;
+                                $obj->editNbSteps = 3; 
                                 // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                                 $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'adm', "class"=>'WorkflowCommitee',"submit"=>true);
                         }
@@ -85,7 +85,16 @@
         'CSS' => 'width_pct_50',),
 
 
-
+'workflowCommiteeMemberList' => array('TYPE' => 'FK', 'ANSWER' => 'workflow_commitee_member','STEP' => 2, 'ANSMODULE' => 'workflow', 
+                                                                                                'CATEGORY' => 'ITEMS', 'ITEM' => 'workflow_commitee_id', 
+                                                                                                 //'WHERE'=>'workflow_commitee_id = §id§', 'HIDE_COLS' => array(),
+                                                                                                'SHOW' => true, 'FORMAT'=>'retrieve', 'EDIT' => true, 'READONLY' => false, 
+                                                                                                'ICONS'=>true, 'DELETE-ICON'=>true, 'BUTTONS'=>true, 'NO-LABEL'=>false),
+'workflowCommiteeScopeList' => array('TYPE' => 'FK', 'ANSWER' => 'workflow_commitee_scope','STEP' => 3, 'ANSMODULE' => 'workflow', 
+                                                                                'CATEGORY' => 'ITEMS', 'ITEM' => 'workflow_commitee_id', 
+                                                                                 //'WHERE'=>'workflow_commitee_id = §id§', 'HIDE_COLS' => array(),
+                                                                                'SHOW' => true, 'FORMAT'=>'retrieve', 'EDIT' => true, 'READONLY' => false, 
+                                                                                'ICONS'=>true, 'DELETE-ICON'=>true, 'BUTTONS'=>true, 'NO-LABEL'=>false),
 
                                         'active' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true, 'QEDIT' => true, 'DEFAUT' => 'Y',  
                                                 'TYPE' => 'YN',    'FORMAT' => 'icon',  'STEP' => 99,  

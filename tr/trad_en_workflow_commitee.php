@@ -13,11 +13,18 @@ class WorkflowCommiteeEnTranslator{
 			$trad["workflow_commitee"]["commitee_description_ar"] = "Committee description - arabic";
 			$trad["workflow_commitee"]["commitee_description_en"] = "Committee description - english";
 			$trad["workflow_commitee"]["workflow_role_id"] = "workflow role";
-			$trad["workflow_commitee"]["secretary_employee_id "] = "Secretary employee";
-        return $trad;
-        }
+			$trad["workflow_commitee"]["secretary_employee_id"] = "Secretary employee";
 
-        public static function getInstance()
+			$trad["workflow_commitee"]["workflowCommiteeMemberList"] = "Commitee member";
+			$trad["workflow_commitee"]["workflowCommiteeScopeList"] = "Commitee Scope";
+
+			$trad["workflow_commitee"]["step1"] = "General";
+			$trad["workflow_commitee"]["step2"] = "Commitee Member";
+			$trad["workflow_commitee"]["step3"] = "Commitee Scope";
+        return $trad;
+    }
+
+    public static function getInstance()
 	{
                 if(false) return new WorkflowCommiteeArTranslator();
 		return new WorkflowCommitee();
