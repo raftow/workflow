@@ -67,6 +67,7 @@
 'workflow_role_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE' => true,  
         'EDIT' => true,  'QEDIT' => true, 'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
         'TYPE' => 'FK',  'ANSWER' => 'workflow_role',  'ANSMODULE' => 'workflow',  'SIZE' => 40,  'DEFAUT' => 0,    
+        'WHERE' => 'role_category_enum = 2',
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => false, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
         'CSS' => 'width_pct_50', ),	
