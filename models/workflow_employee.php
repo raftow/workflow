@@ -712,7 +712,7 @@ class WorkflowEmployee extends WorkflowObject
         }
 
 
-        protected function hideDisactiveRowsFor($auser)
+        protected function hideNonActiveRowsFor($auser)
         {
                 if(!$auser) return true;
                 if(WorkflowObject::userConnectedIsGeneralSupervisor($auser)) return false;
