@@ -1050,4 +1050,34 @@ class WorkflowObject extends AFWObject{
             return $this->getTableName();
         }
 
+
+        public static function userIsSupervisor($objme = null)
+        {
+                if (!$objme) $objme = AfwSession::getUserConnected();
+                if (!$objme) return 0;
+
+                $employee_id = $objme->getEmployeeId();
+                if (!$employee_id) return 0;
+
+                return CrmEmployee::isAdmin($employee_id);
+        }
+
+        public static function userIsGeneralSupervisor($objme = null)
+        {
+                if (!$objme) $objme = AfwSession::getUserConnected();
+                if (!$objme) return 0;
+
+                $employee_id = $objme->getEmployeeId();
+                if (!$employee_id) return 0;
+
+                return CrmEmployee::isGeneralAdmin($employee_id);
+        }
+
+        public static function userIsSuperAdmin($objme = null)
+        {
+                if (!$objme) $objme = AfwSession::getUserConnected();
+                if (!$objme) return false;
+                return $objme->isSuperAdmin();
+        }
+
 }
