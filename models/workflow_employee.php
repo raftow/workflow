@@ -69,8 +69,8 @@ class WorkflowEmployee extends WorkflowObject
                 {
                         $empl_id = $objme ? $objme->getEmployeeId() : 0;
                         
-                        if($empl_id) $iam_general_supervisor = WorkflowObject::userConnectedIsGeneralSupervisor();
-                        if($empl_id) $iam_supervisor = WorkflowObject::userConnectedIsSupervisor();
+                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsGeneralSupervisor();
+                        if($empl_id) $iam_supervisor = WorkflowObject::userIsSupervisor();
                         
                         if(!$iam_general_supervisor) $iam_general_supervisor = 0;
                         if(!$iam_supervisor) $iam_supervisor = 0;
@@ -715,7 +715,7 @@ class WorkflowEmployee extends WorkflowObject
         protected function hideNonActiveRowsFor($auser)
         {
                 if(!$auser) return true;
-                if(WorkflowObject::userConnectedIsGeneralSupervisor($auser)) return false;
+                if(WorkflowObject::userIsGeneralSupervisor($auser)) return false;
                 if($auser->isAdmin()) return false;  
                 return true;
         }
