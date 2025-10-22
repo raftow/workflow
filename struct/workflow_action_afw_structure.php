@@ -13,8 +13,8 @@
                                 // $obj->public_display = true;
                                 // $obj->IS_LOOKUP = true;
 
-                                $obj->editByStep = true;
-                                $obj->editNbSteps = 1; 
+                                $obj->editByStep = false;
+                                //$obj->editNbSteps = 1; 
                                 // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                                 $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'adm', "class"=>'WorkflowAction',"submit"=>true);
                         }
@@ -59,7 +59,7 @@
 'action_type_enum' => array('IMPORTANT' => 'IN',  'SEARCH' => true,  'SHOW' => true,  'RETRIEVE' => true,  
         'EDIT' => true,  'QEDIT' => true,  'QSEARCH' => true,  'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
         'TYPE' => 'ENUM',  'ANSWER' => 'FUNCTION',  'SIZE' => 40,  'DEFAUT' => 0,    
-        'DISPLAY' => true,  'STEP' => 2, 'MANDATORY' => true, 
+        'DISPLAY' => true,  'STEP' => 1, 'MANDATORY' => true, 
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
         'CSS' => 'width_pct_25', ),	
 
