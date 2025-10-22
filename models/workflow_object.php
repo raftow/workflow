@@ -134,6 +134,11 @@ class WorkflowObject extends AFWObject{
             $lang = AfwLanguageHelper::getGlobalLanguage();
             return self::role_category_enum()[$lang];
         }
+        public static function list_of_processing_request_responsibility()
+        {
+            $lang = AfwLanguageHelper::getGlobalLanguage();
+            return self::role_category_enum()[$lang];
+        }
         
         public static function role_category_enum()
         {
