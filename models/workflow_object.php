@@ -153,6 +153,9 @@ class WorkflowObject extends AFWObject{
                 $arr_list_of_role_category_enum["ar"][2] = "لجنة";
                 $arr_list_of_role_category_enum["code"][2] = "COM";
 
+                $arr_list_of_role_category_enum["en"][3] = "Applicant";
+                $arr_list_of_role_category_enum["ar"][3] = "مقدم الطلب";
+                $arr_list_of_role_category_enum["code"][3] = "APP";
                 
                 
                 return $arr_list_of_role_category_enum;
@@ -176,6 +179,10 @@ class WorkflowObject extends AFWObject{
                 $arr_list_of_action_type_enum["en"][2] = "Acceptance";
                 $arr_list_of_action_type_enum["ar"][2] = "قبول";
                 $arr_list_of_action_type_enum["code"][2] = "AC";
+                
+                $arr_list_of_action_type_enum["en"][3] = "Pending";
+                $arr_list_of_action_type_enum["ar"][3] = "تعليق ";
+                $arr_list_of_action_type_enum["code"][3] = "PN";
 
                 
                 

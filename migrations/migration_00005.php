@@ -68,7 +68,7 @@ AfwDatabase::db_query("create unique index uk_workflow_model on ".$server_db_pre
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
     
-AfwDatabase::db_query("create unique index uk_workflow_stage on ".$server_db_prefix."workflow.workflow_stage(workflow_model_id,step_code);");
+AfwDatabase::db_query("create unique index uk_workflow_stage on ".$server_db_prefix."workflow.workflow_stage(workflow_model_id,workflow_stage_name_ar,workflow_stage_name_en);");
     
     
     AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_status` (
@@ -105,7 +105,7 @@ AfwDatabase::db_query("create unique index uk_workflow_stage on ".$server_db_pre
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
     
-AfwDatabase::db_query("create unique index uk_workflow_status on ".$server_db_prefix."workflow.workflow_status(workflow_model_id,status_code);");
+AfwDatabase::db_query("create unique index uk_workflow_status on ".$server_db_prefix."workflow.workflow_status(workflow_model_id,workflow_status_name_ar,workflow_status_name_en);");
 
 
 AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_request` (
@@ -198,6 +198,8 @@ AfwDatabase::db_query("create unique index uk_workflow_request_data on ".$server
   
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
+
+AfwDatabase::db_query("create unique index uk_workflow_action on ".$server_db_prefix."workflow.workflow_action(workflow_model_id,workflow_action_name_ar,workflow_stage_id);");
 
     AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_rejection_reason` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
