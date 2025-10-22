@@ -37,7 +37,7 @@
         'TYPE' => 'FK',  'ANSWER' => 'workflow_model',  'ANSMODULE' => 'workflow',  'SIZE' => 40,  'DEFAUT' => 0,    
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => false, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
-        'CSS' => 'width_pct_25', 'DEPENDENT_OFME' => ['workflow_stage_id'],),	
+        'CSS' => 'width_pct_25', /*'DEPENDENT_OFME' => ['workflow_stage_id']*/),	
 
 
 'workflow_action_name_ar' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE-AR' => true,  
@@ -93,7 +93,7 @@
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => false, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
         "WHERE" => "workflow_model_id = §workflow_model_id§",
-        'DEPENDENCY' => 'workflow_model_id',
+        //'DEPENDENCY' => 'workflow_model_id',
         'CSS' => 'width_pct_25', ),	
 
 
