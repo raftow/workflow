@@ -153,6 +153,30 @@ class WorkflowObject extends AFWObject{
                 return $arr_list_of_role_category_enum;
         }
 
+        public function list_of_action_type_enum()
+        {
+            $lang = AfwLanguageHelper::getGlobalLanguage();
+            return self::action_type_enum()[$lang];
+        }
+        
+        public static function action_type_enum()
+        {
+                $arr_list_of_action_type_enum = array();
+                
+                        
+                $arr_list_of_action_type_enum["en"][1] = "Rejection";
+                $arr_list_of_action_type_enum["ar"][1] = "رفض";
+                $arr_list_of_action_type_enum["code"][1] = "RJ";
+
+                $arr_list_of_action_type_enum["en"][2] = "Acceptance";
+                $arr_list_of_action_type_enum["ar"][2] = "قبول";
+                $arr_list_of_action_type_enum["code"][2] = "AC";
+
+                
+                
+                return $arr_list_of_action_type_enum;
+        }
+
         public static function list_of_application_status_enum()
         {
             $lang = AfwLanguageHelper::getGlobalLanguage();
