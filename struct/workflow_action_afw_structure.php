@@ -9,7 +9,7 @@
                                 $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                                  $obj->DISPLAY_FIELD = "workflow_action_name_ar";
                                 // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                                //  $obj->UNIQUE_KEY = array('');
+                                  $obj->UNIQUE_KEY = array('workflow_model_id','workflow_stage_id','workflow_action_name_ar');
                                 // $obj->public_display = true;
                                 // $obj->IS_LOOKUP = true;
 
