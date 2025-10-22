@@ -92,7 +92,7 @@
         'TYPE' => 'FK',  'ANSWER' => 'workflow_stage',  'ANSMODULE' => 'workflow',  'SIZE' => 40,  'DEFAUT' => 0,    
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => false, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
-        "WHERE" => "workflow_model_id = §workflow_model_id§",
+        //"WHERE" => "workflow_model_id = §workflow_model_id§",
         //'DEPENDENCY' => 'workflow_model_id',
         'CSS' => 'width_pct_25', ),	
 
