@@ -9,7 +9,7 @@
                                 $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                                  $obj->DISPLAY_FIELD = "workflow_model_name_ar";
                                 // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                                  $obj->UNIQUE_KEY = array('workflow_model_name_ar','workflow_model_name_ar');
+                                  $obj->UNIQUE_KEY = array('external_code');
                                 // $obj->public_display = true;
                                 // $obj->IS_LOOKUP = true;
 
@@ -77,7 +77,11 @@
         'CSS' => 'width_pct_25',),
 
 
-
+'external_code' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE-EN' => true,  
+        'EDIT' => true,  'QEDIT' => true,  'SIZE' => '32', 'MAXLENGTH' => '32', 'UTF8' => false,  
+        'TYPE' => 'TEXT',    'DISPLAY' => true,  'STEP' => 1, 'MANDATORY' => true,  
+        'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
+        'CSS' => 'width_pct_25',),
 
                                         'active' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true, 'QEDIT' => true, 'DEFAUT' => 'Y',  
                                                 'TYPE' => 'YN',    'FORMAT' => 'icon',  'STEP' => 99,  

@@ -9,12 +9,15 @@
                                 $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                                  $obj->DISPLAY_FIELD = "role_name_ar";
                                 // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                                $obj->UNIQUE_KEY = array('role_category_enum','role_name_ar','role_name_en');
+                                //$obj->UNIQUE_KEY = array('role_category_enum','role_name_ar','role_name_en');
                                 // $obj->public_display = true;
                                  $obj->IS_LOOKUP = true;
 
+                                $obj->UNIQUE_KEY = array('lookup_code');
+                                $obj->showQeditErrors = true;
+                                $obj->showRetrieveErrors = true;
+                                $obj->general_check_errors = true;
                                 $obj->editByStep = false;
-                                $obj->editNbSteps = false; 
                                 // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                                 $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'adm', "class"=>'WorkflowRole',"submit"=>true);
                         }
@@ -71,6 +74,20 @@
         'CSS' => 'width_pct_75',),
         
 
+'lookup_code' => array(
+                        'TYPE' => 'TEXT',
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'SIZE' => 64,
+                        'QEDIT' => true,
+                        'SHORTNAME' => 'code',
+                        'SEARCH-BY-ONE' => '',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
 
 
                                         'active' => array('SHOW' => true,  'RETRIEVE' => true,  'EDIT' => true, 'QEDIT' => true, 'DEFAUT' => 'Y',  

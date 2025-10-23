@@ -9,7 +9,7 @@
                                 $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                                  $obj->DISPLAY_FIELD = "commitee_name_ar";
                                 // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                                 $obj->UNIQUE_KEY = array('commitee_name_ar','commitee_name_en');
+                                 $obj->UNIQUE_KEY = array('commitee_code');
                                 // $obj->public_display = true;
                                 // $obj->IS_LOOKUP = true;
 
@@ -85,6 +85,11 @@
         'EDIT-UGROUPS' => '',
         'CSS' => 'width_pct_50',),
 
+'commitee_code' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE-EN' => true,  
+        'EDIT' => true,  'QEDIT' => true,  'SIZE' => '16', 'MAXLENGTH' => '100', 'UTF8' => false,  
+        'TYPE' => 'TEXT',    'DISPLAY' => true,  'STEP' => 1, 'MANDATORY' => false,  
+        'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
+        'CSS' => 'width_pct_50',),
 
 'workflowCommiteeMemberList' => array('TYPE' => 'FK', 'ANSWER' => 'workflow_commitee_member','STEP' => 2, 'ANSMODULE' => 'workflow', 
                                                                                                 'CATEGORY' => 'ITEMS', 'ITEM' => 'workflow_commitee_id', 
