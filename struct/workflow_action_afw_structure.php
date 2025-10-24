@@ -60,7 +60,8 @@ class WorkflowWorkflowActionAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25', /*'DEPENDENT_OFME' => ['workflow_stage_id']*/
+                        'CSS' => 'width_pct_25', 
+                        'DEPENDENT_OFME' => ['workflow_stage_id']
                 ),
 
 
@@ -215,8 +216,8 @@ class WorkflowWorkflowActionAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        //"WHERE" => "workflow_model_id = §workflow_model_id§",
-                        //'DEPENDENCY' => 'workflow_model_id',
+                        "WHERE" => "workflow_model_id = §workflow_model_id§",
+                        'DEPENDENCY' => 'workflow_model_id',
                         'CSS' => 'width_pct_25',
                 ),
 
