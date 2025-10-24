@@ -4,11 +4,11 @@ class WorkflowEmployeeArTranslator{
     public static function initData()
     {
         $trad = [];	
-        $trad["workflow_employee"]["workflowemployee.single"] = "منسق خدمة العملاء";
-        $trad["workflow_employee"]["workflowemployee.single.short"] = "منسق";
+        $trad["workflow_employee"]["workflowemployee.single"] = "موظف إدارة أعمال";
+        $trad["workflow_employee"]["workflowemployee.single.short"] = "موظف";
         $trad["workflow_employee"]["workflowemployee.new"] = "جديد";
-        $trad["workflow_employee"]["workflow_employee"] = "المنسقين لدى خدمة العملاء";
-        $trad["workflow_employee"]["workflow_employee.short"] = "المنسقين";
+        $trad["workflow_employee"]["workflow_employee"] = "موظفي إدارة أعمال";
+        $trad["workflow_employee"]["workflow_employee.short"] = "الموظفين";
         $trad["workflow_employee"]["orgunit_id"] = "الجهة المتابعة";
         $trad["workflow_employee"]["workflow_orgunit_id"] = "الجهة التابع لها";
         
