@@ -7,7 +7,7 @@ class WorkflowCommiteeArTranslator{
 
 	$trad["workflow_commitee"]["workflowcommitee.single"] = "لجنة";
 	$trad["workflow_commitee"]["workflowcommitee.new"] = "جديدة";
-	$trad["workflow_commitee"]["workflow_commitee"] = "الجان";
+	$trad["workflow_commitee"]["workflow_commitee"] = "اللجان";
 	$trad["workflow_commitee"]["commitee_name_ar"] = "اسم اللجنة - عربي";
 	$trad["workflow_commitee"]["commitee_name_en"] = "اسم اللجنة - انجليزي";
 	$trad["workflow_commitee"]["commitee_description_ar"] = "وصف اللجنة - عربي";
