@@ -8,7 +8,7 @@ class WorkflowStageArTranslator{
 
 		$trad["workflow_stage"]["workflowstage.single"] = "مرحلة";
 		$trad["workflow_stage"]["workflowstage.new"] = "جديدة";
-		$trad["workflow_stage"]["workflow_stage"] = "مراحل عمل";
+		$trad["workflow_stage"]["workflow_stage"] = "المراحل";
 		$trad["workflow_stage"]["workflow_model_id"] = "نموذج سير العمل";
 		$trad["workflow_stage"]["workflow_stage_name_ar"] = "اسم المرحلة - عربي";
 		$trad["workflow_stage"]["workflow_stage_name_en"] = "اسم المرحلة - انجليزي";
