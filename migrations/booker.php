@@ -11,5 +11,6 @@ $migrations = [
     '00005' => ['by'=>'medali', 'title' => 'add some workflow tables 2'],
     '00006' => ['by'=>'medali', 'title' => 'updates sprint 2'],
     '00007' => ['by'=>'medali', 'title' => 'add indexes to workflow tables'],
+    '00008' => ['by'=>'medali', 'title' => 'add some workflow tables 3'],
 
 ];
