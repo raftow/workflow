@@ -55,13 +55,13 @@
 				'CSS' => 'width_pct_50','WHERE' => 'workflow_module_id=§workflow_module_id§',
         'DEPENDENCY' => 'workflow_module_id' ),
 
-		'event_name_ar' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'event_name_ar' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 64,  'MAXLENGTH' => 64,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
 				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
-		'event_name_en' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'event_name_en' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 64,  'MAXLENGTH' => 64,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'UTF8' => false,  
 				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 

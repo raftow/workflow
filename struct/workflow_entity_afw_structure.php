@@ -50,13 +50,13 @@
 				'RELATION' => 'ManyToOne',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
-		'entity_name_ar' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'entity_name_ar' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 64,  'MAXLENGTH' => 64,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
 				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
-		'entity_name_en' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'entity_name_en' => array('STEP' => 1,  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 64,  'MAXLENGTH' => 64,  'MIN-SIZE' => 5,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'UTF8' => false,  
 				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 
