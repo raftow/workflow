@@ -102,10 +102,10 @@
 
 
 							'archive_date' => array('CATEGORY' => 'FORMULA', 'TYPE' => "DATE", ), 			
-
+					/*		
 
 					'currentRequests' => array('STEP' => 3,  
-							'TYPE' => 'FK',  'ANSWER' => 'request',  'ANSMODULE' => 'workflow',  
+							'TYPE' => 'FK',  'ANSWER' => 'workflow_request',  'ANSMODULE' => 'workflow',  
 							'CATEGORY' => 'ITEMS',  'ITEM' => '', 
 							'DO-NOT-RETRIEVE-COLS' => ['man','service_satisfied','supervisor_id'],
 							'FORCE-RETRIEVE-COLS' => ['days_delay'],
@@ -119,7 +119,7 @@
 
 							
 					'unAssignedRequests' => array('STEP' => 3,  
-							'TYPE' => 'FK',  'ANSWER' => 'request',  'ANSMODULE' => 'workflow',  
+							'TYPE' => 'FK',  'ANSWER' => 'workflow_request',  'ANSMODULE' => 'workflow',  
 							'CATEGORY' => 'ITEMS',  'ITEM' => '',  
 							'WHERE' => "request_date >= §archive_date§ 
 							   and (
@@ -129,7 +129,7 @@
 								and status_id in (2, 4, 201)",
 							'FORMAT' => 'retrieve',  'SHOW' => true,  'EDIT' => false,  'ICONS' => true,  'DELETE-ICON' => false,  'BUTTONS' => true,  'NO-LABEL' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  
 							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',
-							),				
+							),*/				
 
 
 			'active' => array('SHOW-ADMIN' => true,  'RETRIEVE' => true,  'EDIT' => false,  'QEDIT' => false,  'DEFAUT' => 'Y',  

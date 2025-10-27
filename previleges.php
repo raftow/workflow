@@ -37,10 +37,22 @@
   array (
     'name' => 'publication',
   ),
+  13991 => 
+  array (
+    'name' => 'request',
+  ),
   13963 => 
   array (
     'name' => 'section_template',
-  ),  
+  ),
+  13990 => 
+  array (
+    'name' => 'service',
+  ),
+  13989 => 
+  array (
+    'name' => 'service_category',
+  ),
   13968 => 
   array (
     'name' => 'workflow_commitee',
@@ -73,6 +85,10 @@
   array (
     'name' => 'workflow_role',
   ),
+  13988 => 
+  array (
+    'name' => 'workflow_scope',
+  ),
   13979 => 
   array (
     'name' => 'workflow_stage',
@@ -80,6 +96,10 @@
   13977 => 
   array (
     'name' => 'workflow_status',
+  ),
+  13987 => 
+  array (
+    'name' => 'workflow_task',
   ),
 );
 	$tbf_info = array (
@@ -96,7 +116,7 @@
     ),
     'qsearch' => 
     array (
-      'id' => '105027',
+      'id' => '104965',
     ),
     'edit' => 
     array (
@@ -228,7 +248,7 @@
     ),
     'qsearch' => 
     array (
-      'id' => '105031',
+      'id' => '104979',
     ),
     'edit' => 
     array (
@@ -316,7 +336,7 @@
     ),
     'qsearch' => 
     array (
-      'id' => '105029',
+      'id' => '104993',
     ),
     'edit' => 
     array (
@@ -404,7 +424,7 @@
     ),
     'qsearch' => 
     array (
-      'id' => '105032',
+      'id' => '105007',
     ),
     'edit' => 
     array (
@@ -479,6 +499,50 @@
       'id' => '105018',
     ),
   ),
+  'request' => 
+  array (
+    'id' => '13991',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
+    ),
+  ),
   'section_template' => 
   array (
     'id' => '13963',
@@ -521,6 +585,94 @@
     'delete' => 
     array (
       'id' => '105025',
+    ),
+  ),
+  'service' => 
+  array (
+    'id' => '13990',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
+    ),
+  ),
+  'service_category' => 
+  array (
+    'id' => '13989',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
     ),
   ),
   'workflow_commitee' => 
@@ -875,6 +1027,50 @@
       'id' => -1,
     ),
   ),
+  'workflow_scope' => 
+  array (
+    'id' => '13988',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
+    ),
+  ),
   'workflow_stage' => 
   array (
     'id' => '13979',
@@ -922,6 +1118,50 @@
   'workflow_status' => 
   array (
     'id' => '13977',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
+    ),
+  ),
+  'workflow_task' => 
+  array (
+    'id' => '13987',
     'display' => 
     array (
       'id' => -1,
