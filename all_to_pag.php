@@ -24,7 +24,6 @@ if($modtopag != "workflow") die("check the module you want to pag");
  $arr_all_files[]="workflow_role";
  $arr_all_files[]="workflow_stage";
  $arr_all_files[]="workflow_status";
- $arr_all_files[]="content_element";
  $arr_all_files[]="job_run";
  $arr_all_files[]="job_run_result";
  $arr_all_files[]="notification";
