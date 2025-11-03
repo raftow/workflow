@@ -20,7 +20,11 @@ class Scjob extends AFWObject
 	public static $BF_DELETE_SCJOB = 103876;
 
 
+	public static $DATABASE        = "";
+	public static $MODULE                = "workflow";
+	public static $TABLE            = "scjob";
 
+	public static $DB_STRUCTURE = null;
 
 	public function __construct()
 	{
