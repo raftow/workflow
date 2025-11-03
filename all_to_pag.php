@@ -29,6 +29,7 @@ if($modtopag != "workflow") die("check the module you want to pag");
  $arr_all_files[]="job_run";
  $arr_all_files[]="job_run_result";
  $arr_all_files[]="notification_template";
+ $arr_all_files[]="workflow_event";
  $arr_all_files[]="notification";
  $arr_all_files[]="notification_schedule";
  
@@ -36,7 +37,7 @@ if($modtopag != "workflow") die("check the module you want to pag");
  $arr_all_files[]="workflow_action";
  $arr_all_files[]="workflow_applicant";
  $arr_all_files[]="workflow_commitee_scope";
- $arr_all_files[]="workflow_event";
+ 
  $arr_all_files[]="workflow_orgunit";
  $arr_all_files[]="workflow_rejection_reason";
  $arr_all_files[]="workflow_request";
