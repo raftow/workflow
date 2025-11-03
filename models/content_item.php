@@ -10,7 +10,7 @@ class ContentItem extends WorkflowObject
 
     public static $MY_ATABLE_ID = 13939;
 
-    public static $DATABASE        = "pmu_workflow";
+    public static $DATABASE        = "";
     public static $MODULE                = "workflow";
     public static $TABLE            = "content_item";
 

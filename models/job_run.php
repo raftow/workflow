@@ -19,6 +19,12 @@ class JobRun extends AFWObject
         public static $BF_DELETE_JOB_RUN = 103883;
 
 
+        public static $DATABASE        = "";
+        public static $MODULE                = "workflow";
+        public static $TABLE            = "job_run";
+
+        public static $DB_STRUCTURE = null;
+
         public function __construct()
         {
                 parent::__construct("job_run", "id", "workflow");

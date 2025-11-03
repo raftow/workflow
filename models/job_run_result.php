@@ -19,9 +19,11 @@ class JobRunResult extends AFWObject{
         public static $BF_DELETE_JOB_RUN_RESULT = 103890; 
 
         
-	public static $DB_STRUCTURE = array (
-          
-     );
+	public static $DATABASE        = "";
+     public static $MODULE                = "workflow";
+     public static $TABLE            = "job_run_result";
+
+     public static $DB_STRUCTURE = null;
 	
 	public function __construct(){
 		parent::__construct("job_run_result","id","workflow");
