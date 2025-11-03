@@ -5,6 +5,7 @@ if($modtopag != "workflow") die("check the module you want to pag");
  $arr_all_files = array();
 
  
+ $arr_all_files[]="workflow_entity";
  $arr_all_files[]="workflow_module";
  $arr_all_files[]="content";
  $arr_all_files[]="content_item";
@@ -34,7 +35,6 @@ if($modtopag != "workflow") die("check the module you want to pag");
  $arr_all_files[]="workflow_action";
  $arr_all_files[]="workflow_applicant";
  $arr_all_files[]="workflow_commitee_scope";
- $arr_all_files[]="workflow_entity";
  $arr_all_files[]="workflow_event";
  $arr_all_files[]="workflow_orgunit";
  $arr_all_files[]="workflow_rejection_reason";
