@@ -52,7 +52,7 @@ class WorkflowJobRunResultAfwStructure
 			'UTF8' => false,
 			'TYPE' => 'FK',
 			'ANSWER' => 'job_run',
-			'ANSMODULE' => 'atm',
+			'ANSMODULE' => 'workflow',
 			'RELATION' => 'OneToMany',
 			'READONLY' => false,
 		),

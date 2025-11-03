@@ -148,7 +148,7 @@
                     'POLE' => false,
                     'CATEGORY' => 'ITEMS',
                     'ANSWER' => 'job_run',
-                    'ANSMODULE' => 'atm',
+                    'ANSMODULE' => 'workflow',
                     'ITEM' => 'scjob_id',
                     'WHERE' => 'run_date >= §run_date_min§',
                     'ORDER_BY' => 'run_date desc, run_time desc',

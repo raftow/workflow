@@ -40,7 +40,7 @@ class Scjob extends AFWObject
 	public function getLastRun()
 	{
 		$file_dir_name = dirname(__FILE__);
-		require_once("$file_dir_name/../atm/job_run.php");
+		require_once("$file_dir_name/../workflow/job_run.php");
 		$jr = new JobRun();
 		$jr->select("scjob_id", $this->getId());
 		if ($jr->load()) return $jr;
@@ -189,8 +189,8 @@ class Scjob extends AFWObject
 
 
 				// FK part of me - deletable 
-				// atm.job_run-المهمة الآلية	scjob_id  أنا تفاصيل لها-OneToMany
-				$this->execQuery("delete from ${server_db_prefix}atm.job_run where scjob_id = '$id' ");
+				// workflow.job_run-المهمة الآلية	scjob_id  أنا تفاصيل لها-OneToMany
+				$this->execQuery("delete from ${server_db_prefix}workflow.job_run where scjob_id = '$id' ");
 
 
 				// FK not part of me - replaceable 
@@ -201,8 +201,8 @@ class Scjob extends AFWObject
 
 			} else {
 				// FK on me 
-				// atm.job_run-المهمة الآلية	scjob_id  أنا تفاصيل لها-OneToMany
-				$this->execQuery("update ${server_db_prefix}atm.job_run set scjob_id='$id_replace' where scjob_id='$id' ");
+				// workflow.job_run-المهمة الآلية	scjob_id  أنا تفاصيل لها-OneToMany
+				$this->execQuery("update ${server_db_prefix}workflow.job_run set scjob_id='$id_replace' where scjob_id='$id' ");
 
 
 				// MFK
