@@ -35,6 +35,7 @@ if($modtopag != "workflow") die("check the module you want to pag");
  
  $arr_all_files[]="scjob";
  $arr_all_files[]="workflow_action";
+ $arr_all_files[]="workflow_applicant_file";
  $arr_all_files[]="workflow_applicant";
  $arr_all_files[]="workflow_commitee_scope";
  
