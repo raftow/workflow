@@ -42,6 +42,8 @@ $config_arr = array(
 
         // SIS settings
         'default_course_mfk' => ',1,',
+
+        'workflow-file_types' => [6,7,18,19,20,27,28,29,33,34],
         );
 
 
