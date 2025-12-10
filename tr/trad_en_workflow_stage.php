@@ -20,6 +20,7 @@ class WorkflowStageEnTranslator{
 		$trad["workflow_stage"]["time_unit"] = "Time unit";
 		$trad["workflow_stage"]["processing_request_responsibility"] = "Responsibility for processing the request";
 		$trad["workflow_stage"]["workflow_role_id"] = "Roles assigned";
+		$trad["workflow_stage"]["interview_ind"] = "Includes a personal interview";
         return $trad;
     }
 
