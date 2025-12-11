@@ -2905,7 +2905,7 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=NotificationTemplate&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105143 bfc-',
-        ),
+        ),/*
         105144 => 
         array (
           'id' => '105144',
@@ -2916,7 +2916,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationTemplate&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105144 bfc-',
-        ),
+        ),*/
         105136 => 
         array (
           'id' => '105136',
@@ -2928,6 +2928,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105136 bfc-',
         ),
+        /*
         105137 => 
         array (
           'id' => '105137',
@@ -2938,7 +2939,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationSchedule&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105137 bfc-',
-        ),
+        ),*/
       ),
       'otherbfs' => 
       array (
@@ -3085,6 +3086,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105136 bfc-',
         ),
+        /*
         105137 => 
         array (
           'id' => '105137',
@@ -3095,7 +3097,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationSchedule&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105137 bfc-',
-        ),
+        ),*/
         105138 => 
         array (
           'id' => '105138',
@@ -3162,6 +3164,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105143 bfc-',
         ),
+        /*
         105144 => 
         array (
           'id' => '105144',
@@ -3173,6 +3176,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105144 bfc-',
         ),
+        */
       ),
       'sub-folders' => 
       array (
@@ -3210,6 +3214,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105038 bfc-',
         ),
+        /*
         105039 => 
         array (
           'id' => '105039',
@@ -3221,6 +3226,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105039 bfc-',
         ),
+        */
         105199 => 
         array (
           'id' => '105199',
@@ -3232,6 +3238,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105199 bfc-',
         ),
+        /*
         105200 => 
         array (
           'id' => '105200',
@@ -3243,6 +3250,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105200 bfc-',
         ),
+        */
         105041 => 
         array (
           'id' => '105041',
@@ -3265,6 +3273,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105206 bfc-',
         ),
+        /*
         105207 => 
         array (
           'id' => '105207',
@@ -3275,7 +3284,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowModel&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105207 bfc-',
-        ),
+        ),*/
         105220 => 
         array (
           'id' => '105220',
@@ -3287,6 +3296,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105220 bfc-',
         ),
+        /*
         105221 => 
         array (
           'id' => '105221',
@@ -3297,7 +3307,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowStage&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105221 bfc-',
-        ),
+        ),*/
         105227 => 
         array (
           'id' => '105227',
@@ -3331,6 +3341,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105213 bfc-',
         ),
+        /*
         105214 => 
         array (
           'id' => '105214',
@@ -3341,7 +3352,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowScope&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105214 bfc-',
-        ),
+        ),*/
         105192 => 
         array (
           'id' => '105192',
@@ -3353,6 +3364,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105192 bfc-',
         ),
+        /*
         105193 => 
         array (
           'id' => '105193',
@@ -3363,7 +3375,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowAction&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105193 bfc-',
-        ),
+        ),*/
       ),
       'otherbfs' => 
       array (
@@ -3433,6 +3445,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105038 bfc-',
         ),
+        /*
         105039 => 
         array (
           'id' => '105039',
@@ -3443,7 +3456,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommiteeMember&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105039 bfc-',
-        ),
+        ),*/
         105040 => 
         array (
           'id' => '105040',
@@ -3510,6 +3523,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105045 bfc-',
         ),
+        /*
         105046 => 
         array (
           'id' => '105046',
@@ -3520,7 +3534,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowEmployee&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105046 bfc-',
-        ),
+        ),*/
         105187 => 
         array (
           'id' => '105187',
@@ -3587,6 +3601,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105192 bfc-',
         ),
+        /*
         105193 => 
         array (
           'id' => '105193',
@@ -3597,7 +3612,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowAction&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105193 bfc-',
-        ),
+        ),*/
         105194 => 
         array (
           'id' => '105194',
@@ -3664,6 +3679,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105199 bfc-',
         ),
+        /*
         105200 => 
         array (
           'id' => '105200',
@@ -3674,7 +3690,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommitee&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105200 bfc-',
-        ),
+        ),*/
         105201 => 
         array (
           'id' => '105201',
@@ -3741,6 +3757,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105206 bfc-',
         ),
+        /*
         105207 => 
         array (
           'id' => '105207',
@@ -3752,6 +3769,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105207 bfc-',
         ),
+        */
         105208 => 
         array (
           'id' => '105208',
@@ -3818,6 +3836,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105213 bfc-',
         ),
+        /*
         105214 => 
         array (
           'id' => '105214',
@@ -3828,7 +3847,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowScope&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105214 bfc-',
-        ),
+        ),*/
         105215 => 
         array (
           'id' => '105215',
@@ -3895,6 +3914,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105220 bfc-',
         ),
+        /*
         105221 => 
         array (
           'id' => '105221',
@@ -3905,7 +3925,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowStage&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105221 bfc-',
-        ),
+        ),*/
         105222 => 
         array (
           'id' => '105222',
@@ -3972,6 +3992,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105227 bfc-',
         ),
+        /*
         105228 => 
         array (
           'id' => '105228',
@@ -3982,7 +4003,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowTask&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105228 bfc-',
-        ),
+        ),*/
       ),
       'sub-folders' => 
       array (
@@ -4434,6 +4455,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105234 bfc-',
         ),
+        /*
         105235 => 
         array (
           'id' => '105235',
@@ -4444,7 +4466,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105235 bfc-',
-        ),
+        ),*/
       ),
       'otherbfs' => 
       array (
@@ -4514,6 +4536,7 @@
           'css' => 'bf',
           'icon' => 'bficon-105234 bfc-',
         ),
+        /*
         105235 => 
         array (
           'id' => '105235',
@@ -4524,7 +4547,7 @@
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105235 bfc-',
-        ),
+        ), */
       ),
       'sub-folders' => 
       array (
