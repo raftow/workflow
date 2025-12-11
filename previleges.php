@@ -1708,6 +1708,17 @@
           'css' => 'bf',
           'icon' => 'bficon-105028 bfc-',
         ),
+        105021 => 
+        array (
+          'id' => '105021',
+          'code' => 'f2-a-section_template/qsearch',
+          'level' => '1',
+          'menu_name_ar' => 'نماذج',
+          'menu_name_en' => 'templates',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=SectionTemplate&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105021 bfc-',
+        ),
       ),
       'otherbfs' => 
       array (
@@ -2129,6 +2140,61 @@
           'css' => 'bf',
           'icon' => 'bficon-105018 bfc-',
         ),
+        105019 => 
+        array (
+          'id' => '105019',
+          'code' => 'f2-a-section_template/display',
+          'level' => '1',
+          'menu_name_ar' => 'عرض تفاصيل نموذج',
+          'menu_name_en' => 'display details of template',
+          'page' => 'main.php?Main_Page=afw_mode_display.php&cl=SectionTemplate&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105019 bfc-',
+        ),
+        105020 => 
+        array (
+          'id' => '105020',
+          'code' => 'f2-a-section_template/search',
+          'level' => '1',
+          'menu_name_ar' => 'البحث في نماذج',
+          'menu_name_en' => 'templates search',
+          'page' => 'main.php?Main_Page=afw_mode_search.php&cl=SectionTemplate&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105020 bfc-',
+        ),
+        105021 => 
+        array (
+          'id' => '105021',
+          'code' => 'f2-a-section_template/qsearch',
+          'level' => '1',
+          'menu_name_ar' => 'نماذج',
+          'menu_name_en' => 'templates',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=SectionTemplate&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105021 bfc-',
+        ),
+        105022 => 
+        array (
+          'id' => '105022',
+          'code' => 'f2-a-section_template/edit',
+          'level' => '1',
+          'menu_name_ar' => 'إنشاء نموذج',
+          'menu_name_en' => 'create template',
+          'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=SectionTemplate&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105022 bfc-',
+        ),
+        105025 => 
+        array (
+          'id' => '105025',
+          'code' => 'f2-a-section_template/delete',
+          'level' => '1',
+          'menu_name_ar' => 'مسح نموذج',
+          'menu_name_en' => 'delete template',
+          'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=SectionTemplate&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105025 bfc-',
+        ),
         105026 => 
         array (
           'id' => '105026',
@@ -2272,17 +2338,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105185 bfc-',
         ),
-        105186 => 
-        array (
-          'id' => '105186',
-          'code' => 'f2-a-workflow_orgunit/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات جهات متابعة طلبات العملاء',
-          'menu_name_en' => 'Workflow orgunits statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowOrgunit&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105186 bfc-',
-        ),
         105171 => 
         array (
           'id' => '105171',
@@ -2293,17 +2348,6 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeScope&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105171 bfc-',
-        ),
-        105172 => 
-        array (
-          'id' => '105172',
-          'code' => 'f2-a-workflow_commitee_scope/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات مجالات اللجان',
-          'menu_name_en' => 'Workflow commitee scopes statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommiteeScope&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105172 bfc-',
         ),
         105150 => 
         array (
@@ -2316,17 +2360,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105150 bfc-',
         ),
-        105151 => 
-        array (
-          'id' => '105151',
-          'code' => 'f2-a-job_run/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات تنفيذات المهام الآلية',
-          'menu_name_en' => 'Job runs statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=JobRun&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105151 bfc-',
-        ),
         105164 => 
         array (
           'id' => '105164',
@@ -2338,17 +2371,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105164 bfc-',
         ),
-        105165 => 
-        array (
-          'id' => '105165',
-          'code' => 'f2-a-scjob/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات scjob',
-          'menu_name_en' => 'Scjobs statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=Scjob&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105165 bfc-',
-        ),
         105157 => 
         array (
           'id' => '105157',
@@ -2359,17 +2381,6 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRunResult&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105157 bfc-',
-        ),
-        105158 => 
-        array (
-          'id' => '105158',
-          'code' => 'f2-a-job_run_result/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات job_run_result',
-          'menu_name_en' => 'Job run results statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=JobRunResult&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105158 bfc-',
         ),
         105174 => 
         array (
@@ -2451,17 +2462,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105150 bfc-',
         ),
-        105151 => 
-        array (
-          'id' => '105151',
-          'code' => 'f2-a-job_run/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات تنفيذات المهام الآلية',
-          'menu_name_en' => 'Job runs statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=JobRun&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105151 bfc-',
-        ),
         105152 => 
         array (
           'id' => '105152',
@@ -2527,17 +2527,6 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRunResult&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105157 bfc-',
-        ),
-        105158 => 
-        array (
-          'id' => '105158',
-          'code' => 'f2-a-job_run_result/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات job_run_result',
-          'menu_name_en' => 'Job run results statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=JobRunResult&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105158 bfc-',
         ),
         105159 => 
         array (
@@ -2605,17 +2594,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105164 bfc-',
         ),
-        105165 => 
-        array (
-          'id' => '105165',
-          'code' => 'f2-a-scjob/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات scjob',
-          'menu_name_en' => 'Scjobs statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=Scjob&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105165 bfc-',
-        ),
         105166 => 
         array (
           'id' => '105166',
@@ -2681,17 +2659,6 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeScope&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105171 bfc-',
-        ),
-        105172 => 
-        array (
-          'id' => '105172',
-          'code' => 'f2-a-workflow_commitee_scope/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات مجالات اللجان',
-          'menu_name_en' => 'Workflow commitee scopes statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommiteeScope&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105172 bfc-',
         ),
         105173 => 
         array (
@@ -2759,17 +2726,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105178 bfc-',
         ),
-        105179 => 
-        array (
-          'id' => '105179',
-          'code' => 'f2-a-workflow_event/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات أحداث',
-          'menu_name_en' => 'Workflow events statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowEvent&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105179 bfc-',
-        ),
         105180 => 
         array (
           'id' => '105180',
@@ -2836,17 +2792,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105185 bfc-',
         ),
-        105186 => 
-        array (
-          'id' => '105186',
-          'code' => 'f2-a-workflow_orgunit/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات جهات متابعة طلبات العملاء',
-          'menu_name_en' => 'Workflow orgunits statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowOrgunit&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105186 bfc-',
-        ),
       ),
       'sub-folders' => 
       array (
@@ -2889,7 +2834,7 @@
           'id' => '105130',
           'code' => 'f2-a-notification/stats',
           'level' => '1',
-          'menu_name_ar' => 'إحصائيات إشعارات',
+          'menu_name_ar' => 'إحصائيات الإشعارات',
           'menu_name_en' => 'Notifications statistics',
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=Notification&currmod=workflow',
           'css' => 'bf',
@@ -2905,18 +2850,7 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=NotificationTemplate&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105143 bfc-',
-        ),/*
-        105144 => 
-        array (
-          'id' => '105144',
-          'code' => 'f2-a-notification_template/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات نماذج إشعار',
-          'menu_name_en' => 'Notification templates statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationTemplate&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105144 bfc-',
-        ),*/
+        ),
         105136 => 
         array (
           'id' => '105136',
@@ -2928,18 +2862,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105136 bfc-',
         ),
-        /*
-        105137 => 
-        array (
-          'id' => '105137',
-          'code' => 'f2-a-notification_schedule/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات برمجة إشعارات',
-          'menu_name_en' => 'Notification schedules statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationSchedule&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105137 bfc-',
-        ),*/
       ),
       'otherbfs' => 
       array (
@@ -3003,7 +2925,7 @@
           'id' => '105129',
           'code' => 'f2-a-notification/qsearch',
           'level' => '1',
-          'menu_name_ar' => 'إشعارات',
+          'menu_name_ar' => 'الإشعارات',
           'menu_name_en' => 'Notifications',
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Notification&currmod=workflow',
           'css' => 'bf',
@@ -3014,7 +2936,7 @@
           'id' => '105130',
           'code' => 'f2-a-notification/stats',
           'level' => '1',
-          'menu_name_ar' => 'إحصائيات إشعارات',
+          'menu_name_ar' => 'إحصائيات الإشعارات',
           'menu_name_en' => 'Notifications statistics',
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=Notification&currmod=workflow',
           'css' => 'bf',
@@ -3086,18 +3008,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105136 bfc-',
         ),
-        /*
-        105137 => 
-        array (
-          'id' => '105137',
-          'code' => 'f2-a-notification_schedule/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات برمجة إشعارات',
-          'menu_name_en' => 'Notification schedules statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationSchedule&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105137 bfc-',
-        ),*/
         105138 => 
         array (
           'id' => '105138',
@@ -3164,19 +3074,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105143 bfc-',
         ),
-        /*
-        105144 => 
-        array (
-          'id' => '105144',
-          'code' => 'f2-a-notification_template/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات نماذج إشعار',
-          'menu_name_en' => 'Notification templates statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=NotificationTemplate&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105144 bfc-',
-        ),
-        */
       ),
       'sub-folders' => 
       array (
@@ -3214,19 +3111,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105038 bfc-',
         ),
-        /*
-        105039 => 
-        array (
-          'id' => '105039',
-          'code' => 'f2-a-workflow_commitee_member/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات أعضاء اللجان',
-          'menu_name_en' => 'Workflow commitee members statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommiteeMember&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105039 bfc-',
-        ),
-        */
         105199 => 
         array (
           'id' => '105199',
@@ -3238,19 +3122,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105199 bfc-',
         ),
-        /*
-        105200 => 
-        array (
-          'id' => '105200',
-          'code' => 'f2-a-workflow_commitee/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات اللجان',
-          'menu_name_en' => 'Workflow commitees statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommitee&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105200 bfc-',
-        ),
-        */
         105041 => 
         array (
           'id' => '105041',
@@ -3273,18 +3144,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105206 bfc-',
         ),
-        /*
-        105207 => 
-        array (
-          'id' => '105207',
-          'code' => 'f2-a-workflow_model/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات نماذج سير العمل',
-          'menu_name_en' => 'Workflow models statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowModel&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105207 bfc-',
-        ),*/
         105220 => 
         array (
           'id' => '105220',
@@ -3296,18 +3155,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105220 bfc-',
         ),
-        /*
-        105221 => 
-        array (
-          'id' => '105221',
-          'code' => 'f2-a-workflow_stage/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات المراحل',
-          'menu_name_en' => 'Workflow stages statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowStage&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105221 bfc-',
-        ),*/
         105227 => 
         array (
           'id' => '105227',
@@ -3318,17 +3165,6 @@
           'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTask&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105227 bfc-',
-        ),
-        105228 => 
-        array (
-          'id' => '105228',
-          'code' => 'f2-a-workflow_task/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات workflow_task',
-          'menu_name_en' => 'Workflow tasks statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowTask&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105228 bfc-',
         ),
         105213 => 
         array (
@@ -3341,18 +3177,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105213 bfc-',
         ),
-        /*
-        105214 => 
-        array (
-          'id' => '105214',
-          'code' => 'f2-a-workflow_scope/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات workflow_scope',
-          'menu_name_en' => 'Workflow scopes statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowScope&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105214 bfc-',
-        ),*/
         105192 => 
         array (
           'id' => '105192',
@@ -3364,18 +3188,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105192 bfc-',
         ),
-        /*
-        105193 => 
-        array (
-          'id' => '105193',
-          'code' => 'f2-a-workflow_action/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات إجراءات',
-          'menu_name_en' => 'Workflow actions statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowAction&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105193 bfc-',
-        ),*/
       ),
       'otherbfs' => 
       array (
@@ -3445,18 +3257,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105038 bfc-',
         ),
-        /*
-        105039 => 
-        array (
-          'id' => '105039',
-          'code' => 'f2-a-workflow_commitee_member/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات أعضاء اللجان',
-          'menu_name_en' => 'Workflow commitee members statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommiteeMember&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105039 bfc-',
-        ),*/
         105040 => 
         array (
           'id' => '105040',
@@ -3523,18 +3323,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105045 bfc-',
         ),
-        /*
-        105046 => 
-        array (
-          'id' => '105046',
-          'code' => 'f2-a-workflow_employee/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات موظفي إدارة أعمال',
-          'menu_name_en' => 'Workflow employees statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowEmployee&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105046 bfc-',
-        ),*/
         105187 => 
         array (
           'id' => '105187',
@@ -3601,18 +3389,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105192 bfc-',
         ),
-        /*
-        105193 => 
-        array (
-          'id' => '105193',
-          'code' => 'f2-a-workflow_action/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات إجراءات',
-          'menu_name_en' => 'Workflow actions statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowAction&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105193 bfc-',
-        ),*/
         105194 => 
         array (
           'id' => '105194',
@@ -3679,18 +3455,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105199 bfc-',
         ),
-        /*
-        105200 => 
-        array (
-          'id' => '105200',
-          'code' => 'f2-a-workflow_commitee/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات اللجان',
-          'menu_name_en' => 'Workflow commitees statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowCommitee&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105200 bfc-',
-        ),*/
         105201 => 
         array (
           'id' => '105201',
@@ -3757,19 +3521,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105206 bfc-',
         ),
-        /*
-        105207 => 
-        array (
-          'id' => '105207',
-          'code' => 'f2-a-workflow_model/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات نماذج سير العمل',
-          'menu_name_en' => 'Workflow models statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowModel&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105207 bfc-',
-        ),
-        */
         105208 => 
         array (
           'id' => '105208',
@@ -3836,18 +3587,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105213 bfc-',
         ),
-        /*
-        105214 => 
-        array (
-          'id' => '105214',
-          'code' => 'f2-a-workflow_scope/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات workflow_scope',
-          'menu_name_en' => 'Workflow scopes statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowScope&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105214 bfc-',
-        ),*/
         105215 => 
         array (
           'id' => '105215',
@@ -3914,18 +3653,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105220 bfc-',
         ),
-        /*
-        105221 => 
-        array (
-          'id' => '105221',
-          'code' => 'f2-a-workflow_stage/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات المراحل',
-          'menu_name_en' => 'Workflow stages statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowStage&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105221 bfc-',
-        ),*/
         105222 => 
         array (
           'id' => '105222',
@@ -3992,18 +3719,6 @@
           'css' => 'bf',
           'icon' => 'bficon-105227 bfc-',
         ),
-        /*
-        105228 => 
-        array (
-          'id' => '105228',
-          'code' => 'f2-a-workflow_task/stats',
-          'level' => '1',
-          'menu_name_ar' => 'إحصائيات workflow_task',
-          'menu_name_en' => 'Workflow tasks statistics',
-          'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowTask&currmod=workflow',
-          'css' => 'bf',
-          'icon' => 'bficon-105228 bfc-',
-        ),*/
       ),
       'sub-folders' => 
       array (
@@ -4455,18 +4170,17 @@
           'css' => 'bf',
           'icon' => 'bficon-105234 bfc-',
         ),
-        /*
         105235 => 
         array (
           'id' => '105235',
           'code' => 'f2-a-workflow_applicant/stats',
           'level' => '1',
-          'menu_name_ar' => 'إحصائيات المتقدمون',
+          'menu_name_ar' => 'إحصائيات المتقدمين',
           'menu_name_en' => 'Workflow applicants statistics',
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105235 bfc-',
-        ),*/
+        ),
       ),
       'otherbfs' => 
       array (
@@ -4536,18 +4250,17 @@
           'css' => 'bf',
           'icon' => 'bficon-105234 bfc-',
         ),
-        /*
         105235 => 
         array (
           'id' => '105235',
           'code' => 'f2-a-workflow_applicant/stats',
           'level' => '1',
-          'menu_name_ar' => 'إحصائيات المتقدمون',
+          'menu_name_ar' => 'إحصائيات المتقدمين',
           'menu_name_en' => 'Workflow applicants statistics',
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
           'css' => 'bf',
           'icon' => 'bficon-105235 bfc-',
-        ), */
+        ),
       ),
       'sub-folders' => 
       array (
