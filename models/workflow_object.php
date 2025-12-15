@@ -184,7 +184,9 @@ class WorkflowObject extends AFWObject{
                 $arr_list_of_action_type_enum["ar"][3] = "تعليق ";
                 $arr_list_of_action_type_enum["code"][3] = "PN";
 
-                
+                $arr_list_of_action_type_enum["en"][4] = "return";
+                $arr_list_of_action_type_enum["ar"][4] = "تراجع";
+                $arr_list_of_action_type_enum["code"][4] = "RT";
                 
                 return $arr_list_of_action_type_enum;
         }
