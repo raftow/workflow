@@ -20,8 +20,8 @@ class WorkflowWorkflowTransitionAfwStructure
             $obj->showQeditErrors = true;
             $obj->showRetrieveErrors = true;
             $obj->general_check_errors = true;
-            // $obj->after_save_edit = array("class"=>'WorkflowTransition',"attribute"=>'xxxx_id', "currmod"=>'workflow',"currstep"=>2);
-            $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowTransition', "submit" => true);
+            $obj->after_save_edit = array("class"=>'WorkflowModel',"attribute"=>'workflow_model_id', "currmod"=>'workflow',"currstep"=>2);
+            // $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowTransition', "submit" => true);
         } else {
             WorkflowTransitionArTranslator::initData();
             WorkflowTransitionEnTranslator::initData();
