@@ -214,7 +214,7 @@ class WorkflowWorkflowModelAfwStructure
                         'ITEM' => 'workflow_model_id',
                         'READONLY' => true,
                         'CAN-BE-SETTED' => true,
-                        'CSS' => 'width_pct_50',
+                        'CSS' => 'width_pct_100',
                 ),
 
                 'active' => array(
