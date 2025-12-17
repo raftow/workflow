@@ -13,7 +13,7 @@ class WorkflowModelEnTranslator{
 	$trad["workflow_model"]["workflow_model_name_en"] = "Model name - english";
 	$trad["workflow_model"]["workflow_model_desc_ar"] = "Model description - arabic";
 	$trad["workflow_model"]["workflow_model_desc_en"] = "Model description - english";
-	$trad["workflow_model"]["application_field_mfk"] = "Application field";
+	$trad["workflow_model"]["workflow_field_mfk"] = "Application field";
         return $trad;
         }
 

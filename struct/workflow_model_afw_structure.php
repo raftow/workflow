@@ -36,6 +36,30 @@ class WorkflowWorkflowModelAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
 
+                'workflow_module_id' => array(
+                        'SHORTNAME' => 'module',
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_module',
+                        'ANSMODULE' => 'workflow',
+                        'RELATION' => 'ManyToOne',
+                        'READONLY' => true,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_100',
+                ),
+
                 'workflow_model_name_ar' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -121,20 +145,22 @@ class WorkflowWorkflowModelAfwStructure
                 ),
 
 
-
-                'application_field_mfk' => array(
+                /*
+                'workflow_field_mfk' => array(
                         'IMPORTANT' => 'IN',
                         'SHOW' => true,
                         'RETRIEVE' => false,
                         'QEDIT' => true,
                         'EDIT' => true,
-                        'TYPE' => 'INT',
+                        'TYPE' => 'MFK',
+                        'ANSWER' => 'workflow_field',
+                        'ANSMODULE' => 'workflow',
                         'MANDATORY' => false,
                         'STEP' => 1,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
-                ),
+                ),*/
 
 
                 'external_code' => array(
