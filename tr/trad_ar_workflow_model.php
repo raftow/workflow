@@ -5,6 +5,7 @@ class WorkflowModelArTranslator{
     {
         $trad = [];
 	$trad["workflow_model"]["step1"] = "التعريف";
+	$trad["workflow_model"]["step2"] = "التحولات";
 
 	$trad["workflow_model"]["workflowmodel.single"] = "نموذج سير عمل";
 	$trad["workflow_model"]["workflowmodel.new"] = "جديد";

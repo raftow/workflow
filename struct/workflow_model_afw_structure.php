@@ -12,8 +12,8 @@ class WorkflowWorkflowModelAfwStructure
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
 
-                        $obj->editByStep = false;
-                        //$obj->editNbSteps = 1; 
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 2; 
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'WorkflowModel', "submit" => true);
                 } else {
@@ -155,6 +155,35 @@ class WorkflowWorkflowModelAfwStructure
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
+                ),
+
+                'workflowTransitionList' => array(
+                        'STEP' => 2,
+                        'SHOW' => true,
+                        'FORMAT' => 'retrieve',
+                        'ICONS' => true,
+                        'DELETE-ICON' => true,
+                        'BUTTONS' => true,
+                        'SEARCH' => false,
+                        'QSEARCH' => false,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'CATEGORY' => 'ITEMS',
+                        'ANSWER' => 'workflow_transition',
+                        'ANSMODULE' => 'workflow',
+                        'ITEM' => 'workflow_model_id',
+                        'READONLY' => true,
+                        'CAN-BE-SETTED' => true,
+                        'CSS' => 'width_pct_50',
                 ),
 
                 'active' => array(
