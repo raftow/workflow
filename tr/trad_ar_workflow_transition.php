@@ -18,6 +18,9 @@ class WorkflowTransitionArTranslator{
 		$trad["workflow_transition"]["workflow_role_mfk"] = "الصلاحيات المطلوبة";
 		$trad["workflow_transition"]["workflow_condition_id"] = "شرط تمكين الاجراء";
 		$trad["workflow_transition"]["notification_template_id"] = "إشعار ما بعد التحول";
+        $trad["workflow_transition"]["final_stage_id"] = "المرحلة النهائية";
+		$trad["workflow_transition"]["final_status_id"] = "حالة الطلب في النهاية";
+		
         // steps
         return $trad;
     }
