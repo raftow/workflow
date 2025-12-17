@@ -85,6 +85,10 @@
   array (
     'name' => 'workflow_commitee_scope',
   ),
+  14018 => 
+  array (
+    'name' => 'workflow_condition',
+  ),
   13969 => 
   array (
     'name' => 'workflow_employee',
@@ -132,6 +136,10 @@
   13987 => 
   array (
     'name' => 'workflow_task',
+  ),
+  14017 => 
+  array (
+    'name' => 'workflow_transition',
   ),
 );
 	$tbf_info = array (
@@ -1059,6 +1067,50 @@
       'id' => '105168',
     ),
   ),
+  'workflow_condition' => 
+  array (
+    'id' => '14018',
+    'display' => 
+    array (
+      'id' => -1,
+    ),
+    'search' => 
+    array (
+      'id' => -1,
+    ),
+    'qsearch' => 
+    array (
+      'id' => -1,
+    ),
+    'edit' => 
+    array (
+      'id' => -1,
+    ),
+    'qedit' => 
+    array (
+      'id' => -1,
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => -1,
+    ),
+  ),
   'workflow_employee' => 
   array (
     'id' => '13969',
@@ -1585,6 +1637,50 @@
     'delete' => 
     array (
       'id' => '105224',
+    ),
+  ),
+  'workflow_transition' => 
+  array (
+    'id' => '14017',
+    'display' => 
+    array (
+      'id' => '105239',
+    ),
+    'search' => 
+    array (
+      'id' => '105240',
+    ),
+    'qsearch' => 
+    array (
+      'id' => '105241',
+    ),
+    'edit' => 
+    array (
+      'id' => '105236',
+    ),
+    'qedit' => 
+    array (
+      'id' => '105237',
+    ),
+    'crossed' => 
+    array (
+      'id' => -1,
+    ),
+    'stats' => 
+    array (
+      'id' => -1,
+    ),
+    'ddb' => 
+    array (
+      'id' => -1,
+    ),
+    'minibox' => 
+    array (
+      'id' => -1,
+    ),
+    'delete' => 
+    array (
+      'id' => '105238',
     ),
   ),
 );
@@ -3188,6 +3284,17 @@
           'css' => 'bf',
           'icon' => 'bficon-105192 bfc-',
         ),
+        105241 => 
+        array (
+          'id' => '105241',
+          'code' => 'f2-a-workflow_transition/qsearch',
+          'level' => '1',
+          'menu_name_ar' => 'التحولات',
+          'menu_name_en' => 'transitions',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTransition&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105241 bfc-',
+        ),
       ),
       'otherbfs' => 
       array (
@@ -3719,6 +3826,72 @@
           'css' => 'bf',
           'icon' => 'bficon-105227 bfc-',
         ),
+        105236 => 
+        array (
+          'id' => '105236',
+          'code' => 'f2-a-workflow_transition/edit',
+          'level' => '1',
+          'menu_name_ar' => 'إنشاء',
+          'menu_name_en' => 'create transition',
+          'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowTransition&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105236 bfc-',
+        ),
+        105237 => 
+        array (
+          'id' => '105237',
+          'code' => 'f2-a-workflow_transition/qedit',
+          'level' => '1',
+          'menu_name_ar' => 'إدارة التحولات',
+          'menu_name_en' => 'transitions administration',
+          'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowTransition&currmod=workflow&ids=all&newo=3',
+          'css' => 'bf',
+          'icon' => 'bficon-105237 bfc-',
+        ),
+        105238 => 
+        array (
+          'id' => '105238',
+          'code' => 'f2-a-workflow_transition/delete',
+          'level' => '1',
+          'menu_name_ar' => 'مسح',
+          'menu_name_en' => 'delete transition',
+          'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowTransition&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105238 bfc-',
+        ),
+        105239 => 
+        array (
+          'id' => '105239',
+          'code' => 'f2-a-workflow_transition/display',
+          'level' => '1',
+          'menu_name_ar' => 'عرض تفاصيل',
+          'menu_name_en' => 'display details of transition',
+          'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowTransition&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105239 bfc-',
+        ),
+        105240 => 
+        array (
+          'id' => '105240',
+          'code' => 'f2-a-workflow_transition/search',
+          'level' => '1',
+          'menu_name_ar' => 'البحث في التحولات',
+          'menu_name_en' => 'transitions search',
+          'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowTransition&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105240 bfc-',
+        ),
+        105241 => 
+        array (
+          'id' => '105241',
+          'code' => 'f2-a-workflow_transition/qsearch',
+          'level' => '1',
+          'menu_name_ar' => 'التحولات',
+          'menu_name_en' => 'transitions',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTransition&currmod=workflow',
+          'css' => 'bf',
+          'icon' => 'bficon-105241 bfc-',
+        ),
       ),
       'sub-folders' => 
       array (
@@ -4175,7 +4348,7 @@
           'id' => '105235',
           'code' => 'f2-a-workflow_applicant/stats',
           'level' => '1',
-          'menu_name_ar' => 'إحصائيات المتقدمين',
+          'menu_name_ar' => 'إحصائيات المتقدمون',
           'menu_name_en' => 'Workflow applicants statistics',
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
           'css' => 'bf',
@@ -4255,7 +4428,7 @@
           'id' => '105235',
           'code' => 'f2-a-workflow_applicant/stats',
           'level' => '1',
-          'menu_name_ar' => 'إحصائيات المتقدمين',
+          'menu_name_ar' => 'إحصائيات المتقدمون',
           'menu_name_en' => 'Workflow applicants statistics',
           'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
           'css' => 'bf',
