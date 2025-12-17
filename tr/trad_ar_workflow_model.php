@@ -11,8 +11,9 @@ class WorkflowModelArTranslator
 		$trad["workflow_model"]["workflowTransitionList"] = "قائمة التحولات";
 
 		$trad["workflow_model"]["workflowmodel.single"] = "نموذج سير عمل";
-		$trad["workflow_model"]["workflowmodel.new"] = "جديد";
+		$trad["workflow_model"]["workflowmodel.new"] = "جديد";		
 		$trad["workflow_model"]["workflow_model"] = "نماذج سير العمل";
+		$trad["workflow_model"]["workflow_module_id"] = "التطبيق";
 		$trad["workflow_model"]["workflow_model_name_ar"] = "اسم النموذج - عربي";
 		$trad["workflow_model"]["workflow_model_name_en"] = "اسم النموذج - انجليزي";
 		$trad["workflow_model"]["workflow_model_desc_ar"] = "وصف النموذج - عربي";

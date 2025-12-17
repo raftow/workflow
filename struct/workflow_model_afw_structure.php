@@ -36,6 +36,8 @@ class WorkflowWorkflowModelAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
 
+                
+
                 'workflow_module_id' => array(
                         'SHORTNAME' => 'module',
                         'SEARCH' => true,
@@ -57,8 +59,30 @@ class WorkflowWorkflowModelAfwStructure
                         'RELATION' => 'ManyToOne',
                         'READONLY' => true,
                         'DNA' => true,
-                        'CSS' => 'width_pct_100',
+                        'CSS' => 'width_pct_75',
                 ),
+
+                'external_code' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-EN' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '32',
+                        'MAXLENGTH' => '32',
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => true,
+                        'READONLY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
 
                 'workflow_model_name_ar' => array(
                         'IMPORTANT' => 'IN',
@@ -77,7 +101,7 @@ class WorkflowWorkflowModelAfwStructure
                         'MANDATORY' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_50',
                 ),
 
 
@@ -99,7 +123,7 @@ class WorkflowWorkflowModelAfwStructure
                         'MANDATORY' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_50',
                 ),
 
 
@@ -163,25 +187,6 @@ class WorkflowWorkflowModelAfwStructure
                 ),*/
 
 
-                'external_code' => array(
-                        'IMPORTANT' => 'IN',
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'RETRIEVE-EN' => true,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => '32',
-                        'MAXLENGTH' => '32',
-                        'UTF8' => false,
-                        'TYPE' => 'TEXT',
-                        'DISPLAY' => true,
-                        'STEP' => 1,
-                        'MANDATORY' => true,
-                        'DISPLAY-UGROUPS' => '',
-                        'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
-                ),
 
                 'workflowTransitionList' => array(
                         'STEP' => 2,
