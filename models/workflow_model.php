@@ -41,6 +41,7 @@ class WorkflowModel extends WorkflowObject
 
                 $otherLinksArray = $this->getOtherLinksArrayStandard($mode, $genereLog, $step);
                 $my_id = $this->getId();
+                $mod_id = $this->getVal("workflow_module_id");
                 $displ = $this->getDisplay($lang);
 
                 if ($mode == "mode_workflowTransitionList") {
@@ -48,7 +49,7 @@ class WorkflowModel extends WorkflowObject
                         $link = array();
                         $title = "إضافة تحول جديد";
                         $title_detailed = $title . "لـ : " . $displ;
-                        $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowTransition&currmod=workflow&sel_workflow_model_id=$my_id";
+                        $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowTransition&currmod=workflow&sel_workflow_model_id=$my_id&sel_workflow_module_id=$mod_id";
                         $link["TITLE"] = $title;
                         $link["UGROUPS"] = array();
                         $otherLinksArray[] = $link;
