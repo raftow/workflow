@@ -37,7 +37,7 @@ class WorkflowWorkflowTransitionAfwStructure
         'workflow_module_id' => array(
             'SHORTNAME' => 'module',
             'SEARCH' => true,
-            'QSEARCH' => false,
+            'QSEARCH' => true,
             'SHOW' => true,
             'AUDIT' => false,
             'RETRIEVE' => true,
@@ -53,7 +53,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'ANSWER' => 'workflow_module',
             'ANSMODULE' => 'workflow',
             'RELATION' => 'ManyToOne',
-            'READONLY' => true,
+            'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
         ),
@@ -61,7 +61,7 @@ class WorkflowWorkflowTransitionAfwStructure
         'workflow_model_id' => array(
             'SHORTNAME' => 'model',
             'SEARCH' => true,
-            'QSEARCH' => false,
+            'QSEARCH' => true,
             'SHOW' => true,
             'AUDIT' => false,
             'RETRIEVE' => false,
@@ -77,7 +77,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'ANSWER' => 'workflow_model',
             'ANSMODULE' => 'workflow',
             'RELATION' => 'OneToMany',
-            'READONLY' => true,
+            'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
         ),
@@ -144,6 +144,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
+            'DEPENDENT_OFME' => ['workflow_action_id']
         ),
 
         'initial_status_id' => array(
@@ -192,6 +193,8 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
+            'WHERE' => 'workflow_stage_id=§initial_stage_id§',
+            'DEPENDENCY' => 'initial_stage_id',
         ),
 
         'workflow_role_mfk' => array(
