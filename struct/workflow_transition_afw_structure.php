@@ -87,7 +87,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'QSEARCH' => true,
             'SHOW' => true,
             'AUDIT' => false,
-            'RETRIEVE' => false,
+            'RETRIEVE' => true,
             'EDIT' => true,
             'QEDIT' => true,
             'SIZE' => 128,
@@ -144,7 +144,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
-            'DEPENDENT_OFME' => ['workflow_action_id']
+            'DEPENDENT_OFME' => array('workflow_action_id','initial_status_id')
         ),
 
         'initial_status_id' => array(
@@ -169,6 +169,9 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
+            'WHERE' => 'workflow_stage_id=§initial_stage_id§',
+            'DEPENDENCY' => 'initial_stage_id',
+            'DEPENDENT_OFME' => array()
         ),
 
         'workflow_action_id' => array(
@@ -226,7 +229,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'QSEARCH' => false,
             'SHOW' => true,
             'AUDIT' => false,
-            'RETRIEVE' => true,
+            'RETRIEVE' => false,
             'EDIT' => true,
             'QEDIT' => false,
             'SIZE' => 32,
@@ -289,6 +292,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
+            'DEPENDENT_OFME' => ['final_status_id']
         ),
 
         'final_status_id' => array(
@@ -313,6 +317,8 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
+            'WHERE' => 'workflow_stage_id=§final_stage_id§',
+            'DEPENDENCY' => 'final_stage_id',
         ),
 
 
