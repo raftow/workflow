@@ -9,10 +9,8 @@ class WorkflowWorkflowScopeAfwStructure
                         $obj->DISPLAY_FIELD = "scope_name_ar";
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
                         // $obj->public_display = true;
-                        $obj->IS_LOOKUP = true;
 
-
-                        $obj->UNIQUE_KEY = array('lookup_code', 'workflow_module_id');
+                        $obj->UNIQUE_KEY = array('workflow_module_id', 'lookup_code');
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
