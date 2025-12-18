@@ -41,6 +41,13 @@ class WorkflowWorkflowScopeAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
 
+                'workflow_module_id' => array('STEP' => 1,  'SHORTNAME' => 'module',  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
+				'EDIT' => true,  'QEDIT' => true,  
+				'SIZE' => 40,  'MAXLENGTH' => 32,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'TYPE' => 'FK',  'ANSWER' => 'workflow_module',  'ANSMODULE' => 'workflow',  
+				'RELATION' => 'ManyToOne',  'READONLY' => false,  'DNA' => true, 
+				'CSS' => 'width_pct_50', ),
+
                 'scope_name_ar' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,

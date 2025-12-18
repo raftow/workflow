@@ -13,6 +13,7 @@ class WorkflowScopeArTranslator
 		$trad["workflow_scope"]["scope_name_en"] = "اسم المجال - انجليزي";
 		$trad["workflow_scope"]["scope_description_ar"] = "وصف المجال - عربي";
 		$trad["workflow_scope"]["scope_description_en"] = "وصف المجال - انجليزي";
+		$trad["workflow_scope"]["workflow_module_id"] = "وحدة العمل";
 		return $trad;
 	}
 
