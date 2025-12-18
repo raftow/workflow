@@ -8,12 +8,11 @@ class WorkflowWorkflowScopeAfwStructure
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                         $obj->DISPLAY_FIELD = "scope_name_ar";
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                        //$obj->UNIQUE_KEY = array('scope_name_ar', 'scope_name_en');
                         // $obj->public_display = true;
                         $obj->IS_LOOKUP = true;
 
 
-                        $obj->UNIQUE_KEY = array('lookup_code');
+                        $obj->UNIQUE_KEY = array('lookup_code', 'workflow_module_id');
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
@@ -43,10 +42,27 @@ class WorkflowWorkflowScopeAfwStructure
 
                 'workflow_module_id' => array('STEP' => 1,  'SHORTNAME' => 'module',  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
-				'SIZE' => 40,  'MAXLENGTH' => 32,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 40,  'MAXLENGTH' => 32,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  
+                                'MANDATORY' => true,  'UTF8' => false,  
 				'TYPE' => 'FK',  'ANSWER' => 'workflow_module',  'ANSMODULE' => 'workflow',  
 				'RELATION' => 'ManyToOne',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
+
+                'lookup_code' => array(
+                        'TYPE' => 'TEXT',
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'SIZE' => 64,
+                        'QEDIT' => true,
+                        'SHORTNAME' => 'code',
+                        'SEARCH-BY-ONE' => '',
+                        'DISPLAY' => true, 'MANDATORY' => true, 
+                        'STEP' => 1,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
+
 
                 'scope_name_ar' => array(
                         'IMPORTANT' => 'IN',
@@ -135,21 +151,7 @@ class WorkflowWorkflowScopeAfwStructure
                 ),
 
 
-                'lookup_code' => array(
-                        'TYPE' => 'TEXT',
-                        'SHOW' => true,
-                        'RETRIEVE' => true,
-                        'EDIT' => true,
-                        'SIZE' => 64,
-                        'QEDIT' => true,
-                        'SHORTNAME' => 'code',
-                        'SEARCH-BY-ONE' => '',
-                        'DISPLAY' => true,
-                        'STEP' => 1,
-                        'DISPLAY-UGROUPS' => '',
-                        'EDIT-UGROUPS' => '',
-                ),
-
+                
 
                 'active' => array(
                         'SHOW' => true,
