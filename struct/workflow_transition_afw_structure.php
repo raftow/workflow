@@ -40,7 +40,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'QSEARCH' => false,
             'SHOW' => true,
             'AUDIT' => false,
-            'RETRIEVE' => true,
+            'RETRIEVE' => false,
             'EDIT' => true,
             'QEDIT' => true,
             'SIZE' => 32,
