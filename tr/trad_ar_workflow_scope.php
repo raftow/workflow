@@ -6,13 +6,14 @@ class WorkflowScopeArTranslator
 	{
 		$trad = [];
 
-		$trad["workflow_scope"]["workflowscope.single"] = "مجال";
+		$trad["workflow_scope"]["workflowscope.single"] = "برنامج";
 		$trad["workflow_scope"]["workflowscope.new"] = "جديد	";
-		$trad["workflow_scope"]["workflow_scope"] = "المجالات";
-		$trad["workflow_scope"]["scope_name_ar"] = "اسم المجال - عربي";
-		$trad["workflow_scope"]["scope_name_en"] = "اسم المجال - انجليزي";
-		$trad["workflow_scope"]["scope_description_ar"] = "وصف المجال - عربي";
-		$trad["workflow_scope"]["scope_description_en"] = "وصف المجال - انجليزي";
+		$trad["workflow_scope"]["workflow_scope"] = "البرامج";
+		$trad["workflow_scope"]["scope_name_ar"] = "اسم البرنامج - عربي";
+		$trad["workflow_scope"]["scope_name_en"] = "اسم البرنامج - انجليزي";
+		$trad["workflow_scope"]["scope_description_ar"] = "وصف البرنامج - عربي";
+		$trad["workflow_scope"]["scope_description_en"] = "وصف البرنامج - انجليزي";
+		$trad["workflow_scope"]["workflow_module_id"] = "وحدة العمل";
 		return $trad;
 	}
 

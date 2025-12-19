@@ -1,4 +1,4 @@
-function workflow_model_id_onchange() {
+function initial_status_id_onchange() {
 
 }
 

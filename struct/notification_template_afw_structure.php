@@ -8,7 +8,7 @@ class WorkflowNotificationTemplateAfwStructure
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                         $obj->DISPLAY_FIELD = "notification_title";
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                        // $obj->UNIQUE_KEY = array('workflow_module_id', 'workflow_entity_id');
+                         $obj->UNIQUE_KEY = array('workflow_module_id', 'workflow_entity_id','notification_title');
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
 
@@ -115,7 +115,25 @@ class WorkflowNotificationTemplateAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
 
-
+                'notification_title_en' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '64',
+                        'MAXLENGTH' => '64',
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
 
                 'notification_body' => array(
                         'IMPORTANT' => 'IN',

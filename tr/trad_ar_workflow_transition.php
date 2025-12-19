@@ -8,7 +8,7 @@ class WorkflowTransitionArTranslator{
 		$trad["workflow_transition"]["workflowtransition.single"] = "تحول";
 		$trad["workflow_transition"]["workflowtransition.new"] = "جديد(ة)";
 		$trad["workflow_transition"]["workflow_transition"] = "التحولات";
-		$trad["workflow_transition"]["name_ar"] = "مسمى  بالعربية";
+		$trad["workflow_transition"]["name_ar"] = "حركة الإجراء";
 		$trad["workflow_transition"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["workflow_transition"]["workflow_module_id"] = "التطبيق";
 		$trad["workflow_transition"]["workflow_model_id"] = "نموذج سير عمل";
