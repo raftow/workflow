@@ -11,7 +11,7 @@ class WorkflowWorkflowTransitionAfwStructure
             $obj->DISPLAY_FIELD_BY_LANG = ['ar' => "name_ar", 'en' => "name_en"];
 
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
-            $obj->ORDER_BY_FIELDS = "";
+            $obj->ORDER_BY_FIELDS = "workflow_model_id, initial_stage_id, initial_status_id, workflow_action_id";
 
 
 

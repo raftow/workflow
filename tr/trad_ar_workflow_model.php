@@ -10,6 +10,8 @@ class WorkflowModelArTranslator
 		$trad["workflow_model"]["step3"] = "التحولات";
 		
 
+		
+		$trad["workflow_model"]["workflowStageList"] = "قائمة المراحل";
 		$trad["workflow_model"]["workflowTransitionList"] = "قائمة التحولات";
 
 		$trad["workflow_model"]["workflowmodel.single"] = "نموذج سير عمل";
