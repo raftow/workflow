@@ -191,6 +191,37 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
 
 
+                'workflowRequestDataList' => array(
+                        'STEP' => 2,
+                        'SHOW' => true,
+                        'FORMAT' => 'retrieve',
+                        'ICONS' => true,
+                        'DELETE-ICON' => true,
+                        'BUTTONS' => true,
+                        'SEARCH' => false,
+                        'QSEARCH' => false,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'CATEGORY' => 'ITEMS',
+                        'ANSWER' => 'workflow_request_data',
+                        'ANSMODULE' => 'workflow',
+                        'ITEM' => 'workflow_request_id',
+                        'READONLY' => true,
+                        'CAN-BE-SETTED' => true,
+                        'CSS' => 'width_pct_50',
+                ),
+
+
+
 
 
                 'active' => array(

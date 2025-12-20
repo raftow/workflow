@@ -185,8 +185,6 @@ class WorkflowApplicant extends AdmObject
                 {
                         if ($idn_type_id == 3) $idn_type_id = 2;
                         if (($idn_type_id == 1) or ($idn_type_id == 2)) {
-                                
-                                
                                 if (!is_numeric($idn)) throw new AfwBusinessException("The identity type is not correctly entered",$lang,"","","index.php","IDN $idn of TYPE $idn_type_id SHOULD BE NUMERIC", "workflow"); // 
                                 list($idn_correct, $type) = AfwFormatHelper::getIdnTypeId($idn);
                                 if ($type != $idn_type_id) throw new AfwBusinessException("The identity type is incorrect",$lang,"","","index.php","IDN $idn is not of type $idn_type_id but of type $type", "workflow"); // 

@@ -23,6 +23,32 @@ class WorkflowModel extends WorkflowObject
                 } else return null;
         }
 
+        public static function loadByMainIndex($external_code,$create_obj_if_not_found=false)
+        {
+           if(!$external_code) throw new AfwRuntimeException("loadByMainIndex : external_code is mandatory field");
+
+
+           $obj = new WorkflowModel();
+           $obj->select("external_code",$external_code);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("external_code",$external_code);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
+
         public function getDisplay($lang = 'ar')
         {
                 return $this->getDefaultDisplay($lang);

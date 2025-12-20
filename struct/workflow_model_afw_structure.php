@@ -67,7 +67,7 @@ class WorkflowWorkflowModelAfwStructure
                         'SEARCH' => true,
                         'QSEARCH' => true,
                         'SHOW' => true,
-                        'RETRIEVE-EN' => true,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SIZE' => '32',
