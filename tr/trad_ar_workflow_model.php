@@ -20,6 +20,11 @@ class WorkflowModelArTranslator
 		$trad["workflow_model"]["workflow_model_name_en"] = "اسم النموذج - انجليزي";
 		$trad["workflow_model"]["workflow_model_desc_ar"] = "وصف النموذج - عربي";
 		$trad["workflow_model"]["workflow_model_desc_en"] = "وصف النموذج - انجليزي";
+
+
+		$trad["workflow_model"]["initial_workflow_stage_id"] = "مرحلة الابتداء";
+		$trad["workflow_model"]["initial_workflow_status_id"] = "حالة الابتداء";
+
 		$trad["workflow_model"]["workflow_field_mfk"] = "البيانات المطلوبة";
 		return $trad;
 	}
