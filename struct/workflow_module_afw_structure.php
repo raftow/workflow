@@ -20,7 +20,7 @@ class WorkflowWorkflowModuleAfwStructure
                         $obj->ignore_insert_doublon = true;
                         $obj->UNIQUE_KEY = array('lookup_code');
                         $obj->editByStep = true;
-                        $obj->editNbSteps = 1;
+                        $obj->editNbSteps = 2;
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
@@ -117,6 +117,17 @@ class WorkflowWorkflowModuleAfwStructure
                         'DNA' => true,
                         'CSS' => 'width_pct_50',
                 ),
+
+
+                'workflowConditionList' => array('STEP' => 2, 'SHOW' => true,  'FORMAT' => 'retrieve',  
+                                'ICONS' => true,  'DELETE-ICON' => true,  'BUTTONS' => true,  
+                                'SEARCH' => false,  'QSEARCH' => false,  'AUDIT' => false,  'RETRIEVE' => false,  
+				'EDIT' => false,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'FK',  'CATEGORY' => 'ITEMS',  'ANSWER' => 'workflow_condition',  'ANSMODULE' => 'workflow',  'ITEM' => 'workflow_module_id',  
+                                'READONLY' => true,  'CAN-BE-SETTED' => true, 
+				'CSS' => 'width_pct_50', ),
+
 
 
                 'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),
