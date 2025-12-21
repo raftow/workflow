@@ -133,7 +133,7 @@ class WorkflowModel extends WorkflowObject
                         }
                 }        
 
-                die("workflowStatusList[s1]===>".var_export($workflowStatusList[1], true));
+                // die("workflowStatusList[s1]===>".var_export($workflowStatusList[1], true));
 
                 $my_first_child_stage_id = null;
                 $previous_node = null;
