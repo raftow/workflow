@@ -70,6 +70,7 @@
                                 data-first-child=\"$my_first_child_node_id\"
                                 data-next-sibling='[next-of-$node_id]'>
                         $node_display
+                                <span class='count app status'>7</span>
                         </div>
                         $html_children
                         "];

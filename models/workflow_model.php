@@ -173,6 +173,7 @@ class WorkflowModel extends WorkflowObject
                                 data-first-child=\"$my_first_child_stage_id\"
                                 data-next-sibling=\"\">
                         $node_display
+                        <span class='count app module'>60</span>
                         </div>
 
                         $html_items
