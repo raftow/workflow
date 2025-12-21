@@ -48,7 +48,7 @@
                                 /**
                                  * @var WorkflowAction $workflowActionObj
                                  */
-                                list($my_node_id, $node_html) = $workflowActionObj->displayTreeviewDiv($lang, $node_id)."\n";
+                                list($my_node_id, $node_html) = $workflowActionObj->displayTreeviewDiv($lang, $node_id);
                                 if($previous_node)
                                 {
                                         $html_children = str_replace("[next-of-$previous_node]", $my_node_id, $html_children);       
@@ -63,11 +63,12 @@
                                 $html_children = str_replace("[next-of-$previous_node]", "", $html_children);       
                         }
 
-                        return [$node_id, "<div id='node_$node_id' class='window hiddon status'
-                        data-id='$node_id'
-                        data-parent=\"$parent_node_id\"
-                        data-first-child=\"$my_first_child_node_id\"
-                        data-next-sibling='[next-of-$node_id]'>
+                        return [$node_id, 
+                        "<div id='node_$node_id' class='window hiddon status'
+                                data-id='$node_id'
+                                data-parent=\"$parent_node_id\"
+                                data-first-child=\"$my_first_child_node_id\"
+                                data-next-sibling='[next-of-$node_id]'>
                         $node_display
                         </div>
                         $html_children

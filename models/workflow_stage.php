@@ -48,7 +48,9 @@
                                 /**
                                  * @var WorkflowStatus $workflowStatusObj
                                  */
-                                list($my_node_id, $node_html) = $workflowStatusObj->displayTreeviewDiv($lang, $node_id, $myWorkflowActionList)."\n";
+                                $arrResult = $workflowStatusObj->displayTreeviewDiv($lang, $node_id, $myWorkflowActionList);
+                                list($my_node_id, $node_html) = $arrResult;
+                                // if(!$node_html) die("workflowStatusObj($workflowStatusObj->id)->displayTreeviewDiv($lang, $node_id, myWorkflowActionList)")
                                 if($previous_node)
                                 {
                                         $html_children = str_replace("[next-of-$previous_node]", $my_node_id, $html_children);       
@@ -65,11 +67,12 @@
 
                         die("html_children of stage $node_id = ".$html_children."  workflowStatusList = ".var_export($workflowStatusList, true)."");
 
-                        return [$node_id, "<div id='node_$node_id' class='window hiddon stage'
-                        data-id='$node_id'
-                        data-parent=\"$parent_node_id\"
-                        data-first-child=\"$my_first_child_status_id\"
-                        data-next-sibling=\"[next-of-$node_id]\">
+                        return [$node_id, 
+                        "<div id='node_$node_id' class='window hiddon stage'
+                                data-id='$node_id'
+                                data-parent=\"$parent_node_id\"
+                                data-first-child=\"$my_first_child_status_id\"
+                                data-next-sibling=\"[next-of-$node_id]\">
                         $node_display
                         </div>
                         $html_children
