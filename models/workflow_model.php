@@ -136,10 +136,15 @@ class WorkflowModel extends WorkflowObject
                 $previous_node = null;
                 foreach($workflowStageOrdered as $so => $workflowStage)
                 {
+                        $myWorkflowStatusList = $workflowStatusList[$workflowStage->id];
+                        if((!$myWorkflowStatusList) or (count($myWorkflowStatusList) == 0))
+                        {
+                                die("my workflowStatusList for stage $workflowStage->id is empty => $workflowStatusList = ".var_export($workflowStatusList, true));
+                        }
                         /**
                          * @var WorkflowStage $workflowStage
                          */
-                        list($my_node_id, $node_html) = $workflowStage->displayTreeviewDiv($lang, $this_node_id, $workflowStatusList[$workflowStage->id], $workflowActionList[$workflowStageObject->id]);
+                        list($my_node_id, $node_html) = $workflowStage->displayTreeviewDiv($lang, $this_node_id, $myWorkflowStatusList, $workflowActionList[$workflowStageObject->id]);
                         if($previous_node)
                         {
                                 $html_items = str_replace("[next-of-$previous_node]", $my_node_id, $html_items);       

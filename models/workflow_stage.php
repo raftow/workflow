@@ -43,8 +43,12 @@
                         $my_first_child_status_id = null;
                         $previous_node = null;
                         foreach($workflowStatusList as $workflowStatusObj)
-                        {                                
-                                list($my_node_id, $node_html) = $workflowStatusObj->displayTreeviewDiv($lang, $node_id, $workflowActionList[$workflowStatusObj->id])."\n";
+                        {
+                                $myWorkflowActionList = $workflowActionList[$workflowStatusObj->id];                                
+                                /**
+                                 * @var WorkflowStatus $workflowStatusObj
+                                 */
+                                list($my_node_id, $node_html) = $workflowStatusObj->displayTreeviewDiv($lang, $node_id, $myWorkflowActionList)."\n";
                                 if($previous_node)
                                 {
                                         $html_children = str_replace("[next-of-$previous_node]", $my_node_id, $html_children);       
