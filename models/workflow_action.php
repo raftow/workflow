@@ -34,5 +34,25 @@
                         return false;
                 }
 
+
+                public function displayTreeviewDiv($lang, $parent_node_id)
+                {                        
+                        $node_display = $this->getNodeDisplay($lang);
+                        $node_id = $parent_node_id."a".$this->id;
+
+                        $html_children = "";
+                        
+                        return "<div id='node_$node_id' class='window hidden'
+                        data-id='$node_id'
+                        data-parent='$parent_node_id'
+                        data-first-child='4'
+                        data-next-sibling='2'>
+                        $node_display
+                        </div>
+                        $html_children
+                        ";
+
+                }
+
         }
 ?>

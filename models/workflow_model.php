@@ -23,6 +23,10 @@ class WorkflowModel extends WorkflowObject
                 } else return null;
         }
 
+        /**
+         * @return WorkflowModel
+         */
+
         public static function loadByMainIndex($external_code, $create_obj_if_not_found = false)
         {
                 if (!$external_code) throw new AfwRuntimeException("loadByMainIndex : external_code is mandatory field");
@@ -95,5 +99,56 @@ class WorkflowModel extends WorkflowObject
                 // rafik don't know why this : \//  = false;
 
                 return $otherLinksArray;
+        }
+
+
+        public function displayTransitionTreeview()
+        {
+                $lang = LanguageHelper::getGlobalLanguage();
+                $node_display = $this->getNodeDisplay($lang);
+                $html_items = "";
+                $this_node_id = "m".$this->getId();
+                $workflowTransitionList = $this->get("workflowTransitionList");
+                $workflowActionList = [];
+                $workflowStatusList = [];
+                $workflowStageDone = [];
+                $workflowStageOrdered = [];
+                foreach($workflowTransitionList as $workflowTransitionItem)
+                {
+                        $workflowStageObject = $workflowTransitionItem->het("workflow_stage_id");
+                        if($workflowStageObject) 
+                        {
+                                if(!$workflowStageDone[$workflowStageObject->id])
+                                {
+                                        $workflowStatusObj = $workflowTransitionItem->het("workflow_status_id");
+                                        $workflowStatusList[$workflowStageObject->id][$workflowStatusObj->id] = $workflowStatusObj;
+                                        $workflowActionObj = $workflowTransitionItem->het("workflow_action_id");
+                                        $workflowActionList[$workflowStageObject->id][$workflowStatusObj->id][$workflowActionObj->id] = $workflowActionObj;
+                                        $workflowStageDone[$workflowStageObject->id] = true;
+                                        $workflowStageOrdered[] = $workflowStageObject;
+                                }
+                                
+                        }
+                }        
+
+                foreach($workflowStageOrdered as $so => $workflowStage)
+                {
+                        /**
+                         * @var WorkflowStage $workflowStage
+                         */
+                        $html_items .= "\n". $workflowStage->displayTreeviewDiv($lang, $this_node_id, $workflowStatusList[$workflowStage->id], $workflowActionList[$workflowStageObject->id]);
+                }
+
+                return "<div dir='rtl' id='treemain' style='direction: rtl;'>
+                        <div id='node_0' class='window hidden'
+                        data-id='$this_node_id'
+                        data-parent=''
+                        data-first-child='1'
+                        data-next-sibling=''>
+                        $node_display
+                        </div>
+
+                        $html_items
+                </div>";
         }
 }

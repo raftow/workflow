@@ -34,5 +34,33 @@
                         return false;
                 }
 
+
+                public function displayTreeviewDiv($lang, $parent_node_id, $workflowActionList)
+                {                        
+                        $node_display = $this->getNodeDisplay($lang);
+                        $node_id = $parent_node_id."t".$this->id;
+
+                        $html_children = "";
+
+                        foreach($workflowActionList as $workflowActionObj)
+                        {
+                                /**
+                                 * @var WorkflowAction $workflowActionObj
+                                 */
+                                $html_children .= $workflowActionObj->displayTreeviewDiv($lang, $node_id)."\n";
+                        }
+
+                        return "<div id='node_$node_id' class='window hidden'
+                        data-id='$node_id'
+                        data-parent='$parent_node_id'
+                        data-first-child='4'
+                        data-next-sibling='2'>
+                        $node_display
+                        </div>
+                        $html_children
+                        ";
+
+                }
+
         }
 ?>
