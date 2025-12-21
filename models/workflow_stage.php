@@ -63,6 +63,8 @@
                                 $html_children = str_replace("[next-of-$previous_node]", "", $html_children);       
                         }
 
+                        die("html_children of stage $node_id = ".$html_children."  ");
+
                         return [$node_id, "<div id='node_$node_id' class='window hiddon stage'
                         data-id='$node_id'
                         data-parent=\"$parent_node_id\"
