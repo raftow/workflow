@@ -104,7 +104,7 @@ class WorkflowModel extends WorkflowObject
 
         public function displayTransitionTreeview()
         {
-                $lang = LanguageHelper::getGlobalLanguage();
+                $lang = AfwLanguageHelper::getGlobalLanguage();
                 $node_display = $this->getNodeDisplay($lang);
                 $html_items = "";
                 $this_node_id = "m".$this->getId();
