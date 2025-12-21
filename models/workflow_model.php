@@ -152,7 +152,7 @@ class WorkflowModel extends WorkflowObject
                         /**
                          * @var WorkflowStage $workflowStage
                          */
-                        list($my_node_id, $node_html) = $workflowStage->displayTreeviewDiv($lang, $this_node_id, $myWorkflowStatusList, $workflowActionList[$workflowStageObject->id]);
+                        list($my_node_id, $node_html) = $workflowStage->displayTreeviewDiv($lang, $this_node_id, $myWorkflowStatusList, $workflowActionList[$workflowStage->id]);
                         if($previous_node)
                         {
                                 $html_items = str_replace("[next-of-$previous_node]", $my_node_id, $html_items);       
