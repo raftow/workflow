@@ -148,6 +148,11 @@ class WorkflowModel extends WorkflowObject
                         $previous_node = $my_node_id;
                 }
 
+                if($previous_node)
+                {
+                        $html_items = str_replace("[next-of-$previous_node]", "", $html_items);       
+                }
+
                 return "<div dir='rtl' id='treemain' style='direction: rtl;'>
                         <div id='node_0' class='window hidden model'
                         data-id='$this_node_id'

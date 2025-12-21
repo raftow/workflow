@@ -54,6 +54,11 @@
                                 $previous_node = $my_node_id;
                         }
 
+                        if($previous_node)
+                        {
+                                $html_children = str_replace("[next-of-$previous_node]", "", $html_children);       
+                        }
+
                         return [$node_id, "<div id='node_$node_id' class='window hidden stage'
                         data-id='$node_id'
                         data-parent='$parent_node_id'
