@@ -71,7 +71,7 @@ $out_scr .= "<script type=\"text/javascript\">
         function positioningBlockBug() {
             var oldNode = window.treemain.nodeById(2);
             //var newNode = $('#node_2_new');
-            var newNode = $('    <div id=\"node_2\" class=\"window hidden\"\\n' +
+            var newNode = $('    <div id=\"node_2\" class=\"window hiddon\"\\n' +
                 '         data-id=\"2\"\\n' +
                 '         data-parent=\"0\"\\n' +
                 '         data-first-child=\"6\"\\n' +

@@ -63,7 +63,7 @@
                                 $html_children = str_replace("[next-of-$previous_node]", "", $html_children);       
                         }
 
-                        return [$node_id, "<div id='node_$node_id' class='window hidden status'
+                        return [$node_id, "<div id='node_$node_id' class='window hiddon status'
                         data-id='$node_id'
                         data-parent=\"$parent_node_id\"
                         data-first-child=\"$my_first_child_node_id\"
