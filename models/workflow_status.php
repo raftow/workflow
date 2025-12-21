@@ -41,24 +41,32 @@
                         $node_id = $parent_node_id."t".$this->id;
 
                         $html_children = "";
-
+                        $my_first_child_node_id = null;
+                        $previous_node = null;
                         foreach($workflowActionList as $workflowActionObj)
                         {
                                 /**
                                  * @var WorkflowAction $workflowActionObj
                                  */
-                                $html_children .= $workflowActionObj->displayTreeviewDiv($lang, $node_id)."\n";
+                                list($my_node_id, $node_html) = $workflowActionObj->displayTreeviewDiv($lang, $node_id)."\n";
+                                if($previous_node)
+                                {
+                                        $html_children = str_replace("[next-of-$previous_node]", $my_node_id, $html_children);       
+                                }
+                                if(empty($my_first_child_node_id)) $my_first_child_node_id = $my_node_id;
+                                $html_children .= $node_html;
+                                $previous_node = $my_node_id;
                         }
 
-                        return "<div id='node_$node_id' class='window hidden'
+                        return [$node_id, "<div id='node_$node_id' class='window hidden'
                         data-id='$node_id'
                         data-parent='$parent_node_id'
-                        data-first-child='4'
-                        data-next-sibling='2'>
+                        data-first-child='$my_first_child_node_id'
+                        data-next-sibling='[next-of-$node_id]'>
                         $node_display
                         </div>
                         $html_children
-                        ";
+                        "];
 
                 }
 

@@ -42,15 +42,15 @@
 
                         $html_children = "";
                         
-                        return "<div id='node_$node_id' class='window hidden'
+                        return [$node_id, "<div id='node_$node_id' class='window hidden'
                         data-id='$node_id'
                         data-parent='$parent_node_id'
-                        data-first-child='4'
-                        data-next-sibling='2'>
+                        data-first-child=''
+                        data-next-sibling=''>
                         $node_display
                         </div>
                         $html_children
-                        ";
+                        "];
 
                 }
 
