@@ -45,7 +45,7 @@
                         foreach($workflowStatusList as $workflowStatusObj)
                         {
                                 $myWorkflowActionList = $workflowActionList[$workflowStatusObj->id];                                
-                                if((($this->id==1) and ($workflowStatusObj->id==22)) or (count($myWorkflowActionList)==0))
+                                if((($this->id==1) and ($workflowStatusObj->id==22)) or (!$myWorkflowActionList) or (!is_array($myWorkflowActionList)) or (count($myWorkflowActionList)==0))
                                 {
                                         die("workflowStatusList = ".var_export($workflowStatusList, true)." myWorkflowActionList[$workflowStatusObj->id] = ".var_export($myWorkflowActionList, true));
                                 }
