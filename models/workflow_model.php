@@ -140,10 +140,12 @@ class WorkflowModel extends WorkflowObject
                 foreach($workflowStageOrdered as $so => $workflowStage)
                 {
                         $myWorkflowStatusList = $workflowStatusList[$workflowStage->id];
+                        /*
                         if((!$myWorkflowStatusList) or (count($myWorkflowStatusList) == 0))
                         {
                                 die("my workflowStatusList for stage $workflowStage->id is empty => $workflowStatusList = ".var_export($workflowStatusList, true));
                         }
+                        */
                         /**
                          * @var WorkflowStage $workflowStage
                          */
