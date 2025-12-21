@@ -156,9 +156,9 @@ class WorkflowModel extends WorkflowObject
                 return "<div dir='rtl' id='treemain' style='direction: rtl;'>
                         <div id='node_0' class='window hidden model'
                         data-id='$this_node_id'
-                        data-parent=''
-                        data-first-child='$my_first_child_stage_id'
-                        data-next-sibling=''>
+                        data-parent=\"\"
+                        data-first-child=\"$my_first_child_stage_id\"
+                        data-next-sibling=\"\">
                         $node_display
                         </div>
 

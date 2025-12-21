@@ -61,9 +61,9 @@
 
                         return [$node_id, "<div id='node_$node_id' class='window hidden stage'
                         data-id='$node_id'
-                        data-parent='$parent_node_id'
-                        data-first-child='$my_first_child_status_id'
-                        data-next-sibling='[next-of-$node_id]'>
+                        data-parent=\"$parent_node_id\"
+                        data-first-child=\"$my_first_child_status_id\"
+                        data-next-sibling=\"[next-of-$node_id]\">
                         $node_display
                         </div>
                         $html_children
