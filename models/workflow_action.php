@@ -42,7 +42,7 @@
 
                         $html_children = "";
                         
-                        return [$node_id, "<div id='node_$node_id' class='window hidden'
+                        return [$node_id, "<div id='node_$node_id' class='window hidden action'
                         data-id='$node_id'
                         data-parent='$parent_node_id'
                         data-first-child=''

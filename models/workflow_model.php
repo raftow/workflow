@@ -131,7 +131,7 @@ class WorkflowModel extends WorkflowObject
                         }
                 }        
 
-                $my_first_child_node_id = null;
+                $my_first_child_stage_id = null;
                 $previous_node = null;
                 foreach($workflowStageOrdered as $so => $workflowStage)
                 {
@@ -143,16 +143,16 @@ class WorkflowModel extends WorkflowObject
                         {
                                 $html_items = str_replace("[next-of-$previous_node]", $my_node_id, $html_items);       
                         }
-                        if(empty($my_first_child_node_id)) $my_first_child_node_id = $my_node_id;
+                        if(!$my_first_child_stage_id) $my_first_child_stage_id = $my_node_id;
                         $html_items .= "\n". $node_html;
                         $previous_node = $my_node_id;
                 }
 
                 return "<div dir='rtl' id='treemain' style='direction: rtl;'>
-                        <div id='node_0' class='window hidden'
+                        <div id='node_0' class='window hidden model'
                         data-id='$this_node_id'
                         data-parent=''
-                        data-first-child='$my_first_child_node_id'
+                        data-first-child='$my_first_child_stage_id'
                         data-next-sibling=''>
                         $node_display
                         </div>
