@@ -122,12 +122,15 @@ class WorkflowModel extends WorkflowObject
                                 if(!$workflowStageDone[$workflowStageObject->id])
                                 {
                                         $workflowStageDone[$workflowStageObject->id] = true;
+                                        $workflowStageObject->optimizeMemory();
                                         $workflowStageOrdered[] = $workflowStageObject;
                                 }
 
                                 $workflowStatusObj = $workflowTransitionItem->het("initial_status_id");
+                                $workflowStatusObj->optimizeMemory();
                                 $workflowStatusList[$workflowStageObject->id][$workflowStatusObj->id] = $workflowStatusObj;
                                 $workflowActionObj = $workflowTransitionItem->het("workflow_action_id");
+                                $workflowActionObj->optimizeMemory();
                                 $workflowActionList[$workflowStageObject->id][$workflowStatusObj->id][$workflowActionObj->id] = $workflowActionObj;
                                 
                         }
