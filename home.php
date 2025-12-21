@@ -1,6 +1,6 @@
 <?php
 
-$objWorkflowModel = WorkflowModel::loadByMainIndex("amd-14");
+$objWorkflowModel = WorkflowModel::loadById(1);//WorkflowModel::loadByMainIndex("amd-14");
 
 $out_scr = $objWorkflowModel->displayTransitionTreeview();
 $out_scr .= "<script type=\"text/javascript\">
