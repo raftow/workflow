@@ -115,12 +115,12 @@ class WorkflowModel extends WorkflowObject
                 $workflowStageOrdered = [];
                 foreach($workflowTransitionList as $workflowTransitionItem)
                 {
-                        $workflowStageObject = $workflowTransitionItem->het("workflow_stage_id");
+                        $workflowStageObject = $workflowTransitionItem->het("initial_workflow_stage_id");
                         if($workflowStageObject) 
                         {
                                 if(!$workflowStageDone[$workflowStageObject->id])
                                 {
-                                        $workflowStatusObj = $workflowTransitionItem->het("workflow_status_id");
+                                        $workflowStatusObj = $workflowTransitionItem->het("initial_workflow_status_id");
                                         $workflowStatusList[$workflowStageObject->id][$workflowStatusObj->id] = $workflowStatusObj;
                                         $workflowActionObj = $workflowTransitionItem->het("workflow_action_id");
                                         $workflowActionList[$workflowStageObject->id][$workflowStatusObj->id][$workflowActionObj->id] = $workflowActionObj;
