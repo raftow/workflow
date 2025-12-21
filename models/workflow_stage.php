@@ -63,7 +63,7 @@
                                 $html_children = str_replace("[next-of-$previous_node]", "", $html_children);       
                         }
 
-                        die("html_children of stage $node_id = ".$html_children."  ");
+                        die("html_children of stage $node_id = ".$html_children."  workflowStatusList = ".var_export($workflowStatusList, true)."");
 
                         return [$node_id, "<div id='node_$node_id' class='window hiddon stage'
                         data-id='$node_id'
