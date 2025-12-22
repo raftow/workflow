@@ -46,7 +46,7 @@
                         data-id='$node_id'
                         data-parent='$parent_node_id'
                         data-first-child=''
-                        data-next-sibling=''>
+                        data-next-sibling='[next-of-$node_id]'>
                         $node_display
                         </div>
                         $html_children
