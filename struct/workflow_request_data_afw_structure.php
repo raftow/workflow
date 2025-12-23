@@ -15,7 +15,7 @@ class WorkflowWorkflowRequestDataAfwStructure
                         $obj->editByStep = false;
                         //$obj->editNbSteps = 1; 
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
-                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'WorkflowRequestData', "submit" => true);
+                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowRequestData', "submit" => true);
                 } else {
                         WorkflowRequestDataArTranslator::initData();
                         WorkflowRequestDataEnTranslator::initData();
@@ -77,7 +77,7 @@ class WorkflowWorkflowRequestDataAfwStructure
                         'UTF8' => false,
                         'TYPE' => 'FK',
                         'ANSWER' => 'application_field',
-                        'ANSMODULE' => 'adm',
+                        'ANSMODULE' => 'workflow',
                         'SIZE' => 40,
                         'DEFAUT' => 0,
                         'DISPLAY' => true,

@@ -1,6 +1,6 @@
 <?php
 
-class ApplicantFileEnTranslator{
+class WorkflowApplicantFileEnTranslator{
     public static function initData()
     {
         $trad = [];
@@ -23,7 +23,7 @@ class ApplicantFileEnTranslator{
 
     public static function getInstance()
 	{
-		if(false) return new ApplicantFileArTranslator();
-		return new ApplicantFile();
+		if(false) return new WorkflowApplicantFileArTranslator();
+		return new WorkflowApplicantFile();
 	}
 }

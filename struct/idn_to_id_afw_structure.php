@@ -17,7 +17,7 @@
                                 $obj->showRetrieveErrors = true;
                                 $obj->general_check_errors = true;
                                 // $obj->after_save_edit = array("class"=>'Road',"attribute"=>'road_id', "currmod"=>'btb',"currstep"=>9);
-                                $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'adm', "class"=>'IdnToId',"submit"=>true);
+                                $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'workflow', "class"=>'IdnToId',"submit"=>true);
                         }
                         else 
                         {
@@ -47,7 +47,7 @@
                 'idn_type_id' => array('SHORTNAME' => 'type',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
                         'EDIT' => true,  'QEDIT' => true,  
                         'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'UTF8' => false,  
-                        'TYPE' => 'FK',  'ANSWER' => 'identity_type',  'ANSMODULE' => 'adm',  
+                        'TYPE' => 'INT',  /*'ANSWER' => 'identity_type',  'ANSMODULE' => 'xxxx',  */
                         'RELATION' => 'unkn', 'MANDATORY' => true, 'READONLY' => true, 
                         'CSS' => 'width_pct_50', ),
 
