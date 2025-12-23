@@ -281,10 +281,10 @@ try
    workflow_module_id int(11) NOT NULL , 
    external_code varchar(16)  NOT NULL , 
    session_code varchar(16)  NOT NULL DEFAULT '' , 
-   workflow_session_name_ar varchar(200)  NOT NULL DEFAULT '' , 
-   workflow_session_name_en varchar(200)  NOT NULL DEFAULT '' , 
-   workflow_session_desc_ar text  NOT NULL DEFAULT '' , 
-   workflow_session_desc_en text  NOT NULL DEFAULT '' , 
+   workflow_session_name_ar varchar(200)   DEFAULT NULL , 
+   workflow_session_name_en varchar(200)  DEFAULT NULL , 
+   workflow_session_desc_ar text  DEFAULT NULL , 
+   workflow_session_desc_en text  DEFAULT NULL , 
    
   
   PRIMARY KEY (`id`)
