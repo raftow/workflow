@@ -555,7 +555,7 @@ class WorkflowWorkflowApplicantAfwStructure
                 ),
 
 
-                'workflowDecisionRequestList' => array(
+                'workflowRequestList' => array(
                         'STEP' => 5,
                         'FGROUP' => 'appl',
                         'SHOW' => true,
@@ -577,7 +577,7 @@ class WorkflowWorkflowApplicantAfwStructure
                         'UTF8' => false,
                         'TYPE' => 'FK',
                         'CATEGORY' => 'ITEMS',
-                        'ANSWER' => 'workflow_decision_request',
+                        'ANSWER' => 'workflow_request',
                         'ANSMODULE' => 'workflow',
                         'ITEM' => 'workflow_applicant_id',
                         'READONLY' => true,
