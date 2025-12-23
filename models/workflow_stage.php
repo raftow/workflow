@@ -46,11 +46,11 @@
                         {
                                 $myWorkflowActionList = $workflowActionList[$workflowStatusObj->id];                                
                                 /*
-                                if((($this->id==1) and ($workflowStatusObj->id==22)))
+                                if((($this->id==1) and ($workflowStatusObj->id==1)))
                                 {
-                                        die("stage $this->id status $workflowStatusObj->id workflowActionList = ".var_export($workflowActionList, true)." myWorkflowActionList[$workflowStatusObj->id] = ".var_export($myWorkflowActionList, true));
+                                        die("stage $this->id status $workflowStatusObj->id myWorkflowActionList[$workflowStatusObj->id] = ".var_export($myWorkflowActionList, true)." workflowActionList = ".var_export($workflowActionList, true));
                                 }
-
+                                
                                 if((!$myWorkflowActionList) or (!is_array($myWorkflowActionList)) or (count($myWorkflowActionList)==0))
                                 {
                                         die("stage $this->id status $workflowStatusObj->id workflowActionList = ".var_export($workflowActionList, true)." myWorkflowActionList[$workflowStatusObj->id] = ".var_export($myWorkflowActionList, true));

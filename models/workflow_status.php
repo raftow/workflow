@@ -63,6 +63,8 @@
                                 $html_children = str_replace("[next-of-$previous_node]", "", $html_children);       
                         }
 
+                        // if($node_id=="s1t1") die("html_children = $html_children");
+
                         return [$node_id, 
                         "<div id='node_$node_id' class='window hiddon status'
                                 data-id='$node_id'
