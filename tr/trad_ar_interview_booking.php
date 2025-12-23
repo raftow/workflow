@@ -16,12 +16,12 @@ class InterviewBookingArTranslator{
 		$trad["interview_booking"]["applicant_id"] = "المتقدم";
 		$trad["interview_booking"]["application_plan_id"] = "خطة التقديم";
 		$trad["interview_booking"]["application_simulation_id"] = "الapplication_simulation.single";
-		$trad["interview_booking"]["booking_status_id"] = "Booking الstatus";
+		$trad["interview_booking"]["booking_status_id"] = "حالة الحجز";
 		$trad["interview_booking"]["booked_at"] = "تم الحجز في";
 		$trad["interview_booking"]["booked_by"] = "تم الحجز بواسطة";
 		$trad["interview_booking"]["cancelled_at"] = "تم الإلغاء في";
 		$trad["interview_booking"]["cancelled_by"] = "تم الإلغاء بواسطة";
-		$trad["interview_booking"]["interview_cancellation_reason_id"] = "Interview cancellation reason";
+		$trad["interview_booking"]["interview_cancellation_reason_id"] = "سبب إلغاء المقابلة";
 		$trad["interview_booking"]["can_reschedule_ind"] = "يمكن إعادة الجدولة";
 		$trad["interview_booking"]["can_cancel_ind"] = "يمكن الإلغاء";
 		$trad["interview_booking"]["no_show_flag"] = "علامة عدم الحضور";
