@@ -3218,16 +3218,16 @@
           'css' => 'bf',
           'icon' => 'bficon-105199 bfc-',
         ),
-        105041 => 
+        105045 => 
         array (
-          'id' => '105041',
-          'code' => 'f2-a-workflow_employee/qedit',
+          'id' => '105045',
+          'code' => 'f2-a-workflow_employee/qsearch',
           'level' => '1',
-          'menu_name_ar' => 'إدارة موظفي إدارة أعمال',
-          'menu_name_en' => 'Workflow employees administration',
-          'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowEmployee&currmod=workflow&ids=all&newo=3',
+          'menu_name_ar' => 'موظفي إدارة أعمال',
+          'menu_name_en' => 'Workflow employees',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEmployee&currmod=workflow',
           'css' => 'bf',
-          'icon' => 'bficon-105041 bfc-',
+          'icon' => 'bficon-105045 bfc-',
         ),
         105206 => 
         array (

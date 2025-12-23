@@ -1097,7 +1097,7 @@ class WorkflowObject extends AFWObject{
                 $employee_id = $objme->getEmployeeId();
                 if (!$employee_id) return 0;
 
-                return CrmEmployee::isAdmin($employee_id);
+                return WorkflowEmployee::isAdmin($employee_id);
         }
 
         public static function userIsGeneralSupervisor($objme = null)
@@ -1108,7 +1108,7 @@ class WorkflowObject extends AFWObject{
                 $employee_id = $objme->getEmployeeId();
                 if (!$employee_id) return 0;
 
-                return CrmEmployee::isGeneralAdmin($employee_id);
+                return WorkflowEmployee::isGeneralAdmin($employee_id);
         }
 
         public static function userIsSuperAdmin($objme = null)

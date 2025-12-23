@@ -14,8 +14,8 @@ class WorkflowWorkflowEmployeeAfwStructure
 			$obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
 			$obj->DISPLAY_FIELD = "";
 			$obj->ORDER_BY_FIELDS = "orgunit_id, employee_id";
-			$obj->IS_LOOKUP = true;
-			$obj->IS_SMALL_LOOKUP = true;
+			// $obj->IS_LOOKUP = true;
+			// $obj->IS_SMALL_LOOKUP = true;
 
 			$obj->UNIQUE_KEY = array('orgunit_id', 'employee_id');
 
