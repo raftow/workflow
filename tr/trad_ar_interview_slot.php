@@ -17,13 +17,13 @@ class InterviewSlotArTranslator{
 		$trad["interview_slot"]["start_time"] = "وقت البداية";
 		$trad["interview_slot"]["end_time"] = "وقت النهاية";
 		$trad["interview_slot"]["duration"] = "مدة المقابلة (دقائق)";
-		$trad["interview_slot"]["capacity"] = "الطاقة الاستيعابية: عدد المتقدمين المسموح به لكل موعد";
+		$trad["interview_slot"]["capacity"] = "الطاقة الاستيعابية: (عدد المتقدمين المسموح به لكل موعد)";
 		$trad["interview_slot"]["booked_seats_count"] = "عدد المواعيد المحجوزة";
 		$trad["interview_slot"]["interview_type"] = "نوع المقابلة";
 		$trad["interview_slot"]["location"] = "الموقع";
 		$trad["interview_slot"]["virtual_meeting_url"] = "رابط الاجتماع الافتراضي";
-		$trad["interview_slot"]["workflow_commitee_id_"] = "اللجنة/المحاورون";
-		$trad["interview_slot"]["interview_slot_status_id"] = "Interview slot status";
+		$trad["interview_slot"]["workflow_commitee_id"] = "اللجنة/المحاورون";
+		$trad["interview_slot"]["interview_slot_status_id"] = "حالة موعد المقابلة";
         // steps
         return $trad;
     }
