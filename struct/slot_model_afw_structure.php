@@ -90,20 +90,20 @@
 
 		'single_duration' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'single_interviews_total' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'capacity' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
-				'TYPE' => 'INT',  'READONLY' => true,  'DNA' => true, 
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'interview_type' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
@@ -114,20 +114,20 @@
 
 		'room_location' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 255,  'MAXLENGTH' => 255,  'MIN-SIZE' => 16,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
+				'SIZE' => 255,  'MAXLENGTH' => 255,  'MIN-SIZE' => 16,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => true,  
 				'TYPE' => 'TEXT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'workflow_commitee_id' => array('SHORTNAME' => 'commitee',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  'ANSWER' => 'workflow_commitee',  'ANSMODULE' => 'workflow',  
 				'RELATION' => 'unkn',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'buffer_minutes' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
