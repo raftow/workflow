@@ -278,7 +278,7 @@ try
   `sci_id` int(11) DEFAULT NULL,
   
     
-   workflow_module_id int(11) NOT NULL , 
+   workflow_model_id int(11) NOT NULL , 
    external_code varchar(16)  NOT NULL , 
    session_code varchar(16)  NOT NULL DEFAULT '' , 
    workflow_session_name_ar varchar(200)   DEFAULT NULL , 

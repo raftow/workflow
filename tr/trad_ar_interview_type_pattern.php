@@ -16,6 +16,7 @@ class InterviewTypePatternArTranslator{
 		$trad["interview_type_pattern"]["buffer_hours"] = "تمكين الحجز بعد";
 		$trad["interview_type_pattern"]["booking_program_ind"] = "حجز خاص بالبرنامج";
 		$trad["interview_type_pattern"]["Max_reschedule"] = "العدد المسموح لإعادة جدولة الموعد";
+		$trad["interview_type_pattern"]["workflow_stage_id"] = "مرحلة القبول";
         // steps
         return $trad;
     }

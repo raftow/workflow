@@ -177,13 +177,3 @@ class SlotModel extends AFWObject{
 }
 
 
-
-// errors 
-
-no field type defined for field application_plan_id_ 
-no field type defined for field academic_program_id_ 
-no field type defined for field total_duration 
-no field type defined for field single_duration 
-no field type defined for field single_interviews_total 
-no field type defined for field interview_type 
-no field type defined for field buffer_minutes 
