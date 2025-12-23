@@ -5,9 +5,9 @@ class InterviewCancellationReasonArTranslator{
     {
         $trad = [];
 
-		$trad["interview_cancellation_reason"]["interviewcancellationreason.single"] = "Interview cancellation reason";
+		$trad["interview_cancellation_reason"]["interviewcancellationreason.single"] = "سبب إلغاء المقابلة";
 		$trad["interview_cancellation_reason"]["interviewcancellationreason.new"] = "جديد(ة)";
-		$trad["interview_cancellation_reason"]["interview_cancellation_reason"] = "Interview cancellation reasons";
+		$trad["interview_cancellation_reason"]["interview_cancellation_reason"] = "أسباب إلغاء المقابلة";
 		$trad["interview_cancellation_reason"]["name_ar"] = "مسمى  بالعربية";
 		$trad["interview_cancellation_reason"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["interview_cancellation_reason"]["desc_ar"] = "وصف  بالعربية";

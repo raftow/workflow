@@ -5,9 +5,9 @@ class BookingStatusArTranslator{
     {
         $trad = [];
 
-		$trad["booking_status"]["bookingstatus.single"] = "Booking status";
+		$trad["booking_status"]["bookingstatus.single"] = "حالة الحجز";
 		$trad["booking_status"]["bookingstatus.new"] = "جديد(ة)";
-		$trad["booking_status"]["booking_status"] = "Booking statuss";
+		$trad["booking_status"]["booking_status"] = "حالات الحجز";
 		$trad["booking_status"]["lookup_code"] = "الرمز الفني";
 		$trad["booking_status"]["name_ar"] = "مسمى  بالعربية";
 		$trad["booking_status"]["name_en"] = "مسمى  بالانجليزية";

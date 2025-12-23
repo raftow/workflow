@@ -177,15 +177,3 @@ class InterviewBooking extends AFWObject{
 }
 
 
-
-// errors 
-
-no field type defined for field applicant_id_ 
-no field type defined for field application_plan_id_ 
-no field type defined for field application_simulation_id_ 
-no field type defined for field booked_at 
-no field type defined for field booked_by 
-no field type defined for field cancelled_at 
-no field type defined for field cancelled_by 
-no field type defined for field no_show_flag 
-no field type defined for field interviewer 
