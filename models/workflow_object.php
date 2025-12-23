@@ -957,28 +957,6 @@ class WorkflowObject extends AFWObject{
                 
                 return $arr_list_of_payment_method;
         }
-        public function list_of_interview_type()
-    {
-        $lang = AfwLanguageHelper::getGlobalLanguage();
-        return self::interview_type()[$lang];
-    }
-    public static function interview_type()
-    {
-            $arr_list_of_interview_type = array();
-            
-                    
-            $arr_list_of_interview_type["en"][1] = "Onsite";
-            $arr_list_of_interview_type["ar"][1] = "حضوري";
-            $arr_list_of_interview_type["code"][1] = "ONS";
-
-            $arr_list_of_interview_type["en"][2] = "Virtual";
-            $arr_list_of_interview_type["ar"][2] = "عن بعد";
-            $arr_list_of_interview_type["code"][2] = "VIR";
-
-
-
-            return $arr_list_of_interview_type;
-    }
         public static function executeIndicator($object, $indicator, $normal_class, $arrObjectsRelated, $sens="asc", $default_red_pct=0, $default_orange_pct=0)
         {
                 global $MODE_SQL_PROCESS_LOURD, $nb_queries_executed;
