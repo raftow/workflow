@@ -290,7 +290,7 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-        AfwDatabase::db_query("create unique index uk_workflow_session on ".$server_db_prefix."workflow.workflow_session(workflow_module_id,external_code);");
+        AfwDatabase::db_query("create unique index uk_workflow_session on ".$server_db_prefix."workflow.workflow_session(workflow_model_id,external_code);");
 
 }
 catch(Exception $e)
