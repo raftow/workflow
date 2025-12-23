@@ -173,7 +173,30 @@ class SlotModel extends AFWObject{
                return true;
             }    
 	}
-             
+     
+    public function list_of_interview_type()
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+        return self::interview_type()[$lang];
+    }
+    public static function interview_type()
+    {
+            $arr_list_of_interview_type = array();
+            
+                    
+            $arr_list_of_interview_type["en"][1] = "Onsite";
+            $arr_list_of_interview_type["ar"][1] = "حضوري";
+            $arr_list_of_interview_type["code"][1] = "ONS";
+
+            $arr_list_of_interview_type["en"][2] = "Virtual";
+            $arr_list_of_interview_type["ar"][2] = "عن بعد";
+            $arr_list_of_interview_type["code"][2] = "VIR";
+
+
+
+            return $arr_list_of_interview_type;
+    }
+
 }
 
 
