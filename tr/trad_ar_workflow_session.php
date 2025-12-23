@@ -12,7 +12,7 @@ class WorkflowSessionArTranslator{
 		$trad["workflow_session"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["workflow_session"]["desc_ar"] = "وصف  بالعربية";
 		$trad["workflow_session"]["desc_en"] = "وصف  بالانجليزية";
-		$trad["workflow_session"]["workflow_module_id"] = "التطبيق";
+		$trad["workflow_session"]["workflow_model_id"] = "نموذج سير العمل";
 		$trad["workflow_session"]["external_code"] = "الرمز الخارجي للدورة";
 		$trad["workflow_session"]["session_code"] = "الرمز الداخلي للدورة";
 		$trad["workflow_session"]["workflow_session_name_ar"] = "اسم الدورة عربي";
