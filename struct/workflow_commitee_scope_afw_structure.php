@@ -18,7 +18,7 @@ class WorkflowWorkflowCommiteeScopeAfwStructure
             //$obj->editNbSteps = 1;
 
             // $obj->after_save_edit = array( 'class'=>'aconditionOriginType', 'attribute'=>'acondition_origin_type_id', 'currmod'=>'workflow', 'currstep'=>1 );
-            $obj->after_save_edit = array( 'mode'=>'qsearch', 'currmod'=>'adm', 'class'=>'WorkflowCommiteeScope', 'submit'=>true );
+            $obj->after_save_edit = array( 'mode'=>'qsearch', 'currmod'=>'workflow', 'class'=>'WorkflowCommiteeScope', 'submit'=>true );
         } else {
             WorkflowCommiteeScopeArTranslator::initData();
             WorkflowCommiteeScopeEnTranslator::initData();

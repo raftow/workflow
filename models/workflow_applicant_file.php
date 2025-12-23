@@ -5,26 +5,26 @@ $file_dir_name = dirname(__FILE__);
 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class ApplicantFile extends AFWObject
+class WorkflowApplicantFile extends AFWObject
 {
 
     public static $MY_ATABLE_ID = 13947;
 
     public static $DATABASE        = "pmu_adm";
-    public static $MODULE                = "adm";
-    public static $TABLE            = "applicant_file";
+    public static $MODULE                = "workflow";
+    public static $TABLE            = "workflow_applicant_file";
 
     public static $DB_STRUCTURE = null;
 
     public function __construct()
     {
-        parent::__construct("applicant_file", "id", "adm");
-        AdmApplicantFileAfwStructure::initInstance($this);
+        parent::__construct("workflow_applicant_file", "id", "workflow");
+          WorkflowWorkflowApplicantFileAfwStructure::initInstance($this);
     }
 
     public static function loadById($id)
     {
-        $obj = new ApplicantFile();
+        $obj = new WorkflowApplicantFile();
         $obj->select_visibilite_horizontale();
         if ($obj->load($id)) {
             return $obj;
@@ -33,7 +33,7 @@ class ApplicantFile extends AFWObject
 
     public static function loadByMainIndex($applicant_id, $workflow_file_id, $idn, $create_obj_if_not_found = false)
     {
-        $obj = new ApplicantFile();
+        $obj = new WorkflowApplicantFile();
         $obj->select("applicant_id", $applicant_id);
         $obj->select("workflow_file_id", $workflow_file_id);
         if ($obj->load()) {

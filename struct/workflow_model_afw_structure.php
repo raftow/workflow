@@ -15,7 +15,7 @@ class WorkflowWorkflowModelAfwStructure
                         $obj->editByStep = true;
                         $obj->editNbSteps = 3;
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
-                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'WorkflowModel', "submit" => true);
+                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowModel', "submit" => true);
                 } else {
                         WorkflowModelArTranslator::initData();
                         WorkflowModelEnTranslator::initData();

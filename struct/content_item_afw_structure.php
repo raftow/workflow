@@ -20,7 +20,7 @@ class WorkflowContentItemAfwStructure
 			
 			$obj->OwnedBy = array('module' => "workflow", 'afw' => "Content");
 			$obj->after_save_edit = array("class"=>'Content',"attribute"=>'content_id', "currmod"=>'workflow',"currstep"=>2);
-			//$obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'ContentItem', "submit" => true);
+			//$obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'ContentItem', "submit" => true);
 		} else {
 			ContentItemArTranslator::initData();
 			ContentItemEnTranslator::initData();

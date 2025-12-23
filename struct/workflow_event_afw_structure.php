@@ -23,7 +23,7 @@
                 $obj->showRetrieveErrors = true;
                 $obj->general_check_errors = true;
                                 // $obj->after_save_edit = array("class"=>'Road',"attribute"=>'road_id', "currmod"=>'btb',"currstep"=>9);
-                                $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'adm', "class"=>'WorkflowEvent',"submit"=>true);
+                                $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'workflow', "class"=>'WorkflowEvent',"submit"=>true);
                         }
                         else 
                         {

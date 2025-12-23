@@ -1,26 +1,26 @@
 <?php
 
 
-class AdmApplicantFileAfwStructure
+class WorkflowWorkflowApplicantFileAfwStructure
 {
         // token separator = §
         public static function initInstance(&$obj)
         {
-                if ($obj instanceof ApplicantFile) {
+                if ($obj instanceof WorkflowApplicantFile) {
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
                         $obj->DISPLAY_FIELD = "name_ar";
                         $obj->ORDER_BY_FIELDS = "name_ar";
                         $obj->UNIQUE_KEY = array('applicant_id', 'workflow_file_id');
 
-                        $obj->OwnedBy = array('module' => "adm", 'afw' => "Applicant");
+                        $obj->OwnedBy = array('module' => "workflow", 'afw' => "Applicant");
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
-                        $obj->after_save_edit = array("class"=>'Applicant',"attribute"=>'applicant_id', "currmod"=>'adm',"currstep"=>7);
-                        // $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'adm', "class" => 'ApplicantFile', "submit" => true);
+                        $obj->after_save_edit = array("class"=>'Applicant',"attribute"=>'applicant_id', "currmod"=>'workflow',"currstep"=>7);
+                        // $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowApplicantFile', "submit" => true);
                 } else {
-                        ApplicantFileArTranslator::initData();
-                        ApplicantFileEnTranslator::initData();
+                        WorkflowApplicantFileArTranslator::initData();
+                        WorkflowApplicantFileEnTranslator::initData();
                 }
         }
 
@@ -30,7 +30,6 @@ class AdmApplicantFileAfwStructure
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
                 'applicant_id' => array(
-                        'SHORTNAME' => 'applicant',
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -44,8 +43,8 @@ class AdmApplicantFileAfwStructure
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'UTF8' => false,
                         'TYPE' => 'FK',
-                        'ANSWER' => 'applicant',
-                        'ANSMODULE' => 'adm',
+                        'ANSWER' => 'workflow_applicant',
+                        'ANSMODULE' => 'workflow',
                         'RELATION' => 'OneToMany',
                         'READONLY' => true,
                         'CSS' => 'width_pct_50',
@@ -196,30 +195,6 @@ class AdmApplicantFileAfwStructure
                         'RELATION' => 'unkn',
                         'READONLY' => false,
                         'CSS' => 'width_pct_100',
-                ),
-
-                'document_type_id' => array(
-                        'SHORTNAME' => 'type',
-                        'SEARCH' => true,
-                        'QSEARCH' => false,
-                        'SHOW' => true,
-                        'AUDIT' => false,
-                        'RETRIEVE' => true,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => 32,
-                        'MAXLENGTH' => 32,
-                        'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        //'FORMAT-INPUT' => 'btn-bootstrap',
-                        'UTF8' => false,
-                        'TYPE' => 'FK',
-                        'ANSWER' => 'document_type',
-                        'WHERE' => "",
-                        'ANSMODULE' => 'adm',
-                        'RELATION' => 'unkn',
-                        'READONLY' => false,
-                        'CSS' => 'width_pct_50',
                 ),
 
                 'download_light' => array('STEP' => 1,  

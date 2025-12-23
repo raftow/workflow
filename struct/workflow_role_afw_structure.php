@@ -19,7 +19,7 @@
                                 $obj->general_check_errors = true;
                                 $obj->editByStep = false;
                                 // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
-                                $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'adm', "class"=>'WorkflowRole',"submit"=>true);
+                                $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'workflow', "class"=>'WorkflowRole',"submit"=>true);
                         }
                         else 
                         {
