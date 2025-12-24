@@ -9,6 +9,7 @@ class WorkflowModuleArTranslator
 		$trad = [];
 		$trad["workflow_module"]["step1"] = "التعريف";
 		$trad["workflow_module"]["step2"] = "الشروط";
+		$trad["workflow_module"]["step3"] = "القطاعات";
 
 		$trad["workflow_module"]["workflowConditionList"] = "الشروط";
 

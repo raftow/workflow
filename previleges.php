@@ -3929,16 +3929,16 @@
           'css' => 'bf',
           'icon' => 'bficon-105041 bfc-',
         ),
-        105111 => 
+        105115 => 
         array (
-          'id' => '105111',
-          'code' => 'f2-a-workflow_role/qedit',
+          'id' => '105115',
+          'code' => 'f2-a-workflow_role/qsearch',
           'level' => '1',
-          'menu_name_ar' => 'إدارة أدوار',
-          'menu_name_en' => 'Workflow roles administration',
-          'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowRole&currmod=workflow&ids=all&newo=3',
+          'menu_name_ar' => 'أدوار',
+          'menu_name_en' => 'Workflow roles',
+          'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRole&currmod=workflow',
           'css' => 'bf',
-          'icon' => 'bficon-105111 bfc-',
+          'icon' => 'bficon-105115 bfc-',
         ),
         105118 => 
         array (
