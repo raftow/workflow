@@ -34,5 +34,13 @@
                         return false;
                 }
 
+                public function shouldBeCalculatedField($attribute){
+                        if($attribute=="domain1_enum") return true;
+                        if($attribute=="domain2_enum") return true;
+                        if($attribute=="domain3_enum") return true;
+                        if($attribute=="domain4_enum") return true;
+                        return false;
+                }
+
         }
 ?>
