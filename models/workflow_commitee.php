@@ -34,5 +34,34 @@
                         return false;
                 }
 
+                protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
+                {
+                        $lang = AfwLanguageHelper::getGlobalLanguage();
+                        // $objme = AfwSession::getUserConnected();
+                        // $me = ($objme) ? $objme->id : 0;
+
+                        $otherLinksArray = $this->getOtherLinksArrayStandard($mode, $genereLog, $step);
+                        $my_id = $this->getId();
+                        $displ = $this->getDisplay($lang);
+
+                        if ($mode == "mode_workflowCommiteeScopeList") {
+                        unset($link);
+                        $link = array();
+                        $title = "إضافة برنامج جديد";
+                        $title_detailed = $title . "لـ : " . $displ;
+                        $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowCommiteeScope&currmod=workflow&sel_workflow_commitee_id=$my_id";
+                        $link["TITLE"] = $title;
+                        $link["UGROUPS"] = array();
+                        $otherLinksArray[] = $link;
+                        }
+
+
+
+                        // check errors on all steps (by default no for optimization)
+                        // rafik don't know why this : \//  = false;
+
+                        return $otherLinksArray;
+                }
+
         }
 ?>

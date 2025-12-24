@@ -9,18 +9,17 @@
                         if ($obj instanceof SlotModel ) 
                         {
                                 $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-                                $obj->DISPLAY_FIELD_BY_LANG = ['ar'=>"name_ar", 'en'=>"name_en"];
+                                $obj->DISPLAY_FIELD_BY_LANG = ['ar'=>array("workflow_session_id",'workflow_scope_id'), 'en'=>array("workflow_session_id",'workflow_scope_id')];
                                 
                                 // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                                 $obj->ORDER_BY_FIELDS = "";
                                  
+
+                                 $obj->UNIQUE_KEY = array("interview_type_pattern_id", "workflow_session_id", "interview_date");
                                 
-                                
-                                // $obj->UNIQUE_KEY = array('XXX', 'YYY');
-                                
-                $obj->showQeditErrors = true;
-                $obj->showRetrieveErrors = true;
-                $obj->general_check_errors = true;
+								$obj->showQeditErrors = true;
+								$obj->showRetrieveErrors = true;
+								$obj->general_check_errors = true;
                                 // $obj->after_save_edit = array("class"=>'SlotModel',"attribute"=>'xxxx_id', "currmod"=>'workflow',"currstep"=>2);
                                 $obj->after_save_edit = array("mode"=>"qsearch", "currmod"=>'workflow', "class"=>'SlotModel',"submit"=>true);
                         }
@@ -67,7 +66,7 @@
 		'interview_date' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 10,  'MAXLENGTH' => 10,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
-				'TYPE' => 'DATE',  'FORMAT' => 'HIJRI_UNIT',  'READONLY' => false,  'DNA' => true, 
+				'TYPE' => 'GDAT',    'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'start_time' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  

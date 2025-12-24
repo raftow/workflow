@@ -39,7 +39,38 @@ class SlotModel extends AFWObject{
                     return 0;
                 }
         
-        
+         public static function loadByMainIndex($interview_type_pattern_id, $workflow_session_id, $interview_date,$create_obj_if_not_found=false)
+        {
+           if(!$interview_type_pattern_id) throw new AfwRuntimeException("loadByMainIndex : interview_type_pattern_id is mandatory field");
+           if(!$workflow_session_id) throw new AfwRuntimeException("loadByMainIndex : workflow_session_id is mandatory field");
+           if(!$interview_date) throw new AfwRuntimeException("loadByMainIndex : interview_date is mandatory field");
+
+
+           $obj = new SlotModel();
+           $obj->select("interview_type_pattern_id",$interview_type_pattern_id);
+           $obj->select("workflow_session_id",$workflow_session_id);
+           $obj->select("interview_date",$interview_date);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("interview_type_pattern_id",$interview_type_pattern_id);
+                $obj->set("workflow_session_id",$workflow_session_id);
+                $obj->set("interview_date",$interview_date);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
+
         public function getDisplay($lang="ar")
         {
                
@@ -128,7 +159,11 @@ class SlotModel extends AFWObject{
         {
             return true;
         }            
-        
+        public function afterMaj($id, $fields_updated)
+        {
+            $this->generateInterviewSlots();
+            return true;
+        }
         
         public function beforeDelete($id,$id_replace) 
         {
@@ -197,6 +232,66 @@ class SlotModel extends AFWObject{
             return $arr_list_of_interview_type;
     }
 
+
+    public function generateInterviewSlots()
+    {
+        $objInterbiewPattern = $this->het("interview_type_pattern_id");
+        
+        
+        $slot_model_id = $this->id;
+        $interview_date = $this->getVal("interview_date");
+        $start_time = $this->getVal("start_time");
+        $end_time = $this->getVal("end_time");
+        $single_duration = $this->getVal("single_duration");
+
+
+        $start = new DateTime("$interview_date $start_time");
+        $end   = new DateTime("$interview_date $end_time");
+        $interval = new DateInterval("PT{$single_duration}M");
+        $buffer_minutes = $this->getVal("buffer_minutes");
+        if($buffer_minutes && is_numeric($buffer_minutes) && $buffer_minutes>0)
+        {
+            $buffer_interval = new DateInterval("PT{$buffer_minutes}M");
+        }
+        else
+        {
+            $buffer_interval = null;
+        }
+
+
+        while ($start < $end) {
+            $slot_start = $start->format('H:i');
+            $start->add($interval);
+            if ($start > $end) {
+                break;
+            }
+
+            $slot_end = $start->format('H:i');
+
+            $objInterviewSlot = InterviewSlot::loadByMainIndex($slot_model_id, $interview_date, $start_time,true);
+            $objInterviewSlot->set("slot_model_id", $this->getId());
+            $objInterviewSlot->set("interview_date", $this->getVal("interview_date"));
+            $objInterviewSlot->set("start_time", $slot_start);
+            $objInterviewSlot->set("end_time", $slot_end);
+            $objInterviewSlot->set("duration", $this->getVal("duration"));
+            $objInterviewSlot->set("capacity", $this->getVal("capacity"));
+            $objInterviewSlot->set("booked_seats_count", $this->getVal("booked_seats_count"));
+            $objInterviewSlot->set("interview_type", $this->getVal("interview_type"));
+            $objInterviewSlot->set("location", $this->getVal("location"));
+            $objInterviewSlot->set("virtual_meeting_url", $this->getVal("virtual_meeting_url"));
+            $objInterviewSlot->set("workflow_commitee_id", $this->getVal("workflow_commitee_id"));
+            $objInterviewSlot->set("interview_slot_status_id", 1);
+            $objInterviewSlot->commit();
+            if($buffer_interval)
+            {
+                $start->add($buffer_interval);
+            }
+
+        }
+     
+
+        
+    }
 }
 
 

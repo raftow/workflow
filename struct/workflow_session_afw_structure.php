@@ -16,7 +16,7 @@
                                  
                                 
                                 
-                                 $obj->UNIQUE_KEY = array('workflow_module_id', 'external_code');
+                                 $obj->UNIQUE_KEY = array('workflow_model_id', 'external_code');
                                 
                 $obj->showQeditErrors = true;
                 $obj->showRetrieveErrors = true;

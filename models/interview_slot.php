@@ -34,12 +34,42 @@ class InterviewSlot extends AFWObject{
         
 
         public function getScenarioItemId($currstep)
-                {
-                    
-                    return 0;
-                }
+        {
+            
+            return 0;
+        }
         
-        
+        public static function loadByMainIndex($slot_model_id, $interview_date, $start_time,$create_obj_if_not_found=false)
+        {
+           if(!$slot_model_id) throw new AfwRuntimeException("loadByMainIndex : slot_model_id is mandatory field");
+           if(!$interview_date) throw new AfwRuntimeException("loadByMainIndex : interview_date is mandatory field");
+           if(!$start_time) throw new AfwRuntimeException("loadByMainIndex : start_time is mandatory field");
+
+
+           $obj = new InterviewSlot();
+           $obj->select("slot_model_id",$slot_model_id);
+           $obj->select("interview_date",$interview_date);
+           $obj->select("start_time",$start_time);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("slot_model_id",$slot_model_id);
+                $obj->set("interview_date",$interview_date);
+                $obj->set("start_time",$start_time);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
         public function getDisplay($lang="ar")
         {
                
