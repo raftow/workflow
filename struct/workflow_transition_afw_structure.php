@@ -125,7 +125,7 @@ class WorkflowWorkflowTransitionAfwStructure
         'initial_stage_id' => array(
             'SHORTNAME' => 'stage',
             'SEARCH' => true,
-            'QSEARCH' => false,
+            'QSEARCH' => true,
             'SHOW' => true,
             'AUDIT' => false,
             'RETRIEVE' => true,
@@ -150,7 +150,7 @@ class WorkflowWorkflowTransitionAfwStructure
         'initial_status_id' => array(
             'SHORTNAME' => 'status',
             'SEARCH' => true,
-            'QSEARCH' => false,
+            'QSEARCH' => true,
             'SHOW' => true,
             'AUDIT' => false,
             'RETRIEVE' => true,
