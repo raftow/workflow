@@ -14,4 +14,5 @@ $migrations = [
     '00008' => ['by'=>'medali', 'title' => 'add some workflow tables 3'],
     '00009' => ['by'=>'medali', 'title' => 'add interview indicator to workflow stage'],
     '00010' => ['by'=>'medali', 'title' => 'add interview booking related tables'],
+    '00011' => ['by'=>'medali', 'title' => 'add request comment table'],
 ];

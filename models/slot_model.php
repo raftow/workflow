@@ -282,7 +282,7 @@ class SlotModel extends AFWObject{
             $objInterviewSlot->set("workflow_commitee_id", $this->getVal("workflow_commitee_id"));
             $objInterviewSlot->set("interview_slot_status_id", 1);
             $objInterviewSlot->commit();
-            if($buffer_interval)
+            if($buffer_interval>0)
             {
                 $start->add($buffer_interval);
             }
