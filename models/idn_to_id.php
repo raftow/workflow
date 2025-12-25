@@ -4,7 +4,7 @@ class IdnToId extends AFWObject
 
     public static $MY_ATABLE_ID = 13932;
 
-    public static $DATABASE        = "tvtc_workflow";
+    public static $DATABASE        = "ttc_workflow";
     public static $MODULE                = "workflow";
     public static $TABLE            = "idn_to_id";
 
@@ -181,7 +181,7 @@ class IdnToId extends AFWObject
 
     public function beforeDelete($id, $id_replace)
     {
-        $server_db_prefix = AfwSession::config("db_prefix", "tvtc_");
+        $server_db_prefix = AfwSession::config("db_prefix", "ttc_");
 
         if (!$id) {
             $id = $this->getId();

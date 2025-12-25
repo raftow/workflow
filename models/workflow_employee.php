@@ -752,7 +752,7 @@ class WorkflowEmployee extends WorkflowObject
                         $token_arr=[];
                         $token_arr["[waiting]"] = $inbox_row["waiting"];
                         $token_arr["[workflow_site_url]"] = AfwSession::config("workflow_site_url", "[workflow-site]");
-                        $token_arr["[workflow_general_admin]"] = AfwSession::config("workflow_general_admin", "rboubaker@tvtc.gov.sa");
+                        $token_arr["[workflow_general_admin]"] = AfwSession::config("workflow_general_admin", "rboubaker@ttc.gov.sa");
 
                         $workflowEmployeeObj = WorkflowEmployee::loadByMainIndex($inbox_row["orgunit_id"],$inbox_row["employee_id"]);
                         list($err, $info) = $workflowEmployeeObj->notifyMe($lang, $token_arr);
@@ -790,7 +790,7 @@ class WorkflowEmployee extends WorkflowObject
                         $inbox_row = AfwDatabase::db_recup_row($sql_inbox);
                         $token_arr["[waiting]"] = $inbox_row["waiting"];
                         $token_arr["[workflow_site_url]"] = AfwSession::config("workflow_site_url", "[workflow-site]");
-                        $token_arr["[workflow_general_admin]"] = AfwSession::config("workflow_general_admin", "rboubaker@tvtc.gov.sa");                                                
+                        $token_arr["[workflow_general_admin]"] = AfwSession::config("workflow_general_admin", "rboubaker@ttc.gov.sa");                                                
                 }
 
                 $token_arr["[the_orgunit]"] = $this->showAttribute("orgunit_id",null,true,$lang);
@@ -806,9 +806,9 @@ class WorkflowEmployee extends WorkflowObject
                 $receiver["mobile"] = $employeeObj->getVal("mobile");
                 $receiver["email"] = $employeeObj->getVal("email");
                 // $receiver["mobile"] = "0598988330";
-                // $receiver["email"] = "rboubaker@tvtc.gov.sa";
+                // $receiver["email"] = "rboubaker@ttc.gov.sa";
 
-                // $cc_to = "rboubaker@tvtc.gov.sa";
+                // $cc_to = "rboubaker@ttc.gov.sa";
                 $cc_to = null;
 
                 $file_dir_name = dirname(__FILE__);
