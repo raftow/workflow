@@ -73,7 +73,7 @@ try
    single_interviews_total smallint NOT NULL DEFAULT 0 , 
    capacity smallint NOT NULL DEFAULT 0 , 
    interview_type smallint NOT NULL DEFAULT 0 , 
-   room_location varchar(255)  NOT NULL DEFAULT '' , 
+   room_location varchar(255)   DEFAULT NULL , 
    workflow_commitee_id int(11) NOT NULL DEFAULT 0 , 
    buffer_minutes smallint NOT NULL DEFAULT 0 , 
 
@@ -136,7 +136,7 @@ try
   
     
    slot_model_id int(11) NOT NULL , 
-   interview_date varchar(8) NOT NULL , 
+   interview_date date DEFAULT NULL,
    start_time varchar(8) NOT NULL , 
    end_time varchar(8) NOT NULL DEFAULT '00:00' , 
    duration smallint NOT NULL DEFAULT 0 , 
