@@ -143,7 +143,7 @@ class WorkflowOrgunit extends WorkflowObject{
                 {
                         unset($link);
                         $link = array();
-                        $title = "إضافة منسق ";
+                        $title = "إضافة موظف قبول ";
                         $title_detailed = $title ."لـ : ". $displ;
                         $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEmployee&currmod=workflow&sel_orgunit_id=$orgunit_id";
                         $link["TITLE"] = $title;
@@ -158,7 +158,7 @@ class WorkflowOrgunit extends WorkflowObject{
                 {
                         unset($link);
                         $link = array();
-                        $title = "إضافة طلب تعيين منسق ";
+                        $title = "إضافة طلب تعيين موظف قبول ";
                         $title_detailed = $title ."لـ : ". $displ;
                         $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEmpRequest&currmod=workflow&sel_orgunit_id=$orgunit_id";
                         $link["TITLE"] = $title;
@@ -188,7 +188,7 @@ class WorkflowOrgunit extends WorkflowObject{
                         
                         
                         $color = "green";
-                        $title_ar = "اسناد الطلبات إلى المنسقبن"; 
+                        $title_ar = "اسناد الطلبات إلى موظفي القبول"; 
                         $methodName = "requestAssignement";
                         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                         "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
@@ -204,7 +204,7 @@ class WorkflowOrgunit extends WorkflowObject{
                         );
 
                         $color = "orange";
-                        $title_ar = "إعادة توزيع الطلبات على المنسقبن"; 
+                        $title_ar = "إعادة توزيع الطلبات على موظفي القبول"; 
                         $methodName = "resetRequestAssignement";
                         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                         "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
@@ -262,7 +262,7 @@ class WorkflowOrgunit extends WorkflowObject{
                         }
 
                         $color = "orange";
-                        $title_ar = "أي المنسقبن متوفر أكثر"; 
+                        $title_ar = "أي موظفي القبول متوفر أكثر"; 
                         $methodName = "getBestAvailInvestigator";
                         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                                 "COLOR"=>$color, "LABEL_AR"=>$title_ar, 

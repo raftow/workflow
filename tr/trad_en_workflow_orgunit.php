@@ -17,10 +17,10 @@ class WorkflowOrgunitEnTranslator{
 		
 		
 		$trad["workflow_orgunit"]["requests_count"] = "مجموع عدد الطلبات الجارية";
-		$trad["workflow_orgunit"]["requests_count.tooltip"] = "الطلبات الجارية هي التي جاري العمل عليها ولم تقفل بعد بغض النظر عن كونها عند المنسق حاليا أو عند المشرف أو حتى عند العميل لاستكمال بعض النواقص";
+		$trad["workflow_orgunit"]["requests_count.tooltip"] = "الطلبات الجارية هي التي جاري العمل عليها ولم تقفل بعد بغض النظر عن كونها عند موظف القبول حاليا أو عند المشرف أو حتى عند العميل لاستكمال بعض النواقص";
 		$trad["workflow_orgunit"]["new_requests_count"] = "مجموع عدد الطلبات الجديدة";
 		$trad["workflow_orgunit"]["new_requests_count.tooltip"] = "تعريف الطلبات الجديدة هي التي لم يعين عليها مشرف أو لم تعين لها جهة متابعة";
-		$trad["workflow_orgunit"]["allEmployeeList"] = "الموظفين المنسقين لدى مركز خدمة العملاء";
+		$trad["workflow_orgunit"]["allEmployeeList"] = "الموظفين موظفي القبول لدى مركز خدمة العملاء";
 		$trad["workflow_orgunit"]["unAssignedRequests"] = "طلبات يجب العمل عليها واسنادها";
 		$trad["workflow_orgunit"]["currentRequests"] = "الطلبات الجارية";
 		

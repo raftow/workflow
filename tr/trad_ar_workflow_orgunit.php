@@ -11,7 +11,7 @@ class WorkflowOrgunitArTranslator{
 		// $trad["workflow_orgunit"]["service_category_mfk"] = "المسؤوليات المناطة بها";
 		// $trad["workflow_orgunit"]["service_category_mfk_tooltip"] = "أصناف الخدمات  التي تقدمها";
 		// $trad["workflow_orgunit"]["service_mfk"] = "الخدمات التي تقدمها";
-		$trad["workflow_orgunit"]["requests_nb"] = "طاقة استيعاب الطلبات يوميا لكل منسق";
+		$trad["workflow_orgunit"]["requests_nb"] = "طاقة استيعاب الطلبات يوميا لكل موظف قبول";
 		$trad["workflow_orgunit"]["requests_count"] = "مجموع عدد الطلبات الجارية";
 		$trad["workflow_orgunit"]["requests_count.tooltip"] = "ءءءءءءءءءءءءءءءءءءءءءءء";
 		$trad["workflow_orgunit"]["new_requests_count"] = "مجموع عدد الطلبات الجديدة";

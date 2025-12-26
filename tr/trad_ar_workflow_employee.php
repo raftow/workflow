@@ -39,7 +39,7 @@ class WorkflowEmployeeArTranslator{
         $trad["workflow_employee"]["active"] = "نشط";
         $trad["workflow_employee"]["admin"] = "مشرف تنسيق";
         $trad["workflow_employee"]["super_admin"] = "مشرف عام";
-        $trad["workflow_employee"]["approved"] = "منسق معتمد"; 
+        $trad["workflow_employee"]["approved"] = "موظف قبول معتمد"; 
 
         $trad["workflow_employee"]["firstname"] = "الاسم الأول";
 		$trad["workflow_employee"]["f_firstname"] = "اسم الأب";
