@@ -74,21 +74,6 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
 				),
 
-			'service_category_mfk' => array('SHORTNAME' => 'categorys',  'SEARCH' => true,  'QSEARCH' => true,  
-				'SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32,  
-				'MANDATORY' => true,  'UTF8' => false, 'DEFAULT' => ',1,',  
-				'TYPE' => 'MFK',  'ANSWER' => 'service_category',  'ANSMODULE' => 'workflow',  'READONLY' => false,  
-				'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
-				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
-				),
-
-			'service_mfk' => array('SHORTNAME' => 'services',  'SEARCH' => true,  'QSEARCH' => true,  
-				'SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32,  
-				'MANDATORY' => true,  'UTF8' => false, 'DEFAULT' => ',1,',  
-				'TYPE' => 'MFK',  'ANSWER' => 'service',  'ANSMODULE' => 'workflow',  'READONLY' => false,  
-				'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
-				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
-				),
 
 					'allEmployeeList' => array('STEP' => 2, 'FGROUP' => 'allEmployeeList',  
 							'TYPE' => 'FK',  'ANSWER' => 'workflow_employee',  'ANSMODULE' => 'workflow',  
