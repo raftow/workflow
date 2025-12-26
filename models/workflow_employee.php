@@ -179,7 +179,10 @@ class WorkflowEmployee extends WorkflowObject
         }
 
 
-        
+        public function stepsAreOrdered()
+        {
+                return true;
+        }
         
         
         
@@ -209,11 +212,7 @@ class WorkflowEmployee extends WorkflowObject
                                 "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
                                 "PUBLIC"=>true, "BF-ID"=>"", 'STEP' => 1,
                                 
-                                /*'CONFIRMATION_NEEDED'=>true,
-                                'CONFIRMATION_QUESTION' =>  array('ar' => "سيتم انشاء حساب حقيقي لهذا العميل على أنه مكتب رحلات هل أنت متأكد", 
-                                                                'en' => "You will create travel company. Sure ?"),
-                                'CONFIRMATION_WARNING' => array('ar' => "من المفروض أن تكون تواصلت مع العميل وتأكدت من جديته بارسال البيانات الضروروية", 
-                                                                'en' => "please check data is correct bedore and this company exists"),*/
+                               
 
                 
                         );
