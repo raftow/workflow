@@ -416,6 +416,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'EDIT-UGROUPS' => '',
 		),
 
+		/*
 		'approved' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
@@ -427,12 +428,12 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'TYPE' => 'YN',
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
 
-		/*
+		
 		
 		'admin' => array(
 			'SHOW' => true,
@@ -445,7 +446,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'TYPE' => 'YN',
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -461,7 +462,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'TYPE' => 'YN',
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -524,6 +525,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
+			'HIDE_IF_NEW' => true,
 			'STEP' => 1,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',

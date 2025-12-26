@@ -40,9 +40,25 @@ class WorkflowEmployeeArTranslator{
         $trad["workflow_employee"]["admin"] = "مشرف تنسيق";
         $trad["workflow_employee"]["super_admin"] = "مشرف عام";
         $trad["workflow_employee"]["approved"] = "منسق معتمد"; 
+
+        $trad["workflow_employee"]["firstname"] = "الاسم الأول";
+		$trad["workflow_employee"]["f_firstname"] = "اسم الأب";
+		$trad["workflow_employee"]["g_f_firstname"] = "اسم الجد";
+		$trad["workflow_employee"]["lastname"] = "اسم العائلة";
+
+		$trad["workflow_employee"]["firstname_en"] = "الاسم الأول بالانجليزي";
+		$trad["workflow_employee"]["f_firstname_en"] = "اسم الأب بالانجليزي";
+		$trad["workflow_employee"]["g_f_firstname_en"] = "اسم الجد بالانجليزي";
+		$trad["workflow_employee"]["lastname_en"] = "اسم العائلة بالانجليزي";
+        
+        $trad["workflow_employee"]["gender_id"] = "الجنس";
+		$trad["workflow_employee"]["mobile"] = "الجوال";
+		$trad["workflow_employee"]["country_id"] = "الجنسية";
+
+
         $trad["workflow_employee"]["step1"] = "البيانات العامة";
-        $trad["workflow_employee"]["step2"] = "الطلبات المسندة";
-        $trad["workflow_employee"]["step3"] = "جهات المتابعة";
+        $trad["workflow_employee"]["step2"] = "البيانات الشخصية";
+        $trad["workflow_employee"]["step3"] = "الصلاحيات";
     
         return $trad;
     }

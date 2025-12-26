@@ -26,9 +26,9 @@ class WorkflowEmployeeEnTranslator{
 		$trad["workflow_employee"]["finishedRequests"] = "finished Requests";
 		$trad["workflow_employee"]["allOrgunitList"] = "allOrgunitList";
         // steps
-		$trad["workflow_employee"]["step1"] = "البيانات العامة";
-		$trad["workflow_employee"]["step2"] = "الطلبات المسندة";
-		$trad["workflow_employee"]["step3"] = "جهات المتابعة";
+		$trad["workflow_employee"]["step1"] = "General data";
+        $trad["workflow_employee"]["step2"] = "Personal information";
+        $trad["workflow_employee"]["step3"] = "Permissions";
         return $trad;
     }
 
