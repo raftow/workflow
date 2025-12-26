@@ -58,4 +58,12 @@ class WorkflowRequest extends WorkflowObject
         {
                 return false;
         }
+
+        public static function inboxSqlCond($role, $employee_id, $prefix = "me.")
+        {
+                if ($role == "supervisor")   return $prefix."supervisor_id='$employee_id' and ".$prefix."status_id in (0,0) -- REQUEST_STATUSES_ONGOING_SUPERVISOR";
+                if ($role == "investigator") return $prefix."employee_id='$employee_id' and ".$prefix."status_id in (0,0,0) -- REQUEST_STATUSES_ONGOING_INVESTIGATOR";
+
+                return "1=2";
+        }
 }

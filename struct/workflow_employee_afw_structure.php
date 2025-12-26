@@ -431,7 +431,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
-		/*
+		
 		'admin' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
@@ -475,7 +475,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -491,7 +491,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -506,7 +506,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -525,7 +525,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
-
+		/*
 
 		'statif_pct' => array(
 			'SHOW' => true,
