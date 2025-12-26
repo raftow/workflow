@@ -93,8 +93,10 @@ class WorkflowApplicant extends AdmObject
                 } else return null;
         }
 
-        public static function loadByMainIndex($idn, $create_obj_if_not_found = false)
+        public static function loadByMainIndex($country_id, $idn_type_id, $idn, $create_obj_if_not_found = false)
         {
+                if (!$country_id) throw new AfwRuntimeException("loadByMainIndex : country_id is mandatory field");
+                if (!$idn_type_id) throw new AfwRuntimeException("loadByMainIndex : idn_type_id is mandatory field");
                 if (!$idn) throw new AfwRuntimeException("loadByMainIndex : idn is mandatory field");
 
 
@@ -106,6 +108,8 @@ class WorkflowApplicant extends AdmObject
                         return $obj;
                 } elseif ($create_obj_if_not_found) {
                         $obj->set("idn", $idn);
+                        $obj->set("idn_type_id", $idn_type_id);
+                        $obj->set("country_id", $country_id);
                         //$obj->set("xxid", $idn);
                         $obj->insertNew();
                         if (!$obj->id) return null; // means beforeInsert rejected insert operation
@@ -172,7 +176,7 @@ class WorkflowApplicant extends AdmObject
                 if(!$idn_type_id) list($idn_correct, $idn_type_id) = AfwFormatHelper::getIdnTypeId($idn);
                 if ((!$idn) or (!$idn_type_id)) // should never happen but ...
                 {
-                        throw new  AfwBusinessException("BAD DATA For IDN=$idn IDN-TYPE=$idn_type_id");
+                        throw new  AfwBusinessException("WorkflowApplicant : BAD DATA For IDN=$idn IDN-TYPE=$idn_type_id");
                 }
 
                 if (($idn_type_id == 4) and (!trim($this->getVal("passeport_num")))) {
