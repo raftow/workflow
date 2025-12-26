@@ -431,6 +431,8 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
+
+		/*
 		
 		'admin' => array(
 			'SHOW' => true,
@@ -463,6 +465,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
+		*/
 
 
 		'requests_count' => array(

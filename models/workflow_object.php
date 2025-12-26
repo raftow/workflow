@@ -1088,7 +1088,7 @@ class WorkflowObject extends AFWObject{
             return $this->getTableName();
         }
 
-
+        /*
         public static function userIsSupervisor($objme = null)
         {
                 if (!$objme) $objme = AfwSession::getUserConnected();
@@ -1109,7 +1109,7 @@ class WorkflowObject extends AFWObject{
                 if (!$employee_id) return 0;
 
                 return WorkflowEmployee::isGeneralAdmin($employee_id);
-        }
+        }*/
 
         public static function userIsSuperAdmin($objme = null)
         {

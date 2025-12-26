@@ -247,8 +247,10 @@ class WorkflowEmployee extends WorkflowObject
                     $fields_updated["requests_nb"]))
                 {
                         $empl = $this->het("employee_id");
+                        /*
                         if($this->sureIs("active"))
                         {
+                                
                                 if($this->sureIs("super_admin"))
                                 {
                                      //
@@ -273,7 +275,8 @@ class WorkflowEmployee extends WorkflowObject
                                         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_CONTROLLER);
                                         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_SUPERVISION);
                                         $empl->updateMyUserInformation();    
-                                }        
+                                } 
+
                         }
                         else
                         {
@@ -284,7 +287,7 @@ class WorkflowEmployee extends WorkflowObject
                                 // has been disabled so remove all ongoing assigned tickets   
                                 $this->removeMeAllAssigned();
                         }
-                         
+                        */ 
 
                         // WorkflowRequest::assignCommiteeForNonAssigned(false,true);
                 }
@@ -409,6 +412,7 @@ class WorkflowEmployee extends WorkflowObject
         {
                 if(!$this->getVal("employee_id")) return null;
                 $myEmplId = $this->getVal("employee_id");
+                /*
                 if(WorkflowEmployee::isAdmin($myEmplId)) 
                 {
                         $where_sql = "((".WorkflowRequest::inboxSqlCond("commitee", $myEmplId, "").") or (".WorkflowWorkflowRequest::inboxSqlCond("employee", $myEmplId, "")."))";
@@ -417,6 +421,8 @@ class WorkflowEmployee extends WorkflowObject
                 {
                         $where_sql = WorkflowRequest::inboxSqlCond("employee", $myEmplId, "");
                 }
+                */
+                $where_sql = WorkflowRequest::inboxSqlCond("employee", $myEmplId, "");
 
                 $obj = new WorkflowWorkflowRequest();
                 $obj->where($where_sql);
@@ -460,6 +466,7 @@ class WorkflowEmployee extends WorkflowObject
                 return $supervList;
         }
 
+        /*
         public static function isAdmin($employee_id)
         {
                 $obj = new WorkflowEmployee();
@@ -480,6 +487,8 @@ class WorkflowEmployee extends WorkflowObject
                 return $obj->id;
 
         }
+
+        */
 
         public static function getInvestigatorListOfIds($orgunit_id)
         {
