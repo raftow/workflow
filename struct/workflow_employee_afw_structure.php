@@ -383,7 +383,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'LIST_SEPARATOR' => '، ',
 			'TYPE' => 'MFK',
 			'ANSWER' => 'workflow_role',
-			'ANSMODULE' => 'ums',
+			'ANSMODULE' => 'workflow',
 			
 			'SEL_OPTIONS' => array(
 				'enableFiltering' => true,
