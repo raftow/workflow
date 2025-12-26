@@ -1118,4 +1118,13 @@ class WorkflowObject extends AFWObject{
                 return $objme->isSuperAdmin();
         }
 
+
+        public static function userIsAdmin($objme = null)
+        {
+                if (!$objme) $objme = AfwSession::getUserConnected();
+                if (!$objme) return false;
+                return $objme->isAdmin();
+        }
+
+
 }

@@ -39,8 +39,8 @@ class WorkflowOrgunit extends WorkflowObject{
                 {
                         $empl_id = $objme ? $objme->getEmployeeId() : 0;
                         
-                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsGeneralSupervisor();
-                        if($empl_id) $iam_supervisor = WorkflowObject::userIsSupervisor();
+                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
+                        if($empl_id) $iam_supervisor = WorkflowObject::userIsAdmin();
                         
                         if(!$iam_general_supervisor) $iam_general_supervisor = 0;
                         if(!$iam_supervisor) $iam_supervisor = 0;
@@ -182,7 +182,7 @@ class WorkflowOrgunit extends WorkflowObject{
         protected function getPublicMethods()
         {
                 $pbms = array();
-                $iam_general_supervisor = WorkflowObject::userIsGeneralSupervisor();
+                $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
                 if($iam_general_supervisor)
                 {
                         
