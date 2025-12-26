@@ -52,7 +52,7 @@
 				'DISPLAY' => true, 'AUTOCOMPLETE' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
 				),
-
+					/*
 					'new_requests_count' => array('SHOW' => true,  
 							'CSS' => 'width_pct_25',  
 							'CATEGORY' => 'FORMULA',  
@@ -65,7 +65,7 @@
 							'CATEGORY' => 'FORMULA',  
 							'TYPE' => 'INT',  'EDIT' => true,  'READONLY' => true,  'HIDE_IF_NEW' => true,  
 							'RETRIEVE' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
-							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', ),
+							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', ), */
 
 			'requests_nb' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32, 'CSS' => 'width_pct_25', 
