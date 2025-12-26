@@ -61,7 +61,7 @@ class WorkflowRequest extends WorkflowObject
 
         public static function inboxSqlCond($role, $employee_id, $prefix = "me.")
         {
-                if ($role == "supervisor")   return $prefix . "supervisor_id='$employee_id' and " . $prefix . "status_id in (0,0) -- REQUEST_STATUSES_ONGOING_SUPERVISOR";
+                // if ($role == "supervisor")   return $prefix . "supe rvisor_id='$employee_id' and " . $prefix . "status_id in (0,0) -- REQUEST_STATUSES_ONGOING_SUPERVISOR";
                 if ($role == "investigator") return $prefix . "employee_id='$employee_id' and " . $prefix . "status_id in (0,0,0) -- REQUEST_STATUSES_ONGOING_INVESTIGATOR";
 
                 return "1=2";
@@ -70,8 +70,7 @@ class WorkflowRequest extends WorkflowObject
         public static function inboxCountFor($employee_id)
         {
                 $obj = new WorkflowRequest();
-                $obj->where("(employee_id = $employee_id and status_id in (REQUEST_STATUSES_ONGOING_INVESTIGATOR)) 
-                         or (supervisor_id = $employee_id and status_id in (REQUEST_STATUSES_ONGOING_SUPERVISOR))");
+                $obj->where("(employee_id = $employee_id and status_id in (REQUEST_STATUSES_ONGOING_INVESTIGATOR)) "); // or (supervisor_id = $employee_id and status_id in (REQUEST_STATUSES_ONGOING_SUPERVISOR))
                 return $obj->count();
         }
 }

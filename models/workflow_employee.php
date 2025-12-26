@@ -301,16 +301,16 @@ class WorkflowEmployee extends WorkflowObject
             $me_id = $this->getVal("employee_id");
             $me_org_id = $this->getVal("orgunit_id");
 
-
-            $obj->where("supervisor_id = $me_id");
+/*
+            $obj->where("superv isor_id = $me_id");
             $obj->where("status_id not in (6,7,8,9)");
-            $obj->setForce("supervisor_id",0);
-            $obj->update(false);
+            $obj->setForce("super visor_id",0);
+            $obj->update(false);*/
 
 
             
             $obj->where("(employee_id = $me_id and orgunit_id = $me_org_id)");
-            $obj->where("status_id in (2,4)");
+            $obj->where("status_id in (2,4,)");
             $obj->setForce("employee_id",0);
             $obj->setForce("orgunit_id",0);
             $status_comment = "removeMeAllAssigned me_id=".$me_id;
@@ -664,7 +664,7 @@ class WorkflowEmployee extends WorkflowObject
                 $best_supervisor_id = 0;
 
 
-                $stats_arr = WorkflowRequest::aggreg($function="count(*)", $where="active='Y' and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_SUPERVISOR.") and supervisor_id > 0 and supervisor_id != $except_supervisor_id", $group_by = "supervisor_id",$throw_error=true, $throw_analysis_crash=true);                                        
+                $stats_arr = WorkflowRequest::aggreg($function="count(*)", $where="active='Y' and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_SUPERVISOR.") and super visor_id > 0 and super visor_id != $except_supervisor_id", $group_by = "supe rvisor_id",$throw_error=true, $throw_analysis_crash=true);                                        
                 if(count($stats_arr)>0)
                 {
                         foreach($stats_arr as $superv_id => $curr_count)
@@ -712,7 +712,7 @@ class WorkflowEmployee extends WorkflowObject
         public function assignMeAsWorkflowRequestCommitee($requestObj, $commit = true) // , $orgunit_id
         {
                 // $requestObj->set("orgunit_id", $orgunit_id);
-                $requestObj->set("supervisor_id", $this->getVal("employee_id"));
+                $requestObj->set("superv isor_id", $this->getVal("employee_id"));
                 if($commit) $requestObj->commit();
         }
 

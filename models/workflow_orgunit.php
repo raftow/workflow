@@ -358,7 +358,7 @@ class WorkflowOrgunit extends WorkflowObject{
                 unset($obj);
                 $obj = new WorkflowRequest();
                 $obj->select("orgunit_id", $this->getVal("orgunit_id"));
-                $obj->where("status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_ALL.") and (employee_id is null or employee_id = 0)");
+                $obj->where("status_id in (REQUEST_STATUSES_ONGOING_ALL and (employee_id is null or employee_id = 0)");
                 $nb_assigned = 0;
                 $requestWaitingList = $obj->loadMany();
                 /**
@@ -415,7 +415,7 @@ class WorkflowOrgunit extends WorkflowObject{
             }    
 	}
         
-
+        /*
 
         public function calcNew_requests_count()
         {
@@ -438,15 +438,15 @@ class WorkflowOrgunit extends WorkflowObject{
                 $obj->select("orgunit_id", $this->getVal("orgunit_id"));
             }
             
-            if($new_only) $obj->where("supervisor_id = 0 or orgunit_id = 0");
-            if($only_done) $obj->where("supervisor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_DONE.")");
-            if($ongoing_only) $obj->where("supervisor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_ALL.")");
-            if($aborted_only) $obj->where("supervisor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ABORTED.")");
+            if($new_only) $obj->where("supervis or_id = 0 or orgunit_id = 0");
+            if($only_done) $obj->where("supervi sor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_DONE.")");
+            if($ongoing_only) $obj->where("super visor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_ALL.")");
+            if($aborted_only) $obj->where("super visor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ABORTED.")");
             
             
            return $obj->count();
         }
-
+        */
 
         public function getBestAvailInvestigator($lang="ar")
         {

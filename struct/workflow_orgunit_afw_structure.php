@@ -92,10 +92,10 @@
 					'currentRequests' => array('STEP' => 3,  
 							'TYPE' => 'FK',  'ANSWER' => 'workflow_request',  'ANSMODULE' => 'workflow',  
 							'CATEGORY' => 'ITEMS',  'ITEM' => '', 
-							'DO-NOT-RETRIEVE-COLS' => ['man','service_satisfied','supervisor_id'],
+							'DO-NOT-RETRIEVE-COLS' => ['man','service_satisfied','supe rvisor_id'],
 							'FORCE-RETRIEVE-COLS' => ['days_delay'],
 							'WHERE' => "request_date >= §archive_date§ 
-							        and supervisor_id > 0 and orgunit_id > 0 
+							        and superv isor_id > 0 and orgunit_id > 0 
 									and orgunit_id = §orgunit_id§ 
 									and status_id in (2, 4, 201)", 
 							'FORMAT' => 'retrieve',  'SHOW' => true,  'EDIT' => false,  'ICONS' => true,  'DELETE-ICON' => false,  'BUTTONS' => true,  'NO-LABEL' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  
@@ -108,7 +108,7 @@
 							'CATEGORY' => 'ITEMS',  'ITEM' => '',  
 							'WHERE' => "request_date >= §archive_date§ 
 							   and (
-										((§orgunit_id§=70) and (orgunit_id = 0 or supervisor_id = 0)) or 
+										((§orgunit_id§=70) and (orgunit_id = 0 or su pervisor_id = 0)) or 
 										(orgunit_id = §orgunit_id§ and employee_id = 0)
 									)
 								and status_id in (2, 4, 201)",
