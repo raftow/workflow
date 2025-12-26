@@ -60,8 +60,9 @@ class WorkflowWorkflowRequestAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_50',
                 ),
+
 
 
                 'workflow_model_id' => array(
@@ -88,7 +89,47 @@ class WorkflowWorkflowRequestAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'workflow_session_id' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_session',
+                        'ANSMODULE' => 'workflow',
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'workflow_scope_id' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_scope',
+                        'ANSMODULE' => 'workflow',
+                        'CSS' => 'width_pct_50',
                 ),
 
 
