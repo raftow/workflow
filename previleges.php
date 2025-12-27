@@ -3387,23 +3387,12 @@ $role_info = array(
           'showme' => true,
           'items' =>
             array(
-              105253 =>
-                array(
-                  'id' => '105253',
-                  'code' => 'f2-a-workflow_request_data/qsearch',
-                  'level' => '1',
-                  'menu_name_ar' => 'بيانات طلبات',
-                  'menu_name_en' => 'Workflow request datas',
-                  'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequestData&currmod=workflow',
-                  'css' => 'bf',
-                  'icon' => 'bficon-105253 bfc-',
-                ),
               105247 =>
                 array(
                   'id' => '105247',
                   'code' => 'f2-a-workflow_request/qsearch',
                   'level' => '1',
-                  'menu_name_ar' => 'طلبات الاعتماد',
+                  'menu_name_ar' => 'الاستعلام عن طلب',
                   'menu_name_en' => 'Workflow requests',
                   'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequest&currmod=workflow',
                   'css' => 'bf',
@@ -3809,7 +3798,7 @@ $role_info = array(
                   'id' => '105185',
                   'code' => 'f2-a-workflow_orgunit/qsearch',
                   'level' => '1',
-                  'menu_name_ar' => 'جهات متابعة طلبات العملاء',
+                  'menu_name_ar' => 'إدارات القبول',
                   'menu_name_en' => 'Workflow orgunits',
                   'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
                   'css' => 'bf',
