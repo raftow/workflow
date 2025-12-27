@@ -1,6 +1,6 @@
 <?php
 
-class WorkflowObject extends AFWObject{
+class WorkflowObject extends AfwMomkenObject{
 
         public static $content_type_picture = 1;
         public static $content_type_publication = 2;
