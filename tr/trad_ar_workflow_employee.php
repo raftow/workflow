@@ -12,9 +12,7 @@ class WorkflowEmployeeArTranslator{
         $trad["workflow_employee"]["orgunit_id"] = "الجهة المتابعة";
         $trad["workflow_employee"]["workflow_orgunit_id"] = "الجهة التابع لها";
         
-        $trad["workflow_employee"]["service_category_mfk"] = "المسؤوليات المناطة به";
-        $trad["workflow_employee"]["service_category_mfk_tooltip"] = "أصناف الخدمات  التي يقدمها";
-        $trad["workflow_employee"]["service_mfk"] = "الخدمات التي يقدمها";
+        $trad["workflow_employee"]["wrole_mfk"] = "المسؤوليات المناطة به";
         $trad["workflow_employee"]["requests_nb"] = "طاقة استيعاب الطلبات يوميا";
         $trad["workflow_employee"]["employee_id"] = "الموظف";
 
