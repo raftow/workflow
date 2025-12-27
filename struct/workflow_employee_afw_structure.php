@@ -316,7 +316,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'SIZE' => 16,
 			'UTF8' => false,
 			'CSS' => 'width_pct_25',
-			'TYPE' => 'enum',
+			'TYPE' => 'ENUM',
 			'ANSWER' => 'FUNCTION',
 			'DEFAUT' => 1,
 			'STEP' => 2,
