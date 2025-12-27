@@ -211,10 +211,6 @@ class WorkflowEmployee extends WorkflowObject
             $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                                 "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
                                 "PUBLIC"=>true, "BF-ID"=>"", 'STEP' => 1,
-                                
-                               
-
-                
                         );
             
             
@@ -315,6 +311,31 @@ class WorkflowEmployee extends WorkflowObject
             $status_comment = "removeMeAllAssigned me_id=".$me_id;
             $obj->setForce("status_comment", $status_comment);
             $obj->update(false);
+        }
+
+        public function beforeMaj($id, $fields_updated)
+        {
+                if($fields_updated["email"] or true)
+                {
+                        $email = $this->getVal("email");
+                        $objEmployee = Employee::loadByEmail(1, $email);
+                        if($objEmployee)
+                        {
+                                     
+                                $this->set("gender_id", $objEmployee->getVal("gender_id"));
+                                $this->set("country_id", $objEmployee->getVal("country_id"));
+                                $this->set("firstname", $objEmployee->getVal("firstname"));
+                                $this->set("f_firstname", $objEmployee->getVal("f_firstname"));
+                                $this->set("g_f_firstname", $objEmployee->getVal("g_f_firstname"));
+                                $this->set("lastname", $objEmployee->getVal("lastname"));
+                                $this->set("firstname_en", $objEmployee->getVal("firstname_en"));
+                                $this->set("f_firstname_en", $objEmployee->getVal("f_firstname_en"));
+                                $this->set("g_f_firstname_en", $objEmployee->getVal("g_f_firstname_en"));
+                                $this->set("lastname_en", $objEmployee->getVal("lastname_en"));
+                        }
+                        
+                }    
+                return true;
         }
         
         public function beforeDelete($id,$id_replace) 
