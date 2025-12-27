@@ -10,6 +10,10 @@ class WorkflowRoleArTranslator
         $trad["workflow_role"]["step2"] = "الخصائص";
         $trad["workflow_role"]["step3"] = "الأدوار الوظيفية";
 
+		$trad["workflow_role"]["jobrole_mfk"] = "الأدوار الوظيفية";
+
+		
+
 		$trad["workflow_role"]["workflowrole.single"] = "صلاحية";
 		$trad["workflow_role"]["workflowrole.new"] = "جديدة";
 		$trad["workflow_role"]["workflow_role"] = "الصلاحيات";

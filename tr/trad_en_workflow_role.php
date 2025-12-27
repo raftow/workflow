@@ -10,6 +10,8 @@ class WorkflowRoleEnTranslator
         $trad["workflow_role"]["step2"] = "Properties";
         $trad["workflow_role"]["step3"] = "Job roles";
 
+		$trad["workflow_role"]["jobrole_mfk"] = "Job roles";
+
 		$trad["workflow_role"]["workflowrole.single"] = "Workflow role";
 		$trad["workflow_role"]["workflowrole.new"] = "new";
 		$trad["workflow_role"]["workflow_role"] = "Workflow roles";
