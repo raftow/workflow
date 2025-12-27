@@ -111,6 +111,7 @@ class WorkflowWorkflowModuleAfwStructure
                         ),
                         'domain1_enum' => array(
                                 'TYPE' => 'ENUM',
+                                'ANSWER' => 'FUNCTION',
                                 'FUNCTION_COL_NAME' => 'domain_enum',
                                 'SHOW' => true,
                                 'RETRIEVE' => false,
@@ -128,6 +129,7 @@ class WorkflowWorkflowModuleAfwStructure
                         ),
                         'domain2_enum' => array(
                                 'TYPE' => 'ENUM',
+                                'ANSWER' => 'FUNCTION',
                                 'FUNCTION_COL_NAME' => 'domain_enum',
                                 'SHOW' => true,
                                 'RETRIEVE' => false,
@@ -145,6 +147,7 @@ class WorkflowWorkflowModuleAfwStructure
                         ),
                         'domain3_enum' => array(
                                 'TYPE' => 'ENUM',
+                                'ANSWER' => 'FUNCTION',
                                 'FUNCTION_COL_NAME' => 'domain_enum',
                                 'SHOW' => true,
                                 'RETRIEVE' => false,
@@ -162,6 +165,7 @@ class WorkflowWorkflowModuleAfwStructure
                         ),
                         'domain4_enum' => array(
                                 'TYPE' => 'ENUM',
+                                'ANSWER' => 'FUNCTION',
                                 'FUNCTION_COL_NAME' => 'domain_enum',
                                 'SHOW' => true,
                                 'RETRIEVE' => false,
