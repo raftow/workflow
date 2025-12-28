@@ -40,7 +40,7 @@
 		
 		
 
-		'slot_model_id' => array('SHORTNAME' => 'model',  'SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
+		'slot_model_id' => array('SHORTNAME' => 'model',  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
 				'TYPE' => 'FK',  'ANSWER' => 'slot_model',  'ANSMODULE' => 'workflow', 'DISPLAY' => true,  'STEP' => 1,

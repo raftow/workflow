@@ -28,6 +28,8 @@ class InterviewBookingArTranslator{
 		$trad["interview_booking"]["interviewer"] = "المحاورون";
 		$trad["interview_booking"]["workflow_applicant_id"] = "المتقدم";
 		$trad["interview_booking"]["workflow_session_id"] = "دورة سير العمل";
+   		$trad["interview_booking"]["interview_type_pattern_id"] = "نموذج نوع المقابلة";
+
         // steps
         return $trad;
     }

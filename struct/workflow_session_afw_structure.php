@@ -8,7 +8,7 @@ class WorkflowWorkflowSessionAfwStructure
         if ( $obj instanceof WorkflowSession ) 
  {
             $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-            $obj->DISPLAY_FIELD_BY_LANG = [ 'ar'=>'name_ar', 'en'=>'name_en' ];
+            $obj->DISPLAY_FIELD_BY_LANG = [ 'ar'=>'workflow_session_name_ar', 'en'=>'workflow_session_name_en' ];
 
             // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
             $obj->ORDER_BY_FIELDS = '';
