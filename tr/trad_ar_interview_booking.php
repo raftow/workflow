@@ -26,6 +26,8 @@ class InterviewBookingArTranslator{
 		$trad["interview_booking"]["can_cancel_ind"] = "يمكن الإلغاء";
 		$trad["interview_booking"]["no_show_flag"] = "علامة عدم الحضور";
 		$trad["interview_booking"]["interviewer"] = "المحاورون";
+		$trad["interview_booking"]["workflow_applicant_id"] = "المتقدم";
+		$trad["interview_booking"]["workflow_session_id"] = "دورة سير العمل";
         // steps
         return $trad;
     }
