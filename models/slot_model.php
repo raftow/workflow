@@ -247,7 +247,13 @@ class SlotModel extends AFWObject{
 
         $start = new DateTime("$interview_date $start_time");
         $end   = new DateTime("$interview_date $end_time");
-        $interval = new DateInterval("PT{$single_duration}M");
+        if($single_duration>0){
+            $interval = new DateInterval("PT{$single_duration}M");
+        }
+        else
+        {
+            $interval = new DateInterval("PT10M");
+        }
         $buffer_minutes = $this->getVal("buffer_minutes");
         if($buffer_minutes && is_numeric($buffer_minutes) && $buffer_minutes>0)
         {
@@ -257,19 +263,22 @@ class SlotModel extends AFWObject{
         {
             $buffer_interval = null;
         }
-
+        $obj = new InterviewSlot();
+         $obj->deleteWhere("slot_model_id = '$slot_model_id' ");
 
         while ($start < $end) {
             $slot_start = $start->format('H:i');
             $start->add($interval);
+            //die($slot_start." > ".$end->format('H:i'));
+
             if ($start > $end) {
                 break;
             }
 
             $slot_end = $start->format('H:i');
 
-            $objInterviewSlot = InterviewSlot::loadByMainIndex($slot_model_id, $interview_date, $start_time,true);
-            $objInterviewSlot->set("slot_model_id", $this->getId());
+            $objInterviewSlot = InterviewSlot::loadByMainIndex($slot_model_id, $interview_date, $slot_start,true);
+            $objInterviewSlot->set("slot_model_id", $slot_model_id);
             $objInterviewSlot->set("interview_date", $this->getVal("interview_date"));
             $objInterviewSlot->set("start_time", $slot_start);
             $objInterviewSlot->set("end_time", $slot_end);

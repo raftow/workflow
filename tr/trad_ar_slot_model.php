@@ -27,6 +27,7 @@ class SlotModelArTranslator{
 		$trad["slot_model"]["room_location"] = "الموقع";
 		$trad["slot_model"]["workflow_commitee_id_"] = "اللجنة/المحاورون";
 		$trad["slot_model"]["buffer_minutes"] = "المدة الفاصلة: مدة بالدقائق";
+		$trad["slot_model"]["workflow_commitee_id"] = "اللجنة/المحاورون";
         // steps
         return $trad;
     }
