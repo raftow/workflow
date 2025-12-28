@@ -242,16 +242,15 @@ try
    workflow_applicant_id bigint(20) NOT NULL , 
    workflow_session_id int(11) NOT NULL , 
    booking_status_id int(11) NOT NULL DEFAULT 0 , 
-   booked_at datetime NOT NULL DEFAULT '19800101' , 
-   booked_by bigint(20) NOT NULL DEFAULT 0 , 
-   cancelled_at datetime NOT NULL DEFAULT '19800101' , 
-   cancelled_by bigint(20) NOT NULL DEFAULT 0 , 
-   interview_cancellation_reason_id int(11) NOT NULL DEFAULT 0 , 
-   can_reschedule_ind char(1) NOT NULL DEFAULT 'W' , 
-   can_cancel_ind char(1) NOT NULL DEFAULT 'W' , 
-   no_show_flag char(1) NOT NULL DEFAULT 'W' , 
-   interviewer varchar(200)  NOT NULL DEFAULT '' , 
-
+   booked_at datetime DEFAULT NULL , 
+   booked_by int(11) DEFAULT NULL , 
+   cancelled_at datetime DEFAULT NULL , 
+   cancelled_by int(11) DEFAULT NULL , 
+   interview_cancellation_reason_id int(11) DEFAULT NULL , 
+   can_reschedule_ind char(1) DEFAULT NULL , 
+   can_cancel_ind char(1) DEFAULT NULL , 
+   no_show_flag char(1) DEFAULT NULL , 
+   interviewer varchar(200)  DEFAULT NULL , 
   
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");

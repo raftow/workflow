@@ -70,12 +70,12 @@
 
 		'booked_at' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'GDAT','CSS' => 'width_pct_50', ),
 
 		'booked_by' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
-				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  'ANSWER' => 'workflow_applicant',  'ANSMODULE' => 'workflow',  
 				'RELATION' => 'unkn',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
