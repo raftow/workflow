@@ -52,7 +52,7 @@
 				'DISPLAY' => true, 'AUTOCOMPLETE' => true,  'STEP' => 1,  
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
 				),
-
+					/*
 					'new_requests_count' => array('SHOW' => true,  
 							'CSS' => 'width_pct_25',  
 							'CATEGORY' => 'FORMULA',  
@@ -65,7 +65,7 @@
 							'CATEGORY' => 'FORMULA',  
 							'TYPE' => 'INT',  'EDIT' => true,  'READONLY' => true,  'HIDE_IF_NEW' => true,  
 							'RETRIEVE' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  'STEP' => 1,  
-							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', ),
+							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', ), */
 
 			'requests_nb' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32, 'CSS' => 'width_pct_25', 
@@ -74,21 +74,6 @@
 				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
 				),
 
-			'service_category_mfk' => array('SHORTNAME' => 'categorys',  'SEARCH' => true,  'QSEARCH' => true,  
-				'SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32,  
-				'MANDATORY' => true,  'UTF8' => false, 'DEFAULT' => ',1,',  
-				'TYPE' => 'MFK',  'ANSWER' => 'service_category',  'ANSMODULE' => 'workflow',  'READONLY' => false,  
-				'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
-				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
-				),
-
-			'service_mfk' => array('SHORTNAME' => 'services',  'SEARCH' => true,  'QSEARCH' => true,  
-				'SHOW' => true,  'RETRIEVE' => false,  'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32,  
-				'MANDATORY' => true,  'UTF8' => false, 'DEFAULT' => ',1,',  
-				'TYPE' => 'MFK',  'ANSWER' => 'service',  'ANSMODULE' => 'workflow',  'READONLY' => false,  
-				'SEARCH-BY-ONE' => true,  'DISPLAY' => true,  'STEP' => 1,  
-				'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
-				),
 
 					'allEmployeeList' => array('STEP' => 2, 'FGROUP' => 'allEmployeeList',  
 							'TYPE' => 'FK',  'ANSWER' => 'workflow_employee',  'ANSMODULE' => 'workflow',  
@@ -107,10 +92,10 @@
 					'currentRequests' => array('STEP' => 3,  
 							'TYPE' => 'FK',  'ANSWER' => 'workflow_request',  'ANSMODULE' => 'workflow',  
 							'CATEGORY' => 'ITEMS',  'ITEM' => '', 
-							'DO-NOT-RETRIEVE-COLS' => ['man','service_satisfied','supervisor_id'],
+							'DO-NOT-RETRIEVE-COLS' => ['man','service_satisfied','supe rvisor_id'],
 							'FORCE-RETRIEVE-COLS' => ['days_delay'],
 							'WHERE' => "request_date >= §archive_date§ 
-							        and supervisor_id > 0 and orgunit_id > 0 
+							        and superv isor_id > 0 and orgunit_id > 0 
 									and orgunit_id = §orgunit_id§ 
 									and status_id in (2, 4, 201)", 
 							'FORMAT' => 'retrieve',  'SHOW' => true,  'EDIT' => false,  'ICONS' => true,  'DELETE-ICON' => false,  'BUTTONS' => true,  'NO-LABEL' => false,  'SEARCH-BY-ONE' => '',  'DISPLAY' => true,  
@@ -123,7 +108,7 @@
 							'CATEGORY' => 'ITEMS',  'ITEM' => '',  
 							'WHERE' => "request_date >= §archive_date§ 
 							   and (
-										((§orgunit_id§=70) and (orgunit_id = 0 or supervisor_id = 0)) or 
+										((§orgunit_id§=70) and (orgunit_id = 0 or su pervisor_id = 0)) or 
 										(orgunit_id = §orgunit_id§ and employee_id = 0)
 									)
 								and status_id in (2, 4, 201)",
@@ -153,6 +138,7 @@
 							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
 							),
 							
+						/*	
 						'satisfaction_stats_days' => array('SEARCH' => false,  'QSEARCH' => false,  'SHOW' => true,  'RETRIEVE' => false,  
 							'EDIT' => true,  'QEDIT' => false,  'SIZE' => 32, 'CSS' => 'width_pct_25', 
 							'MANDATORY' => true,  'UTF8' => false,  
@@ -166,6 +152,7 @@
 							'TYPE' => 'INT',  'READONLY' => false,  'SEARCH-BY-ONE' => false,  'DISPLAY' => true,  'STEP' => 5,  
 							'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '',  'ERROR-CHECK' => true, 
 							),
+						*/
 
 
                         'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, 'TECH_FIELDS-RETRIEVE' => true, 'RETRIEVE' => false, 

@@ -28,9 +28,6 @@
         }
     }
 
-
-
-
     .calendar_bloc_g {
             height: 96px;
             background-image: url(../../lib/images/calendar_school.png);
@@ -102,4 +99,58 @@
 
 .hzm_data.hzm_data_preview.form-control.inputreadonly {
     min-height: 400px;
+}
+
+.window.module {
+            background-color: #076066;
+            color: wheat;
+            width: 6em;
+            height: 150px;
+            padding: 15px;
+            line-height: 22px;
+}
+
+.window.model {
+    background-color: #670dd7;
+    color: white;
+    width: 7em;
+    height: 190px;
+    padding: 15px 5px;
+    line-height: 22px;
+}
+
+span.count.app.model {
+    background-color: #9855eb;
+}
+
+
+.window.stage {            
+    background-color: #309607;
+    color: white;
+    width: 7em;
+    height: 200px;
+    padding: 15px;
+    line-height: 22px;
+}
+
+span.count.app.stage {
+    background-color: #1d5806;
+}
+
+.window.status {
+    background-color: #0e5ec7;
+    color: rgb(255, 255, 255);
+}
+
+span.count.app.status {
+    background-color: #09418b;
+}
+
+.window.action {
+    background-color: rgb(221 151 23);
+    color: rgb(255, 255, 255);
+}
+
+span.count.app.action {
+    background-color: rgb(141, 95, 10);
 }

@@ -61,7 +61,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => true,
 			'EDIT' => true,
 			'QEDIT' => false,
-			'EDIT_IF_EMPTY' => true,
 			'SIZE' => 40,
 			'MANDATORY' => true,
 			'UTF8' => false,
@@ -74,6 +73,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 
 			'RELATION' => 'ManyToOne',
 			'READONLY' => true,
+			'EDIT_IF_EMPTY' => true,
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
 			'DISPLAY-UGROUPS' => '',
@@ -96,6 +96,8 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'FORMAT' => 'EMAIL',
 			'UTF8' => false,
 			'TYPE' => 'TEXT',
+			'READONLY' => true,
+			'EDIT_IF_EMPTY' => true,
 			'REQUIRED' => true,
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
@@ -127,7 +129,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 					'RETRIEVE' => true,
 					'EDIT' => true,
 					'QEDIT' => false,
-					'EDIT_IF_EMPTY' => true,
 					'CSS' => 'width_pct_25',
 					'SIZE' => 40,
 					'MANDATORY' => true,
@@ -315,7 +316,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'SIZE' => 16,
 			'UTF8' => false,
 			'CSS' => 'width_pct_25',
-			'TYPE' => 'enum',
+			'TYPE' => 'ENUM',
 			'ANSWER' => 'FUNCTION',
 			'DEFAUT' => 1,
 			'STEP' => 2,
@@ -383,7 +384,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'LIST_SEPARATOR' => '، ',
 			'TYPE' => 'MFK',
 			'ANSWER' => 'workflow_role',
-			'ANSMODULE' => 'ums',
+			'ANSMODULE' => 'workflow',
 			
 			'SEL_OPTIONS' => array(
 				'enableFiltering' => true,
@@ -416,6 +417,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'EDIT-UGROUPS' => '',
 		),
 
+		/*
 		'approved' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
@@ -427,11 +429,13 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'TYPE' => 'YN',
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
-		/*
+
+		
+		
 		'admin' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
@@ -443,7 +447,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'TYPE' => 'YN',
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -459,10 +463,11 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'TYPE' => 'YN',
 			'SEARCH-BY-ONE' => true,
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
+		*/
 
 
 		'requests_count' => array(
@@ -475,7 +480,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -491,7 +496,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -506,7 +511,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
-			'STEP' => 1,
+			'STEP' => 99,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
@@ -521,11 +526,12 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'RETRIEVE' => false,
 			'SEARCH-BY-ONE' => '',
 			'DISPLAY' => true,
+			'HIDE_IF_NEW' => true,
 			'STEP' => 1,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
-
+		/*
 
 		'statif_pct' => array(
 			'SHOW' => true,
@@ -552,7 +558,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'ANSMODULE' => 'workflow',
 			'CATEGORY' => 'ITEMS',
 			'ITEM' => '', //'HIDE_COLS' => ['employee_id','orgunit_id'],
-			'WHERE' => "((orgunit_id = §orgunit_id§ and employee_id = §employee_id§) or (§orgunit_id§ = '70' and supervisor_id = §employee_id§)) and status_id not in (5,6,7,8,9)",
+			'WHERE' => "((orgunit_id = §orgunit_id§ and employee_id = §employee_id§) or (§orgunit_id§ = '70' and super visor_id = §employee_id§)) and status_id not in (5,6,7,8,9)",
 			'FORMAT' => 'retrieve',
 			'SHOW' => true,
 			'EDIT' => false,
@@ -573,7 +579,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'ANSMODULE' => 'workflow',
 			'CATEGORY' => 'ITEMS',
 			'ITEM' => '',
-			'WHERE' => "((orgunit_id = §orgunit_id§ and employee_id = §employee_id§) or (§orgunit_id§ = '70' and supervisor_id = §employee_id§)) and status_id in (5,6,7,8,9) and request_date >= §archive_date§",
+			'WHERE' => "((orgunit_id = §orgunit_id§ and employee_id = §employee_id§) or (§orgunit_id§ = '70' and supervi sor_id = §employee_id§)) and status_id in (5,6,7,8,9) and request_date >= §archive_date§",
 			'FORMAT' => 'retrieve',
 			'SHOW' => true,
 			'EDIT' => false,

@@ -17,7 +17,7 @@ class WorkflowWorkflowRoleAfwStructure
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
                         $obj->editByStep = true;
-                        $obj->editNbSteps = 2;
+                        $obj->editNbSteps = 3;
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowRole', "submit" => true);
                 } else {
@@ -74,7 +74,8 @@ class WorkflowWorkflowRoleAfwStructure
                         'QEDIT' => true,
                         'SHORTNAME' => 'code',
                         'SEARCH-BY-ONE' => '',
-                        'DISPLAY' => true,                        
+                        'DISPLAY' => true,    
+                        'MANDATORY' => true,                    
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',

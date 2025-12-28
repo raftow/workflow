@@ -39,8 +39,8 @@ class WorkflowOrgunit extends WorkflowObject{
                 {
                         $empl_id = $objme ? $objme->getEmployeeId() : 0;
                         
-                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsGeneralSupervisor();
-                        if($empl_id) $iam_supervisor = WorkflowObject::userIsSupervisor();
+                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
+                        if($empl_id) $iam_supervisor = WorkflowObject::userIsAdmin();
                         
                         if(!$iam_general_supervisor) $iam_general_supervisor = 0;
                         if(!$iam_supervisor) $iam_supervisor = 0;
@@ -143,7 +143,7 @@ class WorkflowOrgunit extends WorkflowObject{
                 {
                         unset($link);
                         $link = array();
-                        $title = "إضافة منسق ";
+                        $title = "إضافة موظف قبول ";
                         $title_detailed = $title ."لـ : ". $displ;
                         $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEmployee&currmod=workflow&sel_orgunit_id=$orgunit_id";
                         $link["TITLE"] = $title;
@@ -158,7 +158,7 @@ class WorkflowOrgunit extends WorkflowObject{
                 {
                         unset($link);
                         $link = array();
-                        $title = "إضافة طلب تعيين منسق ";
+                        $title = "إضافة طلب تعيين موظف قبول ";
                         $title_detailed = $title ."لـ : ". $displ;
                         $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEmpRequest&currmod=workflow&sel_orgunit_id=$orgunit_id";
                         $link["TITLE"] = $title;
@@ -182,13 +182,13 @@ class WorkflowOrgunit extends WorkflowObject{
         protected function getPublicMethods()
         {
                 $pbms = array();
-                $iam_general_supervisor = WorkflowObject::userIsGeneralSupervisor();
+                $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
                 if($iam_general_supervisor)
                 {
                         
                         
                         $color = "green";
-                        $title_ar = "اسناد الطلبات إلى المنسقبن"; 
+                        $title_ar = "اسناد الطلبات إلى موظفي القبول"; 
                         $methodName = "requestAssignement";
                         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                         "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
@@ -204,7 +204,7 @@ class WorkflowOrgunit extends WorkflowObject{
                         );
 
                         $color = "orange";
-                        $title_ar = "إعادة توزيع الطلبات على المنسقبن"; 
+                        $title_ar = "إعادة توزيع الطلبات على موظفي القبول"; 
                         $methodName = "resetRequestAssignement";
                         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                         "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
@@ -262,7 +262,7 @@ class WorkflowOrgunit extends WorkflowObject{
                         }
 
                         $color = "orange";
-                        $title_ar = "أي المنسقبن متوفر أكثر"; 
+                        $title_ar = "أي موظفي القبول متوفر أكثر"; 
                         $methodName = "getBestAvailInvestigator";
                         $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                                 "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
@@ -286,16 +286,16 @@ class WorkflowOrgunit extends WorkflowObject{
         
         // also silentAssignSupervisorForNonAssigned($lang="ar")          
 
-
+/*
         public function resetSupervisorAssignement($lang="ar")
         {
-                Request::resetAssignSupervisors($lang="ar");
+                WorkflowRequest::resetAssignSupervisors($lang="ar");
         }
 
         public function supervisorAssignement($lang="ar")
         {
-                Request::silentAssignSupervisorForNonAssigned($lang="ar");
-        }
+                WorkflowRequest::silentAssignSupervisorForNonAssigned($lang="ar");
+        }*/
 
         public function resetRequestAssignement($lang="ar")
         {
@@ -308,18 +308,19 @@ class WorkflowOrgunit extends WorkflowObject{
                 list($arrInv, $listInv) = WorkflowEmployee::getInvestigatorListOfIds($this->getVal("orgunit_id"));
                 $arrInv[] = 0;
                 $arrInvTxt = implode(",",$arrInv);
-                $obj = new Request();
+                $obj = new WorkflowRequest();
                 $obj->select("orgunit_id", $this->getVal("orgunit_id"));
                 if($reset)
                 {
                         // because not good to reassign ticket of investigator who has started to work on it
                         // except if this investigator has been dis-missioned
-                        $obj->where("status_id in (".Request::$REQUEST_STATUSES_ASSIGNED_ONLY.") or 
-                                     (status_id in (".Request::$REQUEST_STATUSES_ONGOING_ALL.") and (employee_id is null or employee_id not in ($arrInvTxt)))");
+                        $obj->where("status_id in (1,2,) -- REQUEST_STATUSES_ASSIGNED_ONLY 
+                                     or (status_id in (3,4,) -- REQUEST_STATUSES_ONGOING_ALL
+                                          and (employee_id is null or employee_id not in ($arrInvTxt)))");
                 }
                 else
                 {
-                        $obj->where("(status_id in (".Request::$REQUEST_STATUSES_ONGOING_ALL.") and (employee_id is null or employee_id not in ($arrInvTxt)))");
+                        $obj->where("(status_id in (REQUEST_STATUSES_ONGOING_ALL) and (employee_id is null or employee_id not in ($arrInvTxt)))");
                 }
                 
                 
@@ -333,7 +334,7 @@ class WorkflowOrgunit extends WorkflowObject{
                 $inbox_arr = array();
                 foreach($listInv as $objInv)
                 {
-                        $inbox_arr[$objInv->id] = Request::inboxCountFor($objInv->id);
+                        $inbox_arr[$objInv->id] = WorkflowRequest::inboxCountFor($objInv->id);
                 }
 
                 // die("inbox count by investigator : ".var_export($inbox_arr,true));
@@ -355,13 +356,13 @@ class WorkflowOrgunit extends WorkflowObject{
                 }
 
                 unset($obj);
-                $obj = new Request();
+                $obj = new WorkflowRequest();
                 $obj->select("orgunit_id", $this->getVal("orgunit_id"));
-                $obj->where("status_id in (".Request::$REQUEST_STATUSES_ONGOING_ALL.") and (employee_id is null or employee_id = 0)");
+                $obj->where("status_id in (REQUEST_STATUSES_ONGOING_ALL and (employee_id is null or employee_id = 0)");
                 $nb_assigned = 0;
                 $requestWaitingList = $obj->loadMany();
                 /**
-                 * @var Request $requestWaitingObj
+                 * @var WorkflowRequest $requestWaitingObj
                  */
                 foreach($requestWaitingList as $requestWaitingObj)
                 {
@@ -414,7 +415,7 @@ class WorkflowOrgunit extends WorkflowObject{
             }    
 	}
         
-
+        /*
 
         public function calcNew_requests_count()
         {
@@ -430,22 +431,22 @@ class WorkflowOrgunit extends WorkflowObject{
 
         public function calcRequests_countFor($only_done=false, $ongoing_only=false, $new_only=false, $aborted_only=false)
         {
-            $obj = new Request();
+            $obj = new WorkflowRequest();
             $obj->where("request_date >= '".$this->calcArchive_date()."'");
             if($this->getVal("orgunit_id") != WorkflowOrgunit::$MAIN_CUSTOMER_SERVICE_DEPARTMENT_ID)
             {
                 $obj->select("orgunit_id", $this->getVal("orgunit_id"));
             }
             
-            if($new_only) $obj->where("supervisor_id = 0 or orgunit_id = 0");
-            if($only_done) $obj->where("supervisor_id > 0 and orgunit_id > 0 and status_id in (".Request::$REQUEST_STATUSES_DONE.")");
-            if($ongoing_only) $obj->where("supervisor_id > 0 and orgunit_id > 0 and status_id in (".Request::$REQUEST_STATUSES_ONGOING_ALL.")");
-            if($aborted_only) $obj->where("supervisor_id > 0 and orgunit_id > 0 and status_id in (".Request::$REQUEST_STATUSES_ABORTED.")");
+            if($new_only) $obj->where("supervis or_id = 0 or orgunit_id = 0");
+            if($only_done) $obj->where("supervi sor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_DONE.")");
+            if($ongoing_only) $obj->where("super visor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_ALL.")");
+            if($aborted_only) $obj->where("super visor_id > 0 and orgunit_id > 0 and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ABORTED.")");
             
             
            return $obj->count();
         }
-
+        */
 
         public function getBestAvailInvestigator($lang="ar")
         {

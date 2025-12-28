@@ -37,7 +37,7 @@ class WorkflowEmployee extends WorkflowObject
 	}
 
         
-
+        /*
         public static function resetAll()
         {
            $obj = new WorkflowEmployee();
@@ -45,7 +45,8 @@ class WorkflowEmployee extends WorkflowObject
            $obj->setForce("admin", "N");
            return $obj->update(false);           
         }
-        
+        */
+
         public static function loadById($id)
         {
            $obj = new WorkflowEmployee();
@@ -67,24 +68,26 @@ class WorkflowEmployee extends WorkflowObject
                 }
                 else
                 {
+                        /*
                         $empl_id = $objme ? $objme->getEmployeeId() : 0;
                         
-                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsGeneralSupervisor();
-                        if($empl_id) $iam_supervisor = WorkflowObject::userIsSupervisor();
+                        if($empl_id) $iam_general_supervisor = WorkflowObject::userIsGeneralCommitee();
+                        if($empl_id) $iam_supervisor = WorkflowObject::userIsCommitee();
                         
                         if(!$iam_general_supervisor) $iam_general_supervisor = 0;
                         if(!$iam_supervisor) $iam_supervisor = 0;
 
                         // if the user is an employee 
                         // he is allowed to see workflow employee if :
-                        // 1. he is a general supervisor 
+                        // 1. he is a general commitee 
                         // or
-                        // 2. he is a supervisor
+                        // 2. he is a commitee
 
                         $employee_allowed_to_see_workflow_employee_cond = 
                             "($iam_general_supervisor>0 or $iam_supervisor>0)";
-                        
-                        $this->where("($empl_id>0 and $employee_allowed_to_see_workflow_employee_cond)"); 
+                        $this->where("($empl_id>0 and $employee_allowed_to_see_workflow_employee_cond)");     
+                        */
+                        $this->where("1=0"); 
 
                 }
                         
@@ -176,7 +179,10 @@ class WorkflowEmployee extends WorkflowObject
         }
 
 
-        
+        public function stepsAreOrdered()
+        {
+                return true;
+        }
         
         
         
@@ -205,14 +211,6 @@ class WorkflowEmployee extends WorkflowObject
             $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,
                                 "COLOR"=>$color, "LABEL_AR"=>$title_ar, 
                                 "PUBLIC"=>true, "BF-ID"=>"", 'STEP' => 1,
-                                
-                                /*'CONFIRMATION_NEEDED'=>true,
-                                'CONFIRMATION_QUESTION' =>  array('ar' => "سيتم انشاء حساب حقيقي لهذا العميل على أنه مكتب رحلات هل أنت متأكد", 
-                                                                'en' => "You will create travel company. Sure ?"),
-                                'CONFIRMATION_WARNING' => array('ar' => "من المفروض أن تكون تواصلت مع العميل وتأكدت من جديته بارسال البيانات الضروروية", 
-                                                                'en' => "please check data is correct bedore and this company exists"),*/
-
-                
                         );
             
             
@@ -240,11 +238,14 @@ class WorkflowEmployee extends WorkflowObject
         public function afterUpdate($id, $fields_updated, $disableAfterCommitDBEvent=false) 
         {
                 if(($this->getVal("employee_id")>0) and 
-                   ($fields_updated["active"] or $fields_updated["admin"] or $fields_updated["super_admin"] or $fields_updated["requests_nb"]))
+                   ($fields_updated["active"] or /*$fields_updated["admin"] or $fields_updated["super_admin"] or */
+                    $fields_updated["requests_nb"]))
                 {
                         $empl = $this->het("employee_id");
+                        /*
                         if($this->sureIs("active"))
                         {
+                                
                                 if($this->sureIs("super_admin"))
                                 {
                                      //
@@ -269,7 +270,8 @@ class WorkflowEmployee extends WorkflowObject
                                         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_CONTROLLER);
                                         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_SUPERVISION);
                                         $empl->updateMyUserInformation();    
-                                }        
+                                } 
+
                         }
                         else
                         {
@@ -280,35 +282,60 @@ class WorkflowEmployee extends WorkflowObject
                                 // has been disabled so remove all ongoing assigned tickets   
                                 $this->removeMeAllAssigned();
                         }
-                         
+                        */ 
 
-                        Request::assignSupervisorForNonAssigned(false,true);
+                        // WorkflowRequest::assignCommiteeForNonAssigned(false,true);
                 }
         }
 
 
         private function removeMeAllAssigned()
         {
-            $obj = new Request();
+            $obj = new WorkflowRequest();
 
             $me_id = $this->getVal("employee_id");
             $me_org_id = $this->getVal("orgunit_id");
 
-
-            $obj->where("supervisor_id = $me_id");
+/*
+            $obj->where("superv isor_id = $me_id");
             $obj->where("status_id not in (6,7,8,9)");
-            $obj->setForce("supervisor_id",0);
-            $obj->update(false);
+            $obj->setForce("super visor_id",0);
+            $obj->update(false);*/
 
 
             
             $obj->where("(employee_id = $me_id and orgunit_id = $me_org_id)");
-            $obj->where("status_id in (2,4)");
+            $obj->where("status_id in (2,4,)");
             $obj->setForce("employee_id",0);
             $obj->setForce("orgunit_id",0);
             $status_comment = "removeMeAllAssigned me_id=".$me_id;
             $obj->setForce("status_comment", $status_comment);
             $obj->update(false);
+        }
+
+        public function beforeMaj($id, $fields_updated)
+        {
+                if($fields_updated["email"] or true)
+                {
+                        $email = $this->getVal("email");
+                        $objEmployee = Employee::loadByEmail(1, $email);
+                        if($objEmployee)
+                        {
+                                     
+                                $this->set("gender_id", $objEmployee->getVal("gender_id"));
+                                $this->set("country_id", $objEmployee->getVal("country_id"));
+                                $this->set("firstname", $objEmployee->getVal("firstname"));
+                                $this->set("f_firstname", $objEmployee->getVal("f_firstname"));
+                                $this->set("g_f_firstname", $objEmployee->getVal("g_f_firstname"));
+                                $this->set("lastname", $objEmployee->getVal("lastname"));
+                                $this->set("firstname_en", $objEmployee->getVal("firstname_en"));
+                                $this->set("f_firstname_en", $objEmployee->getVal("f_firstname_en"));
+                                $this->set("g_f_firstname_en", $objEmployee->getVal("g_f_firstname_en"));
+                                $this->set("lastname_en", $objEmployee->getVal("lastname_en"));
+                        }
+                        
+                }    
+                return true;
         }
         
         public function beforeDelete($id,$id_replace) 
@@ -359,30 +386,29 @@ class WorkflowEmployee extends WorkflowObject
         
 
 
-        public function calcRequests_count($only_done=false, $ongoing_only=false, $satisfied_only=false, $surveyed_only=false)
+        public function calcWorkflowRequests_count($only_done=false, $ongoing_only=false)
         {
             if(!$this->getVal("employee_id")) return null;
 
             $employee_id = $this->getVal("employee_id");
             $orgunit_id = $this->getVal("orgunit_id");
 
-            $obj = new Request();
+            $obj = new WorkflowRequest();
             $obj->select("employee_id", $employee_id);
             $obj->select("orgunit_id", $orgunit_id);
 
-            if($only_done) $obj->where("status_id in (".Request::$REQUEST_STATUSES_DONE.")");
-            elseif($ongoing_only) $obj->where("status_id in (".Request::$REQUEST_STATUSES_ONGOING_INVESTIGATOR.")");
+            if($only_done) $obj->where("status_id in (0,0,0) -- statsuses done to do");
+            elseif($ongoing_only) $obj->where("status_id in (0,0,0,0) statsuses ongoing to do");
 
-            if($satisfied_only) $obj->where("service_satisfied = 'Y'");
-
-            if($surveyed_only) $obj->where("survey_sent = 'Y'");
+            // if($satisfied_only) $obj->where("service_satisfied = 'Y'");
+            // if($surveyed_only) $obj->where("survey_sent = 'Y'");
 
             return $obj->count();
         }
 
         public function calcDone_requests_count($satisfied_only=false, $surveyed_only=false)
         {
-                return $this->calcRequests_count($only_done=true, $ongoing_only=false, $satisfied_only, $surveyed_only);
+                return $this->calcWorkflowRequests_count($only_done=true, $ongoing_only=false, $satisfied_only, $surveyed_only);
         }
 
         public function calcDoneSurveyed_requests_count($satisfied_only=false)
@@ -397,23 +423,28 @@ class WorkflowEmployee extends WorkflowObject
 
         public function calcOngoing_requests_count($satisfied_only=false, $surveyed_only=false)
         {
-                return $this->calcRequests_count($only_done=false, $ongoing_only=true, $satisfied_only, $surveyed_only);
+                return $this->calcWorkflowRequests_count($only_done=false, $ongoing_only=true, $satisfied_only, $surveyed_only);
         }
+
+        
 
         public function calcInbox_count()
         {
                 if(!$this->getVal("employee_id")) return null;
                 $myEmplId = $this->getVal("employee_id");
+                /*
                 if(WorkflowEmployee::isAdmin($myEmplId)) 
                 {
-                        $where_sql = "((".Request::inboxSqlCond("supervisor", $myEmplId, "").") or (".Request::inboxSqlCond("investigator", $myEmplId, "")."))";
+                        $where_sql = "((".WorkflowRequest::inboxSqlCond("commitee", $myEmplId, "").") or (".WorkflowWorkflowRequest::inboxSqlCond("employee", $myEmplId, "")."))";
                 }
                 else
                 {
-                        $where_sql = Request::inboxSqlCond("investigator", $myEmplId, "");
+                        $where_sql = WorkflowRequest::inboxSqlCond("employee", $myEmplId, "");
                 }
+                */
+                $where_sql = WorkflowRequest::inboxSqlCond("employee", $myEmplId, "");
 
-                $obj = new Request();
+                $obj = new WorkflowWorkflowRequest();
                 $obj->where($where_sql);
 
                 return $obj->count();
@@ -430,21 +461,21 @@ class WorkflowEmployee extends WorkflowObject
             return round($satisfied_only_count*100/$all_count);
         }
 
-        public static function getSupervisorArray($orgunit_id)
+        public static function getCommiteeArray($orgunit_id, $commitee_id)
         {
                 $obj = new WorkflowEmployee();
                 // $obj->select_visibilite_horizontale();
-                $obj->select("admin","Y");
                 $obj->select("orgunit_id",$orgunit_id);
+                $obj->select("commitee_id", $commitee_id);
                 $obj->select("active", 'Y');
 
                 return $obj->loadMany();
         }
 
-        public static function getSupervisorList($orgunit_id)
+        public static function getCommiteeList($orgunit_id, $commitee_id)
         {
                 
-                $objList = self::getSupervisorArray($orgunit_id);
+                $objList = self::getCommiteeArray($orgunit_id, $commitee_id);
 
                 $supervList = array();
 
@@ -455,6 +486,7 @@ class WorkflowEmployee extends WorkflowObject
                 return $supervList;
         }
 
+        /*
         public static function isAdmin($employee_id)
         {
                 $obj = new WorkflowEmployee();
@@ -475,6 +507,8 @@ class WorkflowEmployee extends WorkflowObject
                 return $obj->id;
 
         }
+
+        */
 
         public static function getInvestigatorListOfIds($orgunit_id)
         {
@@ -497,7 +531,7 @@ class WorkflowEmployee extends WorkflowObject
                 $obj->select("orgunit_id",$orgunit_id);
                 $obj->select("active", 'Y');
                 $obj->where("super_admin = 'N' and employee_id != $except_investigator_id");  
-                // admin = 'N' and // rafik 30/8/2022 : I removed this from above acondition because admin (مشرف تنسيق) can be a supervisor 
+                // admin = 'N' and // rafik 30/8/2022 : I removed this from above acondition because admin (مشرف تنسيق) can be a commitee 
                 
                 
                 $objList = AfwLoadHelper::loadList($obj, "employee_id");
@@ -550,7 +584,7 @@ class WorkflowEmployee extends WorkflowObject
                                 {
                                         $lang = AfwSession::getSessionVar("current_lang");
                                         if(!$lang) $lang = "ar";
-                                        return AfwLanguageHelper::tt("المنسق(ـة) في") . " " . $objItem->getDisplay($lang);
+                                        return AfwLanguageHelper::tt("موظف القبول(ـة) في") . " " . $objItem->getDisplay($lang);
                                 }
                         }                
                 }
@@ -584,7 +618,12 @@ class WorkflowEmployee extends WorkflowObject
                 if($except_investigator_id) unset($investigatorList[$except_investigator_id]);
                 else $except_investigator_id=0;
                 // AfwRunHelper::safeDie("investigatorList = ".var_export($investigatorList,true));
-                $stats_arr = Request::aggreg($function="count(*)", $where="active='Y' and status_id in (".Request::$REQUEST_STATUSES_ONGOING_INVESTIGATOR.") and orgunit_id=$orgunit_id and employee_id > 0 and employee_id != $except_investigator_id", $group_by = "employee_id",$throw_error=true, $throw_analysis_crash=true);
+                $stats_arr = WorkflowRequest::aggreg($function="count(*)", $where=" active='Y' 
+                                                                                and status_id in (0,0,) --REQUEST_STATUSES_ONGOING_INVESTIGATOR
+                                                                                and orgunit_id=$orgunit_id 
+                                                                                and employee_id > 0 
+                                                                                and employee_id != $except_investigator_id", $group_by = "employee_id",
+                                                                $throw_error=true, $throw_analysis_crash=true);
                 // AfwRunHelper::safeDie("stats_arr = ".var_export($stats_arr,true));
                 $best_investigator_id = 0;
                 if(count($stats_arr)>0)
@@ -633,18 +672,19 @@ class WorkflowEmployee extends WorkflowObject
                 
         }
 
-        public static function getBestAvailableSupervisor($except_supervisor_id=0,$re_distribution=false, $orgunit_id)
+        /*
+        public static function getBestAvailableCommitee($orgunit_id, $except_supervisor_id=0, $re_distribution=false)
         {
-                global $allSupervisorList;
-                if(!$allSupervisorList) $allSupervisorList = self::getSupervisorList($orgunit_id);                
-                $supervisorList = $allSupervisorList;
+                global $allCommiteeList;
+                if(!$allCommiteeList) $allCommiteeList = self::getCommiteeList($orgunit_id);                
+                $supervisorList = $allCommiteeList;
                 if($except_supervisor_id) unset($supervisorList[$except_supervisor_id]);
                 else $except_supervisor_id=0;                 
                 // AfwRunHelper::safeDie("supervisorList = ".var_export($supervisorList,true));
                 $best_supervisor_id = 0;
 
 
-                $stats_arr = Request::aggreg($function="count(*)", $where="active='Y' and status_id in (".Request::$REQUEST_STATUSES_ONGOING_SUPERVISOR.") and supervisor_id > 0 and supervisor_id != $except_supervisor_id", $group_by = "supervisor_id",$throw_error=true, $throw_analysis_crash=true);                                        
+                $stats_arr = WorkflowRequest::aggreg($function="count(*)", $where="active='Y' and status_id in (".WorkflowRequest::$REQUEST_STATUSES_ONGOING_SUPERVISOR.") and super visor_id > 0 and super visor_id != $except_supervisor_id", $group_by = "supe rvisor_id",$throw_error=true, $throw_analysis_crash=true);                                        
                 if(count($stats_arr)>0)
                 {
                         foreach($stats_arr as $superv_id => $curr_count)
@@ -688,20 +728,23 @@ class WorkflowEmployee extends WorkflowObject
                 
         }
 
-        public function assignMeAsRequestSupervisor($requestObj, $commit = true) // , $orgunit_id
+
+        public function assignMeAsWorkflowRequestCommitee($requestObj, $commit = true) // , $orgunit_id
         {
                 // $requestObj->set("orgunit_id", $orgunit_id);
-                $requestObj->set("supervisor_id", $this->getVal("employee_id"));
+                $requestObj->set("superv isor_id", $this->getVal("employee_id"));
                 if($commit) $requestObj->commit();
         }
 
+        */
+
         /**
-         * @param Request $requestObj
+         * @param WorkflowRequest $requestObj
          */
 
-        public function assignMeAsRequestInvestigator($requestObj, $lang="ar")
+        public function assignMeAsWorkflowRequestInvestigator($requestObj, $lang="ar")
         {
-                list($err, $info) = $requestObj->assignRequest($this->getVal("employee_id"), $lang, "Y", "assignMeAsRequestInvestigator");
+                list($err, $info) = $requestObj->assignWorkflowRequest($this->getVal("employee_id"), $lang, "Y", "assignMeAsWorkflowRequestInvestigator");
                 if($err) AfwSession::pushError($err);
                 if($info) AfwSession::pushInformation($info); 
         }
@@ -715,7 +758,7 @@ class WorkflowEmployee extends WorkflowObject
         protected function hideNonActiveRowsFor($auser)
         {
                 if(!$auser) return true;
-                if(WorkflowObject::userIsGeneralSupervisor($auser)) return false;
+                if(WorkflowObject::userIsSuperAdmin($auser)) return false;
                 if($auser->isAdmin()) return false;  
                 return true;
         }

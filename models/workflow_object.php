@@ -1,6 +1,6 @@
 <?php
 
-class WorkflowObject extends AFWObject{
+class WorkflowObject extends AfwMomkenObject{
 
         public static $content_type_picture = 1;
         public static $content_type_publication = 2;
@@ -1088,7 +1088,7 @@ class WorkflowObject extends AFWObject{
             return $this->getTableName();
         }
 
-
+        /*
         public static function userIsSupervisor($objme = null)
         {
                 if (!$objme) $objme = AfwSession::getUserConnected();
@@ -1109,7 +1109,7 @@ class WorkflowObject extends AFWObject{
                 if (!$employee_id) return 0;
 
                 return WorkflowEmployee::isGeneralAdmin($employee_id);
-        }
+        }*/
 
         public static function userIsSuperAdmin($objme = null)
         {
@@ -1117,5 +1117,14 @@ class WorkflowObject extends AFWObject{
                 if (!$objme) return false;
                 return $objme->isSuperAdmin();
         }
+
+
+        public static function userIsAdmin($objme = null)
+        {
+                if (!$objme) $objme = AfwSession::getUserConnected();
+                if (!$objme) return false;
+                return $objme->isAdmin();
+        }
+
 
 }

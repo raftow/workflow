@@ -13,8 +13,8 @@ class SlotModelArTranslator{
 		$trad["slot_model"]["desc_ar"] = "وصف  بالعربية";
 		$trad["slot_model"]["desc_en"] = "وصف  بالانجليزية";
 		$trad["slot_model"]["interview_type_pattern_id"] = "نموذج المقابلة";
-		$trad["slot_model"]["workflow_session_id"] = "دورة إجراءات القبول";
-		$trad["slot_model"]["workflow_scope_id"] = "نطاق سير العمل";
+		$trad["slot_model"]["workflow_session_id"] = "دورة القبول";
+		$trad["slot_model"]["workflow_scope_id"] = "البرنامج";
 		$trad["slot_model"]["workflow_stage_id"] = "المرحلة";
 		$trad["slot_model"]["interview_date"] = "اليوم";
 		$trad["slot_model"]["start_time"] = "وقت البداية";
