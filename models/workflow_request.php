@@ -67,7 +67,7 @@ class WorkflowRequest extends WorkflowObject
 
         public static function inboxSqlCond($employee_id, $prefix = 'me.')
         {
-                return $prefix . "employee_id='$employee_id' and " . $prefix . "terminated != 'Y'";
+                return $prefix . "employee_id='$employee_id' and " . $prefix . "done != 'Y'";
         }
 
         public static function inboxCountFor($employee_id)

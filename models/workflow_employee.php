@@ -354,9 +354,9 @@ class WorkflowEmployee extends WorkflowObject
                 $obj->select('orgunit_id', $orgunit_id);
 
                 if ($only_done)
-                        $obj->where("terminated='Y'");
+                        $obj->where("done='Y'");
                 elseif ($ongoing_only)
-                        $obj->where("terminated!='Y'");
+                        $obj->where("done!='Y'");
 
                 return $obj->count();
         }
