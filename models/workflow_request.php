@@ -141,7 +141,8 @@ class WorkflowRequest extends WorkflowObject
                 $log = '';
                 $pbms = array();
                 $employeesList = $this->getEmployees();
-                // die('rafik dyn employeesList=' . var_export($employeesList, true));
+                $orgunit_id = $this->getVal('orgunit_id');
+                die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
                         $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
                 }
