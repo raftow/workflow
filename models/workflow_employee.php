@@ -534,7 +534,7 @@ class WorkflowEmployee extends WorkflowObject
                                         $lang = AfwSession::getSessionVar('current_lang');
                                         if (!$lang)
                                                 $lang = 'ar';
-                                        return AfwLanguageHelper::tt('موظف القبول(ـة) في') . ' ' . $objItem->getDisplay($lang);
+                                        return AfwLanguageHelper::tt('موظف القبول في') . ' ' . $objItem->getDisplay($lang);
                                 }
                         }
                 } elseif (count($objList) > 1) {
