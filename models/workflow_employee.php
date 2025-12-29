@@ -610,9 +610,10 @@ class WorkflowEmployee extends WorkflowObject
                 else
                         $return = null;
 
+                $log = var_export($stats_arr, true);
                 // die("best_employee_id = $best_employee_id , return = ".var_export($return,true).", employeeList = ".var_export($employeeList,true));
 
-                return array($best_employee_id, $return, $employeeList);
+                return array($best_employee_id, $return, $employeeList, $log);
         }
 
         /*
