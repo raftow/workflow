@@ -498,7 +498,7 @@ class WorkflowEmployee extends WorkflowObject
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("admin = 'N' and super_admin = 'N' and employee_id != $except_employee_id");
+                $obj->where("employee_id != $except_employee_id");
 
                 $objList = $obj->loadMany();
 
