@@ -7,6 +7,16 @@ class WorkflowRequest extends WorkflowObject
         public static $DB_STRUCTURE = null;
         // public static $copypast = true;
 
+        public static $PUB_METHODS = array(
+                'assignRequest' => array(
+                        'items' => 'getEmployees',
+                        'title' => 'إسناد الطلب إلى [item]',
+                        'confirmation_needed' => false,
+                        'confirmation_warning' => '',
+                        'confirmation_question' => ''
+                ),
+        );
+
         public function __construct()
         {
                 parent::__construct('workflow_request', 'id', 'workflow');
@@ -76,5 +86,65 @@ class WorkflowRequest extends WorkflowObject
                 $sql = self::inboxSqlCond($employee_id, $prefix = '');
                 $obj->where($sql);
                 return $obj->count();
+        }
+
+        protected function afwCall($name, $arguments)
+        {
+                if (substr($name, 0, 13) == 'assignRequest') {
+                        $employeeId = intval(substr($name, 13));
+                        return $this->assignRequest($employeeId, $arguments[0], 'Y', "assignRequest For eid=$employeeId");
+                }
+
+                return false;
+                // the above return should be keeped if not treated
+        }
+
+        public function assignRequest($employeeId, $lang = 'ar')
+        {
+                if ((!$employeeId) and $this->getVal('employee_id') > 0)
+                        throw new AfwRuntimeException('strange attempt to unassign the request ID=' . $this->id);
+                if (!$employeeId)
+                        return array('', 'attempt to unassign the request nothing-done');
+
+                $this->set('employee_id', $employeeId);
+
+                // $objOrgunit = null;
+                // $objEmployee = $this->het("employee_id");
+                $this->set('assign_date', AfwDateHelper::currentHijriDate());
+                $this->set('assign_time', date('H:i:s'));
+                $this->commit();
+                $status_comment = date('H:i:s') . ': تم اسناد الطلب [' . $this->id . "] للموظف(ة) $employeeId " . $this->showAttribute('employee_id');
+                return array('', $status_comment);
+        }
+
+        public function getEmployees()
+        {
+                if (!$this->getVal('orgunit_id'))
+                        return array();
+                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), 0);  // $this->getVal("employee_id")
+        }
+
+        public function getMethodTitle($methodName, $lang = 'ar')
+        {
+                return $this->tm(self::$PUB_METHODS[$methodName]['title'], $lang);
+        }
+
+        public function getMethodTooltip($methodName, $lang = 'ar')
+        {
+                return $this->tm(self::$PUB_METHODS[$methodName]['tooltip'], $lang);
+        }
+
+        protected function getPublicMethods()
+        {
+                global $lang;
+
+                $objme = AfwSession::getUserConnected();
+                $log = '';
+                $pbms = array();
+                foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
+                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $this->getEmployees());
+                }
+
+                return $pbms;
         }
 }

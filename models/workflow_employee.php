@@ -463,52 +463,51 @@ class WorkflowEmployee extends WorkflowObject
          * }
          */
 
-        public static function getInvestigatorListOfIds($orgunit_id)
+        public static function getEmployeeListOfIds($orgunit_id)
         {
-                $invList = self::getInvestigatorList($orgunit_id);
+                $empList = self::getEmployeeList($orgunit_id);
 
-                $invListIds = array();
-                foreach ($invList as $id => $invObj) {
-                        $invListIds[] = $invObj->id;
+                $empListIds = array();
+                foreach ($empList as $id => $empObj) {
+                        $empListIds[] = $empObj->id;
                 }
 
-                return array($invListIds, $invList);
+                return array($empListIds, $empList);
         }
 
-        public static function getInvestigatorList($orgunit_id, $except_investigator_id = 0)
+        public static function getEmployeeList($orgunit_id, $except_employee_id = 0)
         {
                 $obj = new WorkflowEmployee();
                 if (!$orgunit_id)
-                        $obj->simpleError('getInvestigatorList need a correct and valid orgunit_id');
+                        throw new AfwRuntimeException('getEmployeeList need a correct and valid orgunit_id');
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("super_admin = 'N' and employee_id != $except_investigator_id");
-                // admin = 'N' and // rafik 30/8/2022 : I removed this from above acondition because admin (مشرف تنسيق) can be a commitee
+                $obj->where("employee_id != $except_employee_id");
 
                 $objList = AfwLoadHelper::loadList($obj, 'employee_id');
 
                 return $objList;
         }
 
-        public static function getInvestigatorArray($orgunit_id, $except_investigator_id = 0)
+        public static function getEmployeeArray($orgunit_id, $except_employee_id = 0)
         {
                 $obj = new WorkflowEmployee();
                 if (!$orgunit_id)
-                        $obj->simpleError('getInvestigatorList need a correct and valid orgunit_id');
+                        $obj->simpleError('getEmployeeList need a correct and valid orgunit_id');
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("admin = 'N' and super_admin = 'N' and employee_id != $except_investigator_id");
+                $obj->where("admin = 'N' and super_admin = 'N' and employee_id != $except_employee_id");
 
                 $objList = $obj->loadMany();
 
-                $investList = array();
+                $empList = array();
 
                 foreach ($objList as $objItem) {
-                        $investList[$objItem->getVal('employee_id')] = array('obj' => $objItem, 'curr' => 0);  // ->getDisplay("ar")
+                        $empList[$objItem->getVal('employee_id')] = array('obj' => $objItem, 'curr' => 0);  // ->getDisplay("ar")
                 }
-                return $investList;
+                return $empList;
         }
 
         public static function orgOfEmployee($employee_id, $return_object = false, $return_id = true)
@@ -562,57 +561,57 @@ class WorkflowEmployee extends WorkflowObject
                 }
         }
 
-        public static function getBestAvailableInvestigator($orgunit_id, $except_investigator_id = 0)
+        public static function getBestAvailableEmployee($orgunit_id, $except_employee_id = 0)
         {
-                $investigatorList = self::getInvestigatorArray($orgunit_id);
-                if ($except_investigator_id)
-                        unset($investigatorList[$except_investigator_id]);
+                $employeeList = self::getEmployeeArray($orgunit_id);
+                if ($except_employee_id)
+                        unset($employeeList[$except_employee_id]);
                 else
-                        $except_investigator_id = 0;
-                // AfwRunHelper::safeDie("investigatorList = ".var_export($investigatorList,true));
+                        $except_employee_id = 0;
+                // AfwRunHelper::safeDie("employeeList = ".var_export($employeeList,true));
                 $stats_arr = WorkflowRequest::aggreg($function = 'count(*)', $where = " active='Y' 
                                                                                 and status_id in (0,0,) --REQUEST_STATUSES_ONGOING_INVESTIGATOR
                                                                                 and orgunit_id=$orgunit_id 
                                                                                 and employee_id > 0 
-                                                                                and employee_id != $except_investigator_id", $group_by = 'employee_id',
+                                                                                and employee_id != $except_employee_id", $group_by = 'employee_id',
                         $throw_error = true, $throw_analysis_crash = true);
                 // AfwRunHelper::safeDie("stats_arr = ".var_export($stats_arr,true));
-                $best_investigator_id = 0;
+                $best_employee_id = 0;
                 if (count($stats_arr) > 0) {
                         $min_curr_count = 99999;
 
-                        foreach ($stats_arr as $investigator_id => $curr_count) {
-                                $investigatorList[$investigator_id]['curr'] = $curr_count;
-                                if (($curr_count < $min_curr_count) and ($investigatorList[$investigator_id]['obj'])) {
+                        foreach ($stats_arr as $employee_id => $curr_count) {
+                                $employeeList[$employee_id]['curr'] = $curr_count;
+                                if (($curr_count < $min_curr_count) and ($employeeList[$employee_id]['obj'])) {
                                         $min_curr_count = $curr_count;
-                                        $best_investigator_id = $investigator_id;
+                                        $best_employee_id = $employee_id;
                                 }
                         }
                 }
 
                 // but if one licensor doesn't have any previous request assigned he will not be in $stats_arr
                 // he should be the best_licensor because he have no request assigned, so check this :
-                foreach ($investigatorList as $investigator_id => $investigatorItem) {
-                        if (!$investigatorItem['curr'])
-                                $best_investigator_id = $investigator_id;
+                foreach ($employeeList as $employee_id => $employeeItem) {
+                        if (!$employeeItem['curr'])
+                                $best_employee_id = $employee_id;
                 }
 
-                if ((!$best_investigator_id) or (!$investigatorList[$best_investigator_id]['obj'])) {
-                        reset($investigatorList);
-                        $first_item = current($investigatorList);
-                        // AfwRunHelper::safeDie("first_item = ".var_export($first_item,true)." investigatorList = ".var_export($investigatorList,true));
+                if ((!$best_employee_id) or (!$employeeList[$best_employee_id]['obj'])) {
+                        reset($employeeList);
+                        $first_item = current($employeeList);
+                        // AfwRunHelper::safeDie("first_item = ".var_export($first_item,true)." employeeList = ".var_export($employeeList,true));
                         if ($first_item['obj'])
-                                $best_investigator_id = $first_item['obj']->getVal('employee_id');
+                                $best_employee_id = $first_item['obj']->getVal('employee_id');
                 }
 
-                if ($best_investigator_id)
-                        $return = $investigatorList[$best_investigator_id];
+                if ($best_employee_id)
+                        $return = $employeeList[$best_employee_id];
                 else
                         $return = null;
 
-                // die("best_investigator_id = $best_investigator_id , return = ".var_export($return,true).", investigatorList = ".var_export($investigatorList,true));
+                // die("best_employee_id = $best_employee_id , return = ".var_export($return,true).", employeeList = ".var_export($employeeList,true));
 
-                return array($best_investigator_id, $return, $investigatorList);
+                return array($best_employee_id, $return, $employeeList);
         }
 
         /*
@@ -683,9 +682,9 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param WorkflowRequest $requestObj
          */
-        public function assignMeAsWorkflowRequestInvestigator($requestObj, $lang = 'ar')
+        public function assignMeAsWorkflowRequestEmployee($requestObj, $lang = 'ar')
         {
-                list($err, $info) = $requestObj->assignWorkflowRequest($this->getVal('employee_id'), $lang, 'Y', 'assignMeAsWorkflowRequestInvestigator');
+                list($err, $info) = $requestObj->assignWorkflowRequest($this->getVal('employee_id'), $lang, 'Y', 'assignMeAsWorkflowRequestEmployee');
                 if ($err)
                         AfwSession::pushError($err);
                 if ($info)
