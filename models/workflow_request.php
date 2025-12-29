@@ -157,7 +157,7 @@ class WorkflowRequest extends WorkflowObject
                         $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
                 }
 
-                die('rafik dyn pbms=' . var_export($pbms, true));
+                // die('rafik dyn pbms=' . var_export($pbms, true));
 
                 return $pbms;
         }
