@@ -1,27 +1,25 @@
 <?php
 class WorkflowWorkflowRequestAfwStructure
 {
-
         public static function initInstance(&$obj)
         {
                 if ($obj instanceof WorkflowRequest) {
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
-                        $obj->DISPLAY_FIELD = "workflow_request_name_ar";
+                        $obj->DISPLAY_FIELD = 'workflow_request_name_ar';
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
                         $obj->UNIQUE_KEY = array('workflow_applicant_id', 'workflow_model_id');
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
 
                         $obj->editByStep = false;
-                        //$obj->editNbSteps = 1; 
+                        // $obj->editNbSteps = 1;
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
-                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'Workflow', "class" => 'WorkflowRequest', "submit" => true);
+                        $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'Workflow', 'class' => 'WorkflowRequest', 'submit' => true);
                 } else {
                         WorkflowRequestArTranslator::initData();
                         WorkflowRequestEnTranslator::initData();
                 }
         }
-
 
         public static $DB_STRUCTURE = array(
                 'id' => array(
@@ -35,7 +33,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
                 'workflow_applicant_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -62,9 +59,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_50',
                 ),
-
-
-
                 'workflow_model_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -91,7 +85,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_50',
                 ),
-
                 'workflow_session_id' => array(
                         'SEARCH' => true,
                         'QSEARCH' => false,
@@ -103,7 +96,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
                         'MANDATORY' => true,
                         'UTF8' => false,
                         'TYPE' => 'FK',
@@ -111,7 +104,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSMODULE' => 'workflow',
                         'CSS' => 'width_pct_50',
                 ),
-
                 'workflow_scope_id' => array(
                         'SEARCH' => true,
                         'QSEARCH' => false,
@@ -123,7 +115,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
                         'MANDATORY' => true,
                         'UTF8' => false,
                         'TYPE' => 'FK',
@@ -131,8 +123,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSMODULE' => 'workflow',
                         'CSS' => 'width_pct_50',
                 ),
-
-
                 'workflow_stage_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -159,8 +149,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
-
                 'workflow_status_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -187,8 +175,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
-
                 'external_request_code' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -208,9 +194,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
-
-
                 'request_type_code' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -230,140 +213,190 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
                 'request_date' => array(
-			'STEP' => 1,  
-			'SEARCH' => true,
-			'QSEARCH' => true,
-			'QSEARCH_OPER' => 'between',
-			'QSIZE' => 6,
-			'SHOW' => true,
-			'RETRIEVE' => true,
-			'EXCEL' => true,
-			'EDIT' => true,
-			'QEDIT' => false,
-			'CSS' => 'width_pct_25',
-			'SIZE' => 40,
-			'MANDATORY' => true,
-			'UTF8' => false,
-			'TYPE' => 'DATE',
-			'FORMAT' => 'CONVERT_SYSTEM_FORMAT',
-			'RETRIEVE-VALUE' => false,
-			'READONLY' => true,
-			'SEARCH-BY-ONE' => true,
-			'DISPLAY' => true,
-			'DISPLAY-UGROUPS' => '',
-			'EDIT-UGROUPS' => '',
-			'ERROR-CHECK' => true,
-		),
-
+                        'STEP' => 1,
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'QSEARCH_OPER' => 'between',
+                        'QSIZE' => 6,
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EXCEL' => true,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'CSS' => 'width_pct_25',
+                        'SIZE' => 40,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'DATE',
+                        'FORMAT' => 'CONVERT_SYSTEM_FORMAT',
+                        'RETRIEVE-VALUE' => false,
+                        'READONLY' => true,
+                        'SEARCH-BY-ONE' => true,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
                 'orgunit_id' => array(
-			'FGROUP' => 'assignment',  'STEP' => 1,
-			'SHORTNAME' => 'orgunit',
-			'SEARCH' => true,
-			'QSEARCH' => true,
-			'SHOW' => true,
-			'RETRIEVE' => false,
-			'EXCEL' => true,
-			'EDIT' => true,
-			'QEDIT' => true,
-			'WHERE' => "id in (select distinct o.orgunit_id from §DBPREFIX§workflow.workflow_orgunit o 
-				                        inner join §DBPREFIX§workflow.workflow_employee e on e.orgunit_id = o.orgunit_id 
-										where o.active='Y' and e.active='Y')",
-			'SIZE' => 60,
-			'UTF8' => false,
-			'CSS' => 'width_pct_50',
-			'AUTOCOMPLETE-SEARCH' => true,
-			'AUTOCOMPLETE' => true,
-			'TYPE' => 'FK',
-			'ANSWER' => 'orgunit',
-			'ANSMODULE' => 'hrm',
-			'RELATION' => 'ManyToOne',
-			'READONLY' => true,
-			'READONLY-MODULE' => 'crm',
-			'DISABLE-READONLY-ADMIN' => true,
-			'DISABLE-READONLY-324' => true,
-			'SEARCH-BY-ONE' => true,
-			'DISPLAY' => true,
-			'AUDIT' => false,
-			'DISPLAY-UGROUPS' => '',
-			'EDIT-UGROUPS' => '',
-			'ERROR-CHECK' => true,
-		),
-
-		'employee_id' => array(
-			'FGROUP' => 'assignment', 'STEP' => 1,
-			'SHORTNAME' => 'employee',
-			'SEARCH' => true,
-			'QSEARCH' => false,
-			'SHOW' => true,
-			'RETRIEVE' => true,
-			'EXCEL' => true,
-			'EDIT' => true,
-			'QEDIT' => true,
-			'SIZE' => 60,
-			'MANDATORY' => false,
-			'UTF8' => false,
-			'CSS' => 'width_pct_50',
-			'AUTOCOMPLETE' => true,
-			'TYPE' => 'FK',
-			'ANSWER' => 'employee',
-			'ANSMODULE' => 'hrm',
-			'RELATION' => 'OneToMany',
-			'READONLY' => true,
-			'AUDIT' => false,
-			'SEARCH-BY-ONE' => false,
-			'DISPLAY' => true,
-			'DISPLAY-UGROUPS' => '',
-			'EDIT-UGROUPS' => '',
-		),
-
-
-		
-
-		'assign_date' => array(
-			'FGROUP' => 'assignment',  'STEP' => 1,
-			'SEARCH' => true,
-			'QSEARCH' => false,
-			'SHOW' => true,
-			'RETRIEVE' => false,
-			'EDIT' => true,
-			'QEDIT' => false,
-			'CSS' => 'width_pct_50',
-			'SIZE' => 10,
-			'MANDATORY' => true,
-			'UTF8' => false,
-			'TYPE' => 'DATE',
-			'FORMAT' => 'HIJRI_UNIT',
-			'READONLY' => true,
-			'AUDIT' => false,
-			'SEARCH-BY-ONE' => false,
-			'DISPLAY' => true,
-			'DISPLAY-UGROUPS' => '',
-			'EDIT-UGROUPS' => '',
-			'ERROR-CHECK' => true,
-		),
-
-		'assign_time' => array(
-			'FGROUP' => 'assignment',  'STEP' => 1,
-			'SEARCH' => true,
-			'QSEARCH' => false,
-			'SHOW' => true,
-			'RETRIEVE' => false,
-			'EDIT' => true,
-			'QEDIT' => false,
-			'CSS' => 'width_pct_50',
-			'SIZE' => 8,
-			'UTF8' => false,
-			'TYPE' => 'TIME',
-			'READONLY' => true,
-			'SEARCH-BY-ONE' => false,
-			'DISPLAY' => true,
-			'DISPLAY-UGROUPS' => '',
-			'EDIT-UGROUPS' => '',
-		),
-
-
+                        'FGROUP' => 'assignment',
+                        'STEP' => 1,
+                        'SHORTNAME' => 'orgunit',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EXCEL' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'WHERE' => "id in (select distinct o.orgunit_id from §DBPREFIX§workflow.workflow_orgunit o 
+\t\t\t\t                        inner join §DBPREFIX§workflow.workflow_employee e on e.orgunit_id = o.orgunit_id 
+\t\t\t\t\t\t\t\t\t\twhere o.active='Y' and e.active='Y')",
+                        'SIZE' => 60,
+                        'UTF8' => false,
+                        'CSS' => 'width_pct_50',
+                        'AUTOCOMPLETE-SEARCH' => true,
+                        'AUTOCOMPLETE' => true,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'orgunit',
+                        'ANSMODULE' => 'hrm',
+                        'RELATION' => 'ManyToOne',
+                        'READONLY' => true,
+                        'READONLY-MODULE' => 'crm',
+                        'DISABLE-READONLY-ADMIN' => true,
+                        'DISABLE-READONLY-324' => true,
+                        'SEARCH-BY-ONE' => true,
+                        'DISPLAY' => true,
+                        'AUDIT' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
+                'employee_id' => array(
+                        'FGROUP' => 'assignment',
+                        'STEP' => 1,
+                        'SHORTNAME' => 'employee',
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EXCEL' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 60,
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'CSS' => 'width_pct_50',
+                        'AUTOCOMPLETE' => true,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'employee',
+                        'ANSMODULE' => 'hrm',
+                        'RELATION' => 'OneToMany',
+                        'READONLY' => true,
+                        'AUDIT' => false,
+                        'SEARCH-BY-ONE' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
+                'assign_date' => array(
+                        'FGROUP' => 'assignment',
+                        'STEP' => 1,
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'CSS' => 'width_pct_50',
+                        'SIZE' => 10,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'DATE',
+                        'FORMAT' => 'HIJRI_UNIT',
+                        'READONLY' => true,
+                        'AUDIT' => false,
+                        'SEARCH-BY-ONE' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
+                'assign_time' => array(
+                        'FGROUP' => 'assignment',
+                        'STEP' => 1,
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'CSS' => 'width_pct_50',
+                        'SIZE' => 8,
+                        'UTF8' => false,
+                        'TYPE' => 'TIME',
+                        'READONLY' => true,
+                        'SEARCH-BY-ONE' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
+                'terminated' => array(
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'DEFAUT' => 'Y',
+                        'TYPE' => 'YN',
+                        'FORMAT' => 'icon',
+                        'STEP' => 1,
+                        'READONLY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+                'terminated_date' => array(
+                        'FGROUP' => 'assignment',
+                        'STEP' => 1,
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'CSS' => 'width_pct_50',
+                        'SIZE' => 10,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'DATE',
+                        'FORMAT' => 'HIJRI_UNIT',
+                        'READONLY' => true,
+                        'AUDIT' => false,
+                        'SEARCH-BY-ONE' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
+                'terminated_time' => array(
+                        'FGROUP' => 'assignment',
+                        'STEP' => 1,
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'CSS' => 'width_pct_50',
+                        'SIZE' => 8,
+                        'UTF8' => false,
+                        'TYPE' => 'TIME',
+                        'READONLY' => true,
+                        'SEARCH-BY-ONE' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
                 'workflowRequestDataList' => array(
                         'STEP' => 2,
                         'SHOW' => true,
@@ -380,7 +413,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
-                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
                         'MANDATORY' => false,
                         'UTF8' => false,
                         'TYPE' => 'FK',
@@ -392,11 +425,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'CAN-BE-SETTED' => true,
                         'CSS' => 'width_pct_50',
                 ),
-
-
-
-
-
                 'active' => array(
                         'SHOW' => true,
                         'RETRIEVE' => true,
@@ -410,7 +438,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
                 'created_by' => array(
                         'SHOW-ADMIN' => true,
                         'RETRIEVE' => false,
@@ -425,7 +452,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_100',
                 ),
-
                 'created_at' => array(
                         'SHOW-ADMIN' => true,
                         'RETRIEVE' => false,
@@ -438,7 +464,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_100',
                 ),
-
                 'updated_by' => array(
                         'SHOW-ADMIN' => true,
                         'RETRIEVE' => false,
@@ -453,7 +478,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_100',
                 ),
-
                 'updated_at' => array(
                         'SHOW-ADMIN' => true,
                         'RETRIEVE' => false,
@@ -466,7 +490,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_100',
                 ),
-
                 'validated_by' => array(
                         'SHOW-ADMIN' => true,
                         'RETRIEVE' => false,
@@ -481,7 +504,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_100',
                 ),
-
                 'validated_at' => array(
                         'SHOW-ADMIN' => true,
                         'RETRIEVE' => false,
@@ -494,11 +516,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_100',
                 ),
-
-
-
-
-                'version'                  => array(
+                'version' => array(
                         'STEP' => 99,
                         'HIDE_IF_NEW' => true,
                         'SHOW' => true,
@@ -507,8 +525,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'INT',
                         'FGROUP' => 'tech_fields'
                 ),
-
-                'update_groups_mfk'             => array(
+                'update_groups_mfk' => array(
                         'STEP' => 99,
                         'HIDE_IF_NEW' => true,
                         'SHOW' => true,
@@ -519,8 +536,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'MFK',
                         'FGROUP' => 'tech_fields'
                 ),
-
-                'delete_groups_mfk'             => array(
+                'delete_groups_mfk' => array(
                         'STEP' => 99,
                         'HIDE_IF_NEW' => true,
                         'SHOW' => true,
@@ -531,8 +547,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'MFK',
                         'FGROUP' => 'tech_fields'
                 ),
-
-                'display_groups_mfk'            => array(
+                'display_groups_mfk' => array(
                         'STEP' => 99,
                         'HIDE_IF_NEW' => true,
                         'SHOW' => true,
@@ -543,8 +558,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'MFK',
                         'FGROUP' => 'tech_fields'
                 ),
-
-                'sci_id'                        => array(
+                'sci_id' => array(
                         'STEP' => 99,
                         'HIDE_IF_NEW' => true,
                         'SHOW' => true,
@@ -555,8 +569,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSMODULE' => 'ums',
                         'FGROUP' => 'tech_fields'
                 ),
-
-                'tech_notes'                         => array(
+                'tech_notes' => array(
                         'STEP' => 99,
                         'HIDE_IF_NEW' => true,
                         'TYPE' => 'TEXT',
@@ -568,7 +581,5 @@ class WorkflowWorkflowRequestAfwStructure
                         'NO-ERROR-CHECK' => true,
                         'FGROUP' => 'tech_fields'
                 ),
-
-
         );
 }
