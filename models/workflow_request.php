@@ -9,7 +9,6 @@ class WorkflowRequest extends WorkflowObject
 
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
-                        'items' => 'getEmployees',
                         'title' => 'إسناد الطلب إلى [item]',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
@@ -144,6 +143,8 @@ class WorkflowRequest extends WorkflowObject
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
                         $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $this->getEmployees());
                 }
+
+                die('rafik dyn pbms=' . var_export($pbms, true));
 
                 return $pbms;
         }
