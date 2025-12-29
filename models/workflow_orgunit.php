@@ -411,7 +411,8 @@ class WorkflowOrgunit extends WorkflowObject
 
         public function getBestAvailEmployee($lang = 'ar')
         {
-                list($idobj, $obj, $listObj) = WorkflowEmployee::getBestAvailableEmployee($this->getVal('orgunit_id'), 0);
+                list($idobj, $item, $listObj) = WorkflowEmployee::getBestAvailableEmployee($this->getVal('orgunit_id'), 0);
+                $obj = $item['obj'];
 
                 if ($obj)
                         $result = $obj->getDisplay($lang);
