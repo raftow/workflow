@@ -576,6 +576,8 @@ class WorkflowEmployee extends WorkflowObject
                                                                                 and employee_id > 0 
                                                                                 and employee_id != $except_employee_id", $group_by = 'employee_id',
                         $throw_error = true, $throw_analysis_crash = true);
+
+                $sql = "select $function from workflow_request where $where group by $group_by ";
                 // AfwRunHelper::safeDie("stats_arr = ".var_export($stats_arr,true));
                 $best_employee_id = 0;
                 if (count($stats_arr) > 0) {
@@ -610,7 +612,7 @@ class WorkflowEmployee extends WorkflowObject
                 else
                         $return = null;
 
-                $log = var_export($stats_arr, true);
+                $log = "sql=$sql stats_arr = " . var_export($stats_arr, true);
                 // die("best_employee_id = $best_employee_id , return = ".var_export($return,true).", employeeList = ".var_export($employeeList,true));
 
                 return array($best_employee_id, $return, $employeeList, $log);
