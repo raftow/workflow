@@ -562,7 +562,7 @@ class WorkflowEmployee extends WorkflowObject
                 }
         }
 
-        public static function getBestAvailableEmployee($orgunit_id, $except_employee_id = 0)
+        public static function getBestAvailableEmployee($orgunit_id, $except_employee_id = 0, $strict = false)
         {
                 $employeeList = self::getEmployeeArray($orgunit_id);
                 if ($except_employee_id)
@@ -585,26 +585,33 @@ class WorkflowEmployee extends WorkflowObject
 
                         foreach ($stats_arr as $employee_id => $curr_count) {
                                 $employeeList[$employee_id]['curr'] = $curr_count;
-                                if (($curr_count < $min_curr_count) and ($employeeList[$employee_id]['obj'])) {
-                                        $min_curr_count = $curr_count;
-                                        $best_employee_id = $employee_id;
+                                if ($employeeList[$employee_id]['obj']) {
+                                        if ($curr_count < $min_curr_count) {
+                                                $min_curr_count = $curr_count;
+                                                $best_employee_id = $employee_id;
+                                        } elseif ($curr_count == $min_curr_count) {
+                                                if ($strict)
+                                                        $best_employee_id = 0;
+                                        }
                                 }
                         }
                 }
 
-                // but if one licensor doesn't have any previous request assigned he will not be in $stats_arr
-                // he should be the best_licensor because he have no request assigned, so check this :
+                // but if one employee doesn't have any previous request assigned he will not be in $stats_arr
+                // he should be the best employee because he have no request assigned, so check this :
                 foreach ($employeeList as $employee_id => $employeeItem) {
                         if (!$employeeItem['curr'])
                                 $best_employee_id = $employee_id;
                 }
 
-                if ((!$best_employee_id) or (!$employeeList[$best_employee_id]['obj'])) {
-                        reset($employeeList);
-                        $first_item = current($employeeList);
-                        // AfwRunHelper::safeDie("first_item = ".var_export($first_item,true)." employeeList = ".var_export($employeeList,true));
-                        if ($first_item['obj'])
-                                $best_employee_id = $first_item['obj']->getVal('employee_id');
+                if (!$strict) {
+                        if ((!$best_employee_id) or (!$employeeList[$best_employee_id]['obj'])) {
+                                reset($employeeList);
+                                $first_item = current($employeeList);
+                                // AfwRunHelper::safeDie("first_item = ".var_export($first_item,true)." employeeList = ".var_export($employeeList,true));
+                                if ($first_item['obj'])
+                                        $best_employee_id = $first_item['obj']->getVal('employee_id');
+                        }
                 }
 
                 if ($best_employee_id)
@@ -612,7 +619,7 @@ class WorkflowEmployee extends WorkflowObject
                 else
                         $return = null;
 
-                $log = "sql=$sql stats_arr = " . var_export($stats_arr, true);
+                $log = "strict=$strict sql=$sql stats_arr = " . var_export($stats_arr, true);
                 // die("best_employee_id = $best_employee_id , return = ".var_export($return,true).", employeeList = ".var_export($employeeList,true));
 
                 return array($best_employee_id, $return, $employeeList, $log);

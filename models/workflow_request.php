@@ -55,6 +55,7 @@ class WorkflowRequest extends WorkflowObject
                         $obj->set('workflow_applicant_id', $workflow_applicant_id);
                         $obj->set('workflow_model_id', $workflow_model_id);
                         $obj->set('request_date', AfwDateHelper::currentHijriDate());
+                        $obj->set('done', 'N');
                         $obj->insertNew();
                         if (!$obj->id)
                                 return null;  // means beforeInsert rejected insert operation
@@ -164,8 +165,9 @@ class WorkflowRequest extends WorkflowObject
         public function assignBestAvailableEmployee($lang = 'ar', $pbm = true)
         {
                 // find the best available supervisor
+                $strict = ($this->getVal('employee_id') > 0);
                 $orgunit_id = $this->getVal('orgunit_id');
-                list($best_employee_id, $wkfEmpl, $allList, $log) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, 0);
+                list($best_employee_id, $wkfEmpl, $allList, $log) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, 0, $strict);
                 // $wkfRes = array("best" => $best_employee_id, "res" => $wkfEmpl, 'all' => $allList);
                 // die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($wkfRes, true)."</pre>");
 
@@ -182,7 +184,10 @@ class WorkflowRequest extends WorkflowObject
                 if ($pbm) {
                         if ($emplObj)
                                 return array('', $this->tm('request has beeen assigned to ') . $emplObj->getDisplay($lang), $log);
-                        else
+                        elseif ($strict) {
+                                $emplObj = $this->het('employee_id');
+                                return array('', $this->tm('This request already assigned to ') . $emplObj->getDisplay($lang), $log);
+                        } else
                                 return array($this->tm('no more available employees in the system') . " ORG-ID = $orgunit_id", '', $log);
                 }
 
