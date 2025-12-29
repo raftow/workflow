@@ -311,7 +311,7 @@ class WorkflowEmployee extends WorkflowObject
                         }
                 }
 
-                if ($this->getVal('email') and (!$this->getVal('employee_id'))) {
+                if ($this->getVal('email')) {
                         $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
                                 $objEmployee->set('gender_id', $this->getVal('gender_id'));
@@ -324,6 +324,7 @@ class WorkflowEmployee extends WorkflowObject
                                 $objEmployee->set('f_firstname_en', $this->getVal('f_firstname_en'));
                                 $objEmployee->set('g_f_firstname_en', $this->getVal('g_f_firstname_en'));
                                 $objEmployee->set('lastname_en', $this->getVal('lastname_en'));
+                                $objEmployee->set('mobile', $this->getVal('mobile'));
                                 $objEmployee->commit();
                         }
                         $this->set('employee_id', $objEmployee->id);
