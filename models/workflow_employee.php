@@ -527,7 +527,7 @@ class WorkflowEmployee extends WorkflowObject
                                 $lang = AfwSession::getSessionVar('lang');
                                 if (!$lang)
                                         $lang = 'ar';
-                                return "<div class='workflow-warning'>" . AfwLanguageHelper::tt('معين في أكثر من جهة متابعة', $lang) . '</div>';
+                                return "<div class='workflow-warning'>" . AfwLanguageHelper::tt('معين في أكثر من إدارة قبول', $lang) . '</div>';
                         }
                 } else {
                         if ($return_object)
@@ -538,7 +538,7 @@ class WorkflowEmployee extends WorkflowObject
                                 $lang = AfwSession::getSessionVar('lang');
                                 if (!$lang)
                                         $lang = 'ar';
-                                return "<div class='workflow-warning'>" . AfwLanguageHelper::tt('غير معين في جهة متابعة', $lang) . '</div>';
+                                return "<div class='workflow-warning'>" . AfwLanguageHelper::tt('غير معين في إدارة قبول', $lang) . '</div>';
                         }
                 }
         }
