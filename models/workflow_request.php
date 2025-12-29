@@ -140,8 +140,17 @@ class WorkflowRequest extends WorkflowObject
                 $objme = AfwSession::getUserConnected();
                 $log = '';
                 $pbms = array();
+
+                $color = 'green';
+                $title_ar = 'تعيين الموظف الأقل عبئا';
+                $methodName = 'assignBestAvailableEmployee';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                        array('METHOD' => $methodName, 'COLOR' => $color, 'LABEL_AR' => $title_ar,
+                                'ADMIN-ONLY' => true, 'BF-ID' => '',
+                                'STEP' => $this->stepOfAttribute('employee_id'));
+
                 $employeesList = $this->getEmployees();
-                $orgunit_id = $this->getVal('orgunit_id');
+                // $orgunit_id = $this->getVal('orgunit_id');
                 // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
                         $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
@@ -150,5 +159,33 @@ class WorkflowRequest extends WorkflowObject
                 // die('rafik dyn pbms=' . var_export($pbms, true));
 
                 return $pbms;
+        }
+
+        public function assignBestAvailableEmployee($lang = 'ar', $pbm = true)
+        {
+                // find the best available supervisor
+                $orgunit_id = $this->getVal('orgunit_id');
+                list($best_employee_id, $wkfEmpl, $allList) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, $this->getVal('employee_id'));
+                // $wkfRes = array("best" => $best_employee_id, "res" => $wkfEmpl, 'all' => $allList);
+                // die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($wkfRes, true)."</pre>");
+
+                $wkfEmplObj = $wkfEmpl['obj'];
+
+                // assign this Request to this supervisor
+                $emplObj = null;
+                if ($wkfEmplObj) {
+                        $wkfEmplObj->assignMeOnWorkflowRequest($this, $lang);
+                        $emplObj = $wkfEmplObj->hetEmployee();
+                }
+                // else die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($crmRes, true)."</pre>");
+
+                if ($pbm) {
+                        if ($emplObj)
+                                return array('', $this->tm('request has beeen assigned to ') . $emplObj->getDisplay($lang));
+                        else
+                                return array($this->tm('no more available employees in the system') . " ORG-ID = $orgunit_id", '');
+                }
+
+                return $emplObj;
         }
 }

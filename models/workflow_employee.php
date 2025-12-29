@@ -570,7 +570,7 @@ class WorkflowEmployee extends WorkflowObject
                         $except_employee_id = 0;
                 // AfwRunHelper::safeDie("employeeList = ".var_export($employeeList,true));
                 $stats_arr = WorkflowRequest::aggreg($function = 'count(*)', $where = " active='Y' 
-                                                                                and status_id in (0,0,) --REQUEST_STATUSES_ONGOING_INVESTIGATOR
+                                                                                and done != 'Y'
                                                                                 and orgunit_id=$orgunit_id 
                                                                                 and employee_id > 0 
                                                                                 and employee_id != $except_employee_id", $group_by = 'employee_id',
@@ -682,9 +682,9 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param WorkflowRequest $requestObj
          */
-        public function assignMeAsWorkflowRequestEmployee($requestObj, $lang = 'ar')
+        public function assignMeOnWorkflowRequest($requestObj, $lang = 'ar')
         {
-                list($err, $info) = $requestObj->assignWorkflowRequest($this->getVal('employee_id'), $lang, 'Y', 'assignMeAsWorkflowRequestEmployee');
+                list($err, $info) = $requestObj->assignRequest($this->getVal('employee_id'), $lang);
                 if ($err)
                         AfwSession::pushError($err);
                 if ($info)
