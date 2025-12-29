@@ -140,8 +140,10 @@ class WorkflowRequest extends WorkflowObject
                 $objme = AfwSession::getUserConnected();
                 $log = '';
                 $pbms = array();
+                $employeesList = $this->getEmployees();
+                die('rafik dyn employeesList=' . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
-                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $this->getEmployees());
+                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
                 }
 
                 die('rafik dyn pbms=' . var_export($pbms, true));
