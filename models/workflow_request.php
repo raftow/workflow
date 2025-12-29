@@ -165,7 +165,7 @@ class WorkflowRequest extends WorkflowObject
         {
                 // find the best available supervisor
                 $orgunit_id = $this->getVal('orgunit_id');
-                list($best_employee_id, $wkfEmpl, $allList) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, $this->getVal('employee_id'));
+                list($best_employee_id, $wkfEmpl, $allList) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, 0);
                 // $wkfRes = array("best" => $best_employee_id, "res" => $wkfEmpl, 'all' => $allList);
                 // die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($wkfRes, true)."</pre>");
 
