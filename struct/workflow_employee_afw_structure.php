@@ -117,7 +117,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'QSEARCH' => false,
 			'INTERNAL_QSEARCH' => true,
 			'SHOW' => true,
-			'RETRIEVE' => true,
+			'RETRIEVE' => false,
 			'EDIT' => true,
 			'QEDIT' => false,
 			'CSS' => 'width_pct_25',

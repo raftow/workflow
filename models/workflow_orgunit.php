@@ -411,9 +411,14 @@ class WorkflowOrgunit extends WorkflowObject
 
         public function getBestAvailEmployee($lang = 'ar')
         {
-                $res = WorkflowEmployee::getBestAvailableEmployee($this->getVal('orgunit_id'), 0);
+                list($idobj, $obj, $listObj) = WorkflowEmployee::getBestAvailableEmployee($this->getVal('orgunit_id'), 0);
 
-                return array('', var_export($res, true));
+                if ($obj)
+                        $result = $obj->getDisplay($lang);
+                else
+                        $result = $this->tm('No employee is available', $lang);
+
+                return array('', $result);
         }
 
         public function calcArchive_date()
