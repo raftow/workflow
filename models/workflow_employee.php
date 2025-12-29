@@ -310,6 +310,25 @@ class WorkflowEmployee extends WorkflowObject
                                 $this->set('lastname_en', $objEmployee->getVal('lastname_en'));
                         }
                 }
+
+                if ($this->getVal('email') and (!$this->getVal('employee_id'))) {
+                        $objEmployee = Employee::loadByEmail(1, $email, true);
+                        if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
+                                $objEmployee->set('gender_id', $this->getVal('gender_id'));
+                                $objEmployee->set('country_id', $this->getVal('country_id'));
+                                $objEmployee->set('firstname', $this->getVal('firstname'));
+                                $objEmployee->set('f_firstname', $this->getVal('f_firstname'));
+                                $objEmployee->set('g_f_firstname', $this->getVal('g_f_firstname'));
+                                $objEmployee->set('lastname', $this->getVal('lastname'));
+                                $objEmployee->set('firstname_en', $this->getVal('firstname_en'));
+                                $objEmployee->set('f_firstname_en', $this->getVal('f_firstname_en'));
+                                $objEmployee->set('g_f_firstname_en', $this->getVal('g_f_firstname_en'));
+                                $objEmployee->set('lastname_en', $this->getVal('lastname_en'));
+                                $objEmployee->commit();
+                        }
+                        $this->set('employee_id', $objEmployee->id);
+                }
+
                 return true;
         }
 
@@ -527,7 +546,7 @@ class WorkflowEmployee extends WorkflowObject
                                 $lang = AfwSession::getSessionVar('lang');
                                 if (!$lang)
                                         $lang = 'ar';
-                                return "<div class='workflow-warning'>" . AfwLanguageHelper::tt('معين في أكثر من إدارة قبول', $lang) . '</div>';
+                                return "<div class='workflow-warning'><!-- empId=$employee_id -->" . AfwLanguageHelper::tt('معين في أكثر من إدارة قبول', $lang) . '</div>';
                         }
                 } else {
                         if ($return_object)
@@ -538,7 +557,7 @@ class WorkflowEmployee extends WorkflowObject
                                 $lang = AfwSession::getSessionVar('lang');
                                 if (!$lang)
                                         $lang = 'ar';
-                                return "<div class='workflow-warning'>" . AfwLanguageHelper::tt('غير معين في إدارة قبول', $lang) . '</div>';
+                                return "<div class='workflow-warning'><!-- empId=$employee_id -->" . AfwLanguageHelper::tt('غير معين في إدارة قبول', $lang) . '</div>';
                         }
                 }
         }
