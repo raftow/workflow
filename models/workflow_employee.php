@@ -294,8 +294,8 @@ class WorkflowEmployee extends WorkflowObject
 
         public function beforeMaj($id, $fields_updated)
         {
+                $email = $this->getVal('email');
                 if ($fields_updated['email']) {
-                        $email = $this->getVal('email');
                         $objEmployee = Employee::loadByEmail(1, $email);
                         if ($objEmployee and $objEmployee->getVal('firstname')) {
                                 $this->set('gender_id', $objEmployee->getVal('gender_id'));
@@ -311,7 +311,7 @@ class WorkflowEmployee extends WorkflowObject
                         }
                 }
 
-                if ($this->getVal('email')) {
+                if ($email) {
                         $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
                                 $objEmployee->set('gender_id', $this->getVal('gender_id'));
