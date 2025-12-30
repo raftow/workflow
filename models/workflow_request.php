@@ -265,7 +265,17 @@ class WorkflowRequest extends WorkflowObject
         {
                 if ($attribute == 'mobile')
                         return true;
+                if ($attribute == 'email')
+                        return true;
+                if ($attribute == 'country_id')
+                        return true;
                 if ($attribute == 'category')
+                        return true;
+
+                if ($attribute == 'gender_enum')
+                        return true;
+
+                if ($attribute == 'passeport_num')
                         return true;
                 return false;
         }

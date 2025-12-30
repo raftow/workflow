@@ -31,6 +31,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';
 		$trad['workflow_request']['done_time'] = 'وقت الانتهاء';
 
+		$trad['workflow_request']['profile'] = 'البيانات الشخصية';
 		$trad['workflow_request']['category'] = 'صنف العميل';
 		$trad['workflow_request']['mobile'] = 'رقم الجوال';
 		$trad['workflow_request']['gender_enum'] = 'الجنس';
