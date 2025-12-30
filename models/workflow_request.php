@@ -119,9 +119,9 @@ class WorkflowRequest extends WorkflowObject
 
         public function getEmployees()
         {
-                if (!$this->getVal('orgunit_id'))
+                if (!$this->getVal('orgunit_id') or !$this->getVal('workflow_scope_id'))
                         return array();
-                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), 0);  // $this->getVal("employee_id")
+                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), $this->getVal('workflow_scope_id'), 0);  // $this->getVal("employee_id")
         }
 
         public function getMethodTitle($methodName, $lang = 'ar')

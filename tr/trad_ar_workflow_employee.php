@@ -14,6 +14,8 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['workflow_orgunit_id'] = 'الجهة التابع لها';
 
         $trad['workflow_employee']['wrole_mfk'] = 'المسؤوليات المناطة به';
+        $trad['workflow_employee']['wscope_mfk'] = 'البرامج تحت مسؤوليته';
+        
         $trad['workflow_employee']['requests_nb'] = 'طاقة استيعاب الطلبات يوميا';
         $trad['workflow_employee']['employee_id'] = 'الموظف';
 

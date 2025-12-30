@@ -157,6 +157,8 @@ class WorkflowOrgunit extends WorkflowObject
                 $pbms = array();
                 $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
                 if ($iam_general_supervisor) {
+                        /*
+                        all below methods need to define default scope for this workflow orgunit
                         $color = 'green';
                         $title_ar = 'اسناد الطلبات إلى موظفي القبول';
                         $methodName = 'requestAssignement';
@@ -169,14 +171,6 @@ class WorkflowOrgunit extends WorkflowObject
                                 'HZM-SIZE' => 12,
                                 'STEP' => $this->stepOfAttribute('currentRequests'),
 
-                                /*
-                                 * CONFIRMATION_NEEDED=>true,
-                                 * 'CONFIRMATION_WARNING' =>array('ar' => "xxxxxx",
-                                 *                                 'en' => "@todo"),
-                                 * 'CONFIRMATION_QUESTION' =>array('ar' => "yyyyy",
-                                 *                         'en' => "@todo"),
-                                 * 'MODE' =>array("mode_diploma_approved"=>true),
-                                 */
                         );
 
                         $color = 'orange';
@@ -191,14 +185,6 @@ class WorkflowOrgunit extends WorkflowObject
                                 'HZM-SIZE' => 12,
                                 'STEP' => $this->stepOfAttribute('currentRequests'),
 
-                                /*
-                                 * CONFIRMATION_NEEDED=>true,
-                                 * 'CONFIRMATION_WARNING' =>array('ar' => "xxxxxx",
-                                 *                                 'en' => "@todo"),
-                                 * 'CONFIRMATION_QUESTION' =>array('ar' => "yyyyy",
-                                 *                         'en' => "@todo"),
-                                 * 'MODE' =>array("mode_diploma_approved"=>true),
-                                 */
                         );
 
                         if ($this->getVal('orgunit_id') == WorkflowOrgunit::$MAIN_CUSTOMER_SERVICE_DEPARTMENT_ID) {
@@ -214,14 +200,6 @@ class WorkflowOrgunit extends WorkflowObject
                                         'HZM-SIZE' => 12,
                                         'STEP' => $this->stepOfAttribute('currentRequests'),
 
-                                        /*
-                                         * CONFIRMATION_NEEDED=>true,
-                                         * 'CONFIRMATION_WARNING' =>array('ar' => "xxxxxx",
-                                         *                                 'en' => "@todo"),
-                                         * 'CONFIRMATION_QUESTION' =>array('ar' => "yyyyy",
-                                         *                         'en' => "@todo"),
-                                         * 'MODE' =>array("mode_diploma_approved"=>true),
-                                         */
                                 );
 
                                 $color = 'green';
@@ -235,18 +213,10 @@ class WorkflowOrgunit extends WorkflowObject
                                         'BF-ID' => '',
                                         'HZM-SIZE' => 12,
                                         'STEP' => $this->stepOfAttribute('currentRequests'),
-
-                                        /*
-                                         * CONFIRMATION_NEEDED=>true,
-                                         * 'CONFIRMATION_WARNING' =>array('ar' => "xxxxxx",
-                                         *                                 'en' => "@todo"),
-                                         * 'CONFIRMATION_QUESTION' =>array('ar' => "yyyyy",
-                                         *                         'en' => "@todo"),
-                                         * 'MODE' =>array("mode_diploma_approved"=>true),
-                                         */
                                 );
                         }
 
+                        need to define default scope for this workflow orgunit
                         $color = 'orange';
                         $title_ar = 'أي موظفي القبول متوفر أكثر';
                         $methodName = 'getBestAvailEmployee';
@@ -259,15 +229,8 @@ class WorkflowOrgunit extends WorkflowObject
                                 'HZM-SIZE' => 12,
                                 'STEP' => $this->stepOfAttribute('allEmployeeList'),
 
-                                /*
-                                 * CONFIRMATION_NEEDED=>true,
-                                 * 'CONFIRMATION_WARNING' =>array('ar' => "xxxxxx",
-                                 *                         'en' => "@todo"),
-                                 * 'CONFIRMATION_QUESTION' =>array('ar' => "yyyyy",
-                                 *                         'en' => "@todo"),
-                                 * 'MODE' =>array("mode_diploma_approved"=>true),
-                                 */
-                        );
+                                
+                        );*/
                 }
 
                 return $pbms;
@@ -294,33 +257,41 @@ class WorkflowOrgunit extends WorkflowObject
 
         public function requestAssignement($lang = 'ar', $reset = false)
         {
-                // unassign request assigned to non active employees
-                list($arrEmployee, $listEmployee) = WorkflowEmployee::getEmployeeListOfIds($this->getVal('orgunit_id'));
-                $arrEmployee[] = 0;
-                $arrEmployeeTxt = implode(',', $arrEmployee);
-                $obj = new WorkflowRequest();
-                $obj->select('orgunit_id', $this->getVal('orgunit_id'));
-                if ($reset) {
-                        // because not good to reassign ticket of employee who has started to work on it
-                        // except if this employee has been dis-missioned
-                        $obj->where("status_id in (1,2,) -- REQUEST_STATUSES_ASSIGNED_ONLY 
-                                     or (status_id in (3,4,) -- REQUEST_STATUSES_ONGOING_ALL
-                                          and (employee_id is null or employee_id not in ($arrEmployeeTxt)))");
-                } else {
-                        $obj->where("(status_id in (REQUEST_STATUSES_ONGOING_ALL) and (employee_id is null or employee_id not in ($arrEmployeeTxt)))");
-                }
-
-                $obj->setForce('employee_id', 0);
-                $status_comment = 'requestAssignement reset=' . $reset;
-                $this->setForce('status_comment', $status_comment);
-                $nb_resetted = $obj->update(false);
-
-                // prepare array of inbox count for each of them to be equitable
-                // on requests distribution
+                die("requestAssignement code to review");
+                $scopeArr = WorkflowScope::loadAllLookupObjects();
                 $inbox_arr = array();
-                foreach ($listEmployee as $objEmployee) {
-                        $inbox_arr[$objEmployee->id] = WorkflowRequest::inboxCountFor($objEmployee->id);
+                foreach($scopeArr as $wscope_id => $wscopeObj)
+                {
+                        // unassign request assigned to non active employees
+                        list($arrEmployee, $listEmployee) = WorkflowEmployee::getEmployeeListOfIds($this->getVal('orgunit_id'), $wscope_id);
+                        $arrEmployee[] = 0;
+                        $arrEmployeeTxt = implode(',', $arrEmployee);
+                        $obj = new WorkflowRequest();
+                        $obj->select('orgunit_id', $this->getVal('orgunit_id'));
+                        if ($reset) {
+                                // because not good to reassign ticket of employee who has started to work on it
+                                // except if this employee has been dis-missioned
+                                $obj->where("status_id in (1,2,) -- REQUEST_STATUSES_ASSIGNED_ONLY 
+                                        or (status_id in (3,4,) -- REQUEST_STATUSES_ONGOING_ALL
+                                                and (employee_id is null or employee_id not in ($arrEmployeeTxt)))");
+                        } else {
+                                $obj->where("(status_id in (REQUEST_STATUSES_ONGOING_ALL) and (employee_id is null or employee_id not in ($arrEmployeeTxt)))");
+                        }
+
+                        $obj->setForce('employee_id', 0);
+                        $status_comment = 'requestAssignement reset=' . $reset;
+                        $this->setForce('status_comment', $status_comment);
+                        $nb_resetted = $obj->update(false);
+
+                        // prepare array of inbox count for each of them to be equitable
+                        // on requests distribution
+                        
+                        foreach ($listEmployee as $objEmployee) {
+                                $inbox_arr[$objEmployee->id] = WorkflowRequest::inboxCountFor($objEmployee->id);
+                        }
+
                 }
+                
 
                 // die("inbox count by employee : ".var_export($inbox_arr,true));
 
@@ -409,9 +380,11 @@ class WorkflowOrgunit extends WorkflowObject
          * }
          */
 
+        /*
         public function getBestAvailEmployee($lang = 'ar')
         {
-                list($idobj, $item, $listObj, $log) = WorkflowEmployee::getBestAvailableEmployee($this->getVal('orgunit_id'), 0);
+                $wscope_id = ??
+                list($idobj, $item, $listObj, $log) = WorkflowEmployee::getBestAvailableEmployee($this->getVal('orgunit_id'), $wscope_id, 0);
                 $obj = $item['obj'];
 
                 if ($obj)
@@ -420,7 +393,7 @@ class WorkflowOrgunit extends WorkflowObject
                         $result = $this->tm('No employee is available', $lang);
 
                 return array('', $result, $log);
-        }
+        }*/
 
         public function calcArchive_date()
         {

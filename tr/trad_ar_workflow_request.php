@@ -10,7 +10,7 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['step2'] = 'workflowRequestDataList';
 
-		$trad['workflow_request']['workflowrequest.single'] = 'طلب اعتماد';
+		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
 		$trad['workflow_request']['workflowrequest.new'] = 'جديد';
 		$trad['workflow_request']['workflow_request'] = 'طلبات الاعتماد';
 		$trad['workflow_request']['workflow_applicant_id'] = 'المتقدم';

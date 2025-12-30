@@ -370,6 +370,33 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
+
+		'wscope_mfk' => array(
+			'STEP' => 3,
+			'IMPORTANT' => 'IN',
+			'SEARCH' => false,
+			'SHOW' => true,
+			'MINIBOX' => true,
+			'MB_CSS' => 'width_pct_100',
+			'RETRIEVE' => false,
+			'EDIT' => true,
+			'QEDIT' => false,
+			'SIZE' => 32,
+			'LIST_SEPARATOR' => '، ',
+			'TYPE' => 'MFK',
+			'ANSWER' => 'workflow_scope',
+			'ANSMODULE' => 'workflow',
+			'SEL_OPTIONS' => array(
+				'enableFiltering' => true,
+				'numberDisplayed' => 3,
+				'filterPlaceholder' => 'اكتب كلمة للبحث',
+			),
+			'SEARCH-BY-ONE' => '',
+			'DISPLAY' => true,
+			'DISPLAY-UGROUPS' => '',
+			'EDIT-UGROUPS' => '',
+		),
+		
 		'active' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,

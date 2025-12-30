@@ -464,9 +464,9 @@ class WorkflowEmployee extends WorkflowObject
          * }
          */
 
-        public static function getEmployeeListOfIds($orgunit_id)
+        public static function getEmployeeListOfIds($orgunit_id, $wscope_id)
         {
-                $empList = self::getEmployeeList($orgunit_id);
+                $empList = self::getEmployeeList($orgunit_id, $wscope_id);
 
                 $empListIds = array();
                 foreach ($empList as $id => $empObj) {
@@ -476,7 +476,7 @@ class WorkflowEmployee extends WorkflowObject
                 return array($empListIds, $empList);
         }
 
-        public static function getEmployeeList($orgunit_id, $except_employee_id = 0)
+        public static function getEmployeeList($orgunit_id, $wscope_id, $except_employee_id = 0)
         {
                 $obj = new WorkflowEmployee();
                 if (!$orgunit_id)
@@ -484,14 +484,14 @@ class WorkflowEmployee extends WorkflowObject
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("employee_id != $except_employee_id");
+                $obj->where("employee_id != $except_employee_id and wrole_mfk like '%,1,%' and wscope_mfk like '%,$wscope_id,%'");
 
                 $objList = AfwLoadHelper::loadList($obj, 'employee_id');
 
                 return $objList;
         }
 
-        public static function getEmployeeArray($orgunit_id, $except_employee_id = 0)
+        public static function getEmployeeArray($orgunit_id, $wscope_id, $except_employee_id = 0)
         {
                 $obj = new WorkflowEmployee();
                 if (!$orgunit_id)
@@ -499,7 +499,7 @@ class WorkflowEmployee extends WorkflowObject
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("employee_id != $except_employee_id");
+                $obj->where("employee_id != $except_employee_id and wrole_mfk like '%,1,%' and wscope_mfk like '%,$wscope_id,%'");
 
                 $objList = $obj->loadMany();
 
@@ -562,9 +562,9 @@ class WorkflowEmployee extends WorkflowObject
                 }
         }
 
-        public static function getBestAvailableEmployee($orgunit_id, $except_employee_id = 0, $strict = false)
+        public static function getBestAvailableEmployee($orgunit_id, $wscope_id, $except_employee_id = 0, $strict = false)
         {
-                $employeeList = self::getEmployeeArray($orgunit_id);
+                $employeeList = self::getEmployeeArray($orgunit_id, $wscope_id);
                 if ($except_employee_id)
                         unset($employeeList[$except_employee_id]);
                 else
