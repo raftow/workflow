@@ -33,6 +33,9 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['category'] = 'صنف العميل';
 		$trad['workflow_request']['mobile'] = 'رقم الجوال';
+		$trad['workflow_request']['gender_enum'] = 'الجنس';
+		$trad['workflow_request']['country_id'] = 'الجنسية';
+		$trad['workflow_request']['passeport_num'] = 'جواز السفر';
 
 		return $trad;
 	}
