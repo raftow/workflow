@@ -208,3 +208,12 @@ span.wrinfo {
     float: left;
     margin-top: -2px;
 }
+
+span.idn {
+    background-color: #e2ec23;
+    padding: 3px 5px;
+    color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
