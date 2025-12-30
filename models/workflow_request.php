@@ -260,4 +260,13 @@ class WorkflowRequest extends WorkflowObject
                                 <span class='wrinfo'>$info</span>
                         </div>";
         }
+
+        public function shouldBeCalculatedField($attribute)
+        {
+                if ($attribute == 'mobile')
+                        return true;
+                if ($attribute == 'category')
+                        return true;
+                return false;
+        }
 }
