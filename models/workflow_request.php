@@ -236,9 +236,9 @@ class WorkflowRequest extends WorkflowObject
                 if (!$appObj)
                         return '??????';
 
-                $objOriginal = $moduleWorkflowServiceClass::loadOriginalObject($appObj, $sessionObj, $modelObj, $this);
+                list($objOriginal, $keyLookup) = $moduleWorkflowServiceClass::loadOriginalObject($appObj, $sessionObj, $modelObj, $this);
                 if (!$objOriginal)
-                        return 'not found Original-Object';
+                        return "not found Original-Object looked up with ($keyLookup)";
 
                 return $objOriginal->calcCandidateInfo($what);
         }
