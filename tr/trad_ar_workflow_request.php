@@ -7,8 +7,11 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['step1'] = 'البيانات الشخصية';
 		$trad['workflow_request']['step2'] = 'المؤهلات والاختبارات';
+		$trad['workflow_request']['step7'] = 'التكليف';
 
-		$trad['workflow_request']['step2'] = 'workflowRequestDataList';
+		$trad['workflow_request']['request'] = 'حيثيات الطلب';
+
+		$trad['workflow_request']['workflowRequestDataList'] = 'workflowRequestDataList';
 
 		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
 		$trad['workflow_request']['workflowrequest.new'] = 'جديد';

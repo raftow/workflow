@@ -170,7 +170,6 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'passeport_num' => array(
                         'FGROUP' => 'profile',
-                        'FGROUP' => 'profile',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT' => 'workflow_applicant_id.passeport_num',
                         'READONLY' => true,
@@ -197,6 +196,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
                 'workflow_model_id' => array(
+                        'FGROUP' => 'request',
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -223,6 +223,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
                 'workflow_session_id' => array(
+                        'FGROUP' => 'request',
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -243,6 +244,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
                 'workflow_scope_id' => array(
+                        'FGROUP' => 'request',
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -263,6 +265,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
                 'workflow_stage_id' => array(
+                        'FGROUP' => 'request',
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -289,6 +292,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
                 'workflow_status_id' => array(
+                        'FGROUP' => 'request',
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -315,6 +319,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
                 'external_request_code' => array(
+                        'FGROUP' => 'request',
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -335,6 +340,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
                 'request_type_code' => array(
+                        'FGROUP' => 'request',
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -355,6 +361,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
                 'request_date' => array(
+                        'FGROUP' => 'request',
                         'STEP' => 1,
                         'SEARCH' => true,
                         'QSEARCH' => true,
