@@ -39,6 +39,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT' => true,
                         'DEFAUT' => 'Y',
                         'TYPE' => 'TEXT',
+                        'SIZE' => 'AREA',
+                        'ROWS' => 16,
                         'DISPLAY' => true,
                         'STEP' => 'all',
                         'NO-LABEL' => true,
@@ -46,7 +48,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'FORMAT' => 'HTML',
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_100',
                 ),
                 'workflow_applicant_id' => array(
                         'IMPORTANT' => 'IN',
