@@ -10,7 +10,7 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['workflowemployee.new'] = 'جديد';
         $trad['workflow_employee']['workflow_employee'] = 'الموظفون';
         $trad['workflow_employee']['workflow_employee.short'] = 'الموظفون';
-        $trad['workflow_employee']['orgunit_id'] = 'الجهة المتابعة';
+        $trad['workflow_employee']['orgunit_id'] = 'الالإدارة';
         $trad['workflow_employee']['workflow_orgunit_id'] = 'الجهة التابع لها';
 
         $trad['workflow_employee']['wrole_mfk'] = 'المسؤوليات المناطة به';
@@ -23,6 +23,8 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['done_requests_count'] = 'عدد الطلبات التي تم التحقيق عليها';
         $trad['workflow_employee']['requests_count'] = 'مجموع عدد الطلبات المسندة';
         $trad['workflow_employee']['statif_pct'] = 'نسبة رضا العميل';
+        $trad['workflow_employee']['inbox_count'] = 'طلبات واردة';
+        
 
         $trad['workflow_employee']['ongoing_requests_count.short'] = 'الجاري';
         $trad['workflow_employee']['done_requests_count.short'] = 'تم التحقيق';

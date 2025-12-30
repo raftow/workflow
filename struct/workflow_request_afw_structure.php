@@ -33,6 +33,13 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
+
+                'category' => array('CATEGORY' => 'FORMULA', 'SHOW' => true, 'EDIT' => true,  'DEFAUT' => 'Y',  
+                                                'TYPE' => 'TEXT',  'DISPLAY' => true,  'STEP' => 'all', 'NO-LABEL' => true, 
+                                                'READONLY' => true, 'FORMAT' => 'HTML',
+                                                'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
+                                                'CSS' => 'width_pct_25',),
+
                 'workflow_applicant_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -125,6 +132,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSMODULE' => 'workflow',
                         'CSS' => 'width_pct_50',
                 ),
+
                 'workflow_stage_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,

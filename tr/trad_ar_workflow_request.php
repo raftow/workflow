@@ -31,6 +31,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';
 		$trad['workflow_request']['done_time'] = 'وقت الانتهاء';
 
+		$trad['workflow_request']['category'] = 'صنف العميل';
+
 		return $trad;
 	}
 

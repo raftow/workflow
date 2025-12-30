@@ -8,7 +8,7 @@ class WorkflowOrgunitArTranslator
 		$trad['workflow_orgunit']['workfloworgunit.single'] = 'إدارة قبول';
 		$trad['workflow_orgunit']['workfloworgunit.new'] = 'جديد(ة)';
 		$trad['workflow_orgunit']['workflow_orgunit'] = 'جهات متابعة طلبات العملاء';
-		$trad['workflow_orgunit']['orgunit_id'] = 'الجهة المتابعة';
+		$trad['workflow_orgunit']['orgunit_id'] = 'الالإدارة';
 		// $trad["workflow_orgunit"]["service_category_mfk"] = "المسؤوليات المناطة بها";
 		// $trad["workflow_orgunit"]["service_category_mfk_tooltip"] = "أصناف الخدمات  التي تقدمها";
 		// $trad["workflow_orgunit"]["service_mfk"] = "الخدمات التي تقدمها";
