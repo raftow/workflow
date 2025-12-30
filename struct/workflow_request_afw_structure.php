@@ -11,8 +11,8 @@ class WorkflowWorkflowRequestAfwStructure
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
 
-                        $obj->editByStep = false;
-                        // $obj->editNbSteps = 1;
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 7;
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'Workflow', 'class' => 'WorkflowRequest', 'submit' => true);
                 } else {
@@ -381,7 +381,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'orgunit_id' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'SHORTNAME' => 'orgunit',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -416,7 +416,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'employee_id' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'SHORTNAME' => 'employee',
                         'SEARCH' => true,
                         'QSEARCH' => false,
@@ -443,7 +443,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'assign_date' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -466,7 +466,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'assign_time' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -491,7 +491,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'QEDIT' => true,
                         'DEFAUT' => 'N',
                         'TYPE' => 'YN',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'READONLY' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -499,7 +499,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'done_date' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -521,7 +521,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'done_time' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 1,
+                        'STEP' => 7,
                         'SEARCH' => true,
                         'QSEARCH' => false,
                         'SHOW' => true,
@@ -529,7 +529,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT' => true,
                         'QEDIT' => false,
                         'CSS' => 'width_pct_50',
-                        'SIZE' => 8,
+                        'SIZE' => 6,
                         'UTF8' => false,
                         'TYPE' => 'TIME',
                         'READONLY' => true,
@@ -539,7 +539,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                 ),
                 'workflowRequestDataList' => array(
-                        'STEP' => 2,
+                        'STEP' => 8,
                         'SHOW' => true,
                         'FORMAT' => 'retrieve',
                         'ICONS' => true,
