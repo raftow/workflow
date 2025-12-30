@@ -194,49 +194,64 @@ class WorkflowRequest extends WorkflowObject
                 return $emplObj;
         }
 
-        public function calcCandidateFullName($what = "value") {
+        public function calcCandidateFullName($what = 'value')
+        {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
 
-                $appObj = $this->het("workflow_applicant_id");
-                if(!$appObj) return "??????";
-                return $appObj->getVal("first_name_$lang")." ".$appObj->getVal("father_name_$lang")." ".$appObj->getVal("last_name_$lang");
+                $appObj = $this->het('workflow_applicant_id');
+                if (!$appObj)
+                        return '??????';
+                return $appObj->getVal("first_name_$lang") . ' ' . $appObj->getVal("father_name_$lang") . ' ' . $appObj->getVal("last_name_$lang");
         }
 
-        public function calcCandidateInfo($what = "value") {
+        public function calcCandidateInfo($what = 'value')
+        {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
 
-                $modelObj = $this->het("workflow_model_id");
-                if(!$modelObj) return "???!!!???";
+                $modelObj = $this->het('workflow_model_id');
+                if (!$modelObj)
+                        return '???!!!???';
 
-                $moduleObj = $modelObj->het("workflow_module_id");
-                if(!$moduleObj) return "???!!!???####";
+                $moduleObj = $modelObj->het('workflow_module_id');
+                if (!$moduleObj)
+                        return '???!!!???####';
 
-                $lookup_code = $moduleObj->getVal("lookup_code");
-                if(!$lookup_code) return "XXXXXXXXXXXX";
+                $lookup_code = $moduleObj->getVal('lookup_code');
+                if (!$lookup_code)
+                        return 'XXXXXXXXXXXX';
 
-                $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($lookup_code)."WorkflowService";
+                $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($lookup_code) . 'WorkflowService';
 
-                
-
-                $sessionObj = $this->het("workflow_session_id");
-                if(!$sessionObj) return "???!!!";
+                $sessionObj = $this->het('workflow_session_id');
+                if (!$sessionObj)
+                        return '???!!!';
 
                 // $external_code = $sessionObj->getVal("external_code")
 
-                $appObj = $this->het("workflow_applicant_id");
-                if(!$appObj) return "??????";
+                $appObj = $this->het('workflow_applicant_id');
+                if (!$appObj)
+                        return '??????';
 
                 $objOriginal = $moduleWorkflowServiceClass::loadOriginalObject($appObj, $sessionObj, $modelObj, $this);
-                if(!$objOriginal) return "not found Original-Object";
+                if (!$objOriginal)
+                        return 'not found Original-Object';
 
                 return $objOriginal->calcCandidateInfo($what);
         }
 
-        public function calcCategory($what="value")
+        public function calcCategory($what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
 
                 $name = $this->calcCandidateFullName($what);
 
+                $info = $this->calcCandidateInfo($what);
+
+                $myId = $this->id;
+
+                return "<div id='wreq-$myId-category' class='wcategory'>
+                                <span class='fname'>$name</span>
+                                <span class='wrinfo'>$info</span>
+                        </div>";
         }
 }
