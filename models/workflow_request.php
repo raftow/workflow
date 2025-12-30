@@ -220,7 +220,11 @@ class WorkflowRequest extends WorkflowObject
                 if (!$lookup_code)
                         return 'XXXXXXXXXXXX';
 
-                $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper(strtolower($lookup_code)) . 'WorkflowService';
+                $moduleCode = strtolower($lookup_code);
+
+                AfwAutoLoader::addModule($moduleCode);
+
+                $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($moduleCode) . 'WorkflowService';
 
                 $sessionObj = $this->het('workflow_session_id');
                 if (!$sessionObj)
