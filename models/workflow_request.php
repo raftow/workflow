@@ -246,7 +246,8 @@ class WorkflowRequest extends WorkflowObject
         public function calcCategory($what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
-
+                $appObj = $this->het('workflow_applicant_id');
+                $idn = $appObj->getVal('idn');
                 $name = $this->calcCandidateFullName($what);
 
                 $info = $this->calcCandidateInfo($what);
@@ -254,6 +255,7 @@ class WorkflowRequest extends WorkflowObject
                 $myId = $this->id;
 
                 return "<div id='wreq-$myId-category' class='wcategory'>
+                                <span class='idn'>$idn</span>
                                 <span class='fname'>$name</span>
                                 <span class='wrinfo'>$info</span>
                         </div>";
