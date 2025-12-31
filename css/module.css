@@ -217,3 +217,11 @@ span.idn {
     margin-right: 10px;
     border-radius: 8px;
 }
+
+.wcomments {
+    background-color: #009688;
+    color: white;
+    float: right;
+    width: 100%;
+    padding: 5px;
+}
