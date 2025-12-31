@@ -291,7 +291,9 @@ class WorkflowRequest extends WorkflowObject
                 $obj = new WorkflowRequestComment();
                 $obj->set('workflow_request_id', $this->id);
                 $obj->set('workflow_stage_id', $this->getVal('workflow_stage_id'));
-                $inputStage = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                list(
+                        $inputStage,
+                ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
                 $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', 0, null, $obj);
                 $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
                 $add_title = AfwLanguageHelper::translateKeyword('Add', $lang);
