@@ -296,13 +296,15 @@ class WorkflowRequest extends WorkflowObject
                 ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
                 $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', 0, null, $obj);
                 $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
-                $add_title = AfwLanguageHelper::translateKeyword('Add', $lang);
+                $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
+                $add_comment_label = $this->tm('Add comment', $lang);
                 $myId = $this->id;
                 return "<div id='wreq-$myId-comments' class='wcomments'>
+                                <label>$add_comment_label</label>
                                 $inputStage
                                 <div class='subject'>$inputSubject</div>
                                 <div class='comment'>$inputComment</div>
-                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='popup-save fa bluebtn wizardbtn fleft' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
+                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='popup-save fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
                         </div>";
         }
 

@@ -219,9 +219,29 @@ span.idn {
 }
 
 .wcomments {
-    background-color: #009688;
+    background-color: #3ff7e4;
     color: white;
     float: right;
     width: 100%;
     padding: 5px;
+}
+
+.wcomments .form-control {
+    background-color: #ffffff66 !important;
+}
+
+.comment {
+    padding: 0 5px 10px 0;
+    margin-bottom: 10px;
+    float: right;
+    width: 100%;
+}
+
+.subject {
+    padding: 8px;
+}
+
+.ppsave {
+    text-align: center;
+    padding: 10px;
 }
