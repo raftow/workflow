@@ -11,7 +11,7 @@ class WorkflowRequest extends WorkflowObject
 
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
-                        'title' => 'إسناد الطلب إلى [item]',
+                        'title' => 'تعيين [item]',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
                         'confirmation_question' => ''
@@ -124,11 +124,17 @@ class WorkflowRequest extends WorkflowObject
                 return array('', $status_comment);
         }
 
-        public function getEmployees()
+        public function getEmployees($excludeCurrentAssigned = false)
         {
                 if (!$this->getVal('orgunit_id') or !$this->getVal('workflow_scope_id'))
                         return array();
-                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), $this->getVal('workflow_scope_id'), 0);  // $this->getVal("employee_id")
+
+                if (!$excludeCurrentAssigned)
+                        $except_employee_id = 0;
+                else
+                        $except_employee_id = $this->getVal('employee_id');
+
+                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), $this->getVal('workflow_scope_id'), $except_employee_id);  // $this->getVal("employee_id")
         }
 
         public function getMethodTitle($methodName, $lang = 'ar')
@@ -157,7 +163,7 @@ class WorkflowRequest extends WorkflowObject
                                 'ADMIN-ONLY' => true, 'BF-ID' => '',
                                 'STEP' => $this->stepOfAttribute('employee_id'));
 
-                $employeesList = $this->getEmployees();
+                $employeesList = $this->getEmployees(true);
                 // $orgunit_id = $this->getVal('orgunit_id');
                 // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
@@ -276,6 +282,29 @@ class WorkflowRequest extends WorkflowObject
                                 <span class='idn'>$idn</span>
                                 <span class='fname'>$name</span>
                                 <span class='wrinfo'>$info</span>
+                        </div>";
+        }
+
+        public function calcFormComments($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $obj = new WorkflowRequestComment();
+                $obj->set('workflow_request_id', $this->id);
+                $obj->set('workflow_stage_id', $this->getVal('workflow_stage_id'));
+                list(
+                        $inputStage,
+                ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', 0, null, $obj);
+                $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
+                $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
+                $add_comment_label = $this->tm('Add comment', $lang);
+                $myId = $this->id;
+                return "<div id='wreq-$myId-comments' class='wcomments'>
+                                <label>$add_comment_label</label>
+                                $inputStage
+                                <div class='subject'>$inputSubject</div>
+                                <div class='comment'>$inputComment</div>
+                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='popup-save fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
                         </div>";
         }
 
