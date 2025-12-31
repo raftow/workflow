@@ -7,6 +7,8 @@ class WorkflowRequest extends WorkflowObject
         public static $DB_STRUCTURE = null;
         // public static $copypast = true;
 
+        private $originalObject = null;
+
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
                         'title' => 'إسناد الطلب إلى [item]',
@@ -92,7 +94,12 @@ class WorkflowRequest extends WorkflowObject
         {
                 if (substr($name, 0, 13) == 'assignRequest') {
                         $employeeId = intval(substr($name, 13));
-                        return $this->assignRequest($employeeId, $arguments[0], 'Y', "assignRequest For eid=$employeeId");
+                        return $this->assignRequest($employeeId, $arguments[0]);
+                }
+
+                if (substr($name, 0, 13) == 'calcDiv_step_') {
+                        $step = intval(substr($name, 13));
+                        return $this->calcDiv_step($step, $arguments[0], 'Y');
                 }
 
                 return false;
@@ -204,41 +211,52 @@ class WorkflowRequest extends WorkflowObject
                 return $appObj->getVal("first_name_$lang") . ' ' . $appObj->getVal("father_name_$lang") . ' ' . $appObj->getVal("last_name_$lang");
         }
 
+        public function loadOriginalObject()
+        {
+                if (!$this->orginalObject) {
+                        $modelObj = $this->het('workflow_model_id');
+                        if (!$modelObj)
+                                return ['No model for this request', null];
+
+                        $moduleObj = $modelObj->het('workflow_module_id');
+                        if (!$moduleObj)
+                                return ['No module for this request', null];
+
+                        $lookup_code = $moduleObj->getVal('lookup_code');
+                        if (!$lookup_code)
+                                return ['No code for the module of this request', null];
+
+                        $moduleCode = strtolower($lookup_code);
+
+                        AfwAutoLoader::addModule($moduleCode);
+
+                        $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($moduleCode) . 'WorkflowService';
+
+                        $sessionObj = $this->het('workflow_session_id');
+                        if (!$sessionObj)
+                                return ['No session for this request', null];
+                        ;
+
+                        // $external_code = $sessionObj->getVal("external_code")
+
+                        $appObj = $this->het('workflow_applicant_id');
+                        if (!$appObj)
+                                return ['No applicant for this request', null];
+
+                        list($this->orginalObject, $keyLookup) = $moduleWorkflowServiceClass::loadOriginalObject($appObj, $sessionObj, $modelObj, $this);
+                }
+
+                return ['', $this->orginalObject, $keyLookup];
+        }
+
         public function calcCandidateInfo($what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
 
-                $modelObj = $this->het('workflow_model_id');
-                if (!$modelObj)
-                        return '???!!!???';
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
 
-                $moduleObj = $modelObj->het('workflow_module_id');
-                if (!$moduleObj)
-                        return '???!!!???####';
-
-                $lookup_code = $moduleObj->getVal('lookup_code');
-                if (!$lookup_code)
-                        return 'XXXXXXXXXXXX';
-
-                $moduleCode = strtolower($lookup_code);
-
-                AfwAutoLoader::addModule($moduleCode);
-
-                $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($moduleCode) . 'WorkflowService';
-
-                $sessionObj = $this->het('workflow_session_id');
-                if (!$sessionObj)
-                        return '???!!!';
-
-                // $external_code = $sessionObj->getVal("external_code")
-
-                $appObj = $this->het('workflow_applicant_id');
-                if (!$appObj)
-                        return '??????';
-
-                list($objOriginal, $keyLookup) = $moduleWorkflowServiceClass::loadOriginalObject($appObj, $sessionObj, $modelObj, $this);
                 if (!$objOriginal)
-                        return "not found Original-Object looked up with ($keyLookup)";
+                        return "not found Original-Object looked up with ($keyLookup) : $error";
 
                 return $objOriginal->calcCandidateInfo($what);
         }
@@ -278,5 +296,17 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == 'passeport_num')
                         return true;
                 return false;
+        }
+
+        public function calcDiv_step($step, $what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return "not found Original-Object looked up with ($keyLookup) : $error";
+
+                return $objOriginal->calcDivForWorkflowStep($step, $what);
         }
 }
