@@ -6,8 +6,14 @@ class WorkflowRequestArTranslator
 		$trad = [];
 
 		$trad['workflow_request']['step1'] = 'البيانات الشخصية';
-		$trad['workflow_request']['step2'] = 'المؤهلات والاختبارات';
-		$trad['workflow_request']['step7'] = 'التكليف';
+		$trad['workflow_request']['step2'] = 'طلب التقديم';
+		$trad['workflow_request']['step3'] = 'المؤهلات';
+		$trad['workflow_request']['step4'] = 'الاختبارات';
+		$trad['workflow_request']['step5'] = 'مراجعة الوثائق';
+		$trad['workflow_request']['step6'] = 'مراجعة اللجنة';
+		$trad['workflow_request']['step7'] = 'المقابلة الشخصية';
+		$trad['workflow_request']['step8'] = 'المفاضلة والقبول';
+		// $trad['workflow_request']['step9'] = 'حالة الطلب';
 
 		$trad['workflow_request']['request'] = 'حيثيات الطلب';
 
