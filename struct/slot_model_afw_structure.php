@@ -9,14 +9,16 @@
                         if ($obj instanceof SlotModel ) 
                         {
                                 $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-                               // $obj->DISPLAY_FIELD_BY_LANG = ["interview_type_pattern_id", 'en'=>"interview_type_pattern_id"];
+                                $obj->DISPLAY_FIELD_BY_LANG = ["interview_type_pattern_id", 'en'=>"interview_type_pattern_id"];
                                 
-                        		$obj->DISPLAY_FIELD = ['interview_type_pattern_id' , 'workflow_session_id', 'workflow_scope_id'];
-
+                        		//$obj->DISPLAY_FIELD = ['interview_type_pattern_id', 'workflow_scope_id' , 'interview_date'];
+								$obj->FORMULA_DISPLAY_FIELD  = "concat(interview_type_pattern_id , ' / ' , SUBSTRING(interview_date, 1, 10) )";
                                 
                                  $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                                 $obj->ORDER_BY_FIELDS = "";
-                                 
+                                 $obj->editByStep = true;
+								 $obj->IS_LOOKUP=true;
+                        $obj->editNbSteps = 2;
 
                                  $obj->UNIQUE_KEY = array("interview_type_pattern_id", "workflow_session_id", "interview_date");
                                 
@@ -47,17 +49,17 @@
 				'RELATION' => 'unkn',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
-		'workflow_session_id' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'workflow_session_id' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => false,  
 				'TYPE' => 'FK',  'ANSWER' => 'workflow_session',  'ANSMODULE' => 'workflow',  
-				'CSS' => 'width_pct_50', ),
+				'CSS' => 'width_pct_50', 'DISPLAY' => true,  'STEP' => 1, ),
 
-		'workflow_scope_id' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+		'workflow_scope_id' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'FK',  'ANSWER' => 'workflow_scope',  'ANSMODULE' => 'workflow',
-				'CSS' => 'width_pct_50', ),
+				'CSS' => 'width_pct_50', 'DISPLAY' => true,  'STEP' => 1, ),
 
 		'workflow_stage_id' => array('SHORTNAME' => 'stage',  'SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
 				'EDIT' => true,  'QEDIT' => true,  
@@ -87,7 +89,7 @@
 		'total_duration' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
-				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
+				'TYPE' => 'INT',  'READONLY' => true,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'single_duration' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
@@ -99,7 +101,7 @@
 		'single_interviews_total' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
 				'EDIT' => true,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
-				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
+				'TYPE' => 'INT',  'READONLY' => true,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
 		'capacity' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
@@ -133,6 +135,11 @@
 				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 
 				'CSS' => 'width_pct_50', ),
 
+		'InterviewSlotList' => array('TYPE' => 'FK', 'ANSWER' => 'interview_slot', 'ANSMODULE' => 'workflow', 
+				'CATEGORY' => 'ITEMS', 'ITEM' => 'slot_model_id', 'STEP' => 2,
+				// WHERE=>'xxx = §xxx§', HIDE_COLS => array(),
+				'SHOW' => true, 'FORMAT'=>'retrieve', 'EDIT' => false, 'READONLY' => true, 'QEDIT' => false, 
+				'ICONS'=>true, 'DELETE-ICON'=>true, 'BUTTONS'=>true, "NO-LABEL"=>false, ),
                 
                 'created_by'         => array('STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),
                 'created_at'         => array('STEP' =>99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'),

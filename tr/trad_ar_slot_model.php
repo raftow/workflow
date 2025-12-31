@@ -4,6 +4,8 @@ class SlotModelArTranslator{
     public static function initData()
     {
         $trad = [];
+		$trad["slot_model"]["step1"] = "نموذج المقابلة";
+		$trad["slot_model"]["step2"] = "المواعيد الفردية";
 
 		$trad["slot_model"]["slotmodel.single"] = "نموذج موعد المقابلة";
 		$trad["slot_model"]["slotmodel.new"] = "جديد(ة)";
@@ -22,7 +24,7 @@ class SlotModelArTranslator{
 		$trad["slot_model"]["total_duration"] = "مدة المقابلة (دقائق)";
 		$trad["slot_model"]["single_duration"] = "مدة المقابلة الفردية(دقائق";
 		$trad["slot_model"]["single_interviews_total"] = "عدد المواعيد الفردية";
-		$trad["slot_model"]["capacity"] = "الطاقة الاستيعابية";
+		$trad["slot_model"]["capacity"] = "الطاقة الاستيعابية الفردية";
 		$trad["slot_model"]["interview_type"] = "نوع المقابلة";
 		$trad["slot_model"]["room_location"] = "الموقع";
 		$trad["slot_model"]["workflow_commitee_id_"] = "اللجنة/المحاورون";
