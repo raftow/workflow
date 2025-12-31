@@ -245,3 +245,14 @@ span.idn {
     text-align: center;
     padding: 10px;
 }
+
+.wcomments>label {
+    color: white;
+}
+
+.popup-save.greenbtn {
+    border: 1px solid rgb(32 185 38) !important;
+    color: rgb(255 255 255) !important;
+    background-color: rgb(32 185 38) !important;
+    border-color: rgb(32 185 38) !important;
+}

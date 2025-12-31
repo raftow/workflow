@@ -294,7 +294,16 @@ class WorkflowRequest extends WorkflowObject
                 list(
                         $inputStage,
                 ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
-                $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', 0, null, $obj);
+                $request_comment_subject_id = 0;
+                $currstep = $_REQUEST['currstep'];
+                if ($currstep <= 2)
+                        $request_comment_subject_id = 1;
+                elseif ($currstep <= 4)
+                        $request_comment_subject_id = 2;
+                elseif ($currstep <= 6)
+                        $request_comment_subject_id = 3;
+
+                $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj);
                 $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
                 $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
                 $add_comment_label = $this->tm('Add comment', $lang);
