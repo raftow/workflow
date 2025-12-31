@@ -161,6 +161,28 @@ class SlotModel extends AFWObject{
         }            
         public function afterMaj($id, $fields_updated)
         {
+            if($fields_updated["start_time"] || $fields_updated["end_time"] || $fields_updated["single_duration"])
+            {
+                $start = strtotime($this->getVal("start_time"));
+                $end   = strtotime($this->getVal("end_time"));
+                // إجمالي الوقت بالدقائق
+                $totalMinutes = ($end - $start) / 60;
+                if($this->getVal("single_duration")>0)
+                {
+                    $single_duration = $this->getVal("single_duration");
+                }
+                else
+                {
+                    $single_duration = 10; // الافتراضي 10 دقائق
+                }
+                $singleInterviewsTotal = round($totalMinutes / $single_duration);
+                //die($singleInterviewsTotal);
+                $this->set("total_duration", $totalMinutes);
+                $this->set("single_interviews_total", $singleInterviewsTotal);
+                $this->commit();
+
+            }
+
             $this->generateInterviewSlots();
             return true;
         }
@@ -282,7 +304,7 @@ class SlotModel extends AFWObject{
             $objInterviewSlot->set("interview_date", $this->getVal("interview_date"));
             $objInterviewSlot->set("start_time", $slot_start);
             $objInterviewSlot->set("end_time", $slot_end);
-            $objInterviewSlot->set("duration", $this->getVal("duration"));
+            $objInterviewSlot->set("duration", $this->getVal("single_duration"));
             $objInterviewSlot->set("capacity", $this->getVal("capacity"));
             $objInterviewSlot->set("booked_seats_count", $this->getVal("booked_seats_count"));
             $objInterviewSlot->set("interview_type", $this->getVal("interview_type"));
