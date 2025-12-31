@@ -104,15 +104,28 @@ class SlotModel extends AFWObject{
             $pbms = array();
             
             $color = "green";
-            $title_ar = "xxxxxxxxxxxxxxxxxxxx"; 
-            $methodName = "mmmmmmmmmmmmmmmmmmmmmmm";
-            //$pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, "ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy"));
+            $title_ar = "اعتماد مواعيد المقابلات"; 
+            $methodName = "AcceptInterviewSlots";
+            $pbms[AfwStringHelper::hzmEncode($methodName)] = array("METHOD"=>$methodName,"COLOR"=>$color, "LABEL_AR"=>$title_ar, /*"ADMIN-ONLY"=>true, "BF-ID"=>"", 'STEP' =>$this->stepOfAttribute("xxyy")*/);
             
             
             
             return $pbms;
         }
-        
+        public function AcceptInterviewSlots()
+        {
+            $lang = AfwLanguageHelper::getGlobalLanguage();
+            $objInterviewSlots = new InterviewSlot();
+            $objInterviewSlots->select("slot_model_id", $this->id);
+            $objInterviewSlots->select("interview_slot_status_id", 1); // pending
+            $listInterviewSlots = $objInterviewSlots->loadMany();
+            foreach($listInterviewSlots as $objInterviewSlot)
+            {
+                $objInterviewSlot->set("interview_slot_status_id", 2); // approved
+                $objInterviewSlot->commit();
+            }
+            return true;
+        }
         public function fld_CREATION_USER_ID()
         {
                 return "created_by";
@@ -182,8 +195,12 @@ class SlotModel extends AFWObject{
                 $this->commit();
 
             }
-
-            $this->generateInterviewSlots();
+        
+            $objInterviewSlot = new InterviewSlot();
+            $objInterviewSlot->where(" active='Y' and slot_model_id = '$id' and interview_slot_status_id > 1");
+            if($objInterviewSlot->count()==0){ // can regenerate only if no slot is approved or booked
+                $this->generateInterviewSlots();
+            }
             return true;
         }
         

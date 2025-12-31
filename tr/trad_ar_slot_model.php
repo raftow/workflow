@@ -30,6 +30,7 @@ class SlotModelArTranslator{
 		$trad["slot_model"]["workflow_commitee_id_"] = "اللجنة/المحاورون";
 		$trad["slot_model"]["buffer_minutes"] = "المدة الفاصلة: مدة بالدقائق";
 		$trad["slot_model"]["workflow_commitee_id"] = "اللجنة/المحاورون";
+		$trad["slot_model"]["InterviewSlotList"] = "قائمة مواعيد المقابلة";
         // steps
         return $trad;
     }

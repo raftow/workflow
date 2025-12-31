@@ -17,7 +17,7 @@ class InterviewSlotArTranslator{
 		$trad["interview_slot"]["start_time"] = "وقت البداية";
 		$trad["interview_slot"]["end_time"] = "وقت النهاية";
 		$trad["interview_slot"]["duration"] = "مدة المقابلة (دقائق)";
-		$trad["interview_slot"]["capacity"] = "الطاقة الاستيعابية: (عدد المتقدمين المسموح به لكل موعد)";
+		$trad["interview_slot"]["capacity"] = "الطاقة الاستيعابية:";
 		$trad["interview_slot"]["booked_seats_count"] = "عدد المواعيد المحجوزة";
 		$trad["interview_slot"]["interview_type"] = "نوع المقابلة";
 		$trad["interview_slot"]["location"] = "الموقع";
