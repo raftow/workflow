@@ -39,7 +39,56 @@ class InterviewBooking extends AFWObject{
                     return 0;
                 }
         
-        
+         public static function loadByMainIndex($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id,$create_obj_if_not_found=false)
+        {
+           if(!$workflow_applicant_id) throw new AfwRuntimeException("loadByMainIndex : workflow_applicant_id is mandatory field");
+           if(!$workflow_session_id) throw new AfwRuntimeException("loadByMainIndex : workflow_session_id is mandatory field");
+           if(!$interview_type_pattern_id) throw new AfwRuntimeException("loadByMainIndex : interview_type_pattern_id is mandatory field");
+
+
+           $obj = new InterviewBooking();
+           $obj->select("workflow_applicant_id",$workflow_applicant_id);
+           $obj->select("workflow_session_id",$workflow_session_id);
+           $obj->select("interview_type_pattern_id",$interview_type_pattern_id);
+
+           if($obj->load())
+           {
+                if($create_obj_if_not_found) $obj->activate();
+                return $obj;
+           }
+           elseif($create_obj_if_not_found)
+           {
+                $obj->set("workflow_applicant_id",$workflow_applicant_id);
+                $obj->set("workflow_session_id",$workflow_session_id);
+                $obj->set("interview_type_pattern_id",$interview_type_pattern_id);
+
+                $obj->insertNew();
+                if(!$obj->id) return null; // means beforeInsert rejected insert operation
+                $obj->is_new = true;
+                return $obj;
+           }
+           else return null;
+           
+        }
+
+        public static function addNewInterviewBooking($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id, $workflow_scope_id,$workflow_request_id, $reschedule_ind='Y')
+        {
+            $interviewBookingObj = self::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id, true);
+            if($interviewBookingObj){
+                $interviewBookingObj->set("booking_status_id",6);
+                $interviewBookingObj->set("workflow_scope_id",$workflow_scope_id);
+                $interviewBookingObj->set("can_reschedule_ind",$reschedule_ind);
+                $interviewBookingObj->set("workflow_request_id",$workflow_request_id);
+                
+                $interviewBookingObj->set("reschedule_count",0);
+                $interviewBookingObj->set("can_cancel_ind",'N');
+                $interviewBookingObj->commit();
+            }
+
+           
+            return $interviewBookingObj;
+        }
+
         public function getDisplay($lang="ar")
         {
                

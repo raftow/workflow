@@ -256,7 +256,7 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_interview_booking on ".$server_db_prefix."workflow.interview_booking(interview_slot_id,workflow_applicant_id,workflow_session_id);");
+    AfwDatabase::db_query("create unique index uk_interview_booking on ".$server_db_prefix."workflow.interview_booking(workflow_applicant_id,workflow_session_id,interview_type_pattern_id);");
 
 
     AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.workflow_session;");

@@ -16,7 +16,7 @@
                                  
                                 
                                 
-                                 $obj->UNIQUE_KEY = array("interview_slot_id","applicant_id","application_plan_id","application_simulation_id");
+                                 $obj->UNIQUE_KEY = array("workflow_applicant_id","workflow_session_id","interview_type_pattern_id");
                                 
                 $obj->showQeditErrors = true;
                 $obj->showRetrieveErrors = true;
@@ -120,6 +120,11 @@
 				'EDIT' => true,  'QEDIT' => false,  
 				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
 				'TYPE' => 'YN',  'CHECKBOX' => true,  'READONLY' => false,  'DNA' => true, 
+				'CSS' => 'width_pct_50', ),
+		'reschedule_count' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
+				'EDIT' => true,  'QEDIT' => false,  
+				'SIZE' => 32,  'MAXLENGTH' => 32,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => false,  'UTF8' => false,  
+				'TYPE' => 'INT',  'READONLY' => false,  'DNA' => true, 'DEFAULT' => 0,
 				'CSS' => 'width_pct_50', ),
 
 		'can_cancel_ind' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  

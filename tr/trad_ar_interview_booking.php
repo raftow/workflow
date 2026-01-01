@@ -31,6 +31,7 @@ class InterviewBookingArTranslator{
    		$trad["interview_booking"]["interview_type_pattern_id"] = "نموذج نوع المقابلة";
 		$trad["interview_booking"]["workflow_request_id"] = "طلب سير العمل";
 		$trad["interview_booking"]["workflow_scope_id"] = "البرنامج";
+		$trad["interview_booking"]["reschedule_count"] = "عدد مرات إعادة الجدولة";
 
         // steps
         return $trad;
