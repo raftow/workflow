@@ -348,4 +348,118 @@ class WorkflowRequest extends WorkflowObject
 
                 return $objOriginal->calcDivForWorkflowStep($step, $what);
         }
+
+        public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200')
+        {
+                $server_db_prefix = AfwSession::currentDBPrefix();
+                $obj = new WorkflowRequest();
+
+                $obj->setForce('employee_id', 0);
+                $obj->setForce('status_comment', 'assignEmployeeForNonAssigned-doing-reset');
+                $obj->where('me.orgunit_id > 0 
+                        and 
+                                        (
+                                                (
+                                                        me.employee_id > 0 
+                                                        and me.employee_id not in (select employee_id from ' . $server_db_prefix . "workflow.workflow_employee we where we.orgunit_id = me.orgunit_id and me.active='Y')
+                                                ) 
+                                                or me.employee_id is null
+                                        ) 
+                        and done != 'Y'");
+                $obj->update(false);
+                unset($obj);
+
+                $obj = new WorkflowRequest();
+                $obj->where("employee_id=0 and orgunit_id > 0 and done != 'Y'");
+                $reqList = $obj->loadMany($limit);
+
+                $errors_arr = array();
+                $infos_arr = array();
+
+                foreach ($reqList as $reqItem) {
+                        /** @var WorkflowRequest $reqItem */
+                        list($err, $info) = $reqItem->assignBestAvailableEmployee($lang, $pbm = true);
+
+                        if ($err)
+                                $errors_arr[] = $err;
+                        if ($info)
+                                $infos_arr[] = $info;
+                }
+
+                $nb_errs = count($errors_arr);
+
+                $infos_arr[] = 'assign done for ' . count($reqList) . " request(s) with $nb_errs error(s)";
+
+                if ((!$silent) and (count($errors_arr) > 0)) {
+                        AfwSession::pushError(implode('<br>', $errors_arr));
+                }
+
+                if ((!$silent) and (count($infos_arr) > 0)) {
+                        AfwSession::pushInformation(implode('<br>', $infos_arr));
+                }
+
+                return AfwFormatHelper::pbm_result($errors_arr, $infos_arr);
+        }
+
+        /*
+         * public static function assignSupervisorForNonAssigned($reset = false, $silent = false, $lang = 'ar', $limit = '200', $jobContext = null)
+         * {
+         *         $errors_arr = array();
+         *         $infos_arr = array();
+         *         $tech_arr = array();
+         *         $warn_arr = array();
+         *         $nb_errs = 0;
+         *         $nb_done = 0;
+         *
+         *         $obj = new Request();
+         *         if ($jobContext)
+         *                 AfwBatch::print_comment('----------------------- JOB Context : ' . $jobContext . ' -----------------------');
+         *         if ($reset) {
+         *                 $obj->setForce('supervisor_id', 0);
+         *                 $obj->setForce('employee_id', 0);
+         *                 $obj->setForce('status_comment', 'assignSupervisorForNonAssigned-with-reset');
+         *                 $obj->where('employee_id = 0 and status_id not in (' . self::$REQUEST_STATUSES_NO_NEED_ASSIGN . ')');  //  or (supervisor_id = 1917 and employee_id = 1791) //  or (orgunit_id = " . self::$CRM_CENTER_ID . ")
+         *                 $nb_rows_rest = $obj->update(false);
+         *                 $warn_arr[] = "$nb_rows_rest request(s) assignment has been reset";
+         *         } elseif ($jobContext)
+         *                 AfwBatch::print_error("$jobContext >> assignSupervisorForNonAssigned->reset should be true for the moment");
+         *
+         *         $silent = false;
+         *
+         *         $obj->select('supervisor_id', 0);
+         *         $obj->where('status_id not in (' . self::$REQUEST_STATUSES_NO_NEED_ASSIGN . ')');
+         *
+         *         $reqList = $obj->loadMany($limit);
+         *         $total = count($reqList);
+         *         $doing = 0;
+         *         foreach ($reqList as $reqId => $reqItem) {
+         *                 $doing++;
+         *                 if ($jobContext)
+         *                         AfwBatch::print_comment('----------------------- JOB Context : ' . $jobContext . " assignBestAvailableSupervisor For Request ID = $reqId ($doing / $total) -----------------------");
+         *                 list($err, $info) = $reqItem->assignBestAvailableSupervisor($lang, $pbm = true, $commit = true, $re_distribution = false);
+         *
+         *                 if ($err) {
+         *                         $tech_arr[] = 'Error : ' . $err;
+         *                         $nb_errs++;
+         *                         if ($jobContext)
+         *                                 AfwBatch::print_error(">> $jobContext >> Error : .$err");
+         *                 } else
+         *                         $nb_done++;
+         *                 if ($info)
+         *                         $tech_arr[] = $info;
+         *         }
+         *
+         *         $infos_arr[] = "done : $nb_done , errors : $nb_errs";
+         *
+         *         if ((!$silent) and (count($errors_arr) > 0)) {
+         *                 AfwSession::pushError(implode('<br>', $errors_arr));
+         *         }
+         *
+         *         if ((!$silent) and (count($infos_arr) > 0)) {
+         *                 AfwSession::pushInformation(implode('<br>', $infos_arr));
+         *         }
+         *
+         *         return AfwFormatHelper::pbm_result($errors_arr, $infos_arr, $warn_arr, "<br>\n", $tech_arr);
+         * }
+         */
 }

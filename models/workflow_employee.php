@@ -13,19 +13,6 @@ class WorkflowEmployee extends WorkflowObject
 {
         public static $orgListOfEmployee = [];
 
-        // public static $MY_ATABLE_ID= ??;
-        // 117 CRM_INVESTIGATOR	محقق خدمة العملاء
-        public static $JOBROLE_CRM_INVESTIGATOR = 117;
-
-        // 118 CRM_CONTROLLER	مراقب خدمة العملاء
-        public static $JOBROLE_CRM_CONTROLLER = 118;
-
-        // 119 CRM_SUPERVISION	الإشراف العام
-        public static $JOBROLE_CRM_SUPERVISION = 119;
-
-        // 107 CRM_COORDINATION	مشرف تنسيق
-        public static $JOBROLE_CRM_COORDINATION = 107;
-
         public static $DATABASE = '';
 
         public static $MODULE = 'workflow';
@@ -205,16 +192,7 @@ class WorkflowEmployee extends WorkflowObject
                 return $pbms;
         }
 
-        public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false)
-        {
-                if ($this->sureIs('active') and ($this->getVal('employee_id') > 0)) {
-                        $empl = $this->het('employee_id');
-                        if ($empl) {
-                                $empl->addMeThisJobrole(self::$JOBROLE_CRM_INVESTIGATOR);
-                                $empl->updateMyUserInformation();
-                        }
-                }
-        }
+        public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false) {}
 
         public function afterUpdate($id, $fields_updated, $disableAfterCommitDBEvent = false)
         {
@@ -294,9 +272,12 @@ class WorkflowEmployee extends WorkflowObject
 
         public function beforeMaj($id, $fields_updated)
         {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $main_orgunit_id = AfwSession::config('main_orgunit_id', 1);
                 $email = $this->getVal('email');
+                $objEmployee = null;
                 if ($fields_updated['email']) {
-                        $objEmployee = Employee::loadByEmail(1, $email);
+                        $objEmployee = Employee::loadByEmail($main_orgunit_id, $email);
                         if ($objEmployee and $objEmployee->getVal('firstname')) {
                                 $this->set('gender_id', $objEmployee->getVal('gender_id'));
                                 $this->set('country_id', $objEmployee->getVal('country_id'));
@@ -312,7 +293,8 @@ class WorkflowEmployee extends WorkflowObject
                 }
 
                 if ($email) {
-                        $objEmployee = Employee::loadByEmail(1, $email, true);
+                        if (!$objEmployee)
+                                $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
                                 $objEmployee->set('gender_id', $this->getVal('gender_id'));
                                 $objEmployee->set('country_id', $this->getVal('country_id'));
@@ -325,9 +307,34 @@ class WorkflowEmployee extends WorkflowObject
                                 $objEmployee->set('g_f_firstname_en', $this->getVal('g_f_firstname_en'));
                                 $objEmployee->set('lastname_en', $this->getVal('lastname_en'));
                                 $objEmployee->set('mobile', $this->getVal('mobile'));
+                                $domain_id = Domain::$DOMAIN_BUSINESS_MANAGEMENT_SYSTEM;
+                                $hierarchy_level_enum = $this->getVal('hierarchy_level_enum');
+                                $objEmployee->set('domain_id', $domain_id);
+
+                                $wroleList = $this->get('wrole_mfk');
+                                foreach ($wroleList as $wroleItem) {
+                                        $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
+                                        foreach ($jobroleArr as $jobroleId) {
+                                                $objEmployee->addMeThisJobrole($jobroleId);
+                                        }
+                                }
                                 $objEmployee->commit();
+                                $objEmployee->updateMyUserInformation();
+
+                                $auserObj = $objEmployee->het('auser_id');
+                                if ($auserObj) {
+                                        $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
+                                        $auserObj->commit();
+                                }
+
+                                list($err, $info, $war) = $auserObj->generateCacheFile($lang, false, true);
+                                // if($err) $technical .= " error : $err <br>";
+                                // if($info) $technical .= " info : $info <br>";
+                                // if($war) $technical .= " war : $war <br>";
                         }
                         $this->set('employee_id', $objEmployee->id);
+
+                        WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
                 }
 
                 return true;

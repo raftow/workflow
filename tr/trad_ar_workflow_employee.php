@@ -15,7 +15,7 @@ class WorkflowEmployeeArTranslator
 
         $trad['workflow_employee']['wrole_mfk'] = 'المسؤوليات المناطة به';
         $trad['workflow_employee']['wscope_mfk'] = 'البرامج تحت مسؤوليته';
-        
+
         $trad['workflow_employee']['requests_nb'] = 'طاقة استيعاب الطلبات يوميا';
         $trad['workflow_employee']['employee_id'] = 'الموظف';
 
@@ -24,7 +24,6 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['requests_count'] = 'مجموع عدد الطلبات المسندة';
         $trad['workflow_employee']['statif_pct'] = 'نسبة رضا العميل';
         $trad['workflow_employee']['inbox_count'] = 'طلبات واردة';
-        
 
         $trad['workflow_employee']['ongoing_requests_count.short'] = 'الجاري';
         $trad['workflow_employee']['done_requests_count.short'] = 'تم التحقيق';
@@ -54,6 +53,7 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['gender_id'] = 'الجنس';
         $trad['workflow_employee']['mobile'] = 'الجوال';
         $trad['workflow_employee']['country_id'] = 'الجنسية';
+        $trad['workflow_employee']['hierarchy_level_enum'] = 'المستوى في الهيكل الوظيفي';
 
         $trad['workflow_employee']['step1'] = 'البيانات العامة';
         $trad['workflow_employee']['step2'] = 'البيانات الشخصية';

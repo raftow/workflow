@@ -345,6 +345,29 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
+		'hierarchy_level_enum' => array(
+			'SEARCH' => true,
+			'SHOW' => true,
+			'RETRIEVE' => false,
+			'EDIT' => true,
+			'QEDIT' => true,
+			'SIZE' => 40,
+			'SEARCH-ADMIN' => true,
+			'SHOW-ADMIN' => true,
+			'EDIT-ADMIN' => true,
+			'UTF8' => false,
+			'TYPE' => 'ENUM',
+			'ANSWER' => 'FUNCTION',
+			'DEFAUT' => 1,
+			'SHORTNAME' => 'lang',
+			'SEARCH-BY-ONE' => '',
+			'DISPLAY' => true,
+			'STEP' => 3,
+			'MANDATORY' => true,
+			'DISPLAY-UGROUPS' => '',
+			'EDIT-UGROUPS' => '',
+			'DEFAUT' => 1,
+		),
 		'wrole_mfk' => array(
 			'STEP' => 3,
 			'IMPORTANT' => 'IN',
@@ -370,7 +393,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
-
 		'wscope_mfk' => array(
 			'STEP' => 3,
 			'IMPORTANT' => 'IN',
@@ -396,7 +418,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
-		
 		'active' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
