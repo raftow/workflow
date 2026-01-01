@@ -202,7 +202,7 @@ class WorkflowRequest extends WorkflowObject
                                 $emplObj = $this->het('employee_id');
                                 return array('', $this->tm('This request already assigned to ') . $emplObj->getDisplay($lang), $log);
                         } else
-                                return array($this->tm('no more available employees in the system') . " ORG-ID = $orgunit_id", '', $log);
+                                return array($this->tm('No suitable available employee for the request') . ' ID = ' . $this->id, '', $log);
                 }
 
                 return $emplObj;
