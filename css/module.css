@@ -257,3 +257,34 @@ span.idn {
     background-color: rgb(32 185 38) !important;
     border-color: rgb(32 185 38) !important;
 }
+
+/******************   PREVILEGES ***************************/
+
+div#fg-privilegeCode {
+    float: right;
+    width: 100% !important;
+    direction: ltr;
+    padding-left: 20px;
+}
+
+div#div_data_privilegeCode {
+    width: 100%;
+    overflow: scroll;
+    min-height: 400px;
+    padding-left: 10px !important;
+}
+
+ul.code.php {
+    padding-left: 33px;
+    width: 100% !important;
+}
+
+ul.code>li {
+    display: inline-block;
+    margin-left: 10px;
+    width: 100%;
+    border-bottom: 1px dashed silver;
+}
+
+
+/******************   PREVILEGES END ***************************/
