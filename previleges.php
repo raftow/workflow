@@ -3430,7 +3430,7 @@ $role_info = array(
                 array(
                   'id' => '105242',
                   'code' => 'f2-a-workflow_request/edit',
-                  'level' => '1',
+                  'level' => '999',
                   'menu_name_ar' => 'إنشاء طلب قبول',
                   'menu_name_en' => 'create Workflow request',
                   'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowRequest&currmod=workflow',
@@ -3441,7 +3441,7 @@ $role_info = array(
                 array(
                   'id' => '105244',
                   'code' => 'f2-a-workflow_request/delete',
-                  'level' => '1',
+                  'level' => '999',
                   'menu_name_ar' => 'مسح طلب قبول',
                   'menu_name_en' => 'delete Workflow request',
                   'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowRequest&currmod=workflow',
@@ -3452,7 +3452,7 @@ $role_info = array(
                 array(
                   'id' => '105245',
                   'code' => 'f2-a-workflow_request/display',
-                  'level' => '1',
+                  'level' => '999',
                   'menu_name_ar' => 'عرض تفاصيل طلب قبول',
                   'menu_name_en' => 'display details of Workflow request',
                   'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowRequest&currmod=workflow',
@@ -3463,7 +3463,7 @@ $role_info = array(
                 array(
                   'id' => '105246',
                   'code' => 'f2-a-workflow_request/search',
-                  'level' => '1',
+                  'level' => '999',
                   'menu_name_ar' => 'البحث في طلبات الاعتماد',
                   'menu_name_en' => 'Workflow requests search',
                   'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowRequest&currmod=workflow',
@@ -3474,7 +3474,7 @@ $role_info = array(
                 array(
                   'id' => '105247',
                   'code' => 'f2-a-workflow_request/qsearch',
-                  'level' => '1',
+                  'level' => '999',
                   'menu_name_ar' => 'طلبات الاعتماد',
                   'menu_name_en' => 'Workflow requests',
                   'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequest&currmod=workflow',
