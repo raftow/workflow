@@ -335,7 +335,7 @@ class WorkflowEmployee extends WorkflowObject
         }
 
         /**
-         * @var Employee $objEmployee
+         * @param Employee $objEmployee
          */
         public function resetPrevileges($lang = 'ar', $objEmployee = null)
         {
@@ -372,7 +372,9 @@ class WorkflowEmployee extends WorkflowObject
                                         }
                                 }
                                 $objEmployee->commit();
+                                $inf_arr[] = $objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang);
                                 list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
+
                                 if ($err)
                                         $err_arr[] = $err;
                                 if ($inf)
