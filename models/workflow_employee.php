@@ -727,11 +727,6 @@ class WorkflowEmployee extends WorkflowObject
 
         public function shouldBeCalculatedField($attribute)
         {
-                if ($attribute == 'email')
-                        return true;
-                if ($attribute == 'mobile')
-                        return true;
-
                 return false;
         }
 
