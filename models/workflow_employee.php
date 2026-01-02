@@ -189,6 +189,19 @@ class WorkflowEmployee extends WorkflowObject
                         'STEP' => 1,
                 );
 
+                $color = 'red';
+                $title_ar = 'تصفير كلمة المرور';
+                $methodName = 'resetPassword';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+                        'METHOD' => $methodName,
+                        'COLOR' => $color,
+                        'LABEL_AR' => $title_ar,
+                        'PUBLIC' => true,
+                        // 'ONLY-ADMIN' => true,
+                        'BF-ID' => '',
+                        'STEP' => 1,
+                );
+
                 return $pbms;
         }
 
@@ -338,6 +351,17 @@ class WorkflowEmployee extends WorkflowObject
                 }
 
                 return true;
+        }
+
+        public function resetPassword($lang = 'ar', $password_sent_by = null, $message_prefix = '')
+        {
+                $objEmployee = $this->het('employee_id');
+                if (!$objEmployee)
+                        return [$this->tm('Failed to find the employee profile record', $lang), ''];
+                $auserObj = $objEmployee->het('auser_id');
+                if (!$auserObj)
+                        return [$this->tm('Failed to find this system user', $lang), ''];
+                return $auserObj->resetPassword($lang, $password_sent_by, $message_prefix);
         }
 
         public function beforeDelete($id, $id_replace)
