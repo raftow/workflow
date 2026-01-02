@@ -336,7 +336,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'SIZE' => 16,
 			'CSS' => 'width_pct_25',
 			'MB_CSS' => 'width_pct_25',
-			// 'FORMAT' => 'SA-MOBILE',
+			'FORMAT' => 'SA-MOBILE',
 			'UTF8' => false,
 			'TYPE' => 'TEXT',
 			'STEP' => 2,
