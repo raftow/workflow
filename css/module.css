@@ -286,5 +286,17 @@ ul.code>li {
     border-bottom: 1px dashed silver;
 }
 
+code>p {
+    direction: ltr;
+    text-align: left;
+    background-color: aliceblue;
+}
+
+code>p>i {
+    color: green;
+    background-color: lightcyan;
+    padding: 2px 7px;
+}
+
 
 /******************   PREVILEGES END ***************************/

@@ -404,6 +404,8 @@ class WorkflowEmployee extends WorkflowObject
                         $this->set('employee_id', $objEmployee->id);
                         if ($commit)
                                 $this->commit();
+
+                        $this->getPrevilegesPhpCodeForUser($lang);
                         list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
                         if ($err)
                                 $err_arr[] = $err;
