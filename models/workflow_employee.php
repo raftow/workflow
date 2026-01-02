@@ -360,45 +360,47 @@ class WorkflowEmployee extends WorkflowObject
                                 $objEmployee->set('g_f_firstname_en', $this->getVal('g_f_firstname_en'));
                                 $objEmployee->set('lastname_en', $this->getVal('lastname_en'));
                                 $objEmployee->set('mobile', $this->getVal('mobile'));
-                                $domain_id = Domain::$DOMAIN_BUSINESS_MANAGEMENT_SYSTEM;
-                                $hierarchy_level_enum = $this->getVal('hierarchy_level_enum');
-                                $objEmployee->set('domain_id', $domain_id);
-
-                                $wroleList = $this->get('wrole_mfk');
-                                foreach ($wroleList as $wroleItem) {
-                                        $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
-                                        foreach ($jobroleArr as $jobroleId) {
-                                                $objEmployee->addMeThisJobrole($jobroleId);
-                                        }
-                                }
-                                $objEmployee->commit();
-                                $inf_arr[] = $objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang);
-                                list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
-
-                                if ($err)
-                                        $err_arr[] = $err;
-                                if ($inf)
-                                        $inf_arr[] = $inf;
-                                if ($war)
-                                        $war_arr[] = $war;
-                                // if($tech) $tech_arr[] = $tech;
-
-                                die('xxx1  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
-
-                                $auserObj = $objEmployee->het('auser_id');
-                                if ($auserObj) {
-                                        $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
-                                        $auserObj->commit();
-                                }
-
-                                list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
-                                if ($err)
-                                        $err_arr[] = $err;
-                                if ($inf)
-                                        $inf_arr[] = $inf;
-                                if ($war)
-                                        $war_arr[] = $war;
                         }
+
+                        $domain_id = Domain::$DOMAIN_BUSINESS_MANAGEMENT_SYSTEM;
+                        $hierarchy_level_enum = $this->getVal('hierarchy_level_enum');
+                        $objEmployee->set('domain_id', $domain_id);
+
+                        $wroleList = $this->get('wrole_mfk');
+                        foreach ($wroleList as $wroleItem) {
+                                $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
+                                foreach ($jobroleArr as $jobroleId) {
+                                        $objEmployee->addMeThisJobrole($jobroleId);
+                                }
+                        }
+                        $objEmployee->commit();
+                        $inf_arr[] = $objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang);
+                        list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
+
+                        if ($err)
+                                $err_arr[] = $err;
+                        if ($inf)
+                                $inf_arr[] = $inf;
+                        if ($war)
+                                $war_arr[] = $war;
+                        // if($tech) $tech_arr[] = $tech;
+
+                        // die('xxx1  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
+
+                        $auserObj = $objEmployee->het('auser_id');
+                        if ($auserObj) {
+                                $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
+                                $auserObj->commit();
+                        }
+
+                        list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
+                        if ($err)
+                                $err_arr[] = $err;
+                        if ($inf)
+                                $inf_arr[] = $inf;
+                        if ($war)
+                                $war_arr[] = $war;
+
                         $this->set('employee_id', $objEmployee->id);
                         if ($commit)
                                 $this->commit();
