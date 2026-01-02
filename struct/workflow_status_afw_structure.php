@@ -283,8 +283,21 @@ class WorkflowWorkflowStatusAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
-
-
+                'last_payment_deadline' => array(
+                        'RETRIEVE' => true,
+                        'SHOW' => true,
+                        'EDIT' => true,
+                        'DEFAUT' => 'N',
+                        'TYPE' => 'INT',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => false,
+                        'QSEARCH' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+ 
 
 
                 'active' => array(
