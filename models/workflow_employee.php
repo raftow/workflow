@@ -11,7 +11,6 @@ $file_dir_name = dirname(__FILE__);
 
 class WorkflowEmployee extends WorkflowObject
 {
-        private $codePhp = '';
         public static $orgListOfEmployee = [];
         public static $DATABASE = '';
         public static $MODULE = 'workflow';
@@ -383,16 +382,20 @@ class WorkflowEmployee extends WorkflowObject
                 if (!$auserObj)
                         return [$this->tm('Failed to find this system user', $lang), ''];
 
-                list($err, $phpCode) = $auserObj->getPrevilegesPhpCode($lang);
-
-                $this->codePhp = $phpCode;
-
-                return ['', 'done'];
+                return $auserObj->getPrevilegesPhpCode($lang);
         }
 
         public function calcPrivilegeCode($what = 'value')
         {
-                return $this->codePhp;
+                $objEmployee = $this->het('employee_id');
+                if (!$objEmployee)
+                        return '????';
+                /** @var Auser $auserObj */
+                $auserObj = $objEmployee->het('auser_id');
+                if (!$auserObj)
+                        return '!!!!';
+
+                return $auserObj->calcShowPhpCode($what);
         }
 
         public function beforeDelete($id, $id_replace)
