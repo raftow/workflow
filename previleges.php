@@ -3391,7 +3391,7 @@ $role_info = array(
                 array(
                   'id' => '105254',
                   'code' => 'inbox',
-                  'level' => '800',
+                  'level' => '999',
                   'menu_name_ar' => 'صندوق الوارد',
                   'menu_name_en' => 'Inbox',
                   'page' => 'main.php?Main_Page=inbox.php',
@@ -3416,7 +3416,7 @@ $role_info = array(
                 array(
                   'id' => '105247',
                   'code' => 'f2-a-workflow_request/qsearch',
-                  'level' => '1',
+                  'level' => '999',
                   'menu_name_ar' => 'الاستعلام عن طلب',
                   'menu_name_en' => 'Workflow requests',
                   'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequest&currmod=workflow',
