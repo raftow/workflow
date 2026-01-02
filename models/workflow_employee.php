@@ -383,6 +383,8 @@ class WorkflowEmployee extends WorkflowObject
                                         $war_arr[] = $war;
                                 // if($tech) $tech_arr[] = $tech;
 
+                                die('xxx1  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
+
                                 $auserObj = $objEmployee->het('auser_id');
                                 if ($auserObj) {
                                         $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
@@ -408,7 +410,6 @@ class WorkflowEmployee extends WorkflowObject
                         if ($war)
                                 $war_arr[] = $war;
 
-                        die('xxx  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
                         return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, $sep = "<br>\n", $tech_arr);
                 } else {
                         return ['No email defined for the workflow employee', ''];
