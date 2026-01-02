@@ -197,9 +197,22 @@ class WorkflowEmployee extends WorkflowObject
                         'COLOR' => $color,
                         'LABEL_AR' => $title_ar,
                         'PUBLIC' => true,
-                        // 'ONLY-ADMIN' => true,
+                        // 'ADMIN-ONLY' => true,
                         'BF-ID' => '',
-                        'STEP' => 1,
+                        'STEP' => 3,
+                );
+
+                $color = 'orange';
+                $title_ar = 'استخراج وتفقد ملف صلاحيات المستخدم';
+                $methodName = 'getPrevilegesPhpCodeForUser';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+                        'METHOD' => $methodName,
+                        'COLOR' => $color,
+                        'LABEL_AR' => $title_ar,
+                        // 'PUBLIC' => true,
+                        'ADMIN-ONLY' => true,
+                        'BF-ID' => '',
+                        'STEP' => 3,
                 );
 
                 return $pbms;
@@ -362,6 +375,18 @@ class WorkflowEmployee extends WorkflowObject
                 if (!$auserObj)
                         return [$this->tm('Failed to find this system user', $lang), ''];
                 return $auserObj->resetPassword($lang, $password_sent_by, $message_prefix);
+        }
+
+        public function getPrevilegesPhpCodeForUser($lang = 'ar')
+        {
+                $objEmployee = $this->het('employee_id');
+                if (!$objEmployee)
+                        return [$this->tm('Failed to find the employee profile record', $lang), ''];
+                $auserObj = $objEmployee->het('auser_id');
+                if (!$auserObj)
+                        return [$this->tm('Failed to find this system user', $lang), ''];
+
+                return $auserObj->getPrevilegesPhpCode($lang);
         }
 
         public function beforeDelete($id, $id_replace)
