@@ -198,7 +198,20 @@ class WorkflowEmployee extends WorkflowObject
                         'STEP' => 3,
                 );
 
-                $color = 'orange';
+                $color = 'yellow';
+                $title_ar = 'تصفير الصلاحيات';
+                $methodName = 'resetPrevileges';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+                        'METHOD' => $methodName,
+                        'COLOR' => $color,
+                        'LABEL_AR' => $title_ar,
+                        // 'PUBLIC' => true,
+                        'ADMIN-ONLY' => true,
+                        'BF-ID' => '',
+                        'STEP' => 3,
+                );
+
+                $color = 'green';
                 $title_ar = 'استخراج وتفقد ملف صلاحيات المستخدم';
                 $methodName = 'getPrevilegesPhpCodeForUser';
                 $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
@@ -314,6 +327,24 @@ class WorkflowEmployee extends WorkflowObject
                         }
                 }
 
+                if ($fields_updated['wrole_mfk']) {
+                        $this->resetPrevileges('ar', $objEmployee);
+                }
+
+                return true;
+        }
+
+        /**
+         * @var Employee $objEmployee
+         */
+        public function resetPrevileges($lang = 'ar', $objEmployee = null)
+        {
+                $err_arr = [];
+                $inf_arr = [];
+                $war_arr = [];
+                $tech_arr = [];
+
+                $email = $this->getVal('email');
                 if ($email) {
                         if (!$objEmployee)
                                 $objEmployee = Employee::loadByEmail(1, $email, true);
@@ -341,7 +372,14 @@ class WorkflowEmployee extends WorkflowObject
                                         }
                                 }
                                 $objEmployee->commit();
-                                $objEmployee->updateMyUserInformation();
+                                list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
+                                if ($err)
+                                        $err_arr[] = $err;
+                                if ($inf)
+                                        $inf_arr[] = $inf;
+                                if ($war)
+                                        $war_arr[] = $war;
+                                // if($tech) $tech_arr[] = $tech;
 
                                 $auserObj = $objEmployee->het('auser_id');
                                 if ($auserObj) {
@@ -349,17 +387,28 @@ class WorkflowEmployee extends WorkflowObject
                                         $auserObj->commit();
                                 }
 
-                                list($err, $info, $war) = $auserObj->generateCacheFile($lang, false, true);
-                                // if($err) $technical .= " error : $err <br>";
-                                // if($info) $technical .= " info : $info <br>";
-                                // if($war) $technical .= " war : $war <br>";
+                                list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
+                                if ($err)
+                                        $err_arr[] = $err;
+                                if ($inf)
+                                        $inf_arr[] = $inf;
+                                if ($war)
+                                        $war_arr[] = $war;
                         }
                         $this->set('employee_id', $objEmployee->id);
 
-                        WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
-                }
+                        list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
+                        if ($err)
+                                $err_arr[] = $err;
+                        if ($inf)
+                                $inf_arr[] = $inf;
+                        if ($war)
+                                $war_arr[] = $war;
 
-                return true;
+                        return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, $sep = "<br>\n", $tech_arr);
+                } else {
+                        return ['No email defined for the workflow employee', ''];
+                }
         }
 
         public function resetPassword($lang = 'ar', $password_sent_by = null, $message_prefix = '')
