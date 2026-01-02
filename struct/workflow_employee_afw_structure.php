@@ -418,6 +418,17 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 		),
+		'privilegeCode' => array(
+			'STEP' => 3,
+			'HIDE_IF_NEW' => true,
+			'TYPE' => 'TEXT',
+			'CATEGORY' => 'FORMULA',
+			'SHOW' => true,
+			'EDIT' => true,
+			'READONLY' => true,
+			'NO-ERROR-CHECK' => true,
+			'FGROUP' => 'tech_fields'
+		),
 		'active' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
