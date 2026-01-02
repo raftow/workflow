@@ -328,7 +328,7 @@ class WorkflowEmployee extends WorkflowObject
                 }
 
                 if ($fields_updated['wrole_mfk']) {
-                        $this->resetPrevileges('ar', $objEmployee);
+                        $this->resetPrevileges('ar', $objEmployee, false);
                 }
 
                 return true;
@@ -337,7 +337,7 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param Employee $objEmployee
          */
-        public function resetPrevileges($lang = 'ar', $objEmployee = null)
+        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true)
         {
                 $err_arr = [];
                 $inf_arr = [];
@@ -398,7 +398,8 @@ class WorkflowEmployee extends WorkflowObject
                                         $war_arr[] = $war;
                         }
                         $this->set('employee_id', $objEmployee->id);
-
+                        if ($commit)
+                                $this->commit();
                         list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
                         if ($err)
                                 $err_arr[] = $err;
@@ -407,6 +408,7 @@ class WorkflowEmployee extends WorkflowObject
                         if ($war)
                                 $war_arr[] = $war;
 
+                        die('xxx  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
                         return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, $sep = "<br>\n", $tech_arr);
                 } else {
                         return ['No email defined for the workflow employee', ''];
