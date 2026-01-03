@@ -10,7 +10,7 @@ class WorkflowWorkflowRequestCommentAfwStructure
                         $obj->DISPLAY_FIELD_BY_LANG = ['ar' => array('workflow_request_id', 'request_comment_subject_id'), 'en' => array('workflow_request_id', 'request_comment_subject_id')];
 
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
-                        $obj->ORDER_BY_FIELDS = '';
+                        $obj->ORDER_BY_FIELDS = 'workflow_request_id, comment_date desc';
 
                         $obj->UNIQUE_KEY = array('workflow_request_id', 'request_comment_subject_id', 'comment_date');
 
@@ -65,7 +65,7 @@ class WorkflowWorkflowRequestCommentAfwStructure
                                 'SHOW-ADMIN' => true,
                                 'EDIT-ADMIN' => true,
                                 'UTF8' => false,
-                                'TYPE' => 'GDAT',
+                                'TYPE' => 'DATETIME',
                                 'STEP' => 1,
                                 'DISPLAY-UGROUPS' => '',
                                 'EDIT-UGROUPS' => '',
