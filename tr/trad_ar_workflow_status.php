@@ -21,6 +21,7 @@ class WorkflowStatusArTranslator{
 	$trad["workflow_status"]["payment_ind"] = "حالة دفع؟";
 	$trad["workflow_status"]["web_ind"] = "يظهر للمتقدم؟";
 	$trad["workflow_status"]["applicant_can_cancel"] = "يمكن للمتقدم الإلغاء؟";
+	$trad["workflow_status"]["last_payment_deadline"] = "آخر موعد للدفع";
         return $trad;
         }
 
