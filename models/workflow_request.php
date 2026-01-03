@@ -289,13 +289,19 @@ class WorkflowRequest extends WorkflowObject
 
         public function calcFormComments($what = 'value')
         {
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $myId = $this->id;
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $obj = new WorkflowRequestComment();
-                $obj->set('workflow_request_id', $this->id);
-                $obj->set('workflow_stage_id', $this->getVal('workflow_stage_id'));
-                list(
-                        $inputStage,
-                ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                $obj->set('workflow_request_id', $myId);
+                $obj->set('workflow_stage_id', $workflow_stage_id);
+                $inputStage = '';
+
+                /*
+                 * list(
+                 *         $inputStage,
+                 * ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                 */
                 $request_comment_subject_id = 0;
                 $currstep = $_REQUEST['currstep'];
                 if ($currstep <= 2)
@@ -309,7 +315,7 @@ class WorkflowRequest extends WorkflowObject
                 $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
                 $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
                 $add_comment_label = $this->tm('Add comment', $lang);
-                $myId = $this->id;
+
                 $objme = AfwSession::getUserConnected();
                 $you_dont_have_rights = $objme->translateMessage('CANT_DO_THIS', $lang);
 
@@ -328,7 +334,7 @@ class WorkflowRequest extends WorkflowObject
                                 function addWorkflowRequestComment()
                                 {
                                 the_idreq = $myId;
-                                the_stage = \$('#comment_workflow_stage_id').val();
+                                the_stage = $workflow_stage_id;
                                 the_subject = \$('#request_comment_subject_id').val();
                                 the_comment = \$('#comment').val();
                                 \$.ajax({
