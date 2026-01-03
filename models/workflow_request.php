@@ -323,7 +323,8 @@ class WorkflowRequest extends WorkflowObject
                         $response_data_format = "data = '';\n";
                 else
                         $response_data_format = '';
-                return "<div id='wreq-$myId-comments' class='wcomments'>
+                return $this->showAttribute('workflowRequestCommentList')
+                        . "<div id='wreq-$myId-comments' class='wcomments'>
                                 <label>$add_comment_label</label>
                                 $inputStage
                                 <div class='subject'>$inputSubject</div>
@@ -335,12 +336,13 @@ class WorkflowRequest extends WorkflowObject
                                 {
                                 the_idreq = $myId;
                                 the_stage = $workflow_stage_id;
+                                the_lang = '$lang';
                                 the_subject = \$('#request_comment_subject_id').val();
                                 the_comment = \$('#comment').val();
                                 \$.ajax({
                                         type:'POST',
                                         url:'../workflow/api/wkfaddcomment.php',                                           
-                                        data:{idreq:the_idreq, stage:the_stage, subject:the_subject, comment:the_comment},
+                                        data:{idreq:the_idreq, stage:the_stage, subject:the_subject, comment:the_comment, lang:the_lang},
                                         dataType: 'json',
                                         success: function(data)
                                         {

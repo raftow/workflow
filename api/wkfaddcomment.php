@@ -21,7 +21,7 @@ $idreq = trim($_POST['idreq']);
 $subject = trim($_POST['subject']);
 $comment = trim($_POST['comment']);
 $stage = trim($_POST['stage']);
-
+$lang = trim($_POST['lang']);
 $data = [];
 
 if ((!$idreq) or (!$subject) or (!$comment) or (!$stage)) {
@@ -32,7 +32,8 @@ if ((!$idreq) or (!$subject) or (!$comment) or (!$stage)) {
 
 $MODULE = 'workflow';
 include ("$file_dir_name/../lib/afw/afw_check_member.php");
-$lang = AfwLanguageHelper::getGlobalLanguage();
+if (!$lang)
+    $lang = AfwLanguageHelper::getGlobalLanguage();
 
 // echo "here3";
 AfwAutoLoader::addMainModule($MODULE);
@@ -71,6 +72,7 @@ if ($done) {
     $data['status'] = 'success';
     $data['message'] = '';
     $data['aff'] = [
+        'lang' => $lang,
         'id' => $reqCommentObj->id,
         'stage' => $reqCommentObj->decode('workflow_stage_id', '', false, $lang),
         'subject' => $reqCommentObj->decode('request_comment_subject_id', '', false, $lang),
