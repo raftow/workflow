@@ -358,7 +358,7 @@ class WorkflowRequest extends WorkflowObject
                                         \$(\"#addwrcomment\").click(function()
                                         {                            
                                                 addWorkflowRequestComment();                                        
-                                        );
+                                        });
                                 });
 
                         </script>
