@@ -105,7 +105,7 @@ class WorkflowWorkflowRequestCommentAfwStructure
                                 'QSEARCH' => false,
                                 'SHOW' => true,
                                 'AUDIT' => false,
-                                'RETRIEVE' => false,
+                                'RETRIEVE' => true,
                                 'EDIT' => true,
                                 'QEDIT' => false,
                                 'SIZE' => 'AREA',
