@@ -12,7 +12,7 @@ class WorkflowWorkflowRequestCommentAfwStructure
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                         $obj->ORDER_BY_FIELDS = '';
 
-                        // $obj->UNIQUE_KEY = array('XXX', 'YYY');
+                        $obj->UNIQUE_KEY = array('workflow_request_id', 'request_comment_subject_id', 'comment_date');
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
@@ -54,6 +54,23 @@ class WorkflowWorkflowRequestCommentAfwStructure
                                 'EDIT-UGROUPS' => '',
                                 'CSS' => 'width_pct_25',
                         ),
+                        'comment_date' => [
+                                'IMPORTANT' => 'IN',
+                                'SEARCH' => true,
+                                'SHOW' => true,
+                                'RETRIEVE' => true,
+                                'EDIT' => true,
+                                'QEDIT' => true,
+                                'SEARCH-ADMIN' => true,
+                                'SHOW-ADMIN' => true,
+                                'EDIT-ADMIN' => true,
+                                'UTF8' => false,
+                                'TYPE' => 'GDAT',
+                                'STEP' => 1,
+                                'DISPLAY-UGROUPS' => '',
+                                'EDIT-UGROUPS' => '',
+                                'CSS' => 'width_pct_25',
+                        ],
                         'request_comment_subject_id' => array(
                                 'SHORTNAME' => 'comment_subject',
                                 'SEARCH' => true,
@@ -105,11 +122,12 @@ class WorkflowWorkflowRequestCommentAfwStructure
                                 'QSEARCH' => false,
                                 'SHOW' => true,
                                 'AUDIT' => false,
-                                'RETRIEVE' => false,
+                                'RETRIEVE' => true,
                                 'EDIT' => true,
                                 'QEDIT' => false,
                                 'SIZE' => 'AREA',
                                 'MIN-SIZE' => 1,
+                                'ROWS' => 2,
                                 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
                                 'MANDATORY' => true,
                                 'UTF8' => true,

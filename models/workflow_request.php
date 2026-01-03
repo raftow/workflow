@@ -289,13 +289,19 @@ class WorkflowRequest extends WorkflowObject
 
         public function calcFormComments($what = 'value')
         {
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $myId = $this->id;
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $obj = new WorkflowRequestComment();
-                $obj->set('workflow_request_id', $this->id);
-                $obj->set('workflow_stage_id', $this->getVal('workflow_stage_id'));
-                list(
-                        $inputStage,
-                ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                $obj->set('workflow_request_id', $myId);
+                $obj->set('workflow_stage_id', $workflow_stage_id);
+                $inputStage = '';
+
+                /*
+                 * list(
+                 *         $inputStage,
+                 * ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                 */
                 $request_comment_subject_id = 0;
                 $currstep = $_REQUEST['currstep'];
                 if ($currstep <= 2)
@@ -309,14 +315,62 @@ class WorkflowRequest extends WorkflowObject
                 $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
                 $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
                 $add_comment_label = $this->tm('Add comment', $lang);
-                $myId = $this->id;
-                return "<div id='wreq-$myId-comments' class='wcomments'>
+
+                $objme = AfwSession::getUserConnected();
+                $you_dont_have_rights = $objme->translateMessage('CANT_DO_THIS', $lang);
+
+                if ((!$objme) or (!$objme->isAdmin()))
+                        $response_data_format = "data = '';\n";
+                else
+                        $response_data_format = '';
+                return $this->showAttribute('workflowRequestCommentList')
+                        . "<div id='wreq-$myId-comments' class='wcomments'>
                                 <label>$add_comment_label</label>
                                 $inputStage
                                 <div class='subject'>$inputSubject</div>
                                 <div class='comment'>$inputComment</div>
-                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='popup-save fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
-                        </div>";
+                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
+                        </div>
+                        <script>
+                                function addWorkflowRequestComment()
+                                {
+                                the_idreq = $myId;
+                                the_stage = $workflow_stage_id;
+                                the_lang = '$lang';
+                                the_subject = \$('#request_comment_subject_id').val();
+                                the_comment = \$('#comment').val();
+                                \$.ajax({
+                                        type:'POST',
+                                        url:'../workflow/api/wkfaddcomment.php',                                           
+                                        data:{idreq:the_idreq, stage:the_stage, subject:the_subject, comment:the_comment, lang:the_lang},
+                                        dataType: 'json',
+                                        success: function(data)
+                                        {
+                                                console.log('idreq='+idreq+' stage='+stage+' subject='+subject+' comment='+comment+' wkfaddcomment response = ', data);
+                                                if(data.status=='success')
+                                                {
+                                                        \$('#span-'+mod+'-'+cls+'-'+idobj+'-'+col).text(data.aff);                    
+                                                }
+                                                else
+                                                {
+                                                        $response_data_format
+                                                        swal('$you_dont_have_rights ['+data.message+']'); // 
+                                                        return [false, null];
+                                                }
+                                        }
+
+                                });
+                                }
+
+                                \$(document).ready(function(){
+                                        \$(\"#addwrcomment\").click(function()
+                                        {                            
+                                                addWorkflowRequestComment();                                        
+                                        });
+                                });
+
+                        </script>
+                        ";
         }
 
         public function shouldBeCalculatedField($attribute)
