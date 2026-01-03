@@ -79,7 +79,7 @@ if ($done) {
         'stage' => $reqCommentObj->decode('workflow_stage_id', '', false, $lang),
         'subject' => $reqCommentObj->decode('request_comment_subject_id', '', false, $lang),
         'comment' => $reqCommentObj->getVal('comment'),
-        'date' => $reqCommentObj->getVal('comment_date'),
+        'dd' => $reqCommentObj->getVal('comment_date'),
     ];
 } else {
     $data['status'] = 'fail';

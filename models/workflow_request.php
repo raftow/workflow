@@ -332,6 +332,44 @@ class WorkflowRequest extends WorkflowObject
                                 <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
                         </div>
                         <script>
+                                function addTr(id,dd,stage,subject,comment)
+                                {
+                                        let rowId = id;
+                                        let rowDate = dd;
+                                        let rowStage = stage;
+                                        let rowSubject = subject;
+                                        let rowComment = comment;
+
+                                        // Construct the new row's HTML
+                                        let newRowHtml = `
+                                        <tr id=\"tr-object-\${rowId}\" class=\"ky item workf csr_active hzm_row_Y\">
+                                                <td id='comment_date-\${rowId}' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment_date'>
+                                                        <span class='comment_date-span'>\$rowDate
+                                                        </span></td>        
+                                                <td id='request_comment_subject_id-\${rowId}' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_reque hzm_col_afw_request_comment_subject_id'>
+                                                        <span class='request_comment_subject_id-span'>\$rowSubject
+                                                        </span></td>        
+                                                <td id='workflow_stage_id-\${rowId}' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_workf hzm_col_afw_workflow_stage_id'>
+                                                        <span class='workflow_stage_id-span'>\$rowStage
+                                                        </span></td>        
+                                                <td id='comment-\${rowId}' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment'>
+                                                        <span class='comment-span'>\$rowComment
+                                                        </span></td>        
+                                                <td id='عرض-\${rowId}' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_3Ru hzm_col_afw_3Ru'>
+                                                        <span class='عرض-span'>
+                                                        <a href='main.php?Main_Page=afw_mode_display.php&amp;cl=WorkflowRequestComment&amp;currmod=workflow&amp;id=\${rowId}&amp;currstep=1' data-original-title='' title=''>
+                                                                <img src='../lib/images/view_ok.png' width='24' heigth='24' data-toggle='tooltip' data-placement='top' title='' data-original-title=''></a>
+                                                        </span></td>        
+                                                <td id='مسح-\${rowId}' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_MS7 hzm_col_afw_MS7'>
+                                                        <a href='#' here='afw_shwr' id='\${rowId}' cl='WorkflowRequestComment' md='workflow' lbl='' lvl='2' class='trash showmany' data-original-title='' title=''>
+                                                        <img src='../lib/images/trash.png' style='height: 22px !important;'></a></td>  
+                                        </tr>
+                                        `;
+                                        
+                                        // Append the new row to the tbody
+                                        \$(\"#workflowRequestCommentListTableBody\").append(newRowHtml);
+                                }       
+
                                 function addWorkflowRequestComment()
                                 {
                                 the_idreq = $myId;
@@ -349,7 +387,7 @@ class WorkflowRequest extends WorkflowObject
                                                 console.log('idreq='+idreq+' stage='+stage+' subject='+subject+' comment='+comment+' wkfaddcomment response = ', data);
                                                 if(data.status=='success')
                                                 {
-                                                        \$('#span-'+mod+'-'+cls+'-'+idobj+'-'+col).text(data.aff);                    
+                                                        addTr(data.aff.id,data.aff.dd,data.aff.stage,data.aff.subject,data.aff.comment);                    
                                                 }
                                                 else
                                                 {
