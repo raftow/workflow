@@ -688,6 +688,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'FORMAT' => 'retrieve',
                         'ICONS' => true,
                         'DELETE-ICON' => true,
+                        'EDIT-ICON' => false,
+                        'DISPLAY-ICON' => false,
                         'BUTTONS' => true,
                         'SEARCH' => false,
                         'QSEARCH' => false,
