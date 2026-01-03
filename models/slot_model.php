@@ -278,12 +278,12 @@ class SlotModel extends AFWObject{
         
         
         $slot_model_id = $this->id;
-        $interview_date = $this->getVal("interview_date");
+        $interview_date = substr($this->getVal("interview_date"), 0, 10);
         $start_time = $this->getVal("start_time");
         $end_time = $this->getVal("end_time");
         $single_duration = $this->getVal("single_duration");
 
-
+        
         $start = new DateTime("$interview_date $start_time");
         $end   = new DateTime("$interview_date $end_time");
         if($single_duration>0){
