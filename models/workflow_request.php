@@ -310,13 +310,52 @@ class WorkflowRequest extends WorkflowObject
                 $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
                 $add_comment_label = $this->tm('Add comment', $lang);
                 $myId = $this->id;
+                $objme = AfwSession::getUserConnected();
+                $you_dont_have_rights = $objme->translateMessage('CANT_DO_THIS', $lang);
+
+                if ((!$objme) or (!$objme->isAdmin()))
+                        $response_data_format = "data = '';\n";
+                else
+                        $response_data_format = '';
                 return "<div id='wreq-$myId-comments' class='wcomments'>
                                 <label>$add_comment_label</label>
                                 $inputStage
                                 <div class='subject'>$inputSubject</div>
                                 <div class='comment'>$inputComment</div>
                                 <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='popup-save fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
-                        </div>";
+                        </div>
+                        <script>
+                                function addWorkflowRequestComment()
+                                {
+                                the_idreq = $myId;
+                                the_stage = \$('#comment_workflow_stage_id').val();
+                                the_subject = \$('#request_comment_subject_id').val();
+                                the_comment = \$('#comment').val();
+                                \$.ajax({
+                                        type:'POST',
+                                        url:'../workflow/api/wkfaddcomment.php',                                           
+                                        data:{idreq:the_idreq, stage:the_stage, subject:the_subject, comment:the_comment},
+                                        dataType: 'json',
+                                        success: function(data)
+                                        {
+                                                console.log('idreq='+idreq+' stage='+stage+' subject='+subject+' comment='+comment+' wkfaddcomment response = ', data);
+                                                if(data.status=='success')
+                                                {
+                                                        \$('#span-'+mod+'-'+cls+'-'+idobj+'-'+col).text(data.aff);                    
+                                                }
+                                                else
+                                                {
+                                                        <?php echo $response_data_format ?>
+                                                        swal('<?php echo $you_dont_have_rights?>['+data.message+']'); // 
+                                                        return [false, null];
+                                                }
+                                        }
+
+                                });
+                                }
+
+                        </script>
+                        ";
         }
 
         public function shouldBeCalculatedField($attribute)
