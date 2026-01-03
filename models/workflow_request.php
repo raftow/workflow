@@ -345,8 +345,8 @@ class WorkflowRequest extends WorkflowObject
                                                 }
                                                 else
                                                 {
-                                                        <?php echo $response_data_format ?>
-                                                        swal('<?php echo $you_dont_have_rights?>['+data.message+']'); // 
+                                                        $response_data_format
+                                                        swal('$you_dont_have_rights ['+data.message+']'); // 
                                                         return [false, null];
                                                 }
                                         }
