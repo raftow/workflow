@@ -384,7 +384,7 @@ class WorkflowRequest extends WorkflowObject
                                         dataType: 'json',
                                         success: function(data)
                                         {
-                                                console.log('idreq='+idreq+' stage='+stage+' subject='+subject+' comment='+comment+' wkfaddcomment response = ', data);
+                                                // console.log('idreq='+idreq+' stage='+stage+' subject='+subject+' comment='+comment+' wkfaddcomment response = ', data);
                                                 if(data.status=='success')
                                                 {
                                                         addTr(data.aff.id,data.aff.dd,data.aff.stage,data.aff.subject,data.aff.comment);                    
