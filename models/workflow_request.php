@@ -334,37 +334,52 @@ class WorkflowRequest extends WorkflowObject
                         <script>
                                 function addTr(id,dd,stage,subject,comment)
                                 {
-                                        let rowId = id;
-                                        let rowDate = dd;
-                                        let rowStage = stage;
-                                        let rowSubject = subject;
-                                        let rowComment = comment;
-
                                         // Construct the new row's HTML
-                                        let newRowHtml = \"
-                                        <tr id='tr-object-\"+id+\"' class='ky item workf csr_active hzm_row_Y'>
-                                                <td id='comment_date-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment_date'>
-                                                        <span class='comment_date-span'>\"+dd+\"
-                                                        </span></td>        
-                                                <td id='request_comment_subject_id-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_reque hzm_col_afw_request_comment_subject_id'>
-                                                        <span class='request_comment_subject_id-span'>\"+subject+\"
-                                                        </span></td>        
-                                                <td id='workflow_stage_id-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_workf hzm_col_afw_workflow_stage_id'>
-                                                        <span class='workflow_stage_id-span'>\"+stage+\"
-                                                        </span></td>        
-                                                <td id='comment-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment'>
-                                                        <span class='comment-span'>\"+comment+\"
-                                                        </span></td>        
-                                                <td id='عرض-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_3Ru hzm_col_afw_3Ru'>
-                                                        <span class='عرض-span'>
-                                                        <a href='main.php?Main_Page=afw_mode_display.php&amp;cl=WorkflowRequestComment&amp;currmod=workflow&amp;id=\"+id+\"&amp;currstep=1' data-original-title='' title=''>
-                                                                <img src='../lib/images/view_ok.png' width='24' heigth='24' data-toggle='tooltip' data-placement='top' title='' data-original-title=''></a>
-                                                        </span></td>        
-                                                <td id='مسح-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_MS7 hzm_col_afw_MS7'>
-                                                        <a href='#' here='afw_shwr' id='\"+id+\"' cl='WorkflowRequestComment' md='workflow' lbl='' lvl='2' class='trash showmany' data-original-title='' title=''>
-                                                        <img src='../lib/images/trash.png' style='height: 22px !important;'></a></td>  
-                                        </tr>
-                                        \";
+                                        rowHtml = \"<tr id='tr-object-\"+id+\"' class='ky item workf csr_active hzm_row_Y'>
+\";
+                                        rowHtml = rowHtml + \"<td id='comment_date-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment_date'>
+\";
+                                        rowHtml = rowHtml + \"<span class='comment_date-span'>\"+dd+\"
+\";
+                                        rowHtml = rowHtml + \"</span></td>
+\";
+                                        rowHtml = rowHtml + \"<td id='request_comment_subject_id-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_reque hzm_col_afw_request_comment_subject_id'>
+\";
+                                        rowHtml = rowHtml + \"<span class='request_comment_subject_id-span'>\"+subject+\"
+\";
+                                        rowHtml = rowHtml + \"</span></td>
+\";
+                                        rowHtml = rowHtml + \"<td id='workflow_stage_id-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_workf hzm_col_afw_workflow_stage_id'>
+\";
+                                        rowHtml = rowHtml + \"<span class='workflow_stage_id-span'>\"+stage+\"
+\";
+                                        rowHtml = rowHtml + \"</span></td>
+\";
+                                        rowHtml = rowHtml + \"<td id='comment-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment'>
+\";
+                                        rowHtml = rowHtml + \"<span class='comment-span'>\"+comment+\"
+\";
+                                        rowHtml = rowHtml + \"</span></td>
+\";
+                                        rowHtml = rowHtml + \"<td id='عرض-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_3Ru hzm_col_afw_3Ru'>
+\";
+                                        rowHtml = rowHtml + \"<span class='عرض-span'>
+\";
+                                        rowHtml = rowHtml + \"<a href='main.php?Main_Page=afw_mode_display.php&amp;cl=WorkflowRequestComment&amp;currmod=workflow&amp;id=\"+id+\"&amp;currstep=1' data-original-title='' title=''>
+\";
+                                        rowHtml = rowHtml + \"<img src='../lib/images/view_ok.png' width='24' heigth='24' data-toggle='tooltip' data-placement='top' title='' data-original-title=''></a>
+\";
+                                        rowHtml = rowHtml + \"</span></td>
+\";
+                                        rowHtml = rowHtml + \"<td id='مسح-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_MS7 hzm_col_afw_MS7'>
+\";
+                                        rowHtml = rowHtml + \"<a href='#' here='afw_shwr' id='\"+id+\"' cl='WorkflowRequestComment' md='workflow' lbl='' lvl='2' class='trash showmany' data-original-title='' title=''>
+\";
+                                        rowHtml = rowHtml + \"<img src='../lib/images/trash.png' style='height: 22px !important;'></a></td>
+\";
+                                        rowHtml = rowHtml + \"</tr>\";
+
+                                        let newRowHtml = rowHtml;
                                         
                                         // Append the new row to the tbody
                                         \$(\"#workflowRequestCommentListTableBody\").append(newRowHtml);
