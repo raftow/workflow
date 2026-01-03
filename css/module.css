@@ -219,16 +219,16 @@ span.idn {
 }
 
 .wcomments {
-    background-color: #009688;
-    color: white;
+    background-color: #fff;
+    color: #0f0f0f;
     float: right;
     width: 100%;
     padding: 5px;
 }
 
 .wcomments .form-control {
-    background-color: #ffffff33 !important;
-    color: white;
+    border-color: #5b5b5b33 !important;
+    color: black;
 }
 
 .comment {
@@ -248,7 +248,11 @@ span.idn {
 }
 
 .wcomments>label {
-    color: white;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-family: menu;
+    font-size: 16px !important;
 }
 
 .popup-save.greenbtn {

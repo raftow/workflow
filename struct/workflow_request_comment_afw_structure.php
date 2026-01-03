@@ -110,6 +110,7 @@ class WorkflowWorkflowRequestCommentAfwStructure
                                 'QEDIT' => false,
                                 'SIZE' => 'AREA',
                                 'MIN-SIZE' => 1,
+                                'ROWS' => 2,
                                 'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
                                 'MANDATORY' => true,
                                 'UTF8' => true,
