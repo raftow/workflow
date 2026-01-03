@@ -15,6 +15,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['step8'] = 'المفاضلة والقبول';
 		// $trad['workflow_request']['step9'] = 'حالة الطلب';
 
+		$trad['workflow_request']['formComments'] = 'الملاحظات';
 		$trad['workflow_request']['request'] = 'حيثيات الطلب';
 
 		$trad['workflow_request']['workflowRequestDataList'] = 'workflowRequestDataList';

@@ -665,6 +665,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'INPUT_WIDE' => true,
                 ),
                 'formComments' => array(
+                        'FGROUP' => 'formComments',
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
                         'EDIT' => true,
