@@ -14,6 +14,8 @@ class WorkflowRequestCommentArTranslator
 		$trad['workflow_request_comment']['desc_ar'] = 'وصف  بالعربية';
 		$trad['workflow_request_comment']['desc_en'] = 'وصف  بالانجليزية';
 		$trad['workflow_request_comment']['comment'] = 'نصها';
+		$trad['workflow_request_comment']['comment_date'] = 'التاريخ';
+
 		$trad['workflow_request_comment']['request_comment_subject_id'] = 'موضوع الملاحظة';
 		$trad['workflow_request_comment']['workflow_stage_id'] = 'المرحلة';
 		$trad['workflow_request_comment']['workflow_request_id'] = 'الطلب';

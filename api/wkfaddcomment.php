@@ -66,6 +66,8 @@ $reqCommentObj->set('workflow_request_id', $idreq);
 $reqCommentObj->set('workflow_stage_id', $stage);
 $reqCommentObj->set('request_comment_subject_id', $subject);
 $reqCommentObj->set('comment', $comment);
+$reqCommentObj->set('comment_date', date('Y-m-d H:i:s'));
+
 $done = $reqCommentObj->commit();
 
 if ($done) {
@@ -77,6 +79,7 @@ if ($done) {
         'stage' => $reqCommentObj->decode('workflow_stage_id', '', false, $lang),
         'subject' => $reqCommentObj->decode('request_comment_subject_id', '', false, $lang),
         'comment' => $reqCommentObj->getVal('comment'),
+        'date' => $reqCommentObj->getVal('comment_date'),
     ];
 } else {
     $data['status'] = 'fail';

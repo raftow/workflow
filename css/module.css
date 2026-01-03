@@ -302,5 +302,16 @@ code>p>i {
     padding: 2px 7px;
 }
 
+th.col-importance-small.th-request_comment_subject_id {
+    width: 120px;
+}
+
+th.col-importance-small.th-workflow_stage_id {
+    width: 120px;
+}
+
+th.col-importance-small.th-comment_date {
+    width: 120px;
+}
 
 /******************   PREVILEGES END ***************************/
