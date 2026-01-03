@@ -322,7 +322,7 @@ class WorkflowRequest extends WorkflowObject
                                 $inputStage
                                 <div class='subject'>$inputSubject</div>
                                 <div class='comment'>$inputComment</div>
-                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='popup-save fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
+                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
                         </div>
                         <script>
                                 function addWorkflowRequestComment()
@@ -353,6 +353,13 @@ class WorkflowRequest extends WorkflowObject
 
                                 });
                                 }
+
+                                \$(document).ready(function(){
+                                        \$(\"#addwrcomment\").click(function()
+                                        {                            
+                                                addWorkflowRequestComment();                                        
+                                        );
+                                });
 
                         </script>
                         ";
