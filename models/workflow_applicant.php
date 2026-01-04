@@ -1,7 +1,7 @@
 <?php
 // rafik 18/9/2024 : ALTER TABLE `workflow_applicant` CHANGE `id` `id` BIGINT(20) NOT NULL AUTO_INCREMENT;
 
-class WorkflowApplicant extends AdmObject
+class WorkflowApplicant extends WorkflowObject
 {
 
         public static $DATABASE        = "";
