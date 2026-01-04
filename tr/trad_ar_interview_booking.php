@@ -32,7 +32,13 @@ class InterviewBookingArTranslator{
 		$trad["interview_booking"]["workflow_request_id"] = "طلب سير العمل";
 		$trad["interview_booking"]["workflow_scope_id"] = "البرنامج";
 		$trad["interview_booking"]["reschedule_count"] = "عدد مرات إعادة الجدولة";
-
+		$trad["interview_booking"]["interview_date"] = "تاريخ المقابلة";
+		$trad["interview_booking"]["idn"] = "رقم الهوية";
+		$trad["interview_booking"]["first_name"] = "الاسم الأول";
+		$trad["interview_booking"]["last_name"] = "اسم العائلة";
+		$trad["interview_booking"]["start_time"] = "وقت البدء";
+		$trad["interview_booking"]["interview_type"] = "نوع المقابلة";
+		$trad["interview_booking"]["workflow_commitee_id"] = "اللجنة";
         // steps
         return $trad;
     }
