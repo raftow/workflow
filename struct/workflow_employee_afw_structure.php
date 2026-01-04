@@ -10,13 +10,13 @@ class WorkflowWorkflowEmployeeAfwStructure
 	{
 		if ($obj instanceof WorkflowEmployee) {
 			$obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 15;
-			$obj->DISPLAY_FIELD = '';
+			$obj->DISPLAY_FIELD = 'CONCAT(firstname," ",lastname)';
 			$obj->ORDER_BY_FIELDS = 'orgunit_id, employee_id';
 			// $obj->IS_LOOKUP = true;
 			// $obj->IS_SMALL_LOOKUP = true;
 
 			$obj->UNIQUE_KEY = array('orgunit_id', 'employee_id');
-
+			$obj->IS_LOOKUP = true;
 			$obj->showQeditErrors = true;
 			$obj->showRetrieveErrors = true;
 
