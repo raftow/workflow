@@ -515,6 +515,103 @@ class WorkflowRequest extends WorkflowObject
                 return AfwFormatHelper::pbm_result($errors_arr, $infos_arr);
         }
 
+
+        public function beforeDelete($id,$id_replace) 
+        {
+            $server_db_prefix = AfwSession::config("db_prefix","nauss_");
+            
+            if(!$id)
+            {
+                $id = $this->getId();
+                $simul = true;
+            }
+            else
+            {
+                $simul = false;
+            }
+            
+            if($id)
+            {   
+               if($id_replace==0)
+               {
+                   // FK part of me - not deletable 
+                       // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                        // require_once "../workflow/workflow_request_data.php";
+                        $obj = new WorkflowRequestData();
+                        $obj->where("workflow_request_id = '$id' and active='Y' ");
+                        $nbRecords = $obj->count();
+                        // check if there's no record that block the delete operation
+                        if($nbRecords>0)
+                        {
+                            $this->deleteNotAllowedReason = "Used in some Workflow request datas(s) as Workflow request";
+                            return false;
+                        }
+                        // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
+                        if(!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
+
+                       // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                        // require_once "../workflow/workflow_request_comment.php";
+                        $obj = new WorkflowRequestComment();
+                        $obj->where("workflow_request_id = '$id' and active='Y' ");
+                        $nbRecords = $obj->count();
+                        // check if there's no record that block the delete operation
+                        if($nbRecords>0)
+                        {
+                            $this->deleteNotAllowedReason = "Used in some Workflow session(s) as workflow_request_id";
+                            return false;
+                        }
+                        // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
+                        if(!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
+
+
+                        
+                   // FK part of me - deletable 
+
+                   
+                   // FK not part of me - replaceable 
+
+                        
+                   
+                   // MFK
+
+               }
+               else
+               {
+                        // FK on me 
+ 
+
+                        // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                        if(!$simul)
+                        {
+                            // require_once "../workflow/workflow_request_data.php";
+                            WorkflowRequestData::updateWhere(array('workflow_request_id'=>$id_replace), "workflow_request_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_data set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
+                            
+                        } 
+                        
+
+ 
+
+                        // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                        if(!$simul)
+                        {
+                            // require_once "../workflow/workflow_request_comment.php";
+                            WorkflowRequestComment::updateWhere(array('workflow_request_id'=>$id_replace), "workflow_request_id='$id'");
+                            // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_comment set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
+                            
+                        } 
+                        
+
+
+                        
+                        // MFK
+
+                   
+               } 
+               return true;
+            }    
+	}
+
         /*
          * public static function assignSupervisorForNonAssigned($reset = false, $silent = false, $lang = 'ar', $limit = '200', $jobContext = null)
          * {
