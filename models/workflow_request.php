@@ -335,7 +335,7 @@ class WorkflowRequest extends WorkflowObject
                                 function addTr(id,dd,stage,subject,comment)
                                 {
                                         // Construct the new row's HTML
-                                        rowHtml = \"<tr id='tr-object-\"+id+\"' class='ky item workf csr_active hzm_row_Y'>\\n\";
+                                        rowHtml = \"<tr id='tr-object-\"+id+\"' class='ky addeditem workf csr_active hzm_row_Y'>\\n\";
                                         rowHtml = rowHtml + \"<td id='comment_date-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment_date'>\\n\";
                                         rowHtml = rowHtml + \"<span class='comment_date-span'>\"+dd+\"\\n\";
                                         rowHtml = rowHtml + \"</span></td>\\n\";
