@@ -424,6 +424,33 @@ class WorkflowRequest extends WorkflowObject
                 return false;
         }
 
+        public function weReachedStep($step)
+        {
+                // step1 =>  'البيانات الشخصية';
+                // step2 =>  'طلب التقديم';
+                // step3 =>  'المؤهلات';
+                // step4 =>  'الاختبارات';
+                // step5 =>  'مراجعة الوثائق';
+                if ($step <= 5) {
+                        return true;
+                }
+
+                $stageObj = $this->het('workflow_stage_id');
+
+                // step6 =>  'مراجعة اللجنة';
+                if ($step == 6) {
+                        return ($stageObj->id >= 2);  // not good like this to be hardcoded, please fix later @todo-rafik
+                }
+                // step7 =>  'المقابلة الشخصية';
+                if ($step == 7) {
+                        return ($stageObj->id >= 3);  // not good like this to be hardcoded, please fix later @todo-rafik
+                }
+                // step8 =>  'المفاضلة والقبول';
+                if ($step == 8) {
+                        return ($stageObj->id >= 4);  // not good like this to be hardcoded, please fix later @todo-rafik
+                }
+        }
+
         public function calcDiv_step($step, $what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
@@ -433,7 +460,7 @@ class WorkflowRequest extends WorkflowObject
                 if (!$objOriginal)
                         return "not found Original-Object looked up with ($keyLookup) : $error";
 
-                return $objOriginal->calcDivForWorkflowStep($step, $what);
+                return $objOriginal->calcDivForWorkflowStep($step, $what, $this);
         }
 
         public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200')
