@@ -63,7 +63,7 @@ class WorkflowWorkflowRequestDataAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
 
-
+                /*
                 'application_field_id' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
@@ -76,7 +76,7 @@ class WorkflowWorkflowRequestDataAfwStructure
                         'EDIT-ADMIN' => true,
                         'UTF8' => false,
                         'TYPE' => 'FK',
-                        'ANSWER' => 'application_field',
+                        'ANSWER' => 'workflow_field',
                         'ANSMODULE' => 'workflow',
                         'SIZE' => 40,
                         'DEFAUT' => 0,
@@ -89,7 +89,7 @@ class WorkflowWorkflowRequestDataAfwStructure
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
-                ),
+                ),*/
 
 
                 'field_value' => array(
