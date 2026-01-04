@@ -612,6 +612,21 @@ class WorkflowRequest extends WorkflowObject
             }    
 	}
 
+        public function attributeIsApplicable($attribute)
+        {
+                for($step=1;$step<=8;$step++)
+                {
+                        if ($attribute == "div_step_$step") 
+                        {
+                                return $this->weReachedStep($step);
+                        }
+                }
+                
+
+                return true;
+        } 
+
+
         /*
          * public static function assignSupervisorForNonAssigned($reset = false, $silent = false, $lang = 'ar', $limit = '200', $jobContext = null)
          * {
