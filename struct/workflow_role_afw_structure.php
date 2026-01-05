@@ -57,7 +57,7 @@ class WorkflowWorkflowRoleAfwStructure
                         'ANSWER' => 'workflow_module',
                         'ANSMODULE' => 'workflow',
                         'RELATION' => 'ManyToOne',
-                        'READONLY' => true,
+                        'READONLY' => false,
                         'DNA' => true,
                         'CSS' => 'width_pct_75',
                 ),
