@@ -1,0 +1,493 @@
+<?php
+
+	$role_info[400] = array (
+  'code' => 'goal-manage-settings',
+  'name' => 
+  array (
+    'ar' => 'إدارة الإعدادات',
+    'en' => 'Manage settings',
+  ),
+  'menu' => 
+  array (
+    'need_admin' => false,
+    'id' => '400',
+    'menu_name_' => 'إدارة الإعدادات',
+    'menu_name_ar' => 'إدارة الإعدادات',
+    'menu_name_en' => 'Manage settings',
+    'page' => 'main.php?Main_Page=fm.php&a=1283&r=400',
+    'css' => 'info',
+    'icon' => ' icon-400',
+    'showme' => true,
+    'items' => 
+    array (
+      105185 => 
+      array (
+        'id' => '105185',
+        'code' => 'f2-a-workflow_orgunit/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'جهات متابعة طلبات العملاء',
+        'menu_name_en' => 'Workflow orgunits',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105185 bfc-',
+      ),
+      105171 => 
+      array (
+        'id' => '105171',
+        'code' => 'f2-a-workflow_commitee_scope/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مجالات اللجان',
+        'menu_name_en' => 'Workflow commitee scopes',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeScope&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105171 bfc-',
+      ),
+      105150 => 
+      array (
+        'id' => '105150',
+        'code' => 'f2-a-job_run/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'تنفيذات المهام الآلية',
+        'menu_name_en' => 'Job runs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRun&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105150 bfc-',
+      ),
+      105164 => 
+      array (
+        'id' => '105164',
+        'code' => 'f2-a-scjob/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'scjob',
+        'menu_name_en' => 'Scjobs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Scjob&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105164 bfc-',
+      ),
+      105157 => 
+      array (
+        'id' => '105157',
+        'code' => 'f2-a-job_run_result/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'job_run_result',
+        'menu_name_en' => 'Job run results',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRunResult&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105157 bfc-',
+      ),
+      105174 => 
+      array (
+        'id' => '105174',
+        'code' => 'f2-a-workflow_event/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة أحداث',
+        'menu_name_en' => 'Workflow events administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowEvent&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105174 bfc-',
+      ),
+    ),
+    'otherbfs' => 
+    array (
+      105145 => 
+      array (
+        'id' => '105145',
+        'code' => 'f2-a-job_run/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء تنفيذ مهمة آلية',
+        'menu_name_en' => 'create Job run',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=JobRun&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105145 bfc-',
+      ),
+      105146 => 
+      array (
+        'id' => '105146',
+        'code' => 'f2-a-job_run/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة تنفيذات المهام الآلية',
+        'menu_name_en' => 'Job runs administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=JobRun&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105146 bfc-',
+      ),
+      105147 => 
+      array (
+        'id' => '105147',
+        'code' => 'f2-a-job_run/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح تنفيذ مهمة آلية',
+        'menu_name_en' => 'delete Job run',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=JobRun&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105147 bfc-',
+      ),
+      105148 => 
+      array (
+        'id' => '105148',
+        'code' => 'f2-a-job_run/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل تنفيذ مهمة آلية',
+        'menu_name_en' => 'display details of Job run',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=JobRun&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105148 bfc-',
+      ),
+      105149 => 
+      array (
+        'id' => '105149',
+        'code' => 'f2-a-job_run/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في تنفيذات المهام الآلية',
+        'menu_name_en' => 'Job runs search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=JobRun&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105149 bfc-',
+      ),
+      105150 => 
+      array (
+        'id' => '105150',
+        'code' => 'f2-a-job_run/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'تنفيذات المهام الآلية',
+        'menu_name_en' => 'Job runs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRun&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105150 bfc-',
+      ),
+      105152 => 
+      array (
+        'id' => '105152',
+        'code' => 'f2-a-job_run_result/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء',
+        'menu_name_en' => 'create Job run result',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=JobRunResult&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105152 bfc-',
+      ),
+      105153 => 
+      array (
+        'id' => '105153',
+        'code' => 'f2-a-job_run_result/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة job_run_result',
+        'menu_name_en' => 'Job run results administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=JobRunResult&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105153 bfc-',
+      ),
+      105154 => 
+      array (
+        'id' => '105154',
+        'code' => 'f2-a-job_run_result/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح',
+        'menu_name_en' => 'delete Job run result',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=JobRunResult&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105154 bfc-',
+      ),
+      105155 => 
+      array (
+        'id' => '105155',
+        'code' => 'f2-a-job_run_result/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل',
+        'menu_name_en' => 'display details of Job run result',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=JobRunResult&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105155 bfc-',
+      ),
+      105156 => 
+      array (
+        'id' => '105156',
+        'code' => 'f2-a-job_run_result/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في job_run_result',
+        'menu_name_en' => 'Job run results search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=JobRunResult&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105156 bfc-',
+      ),
+      105157 => 
+      array (
+        'id' => '105157',
+        'code' => 'f2-a-job_run_result/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'job_run_result',
+        'menu_name_en' => 'Job run results',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRunResult&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105157 bfc-',
+      ),
+      105159 => 
+      array (
+        'id' => '105159',
+        'code' => 'f2-a-scjob/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء',
+        'menu_name_en' => 'create Scjob',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=Scjob&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105159 bfc-',
+      ),
+      105160 => 
+      array (
+        'id' => '105160',
+        'code' => 'f2-a-scjob/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة scjob',
+        'menu_name_en' => 'Scjobs administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Scjob&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105160 bfc-',
+      ),
+      105161 => 
+      array (
+        'id' => '105161',
+        'code' => 'f2-a-scjob/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح',
+        'menu_name_en' => 'delete Scjob',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=Scjob&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105161 bfc-',
+      ),
+      105162 => 
+      array (
+        'id' => '105162',
+        'code' => 'f2-a-scjob/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل',
+        'menu_name_en' => 'display details of Scjob',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=Scjob&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105162 bfc-',
+      ),
+      105163 => 
+      array (
+        'id' => '105163',
+        'code' => 'f2-a-scjob/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في scjob',
+        'menu_name_en' => 'Scjobs search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=Scjob&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105163 bfc-',
+      ),
+      105164 => 
+      array (
+        'id' => '105164',
+        'code' => 'f2-a-scjob/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'scjob',
+        'menu_name_en' => 'Scjobs',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Scjob&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105164 bfc-',
+      ),
+      105166 => 
+      array (
+        'id' => '105166',
+        'code' => 'f2-a-workflow_commitee_scope/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء مجال لجنة',
+        'menu_name_en' => 'create Workflow commitee scope',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowCommiteeScope&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105166 bfc-',
+      ),
+      105167 => 
+      array (
+        'id' => '105167',
+        'code' => 'f2-a-workflow_commitee_scope/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة مجالات اللجان',
+        'menu_name_en' => 'Workflow commitee scopes administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowCommiteeScope&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105167 bfc-',
+      ),
+      105168 => 
+      array (
+        'id' => '105168',
+        'code' => 'f2-a-workflow_commitee_scope/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح مجال لجنة',
+        'menu_name_en' => 'delete Workflow commitee scope',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowCommiteeScope&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105168 bfc-',
+      ),
+      105169 => 
+      array (
+        'id' => '105169',
+        'code' => 'f2-a-workflow_commitee_scope/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل مجال لجنة',
+        'menu_name_en' => 'display details of Workflow commitee scope',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowCommiteeScope&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105169 bfc-',
+      ),
+      105170 => 
+      array (
+        'id' => '105170',
+        'code' => 'f2-a-workflow_commitee_scope/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في مجالات اللجان',
+        'menu_name_en' => 'Workflow commitee scopes search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowCommiteeScope&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105170 bfc-',
+      ),
+      105171 => 
+      array (
+        'id' => '105171',
+        'code' => 'f2-a-workflow_commitee_scope/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مجالات اللجان',
+        'menu_name_en' => 'Workflow commitee scopes',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeScope&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105171 bfc-',
+      ),
+      105173 => 
+      array (
+        'id' => '105173',
+        'code' => 'f2-a-workflow_event/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء حدث',
+        'menu_name_en' => 'create Workflow event',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105173 bfc-',
+      ),
+      105174 => 
+      array (
+        'id' => '105174',
+        'code' => 'f2-a-workflow_event/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة أحداث',
+        'menu_name_en' => 'Workflow events administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowEvent&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105174 bfc-',
+      ),
+      105175 => 
+      array (
+        'id' => '105175',
+        'code' => 'f2-a-workflow_event/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح حدث',
+        'menu_name_en' => 'delete Workflow event',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105175 bfc-',
+      ),
+      105176 => 
+      array (
+        'id' => '105176',
+        'code' => 'f2-a-workflow_event/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل حدث',
+        'menu_name_en' => 'display details of Workflow event',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105176 bfc-',
+      ),
+      105177 => 
+      array (
+        'id' => '105177',
+        'code' => 'f2-a-workflow_event/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في أحداث',
+        'menu_name_en' => 'Workflow events search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105177 bfc-',
+      ),
+      105178 => 
+      array (
+        'id' => '105178',
+        'code' => 'f2-a-workflow_event/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'أحداث',
+        'menu_name_en' => 'Workflow events',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105178 bfc-',
+      ),
+      105180 => 
+      array (
+        'id' => '105180',
+        'code' => 'f2-a-workflow_orgunit/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء جهة متابعة',
+        'menu_name_en' => 'create Workflow orgunit',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowOrgunit&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105180 bfc-',
+      ),
+      105181 => 
+      array (
+        'id' => '105181',
+        'code' => 'f2-a-workflow_orgunit/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة جهات متابعة طلبات العملاء',
+        'menu_name_en' => 'Workflow orgunits administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowOrgunit&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105181 bfc-',
+      ),
+      105182 => 
+      array (
+        'id' => '105182',
+        'code' => 'f2-a-workflow_orgunit/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح جهة متابعة',
+        'menu_name_en' => 'delete Workflow orgunit',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowOrgunit&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105182 bfc-',
+      ),
+      105183 => 
+      array (
+        'id' => '105183',
+        'code' => 'f2-a-workflow_orgunit/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل جهة متابعة',
+        'menu_name_en' => 'display details of Workflow orgunit',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowOrgunit&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105183 bfc-',
+      ),
+      105184 => 
+      array (
+        'id' => '105184',
+        'code' => 'f2-a-workflow_orgunit/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في جهات متابعة طلبات العملاء',
+        'menu_name_en' => 'Workflow orgunits search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowOrgunit&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105184 bfc-',
+      ),
+      105185 => 
+      array (
+        'id' => '105185',
+        'code' => 'f2-a-workflow_orgunit/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'جهات متابعة طلبات العملاء',
+        'menu_name_en' => 'Workflow orgunits',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105185 bfc-',
+      ),
+    ),
+    'sub-folders' => 
+    array (
+    ),
+  ),
+);
