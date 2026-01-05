@@ -1,14 +1,14 @@
 <?php
 
-	$role_info[403] = array (
+$role_info[403] = array(
   'code' => 'goal-requests',
-  'name' => 
-  array (
+  'name' =>
+  array(
     'ar' => 'ادارة الطلبات',
     'en' => 'Requests management',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'need_admin' => false,
     'id' => '403',
     'menu_name_' => 'ادارة الطلبات',
@@ -18,32 +18,34 @@
     'css' => 'info',
     'icon' => ' icon-403',
     'showme' => true,
-    'items' => 
-    array (
-      105254 => 
-      array (
+    'items' =>
+    array(
+      105254 =>
+      array(
         'id' => '105254',
         'code' => 'inbox',
-        'level' => '800',
+        'level' => '999',
         'menu_name_ar' => 'صندوق الوارد',
         'menu_name_en' => 'Inbox',
         'page' => 'main.php?Main_Page=inbox.php',
         'css' => 'bf',
         'icon' => 'bficon-105254 bfc-',
       ),
+      /*
       105253 => 
       array (
         'id' => '105253',
         'code' => 'f2-a-workflow_request_data/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'بيانات طلبات',
         'menu_name_en' => 'Workflow request datas',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequestData&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105253 bfc-',
       ),
-      105247 => 
-      array (
+      */
+      105247 =>
+      array(
         'id' => '105247',
         'code' => 'f2-a-workflow_request/qsearch',
         'level' => '999',
@@ -54,10 +56,10 @@
         'icon' => 'bficon-105247 bfc-',
       ),
     ),
-    'otherbfs' => 
-    array (
-      105242 => 
-      array (
+    'otherbfs' =>
+    array(
+      105242 =>
+      array(
         'id' => '105242',
         'code' => 'f2-a-workflow_request/edit',
         'level' => '999',
@@ -67,8 +69,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105242 bfc-',
       ),
-      105244 => 
-      array (
+      105244 =>
+      array(
         'id' => '105244',
         'code' => 'f2-a-workflow_request/delete',
         'level' => '999',
@@ -78,8 +80,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105244 bfc-',
       ),
-      105245 => 
-      array (
+      105245 =>
+      array(
         'id' => '105245',
         'code' => 'f2-a-workflow_request/display',
         'level' => '999',
@@ -89,8 +91,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105245 bfc-',
       ),
-      105246 => 
-      array (
+      105246 =>
+      array(
         'id' => '105246',
         'code' => 'f2-a-workflow_request/search',
         'level' => '999',
@@ -100,8 +102,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105246 bfc-',
       ),
-      105247 => 
-      array (
+      105247 =>
+      array(
         'id' => '105247',
         'code' => 'f2-a-workflow_request/qsearch',
         'level' => '999',
@@ -111,8 +113,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105247 bfc-',
       ),
-      105248 => 
-      array (
+      105248 =>
+      array(
         'id' => '105248',
         'code' => 'f2-a-workflow_request_data/edit',
         'level' => '1',
@@ -122,8 +124,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105248 bfc-',
       ),
-      105250 => 
-      array (
+      105250 =>
+      array(
         'id' => '105250',
         'code' => 'f2-a-workflow_request_data/delete',
         'level' => '1',
@@ -133,8 +135,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105250 bfc-',
       ),
-      105251 => 
-      array (
+      105251 =>
+      array(
         'id' => '105251',
         'code' => 'f2-a-workflow_request_data/display',
         'level' => '1',
@@ -144,8 +146,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105251 bfc-',
       ),
-      105252 => 
-      array (
+      105252 =>
+      array(
         'id' => '105252',
         'code' => 'f2-a-workflow_request_data/search',
         'level' => '1',
@@ -155,8 +157,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105252 bfc-',
       ),
-      105253 => 
-      array (
+      105253 =>
+      array(
         'id' => '105253',
         'code' => 'f2-a-workflow_request_data/qsearch',
         'level' => '1',
@@ -166,8 +168,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105253 bfc-',
       ),
-      105254 => 
-      array (
+      105254 =>
+      array(
         'id' => '105254',
         'code' => 'inbox',
         'level' => '800',
@@ -178,8 +180,7 @@
         'icon' => 'bficon-105254 bfc-',
       ),
     ),
-    'sub-folders' => 
-    array (
-    ),
+    'sub-folders' =>
+    array(),
   ),
 );
