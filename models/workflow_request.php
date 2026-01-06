@@ -15,7 +15,18 @@ class WorkflowRequest extends WorkflowObject
                         'color' => 'white',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
-                        'confirmation_question' => ''
+                        'confirmation_question' => '',
+                        'itemsMethod' => 'getEmployees',
+                ),
+
+
+                'runTransition' => array(
+                        'title' => 'تنفيذ [item]',
+                        'color' => 'yellow',
+                        'confirmation_needed' => false,
+                        'confirmation_warning' => '',
+                        'confirmation_question' => '',
+                        'itemsMethod' => 'getMyTransitions',
                 ),
         );
 
@@ -93,6 +104,14 @@ class WorkflowRequest extends WorkflowObject
 
         protected function afwCall($name, $arguments)
         {
+
+
+
+                if (substr($name, 0, 13) == 'runTransition') {
+                        $transitionId = intval(substr($name, 13));
+                        return $this->runTransition($transitionId, $arguments[0]);
+                }
+
                 if (substr($name, 0, 13) == 'assignRequest') {
                         $employeeId = intval(substr($name, 13));
                         return $this->assignRequest($employeeId, $arguments[0]);
@@ -105,6 +124,31 @@ class WorkflowRequest extends WorkflowObject
 
                 return false;
                 // the above return should be keeped if not treated
+        }
+
+
+        public function runTransition($transitionId, $lang = 'ar')
+        {
+                $objTransition = WorkflowTransition::loadById($transitionId);
+
+                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
+
+                $authorizedRolesArray = explode(",", trim($objTransition->getVal("workflow_role_mfk"), ","));
+
+                if (!$wEmployeeMe) return array('No authenticated workflow employee found', '');
+
+                if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) return array('This employee is not authorized to perform this transition', '');
+
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return array("Original-Object looked up with ($keyLookup) not found  : $error", '');
+
+                // $moduleObj = $objTransition->het("workflow_module_id");
+                $wCondObj = $objTransition->het("workflow_condition_id");
+                $wActionObj = $objTransition->het("workflow_action_id");
+                $final_stage_id = $objTransition->getVal('final_stage_id');
+                $final_status_id = $objTransition->getVal('final_status_id');
         }
 
         public function assignRequest($employeeId, $lang = 'ar')
@@ -160,16 +204,32 @@ class WorkflowRequest extends WorkflowObject
                 $title_ar = 'تعيين الموظف الأقل عبئا';
                 $methodName = 'assignBestAvailableEmployee';
                 $pbms[AfwStringHelper::hzmEncode($methodName)] =
-                        array('METHOD' => $methodName, 'COLOR' => $color, 'LABEL_AR' => $title_ar,
-                                'ADMIN-ONLY' => true, 'BF-ID' => '',
-                                'STEP' => $this->stepOfAttribute('employee_id'));
+                        array(
+                                'METHOD' => $methodName,
+                                'COLOR' => $color,
+                                'LABEL_AR' => $title_ar,
+                                'ADMIN-ONLY' => true,
+                                'BF-ID' => '',
+                                'STEP' => $this->stepOfAttribute('employee_id')
+                        );
 
                 $employeesList = $this->getEmployees(true);
+                $transitionList = $this->getMyTransitions(true);
                 // $orgunit_id = $this->getVal('orgunit_id');
                 // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
-                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
+                        if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
+                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
+                        }
+
+                        if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
+                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList);
+                        }
                 }
+
+
+
+
 
                 // die('rafik dyn pbms=' . var_export($pbms, true));
 
@@ -242,8 +302,7 @@ class WorkflowRequest extends WorkflowObject
 
                         $sessionObj = $this->het('workflow_session_id');
                         if (!$sessionObj)
-                                return ['No session for this request', null];
-                        ;
+                                return ['No session for this request', null];;
 
                         // $external_code = $sessionObj->getVal("external_code")
 
@@ -516,115 +575,102 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function beforeDelete($id,$id_replace) 
+        public function beforeDelete($id, $id_replace)
         {
-            $server_db_prefix = AfwSession::config("db_prefix","nauss_");
-            
-            if(!$id)
-            {
-                $id = $this->getId();
-                $simul = true;
-            }
-            else
-            {
-                $simul = false;
-            }
-            
-            if($id)
-            {   
-               if($id_replace==0)
-               {
-                   // FK part of me - not deletable 
-                       // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
-                        // require_once "../workflow/workflow_request_data.php";
-                        $obj = new WorkflowRequestData();
-                        $obj->where("workflow_request_id = '$id' and active='Y' ");
-                        $nbRecords = $obj->count();
-                        // check if there's no record that block the delete operation
-                        if($nbRecords>0)
-                        {
-                            $this->deleteNotAllowedReason = "Used in some Workflow request datas(s) as Workflow request";
-                            return false;
+                $server_db_prefix = AfwSession::config("db_prefix", "nauss_");
+
+                if (!$id) {
+                        $id = $this->getId();
+                        $simul = true;
+                } else {
+                        $simul = false;
+                }
+
+                if ($id) {
+                        if ($id_replace == 0) {
+                                // FK part of me - not deletable 
+                                // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                                // require_once "../workflow/workflow_request_data.php";
+                                $obj = new WorkflowRequestData();
+                                $obj->where("workflow_request_id = '$id' and active='Y' ");
+                                $nbRecords = $obj->count();
+                                // check if there's no record that block the delete operation
+                                if ($nbRecords > 0) {
+                                        $this->deleteNotAllowedReason = "Used in some Workflow request datas(s) as Workflow request";
+                                        return false;
+                                }
+                                // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
+
+                                // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                                // require_once "../workflow/workflow_request_comment.php";
+                                $obj = new WorkflowRequestComment();
+                                $obj->where("workflow_request_id = '$id' and active='Y' ");
+                                $nbRecords = $obj->count();
+                                // check if there's no record that block the delete operation
+                                if ($nbRecords > 0) {
+                                        $this->deleteNotAllowedReason = "Used in some Workflow session(s) as workflow_request_id";
+                                        return false;
+                                }
+                                // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
+
+
+
+                                // FK part of me - deletable 
+
+
+                                // FK not part of me - replaceable 
+
+
+
+                                // MFK
+
+                        } else {
+                                // FK on me 
+
+
+                                // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_request_data.php";
+                                        WorkflowRequestData::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_data set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
+
+                                }
+
+
+
+
+                                // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_request_comment.php";
+                                        WorkflowRequestComment::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_comment set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
+
+                                }
+
+
+
+
+                                // MFK
+
+
                         }
-                        // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
-                        if(!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
-
-                       // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
-                        // require_once "../workflow/workflow_request_comment.php";
-                        $obj = new WorkflowRequestComment();
-                        $obj->where("workflow_request_id = '$id' and active='Y' ");
-                        $nbRecords = $obj->count();
-                        // check if there's no record that block the delete operation
-                        if($nbRecords>0)
-                        {
-                            $this->deleteNotAllowedReason = "Used in some Workflow session(s) as workflow_request_id";
-                            return false;
-                        }
-                        // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
-                        if(!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
-
-
-                        
-                   // FK part of me - deletable 
-
-                   
-                   // FK not part of me - replaceable 
-
-                        
-                   
-                   // MFK
-
-               }
-               else
-               {
-                        // FK on me 
- 
-
-                        // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
-                        if(!$simul)
-                        {
-                            // require_once "../workflow/workflow_request_data.php";
-                            WorkflowRequestData::updateWhere(array('workflow_request_id'=>$id_replace), "workflow_request_id='$id'");
-                            // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_data set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
-                            
-                        } 
-                        
-
- 
-
-                        // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
-                        if(!$simul)
-                        {
-                            // require_once "../workflow/workflow_request_comment.php";
-                            WorkflowRequestComment::updateWhere(array('workflow_request_id'=>$id_replace), "workflow_request_id='$id'");
-                            // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_comment set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
-                            
-                        } 
-                        
-
-
-                        
-                        // MFK
-
-                   
-               } 
-               return true;
-            }    
-	}
+                        return true;
+                }
+        }
 
         public function attributeIsApplicable($attribute)
         {
-                for($step=1;$step<=8;$step++)
-                {
-                        if ($attribute == "div_step_$step") 
-                        {
+                for ($step = 1; $step <= 8; $step++) {
+                        if ($attribute == "div_step_$step") {
                                 return $this->weReachedStep($step);
                         }
                 }
-                
+
 
                 return true;
-        } 
+        }
 
 
         /*

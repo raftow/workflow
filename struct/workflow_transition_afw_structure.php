@@ -20,7 +20,7 @@ class WorkflowWorkflowTransitionAfwStructure
             $obj->showQeditErrors = true;
             $obj->showRetrieveErrors = true;
             $obj->general_check_errors = true;
-            $obj->after_save_edit = array("class"=>'WorkflowModel',"attribute"=>'workflow_model_id', "currmod"=>'workflow',"currstep"=>2);
+            $obj->after_save_edit = array("class" => 'WorkflowModel', "attribute" => 'workflow_model_id', "currmod" => 'workflow', "currstep" => 2);
             // $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowTransition', "submit" => true);
         } else {
             WorkflowTransitionArTranslator::initData();
@@ -32,7 +32,6 @@ class WorkflowWorkflowTransitionAfwStructure
     public static $DB_STRUCTURE =
     array(
         'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK', 'CSS' => 'width_pct_25',),
-
 
         'workflow_module_id' => array(
             'SHORTNAME' => 'module',
@@ -144,7 +143,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
-            'DEPENDENT_OFME' => array('workflow_action_id','initial_status_id')
+            'DEPENDENT_OFME' => array('workflow_action_id', 'initial_status_id')
         ),
 
         'initial_status_id' => array(
@@ -247,9 +246,9 @@ class WorkflowWorkflowTransitionAfwStructure
             'CSS' => 'width_pct_100',
         ),
 
-        
 
-        
+
+
 
         'final_stage_id' => array(
             'SHORTNAME' => 'stage',

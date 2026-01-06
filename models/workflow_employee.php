@@ -43,6 +43,29 @@ class WorkflowEmployee extends WorkflowObject
                         return null;
         }
 
+        public static function getAuthenticatedEmployeeObject()
+        {
+                $objme = AfwSession::getUserConnected();
+                if ($objme) {
+                        $employee_id = $objme->getEmployeeId();
+                        if ($employee_id) {
+                                return WorkflowEmployee::findWorkflowEmployee($employee_id);
+                        }
+                }
+                return null;
+        }
+
+        public function hasOneOfWRoles($rolesArray)
+        {
+                $myRolesArray = explode(",", trim($this->getVal("wrole_mfk"), ","));
+                foreach ($myRolesArray as $myrole) {
+                        if (in_array($myrole, $rolesArray))
+                                return true;
+                }
+
+                return false;
+        }
+
         public function select_visibilite_horizontale($dropdown = false)
         {
                 $objme = AfwSession::getUserConnected();
@@ -161,7 +184,7 @@ class WorkflowEmployee extends WorkflowObject
 
         protected function getOtherLinksArray($mode, $genereLog = false, $step = 'all')
         {
-                global $me, $objme, $lang;
+                $lang = AfwLanguageHelper::getGlobalLanguage();
                 $otherLinksArray = $this->getOtherLinksArrayStandard($mode, false, $step);
                 $my_id = $this->getId();
                 $displ = $this->getDisplay($lang);
@@ -233,7 +256,8 @@ class WorkflowEmployee extends WorkflowObject
         {
                 if (($this->getVal('employee_id') > 0) and
                         ($fields_updated['active'] or  /* $fields_updated["admin"] or $fields_updated["super_admin"] or */
-                                $fields_updated['requests_nb'])) {
+                                $fields_updated['requests_nb'])
+                ) {
                         $empl = $this->het('employee_id');
 
                         /*
@@ -693,12 +717,17 @@ class WorkflowEmployee extends WorkflowObject
                 else
                         $except_employee_id = 0;
                 // AfwRunHelper::safeDie("employeeList = ".var_export($employeeList,true));
-                $stats_arr = WorkflowRequest::aggreg($function = 'count(*)', $where = " active='Y' 
+                $stats_arr = WorkflowRequest::aggreg(
+                        $function = 'count(*)',
+                        $where = " active='Y' 
                                                                                 and done != 'Y'
                                                                                 and orgunit_id=$orgunit_id 
                                                                                 and employee_id > 0 
-                                                                                and employee_id != $except_employee_id", $group_by = 'employee_id',
-                        $throw_error = true, $throw_analysis_crash = true);
+                                                                                and employee_id != $except_employee_id",
+                        $group_by = 'employee_id',
+                        $throw_error = true,
+                        $throw_analysis_crash = true
+                );
 
                 $sql = "select $function from workflow_request where $where group by $group_by ";
                 // AfwRunHelper::safeDie("stats_arr = ".var_export($stats_arr,true));
@@ -954,4 +983,3 @@ class WorkflowEmployee extends WorkflowObject
                 return AfwFormatHelper::pbm_result($errors_arr, $infos_arr);
         }
 }
-?>
