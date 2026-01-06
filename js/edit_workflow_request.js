@@ -23,11 +23,11 @@ function switch_done_on(md, cl, swc_id, swc_col, newval)
     {
         if(newval == 'Y')
         {
-            $("#span-adm-ApplicantFile-"+swc_id+"-reupload_enum").text("");
+            $("#span-adm-ApplicantFile-"+swc_id+"-reupload_enum").text(" -- ");
         }
         else if(newval == 'N')
         {
-            $("#span-adm-ApplicantFile-"+swc_id+"-reupload_enum").text("");
+            $("#span-adm-ApplicantFile-"+swc_id+"-reupload_enum").text(" -- ");
         }
     }
 }
