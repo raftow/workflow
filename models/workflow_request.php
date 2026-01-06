@@ -377,11 +377,15 @@ class WorkflowRequest extends WorkflowObject
 
                 $info = $this->calcCandidateInfo($what);
 
+                $status = $this->decode("workflow_status_id", '', false, $lang);
+                $status_id = $this->getVal("workflow_status_id");
+
                 $myId = $this->id;
 
                 return "<div id='wreq-$myId-category' class='wcategory'>
                                 <span class='idn'>$idn</span>
                                 <span class='fname'>$name</span>
+                                <span class='fstatus st$status_id'>$status</span>
                                 <span class='wrinfo'>$info</span>
                         </div>";
         }
