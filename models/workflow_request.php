@@ -411,7 +411,8 @@ class WorkflowRequest extends WorkflowObject
                         $request_comment_subject_id = 3;
 
                 $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj);
-                $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj);
+                $desc_erase = array('MANDATORY' => false);
+                $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj, ':', $desc_erase);
                 $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
                 $add_comment_label = $this->tm('Add comment', $lang);
 

@@ -57,7 +57,7 @@ $role_info[403] = array(
       array(
         'id' => '105290',
         'code' => 'f2-a-workflow_request_comment/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'التعليقات والملاحظات',
         'menu_name_en' => 'Workflow session',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequestComment&currmod=workflow',
@@ -192,7 +192,7 @@ $role_info[403] = array(
       array(
         'id' => '105285',
         'code' => 'f2-a-workflow_request_comment/edit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إنشاء تعليق أوملاحظة',
         'menu_name_en' => 'create Workflow session',
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowRequestComment&currmod=workflow',
@@ -203,7 +203,7 @@ $role_info[403] = array(
       array(
         'id' => '105287',
         'code' => 'f2-a-workflow_request_comment/delete',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'مسح تعليق أوملاحظة',
         'menu_name_en' => 'delete Workflow session',
         'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowRequestComment&currmod=workflow',
@@ -214,7 +214,7 @@ $role_info[403] = array(
       array(
         'id' => '105288',
         'code' => 'f2-a-workflow_request_comment/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل تعليق أوملاحظة',
         'menu_name_en' => 'display details of Workflow session',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowRequestComment&currmod=workflow',
@@ -225,7 +225,7 @@ $role_info[403] = array(
       array(
         'id' => '105289',
         'code' => 'f2-a-workflow_request_comment/search',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البحث في التعليقات والملاحظات',
         'menu_name_en' => 'Workflow session search',
         'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowRequestComment&currmod=workflow',
@@ -236,7 +236,7 @@ $role_info[403] = array(
       array(
         'id' => '105290',
         'code' => 'f2-a-workflow_request_comment/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'التعليقات والملاحظات',
         'menu_name_en' => 'Workflow session',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequestComment&currmod=workflow',
