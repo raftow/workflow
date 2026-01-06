@@ -114,16 +114,12 @@ class WorkflowEmployee extends WorkflowObject
                 $obj->select('employee_id', $employee_id);
 
                 if ($obj->load()) {
-                        if (!$obj->getVal('requests_nb'))
-                                $obj->set('requests_nb', 15);
-
                         if ($create_obj_if_not_found)
                                 $obj->activate();
                         return $obj;
                 } elseif ($create_obj_if_not_found) {
                         $obj->set('orgunit_id', $orgunit_id);
                         $obj->set('employee_id', $employee_id);
-                        $obj->set('requests_nb', 15);
 
                         $obj->insert();
                         $obj->is_new = true;
@@ -246,59 +242,7 @@ class WorkflowEmployee extends WorkflowObject
 
         public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false) {}
 
-        public function afterUpdate($id, $fields_updated, $disableAfterCommitDBEvent = false)
-        {
-                if (($this->getVal('employee_id') > 0) and
-                        ($fields_updated['active'] or  /* $fields_updated["admin"] or $fields_updated["super_admin"] or */
-                                $fields_updated['requests_nb'])
-                ) {
-                        $empl = $this->het('employee_id');
-
-                        /*
-                         * if($this->sureIs("active"))
-                         * {
-                         *
-                         *         if($this->sureIs("super_admin"))
-                         *         {
-                         *              //
-                         *              $empl->addMeThisJobrole(self::$JOBROLE_CRM_INVESTIGATOR);
-                         *              $empl->addMeThisJobrole(self::$JOBROLE_CRM_COORDINATION);
-                         *              $empl->addMeThisJobrole(self::$JOBROLE_CRM_CONTROLLER);
-                         *              $empl->addMeThisJobrole(self::$JOBROLE_CRM_SUPERVISION);
-                         *              $empl->updateMyUserInformation();
-                         *         }
-                         *         elseif($this->sureIs("admin"))
-                         *         {
-                         *                 $empl->addMeThisJobrole(self::$JOBROLE_CRM_INVESTIGATOR);
-                         *                 $empl->addMeThisJobrole(self::$JOBROLE_CRM_COORDINATION);
-                         *                 $empl->addMeThisJobrole(self::$JOBROLE_CRM_CONTROLLER);
-                         *                 $empl->removeMeThisJobrole(self::$JOBROLE_CRM_SUPERVISION);
-                         *                 $empl->updateMyUserInformation();
-                         *         }
-                         *         else
-                         *         {
-                         *                 $empl->addMeThisJobrole(self::$JOBROLE_CRM_INVESTIGATOR);
-                         *                 $empl->removeMeThisJobrole(self::$JOBROLE_CRM_COORDINATION);
-                         *                 $empl->removeMeThisJobrole(self::$JOBROLE_CRM_CONTROLLER);
-                         *                 $empl->removeMeThisJobrole(self::$JOBROLE_CRM_SUPERVISION);
-                         *                 $empl->updateMyUserInformation();
-                         *         }
-                         *
-                         * }
-                         * else
-                         * {
-                         *         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_COORDINATION);
-                         *         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_SUPERVISION);
-                         *         $empl->removeMeThisJobrole(self::$JOBROLE_CRM_CONTROLLER);
-                         *         $empl->updateMyUserInformation();
-                         *         // has been disabled so remove all ongoing assigned tickets
-                         *         $this->removeMeAllAssigned();
-                         * }
-                         */
-
-                        // WorkflowRequest::assignCommiteeForNonAssigned(false,true);
-                }
-        }
+        public function afterUpdate($id, $fields_updated, $disableAfterCommitDBEvent = false) {}
 
         private function removeMeAllAssigned()
         {

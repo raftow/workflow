@@ -13,7 +13,6 @@ class WorkflowEmployeeEnTranslator
 		$trad["workflow_employee"]["workflow_orgunit_id"] = "Workflow Organization / Department";
 		$trad["workflow_employee"]["employee_id"] = "The Employee";
 		$trad["workflow_employee"]["email"] = "e-mail";
-		$trad["workflow_employee"]["requests_nb"] = "Employee Capacity";
 		$trad["workflow_employee"]["approved"] = "approved";
 		$trad["workflow_employee"]["admin"] = "admin";
 		$trad["workflow_employee"]["super_admin"] = "super_admin";
