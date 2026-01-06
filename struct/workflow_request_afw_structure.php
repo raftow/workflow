@@ -1,6 +1,11 @@
 <?php
 class WorkflowWorkflowRequestAfwStructure
 {
+        public static function pageCode($uri_items)
+	{
+			return "edit_workflow_request";
+	}
+
         public static function initInstance(&$obj)
         {
                 if ($obj instanceof WorkflowRequest) {
