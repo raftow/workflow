@@ -1,4 +1,9 @@
-function save_popup_done_on(mod, cls, idobj, col, val, aff)
+function reupload_enum_onchange()
+{
+    
+}
+
+function save_popup_done_on(mod, cls, idobj, col, newval, aff)
 {
     if(cls=="ApplicantFile" && col=="reupload_enum")
     {
