@@ -218,6 +218,22 @@ span.idn {
     border-radius: 8px;
 }
 
+span.fstatus {
+    background-color: #fffffb;
+    padding: 3px 9px;
+    color: black;
+    padding: 4px 9px 5px;
+    border: 2px solid white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+span.fstatus.st22 {
+    background-color: #ff3d3d;
+    color: white;
+}
+
 .wcomments {
     background-color: #fff;
     color: #0f0f0f;
