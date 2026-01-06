@@ -127,6 +127,16 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
+        public function getMyTransitions()
+        {
+                $obj = new WorkflowTransition();
+                $obj->select('workflow_model_id', $this->getVal('workflow_model_id'));
+                $obj->select('initial_stage_id', $this->getVal('workflow_stage_id'));
+                $obj->select('initial_status_id', $this->getVal('workflow_status_id'));
+                return $obj->loadMany();
+        }
+
+
         public function runTransition($transitionId, $lang = 'ar')
         {
                 $objTransition = WorkflowTransition::loadById($transitionId);
