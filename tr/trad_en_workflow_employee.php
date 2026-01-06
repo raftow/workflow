@@ -1,9 +1,10 @@
 <?php
 
-class WorkflowEmployeeEnTranslator{
-    public static function initData()
-    {
-        $trad = [];
+class WorkflowEmployeeEnTranslator
+{
+	public static function initData()
+	{
+		$trad = [];
 
 		$trad["workflow_employee"]["workflowemployee.single"] = "Workflow employee";
 		$trad["workflow_employee"]["workflowemployee.new"] = "new";
@@ -12,8 +13,6 @@ class WorkflowEmployeeEnTranslator{
 		$trad["workflow_employee"]["workflow_orgunit_id"] = "Workflow Organization / Department";
 		$trad["workflow_employee"]["employee_id"] = "The Employee";
 		$trad["workflow_employee"]["email"] = "e-mail";
-		$trad["workflow_employee"]["service_category_mfk"] = "Services categories managed";
-		$trad["workflow_employee"]["service_mfk"] = "Services managed";
 		$trad["workflow_employee"]["requests_nb"] = "Employee Capacity";
 		$trad["workflow_employee"]["approved"] = "approved";
 		$trad["workflow_employee"]["admin"] = "admin";
@@ -25,14 +24,14 @@ class WorkflowEmployeeEnTranslator{
 		$trad["workflow_employee"]["currentRequests"] = "Current Requests";
 		$trad["workflow_employee"]["finishedRequests"] = "finished Requests";
 		$trad["workflow_employee"]["allOrgunitList"] = "allOrgunitList";
-        // steps
+		// steps
 		$trad["workflow_employee"]["step1"] = "General data";
-        $trad["workflow_employee"]["step2"] = "Personal information";
-        $trad["workflow_employee"]["step3"] = "Permissions";
-        return $trad;
-    }
+		$trad["workflow_employee"]["step2"] = "Personal information";
+		$trad["workflow_employee"]["step3"] = "Permissions";
+		return $trad;
+	}
 
-    public static function getInstance()
+	public static function getInstance()
 	{
 		return new WorkflowEmployee();
 	}

@@ -114,10 +114,6 @@ class WorkflowEmployee extends WorkflowObject
                 $obj->select('employee_id', $employee_id);
 
                 if ($obj->load()) {
-                        if (!$obj->getVal('service_category_mfk'))
-                                $obj->set('service_category_mfk', ',1,');
-                        if (!$obj->getVal('service_mfk'))
-                                $obj->set('service_mfk', ',1,');
                         if (!$obj->getVal('requests_nb'))
                                 $obj->set('requests_nb', 15);
 
@@ -127,8 +123,6 @@ class WorkflowEmployee extends WorkflowObject
                 } elseif ($create_obj_if_not_found) {
                         $obj->set('orgunit_id', $orgunit_id);
                         $obj->set('employee_id', $employee_id);
-                        $obj->set('service_category_mfk', ',1,');
-                        $obj->set('service_mfk', ',1,');
                         $obj->set('requests_nb', 15);
 
                         $obj->insert();

@@ -9,34 +9,30 @@ class WorkflowOrgunitEnTranslator
 		$trad['workflow_orgunit']['workfloworgunit.new'] = 'new';
 		$trad['workflow_orgunit']['workflow_orgunit'] = 'Workflow orgunits';
 		$trad['workflow_orgunit']['orgunit_id'] = 'Orgunit';
-		$trad['workflow_orgunit']['service_category_mfk'] = 'Service category mfk';
 		$trad['workflow_orgunit']['service_mfk'] = 'Service mfk';
 		$trad['workflow_orgunit']['requests_nb'] = 'Requests nb';
 
-		$trad['workflow_orgunit']['service_category_mfk_tooltip'] = 'أصناف الخدمات  التي تقدمها';
 
-		$trad['workflow_orgunit']['requests_count'] = 'مجموع عدد الطلبات الجارية';
-		$trad['workflow_orgunit']['requests_count.tooltip'] = 'الطلبات الجارية هي التي جاري العمل عليها ولم تقفل بعد بغض النظر عن كونها عند موظف القبول حاليا أو عند المشرف أو حتى عند العميل لاستكمال بعض النواقص';
-		$trad['workflow_orgunit']['new_requests_count'] = 'مجموع عدد الطلبات الجديدة';
-		$trad['workflow_orgunit']['new_requests_count.tooltip'] = 'تعريف الطلبات الجديدة هي التي لم يعين عليها مشرف أو لم تعين لها إدارة قبول';
-		$trad['workflow_orgunit']['allEmployeeList'] = 'الموظفين موظفي القبول لدى مركز خدمة العملاء';
-		$trad['workflow_orgunit']['unAssignedRequests'] = 'طلبات يجب العمل عليها واسنادها';
-		$trad['workflow_orgunit']['currentRequests'] = 'الطلبات الجارية';
+		$trad['workflow_orgunit']['requests_count'] = 'Total ongoing requests';
+		$trad['workflow_orgunit']['requests_count.tooltip'] = 'Tooltip for total ongoing requests';
+		$trad['workflow_orgunit']['new_requests_count'] = 'Total new requests';
+		$trad['workflow_orgunit']['new_requests_count.tooltip'] = 'New requests are those not yet assigned to a supervisor or workflow orgunit';
+		$trad['workflow_orgunit']['allEmployeeList'] = 'All employees of the workflow orgunit';
+		$trad['workflow_orgunit']['unAssignedRequests'] = 'Unassigned requests';
+		$trad['workflow_orgunit']['currentRequests'] = 'Current requests';
 
-		$trad['workflow_orgunit']['step1'] = 'البيانات العامة';
-		$trad['workflow_orgunit']['step2'] = 'الموظفون';
-		$trad['workflow_orgunit']['step3'] = 'الطلبات المسندة';
-		$trad['workflow_orgunit']['step4'] = 'تعيين الموظفين';
-		$trad['workflow_orgunit']['step5'] = 'إعدادات الاحصائيات';
+		$trad['workflow_orgunit']['step1'] = 'General data';
+		$trad['workflow_orgunit']['step2'] = 'Employees';
+		$trad['workflow_orgunit']['step3'] = 'Assigned requests';
+		$trad['workflow_orgunit']['step4'] = 'Assign employees';
+		$trad['workflow_orgunit']['step5'] = 'Statistics settings';
+		$trad['workflow_orgunit']['tempEmployeeList'] = 'Employee assignment requests';
 
-		$trad['workflow_orgunit']['tempEmployeeList'] = 'طلبات تعيين موظف';
-
-		$trad['workflow_orgunit']['perf_stats_days'] = 'عدد أيام تقرير الأداء';
-		$trad['workflow_orgunit']['standard_stats_days'] = 'عدد أيام تقارير الاحصائيات';
-		$trad['workflow_orgunit']['satisfaction_stats_days'] = 'عدد أيام تقرير رضا العملاء';
-		$trad['workflow_orgunit']['late_days'] = 'عدد الأيام الأقصى للرد على العميل';
-		$trad['workflow_orgunit']['late_days.tooltip'] = 'بعدها يحسب الطلب متأخرا في التقارير';
-
+		$trad['workflow_orgunit']['perf_stats_days'] = 'Number of days for performance report';
+		$trad['workflow_orgunit']['standard_stats_days'] = 'Number of days for standard reports';
+		$trad['workflow_orgunit']['satisfaction_stats_days'] = 'Number of days for customer satisfaction report';
+		$trad['workflow_orgunit']['late_days'] = 'Maximum number of days to respond to a customer';
+		$trad['workflow_orgunit']['late_days.tooltip'] = 'Requests are considered late after this number of days in reports';
 		return $trad;
 	}
 

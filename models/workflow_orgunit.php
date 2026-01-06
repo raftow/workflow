@@ -1,9 +1,6 @@
 <?php
 // ------------------------------------------------------------------------------------
-// 6/6/2022 rafik :
 
-// mysql> alter table workflow_orgunit change service_mfk service_mfk varchar(255) NOT NULL DEFAULT ',1,';
-// mysql> alter table workflow_orgunit change service_category_mfk service_category_mfk varchar(255) NOT NULL DEFAULT ',1,';
 
 $file_dir_name = dirname(__FILE__);
 
@@ -260,8 +257,7 @@ class WorkflowOrgunit extends WorkflowObject
                 die("requestAssignement code to review");
                 $scopeArr = WorkflowScope::loadAllLookupObjects();
                 $inbox_arr = array();
-                foreach($scopeArr as $wscope_id => $wscopeObj)
-                {
+                foreach ($scopeArr as $wscope_id => $wscopeObj) {
                         // unassign request assigned to non active employees
                         list($arrEmployee, $listEmployee) = WorkflowEmployee::getEmployeeListOfIds($this->getVal('orgunit_id'), $wscope_id);
                         $arrEmployee[] = 0;
@@ -285,13 +281,12 @@ class WorkflowOrgunit extends WorkflowObject
 
                         // prepare array of inbox count for each of them to be equitable
                         // on requests distribution
-                        
+
                         foreach ($listEmployee as $objEmployee) {
                                 $inbox_arr[$objEmployee->id] = WorkflowRequest::inboxCountFor($objEmployee->id);
                         }
-
                 }
-                
+
 
                 // die("inbox count by employee : ".var_export($inbox_arr,true));
 
@@ -417,4 +412,3 @@ class WorkflowOrgunit extends WorkflowObject
                 return true;
         }
 }
-?>
