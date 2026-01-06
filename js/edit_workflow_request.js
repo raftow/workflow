@@ -1,6 +1,6 @@
 function reupload_enum_onchange()
 {
-    
+
 }
 
 function save_popup_done_on(mod, cls, idobj, col, newval, aff)
@@ -14,7 +14,7 @@ function save_popup_done_on(mod, cls, idobj, col, newval, aff)
         else if(newval == 2) // تمت
         {
         }
-        else if(newval == 0) // غير مطلوب
+        else if(newval == 3) // غير مطلوب
         {
 
         }
