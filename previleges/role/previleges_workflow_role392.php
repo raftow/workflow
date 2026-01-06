@@ -1,27 +1,26 @@
 <?php
 
-	$role_info[392] = array (
+$role_info[392] = array(
   'code' => 'goal-WORKFLOW-LOOKUP',
-  'name' => 
-  array (
+  'name' =>
+  array(
     'ar' => 'البيانات المرجعية',
     'en' => 'lookup data',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'need_admin' => false,
     'id' => '392',
-    'menu_name_' => 'البيانات المرجعية',
     'menu_name_ar' => 'البيانات المرجعية',
     'menu_name_en' => 'lookup data',
     'page' => 'main.php?Main_Page=fm.php&a=1283&r=392',
     'css' => 'info',
     'icon' => ' icon-392',
     'showme' => true,
-    'items' => 
-    array (
-      105045 => 
-      array (
+    'items' =>
+    array(
+      105045 =>
+      array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
         'level' => '1',
@@ -31,8 +30,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105045 bfc-',
       ),
-      105115 => 
-      array (
+      105115 =>
+      array(
         'id' => '105115',
         'code' => 'f2-a-workflow_role/qsearch',
         'level' => '1',
@@ -42,8 +41,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105115 bfc-',
       ),
-      105118 => 
-      array (
+      105118 =>
+      array(
         'id' => '105118',
         'code' => 'f2-a-workflow_status/qedit',
         'level' => '1',
@@ -53,8 +52,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105118 bfc-',
       ),
-      105213 => 
-      array (
+      105213 =>
+      array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
         'level' => '1',
@@ -64,8 +63,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105213 bfc-',
       ),
-      105104 => 
-      array (
+      105104 =>
+      array(
         'id' => '105104',
         'code' => 'f2-a-workflow_module/qedit',
         'level' => '1',
@@ -75,8 +74,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105104 bfc-',
       ),
-      105097 => 
-      array (
+      105097 =>
+      array(
         'id' => '105097',
         'code' => 'f2-a-workflow_entity/qedit',
         'level' => '1',
@@ -86,11 +85,33 @@
         'css' => 'bf',
         'icon' => 'bficon-105097 bfc-',
       ),
+      105174 =>
+      array(
+        'id' => '105174',
+        'code' => 'f2-a-workflow_event/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة أحداث',
+        'menu_name_en' => 'Workflow events administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowEvent&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105174 bfc-',
+      ),
+      105292 =>
+      array(
+        'id' => '105292',
+        'code' => 'f2-a-request_comment_subject/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة مواضيع ملاحظات',
+        'menu_name_en' => 'Request comment subjects administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=RequestCommentSubject&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105292 bfc-',
+      ),
     ),
-    'otherbfs' => 
-    array (
-      105040 => 
-      array (
+    'otherbfs' =>
+    array(
+      105040 =>
+      array(
         'id' => '105040',
         'code' => 'f2-a-workflow_employee/edit',
         'level' => '1',
@@ -100,8 +121,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105040 bfc-',
       ),
-      105041 => 
-      array (
+      105041 =>
+      array(
         'id' => '105041',
         'code' => 'f2-a-workflow_employee/qedit',
         'level' => '1',
@@ -111,8 +132,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105041 bfc-',
       ),
-      105042 => 
-      array (
+      105042 =>
+      array(
         'id' => '105042',
         'code' => 'f2-a-workflow_employee/delete',
         'level' => '1',
@@ -122,8 +143,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105042 bfc-',
       ),
-      105043 => 
-      array (
+      105043 =>
+      array(
         'id' => '105043',
         'code' => 'f2-a-workflow_employee/display',
         'level' => '1',
@@ -133,8 +154,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105043 bfc-',
       ),
-      105044 => 
-      array (
+      105044 =>
+      array(
         'id' => '105044',
         'code' => 'f2-a-workflow_employee/search',
         'level' => '1',
@@ -144,8 +165,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105044 bfc-',
       ),
-      105045 => 
-      array (
+      105045 =>
+      array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
         'level' => '1',
@@ -155,8 +176,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105045 bfc-',
       ),
-      105096 => 
-      array (
+      105096 =>
+      array(
         'id' => '105096',
         'code' => 'f2-a-workflow_entity/edit',
         'level' => '1',
@@ -166,8 +187,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105096 bfc-',
       ),
-      105097 => 
-      array (
+      105097 =>
+      array(
         'id' => '105097',
         'code' => 'f2-a-workflow_entity/qedit',
         'level' => '1',
@@ -177,8 +198,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105097 bfc-',
       ),
-      105098 => 
-      array (
+      105098 =>
+      array(
         'id' => '105098',
         'code' => 'f2-a-workflow_entity/delete',
         'level' => '1',
@@ -188,8 +209,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105098 bfc-',
       ),
-      105099 => 
-      array (
+      105099 =>
+      array(
         'id' => '105099',
         'code' => 'f2-a-workflow_entity/display',
         'level' => '1',
@@ -199,8 +220,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105099 bfc-',
       ),
-      105100 => 
-      array (
+      105100 =>
+      array(
         'id' => '105100',
         'code' => 'f2-a-workflow_entity/search',
         'level' => '1',
@@ -210,8 +231,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105100 bfc-',
       ),
-      105101 => 
-      array (
+      105101 =>
+      array(
         'id' => '105101',
         'code' => 'f2-a-workflow_entity/qsearch',
         'level' => '1',
@@ -221,8 +242,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105101 bfc-',
       ),
-      105103 => 
-      array (
+      105103 =>
+      array(
         'id' => '105103',
         'code' => 'f2-a-workflow_module/edit',
         'level' => '1',
@@ -232,8 +253,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105103 bfc-',
       ),
-      105104 => 
-      array (
+      105104 =>
+      array(
         'id' => '105104',
         'code' => 'f2-a-workflow_module/qedit',
         'level' => '1',
@@ -243,8 +264,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105104 bfc-',
       ),
-      105105 => 
-      array (
+      105105 =>
+      array(
         'id' => '105105',
         'code' => 'f2-a-workflow_module/delete',
         'level' => '1',
@@ -254,8 +275,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105105 bfc-',
       ),
-      105106 => 
-      array (
+      105106 =>
+      array(
         'id' => '105106',
         'code' => 'f2-a-workflow_module/display',
         'level' => '1',
@@ -265,8 +286,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105106 bfc-',
       ),
-      105107 => 
-      array (
+      105107 =>
+      array(
         'id' => '105107',
         'code' => 'f2-a-workflow_module/search',
         'level' => '1',
@@ -276,8 +297,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105107 bfc-',
       ),
-      105108 => 
-      array (
+      105108 =>
+      array(
         'id' => '105108',
         'code' => 'f2-a-workflow_module/qsearch',
         'level' => '1',
@@ -287,8 +308,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105108 bfc-',
       ),
-      105110 => 
-      array (
+      105110 =>
+      array(
         'id' => '105110',
         'code' => 'f2-a-workflow_role/edit',
         'level' => '1',
@@ -298,8 +319,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105110 bfc-',
       ),
-      105111 => 
-      array (
+      105111 =>
+      array(
         'id' => '105111',
         'code' => 'f2-a-workflow_role/qedit',
         'level' => '1',
@@ -309,8 +330,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105111 bfc-',
       ),
-      105112 => 
-      array (
+      105112 =>
+      array(
         'id' => '105112',
         'code' => 'f2-a-workflow_role/delete',
         'level' => '1',
@@ -320,8 +341,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105112 bfc-',
       ),
-      105113 => 
-      array (
+      105113 =>
+      array(
         'id' => '105113',
         'code' => 'f2-a-workflow_role/display',
         'level' => '1',
@@ -331,8 +352,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105113 bfc-',
       ),
-      105114 => 
-      array (
+      105114 =>
+      array(
         'id' => '105114',
         'code' => 'f2-a-workflow_role/search',
         'level' => '1',
@@ -342,8 +363,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105114 bfc-',
       ),
-      105115 => 
-      array (
+      105115 =>
+      array(
         'id' => '105115',
         'code' => 'f2-a-workflow_role/qsearch',
         'level' => '1',
@@ -353,8 +374,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105115 bfc-',
       ),
-      105117 => 
-      array (
+      105117 =>
+      array(
         'id' => '105117',
         'code' => 'f2-a-workflow_status/edit',
         'level' => '1',
@@ -364,8 +385,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105117 bfc-',
       ),
-      105118 => 
-      array (
+      105118 =>
+      array(
         'id' => '105118',
         'code' => 'f2-a-workflow_status/qedit',
         'level' => '1',
@@ -375,8 +396,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105118 bfc-',
       ),
-      105119 => 
-      array (
+      105119 =>
+      array(
         'id' => '105119',
         'code' => 'f2-a-workflow_status/delete',
         'level' => '1',
@@ -386,8 +407,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105119 bfc-',
       ),
-      105120 => 
-      array (
+      105120 =>
+      array(
         'id' => '105120',
         'code' => 'f2-a-workflow_status/display',
         'level' => '1',
@@ -397,8 +418,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105120 bfc-',
       ),
-      105121 => 
-      array (
+      105121 =>
+      array(
         'id' => '105121',
         'code' => 'f2-a-workflow_status/search',
         'level' => '1',
@@ -408,8 +429,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105121 bfc-',
       ),
-      105122 => 
-      array (
+      105122 =>
+      array(
         'id' => '105122',
         'code' => 'f2-a-workflow_status/qsearch',
         'level' => '1',
@@ -419,8 +440,74 @@
         'css' => 'bf',
         'icon' => 'bficon-105122 bfc-',
       ),
-      105208 => 
-      array (
+      105173 =>
+      array(
+        'id' => '105173',
+        'code' => 'f2-a-workflow_event/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء حدث',
+        'menu_name_en' => 'create Workflow event',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105173 bfc-',
+      ),
+      105174 =>
+      array(
+        'id' => '105174',
+        'code' => 'f2-a-workflow_event/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة أحداث',
+        'menu_name_en' => 'Workflow events administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowEvent&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105174 bfc-',
+      ),
+      105175 =>
+      array(
+        'id' => '105175',
+        'code' => 'f2-a-workflow_event/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح حدث',
+        'menu_name_en' => 'delete Workflow event',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105175 bfc-',
+      ),
+      105176 =>
+      array(
+        'id' => '105176',
+        'code' => 'f2-a-workflow_event/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل حدث',
+        'menu_name_en' => 'display details of Workflow event',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105176 bfc-',
+      ),
+      105177 =>
+      array(
+        'id' => '105177',
+        'code' => 'f2-a-workflow_event/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في أحداث',
+        'menu_name_en' => 'Workflow events search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105177 bfc-',
+      ),
+      105178 =>
+      array(
+        'id' => '105178',
+        'code' => 'f2-a-workflow_event/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'أحداث',
+        'menu_name_en' => 'Workflow events',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEvent&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105178 bfc-',
+      ),
+      105208 =>
+      array(
         'id' => '105208',
         'code' => 'f2-a-workflow_scope/edit',
         'level' => '1',
@@ -430,8 +517,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105208 bfc-',
       ),
-      105209 => 
-      array (
+      105209 =>
+      array(
         'id' => '105209',
         'code' => 'f2-a-workflow_scope/qedit',
         'level' => '1',
@@ -441,8 +528,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105209 bfc-',
       ),
-      105210 => 
-      array (
+      105210 =>
+      array(
         'id' => '105210',
         'code' => 'f2-a-workflow_scope/delete',
         'level' => '1',
@@ -452,8 +539,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105210 bfc-',
       ),
-      105211 => 
-      array (
+      105211 =>
+      array(
         'id' => '105211',
         'code' => 'f2-a-workflow_scope/display',
         'level' => '1',
@@ -463,8 +550,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105211 bfc-',
       ),
-      105212 => 
-      array (
+      105212 =>
+      array(
         'id' => '105212',
         'code' => 'f2-a-workflow_scope/search',
         'level' => '1',
@@ -474,8 +561,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105212 bfc-',
       ),
-      105213 => 
-      array (
+      105213 =>
+      array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
         'level' => '1',
@@ -485,9 +572,74 @@
         'css' => 'bf',
         'icon' => 'bficon-105213 bfc-',
       ),
+      105291 =>
+      array(
+        'id' => '105291',
+        'code' => 'f2-a-request_comment_subject/edit',
+        'level' => '1',
+        'menu_name_ar' => 'إنشاء موضوع ملاحظة',
+        'menu_name_en' => 'create Request comment subject',
+        'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=RequestCommentSubject&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105291 bfc-',
+      ),
+      105292 =>
+      array(
+        'id' => '105292',
+        'code' => 'f2-a-request_comment_subject/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة مواضيع ملاحظات',
+        'menu_name_en' => 'Request comment subjects administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=RequestCommentSubject&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105292 bfc-',
+      ),
+      105293 =>
+      array(
+        'id' => '105293',
+        'code' => 'f2-a-request_comment_subject/delete',
+        'level' => '1',
+        'menu_name_ar' => 'مسح موضوع ملاحظة',
+        'menu_name_en' => 'delete Request comment subject',
+        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=RequestCommentSubject&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105293 bfc-',
+      ),
+      105294 =>
+      array(
+        'id' => '105294',
+        'code' => 'f2-a-request_comment_subject/display',
+        'level' => '1',
+        'menu_name_ar' => 'عرض تفاصيل موضوع ملاحظة',
+        'menu_name_en' => 'display details of Request comment subject',
+        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=RequestCommentSubject&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105294 bfc-',
+      ),
+      105295 =>
+      array(
+        'id' => '105295',
+        'code' => 'f2-a-request_comment_subject/search',
+        'level' => '1',
+        'menu_name_ar' => 'البحث في مواضيع ملاحظات',
+        'menu_name_en' => 'Request comment subjects search',
+        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=RequestCommentSubject&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105295 bfc-',
+      ),
+      105296 =>
+      array(
+        'id' => '105296',
+        'code' => 'f2-a-request_comment_subject/qsearch',
+        'level' => '1',
+        'menu_name_ar' => 'مواضيع ملاحظات',
+        'menu_name_en' => 'Request comment subjects',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=RequestCommentSubject&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105296 bfc-',
+      ),
     ),
-    'sub-folders' => 
-    array (
-    ),
+    'sub-folders' =>
+    array(),
   ),
 );
