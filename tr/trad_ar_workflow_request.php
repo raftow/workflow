@@ -22,7 +22,7 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
 		$trad['workflow_request']['workflowrequest.new'] = 'جديد';
-		$trad['workflow_request']['workflow_request'] = 'طلبات الاعتماد';
+		$trad['workflow_request']['workflow_request'] = 'طلبات القبول';
 		$trad['workflow_request']['workflow_applicant_id'] = 'المتقدم';
 		$trad['workflow_request']['workflow_model_id'] = 'النموذج';
 		$trad['workflow_request']['workflow_scope_id'] = 'البرنامج';
