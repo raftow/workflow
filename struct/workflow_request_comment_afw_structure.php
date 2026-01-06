@@ -12,8 +12,8 @@ class WorkflowWorkflowRequestCommentAfwStructure
                         // $obj->ENABLE_DISPLAY_MODE_IN_QEDIT=true;
                         $obj->ORDER_BY_FIELDS = 'workflow_request_id, comment_date desc';
 
-                        $obj->UNIQUE_KEY = array('workflow_request_id', 'workflow_stage_id', 'request_comment_subject_id');
-                        $obj->UNIQUE_KEY2 = array('workflow_request_id', 'request_comment_subject_id', 'comment_date');
+                        // not correct $obj->UNIQUE_KEY2 = array('workflow_request_id', 'workflow_stage_id', 'request_comment_subject_id');
+                        $obj->UNIQUE_KEY = array('workflow_request_id', 'request_comment_subject_id', 'comment_date');
 
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
