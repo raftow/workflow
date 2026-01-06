@@ -150,16 +150,35 @@ class WorkflowRequest extends WorkflowObject
                 if (!$result)
                         return array("Condition for this transition not satisfied : $reason", '');
 
-                $final_stage_id = $objTransition->getVal('final_stage_id');
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+
 
                 $wActionObj = $objTransition->het("workflow_action_id");
 
                 if (($wActionObj->getVal("action_type_enum") == 1) and ($wActionObj->sureIs("comments_mandatory"))) {
                         // Rjection needs rejection justifications comments
-                        WorkflowRequestComment::findComment($this->id, $this->getVal('workflow_stage_id'), RequestCommentSubject::$REQUEST_COMMENT_SUBJECT_REJECT_REASON);
+                        $objComment = WorkflowRequestComment::findComment($this->id, $this->getVal('workflow_stage_id'), RequestCommentSubject::$REQUEST_COMMENT_SUBJECT_REJECT_REASON);
+                        if ($objComment) {
+                                $commentText = trim($objComment->getVal('comment'));
+                                if (strlen($commentText) < 5) {
+                                        return array('This transition needs rejection comments justifications of at least 5 characters', '');
+                                }
+                        } else {
+                                return array('This transition needs before to enter rejection comments justifications', '');
+                        }
                 }
-                $workflow_stage_id = $objTransition->getVal('workflow_stage_id');
+
+                $final_stage_id = $objTransition->getVal('final_stage_id');
                 $final_status_id = $objTransition->getVal('final_status_id');
+
+                $this->set('workflow_stage_id', $final_stage_id);
+                $this->set('workflow_status_id', $final_status_id);
+                $this->commit();
+
+
+                $status_comment = date('H:i:s') . ': تم تنفيذ الانتقال [' . $objTransition->id . "] " . $objTransition->getDisplay($lang);
+
+                return array('', $status_comment);
         }
 
         public function assignRequest($employeeId, $lang = 'ar')
