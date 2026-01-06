@@ -146,8 +146,19 @@ class WorkflowRequest extends WorkflowObject
 
                 // $moduleObj = $objTransition->het("workflow_module_id");
                 $wCondObj = $objTransition->het("workflow_condition_id");
-                $wActionObj = $objTransition->het("workflow_action_id");
+                list($result, $reason) = $objOriginal->runCondition($wCondObj, $this, $lang);
+                if (!$result)
+                        return array("Condition for this transition not satisfied : $reason", '');
+
                 $final_stage_id = $objTransition->getVal('final_stage_id');
+
+                $wActionObj = $objTransition->het("workflow_action_id");
+
+                if (($wActionObj->getVal("action_type_enum") == 1) and ($wActionObj->sureIs("comments_mandatory"))) {
+                        // Rjection needs rejection justifications comments
+                        WorkflowRequestComment::findComment($this->id, $this->getVal('workflow_stage_id'), RequestCommentSubject::$REQUEST_COMMENT_SUBJECT_REJECT_REASON);
+                }
+                $workflow_stage_id = $objTransition->getVal('workflow_stage_id');
                 $final_status_id = $objTransition->getVal('final_status_id');
         }
 
