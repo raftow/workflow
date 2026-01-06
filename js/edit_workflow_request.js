@@ -1,6 +1,6 @@
 function save_popup_done_on(mod, cls, idobj, col, val, aff)
 {
-    if(cls=="applicant_file" && col=="reupload_enum")
+    if(cls=="ApplicantFile" && col=="reupload_enum")
     {
         if(newval == 1) // مطلوب إعادة رفع
         {
@@ -19,7 +19,7 @@ function save_popup_done_on(mod, cls, idobj, col, val, aff)
 
 function switch_done_on(md, cl, swc_id, swc_col, newval)
 {
-    if(cl=="applicant_file" && swc_col=="approved")
+    if(cl=="ApplicantFile" && swc_col=="approved")
     {
         if(newval == 'Y')
         {
