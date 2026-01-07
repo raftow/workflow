@@ -147,11 +147,11 @@ class WorkflowRequest extends WorkflowObject
 
                 $authorizedRolesArray = explode(",", $accepted_roles_mfk);
 
-                if (!$wEmployeeMe) return array('No authenticated workflow employee found', '');
+                if (!$wEmployeeMe) return array($this->tm('No authenticated workflow employee found', $lang), '');
 
                 if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
                         $wrole_mfk = $wEmployeeMe->getVal("wrole_mfk");
-                        return array('This employee is not authorized to perform this transition' . ' ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk", '');
+                        return array($this->tm('This employee is not authorized to perform this transition', $lang) . '<!-- ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk -->", '');
                 }
 
                 list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
@@ -164,8 +164,9 @@ class WorkflowRequest extends WorkflowObject
                 list($result, $reason) = $objOriginal->runCondition($wCondObj, $this, $lang);
                 $wCondObjCode = $wCondObj->getVal("lookup_code");
                 // return array("Condition for this transition is $wCondObjCode result = $result <br> reason = $reason", '');
+
                 if (!$result)
-                        return array("Condition for this transition not satisfied : $reason", '');
+                        return array($this->tm("Condition for this transition not satisfied", $lang) . " : " . $reason, '');
 
                 $workflow_stage_id = $this->getVal('workflow_stage_id');
 
