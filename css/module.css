@@ -332,6 +332,7 @@ th.col-importance-small.th-comment_date {
 
 /******************   PREVILEGES END ***************************/
 
-#header_group_formComments {
-    margin-top: 260px;
+#div_data_formComments {
+    padding: 35px !important;
+    border: 6px double gray !important;
 }
