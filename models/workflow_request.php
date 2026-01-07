@@ -143,11 +143,16 @@ class WorkflowRequest extends WorkflowObject
 
                 $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
 
-                $authorizedRolesArray = explode(",", trim($objTransition->getVal("workflow_role_mfk"), ","));
+                $accepted_roles_mfk = trim($objTransition->getVal("workflow_role_mfk"), ",");
+
+                $authorizedRolesArray = explode(",", $accepted_roles_mfk);
 
                 if (!$wEmployeeMe) return array('No authenticated workflow employee found', '');
 
-                if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) return array('This employee is not authorized to perform this transition', '');
+                if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
+                        $wrole_mfk = $this->getVal("wrole_mfk");
+                        return array('This employee is not authorized to perform this transition' . ' ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk", '');
+                }
 
                 list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
 
