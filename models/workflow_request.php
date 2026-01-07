@@ -150,7 +150,7 @@ class WorkflowRequest extends WorkflowObject
                 if (!$wEmployeeMe) return array('No authenticated workflow employee found', '');
 
                 if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
-                        $wrole_mfk = $this->getVal("wrole_mfk");
+                        $wrole_mfk = $wEmployeeMe->getVal("wrole_mfk");
                         return array('This employee is not authorized to perform this transition' . ' ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk", '');
                 }
 
