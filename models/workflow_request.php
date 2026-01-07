@@ -163,7 +163,7 @@ class WorkflowRequest extends WorkflowObject
                 $wCondObj = $objTransition->het("workflow_condition_id");
                 list($result, $reason) = $objOriginal->runCondition($wCondObj, $this, $lang);
                 $wCondObjCode = $wCondObj->getVal("lookup_code");
-                return array("Condition for this transition is $wCondObjCode result = $result <br> reason = $reason", '');
+                // return array("Condition for this transition is $wCondObjCode result = $result <br> reason = $reason", '');
                 if (!$result)
                         return array("Condition for this transition not satisfied : $reason", '');
 
