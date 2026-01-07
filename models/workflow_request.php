@@ -136,6 +136,20 @@ class WorkflowRequest extends WorkflowObject
                 return $obj->loadMany();
         }
 
+        public function getMyAcceptedRoles()
+        {
+                $result = array();
+                $transitionList = $this->getMyTransitions();
+
+                foreach ($transitionList as $transition) {
+                        $accepted_roles_mfk = trim($transition->getVal("workflow_role_mfk"), ",");
+                        $authorizedRolesArray = explode(",", $accepted_roles_mfk);
+                        $result = array_merge($result, $authorizedRolesArray);
+                }
+
+                return $result;
+        }
+
 
         public function runTransition($transitionId, $lang = 'ar')
         {
@@ -192,6 +206,9 @@ class WorkflowRequest extends WorkflowObject
                 $this->set('workflow_stage_id', $final_stage_id);
                 $this->set('workflow_status_id', $final_status_id);
                 $this->commit();
+
+                // after transition done reassign to best available employee depending on new stage and needed roles for this stage
+                $this->assignBestAvailableEmployee($lang);
 
 
                 $status_comment = date('H:i:s') . ': تم تنفيذ الانتقال [' . $objTransition->id . "] " . $objTransition->getDisplay($lang);
@@ -286,11 +303,25 @@ class WorkflowRequest extends WorkflowObject
 
         public function assignBestAvailableEmployee($lang = 'ar', $pbm = true)
         {
+                $strict = false;
+                $except_emp_id = 0;
+                $accepted_roles = $this->getMyAcceptedRoles();
                 // find the best available employee
-                $strict = ($this->getVal('employee_id') > 0);
+                if ($this->getVal('employee_id') > 0) {
+
+                        $wEmployeeObj = WorkflowEmployee::findWorkflowEmployee($this->getVal('employee_id'));
+                        if ($wEmployeeObj) {
+                                $strict = true;
+                                if (!$wEmployeeObj->hasOneOfWRoles($accepted_roles)) {
+                                        $strict = false;
+                                        $except_emp_id = $this->getVal('employee_id');
+                                }
+                        }
+                }
                 $orgunit_id = $this->getVal('orgunit_id');
                 $workflow_scope_id = $this->getVal('workflow_scope_id');
-                list($best_employee_id, $wkfEmpl, $allList, $log) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, $workflow_scope_id, 0, $strict);
+
+                list($best_employee_id, $wkfEmpl, $allList, $log) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, $workflow_scope_id, $except_emp_id, $strict, $accepted_roles);
                 // $wkfRes = array("best" => $best_employee_id, "res" => $wkfEmpl, 'all' => $allList);
                 // die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($wkfRes, true)."</pre>");
 

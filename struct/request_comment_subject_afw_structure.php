@@ -37,7 +37,16 @@ class WorkflowRequestCommentSubjectAfwStructure
                 'id' => array('SHOW' => true, 'RETRIEVE' => true, 'EDIT' => false, 'TYPE' => 'PK'),
 
 
-                'lookup_code' => array("TYPE" => "TEXT", "SHOW" => true, "RETRIEVE" => true, "EDIT" => true, "SIZE" => 64, "QEDIT" => true, "SHORTNAME" => "code"),
+                'lookup_code' => array(
+                        "TYPE" => "TEXT",
+                        "SHOW" => true,
+                        'MANDATORY' => true,
+                        "RETRIEVE" => true,
+                        "EDIT" => true,
+                        "SIZE" => 64,
+                        "QEDIT" => true,
+                        "SHORTNAME" => "code"
+                ),
 
                 'name_ar' => array(
                         'SEARCH' => true,

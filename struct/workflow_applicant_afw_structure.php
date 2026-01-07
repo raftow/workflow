@@ -6,9 +6,11 @@ class WorkflowWorkflowApplicantAfwStructure
         {
                 if ($obj instanceof WorkflowApplicant) {
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
-                        $obj->DISPLAY_FIELD_BY_LANG = array('ar'=> ['first_name_ar', 'father_name_ar', 'last_name_ar'],
-                                                            'en'=> ['first_name_en', 'father_name_en', 'last_name_en']);
-                        // $obj->AUTOCOMPLETE_FIELD = 'idn';
+                        $obj->DISPLAY_FIELD_BY_LANG = array(
+                                'ar' => ['first_name_ar', 'father_name_ar', 'last_name_ar'],
+                                'en' => ['first_name_en', 'father_name_en', 'last_name_en']
+                        );
+                        $obj->DISPLAY_SEPARATOR = ' ';
                         $obj->FORMULA_DISPLAY_FIELD  = "concat(IF(ISNULL(first_name_ar), '', first_name_ar) , ' ' , IF(ISNULL(father_name_ar), '', father_name_ar) , ' ' , IF(ISNULL(last_name_ar), '', last_name_ar))";
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
                         $obj->UNIQUE_KEY = array('country_id', 'idn_type_id', 'idn');
@@ -18,7 +20,7 @@ class WorkflowWorkflowApplicantAfwStructure
                         $obj->editByStep = true;
                         $obj->editNbSteps = 11;
                         // $obj->STEP_OPTIONS = [2=> ['TEMPLATE'=>'accordion'], /* 3=> ['TEMPLATE'=>'accordion'],*/];
-                        
+
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                 } else {
                         WorkflowApplicantArTranslator::initData();
@@ -35,7 +37,8 @@ class WorkflowWorkflowApplicantAfwStructure
                         'EDIT' => false,
                         'TYPE' => 'PK',
                         'DISPLAY' => true,
-                        'QSEARCH' => true,  'TEXT-SEARCHABLE-SEPARATED'=>true,
+                        'QSEARCH' => true,
+                        'TEXT-SEARCHABLE-SEPARATED' => true,
                         'STEP' => 1,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -43,31 +46,31 @@ class WorkflowWorkflowApplicantAfwStructure
                 ),
 
 
-                
+
 
                 'idn_type_id' => array(
-			'STEP' => 1,
-			'SHORTNAME' => 'idntype',
-			'SEARCH' => false,
-			'QSEARCH' => false,
-			'SHOW' => true,
-			'RETRIEVE' => false,
-			'EDIT' => true,
-			'QEDIT' => false,
-			'SIZE' => 16,
-			'MANDATORY' => true,
-			'UTF8' => false,
-			'TYPE' => 'ENUM',
-			'ANSWER' => 'FUNCTION',
-			'READONLY' => false,
-			'EDIT-SHORT-LIST' => true,
-			'ANSMODULE' => 'crm',
-			'SEARCH-BY-ONE' => false,
-			'DISPLAY' => true,
-			'DISPLAY-UGROUPS' => '',
-			'EDIT-UGROUPS' => '',
-			'ERROR-CHECK' => true,
-		),
+                        'STEP' => 1,
+                        'SHORTNAME' => 'idntype',
+                        'SEARCH' => false,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 16,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'ENUM',
+                        'ANSWER' => 'FUNCTION',
+                        'READONLY' => false,
+                        'EDIT-SHORT-LIST' => true,
+                        'ANSMODULE' => 'crm',
+                        'SEARCH-BY-ONE' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
 
                 'country_id' => array(
                         'FGROUP' => 'idn-infos',
@@ -75,8 +78,8 @@ class WorkflowWorkflowApplicantAfwStructure
                         'SEARCH' => true,
                         'QSEARCH' => true,
                         'RETRIEVE' => true,
-                        
-                        'SHOW' => true,                        
+
+                        'SHOW' => true,
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SHOW-ADMIN' => true,
@@ -218,10 +221,10 @@ class WorkflowWorkflowApplicantAfwStructure
                         'TEXT-SEARCHABLE-SEPARATED' => true,
                         'TYPE' => 'TEXT',
                         'DISPLAY' => true,
-                        
+
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        
+
                 ),
 
 
@@ -245,7 +248,7 @@ class WorkflowWorkflowApplicantAfwStructure
                         'TEXT-SEARCHABLE-SEPARATED' => true,
                         'TYPE' => 'TEXT',
                         'DISPLAY' => true,
-                        
+
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_50'
@@ -278,7 +281,7 @@ class WorkflowWorkflowApplicantAfwStructure
 
 
 
-               
+
 
 
 
@@ -476,7 +479,7 @@ class WorkflowWorkflowApplicantAfwStructure
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SIZE' => '32',
-                        'FORMAT' => ['STRING-LENGTH'=>true,],
+                        'FORMAT' => ['STRING-LENGTH' => true,],
                         'MAXLENGTH' => '32',
                         'MIN-SIZE' => '5',
                         'UTF8' => true,
@@ -620,7 +623,8 @@ class WorkflowWorkflowApplicantAfwStructure
                         'RETRIEVE' => false,
                         'EDIT' => false,
                         'QEDIT' => false,
-                        'TYPE' => 'GDAT', 'FORMAT' => 'DATETIME',
+                        'TYPE' => 'GDAT',
+                        'FORMAT' => 'DATETIME',
                         'DISPLAY' => '',
                         'STEP' => 99,
                         'DISPLAY-UGROUPS' => '',
@@ -645,9 +649,10 @@ class WorkflowWorkflowApplicantAfwStructure
 
                 'updated_at' => array(
                         'SHOW-ADMIN' => true,
-                        'RETRIEVE' => false,                        
+                        'RETRIEVE' => false,
                         'QEDIT' => false,
-                        'TYPE' => 'GDAT', 'FORMAT' => 'DATETIME',
+                        'TYPE' => 'GDAT',
+                        'FORMAT' => 'DATETIME',
                         'DISPLAY' => '',
                         'STEP' => 99,
                         'DISPLAY-UGROUPS' => '',

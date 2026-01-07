@@ -576,7 +576,7 @@ class WorkflowEmployee extends WorkflowObject
                 return $objList;
         }
 
-        public static function getEmployeeArray($orgunit_id, $wscope_id, $except_employee_id = 0)
+        public static function getEmployeeArray($orgunit_id, $wscope_id, $except_employee_id = 0, $accepted_roles = [1])
         {
                 $obj = new WorkflowEmployee();
                 if (!$orgunit_id)
@@ -584,7 +584,9 @@ class WorkflowEmployee extends WorkflowObject
                 // $obj->select_visibilite_horizontale();
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("employee_id != $except_employee_id and wrole_mfk like '%,1,%' and wscope_mfk like '%,$wscope_id,%'");
+                $obj->where("employee_id != $except_employee_id");
+                $obj->where("wrole_mfk like '%," . implode(",% or wrole_mfk like '%,", $accepted_roles) . ",%'");
+                $obj->where("and wscope_mfk like '%,$wscope_id,%'");
 
                 $objList = $obj->loadMany();
 
@@ -647,9 +649,9 @@ class WorkflowEmployee extends WorkflowObject
                 }
         }
 
-        public static function getBestAvailableEmployee($orgunit_id, $wscope_id, $except_employee_id = 0, $strict = false)
+        public static function getBestAvailableEmployee($orgunit_id, $wscope_id, $except_employee_id = 0, $strict = false, $accepted_roles = [1])
         {
-                $employeeList = self::getEmployeeArray($orgunit_id, $wscope_id);
+                $employeeList = self::getEmployeeArray($orgunit_id, $wscope_id, $except_employee_id, $accepted_roles);
                 if ($except_employee_id)
                         unset($employeeList[$except_employee_id]);
                 else

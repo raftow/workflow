@@ -55,11 +55,6 @@ class RequestCommentSubject extends AFWObject
     }
 
 
-    public function getDisplay($lang = "ar") {}
-
-
-
-
 
     protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
     {
