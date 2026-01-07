@@ -2,9 +2,9 @@
 class WorkflowWorkflowRequestAfwStructure
 {
         public static function pageCode($uri_items)
-	{
-			return "edit_workflow_request";
-	}
+        {
+                return "edit_workflow_request";
+        }
 
         public static function initInstance(&$obj)
         {
@@ -680,6 +680,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ROWS' => 16,
                         'DISPLAY' => true,
                         'STEP' => 'all',
+                        "LOCATION" => 'bottom',
                         'NO-LABEL' => true,
                         'READONLY' => true,
                         'FORMAT' => 'HTML',
