@@ -72,9 +72,6 @@ span.dday {
     color: white !important;
 }
 
-.icon-388:before {
-    content: "\f03e";
-}
 
 .body_form_hzm.body_form_workflowfi {
     min-height: 900px !important;
@@ -335,4 +332,52 @@ th.col-importance-small.th-comment_date {
 #div_data_formComments {
     padding: 35px !important;
     border: 6px double gray !important;
+}
+
+
+/* إدارة المحتوى - Content Management */
+.icon-395:before {
+    content: "\f13b";
+    /* f0e0 */
+}
+
+/*  الإعدادات - Settings */
+.icon-400:before {
+    content: "\f13b";
+}
+
+
+/*   - Notifications - الإشعارات */
+.icon-399:before {
+    content: "\f0f3";
+}
+
+/*   Requests - الطلبات  */
+.icon-403:before {
+    content: "\f256";
+}
+
+/* Permissions - الصلاحيات */
+.icon-402:before {
+    content: "\f084";
+}
+
+/* Inquiries - الاستفسارات */
+.icon-401:before {
+    content: "\f0b0";
+}
+
+/* work organization - تنظيم العمل - */
+.icon-393:before {
+    content: "\f085";
+}
+
+
+/*   - Lookup Tables - جداول التعريف */
+.icon-392:before {
+    content: "\f03a";
+}
+
+.icon-388:before {
+    content: "\f03e";
 }
