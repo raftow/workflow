@@ -685,7 +685,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => true,
+                        'MANDATORY' => false,
                         'UTF8' => false,
                         'TYPE' => 'FK',
                         'ANSWER' => 'workflow_rejection_reason',
