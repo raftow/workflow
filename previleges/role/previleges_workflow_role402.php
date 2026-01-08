@@ -1,14 +1,14 @@
 <?php
 
-	$role_info[402] = array (
+$role_info[402] = array(
   'code' => 'goal-ums',
-  'name' => 
-  array (
+  'name' =>
+  array(
     'ar' => 'الصلاحيات',
     'en' => 'Permissions',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'need_admin' => false,
     'id' => '402',
     'menu_name_' => 'الصلاحيات',
@@ -18,10 +18,10 @@
     'css' => 'info',
     'icon' => ' icon-402',
     'showme' => true,
-    'items' => 
-    array (
-      105045 => 
-      array (
+    'items' =>
+    array(
+      105045 =>
+      array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
         'level' => '1',
@@ -31,8 +31,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105045 bfc-',
       ),
-      105115 => 
-      array (
+      105115 =>
+      array(
         'id' => '105115',
         'code' => 'f2-a-workflow_role/qsearch',
         'level' => '1',
@@ -42,19 +42,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105115 bfc-',
       ),
-      105185 => 
-      array (
+      105185 =>
+      array(
         'id' => '105185',
         'code' => 'f2-a-workflow_orgunit/qsearch',
         'level' => '1',
-        'menu_name_ar' => 'جهات متابعة طلبات العملاء',
+        'menu_name_ar' => 'إدارات القبول',
         'menu_name_en' => 'Workflow orgunits',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105185 bfc-',
       ),
-      105213 => 
-      array (
+      105213 =>
+      array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
         'level' => '1',
@@ -65,10 +65,10 @@
         'icon' => 'bficon-105213 bfc-',
       ),
     ),
-    'otherbfs' => 
-    array (
-      105040 => 
-      array (
+    'otherbfs' =>
+    array(
+      105040 =>
+      array(
         'id' => '105040',
         'code' => 'f2-a-workflow_employee/edit',
         'level' => '1',
@@ -78,8 +78,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105040 bfc-',
       ),
-      105042 => 
-      array (
+      105042 =>
+      array(
         'id' => '105042',
         'code' => 'f2-a-workflow_employee/delete',
         'level' => '1',
@@ -89,8 +89,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105042 bfc-',
       ),
-      105043 => 
-      array (
+      105043 =>
+      array(
         'id' => '105043',
         'code' => 'f2-a-workflow_employee/display',
         'level' => '1',
@@ -100,8 +100,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105043 bfc-',
       ),
-      105044 => 
-      array (
+      105044 =>
+      array(
         'id' => '105044',
         'code' => 'f2-a-workflow_employee/search',
         'level' => '1',
@@ -111,8 +111,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105044 bfc-',
       ),
-      105045 => 
-      array (
+      105045 =>
+      array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
         'level' => '1',
@@ -122,8 +122,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105045 bfc-',
       ),
-      105103 => 
-      array (
+      105103 =>
+      array(
         'id' => '105103',
         'code' => 'f2-a-workflow_module/edit',
         'level' => '1',
@@ -133,8 +133,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105103 bfc-',
       ),
-      105105 => 
-      array (
+      105105 =>
+      array(
         'id' => '105105',
         'code' => 'f2-a-workflow_module/delete',
         'level' => '1',
@@ -144,8 +144,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105105 bfc-',
       ),
-      105106 => 
-      array (
+      105106 =>
+      array(
         'id' => '105106',
         'code' => 'f2-a-workflow_module/display',
         'level' => '1',
@@ -155,8 +155,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105106 bfc-',
       ),
-      105107 => 
-      array (
+      105107 =>
+      array(
         'id' => '105107',
         'code' => 'f2-a-workflow_module/search',
         'level' => '1',
@@ -166,8 +166,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105107 bfc-',
       ),
-      105108 => 
-      array (
+      105108 =>
+      array(
         'id' => '105108',
         'code' => 'f2-a-workflow_module/qsearch',
         'level' => '1',
@@ -177,8 +177,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105108 bfc-',
       ),
-      105110 => 
-      array (
+      105110 =>
+      array(
         'id' => '105110',
         'code' => 'f2-a-workflow_role/edit',
         'level' => '1',
@@ -188,8 +188,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105110 bfc-',
       ),
-      105112 => 
-      array (
+      105112 =>
+      array(
         'id' => '105112',
         'code' => 'f2-a-workflow_role/delete',
         'level' => '1',
@@ -199,8 +199,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105112 bfc-',
       ),
-      105113 => 
-      array (
+      105113 =>
+      array(
         'id' => '105113',
         'code' => 'f2-a-workflow_role/display',
         'level' => '1',
@@ -210,8 +210,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105113 bfc-',
       ),
-      105114 => 
-      array (
+      105114 =>
+      array(
         'id' => '105114',
         'code' => 'f2-a-workflow_role/search',
         'level' => '1',
@@ -221,8 +221,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105114 bfc-',
       ),
-      105115 => 
-      array (
+      105115 =>
+      array(
         'id' => '105115',
         'code' => 'f2-a-workflow_role/qsearch',
         'level' => '1',
@@ -232,8 +232,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105115 bfc-',
       ),
-      105180 => 
-      array (
+      105180 =>
+      array(
         'id' => '105180',
         'code' => 'f2-a-workflow_orgunit/edit',
         'level' => '1',
@@ -243,8 +243,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105180 bfc-',
       ),
-      105182 => 
-      array (
+      105182 =>
+      array(
         'id' => '105182',
         'code' => 'f2-a-workflow_orgunit/delete',
         'level' => '1',
@@ -254,8 +254,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105182 bfc-',
       ),
-      105183 => 
-      array (
+      105183 =>
+      array(
         'id' => '105183',
         'code' => 'f2-a-workflow_orgunit/display',
         'level' => '1',
@@ -265,30 +265,30 @@
         'css' => 'bf',
         'icon' => 'bficon-105183 bfc-',
       ),
-      105184 => 
-      array (
+      105184 =>
+      array(
         'id' => '105184',
         'code' => 'f2-a-workflow_orgunit/search',
         'level' => '1',
-        'menu_name_ar' => 'البحث في جهات متابعة طلبات العملاء',
+        'menu_name_ar' => 'البحث في إدارات القبول',
         'menu_name_en' => 'Workflow orgunits search',
         'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowOrgunit&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105184 bfc-',
       ),
-      105185 => 
-      array (
+      105185 =>
+      array(
         'id' => '105185',
         'code' => 'f2-a-workflow_orgunit/qsearch',
         'level' => '1',
-        'menu_name_ar' => 'جهات متابعة طلبات العملاء',
+        'menu_name_ar' => 'إدارات القبول',
         'menu_name_en' => 'Workflow orgunits',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105185 bfc-',
       ),
-      105208 => 
-      array (
+      105208 =>
+      array(
         'id' => '105208',
         'code' => 'f2-a-workflow_scope/edit',
         'level' => '1',
@@ -298,8 +298,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105208 bfc-',
       ),
-      105210 => 
-      array (
+      105210 =>
+      array(
         'id' => '105210',
         'code' => 'f2-a-workflow_scope/delete',
         'level' => '1',
@@ -309,8 +309,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105210 bfc-',
       ),
-      105211 => 
-      array (
+      105211 =>
+      array(
         'id' => '105211',
         'code' => 'f2-a-workflow_scope/display',
         'level' => '1',
@@ -320,8 +320,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105211 bfc-',
       ),
-      105212 => 
-      array (
+      105212 =>
+      array(
         'id' => '105212',
         'code' => 'f2-a-workflow_scope/search',
         'level' => '1',
@@ -331,8 +331,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105212 bfc-',
       ),
-      105213 => 
-      array (
+      105213 =>
+      array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
         'level' => '1',
@@ -343,8 +343,7 @@
         'icon' => 'bficon-105213 bfc-',
       ),
     ),
-    'sub-folders' => 
-    array (
-    ),
+    'sub-folders' =>
+    array(),
   ),
 );

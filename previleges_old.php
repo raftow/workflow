@@ -3029,7 +3029,7 @@ $role_info = array(
           'id' => '105181',
           'code' => 'f2-a-workflow_orgunit/qedit',
           'level' => '1',
-          'menu_name_ar' => 'إدارة إدارات القبول',
+          'menu_name_ar' => 'إدارات القبول',
           'menu_name_en' => 'Workflow orgunits administration',
           'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowOrgunit&currmod=workflow&ids=all&newo=3',
           'css' => 'bf',

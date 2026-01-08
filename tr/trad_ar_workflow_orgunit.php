@@ -7,8 +7,8 @@ class WorkflowOrgunitArTranslator
 		$trad = [];
 		$trad['workflow_orgunit']['workfloworgunit.single'] = 'إدارة قبول';
 		$trad['workflow_orgunit']['workfloworgunit.new'] = 'جديد(ة)';
-		$trad['workflow_orgunit']['workflow_orgunit'] = 'جهات متابعة طلبات العملاء';
-		$trad['workflow_orgunit']['orgunit_id'] = 'الالإدارة';
+		$trad['workflow_orgunit']['workflow_orgunit'] = 'إدارات القبول';
+		$trad['workflow_orgunit']['orgunit_id'] = 'الإدارة';
 		$trad['workflow_orgunit']['requests_nb'] = 'طاقة استيعاب الطلبات يوميا لكل موظف قبول';
 		$trad['workflow_orgunit']['requests_count'] = 'مجموع عدد الطلبات الجارية';
 		$trad['workflow_orgunit']['requests_count.tooltip'] = 'ءءءءءءءءءءءءءءءءءءءءءءء';
