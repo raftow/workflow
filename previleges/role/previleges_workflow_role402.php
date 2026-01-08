@@ -24,7 +24,7 @@ $role_info[402] = array(
       array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'موظفي إدارة أعمال',
         'menu_name_en' => 'Workflow employees',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEmployee&currmod=workflow',
@@ -35,7 +35,7 @@ $role_info[402] = array(
       array(
         'id' => '105115',
         'code' => 'f2-a-workflow_role/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الصلاحيات',
         'menu_name_en' => 'Workflow roles',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRole&currmod=workflow',
@@ -46,7 +46,7 @@ $role_info[402] = array(
       array(
         'id' => '105185',
         'code' => 'f2-a-workflow_orgunit/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارات القبول',
         'menu_name_en' => 'Workflow orgunits',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
@@ -57,7 +57,7 @@ $role_info[402] = array(
       array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البرامج',
         'menu_name_en' => 'Workflow scopes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowScope&currmod=workflow',
@@ -93,7 +93,7 @@ $role_info[402] = array(
       array(
         'id' => '105043',
         'code' => 'f2-a-workflow_employee/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل موظف',
         'menu_name_en' => 'display details of Workflow employee',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowEmployee&currmod=workflow',
@@ -115,7 +115,7 @@ $role_info[402] = array(
       array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'موظفي إدارة أعمال',
         'menu_name_en' => 'Workflow employees',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEmployee&currmod=workflow',
@@ -148,7 +148,7 @@ $role_info[402] = array(
       array(
         'id' => '105106',
         'code' => 'f2-a-workflow_module/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل تطبيق',
         'menu_name_en' => 'display details of Workflow module',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowModule&currmod=workflow',
@@ -170,7 +170,7 @@ $role_info[402] = array(
       array(
         'id' => '105108',
         'code' => 'f2-a-workflow_module/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'تطبيقات',
         'menu_name_en' => 'Workflow modules',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowModule&currmod=workflow',
@@ -203,7 +203,7 @@ $role_info[402] = array(
       array(
         'id' => '105113',
         'code' => 'f2-a-workflow_role/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل صلاحية',
         'menu_name_en' => 'display details of Workflow role',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowRole&currmod=workflow',
@@ -225,7 +225,7 @@ $role_info[402] = array(
       array(
         'id' => '105115',
         'code' => 'f2-a-workflow_role/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الصلاحيات',
         'menu_name_en' => 'Workflow roles',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRole&currmod=workflow',
@@ -258,7 +258,7 @@ $role_info[402] = array(
       array(
         'id' => '105183',
         'code' => 'f2-a-workflow_orgunit/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل جهة متابعة',
         'menu_name_en' => 'display details of Workflow orgunit',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowOrgunit&currmod=workflow',
@@ -280,7 +280,7 @@ $role_info[402] = array(
       array(
         'id' => '105185',
         'code' => 'f2-a-workflow_orgunit/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارات القبول',
         'menu_name_en' => 'Workflow orgunits',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
@@ -313,7 +313,7 @@ $role_info[402] = array(
       array(
         'id' => '105211',
         'code' => 'f2-a-workflow_scope/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل برنامج',
         'menu_name_en' => 'display details of Workflow scope',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowScope&currmod=workflow',
@@ -335,7 +335,7 @@ $role_info[402] = array(
       array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البرامج',
         'menu_name_en' => 'Workflow scopes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowScope&currmod=workflow',

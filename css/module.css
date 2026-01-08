@@ -337,13 +337,13 @@ th.col-importance-small.th-comment_date {
 
 /* إدارة المحتوى - Content Management */
 .icon-395:before {
-    content: "\f13b";
-    /* f0e0 */
+    content: "\f0e0";
+    /* f13b */
 }
 
 /*  الإعدادات - Settings */
 .icon-400:before {
-    content: "\f13b";
+    content: "\f085";
 }
 
 

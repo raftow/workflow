@@ -1,14 +1,14 @@
 <?php
 
-	$role_info[393] = array (
+$role_info[393] = array(
   'code' => 'goal-WORK-ORG',
-  'name' => 
-  array (
+  'name' =>
+  array(
     'ar' => 'تنظيم العمل',
     'en' => 'work organization',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'need_admin' => false,
     'id' => '393',
     'menu_name_' => 'تنظيم العمل',
@@ -18,101 +18,101 @@
     'css' => 'info',
     'icon' => ' icon-393',
     'showme' => true,
-    'items' => 
-    array (
-      105038 => 
-      array (
+    'items' =>
+    array(
+      105038 =>
+      array(
         'id' => '105038',
         'code' => 'f2-a-workflow_commitee_member/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'أعضاء اللجان',
         'menu_name_en' => 'Workflow commitee members',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeMember&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105038 bfc-',
       ),
-      105199 => 
-      array (
+      105199 =>
+      array(
         'id' => '105199',
         'code' => 'f2-a-workflow_commitee/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'اللجان',
         'menu_name_en' => 'Workflow commitees',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommitee&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105199 bfc-',
       ),
-      105045 => 
-      array (
+      105045 =>
+      array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'موظفي إدارة أعمال',
         'menu_name_en' => 'Workflow employees',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEmployee&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105045 bfc-',
       ),
-      105206 => 
-      array (
+      105206 =>
+      array(
         'id' => '105206',
         'code' => 'f2-a-workflow_model/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'نماذج سير العمل',
         'menu_name_en' => 'Workflow models',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowModel&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105206 bfc-',
       ),
-      105220 => 
-      array (
+      105220 =>
+      array(
         'id' => '105220',
         'code' => 'f2-a-workflow_stage/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'المراحل',
         'menu_name_en' => 'Workflow stages',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowStage&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105220 bfc-',
       ),
-      105227 => 
-      array (
+      105227 =>
+      array(
         'id' => '105227',
         'code' => 'f2-a-workflow_task/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'workflow_task',
         'menu_name_en' => 'Workflow tasks',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105227 bfc-',
       ),
-      105213 => 
-      array (
+      105213 =>
+      array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البرامج',
         'menu_name_en' => 'Workflow scopes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowScope&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105213 bfc-',
       ),
-      105192 => 
-      array (
+      105192 =>
+      array(
         'id' => '105192',
         'code' => 'f2-a-workflow_action/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إجراءات',
         'menu_name_en' => 'Workflow actions',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowAction&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105192 bfc-',
       ),
-      105241 => 
-      array (
+      105241 =>
+      array(
         'id' => '105241',
         'code' => 'f2-a-workflow_transition/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'التحولات',
         'menu_name_en' => 'transitions',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTransition&currmod=workflow',
@@ -120,10 +120,10 @@
         'icon' => 'bficon-105241 bfc-',
       ),
     ),
-    'otherbfs' => 
-    array (
-      105033 => 
-      array (
+    'otherbfs' =>
+    array(
+      105033 =>
+      array(
         'id' => '105033',
         'code' => 'f2-a-workflow_commitee_member/edit',
         'level' => '1',
@@ -133,8 +133,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105033 bfc-',
       ),
-      105034 => 
-      array (
+      105034 =>
+      array(
         'id' => '105034',
         'code' => 'f2-a-workflow_commitee_member/qedit',
         'level' => '1',
@@ -144,8 +144,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105034 bfc-',
       ),
-      105035 => 
-      array (
+      105035 =>
+      array(
         'id' => '105035',
         'code' => 'f2-a-workflow_commitee_member/delete',
         'level' => '1',
@@ -155,19 +155,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105035 bfc-',
       ),
-      105036 => 
-      array (
+      105036 =>
+      array(
         'id' => '105036',
         'code' => 'f2-a-workflow_commitee_member/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل عضو لجنة',
         'menu_name_en' => 'display details of Workflow commitee member',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowCommiteeMember&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105036 bfc-',
       ),
-      105037 => 
-      array (
+      105037 =>
+      array(
         'id' => '105037',
         'code' => 'f2-a-workflow_commitee_member/search',
         'level' => '1',
@@ -177,19 +177,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105037 bfc-',
       ),
-      105038 => 
-      array (
+      105038 =>
+      array(
         'id' => '105038',
         'code' => 'f2-a-workflow_commitee_member/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'أعضاء اللجان',
         'menu_name_en' => 'Workflow commitee members',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeMember&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105038 bfc-',
       ),
-      105040 => 
-      array (
+      105040 =>
+      array(
         'id' => '105040',
         'code' => 'f2-a-workflow_employee/edit',
         'level' => '1',
@@ -199,8 +199,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105040 bfc-',
       ),
-      105041 => 
-      array (
+      105041 =>
+      array(
         'id' => '105041',
         'code' => 'f2-a-workflow_employee/qedit',
         'level' => '1',
@@ -210,8 +210,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105041 bfc-',
       ),
-      105042 => 
-      array (
+      105042 =>
+      array(
         'id' => '105042',
         'code' => 'f2-a-workflow_employee/delete',
         'level' => '1',
@@ -221,19 +221,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105042 bfc-',
       ),
-      105043 => 
-      array (
+      105043 =>
+      array(
         'id' => '105043',
         'code' => 'f2-a-workflow_employee/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل موظف',
         'menu_name_en' => 'display details of Workflow employee',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowEmployee&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105043 bfc-',
       ),
-      105044 => 
-      array (
+      105044 =>
+      array(
         'id' => '105044',
         'code' => 'f2-a-workflow_employee/search',
         'level' => '1',
@@ -243,19 +243,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105044 bfc-',
       ),
-      105045 => 
-      array (
+      105045 =>
+      array(
         'id' => '105045',
         'code' => 'f2-a-workflow_employee/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'موظفي إدارة أعمال',
         'menu_name_en' => 'Workflow employees',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEmployee&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105045 bfc-',
       ),
-      105187 => 
-      array (
+      105187 =>
+      array(
         'id' => '105187',
         'code' => 'f2-a-workflow_action/edit',
         'level' => '1',
@@ -265,8 +265,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105187 bfc-',
       ),
-      105188 => 
-      array (
+      105188 =>
+      array(
         'id' => '105188',
         'code' => 'f2-a-workflow_action/qedit',
         'level' => '1',
@@ -276,8 +276,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105188 bfc-',
       ),
-      105189 => 
-      array (
+      105189 =>
+      array(
         'id' => '105189',
         'code' => 'f2-a-workflow_action/delete',
         'level' => '1',
@@ -287,19 +287,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105189 bfc-',
       ),
-      105190 => 
-      array (
+      105190 =>
+      array(
         'id' => '105190',
         'code' => 'f2-a-workflow_action/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل إجراء',
         'menu_name_en' => 'display details of Workflow action',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowAction&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105190 bfc-',
       ),
-      105191 => 
-      array (
+      105191 =>
+      array(
         'id' => '105191',
         'code' => 'f2-a-workflow_action/search',
         'level' => '1',
@@ -309,19 +309,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105191 bfc-',
       ),
-      105192 => 
-      array (
+      105192 =>
+      array(
         'id' => '105192',
         'code' => 'f2-a-workflow_action/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إجراءات',
         'menu_name_en' => 'Workflow actions',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowAction&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105192 bfc-',
       ),
-      105194 => 
-      array (
+      105194 =>
+      array(
         'id' => '105194',
         'code' => 'f2-a-workflow_commitee/edit',
         'level' => '1',
@@ -331,8 +331,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105194 bfc-',
       ),
-      105195 => 
-      array (
+      105195 =>
+      array(
         'id' => '105195',
         'code' => 'f2-a-workflow_commitee/qedit',
         'level' => '1',
@@ -342,8 +342,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105195 bfc-',
       ),
-      105196 => 
-      array (
+      105196 =>
+      array(
         'id' => '105196',
         'code' => 'f2-a-workflow_commitee/delete',
         'level' => '1',
@@ -353,19 +353,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105196 bfc-',
       ),
-      105197 => 
-      array (
+      105197 =>
+      array(
         'id' => '105197',
         'code' => 'f2-a-workflow_commitee/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل لجنة',
         'menu_name_en' => 'display details of Workflow commitee',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowCommitee&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105197 bfc-',
       ),
-      105198 => 
-      array (
+      105198 =>
+      array(
         'id' => '105198',
         'code' => 'f2-a-workflow_commitee/search',
         'level' => '1',
@@ -375,19 +375,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105198 bfc-',
       ),
-      105199 => 
-      array (
+      105199 =>
+      array(
         'id' => '105199',
         'code' => 'f2-a-workflow_commitee/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'اللجان',
         'menu_name_en' => 'Workflow commitees',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommitee&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105199 bfc-',
       ),
-      105201 => 
-      array (
+      105201 =>
+      array(
         'id' => '105201',
         'code' => 'f2-a-workflow_model/edit',
         'level' => '1',
@@ -397,8 +397,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105201 bfc-',
       ),
-      105202 => 
-      array (
+      105202 =>
+      array(
         'id' => '105202',
         'code' => 'f2-a-workflow_model/qedit',
         'level' => '1',
@@ -408,8 +408,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105202 bfc-',
       ),
-      105203 => 
-      array (
+      105203 =>
+      array(
         'id' => '105203',
         'code' => 'f2-a-workflow_model/delete',
         'level' => '1',
@@ -419,19 +419,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105203 bfc-',
       ),
-      105204 => 
-      array (
+      105204 =>
+      array(
         'id' => '105204',
         'code' => 'f2-a-workflow_model/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل نموذج سير عمل',
         'menu_name_en' => 'display details of Workflow model',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowModel&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105204 bfc-',
       ),
-      105205 => 
-      array (
+      105205 =>
+      array(
         'id' => '105205',
         'code' => 'f2-a-workflow_model/search',
         'level' => '1',
@@ -441,19 +441,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105205 bfc-',
       ),
-      105206 => 
-      array (
+      105206 =>
+      array(
         'id' => '105206',
         'code' => 'f2-a-workflow_model/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'نماذج سير العمل',
         'menu_name_en' => 'Workflow models',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowModel&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105206 bfc-',
       ),
-      105208 => 
-      array (
+      105208 =>
+      array(
         'id' => '105208',
         'code' => 'f2-a-workflow_scope/edit',
         'level' => '1',
@@ -463,8 +463,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105208 bfc-',
       ),
-      105209 => 
-      array (
+      105209 =>
+      array(
         'id' => '105209',
         'code' => 'f2-a-workflow_scope/qedit',
         'level' => '1',
@@ -474,8 +474,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105209 bfc-',
       ),
-      105210 => 
-      array (
+      105210 =>
+      array(
         'id' => '105210',
         'code' => 'f2-a-workflow_scope/delete',
         'level' => '1',
@@ -485,19 +485,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105210 bfc-',
       ),
-      105211 => 
-      array (
+      105211 =>
+      array(
         'id' => '105211',
         'code' => 'f2-a-workflow_scope/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل برنامج',
         'menu_name_en' => 'display details of Workflow scope',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowScope&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105211 bfc-',
       ),
-      105212 => 
-      array (
+      105212 =>
+      array(
         'id' => '105212',
         'code' => 'f2-a-workflow_scope/search',
         'level' => '1',
@@ -507,19 +507,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105212 bfc-',
       ),
-      105213 => 
-      array (
+      105213 =>
+      array(
         'id' => '105213',
         'code' => 'f2-a-workflow_scope/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البرامج',
         'menu_name_en' => 'Workflow scopes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowScope&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105213 bfc-',
       ),
-      105215 => 
-      array (
+      105215 =>
+      array(
         'id' => '105215',
         'code' => 'f2-a-workflow_stage/edit',
         'level' => '1',
@@ -529,8 +529,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105215 bfc-',
       ),
-      105216 => 
-      array (
+      105216 =>
+      array(
         'id' => '105216',
         'code' => 'f2-a-workflow_stage/qedit',
         'level' => '1',
@@ -540,8 +540,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105216 bfc-',
       ),
-      105217 => 
-      array (
+      105217 =>
+      array(
         'id' => '105217',
         'code' => 'f2-a-workflow_stage/delete',
         'level' => '1',
@@ -551,19 +551,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105217 bfc-',
       ),
-      105218 => 
-      array (
+      105218 =>
+      array(
         'id' => '105218',
         'code' => 'f2-a-workflow_stage/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل مرحلة',
         'menu_name_en' => 'display details of Workflow stage',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowStage&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105218 bfc-',
       ),
-      105219 => 
-      array (
+      105219 =>
+      array(
         'id' => '105219',
         'code' => 'f2-a-workflow_stage/search',
         'level' => '1',
@@ -573,19 +573,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105219 bfc-',
       ),
-      105220 => 
-      array (
+      105220 =>
+      array(
         'id' => '105220',
         'code' => 'f2-a-workflow_stage/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'المراحل',
         'menu_name_en' => 'Workflow stages',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowStage&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105220 bfc-',
       ),
-      105222 => 
-      array (
+      105222 =>
+      array(
         'id' => '105222',
         'code' => 'f2-a-workflow_task/edit',
         'level' => '1',
@@ -595,8 +595,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105222 bfc-',
       ),
-      105223 => 
-      array (
+      105223 =>
+      array(
         'id' => '105223',
         'code' => 'f2-a-workflow_task/qedit',
         'level' => '1',
@@ -606,8 +606,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105223 bfc-',
       ),
-      105224 => 
-      array (
+      105224 =>
+      array(
         'id' => '105224',
         'code' => 'f2-a-workflow_task/delete',
         'level' => '1',
@@ -617,19 +617,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105224 bfc-',
       ),
-      105225 => 
-      array (
+      105225 =>
+      array(
         'id' => '105225',
         'code' => 'f2-a-workflow_task/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل',
         'menu_name_en' => 'display details of Workflow task',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105225 bfc-',
       ),
-      105226 => 
-      array (
+      105226 =>
+      array(
         'id' => '105226',
         'code' => 'f2-a-workflow_task/search',
         'level' => '1',
@@ -639,19 +639,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105226 bfc-',
       ),
-      105227 => 
-      array (
+      105227 =>
+      array(
         'id' => '105227',
         'code' => 'f2-a-workflow_task/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'workflow_task',
         'menu_name_en' => 'Workflow tasks',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105227 bfc-',
       ),
-      105236 => 
-      array (
+      105236 =>
+      array(
         'id' => '105236',
         'code' => 'f2-a-workflow_transition/edit',
         'level' => '1',
@@ -661,8 +661,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105236 bfc-',
       ),
-      105237 => 
-      array (
+      105237 =>
+      array(
         'id' => '105237',
         'code' => 'f2-a-workflow_transition/qedit',
         'level' => '1',
@@ -672,8 +672,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105237 bfc-',
       ),
-      105238 => 
-      array (
+      105238 =>
+      array(
         'id' => '105238',
         'code' => 'f2-a-workflow_transition/delete',
         'level' => '1',
@@ -683,19 +683,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105238 bfc-',
       ),
-      105239 => 
-      array (
+      105239 =>
+      array(
         'id' => '105239',
         'code' => 'f2-a-workflow_transition/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل',
         'menu_name_en' => 'display details of transition',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowTransition&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105239 bfc-',
       ),
-      105240 => 
-      array (
+      105240 =>
+      array(
         'id' => '105240',
         'code' => 'f2-a-workflow_transition/search',
         'level' => '1',
@@ -705,11 +705,11 @@
         'css' => 'bf',
         'icon' => 'bficon-105240 bfc-',
       ),
-      105241 => 
-      array (
+      105241 =>
+      array(
         'id' => '105241',
         'code' => 'f2-a-workflow_transition/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'التحولات',
         'menu_name_en' => 'transitions',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTransition&currmod=workflow',
@@ -717,8 +717,7 @@
         'icon' => 'bficon-105241 bfc-',
       ),
     ),
-    'sub-folders' => 
-    array (
-    ),
+    'sub-folders' =>
+    array(),
   ),
 );

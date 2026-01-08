@@ -24,7 +24,7 @@ $role_info[400] = array(
       array(
         'id' => '105185',
         'code' => 'f2-a-workflow_orgunit/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارات القبول',
         'menu_name_en' => 'Workflow orgunits',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',
@@ -35,7 +35,7 @@ $role_info[400] = array(
       array(
         'id' => '105171',
         'code' => 'f2-a-workflow_commitee_scope/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'مجالات اللجان',
         'menu_name_en' => 'Workflow commitee scopes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeScope&currmod=workflow',
@@ -46,7 +46,7 @@ $role_info[400] = array(
       array(
         'id' => '105150',
         'code' => 'f2-a-job_run/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'تنفيذات المهام الآلية',
         'menu_name_en' => 'Job runs',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRun&currmod=workflow',
@@ -57,7 +57,7 @@ $role_info[400] = array(
       array(
         'id' => '105164',
         'code' => 'f2-a-scjob/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'scjob',
         'menu_name_en' => 'Scjobs',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Scjob&currmod=workflow',
@@ -68,7 +68,7 @@ $role_info[400] = array(
       array(
         'id' => '105157',
         'code' => 'f2-a-job_run_result/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'job_run_result',
         'menu_name_en' => 'Job run results',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRunResult&currmod=workflow',
@@ -126,7 +126,7 @@ $role_info[400] = array(
       array(
         'id' => '105148',
         'code' => 'f2-a-job_run/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل تنفيذ مهمة آلية',
         'menu_name_en' => 'display details of Job run',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=JobRun&currmod=workflow',
@@ -148,7 +148,7 @@ $role_info[400] = array(
       array(
         'id' => '105150',
         'code' => 'f2-a-job_run/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'تنفيذات المهام الآلية',
         'menu_name_en' => 'Job runs',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRun&currmod=workflow',
@@ -192,7 +192,7 @@ $role_info[400] = array(
       array(
         'id' => '105155',
         'code' => 'f2-a-job_run_result/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل',
         'menu_name_en' => 'display details of Job run result',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=JobRunResult&currmod=workflow',
@@ -214,7 +214,7 @@ $role_info[400] = array(
       array(
         'id' => '105157',
         'code' => 'f2-a-job_run_result/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'job_run_result',
         'menu_name_en' => 'Job run results',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=JobRunResult&currmod=workflow',
@@ -258,7 +258,7 @@ $role_info[400] = array(
       array(
         'id' => '105162',
         'code' => 'f2-a-scjob/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل',
         'menu_name_en' => 'display details of Scjob',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=Scjob&currmod=workflow',
@@ -280,7 +280,7 @@ $role_info[400] = array(
       array(
         'id' => '105164',
         'code' => 'f2-a-scjob/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'scjob',
         'menu_name_en' => 'Scjobs',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Scjob&currmod=workflow',
@@ -324,7 +324,7 @@ $role_info[400] = array(
       array(
         'id' => '105169',
         'code' => 'f2-a-workflow_commitee_scope/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل مجال لجنة',
         'menu_name_en' => 'display details of Workflow commitee scope',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowCommiteeScope&currmod=workflow',
@@ -346,7 +346,7 @@ $role_info[400] = array(
       array(
         'id' => '105171',
         'code' => 'f2-a-workflow_commitee_scope/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'مجالات اللجان',
         'menu_name_en' => 'Workflow commitee scopes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeScope&currmod=workflow',
@@ -390,7 +390,7 @@ $role_info[400] = array(
       array(
         'id' => '105176',
         'code' => 'f2-a-workflow_event/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل حدث',
         'menu_name_en' => 'display details of Workflow event',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowEvent&currmod=workflow',
@@ -412,7 +412,7 @@ $role_info[400] = array(
       array(
         'id' => '105178',
         'code' => 'f2-a-workflow_event/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'أحداث',
         'menu_name_en' => 'Workflow events',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEvent&currmod=workflow',
@@ -456,7 +456,7 @@ $role_info[400] = array(
       array(
         'id' => '105183',
         'code' => 'f2-a-workflow_orgunit/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل جهة متابعة',
         'menu_name_en' => 'display details of Workflow orgunit',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowOrgunit&currmod=workflow',
@@ -478,7 +478,7 @@ $role_info[400] = array(
       array(
         'id' => '105185',
         'code' => 'f2-a-workflow_orgunit/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارات القبول',
         'menu_name_en' => 'Workflow orgunits',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowOrgunit&currmod=workflow',

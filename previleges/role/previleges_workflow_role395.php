@@ -1,14 +1,14 @@
 <?php
 
-	$role_info[395] = array (
+$role_info[395] = array(
   'code' => 'goal-content',
-  'name' => 
-  array (
+  'name' =>
+  array(
     'ar' => 'إدارة المحتوى',
     'en' => 'arole.395',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'need_admin' => false,
     'id' => '395',
     'menu_name_' => 'إدارة المحتوى',
@@ -18,112 +18,112 @@
     'css' => 'info',
     'icon' => ' icon-395',
     'showme' => true,
-    'items' => 
-    array (
-      104961 => 
-      array (
+    'items' =>
+    array(
+      104961 =>
+      array(
         'id' => '104961',
         'code' => 'f2-a-workflow_file/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الملفات',
         'menu_name_en' => 'Files',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowFile&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104961 bfc-',
       ),
-      105030 => 
-      array (
+      105030 =>
+      array(
         'id' => '105030',
         'code' => 'f2-a-content_item/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عناصر المحتوى',
         'menu_name_en' => 'Content items',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=ContentItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105030 bfc-',
       ),
-      105027 => 
-      array (
+      105027 =>
+      array(
         'id' => '105027',
         'code' => 'f2-a-content/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'محتويات',
         'menu_name_en' => 'contents',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Content&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105027 bfc-',
       ),
-      105014 => 
-      array (
+      105014 =>
+      array(
         'id' => '105014',
         'code' => 'f2-a-publication/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'المقالات',
         'menu_name_en' => 'Publications',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Publication&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105014 bfc-',
       ),
-      105031 => 
-      array (
+      105031 =>
+      array(
         'id' => '105031',
         'code' => 'f2-a-intelligent_content/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'المحتويات الذكية',
         'menu_name_en' => 'intelligent content',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=IntelligentContent&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105031 bfc-',
       ),
-      105026 => 
-      array (
+      105026 =>
+      array(
         'id' => '105026',
         'code' => 'f2-a-page/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الصفحات',
         'menu_name_en' => 'pages',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Page&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105026 bfc-',
       ),
-      105032 => 
-      array (
+      105032 =>
+      array(
         'id' => '105032',
         'code' => 'f2-a-page_theme/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الثيمات',
         'menu_name_en' => 'Page themes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageTheme&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105032 bfc-',
       ),
-      105029 => 
-      array (
+      105029 =>
+      array(
         'id' => '105029',
         'code' => 'f2-a-page_item/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عناصر الصفحات',
         'menu_name_en' => 'Page items',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105029 bfc-',
       ),
-      105028 => 
-      array (
+      105028 =>
+      array(
         'id' => '105028',
         'code' => 'f2-a-page_section/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'أقسام الصفحات',
         'menu_name_en' => 'page sections',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageSection&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105028 bfc-',
       ),
-      105021 => 
-      array (
+      105021 =>
+      array(
         'id' => '105021',
         'code' => 'f2-a-section_template/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'نماذج',
         'menu_name_en' => 'templates',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=SectionTemplate&currmod=workflow',
@@ -131,10 +131,10 @@
         'icon' => 'bficon-105021 bfc-',
       ),
     ),
-    'otherbfs' => 
-    array (
-      104956 => 
-      array (
+    'otherbfs' =>
+    array(
+      104956 =>
+      array(
         'id' => '104956',
         'code' => 'f2-a-workflow_file/edit',
         'level' => '1',
@@ -144,8 +144,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104956 bfc-',
       ),
-      104958 => 
-      array (
+      104958 =>
+      array(
         'id' => '104958',
         'code' => 'f2-a-workflow_file/delete',
         'level' => '1',
@@ -155,19 +155,19 @@
         'css' => 'bf',
         'icon' => 'bficon-104958 bfc-',
       ),
-      104959 => 
-      array (
+      104959 =>
+      array(
         'id' => '104959',
         'code' => 'f2-a-workflow_file/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل ملف',
         'menu_name_en' => 'display details of File',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowFile&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104959 bfc-',
       ),
-      104960 => 
-      array (
+      104960 =>
+      array(
         'id' => '104960',
         'code' => 'f2-a-workflow_file/search',
         'level' => '1',
@@ -177,30 +177,30 @@
         'css' => 'bf',
         'icon' => 'bficon-104960 bfc-',
       ),
-      104961 => 
-      array (
+      104961 =>
+      array(
         'id' => '104961',
         'code' => 'f2-a-workflow_file/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الملفات',
         'menu_name_en' => 'Files',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowFile&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104961 bfc-',
       ),
-      104963 => 
-      array (
+      104963 =>
+      array(
         'id' => '104963',
         'code' => 'f2-a-content/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل محتوى',
         'menu_name_en' => 'display details of content',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=Content&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104963 bfc-',
       ),
-      104964 => 
-      array (
+      104964 =>
+      array(
         'id' => '104964',
         'code' => 'f2-a-content/search',
         'level' => '1',
@@ -210,8 +210,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104964 bfc-',
       ),
-      104966 => 
-      array (
+      104966 =>
+      array(
         'id' => '104966',
         'code' => 'f2-a-content/edit',
         'level' => '1',
@@ -221,8 +221,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104966 bfc-',
       ),
-      104969 => 
-      array (
+      104969 =>
+      array(
         'id' => '104969',
         'code' => 'f2-a-content/delete',
         'level' => '1',
@@ -232,19 +232,19 @@
         'css' => 'bf',
         'icon' => 'bficon-104969 bfc-',
       ),
-      104970 => 
-      array (
+      104970 =>
+      array(
         'id' => '104970',
         'code' => 'f2-a-content_item/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل عنصر محتوى',
         'menu_name_en' => 'display details of Content item',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=ContentItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104970 bfc-',
       ),
-      104971 => 
-      array (
+      104971 =>
+      array(
         'id' => '104971',
         'code' => 'f2-a-content_item/search',
         'level' => '1',
@@ -254,8 +254,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104971 bfc-',
       ),
-      104973 => 
-      array (
+      104973 =>
+      array(
         'id' => '104973',
         'code' => 'f2-a-content_item/edit',
         'level' => '1',
@@ -265,8 +265,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104973 bfc-',
       ),
-      104976 => 
-      array (
+      104976 =>
+      array(
         'id' => '104976',
         'code' => 'f2-a-content_item/delete',
         'level' => '1',
@@ -276,19 +276,19 @@
         'css' => 'bf',
         'icon' => 'bficon-104976 bfc-',
       ),
-      104977 => 
-      array (
+      104977 =>
+      array(
         'id' => '104977',
         'code' => 'f2-a-intelligent_content/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل محتوى ذكي',
         'menu_name_en' => 'display details of Intelligent content',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=IntelligentContent&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104977 bfc-',
       ),
-      104978 => 
-      array (
+      104978 =>
+      array(
         'id' => '104978',
         'code' => 'f2-a-intelligent_content/search',
         'level' => '1',
@@ -298,8 +298,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104978 bfc-',
       ),
-      104980 => 
-      array (
+      104980 =>
+      array(
         'id' => '104980',
         'code' => 'f2-a-intelligent_content/edit',
         'level' => '1',
@@ -309,8 +309,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104980 bfc-',
       ),
-      104983 => 
-      array (
+      104983 =>
+      array(
         'id' => '104983',
         'code' => 'f2-a-intelligent_content/delete',
         'level' => '1',
@@ -320,19 +320,19 @@
         'css' => 'bf',
         'icon' => 'bficon-104983 bfc-',
       ),
-      104984 => 
-      array (
+      104984 =>
+      array(
         'id' => '104984',
         'code' => 'f2-a-page/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل صفحة',
         'menu_name_en' => 'display details of page',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=Page&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104984 bfc-',
       ),
-      104985 => 
-      array (
+      104985 =>
+      array(
         'id' => '104985',
         'code' => 'f2-a-page/search',
         'level' => '1',
@@ -342,8 +342,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104985 bfc-',
       ),
-      104987 => 
-      array (
+      104987 =>
+      array(
         'id' => '104987',
         'code' => 'f2-a-page/edit',
         'level' => '1',
@@ -353,8 +353,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104987 bfc-',
       ),
-      104990 => 
-      array (
+      104990 =>
+      array(
         'id' => '104990',
         'code' => 'f2-a-page/delete',
         'level' => '1',
@@ -364,19 +364,19 @@
         'css' => 'bf',
         'icon' => 'bficon-104990 bfc-',
       ),
-      104991 => 
-      array (
+      104991 =>
+      array(
         'id' => '104991',
         'code' => 'f2-a-page_item/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل عنصر صفحة',
         'menu_name_en' => 'display details of Page item',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=PageItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104991 bfc-',
       ),
-      104992 => 
-      array (
+      104992 =>
+      array(
         'id' => '104992',
         'code' => 'f2-a-page_item/search',
         'level' => '1',
@@ -386,8 +386,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104992 bfc-',
       ),
-      104994 => 
-      array (
+      104994 =>
+      array(
         'id' => '104994',
         'code' => 'f2-a-page_item/edit',
         'level' => '1',
@@ -397,8 +397,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104994 bfc-',
       ),
-      104997 => 
-      array (
+      104997 =>
+      array(
         'id' => '104997',
         'code' => 'f2-a-page_item/delete',
         'level' => '1',
@@ -408,19 +408,19 @@
         'css' => 'bf',
         'icon' => 'bficon-104997 bfc-',
       ),
-      104998 => 
-      array (
+      104998 =>
+      array(
         'id' => '104998',
         'code' => 'f2-a-page_section/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل قسم صفحة',
         'menu_name_en' => 'display details of page section',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=PageSection&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104998 bfc-',
       ),
-      104999 => 
-      array (
+      104999 =>
+      array(
         'id' => '104999',
         'code' => 'f2-a-page_section/search',
         'level' => '1',
@@ -430,8 +430,8 @@
         'css' => 'bf',
         'icon' => 'bficon-104999 bfc-',
       ),
-      105001 => 
-      array (
+      105001 =>
+      array(
         'id' => '105001',
         'code' => 'f2-a-page_section/edit',
         'level' => '1',
@@ -441,8 +441,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105001 bfc-',
       ),
-      105004 => 
-      array (
+      105004 =>
+      array(
         'id' => '105004',
         'code' => 'f2-a-page_section/delete',
         'level' => '1',
@@ -452,19 +452,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105004 bfc-',
       ),
-      105005 => 
-      array (
+      105005 =>
+      array(
         'id' => '105005',
         'code' => 'f2-a-page_theme/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل ثيم',
         'menu_name_en' => 'display details of Page theme',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=PageTheme&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105005 bfc-',
       ),
-      105006 => 
-      array (
+      105006 =>
+      array(
         'id' => '105006',
         'code' => 'f2-a-page_theme/search',
         'level' => '1',
@@ -474,8 +474,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105006 bfc-',
       ),
-      105008 => 
-      array (
+      105008 =>
+      array(
         'id' => '105008',
         'code' => 'f2-a-page_theme/edit',
         'level' => '1',
@@ -485,8 +485,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105008 bfc-',
       ),
-      105011 => 
-      array (
+      105011 =>
+      array(
         'id' => '105011',
         'code' => 'f2-a-page_theme/delete',
         'level' => '1',
@@ -496,19 +496,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105011 bfc-',
       ),
-      105012 => 
-      array (
+      105012 =>
+      array(
         'id' => '105012',
         'code' => 'f2-a-publication/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل مقال',
         'menu_name_en' => 'display details of Publication',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=Publication&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105012 bfc-',
       ),
-      105013 => 
-      array (
+      105013 =>
+      array(
         'id' => '105013',
         'code' => 'f2-a-publication/search',
         'level' => '1',
@@ -518,19 +518,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105013 bfc-',
       ),
-      105014 => 
-      array (
+      105014 =>
+      array(
         'id' => '105014',
         'code' => 'f2-a-publication/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'المقالات',
         'menu_name_en' => 'Publications',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Publication&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105014 bfc-',
       ),
-      105015 => 
-      array (
+      105015 =>
+      array(
         'id' => '105015',
         'code' => 'f2-a-publication/edit',
         'level' => '1',
@@ -540,8 +540,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105015 bfc-',
       ),
-      105018 => 
-      array (
+      105018 =>
+      array(
         'id' => '105018',
         'code' => 'f2-a-publication/delete',
         'level' => '1',
@@ -551,19 +551,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105018 bfc-',
       ),
-      105019 => 
-      array (
+      105019 =>
+      array(
         'id' => '105019',
         'code' => 'f2-a-section_template/display',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عرض تفاصيل نموذج',
         'menu_name_en' => 'display details of template',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=SectionTemplate&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105019 bfc-',
       ),
-      105020 => 
-      array (
+      105020 =>
+      array(
         'id' => '105020',
         'code' => 'f2-a-section_template/search',
         'level' => '1',
@@ -573,19 +573,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105020 bfc-',
       ),
-      105021 => 
-      array (
+      105021 =>
+      array(
         'id' => '105021',
         'code' => 'f2-a-section_template/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'نماذج',
         'menu_name_en' => 'templates',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=SectionTemplate&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105021 bfc-',
       ),
-      105022 => 
-      array (
+      105022 =>
+      array(
         'id' => '105022',
         'code' => 'f2-a-section_template/edit',
         'level' => '1',
@@ -595,8 +595,8 @@
         'css' => 'bf',
         'icon' => 'bficon-105022 bfc-',
       ),
-      105025 => 
-      array (
+      105025 =>
+      array(
         'id' => '105025',
         'code' => 'f2-a-section_template/delete',
         'level' => '1',
@@ -606,77 +606,77 @@
         'css' => 'bf',
         'icon' => 'bficon-105025 bfc-',
       ),
-      105026 => 
-      array (
+      105026 =>
+      array(
         'id' => '105026',
         'code' => 'f2-a-page/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الصفحات',
         'menu_name_en' => 'pages',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Page&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105026 bfc-',
       ),
-      105027 => 
-      array (
+      105027 =>
+      array(
         'id' => '105027',
         'code' => 'f2-a-content/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'محتويات',
         'menu_name_en' => 'contents',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=Content&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105027 bfc-',
       ),
-      105028 => 
-      array (
+      105028 =>
+      array(
         'id' => '105028',
         'code' => 'f2-a-page_section/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'أقسام الصفحات',
         'menu_name_en' => 'page sections',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageSection&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105028 bfc-',
       ),
-      105029 => 
-      array (
+      105029 =>
+      array(
         'id' => '105029',
         'code' => 'f2-a-page_item/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عناصر الصفحات',
         'menu_name_en' => 'Page items',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105029 bfc-',
       ),
-      105030 => 
-      array (
+      105030 =>
+      array(
         'id' => '105030',
         'code' => 'f2-a-content_item/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'عناصر المحتوى',
         'menu_name_en' => 'Content items',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=ContentItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105030 bfc-',
       ),
-      105031 => 
-      array (
+      105031 =>
+      array(
         'id' => '105031',
         'code' => 'f2-a-intelligent_content/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'المحتويات الذكية',
         'menu_name_en' => 'intelligent content',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=IntelligentContent&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105031 bfc-',
       ),
-      105032 => 
-      array (
+      105032 =>
+      array(
         'id' => '105032',
         'code' => 'f2-a-page_theme/qsearch',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'الثيمات',
         'menu_name_en' => 'Page themes',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=PageTheme&currmod=workflow',
@@ -684,8 +684,7 @@
         'icon' => 'bficon-105032 bfc-',
       ),
     ),
-    'sub-folders' => 
-    array (
-    ),
+    'sub-folders' =>
+    array(),
   ),
 );
