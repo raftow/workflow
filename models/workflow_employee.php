@@ -585,7 +585,7 @@ class WorkflowEmployee extends WorkflowObject
                 $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
                 $obj->where("employee_id != $except_employee_id");
-                $obj->where("wrole_mfk like '%," . implode(",% or wrole_mfk like '%,", $accepted_roles) . ",%'");
+                $obj->where("wrole_mfk like '%," . implode(",%' or wrole_mfk like '%,", $accepted_roles) . ",%'");
                 $obj->where("and wscope_mfk like '%,$wscope_id,%'");
 
                 $objList = $obj->loadMany();

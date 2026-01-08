@@ -129,10 +129,15 @@ class WorkflowRequest extends WorkflowObject
 
         public function getMyTransitions()
         {
+                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
+                if (!$wEmployeeMe) return array();
+                $employeeRolesArray = explode(",", trim($this->getVal("wEmployeeMe"), ","));
+
                 $obj = new WorkflowTransition();
                 $obj->select('workflow_model_id', $this->getVal('workflow_model_id'));
                 $obj->select('initial_stage_id', $this->getVal('workflow_stage_id'));
                 $obj->select('initial_status_id', $this->getVal('workflow_status_id'));
+                $obj->where("workflow_role_mfk like '%," . implode(",%' or workflow_role_mfk like '%,", $employeeRolesArray) . ",%'");
                 return $obj->loadMany();
         }
 
@@ -189,6 +194,7 @@ class WorkflowRequest extends WorkflowObject
 
                 if (($wActionObj->getVal("action_type_enum") == 1) and ($wActionObj->sureIs("comments_mandatory"))) {
                         // Rjection needs rejection justifications comments
+                        /*
                         $objComment = WorkflowRequestComment::findComment($this->id, $this->getVal('workflow_stage_id'), RequestCommentSubject::$REQUEST_COMMENT_SUBJECT_REJECT_REASON);
                         if ($objComment) {
                                 $commentText = trim($objComment->getVal('comment'));
@@ -197,6 +203,11 @@ class WorkflowRequest extends WorkflowObject
                                 }
                         } else {
                                 return array('This transition needs before to enter rejection comments justifications', '');
+                        }
+                        */
+
+                        if (!$this->getVal('workflow_rejection_reason_id')) {
+                                return array($this->tm('This transition needs before to select rejection reason', $lang), '');
                         }
                 }
 

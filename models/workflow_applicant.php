@@ -44,7 +44,7 @@ class WorkflowApplicant extends WorkflowObject
                 $id = null;
                 if (($idn_type_id == 1) or ($idn_type_id == 2)) {
                         if (is_numeric($idn) and $idn_correct) $id = $idn;
-                } 
+                }
 
                 return $id;
         }
@@ -53,17 +53,17 @@ class WorkflowApplicant extends WorkflowObject
         public function convertIdnToID($value)
         {
                 $idn = $value;
-                if(!$idn) return 0;
+                if (!$idn) return 0;
                 list($idn_correct, $idn_type_id) = AfwFormatHelper::getIdnTypeId($idn);
-                if(!$idn_type_id) $idn_type_id = $this->getVal("idn_type_id");
-                if(!$idn_type_id) return 0;
-                
+                if (!$idn_type_id) $idn_type_id = $this->getVal("idn_type_id");
+                if (!$idn_type_id) return 0;
+
                 $id = 0;
                 if (($idn_type_id == 1) or ($idn_type_id == 2)) {
                         if (is_numeric($idn) and $idn_correct) $id = $idn;
                 } else {
                         $country_id = $this->getSelectedValueForAttribute("country_id");
-                        if(!$country_id) $country_id = $this->getVal("country_id");
+                        if (!$country_id) $country_id = $this->getVal("country_id");
                         if ($country_id) {
                                 $id = IdnToId::convertToID('workflow', $country_id, $idn_type_id, $idn);
                         } else {
@@ -152,7 +152,7 @@ class WorkflowApplicant extends WorkflowObject
 
 
 
-        
+
 
         public function beforeMaj($id, $fields_updated)
         {
@@ -173,7 +173,7 @@ class WorkflowApplicant extends WorkflowObject
 
                 $idn = $this->getVal("idn");
                 $idn_type_id = $this->getVal("idn_type_id");
-                if(!$idn_type_id) list($idn_correct, $idn_type_id) = AfwFormatHelper::getIdnTypeId($idn);
+                if (!$idn_type_id) list($idn_correct, $idn_type_id) = AfwFormatHelper::getIdnTypeId($idn);
                 if ((!$idn) or (!$idn_type_id)) // should never happen but ...
                 {
                         throw new  AfwBusinessException("WorkflowApplicant : BAD DATA For IDN=$idn IDN-TYPE=$idn_type_id");
@@ -189,14 +189,14 @@ class WorkflowApplicant extends WorkflowObject
                 {
                         if ($idn_type_id == 3) $idn_type_id = 2;
                         if (($idn_type_id == 1) or ($idn_type_id == 2)) {
-                                if (!is_numeric($idn)) throw new AfwBusinessException("The identity type is not correctly entered",$lang,"","","index.php","IDN $idn of TYPE $idn_type_id SHOULD BE NUMERIC", "workflow"); // 
+                                if (!is_numeric($idn)) throw new AfwBusinessException("The identity type is not correctly entered", $lang, "", "", "index.php", "IDN $idn of TYPE $idn_type_id SHOULD BE NUMERIC", "workflow"); // 
                                 list($idn_correct, $type) = AfwFormatHelper::getIdnTypeId($idn);
-                                if ($type != $idn_type_id) throw new AfwBusinessException("The identity type is incorrect",$lang,"","","index.php","IDN $idn is not of type $idn_type_id but of type $type", "workflow"); // 
-                                if (!$idn_correct) throw new AfwBusinessException("The identity number is not correctly entered",$lang,"","","index.php","IDN $idn of TYPE $idn_type_id HAVE BAD FORMAT", "workflow"); //  
+                                if ($type != $idn_type_id) throw new AfwBusinessException("The identity type is incorrect", $lang, "", "", "index.php", "IDN $idn is not of type $idn_type_id but of type $type", "workflow"); // 
+                                if (!$idn_correct) throw new AfwBusinessException("The identity number is not correctly entered", $lang, "", "", "index.php", "IDN $idn of TYPE $idn_type_id HAVE BAD FORMAT", "workflow"); //  
                                 $this->set("id", $idn);
                         } else {
                                 $country_id = $this->getVal("country_id");
-                                if (!$country_id) throw new  AfwBusinessException("The country/nationalty is required",$lang,"","","index.php","For IDN=$idn IDN-TYPE=$idn_type_id COUNTRY IS REQUIRED", "workflow");
+                                if (!$country_id) throw new  AfwBusinessException("The country/nationalty is required", $lang, "", "", "index.php", "For IDN=$idn IDN-TYPE=$idn_type_id COUNTRY IS REQUIRED", "workflow");
                                 $id = IdnToId::convertToID('workflow', $country_id, $idn_type_id, $idn);
                                 if (!$id) throw new  AfwBusinessException("Failed IDN conversion IdnToId::convertToID('workflow', $country_id, $idn_type_id, $idn)");
                                 $this->set("id", $id);
@@ -211,21 +211,18 @@ class WorkflowApplicant extends WorkflowObject
                         if ($id != $idn) throw new AfwBusinessException("beforeMaj Contact admin please because IDN=$idn != id=$id when idn_type_id == $idn_type_id");
                 }
 
-                
+
 
                 return true;
         }
 
-        public function afterMaj($id, $fields_updated)
-        {
-                
-        }
+        public function afterMaj($id, $fields_updated) {}
 
 
-        
 
 
-        
+
+
         protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
@@ -237,7 +234,7 @@ class WorkflowApplicant extends WorkflowObject
                 $idn = $this->getVal("idn");
                 $displ = $this->getDisplay($lang);
 
-        
+
                 if ($mode == "mode_applicationList") {
                         $already_plan_ids = $this->getAlreadyPlanIds(2);
                         $aplanList = ApplicationPlan::getCurrentApplicationPlans($already_plan_ids);
@@ -260,7 +257,7 @@ class WorkflowApplicant extends WorkflowObject
                         }
                 }
 
-        
+
                 return $otherLinksArray;
         }
 
@@ -331,40 +328,38 @@ class WorkflowApplicant extends WorkflowObject
                                         "LABEL_AR" => $title_ar, 
                                         "LABEL_EN" => $title_en, 
                                         "PUBLIC" => true, "BF-ID" => "", 'STEPS' => 'all');*/
-                
+
                 return $pbms;
         }
 
 
         protected function afterSetAttribute($attribute)
         {
-                if($attribute=="idn") // and (!$this->getVal("idn_type_id"))) 
+                if ($attribute == "idn") // and (!$this->getVal("idn_type_id"))) 
                 {
                         list($idn_correct, $idn_type_id) = AfwFormatHelper::getIdnTypeId($this->getVal("idn"));
-                        if($idn_correct)
-                        { 
-                                $this->set("idn_type_id", $idn_type_id);                                
-                        }  
+                        if ($idn_correct) {
+                                $this->set("idn_type_id", $idn_type_id);
+                        }
                 }
 
-                if($attribute=="idn_type_id") // and (!$this->getVal("idn_type_id"))) 
+                if ($attribute == "idn_type_id") // and (!$this->getVal("idn_type_id"))) 
                 {
-                        if($this->getVal("idn_type_id")==1)
-                        { 
-                                $this->set("country_id", 183);                                
-                        }  
+                        if ($this->getVal("idn_type_id") == 1) {
+                                $this->set("country_id", 183);
+                        }
                 }
         }
-        
 
-        
+
+
 
         public function canUploadFiles()
         {
                 return [true, ""];
         }
 
-        
+
         public function calcDragDropDiv($what = "value")
         {
                 $lang = AfwSession::getSessionVar("current_lang");
@@ -506,7 +501,7 @@ class WorkflowApplicant extends WorkflowObject
                 return $doc_type_arr;
         }
 
-        
+
 
         /**
          * @param WorkflowFile $wf
@@ -532,7 +527,7 @@ class WorkflowApplicant extends WorkflowObject
                 $doc_type_lookup_code = $dtObj->getVal("lookup_code");
                 if (!$doc_type_lookup_code) $doc_type_lookup_code = "other";
                 $from_name = $wf->getVal("afile_name") . " " . $wf->getVal("original_name") . " " . $wf->getParsedText();
-                
+
 
                 $afile_name = $doc_type_lookup_code . "-" . $afObj->id;
 
@@ -550,5 +545,90 @@ class WorkflowApplicant extends WorkflowObject
                 //if($afObj->getId()<=0) die("pfObj($type) = ".var_export($afObj,true));
                 return $afObj;
         }
-}
 
+
+        public function beforeDelete($id, $id_replace)
+        {
+                $server_db_prefix = AfwSession::config("db_prefix", "nauss_");
+
+                if (!$id) {
+                        $id = $this->getId();
+                        $simul = true;
+                } else {
+                        $simul = false;
+                }
+
+                if ($id) {
+                        if ($id_replace == 0) {
+                                // FK part of me - not deletable 
+                                // workflow.workflow_request-المتقدم	workflow_applicant_id  حقل يفلتر به (required field)
+                                // require_once "../workflow/workflow_request.php";
+                                $obj = new WorkflowRequest();
+                                $obj->where("workflow_applicant_id = '$id' and active='Y' ");
+                                $nbRecords = $obj->count();
+                                // check if there's no record that block the delete operation
+                                if ($nbRecords > 0) {
+                                        $this->deleteNotAllowedReason = "Used in some Workflow requests(s) as Applicant";
+                                        return false;
+                                }
+                                // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
+                                if (!$simul) $obj->deleteWhere("workflow_applicant_id = '$id' and active='N'");
+
+                                // workflow.workflow_applicant_file-المتقدم	applicant_id  أنا تفاصيل لها (required field)
+                                // require_once "../workflow/workflow_applicant_file.php";
+                                $obj = new WorkflowApplicantFile();
+                                $obj->where("applicant_id = '$id' and active='Y' ");
+                                $nbRecords = $obj->count();
+                                // check if there's no record that block the delete operation
+                                if ($nbRecords > 0) {
+                                        $this->deleteNotAllowedReason = "Used in some Workflow applicant files(s) as applicant_id";
+                                        return false;
+                                }
+                                // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
+                                if (!$simul) $obj->deleteWhere("applicant_id = '$id' and active='N'");
+
+
+
+                                // FK part of me - deletable 
+
+
+                                // FK not part of me - replaceable 
+
+
+
+                                // MFK
+
+                        } else {
+                                // FK on me 
+
+
+                                // workflow.workflow_request-المتقدم	workflow_applicant_id  حقل يفلتر به (required field)
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_request.php";
+                                        WorkflowRequest::updateWhere(array('workflow_applicant_id' => $id_replace), "workflow_applicant_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_request set workflow_applicant_id='$id_replace' where workflow_applicant_id='$id' ");
+
+                                }
+
+
+
+
+                                // workflow.workflow_applicant_file-المتقدم	applicant_id  أنا تفاصيل لها (required field)
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_applicant_file.php";
+                                        WorkflowApplicantFile::updateWhere(array('applicant_id' => $id_replace), "applicant_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_applicant_file set applicant_id='$id_replace' where applicant_id='$id' ");
+
+                                }
+
+
+
+
+                                // MFK
+
+
+                        }
+                        return true;
+                }
+        }
+}
