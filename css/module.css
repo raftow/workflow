@@ -381,3 +381,7 @@ th.col-importance-small.th-comment_date {
 .icon-388:before {
     content: "\f03e";
 }
+
+.icon-397::before {
+    content: "\f0c0";
+}
