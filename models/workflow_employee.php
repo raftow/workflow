@@ -185,7 +185,7 @@ class WorkflowEmployee extends WorkflowObject
         protected function getPublicMethods()
         {
                 $pbms = array();
-
+                /*
                 $color = 'green';
                 $title_ar = 'اشعرني بايميل';
                 $methodName = 'notifyMe';
@@ -196,7 +196,7 @@ class WorkflowEmployee extends WorkflowObject
                         'PUBLIC' => true,
                         'BF-ID' => '',
                         'STEP' => 1,
-                );
+                );*/
 
                 $color = 'red';
                 $title_ar = 'تصفير كلمة المرور';
@@ -212,7 +212,7 @@ class WorkflowEmployee extends WorkflowObject
                 );
 
                 $color = 'yellow';
-                $title_ar = 'تصفير الصلاحيات';
+                $title_ar = 'تحديث الصلاحيات';
                 $methodName = 'resetPrevileges';
                 $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
                         'METHOD' => $methodName,
@@ -220,6 +220,7 @@ class WorkflowEmployee extends WorkflowObject
                         'LABEL_AR' => $title_ar,
                         // 'PUBLIC' => true,
                         'ADMIN-ONLY' => true,
+                        'MULTIPLE-RUN' => true,
                         'BF-ID' => '',
                         'STEP' => 3,
                 );
