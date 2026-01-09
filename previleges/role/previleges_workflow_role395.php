@@ -11,7 +11,6 @@ $role_info[395] = array(
   array(
     'need_admin' => false,
     'id' => '395',
-    'menu_name_' => 'إدارة المحتوى',
     'menu_name_ar' => 'إدارة المحتوى',
     'menu_name_en' => 'arole.395',
     'page' => 'main.php?Main_Page=fm.php&a=1283&r=395',
@@ -144,6 +143,17 @@ $role_info[395] = array(
         'css' => 'bf',
         'icon' => 'bficon-104956 bfc-',
       ),
+      104957 =>
+      array(
+        'id' => '104957',
+        'code' => 'f2-a-workflow_file/qedit',
+        'level' => '999',
+        'menu_name_ar' => 'إدارة الملفات',
+        'menu_name_en' => 'Files administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowFile&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104957 bfc-',
+      ),
       104958 =>
       array(
         'id' => '104958',
@@ -221,6 +231,17 @@ $role_info[395] = array(
         'css' => 'bf',
         'icon' => 'bficon-104966 bfc-',
       ),
+      104967 =>
+      array(
+        'id' => '104967',
+        'code' => 'f2-a-content/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة محتويات',
+        'menu_name_en' => 'contents administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Content&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104967 bfc-',
+      ),
       104969 =>
       array(
         'id' => '104969',
@@ -264,6 +285,17 @@ $role_info[395] = array(
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=ContentItem&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104973 bfc-',
+      ),
+      104974 =>
+      array(
+        'id' => '104974',
+        'code' => 'f2-a-content_item/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة عناصر المحتوى',
+        'menu_name_en' => 'Content items administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=ContentItem&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104974 bfc-',
       ),
       104976 =>
       array(
@@ -309,6 +341,17 @@ $role_info[395] = array(
         'css' => 'bf',
         'icon' => 'bficon-104980 bfc-',
       ),
+      104981 =>
+      array(
+        'id' => '104981',
+        'code' => 'f2-a-intelligent_content/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة المحتويات الذكية',
+        'menu_name_en' => 'intelligent content administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=IntelligentContent&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104981 bfc-',
+      ),
       104983 =>
       array(
         'id' => '104983',
@@ -352,6 +395,17 @@ $role_info[395] = array(
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=Page&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-104987 bfc-',
+      ),
+      104988 =>
+      array(
+        'id' => '104988',
+        'code' => 'f2-a-page/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة الصفحات',
+        'menu_name_en' => 'pages administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Page&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104988 bfc-',
       ),
       104990 =>
       array(
@@ -397,6 +451,17 @@ $role_info[395] = array(
         'css' => 'bf',
         'icon' => 'bficon-104994 bfc-',
       ),
+      104995 =>
+      array(
+        'id' => '104995',
+        'code' => 'f2-a-page_item/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة عناصر الصفحات',
+        'menu_name_en' => 'Page items administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=PageItem&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-104995 bfc-',
+      ),
       104997 =>
       array(
         'id' => '104997',
@@ -441,6 +506,17 @@ $role_info[395] = array(
         'css' => 'bf',
         'icon' => 'bficon-105001 bfc-',
       ),
+      105002 =>
+      array(
+        'id' => '105002',
+        'code' => 'f2-a-page_section/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة أقسام الصفحات',
+        'menu_name_en' => 'page sections administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=PageSection&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105002 bfc-',
+      ),
       105004 =>
       array(
         'id' => '105004',
@@ -484,6 +560,17 @@ $role_info[395] = array(
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=PageTheme&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105008 bfc-',
+      ),
+      105009 =>
+      array(
+        'id' => '105009',
+        'code' => 'f2-a-page_theme/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة الثيمات',
+        'menu_name_en' => 'Page themes administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=PageTheme&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105009 bfc-',
       ),
       105011 =>
       array(
@@ -540,6 +627,17 @@ $role_info[395] = array(
         'css' => 'bf',
         'icon' => 'bficon-105015 bfc-',
       ),
+      105016 =>
+      array(
+        'id' => '105016',
+        'code' => 'f2-a-publication/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة المقالات',
+        'menu_name_en' => 'Publications administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=Publication&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105016 bfc-',
+      ),
       105018 =>
       array(
         'id' => '105018',
@@ -594,6 +692,17 @@ $role_info[395] = array(
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=SectionTemplate&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105022 bfc-',
+      ),
+      105023 =>
+      array(
+        'id' => '105023',
+        'code' => 'f2-a-section_template/qedit',
+        'level' => '1',
+        'menu_name_ar' => 'إدارة نماذج',
+        'menu_name_en' => 'templates administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=SectionTemplate&currmod=workflow&ids=all&newo=3',
+        'css' => 'bf',
+        'icon' => 'bficon-105023 bfc-',
       ),
       105025 =>
       array(
