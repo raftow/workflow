@@ -142,6 +142,12 @@ class WorkflowRequest extends WorkflowObject
                 return $obj->loadMany();
         }
 
+
+        public function inspectMyAcceptedRoles($lang = "ar")
+        {
+                return $this->getMyAcceptedRoles($lang, true);
+        }
+
         public function getMyAcceptedRoles($lang = "ar", $pbm = false)
         {
                 $result = array();
@@ -291,7 +297,7 @@ class WorkflowRequest extends WorkflowObject
 
                 $color = 'orange';
                 $title_ar = 'تتبع الصلاحيات التي أحتاجها';
-                $methodName = 'getMyAcceptedRoles';
+                $methodName = 'inspectMyAcceptedRoles';
                 $pbms[AfwStringHelper::hzmEncode($methodName)] =
                         array(
                                 'METHOD' => $methodName,
