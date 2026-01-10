@@ -333,7 +333,11 @@ class WorkflowEmployee extends WorkflowObject
                         foreach ($wroleList as $wroleItem) {
                                 $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
                                 foreach ($jobroleArr as $jobroleId) {
+                                        $inf_arr[] = "roles before Add Jobrolw $jobroleId";
+                                        $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                         $objEmployee->addMeThisJobrole($jobroleId);
+                                        $inf_arr[] = "roles after Add Jobrolw $jobroleId";
+                                        $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                 }
                         }
                         $objEmployee->commit();
