@@ -28,28 +28,7 @@ class WorkflowOrgunit extends WorkflowObject
                 if ($objme and $objme->isAdmin()) {
                         // no VH for system admin
                 } else {
-                        $empl_id = $objme ? $objme->getEmployeeId() : 0;
-
-                        if ($empl_id)
-                                $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
-                        if ($empl_id)
-                                $iam_supervisor = WorkflowObject::userIsAdmin();
-
-                        if (!$iam_general_supervisor)
-                                $iam_general_supervisor = 0;
-                        if (!$iam_supervisor)
-                                $iam_supervisor = 0;
-
-                        // if the user is an employee
-                        // he is allowed to see orgunit if :
-                        // 1. he is a general supervisor
-                        // or
-                        // 2. he is a supervisor
-
-                        $employee_allowed_to_see_orgunit_cond =
-                                "($iam_general_supervisor>0 or $iam_supervisor>0)";
-
-                        $this->where("($empl_id>0 and $employee_allowed_to_see_orgunit_cond)");
+                        // no VH requested for the moment
                 }
 
                 $selects = array();

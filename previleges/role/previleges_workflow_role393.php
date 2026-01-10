@@ -11,7 +11,6 @@ $role_info[393] = array(
   array(
     'need_admin' => false,
     'id' => '393',
-    'menu_name_' => 'تنظيم العمل',
     'menu_name_ar' => 'تنظيم العمل',
     'menu_name_en' => 'work organization',
     'page' => 'main.php?Main_Page=fm.php&a=1283&r=393',
@@ -75,16 +74,16 @@ $role_info[393] = array(
         'css' => 'bf',
         'icon' => 'bficon-105220 bfc-',
       ),
-      105227 =>
+      105223 =>
       array(
-        'id' => '105227',
-        'code' => 'f2-a-workflow_task/qsearch',
+        'id' => '105223',
+        'code' => 'f2-a-workflow_task/qedit',
         'level' => '999',
-        'menu_name_ar' => 'workflow_task',
-        'menu_name_en' => 'Workflow tasks',
-        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTask&currmod=workflow',
+        'menu_name_ar' => 'إدارة المهام',
+        'menu_name_en' => 'Workflow tasks administration',
+        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowTask&currmod=workflow&ids=all&newo=3',
         'css' => 'bf',
-        'icon' => 'bficon-105227 bfc-',
+        'icon' => 'bficon-105223 bfc-',
       ),
       105213 =>
       array(
@@ -170,7 +169,7 @@ $role_info[393] = array(
       array(
         'id' => '105037',
         'code' => 'f2-a-workflow_commitee_member/search',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البحث في أعضاء اللجان',
         'menu_name_en' => 'Workflow commitee members search',
         'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowCommiteeMember&currmod=workflow',
@@ -588,8 +587,8 @@ $role_info[393] = array(
       array(
         'id' => '105222',
         'code' => 'f2-a-workflow_task/edit',
-        'level' => '1',
-        'menu_name_ar' => 'إنشاء',
+        'level' => '999',
+        'menu_name_ar' => 'إنشاء مهمة',
         'menu_name_en' => 'create Workflow task',
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
@@ -599,8 +598,8 @@ $role_info[393] = array(
       array(
         'id' => '105223',
         'code' => 'f2-a-workflow_task/qedit',
-        'level' => '1',
-        'menu_name_ar' => 'إدارة workflow_task',
+        'level' => '999',
+        'menu_name_ar' => 'إدارة المهام',
         'menu_name_en' => 'Workflow tasks administration',
         'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowTask&currmod=workflow&ids=all&newo=3',
         'css' => 'bf',
@@ -610,8 +609,8 @@ $role_info[393] = array(
       array(
         'id' => '105224',
         'code' => 'f2-a-workflow_task/delete',
-        'level' => '1',
-        'menu_name_ar' => 'مسح',
+        'level' => '999',
+        'menu_name_ar' => 'مسح مهمة',
         'menu_name_en' => 'delete Workflow task',
         'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
@@ -622,7 +621,7 @@ $role_info[393] = array(
         'id' => '105225',
         'code' => 'f2-a-workflow_task/display',
         'level' => '999',
-        'menu_name_ar' => 'عرض تفاصيل',
+        'menu_name_ar' => 'عرض تفاصيل مهمة',
         'menu_name_en' => 'display details of Workflow task',
         'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
@@ -632,8 +631,8 @@ $role_info[393] = array(
       array(
         'id' => '105226',
         'code' => 'f2-a-workflow_task/search',
-        'level' => '1',
-        'menu_name_ar' => 'البحث في workflow_task',
+        'level' => '999',
+        'menu_name_ar' => 'البحث في المهام',
         'menu_name_en' => 'Workflow tasks search',
         'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
@@ -644,7 +643,7 @@ $role_info[393] = array(
         'id' => '105227',
         'code' => 'f2-a-workflow_task/qsearch',
         'level' => '999',
-        'menu_name_ar' => 'workflow_task',
+        'menu_name_ar' => 'المهام',
         'menu_name_en' => 'Workflow tasks',
         'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowTask&currmod=workflow',
         'css' => 'bf',
