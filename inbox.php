@@ -16,9 +16,13 @@ try {
         $arr_sql_conds = array();
         $arr_sql_conds[] = "me.active='Y'";
         $objme = AfwSession::getUserConnected();
+        $myEmplObj = $objme->getEmployee();
         $myEmplId = $objme->getEmployeeId();
 
-        if ($myEmplId->hasRole("workflow", 393))  // مدير قبول
+        if (!$myEmplObj) {
+                $arr_sql_conds[] = "1=0";
+                $employee_title = "No employee account defined for this user";
+        } elseif ($myEmplObj->hasRole("workflow", 393))  // مدير قبول
         {
                 $arr_sql_conds[] = "active='Y' and done != 'Y'";
                 $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false);
