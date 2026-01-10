@@ -291,7 +291,7 @@ $role_info[400] = array(
       array(
         'id' => '105166',
         'code' => 'f2-a-workflow_commitee_scope/edit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إنشاء مجال لجنة',
         'menu_name_en' => 'create Workflow commitee scope',
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowCommiteeScope&currmod=workflow',
@@ -302,7 +302,7 @@ $role_info[400] = array(
       array(
         'id' => '105167',
         'code' => 'f2-a-workflow_commitee_scope/qedit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارة مجالات اللجان',
         'menu_name_en' => 'Workflow commitee scopes administration',
         'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowCommiteeScope&currmod=workflow&ids=all&newo=3',
@@ -313,7 +313,7 @@ $role_info[400] = array(
       array(
         'id' => '105168',
         'code' => 'f2-a-workflow_commitee_scope/delete',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'مسح مجال لجنة',
         'menu_name_en' => 'delete Workflow commitee scope',
         'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowCommiteeScope&currmod=workflow',
@@ -335,7 +335,7 @@ $role_info[400] = array(
       array(
         'id' => '105170',
         'code' => 'f2-a-workflow_commitee_scope/search',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البحث في مجالات اللجان',
         'menu_name_en' => 'Workflow commitee scopes search',
         'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowCommiteeScope&currmod=workflow',

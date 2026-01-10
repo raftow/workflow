@@ -126,7 +126,7 @@ $role_info[393] = array(
       array(
         'id' => '105033',
         'code' => 'f2-a-workflow_commitee_member/edit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إنشاء عضو لجنة',
         'menu_name_en' => 'create Workflow commitee member',
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowCommiteeMember&currmod=workflow',
@@ -137,7 +137,7 @@ $role_info[393] = array(
       array(
         'id' => '105034',
         'code' => 'f2-a-workflow_commitee_member/qedit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارة أعضاء اللجان',
         'menu_name_en' => 'Workflow commitee members administration',
         'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowCommiteeMember&currmod=workflow&ids=all&newo=3',
@@ -148,7 +148,7 @@ $role_info[393] = array(
       array(
         'id' => '105035',
         'code' => 'f2-a-workflow_commitee_member/delete',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'مسح عضو لجنة',
         'menu_name_en' => 'delete Workflow commitee member',
         'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowCommiteeMember&currmod=workflow',
@@ -324,7 +324,7 @@ $role_info[393] = array(
       array(
         'id' => '105194',
         'code' => 'f2-a-workflow_commitee/edit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إنشاء لجنة',
         'menu_name_en' => 'create Workflow commitee',
         'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=WorkflowCommitee&currmod=workflow',
@@ -335,7 +335,7 @@ $role_info[393] = array(
       array(
         'id' => '105195',
         'code' => 'f2-a-workflow_commitee/qedit',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إدارة اللجان',
         'menu_name_en' => 'Workflow commitees administration',
         'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowCommitee&currmod=workflow&ids=all&newo=3',
@@ -346,7 +346,7 @@ $role_info[393] = array(
       array(
         'id' => '105196',
         'code' => 'f2-a-workflow_commitee/delete',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'مسح لجنة',
         'menu_name_en' => 'delete Workflow commitee',
         'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowCommitee&currmod=workflow',
@@ -368,7 +368,7 @@ $role_info[393] = array(
       array(
         'id' => '105198',
         'code' => 'f2-a-workflow_commitee/search',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'البحث في اللجان',
         'menu_name_en' => 'Workflow commitees search',
         'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowCommitee&currmod=workflow',
