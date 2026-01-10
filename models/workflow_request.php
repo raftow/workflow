@@ -128,17 +128,22 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function getMyTransitions()
+        public function getMyTransitions($onlyForAuthenticatedEmployee = false)
         {
-                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
-                if (!$wEmployeeMe) return array();
-                $employeeRolesArray = explode(",", trim($this->getVal("wEmployeeMe"), ","));
+                if ($onlyForAuthenticatedEmployee) {
+                        $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
+                        if (!$wEmployeeMe) return array();
+                        $employeeRolesArray = explode(",", trim($this->getVal("wrole_mfk"), ","));
+                } else {
+                        $employeeRolesArray = null;
+                }
+
 
                 $obj = new WorkflowTransition();
                 $obj->select('workflow_model_id', $this->getVal('workflow_model_id'));
                 $obj->select('initial_stage_id', $this->getVal('workflow_stage_id'));
                 $obj->select('initial_status_id', $this->getVal('workflow_status_id'));
-                $obj->where("workflow_role_mfk like '%," . implode(",%' or workflow_role_mfk like '%,", $employeeRolesArray) . ",%'");
+                if ($employeeRolesArray) $obj->where("workflow_role_mfk like '%," . implode(",%' or workflow_role_mfk like '%,", $employeeRolesArray) . ",%'");
                 return $obj->loadMany();
         }
 
@@ -296,7 +301,7 @@ class WorkflowRequest extends WorkflowObject
 
 
                 $color = 'orange';
-                $title_ar = 'تتبع الصلاحيات التي أحتاجها';
+                $title_ar = 'فحص الصلاحيات التي أحتاجها';
                 $methodName = 'inspectMyAcceptedRoles';
                 $pbms[AfwStringHelper::hzmEncode($methodName)] =
                         array(
