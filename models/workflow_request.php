@@ -142,18 +142,26 @@ class WorkflowRequest extends WorkflowObject
                 return $obj->loadMany();
         }
 
-        public function getMyAcceptedRoles()
+        public function getMyAcceptedRoles($lang = "ar", $pbm = false)
         {
                 $result = array();
                 $transitionList = $this->getMyTransitions();
 
+                $journal = [];
+
+                if ($pbm) $journal[] = "My Transitions Found : " . count($transitionList);
+
                 foreach ($transitionList as $transition) {
                         $accepted_roles_mfk = trim($transition->getVal("workflow_role_mfk"), ",");
+                        if ($pbm) $journal[] = $transition->getDisplay($lang) . " : roles = $accepted_roles_mfk";
                         $authorizedRolesArray = explode(",", $accepted_roles_mfk);
                         $result = array_merge($result, $authorizedRolesArray);
+                        if ($pbm) $journal[] = $transition->getDisplay($lang) . " : merged = " . implode("/", $result);
                 }
 
-                return $result;
+
+                if ($pbm) return AfwFormatHelper::pbm_result('', $journal);
+                else return $result;
         }
 
 
@@ -278,6 +286,21 @@ class WorkflowRequest extends WorkflowObject
                 $objme = AfwSession::getUserConnected();
                 $log = '';
                 $pbms = array();
+
+
+
+                $color = 'orange';
+                $title_ar = 'تتبع الصلاحيات التي أحتاجها';
+                $methodName = 'getMyAcceptedRoles';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                        array(
+                                'METHOD' => $methodName,
+                                'COLOR' => $color,
+                                'LABEL_AR' => $title_ar,
+                                'ADMIN-ONLY' => true,
+                                'BF-ID' => '',
+                                'STEP' => $this->stepOfAttribute('employee_id')
+                        );
 
                 $color = 'green';
                 $title_ar = 'تعيين الموظف الأقل عبئا';
