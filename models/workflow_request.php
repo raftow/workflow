@@ -296,7 +296,7 @@ class WorkflowRequest extends WorkflowObject
                 // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
                         if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
-                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList);
+                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
                         }
 
                         if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
