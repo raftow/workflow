@@ -24,7 +24,7 @@ try {
                 $employee_title = "No employee account defined for this user";
         } elseif ($myEmplObj->hasRole("workflow", 393))  // مدير قبول
         {
-                $arr_sql_conds[] = "active='Y' and done != 'Y'";
+                $arr_sql_conds[] = "me.done != 'Y'";
                 $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false);
                 $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
 
