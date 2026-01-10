@@ -17,6 +17,7 @@ class WorkflowRequest extends WorkflowObject
                         'confirmation_warning' => '',
                         'confirmation_question' => '',
                         'itemsMethod' => 'getEmployees',
+                        'roles' => "",
                 ),
 
 
@@ -765,6 +766,16 @@ class WorkflowRequest extends WorkflowObject
 
 
                 return true;
+        }
+
+
+        /**
+         * @param Auser $auser
+         */
+
+        public function canAssignRequest($auser, $mode)
+        {
+                return $auser->hasRole($module_code, $role_id);
         }
 
 
