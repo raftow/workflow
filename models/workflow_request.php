@@ -318,6 +318,7 @@ class WorkflowRequest extends WorkflowObject
                 $strict = false;
                 $except_emp_id = 0;
                 $accepted_roles = $this->getMyAcceptedRoles();
+                die("For me w-request is=" . $this->id . " ac-roles are : " . var_export($accepted_roles, true));
                 // find the best available employee
                 if ($this->getVal('employee_id') > 0) {
 
