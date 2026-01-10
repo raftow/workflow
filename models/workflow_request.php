@@ -256,7 +256,9 @@ class WorkflowRequest extends WorkflowObject
                 else
                         $except_employee_id = $this->getVal('employee_id');
 
-                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), $this->getVal('workflow_scope_id'), $except_employee_id);  // $this->getVal("employee_id")
+                $accepted_roles = $this->getMyAcceptedRoles();
+
+                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), $this->getVal('workflow_scope_id'), $except_employee_id, $accepted_roles);  // $this->getVal("employee_id")
         }
 
         public function getMethodTitle($methodName, $lang = 'ar')
