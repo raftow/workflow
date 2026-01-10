@@ -566,34 +566,24 @@ class WorkflowEmployee extends WorkflowObject
                 return array($empListIds, $empList);
         }
 
-        public static function getEmployeeList($orgunit_id, $wscope_id, $except_employee_id = 0)
+        public static function getEmployeeList($orgunit_id = 0, $wscope_id = 0, $except_employee_id = 0, $accepted_roles = [1], $hrm = true)
         {
                 $obj = new WorkflowEmployee();
-                if (!$orgunit_id)
-                        throw new AfwRuntimeException('getEmployeeList need a correct and valid orgunit_id');
-                // $obj->select_visibilite_horizontale();
-                $obj->select('orgunit_id', $orgunit_id);
                 $obj->select('active', 'Y');
-                $obj->where("employee_id != $except_employee_id and wrole_mfk like '%,1,%' and wscope_mfk like '%,$wscope_id,%'");
+                if ($orgunit_id) $obj->select('orgunit_id', $orgunit_id);
+                if ($except_employee_id) $obj->where("employee_id != $except_employee_id");
+                if ($accepted_roles) $obj->where("wrole_mfk like '%," . implode(",%' or wrole_mfk like '%,", $accepted_roles) . ",%'");
+                if ($wscope_id) $obj->where("wscope_mfk like '%,$wscope_id,%'");
 
-                $objList = AfwLoadHelper::loadList($obj, 'employee_id');
+                if ($hrm) $objList = AfwLoadHelper::loadList($obj, 'employee_id');
+                else $objList = $obj->loadMany();
 
                 return $objList;
         }
 
         public static function getEmployeeArray($orgunit_id, $wscope_id, $except_employee_id = 0, $accepted_roles = [1])
         {
-                $obj = new WorkflowEmployee();
-                if (!$orgunit_id)
-                        $obj->simpleError('getEmployeeList need a correct and valid orgunit_id');
-                // $obj->select_visibilite_horizontale();
-                $obj->select('orgunit_id', $orgunit_id);
-                $obj->select('active', 'Y');
-                $obj->where("employee_id != $except_employee_id");
-                $obj->where("wrole_mfk like '%," . implode(",%' or wrole_mfk like '%,", $accepted_roles) . ",%'");
-                $obj->where("and wscope_mfk like '%,$wscope_id,%'");
-
-                $objList = $obj->loadMany();
+                $objList = self::getEmployeeList($orgunit_id, $wscope_id, $except_employee_id, $accepted_roles, false);
 
                 $empList = array();
 
