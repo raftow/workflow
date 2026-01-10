@@ -285,7 +285,7 @@ class WorkflowRequest extends WorkflowObject
                                 'METHOD' => $methodName,
                                 'COLOR' => $color,
                                 'LABEL_AR' => $title_ar,
-                                'ADMIN-ONLY' => true,
+                                'ROLES' => 'workflow/393',
                                 'BF-ID' => '',
                                 'STEP' => $this->stepOfAttribute('employee_id')
                         );
