@@ -271,7 +271,7 @@ class WorkflowWorkflowRoleAfwStructure
                         'SHOW' => true,
                         'MINIBOX' => true,
                         'MB_CSS' => 'width_pct_100',
-                        'RETRIEVE' => false,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
                         'MANDATORY' => true,
                         'QEDIT' => false,
