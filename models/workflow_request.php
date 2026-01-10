@@ -773,11 +773,12 @@ class WorkflowRequest extends WorkflowObject
          * @param Auser $auser
          */
 
+        /*
         public function canAssignRequest($auser, $mode)
         {
                 return $auser->hasRole($module_code, $role_id);
         }
-
+        */
 
         /*
          * public static function assignSupervisorForNonAssigned($reset = false, $silent = false, $lang = 'ar', $limit = '200', $jobContext = null)

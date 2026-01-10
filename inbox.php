@@ -2,7 +2,7 @@
 try {
         $file_dir_name = dirname(__FILE__);
 
-        require_once ("$file_dir_name/../config/global_config.php");
+        require_once("$file_dir_name/../config/global_config.php");
         // old include of afw.php
         // require_once("$file_dir_name/../lib/afw/modes/afw_ config.php");
 
@@ -18,12 +18,14 @@ try {
         $objme = AfwSession::getUserConnected();
         $myEmplId = $objme->getEmployeeId();
 
-        if (false)  // WorkflowEmployee::isAdmin($myEmplId)
+        if ($myEmplId->hasRole("workflow", 393))  // مدير قبول
         {
-                // $arr_sql_conds[] = "(me.supervisor_id='$myEmplId' or me.supervisor_id=0 or me.supervisor_id is null)";
-                // $arr_sql_conds[] = "((me.status_id in (3, 301)) or (me.status_id in (2, 201, 4) and me.employee_id in (0,$myEmplId)))"; // 2=sent, 3=redirected
-                // $arr_sql_conds[] = "((".WorkflowRequest::inbox SqlCond("supervisor", $myEmplId).") or (".WorkflowRequest::inboxS qlCond("employee", $myEmplId)."))";
-                // $employee_title = AfwLanguageHelper::tt('مشرف خدمة العملاء :')." ".$objme->getDisplay($lang);
+                $arr_sql_conds[] = "active='Y' and done != 'Y'";
+                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false);
+                $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
+
+                if ($orgunit_name)
+                        $employee_title .= ' ' . $orgunit_name;
         } else {
                 $arr_sql_conds[] = WorkflowRequest::inboxSqlCond($myEmplId);
                 $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false);
@@ -65,5 +67,3 @@ try {
 } catch (Exception $e) {
         $out_scr .= $e->getMessage() . "<br>\n" . $e->getFile() . ' Line ' . $e->getLine() . "<br>\n" . $e->getTraceAsString();
 }
-
-?>
