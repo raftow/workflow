@@ -603,7 +603,7 @@ class WorkflowEmployee extends WorkflowObject
                 return $empList;
         }
 
-        public static function orgOfEmployee($employee_id, $return_object = false, $return_id = true)
+        public static function orgOfEmployee($employee_id, $return_object = false, $return_id = true, $role_title = "")
         {
                 if (!self::$orgListOfEmployee[$employee_id]) {
                         $obj = new WorkflowEmployee();
@@ -626,7 +626,7 @@ class WorkflowEmployee extends WorkflowObject
                                         $lang = AfwSession::getSessionVar('current_lang');
                                         if (!$lang)
                                                 $lang = 'ar';
-                                        return AfwLanguageHelper::tt('موظف القبول في') . ' ' . $objItem->getDisplay($lang);
+                                        return $role_title . ' ' . $objItem->getDisplay($lang);
                                 }
                         }
                 } elseif (count($objList) > 1) {

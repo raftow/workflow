@@ -17,7 +17,7 @@ class WorkflowRequest extends WorkflowObject
                         'confirmation_warning' => '',
                         'confirmation_question' => '',
                         'itemsMethod' => 'getEmployees',
-                        'roles' => "393",
+                        'roles' => "workflow/393",
                 ),
 
 

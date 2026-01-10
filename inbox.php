@@ -25,14 +25,14 @@ try {
         } elseif ($myEmplObj->hasRole("workflow", 393))  // مدير قبول
         {
                 $arr_sql_conds[] = "me.done != 'Y'";
-                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false);
+                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('مدير القبول في'));
                 $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
 
                 if ($orgunit_name)
                         $employee_title .= ' ' . $orgunit_name;
         } else {
                 $arr_sql_conds[] = WorkflowRequest::inboxSqlCond($myEmplId);
-                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false);
+                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('موظف القبول في'));
                 $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
 
                 if ($orgunit_name)
