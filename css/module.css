@@ -385,3 +385,163 @@ th.col-importance-small.th-comment_date {
 .icon-397::before {
     content: "\f0c0";
 }
+
+/*****     start of upload files css   *********************/
+
+.hzm_data_dragDropDiv {
+    font-size: 14px;
+    font-weight: normal;
+    width: 100%;
+    padding: 0px;
+    margin: 15px;
+    float: right;
+}
+
+.drop_help {
+    background-color: #d1eefc52 !important;
+    border: 1px #6ac8e7 solid;
+    padding: 9px !important;
+    width: 100%;
+    float: right;
+    line-height: 22px;
+}
+
+.drop_help_items {
+    padding: 9px !important;
+    background-color: #ffffff !important;
+    margin-bottom: 15px;
+    float: right;
+    border: 1px silver solid;
+    width: 100%;
+}
+
+.drop_help_categs {
+    background-color: #eefacb75 !important;
+    padding: 9px !important;
+    width: 100%;
+    float: right;
+    border: 1px silver solid;
+}
+
+.certiftp {
+    width: 18%;
+    min-width: 200px;
+    height: 42px;
+    background-color: #efefef;
+    border: 1px silver solid;
+    float: right;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 10px;
+}
+
+.certiftp a{
+    float: right;
+    width: 100%;
+    text-align:center;
+    padding-top:10px;
+    color: black;    
+}
+
+.certiftp.current {
+    background-color: #0b90dd !important;
+    border: 1px #2966a9 solid;
+    color: white;
+}
+
+.certiftp.current a {
+    color: white;
+}
+
+
+
+#drop {
+    background-color: #eefacb75 !important;
+    padding: 20px !important;
+    border-image: url(../pic/border-import.png) 25 repeat !important;
+    float: right;
+    width: 100%;
+}
+
+#drop a {
+    background-color: #5db70a !important;
+    font-size: 93% !important;
+}
+
+#upload {
+    background-color: #eeeeee63 !important;
+    width: 100% !important;
+    height: 95% !important;
+    padding: 9px !important;
+    border-radius: 0px !important;
+    margin: 0 !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3) !important;
+    float: right;
+}
+
+#upload ul {
+    list-style: none;
+    margin: 0 0px !important;
+    border-top: 1px dashed #72c427 !important;
+    border-bottom: 1px #72c427 !important;
+    float: right;
+    width: 100%;
+    padding: 0px !important;
+}
+
+#upload ul li {
+    background-color: #FEFEFF;
+    border-top: 1px dashed #72c427 !important;
+    border-bottom: 1px #72c427 !important;
+    padding: 6px;
+    height: 75px;
+    position: relative;
+    direction: ltr;
+}
+
+#upload ul li p {
+    width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000;
+    font-weight: normal;
+    font-size: 85%;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    text-align: left;
+}
+
+.certiftp.not_mandatory {
+    border: 2px #000 solid !important;
+}
+
+.certiftp.is_mandatory.todo_categ {
+    border: 2px red solid !important;
+}
+
+.certiftp.is_mandatory.done_categ {
+    border: 2px green solid !important;
+}
+
+.certiftp.current.is_mandatory.todo_categ {
+    border: 2px #166ab7 solid !important;
+}
+
+.drop_hint {
+    padding-top: 10px;
+    font-size: 85%;
+    color: green;
+    font-weight: bold;
+}
+
+.drop_categ_desc {
+    padding: 8px 10px 8px 10px;
+    font-weight: bold;
+    color: #d86711;
+    background-color: #fdfbbab8;
+    border: 1px #d86711 solid;
+    margin-bottom: 5px;
+}
+
+/*****     end of upload files css   *********************/
