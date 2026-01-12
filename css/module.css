@@ -545,3 +545,11 @@ th.col-importance-small.th-comment_date {
 }
 
 /*****     end of upload files css   *********************/
+
+div#fg-applicationWarningDiv {
+    min-height: 0;
+}
+
+div#fg-desiresLimitWarningDiv {
+    min-height: 0;
+}
