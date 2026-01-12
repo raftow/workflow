@@ -334,7 +334,7 @@ class WorkflowRequest extends WorkflowObject
                                 'COLOR' => $color,
                                 'LABEL_AR' => $title_ar,
                                 'ROLES' => 'workflow/393',
-                                'BF-ID' => '',
+                                'PUBLIC' => true,
                                 'STEP' => $this->stepOfAttribute('employee_id')
                         );
 
