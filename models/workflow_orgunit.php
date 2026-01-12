@@ -110,11 +110,11 @@ class WorkflowOrgunit extends WorkflowObject
                         $link['ATTRIBUTE_WRITEABLE'] = 'allEmployeeList';
                         $otherLinksArray[] = $link;
                 }
-
+                /*
                 if ($mode == 'mode_tempEmployeeList') {
                         unset($link);
                         $link = array();
-                        $title = 'إضافة طلب تعيين موظف قبول ';
+                        $title = 'إضافة طلب تعي ين موظف قبول ';
                         $title_detailed = $title . 'لـ : ' . $displ;
                         $link['URL'] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowEmpRequest&currmod=workflow&sel_orgunit_id=$orgunit_id";
                         $link['TITLE'] = $title;
@@ -123,7 +123,7 @@ class WorkflowOrgunit extends WorkflowObject
                         $link['UGROUPS'] = array();
                         $link['ATTRIBUTE_WRITEABLE'] = 'tempEmployeeList';
                         $otherLinksArray[] = $link;
-                }
+                }*/
 
                 return $otherLinksArray;
         }

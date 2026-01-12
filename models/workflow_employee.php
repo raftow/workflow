@@ -535,9 +535,9 @@ class WorkflowEmployee extends WorkflowObject
          * }
          */
 
-        public static function getEmployeeListOfIds($orgunit_id, $wscope_id)
+        public static function getEmployeeListOfIds($orgunit_id, $wscope_id, $except_employee_id = 0, $accepted_roles = [1])
         {
-                $empList = self::getEmployeeList($orgunit_id, $wscope_id);
+                $empList = self::getEmployeeList($orgunit_id, $wscope_id, $except_employee_id, $accepted_roles);
 
                 $empListIds = array();
                 foreach ($empList as $id => $empObj) {

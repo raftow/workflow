@@ -21,10 +21,10 @@ class WorkflowOrgunitArTranslator
 		$trad['workflow_orgunit']['step1'] = 'البيانات العامة';
 		$trad['workflow_orgunit']['step2'] = 'الموظفون';
 		$trad['workflow_orgunit']['step3'] = 'الطلبات المسندة';
-		$trad['workflow_orgunit']['step4'] = 'تعيين الموظفين';
+		// $trad['workflow_orgunit']['step4'] = 'تعي ين الموظفين';
 		$trad['workflow_orgunit']['step5'] = 'إعدادات الاحصائيات';
 
-		$trad['workflow_orgunit']['tempEmployeeList'] = 'طلبات تعيين موظف';
+		// $trad['workflow_orgunit']['tempEmployeeList'] = 'طلبات تعي ين موظف';
 
 		$trad['workflow_orgunit']['perf_stats_days'] = 'عدد أيام تقرير الأداء';
 		$trad['workflow_orgunit']['standard_stats_days'] = 'عدد أيام تقارير الاحصائيات';

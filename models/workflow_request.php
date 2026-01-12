@@ -11,7 +11,7 @@ class WorkflowRequest extends WorkflowObject
 
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
-                        'title' => 'تعيين [item]',
+                        'title' => 'تحويل الطلب إلى [item]',
                         'color' => 'white',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
