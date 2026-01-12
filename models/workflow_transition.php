@@ -186,6 +186,8 @@ class WorkflowTransition extends AFWObject
 
         $cond_sql_arr = [];
 
+        $cond_sql_arr[] = "0 -- for wrole $wrole_id \n";
+
         foreach ($rows as $row) {
             $initial_stage_id = $row['initial_stage_id'];
             $initial_status_id = $row['initial_status_id'];
