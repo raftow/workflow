@@ -131,86 +131,22 @@ class WorkflowOrgunit extends WorkflowObject
         protected function getPublicMethods()
         {
                 $pbms = array();
-                $iam_general_supervisor = WorkflowObject::userIsSuperAdmin();
-                if ($iam_general_supervisor) {
 
-                        $color = 'orange';
-                        $title_ar = 'إعادة توزيع الطلبات على موظفي القبول';
-                        $methodName = 'resetRequestAssignement';
-                        $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'PUBLIC' => true,
-                                'BF-ID' => '',
-                                'HZM-SIZE' => 12,
-                                // 'STEP' => $this->stepOfAttribute('currentRequests'),
+                $color = 'orange';
+                $title_ar = 'إعادة توزيع الطلبات على موظفي القبول';
+                $methodName = 'resetRequestAssignement';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+                        'METHOD' => $methodName,
+                        'COLOR' => $color,
+                        'LABEL_AR' => $title_ar,
+                        'PUBLIC' => true,
+                        'ROLES' => 'workflow/393',
+                        'HZM-SIZE' => 12,
+                        // 'STEP' => $this->stepOfAttribute('currentRequests'),
 
-                        );
+                );
 
 
-                        /*
-                        all below methods need to define default scope for this workflow orgunit
-                        $color = 'green';
-                        $title_ar = 'اسناد الطلبات إلى موظفي القبول';
-                        $methodName = 'requestAssignement';
-                        $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'PUBLIC' => true,
-                                'BF-ID' => '',
-                                'HZM-SIZE' => 12,
-                                'STEP' => $this->stepOfAttribute('currentRequests'),
-
-                        );
-
-                        
-                        if ($this->getVal('orgunit_id') == WorkflowOrgunit::$MAIN_CUSTOMER_SERVICE_DEPARTMENT_ID) {
-                                $color = 'blue';
-                                $title_ar = 'اعادة توزيع الطلبات على مشرفي التنسيق';
-                                $methodName = 'resetSupervisorAssignement';
-                                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
-                                        'METHOD' => $methodName,
-                                        'COLOR' => $color,
-                                        'LABEL_AR' => $title_ar,
-                                        'PUBLIC' => true,
-                                        'BF-ID' => '',
-                                        'HZM-SIZE' => 12,
-                                        'STEP' => $this->stepOfAttribute('currentRequests'),
-
-                                );
-
-                                $color = 'green';
-                                $title_ar = 'توزيع الطلبات على مشرفي التنسيق';
-                                $methodName = 'supervisorAssignement';
-                                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
-                                        'METHOD' => $methodName,
-                                        'COLOR' => $color,
-                                        'LABEL_AR' => $title_ar,
-                                        'PUBLIC' => true,
-                                        'BF-ID' => '',
-                                        'HZM-SIZE' => 12,
-                                        'STEP' => $this->stepOfAttribute('currentRequests'),
-                                );
-                        }
-
-                        need to define default scope for this workflow orgunit
-                        $color = 'orange';
-                        $title_ar = 'أي موظفي القبول متوفر أكثر';
-                        $methodName = 'getBestAvailEmployee';
-                        $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'ADMIN' => true,
-                                'BF-ID' => '',
-                                'HZM-SIZE' => 12,
-                                'STEP' => $this->stepOfAttribute('allEmployeeList'),
-
-                                
-                        );*/
-                }
 
                 return $pbms;
         }
