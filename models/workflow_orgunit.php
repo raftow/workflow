@@ -236,68 +236,96 @@ class WorkflowOrgunit extends WorkflowObject
 
         public function requestAssignement($lang = 'ar', $reset = false)
         {
-                $scopeArr = WorkflowScope::loadAllLookupObjects();
-                $inbox_arr = array();
-                foreach ($scopeArr as $wscope_id => $wscopeObj) {
-                        // unassign request assigned to non active / non convenient employees
-                        list($arrEmployee, $listEmployee) = WorkflowEmployee::getEmployeeListOfIds($this->getVal('orgunit_id'), $wscope_id);
-                        $arrEmployee[] = 0;
-                        $arrEmployeeTxt = implode(',', $arrEmployee);
-                        $obj = new WorkflowRequest();
-                        $obj->select('orgunit_id', $this->getVal('orgunit_id'));
-                        if ($reset) {
-                                $obj->where("done != 'Y' and (employee_id is null or employee_id not in ($arrEmployeeTxt))");
-                        } else {
-                                $obj->where("done != 'Y' and employee_id is null");
-                        }
-
-                        $obj->setForce('employee_id', 0);
-                        // $status_comment = 'requestAssignement reset=' . $reset;
-                        // $this->setForce('status_comment', $status_comment);
-                        $nb_resetted = $obj->update(false);
-
-                        // prepare array of inbox count for each of them to be equitable
-                        // on requests distribution
-
-                        foreach ($listEmployee as $objEmployee) {
-                                $inbox_arr[$objEmployee->id] = WorkflowRequest::inboxCountFor($objEmployee->id);
-                        }
-                }
-
-
-                // die("inbox count by employee : ".var_export($inbox_arr,true));
-
+                $err_arr = [];
+                $inf_arr = [];
+                $war_arr = [];
+                $tech_arr = [];
                 function getPrioEmployee($inbox_list)
                 {
                         $count_curr = 999999;
-                        $inv_selected_id = 0;
-                        foreach ($inbox_list as $inv_id => $count) {
+                        $employee_selected_id = 0;
+                        foreach ($inbox_list as $empl_id => $count) {
                                 if ($count < $count_curr) {
                                         $count_curr = $count;
-                                        $inv_selected_id = $inv_id;
+                                        $employee_selected_id = $empl_id;
                                 }
                         }
 
-                        return $inv_selected_id;
+                        return $employee_selected_id;
                 }
 
-                unset($obj);
-                $obj = new WorkflowRequest();
-                $obj->select('orgunit_id', $this->getVal('orgunit_id'));
-                $obj->where("done != 'Y' and (employee_id is null or employee_id = 0)");
-                $nb_assigned = 0;
-                $requestWaitingList = $obj->loadMany();
-                /** @var WorkflowRequest $requestWaitingObj */
-                foreach ($requestWaitingList as $requestWaitingObj) {
-                        $employee_to_assign = getPrioEmployee($inbox_arr);
-                        if ($employee_to_assign > 0) {
-                                $requestWaitingObj->assignRequest($employee_to_assign, $lang, 'Y');
-                                $nb_assigned++;
-                                $inbox_arr[$employee_to_assign]++;
+                $scopeArr = WorkflowScope::loadAllLookupObjects();
+                $wroleArr = WorkflowRole::loadAllLookupObjects();
+                foreach ($wroleArr as $wrole_id => $wroleObj) {
+
+                        $requests_sql_cond_for_wrole = WorkflowTransition::requestsCanBeTransittedByWRoleSqlCondition($wrole_id);
+                        foreach ($scopeArr as $wscope_id => $wscopeObj) {
+
+                                unset($inbox_arr);
+                                $inbox_arr = array();
+                                // unassign request assigned to non active / non convenient employees
+                                list($arrEmployee, $listEmployee) = WorkflowEmployee::getEmployeeListOfIds($this->getVal('orgunit_id'), $wscope_id, 0, [$wrole_id]);
+                                $arrEmployee[] = 0;
+                                $arrEmployeeTxt = implode(',', $arrEmployee);
+                                $obj = new WorkflowRequest();
+                                $obj->select('orgunit_id', $this->getVal('orgunit_id'));
+                                $obj->select('workflow_scope_id', $wscope_id);
+                                $obj->where($requests_sql_cond_for_wrole);
+                                if ($reset) {
+                                        $obj->where("done = 'N'");
+                                } else {
+                                        $obj->where("done = 'N' and (employee_id is null or employee_id not in ($arrEmployeeTxt))");
+                                }
+
+                                $obj->setForce('employee_id', 0);
+                                // $status_comment = 'requestAssignement reset=' . $reset;
+                                // $this->setForce('status_comment', $status_comment);
+
+                                $nb_resetted = $obj->update(false);
+                                $inf_arr[] = "For w-role $wrole_id w-scope $wscope_id $nb_resetted requests assigned";
+                                // prepare array of inbox count for each of them to be equitable
+                                // on requests distribution
+
+                                foreach ($listEmployee as $objEmployee) {
+                                        $inbox_arr[$objEmployee->id] = WorkflowRequest::inboxCountFor($objEmployee->id);
+                                }
+
+
+                                unset($obj);
+                                $obj = new WorkflowRequest();
+                                $obj->select('orgunit_id', $this->getVal('orgunit_id'));
+                                $obj->select('workflow_scope_id', $wscope_id);
+                                $obj->where($requests_sql_cond_for_wrole);
+                                $obj->where("done = 'N' and employee_id = 0");
+                                $nb_assigned = 0;
+                                $nb_ignored = 0;
+                                $requestWaitingList = $obj->loadMany();
+                                /** @var WorkflowRequest $requestWaitingObj */
+                                foreach ($requestWaitingList as $requestWaitingObjId => $requestWaitingObj) {
+                                        $employee_to_assign = getPrioEmployee($inbox_arr);
+                                        if ($employee_to_assign > 0) {
+                                                $requestWaitingObj->assignRequest($employee_to_assign, $lang, 'Y');
+                                                $nb_assigned++;
+                                                $inbox_arr[$employee_to_assign]++;
+                                        } else {
+                                                $err_arr[] = "For request $requestWaitingObjId w-role $wrole_id w-scope $wscope_id No employee available to assign";
+                                                $tech_arr[] = "Inbox_arr = " . var_export($inbox_arr, true);
+                                                $nb_ignored++;
+                                        }
+                                }
+
+                                $inf_arr[] = "For w-role $wrole_id w-scope $wscope_id $nb_assigned requests assigned, $nb_ignored requests ignored. ";
                         }
+
+                        // die("inbox count by employee : ".var_export($inbox_arr,true));
+
+
                 }
 
-                return array('', $nb_resetted . ' ' . AfwLanguageHelper::tarjemMessage("request's reset", 'workflow', $lang) . ', ' . $nb_assigned . ' ' . AfwLanguageHelper::tarjemMessage("request's assign", 'workflow', $lang), '');
+                return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, "<br>\n", $tech_arr);
+
+                //$nb_resetted . ' ' . AfwLanguageHelper::tarjemMessage("request's reset", 'workflow', $lang) . ', ' . $nb_assigned . ' ' . AfwLanguageHelper::tarjemMessage("request's assign", 'workflow', $lang)
+
         }
 
         public function beforeDelete($id, $id_replace)

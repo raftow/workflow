@@ -207,7 +207,7 @@ class WorkflowRequest extends WorkflowObject
                 if (!$result)
                         return array($this->tm("Condition for this transition not satisfied", $lang) . " : " . $reason, '');
 
-                $workflow_stage_id = $this->getVal('workflow_stage_id');
+
 
 
                 $wActionObj = $objTransition->het("workflow_action_id");
@@ -233,6 +233,18 @@ class WorkflowRequest extends WorkflowObject
 
                 $final_stage_id = $objTransition->getVal('final_stage_id');
                 $final_status_id = $objTransition->getVal('final_status_id');
+
+
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $workflow_status_id = $this->getVal('workflow_status_id');
+
+                if (($final_stage_id != $workflow_stage_id) or ($final_status_id != $workflow_status_id)) {
+                        $this->set('done', 'N');
+                        $this->set('employee_id', 0);
+                } else {
+                        $this->set('done', 'Y');
+                }
+
 
                 $this->set('workflow_stage_id', $final_stage_id);
                 $this->set('workflow_status_id', $final_status_id);
@@ -314,7 +326,7 @@ class WorkflowRequest extends WorkflowObject
                         );
 
                 $color = 'green';
-                $title_ar = 'تعيين الموظف الأقل عبئا';
+                $title_ar = 'تحويل الطلب إلى الموظف الأقل عبئا';
                 $methodName = 'assignBestAvailableEmployee';
                 $pbms[AfwStringHelper::hzmEncode($methodName)] =
                         array(
@@ -671,12 +683,12 @@ class WorkflowRequest extends WorkflowObject
                                                 ) 
                                                 or me.employee_id is null
                                         ) 
-                        and done != 'Y'");
+                        and done = 'N'");
                 $obj->update(false);
                 unset($obj);
 
                 $obj = new WorkflowRequest();
-                $obj->where("employee_id=0 and orgunit_id > 0 and done != 'Y'");
+                $obj->where("employee_id=0 and orgunit_id > 0 and done = 'N'");
                 $reqList = $obj->loadMany($limit);
 
                 $errors_arr = array();

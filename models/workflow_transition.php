@@ -50,7 +50,6 @@ class WorkflowTransition extends AFWObject
              data-next-sibling='2'>
              $node_display
         </div>";
-
     }
 
 
@@ -176,5 +175,25 @@ class WorkflowTransition extends AFWObject
             }
             return true;
         }
+    }
+
+
+    public static function requestsCanBeTransittedByWRoleSqlCondition($wrole_id)
+    {
+        $server_db_prefix = AfwSession::currentDBPrefix();
+        $rows = AfwDatabase::db_recup_rows("select initial_stage_id, initial_status_id from $server_db_prefix" . "workflow.`workflow_transition` where workflow_role_mfk like '%,$wrole_id,%'");
+
+
+        $cond_sql_arr = [];
+
+        foreach ($rows as $row) {
+            $initial_stage_id = $row['initial_stage_id'];
+            $initial_status_id = $row['initial_status_id'];
+            $cond_sql_arr[] = "(workflow_stage_id = $initial_stage_id and workflow_status_id = $initial_status_id)";
+        }
+
+        $cond_sql = implode(" or ", $cond_sql_arr);
+
+        return $cond_sql;
     }
 }
