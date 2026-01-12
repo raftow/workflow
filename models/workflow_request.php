@@ -322,7 +322,7 @@ class WorkflowRequest extends WorkflowObject
                                 'LABEL_AR' => $title_ar,
                                 'ADMIN-ONLY' => true,
                                 'BF-ID' => '',
-                                'STEP' => $this->stepOfAttribute('employee_id')
+                                // 'STEP' => $this->stepOfAttribute('employee_id')
                         );
 
                 $color = 'green';
@@ -335,7 +335,7 @@ class WorkflowRequest extends WorkflowObject
                                 'LABEL_AR' => $title_ar,
                                 'ROLES' => 'workflow/393',
                                 'PUBLIC' => true,
-                                'STEP' => $this->stepOfAttribute('employee_id')
+                                // 'STEP' => $this->stepOfAttribute('employee_id')
                         );
 
                 $employeesList = $this->getEmployees(true);

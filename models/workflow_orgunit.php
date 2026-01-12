@@ -193,9 +193,15 @@ class WorkflowOrgunit extends WorkflowObject
                 $scopeArr = WorkflowScope::loadAllLookupObjects();
                 $wroleArr = WorkflowRole::loadAllLookupObjects();
                 foreach ($wroleArr as $wrole_id => $wroleObj) {
-
+                        $wrole_title = $wroleObj->getDisplay($lang);
                         $requests_sql_cond_for_wrole = WorkflowTransition::requestsCanBeTransittedByWRoleSqlCondition($wrole_id);
                         foreach ($scopeArr as $wscope_id => $wscopeObj) {
+                                $wscope_title = $wscopeObj->getDisplay($lang);
+
+                                $request_group_title = AfwLanguageHelper::tarjemMessage("For workflow role", 'workflow', $lang) .
+                                        " $wrole_title & " .
+                                        AfwLanguageHelper::tarjemMessage("workflow scope", 'workflow', $lang) .
+                                        " $wscope_title";
 
                                 unset($inbox_arr);
                                 $inbox_arr = array();
@@ -218,7 +224,7 @@ class WorkflowOrgunit extends WorkflowObject
                                 // $this->setForce('status_comment', $status_comment);
 
                                 $nb_resetted = $obj->update(false);
-                                $inf_arr[] = "For w-role $wrole_id w-scope $wscope_id $nb_resetted requests assigned";
+                                $inf_arr[] = "For w-role $wrole_id w-scope $wscope_id $nb_resetted " . AfwLanguageHelper::tarjemMessage("resetted requests", 'workflow', $lang);
                                 // prepare array of inbox count for each of them to be equitable
                                 // on requests distribution
 
@@ -243,15 +249,23 @@ class WorkflowOrgunit extends WorkflowObject
                                                 $requestWaitingObj->assignRequest($employee_to_assign, $lang, 'Y');
                                                 $nb_assigned++;
                                                 $inbox_arr[$employee_to_assign]++;
+                                                if ($nb_assigned < 10) {
+                                                        $war_arr[] = "Assigned $employee_to_assign for Inbox_arr = " . var_export($inbox_arr, true);
+                                                }
                                         } else {
-                                                $err_arr[] = "For request $requestWaitingObjId w-role $wrole_id w-scope $wscope_id No employee available to assign";
+                                                $err_arr[] = $request_group_title . " " . AfwLanguageHelper::tarjemMessage("No employee available to assign", 'workflow', $lang);
                                                 $tech_arr[] = "Inbox_arr = " . var_export($inbox_arr, true);
                                                 $nb_ignored++;
                                         }
                                 }
 
-                                $inf_arr[] = "For w-role $wrole_id w-scope $wscope_id $nb_assigned requests assigned, $nb_ignored requests ignored. ";
+                                $inf_arr[] = $request_group_title . ", $nb_assigned " .
+                                        AfwLanguageHelper::tarjemMessage("requests assigned", 'workflow', $lang) .
+                                        " $nb_ignored " .
+                                        AfwLanguageHelper::tarjemMessage("requests ignored", 'workflow', $lang);
                         }
+
+
 
                         // die("inbox count by employee : ".var_export($inbox_arr,true));
 
