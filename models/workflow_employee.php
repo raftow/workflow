@@ -299,6 +299,7 @@ class WorkflowEmployee extends WorkflowObject
                         $this->set('f_firstname_en', $objEmployee->getVal('f_firstname_en'));
                         $this->set('g_f_firstname_en', $objEmployee->getVal('g_f_firstname_en'));
                         $this->set('lastname_en', $objEmployee->getVal('lastname_en'));
+                        $this->set('email', $objEmployee->getVal('email'));
                         $this->set('employee_id', $objEmployee->id);
                 }
 
