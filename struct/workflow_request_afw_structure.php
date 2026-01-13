@@ -418,7 +418,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'FK',
                         'ANSWER' => 'orgunit',
                         'ANSMODULE' => 'hrm',
-                        'RELATION' => 'ManyToOne',
+                        'RELATION' => 'OneToMany',
                         'MANDATORY' => true,
                         'READONLY' => true,
                         // 'READONLY-MODULE' => 'workflow',

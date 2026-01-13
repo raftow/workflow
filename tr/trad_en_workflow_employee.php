@@ -27,6 +27,8 @@ class WorkflowEmployeeEnTranslator
 		$trad["workflow_employee"]["step1"] = "General data";
 		$trad["workflow_employee"]["step2"] = "Personal information";
 		$trad["workflow_employee"]["step3"] = "Permissions";
+		$trad['workflow_employee']['step4ّ'] = 'Inbox';
+		$trad['workflow_employee']['inbox'] = 'Inbox';
 		return $trad;
 	}
 

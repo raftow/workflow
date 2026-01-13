@@ -429,6 +429,29 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'NO-ERROR-CHECK' => true,
 			'FGROUP' => 'tech_fields'
 		),
+
+		'inbox' => array(
+			'STEP' => 4,
+			'TYPE' => 'FK',
+			'ANSWER' => 'workflow_request',
+			'ANSMODULE' => 'workflow',
+			'CATEGORY' => 'ITEMS',
+			'ITEM' => 'employee_id', //'HIDE_COLS' => ['employee_id','orgunit_id'],
+			'WHERE' => "done != 'Y'",
+			'FORMAT' => 'retrieve',
+			'SHOW' => true,
+			'EDIT' => false,
+			'ICONS' => true,
+			'DELETE-ICON' => false,
+			'BUTTONS' => true,
+			'NO-LABEL' => false,
+			'SEARCH-BY-ONE' => '',
+			'DISPLAY' => true,
+			'DISPLAY-UGROUPS' => '',
+			'EDIT-UGROUPS' => '',
+		),
+
+
 		'active' => array(
 			'SHOW' => true,
 			'RETRIEVE' => true,
@@ -573,26 +596,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 		 *
 		 * 'archive_date' => array('CATEGORY' => 'FORMULA', 'TYPE' => "DATE",),
 		 *
-		 * 'currentRequests' => array(
-		 * 	'STEP' => 2,
-		 * 	'TYPE' => 'FK',
-		 * 	'ANSWER' => 'workflow_request',
-		 * 	'ANSMODULE' => 'workflow',
-		 * 	'CATEGORY' => 'ITEMS',
-		 * 	'ITEM' => '', //'HIDE_COLS' => ['employee_id','orgunit_id'],
-		 * 	'WHERE' => "((orgunit_id = §orgunit_id§ and employee_id = §employee_id§) or (§orgunit_id§ = '70' and super visor_id = §employee_id§)) and status_id not in (5,6,7,8,9)",
-		 * 	'FORMAT' => 'retrieve',
-		 * 	'SHOW' => true,
-		 * 	'EDIT' => false,
-		 * 	'ICONS' => true,
-		 * 	'DELETE-ICON' => false,
-		 * 	'BUTTONS' => true,
-		 * 	'NO-LABEL' => false,
-		 * 	'SEARCH-BY-ONE' => '',
-		 * 	'DISPLAY' => true,
-		 * 	'DISPLAY-UGROUPS' => '',
-		 * 	'EDIT-UGROUPS' => '',
-		 * ),
 		 *
 		 * 'finishedRequests' => array(
 		 * 	'STEP' => 2,

@@ -26,6 +26,11 @@ class WorkflowOrgunitEnTranslator
 		$trad['workflow_orgunit']['step3'] = 'Assigned requests';
 		$trad['workflow_orgunit']['step4'] = 'Assign employees';
 		$trad['workflow_orgunit']['step5'] = 'Statistics settings';
+		$trad['workflow_orgunit']['inbox'] = 'Inbox';
+
+
+		$trad['workflow_orgunit']['inbox'] = 'صندوق الوارد';
+
 		$trad['workflow_orgunit']['tempEmployeeList'] = 'Employee assignment requests';
 
 		$trad['workflow_orgunit']['perf_stats_days'] = 'Number of days for performance report';
@@ -33,6 +38,7 @@ class WorkflowOrgunitEnTranslator
 		$trad['workflow_orgunit']['satisfaction_stats_days'] = 'Number of days for customer satisfaction report';
 		$trad['workflow_orgunit']['late_days'] = 'Maximum number of days to respond to a customer';
 		$trad['workflow_orgunit']['late_days.tooltip'] = 'Requests are considered late after this number of days in reports';
+
 		return $trad;
 	}
 
