@@ -22,7 +22,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 
 			$obj->OwnedBy = array('module' => 'workflow', 'afw' => 'WorkflowOrgunit');
 			$obj->editByStep = true;
-			$obj->editNbSteps = 3;
+			$obj->editNbSteps = 4;
 			$obj->showQeditErrors = true;
 			$obj->showRetrieveErrors = true;
 			$obj->general_check_errors = true;
@@ -436,8 +436,8 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'ANSWER' => 'workflow_request',
 			'ANSMODULE' => 'workflow',
 			'CATEGORY' => 'ITEMS',
-			'ITEM' => 'employee_id', //'HIDE_COLS' => ['employee_id','orgunit_id'],
-			'WHERE' => "done != 'Y'",
+			'ITEM' => '', //'HIDE_COLS' => ['employee_id','orgunit_id'],
+			'WHERE' => "employee_id = §employee_id§ and done != 'Y'",
 			'FORMAT' => 'retrieve',
 			'SHOW' => true,
 			'EDIT' => false,
