@@ -294,11 +294,11 @@ class WorkflowEmployee extends WorkflowObject
                 $inf_arr = [];
                 $war_arr = [];
                 $tech_arr = [];
+                if (!$objEmployee)
+                        $objEmployee = $this->het('employee_id');
 
                 $email = $this->getVal('email');
-                if ($email) {
-                        if (!$objEmployee)
-                                $objEmployee = $this->het('employee_id');
+                if ($email or $objEmployee) {
                         if (!$objEmployee)
                                 $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
