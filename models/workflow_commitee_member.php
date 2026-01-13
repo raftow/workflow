@@ -41,16 +41,57 @@ class WorkflowCommiteeMember extends WorkflowObject
                 $commObj = $this->het("workflow_commitee_id");
                 if ($commObj) {
                         $wscope_mfk = $commObj->calc("wscope_mfk");
-                        list($orgunitObj, $wOrgunitObj) = $commObj->getOrgunitInfos();
-                        $wEmplObj = WorkflowEmployee::loadByMainIndex($orgunitObj->id, $this->getVal("employee_id"), true);
-                        $wEmplObj->set("hierarchy_level_enum", 999);
-                        $wEmplObj->set("wrole_mfk", ",4,");
-                        $wEmplObj->set("wscope_mfk", $wscope_mfk);
-                        $wEmplObj->commit();
-                        $wEmplObj->resetPrevileges();
+                        // list($orgunitObj, $wOrgunitObj) = $commObj->getOrgunitInfos();
+                        // $orgunitObj = $commObj->het("orgunit_id");
+                        if ($commObj->getVal("orgunit_id")) {
+                                $wEmplObj = WorkflowEmployee::loadByMainIndex($commObj->getVal("orgunit_id"), $this->getVal("employee_id"), true);
+                                $wEmplObj->set("hierarchy_level_enum", 999);
+                                $wEmplObj->set("wrole_mfk", ",4,");
+                                $wEmplObj->set("wscope_mfk", $wscope_mfk);
+                                $wEmplObj->commit();
+                                $wEmplObj->resetPrevileges();
+                        }
                 }
 
 
                 return parent::afterInsert($id, $fields_updated, $disableAfterCommitDBEvent);
+        }
+
+
+        public function beforeDelete($id, $id_replace)
+        {
+                $server_db_prefix = AfwSession::config("db_prefix", "nauss_");
+
+                if (!$id) {
+                        $id = $this->getId();
+                        $simul = true;
+                } else {
+                        $simul = false;
+                }
+
+                if ($id) {
+                        if ($id_replace == 0) {
+                                // FK part of me - not deletable 
+
+
+                                // FK part of me - deletable 
+
+
+                                // FK not part of me - replaceable 
+
+
+
+                                // MFK
+
+                        } else {
+                                // FK on me 
+
+
+                                // MFK
+
+
+                        }
+                        return true;
+                }
         }
 }

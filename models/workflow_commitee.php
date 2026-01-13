@@ -131,11 +131,17 @@ class WorkflowCommitee extends WorkflowObject
 
         public function getOrgunitInfos()
         {
-                $hrm_code = "commitee-" . $this->id;
-                $orgunitObj = Orgunit::loadByHRMCode($hrm_code);
+                $orgunitObj = $this->het("orgunit_id");
+                if (!$orgunitObj) {
+                        $hrm_code = "commitee-" . $this->id;
+                        $orgunitObj = Orgunit::loadByHRMCode($hrm_code);
+                }
+
                 $wOrgunitObj = null;
                 if ($orgunitObj) {
                         $wOrgunitObj = WorkflowOrgunit::loadByMainIndex($orgunitObj->id, true);
+                        $this->set("orgunit_id", $orgunitObj->getId());
+                        $this->commit();
                 }
 
                 return [$orgunitObj, $wOrgunitObj];
