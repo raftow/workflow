@@ -194,7 +194,7 @@ class WorkflowOrgunit extends WorkflowObject
                 if ($reset) {
                         $sets_arr = ["employee_id" => 0]; // "assign_date" => '13010101', 
                         $where_clause = "orgunit_id = $orgunit_id and done = 'N'";
-                        $nb_resetted = WorkflowRequest::updateWhere($sets_arr, $where_clause);
+                        $nb_resetted = WorkflowRequest::updateWhere($sets_arr, $where_clause, false, true, true);
                 }
 
 
