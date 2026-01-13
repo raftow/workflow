@@ -206,6 +206,22 @@ class WorkflowEmployee extends WorkflowObject
                         'STEP' => 3,
                 );
 
+                $color = 'blue';
+                $title_ar = 'تحديث بياناتي';
+                $methodName = 'repareMyInfos';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+                        'METHOD' => $methodName,
+                        'COLOR' => $color,
+                        'LABEL_AR' => $title_ar,
+                        // 'PUBLIC' => true,
+                        'ADMIN-ONLY' => true,
+                        'MULTIPLE-RUN' => true,
+                        'BF-ID' => '',
+                        'STEP' => 1,
+                );
+
+
+
                 $color = 'green';
                 $title_ar = 'استخراج وتفقد ملف صلاحيات المستخدم';
                 $methodName = 'getPrevilegesPhpCodeForUser';
@@ -247,6 +263,14 @@ class WorkflowEmployee extends WorkflowObject
                 $status_comment = 'removeMeAllAssigned me_id=' . $me_id;
                 $obj->setForce('status_comment', $status_comment);
                 $obj->update(false);
+        }
+
+        public function repareMyInfos($lang = 'ar')
+        {
+                $fields_updated['employee_id'] = "@SimuleWasEmpty";
+                $fields_updated['wrole_mfk'] = "@SimuleWasEmpty";
+                $this->beforeMaj($this->id, $fields_updated);
+                $this->commit();
         }
 
         public function beforeMaj($id, $fields_updated)
