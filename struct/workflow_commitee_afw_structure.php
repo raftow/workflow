@@ -223,6 +223,27 @@ class WorkflowWorkflowCommiteeAfwStructure
                         'NO-LABEL' => false
                 ),
 
+                'wscope_mfk' => array(
+                        'STEP' => 99,
+                        'CATEGORY' => 'FORMULA',
+                        'SEARCH' => false,
+                        'SHOW' => true,
+                        'MINIBOX' => true,
+                        'MB_CSS' => 'width_pct_100',
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'LIST_SEPARATOR' => '، ',
+                        'TYPE' => 'MFK',
+                        'ANSWER' => 'workflow_scope',
+                        'ANSMODULE' => 'workflow',
+                        'SEARCH-BY-ONE' => '',
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                ),
+
                 'active' => array(
                         'SHOW' => true,
                         'RETRIEVE' => true,

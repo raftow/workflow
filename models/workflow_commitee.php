@@ -33,6 +33,37 @@ class WorkflowCommitee extends WorkflowObject
                 return false;
         }
 
+        public function calcWscope_mfk($what = "value")
+        {
+
+                $workflowCommiteeScopeList = $this->get("workflowCommiteeScopeList");
+                if ($what == "value") {
+                        $result = ",";
+
+                        foreach ($workflowCommiteeScopeList as $workflowCommiteeScope) {
+                                $result .= $workflowCommiteeScope->getVal("workflow_scope_id") . ",";
+                        }
+                } elseif ($what == "object") {
+                        $result = [];
+
+                        foreach ($workflowCommiteeScopeList as $workflowCommiteeScope) {
+                                if ($workflowCommiteeScope->getVal("workflow_scope_id") > 0) $result[$workflowCommiteeScope->getVal("workflow_scope_id")] = $workflowCommiteeScope->het("workflow_scope_id");
+                        }
+                } elseif ($what == "decodeme") {
+                        $result = "";
+
+                        foreach ($workflowCommiteeScopeList as $workflowCommiteeScope) {
+                                /**
+                                 * @var WorkflowCommiteeScope $workflowCommiteeScope
+                                 */
+                                $result .= $workflowCommiteeScope->decode("workflow_scope_id") . "/";
+                        }
+                        $result = trim($result, "/");
+                }
+
+                return $result;
+        }
+
         protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();

@@ -39,8 +39,18 @@ class WorkflowCommiteeMember extends WorkflowObject
                  * @var WorkflowCommitee $commObj
                  */
                 $commObj = $this->het("workflow_commitee_id");
-                list($orgunitObj, $wOrgunitObj) = $commObj->getOrgunitInfos();
-                $wEmplObj = WorkflowEmployee::loadByMainIndex($orgunitObj->id, $this->getVal("employee_id"), true);
+                if ($commObj) {
+                        $wscope_mfk = $commObj->calc("wscope_mfk");
+                        list($orgunitObj, $wOrgunitObj) = $commObj->getOrgunitInfos();
+                        $wEmplObj = WorkflowEmployee::loadByMainIndex($orgunitObj->id, $this->getVal("employee_id"), true);
+                        $wEmplObj->set("hierarchy_level_enum", 999);
+                        $wEmplObj->set("wrole_mfk", ",4,");
+                        $wEmplObj->set("wscope_mfk", $wscope_mfk);
+                        $wEmplObj->commit();
+                        $wEmplObj->resetPrevileges();
+                }
+
+
                 return parent::afterInsert($id, $fields_updated, $disableAfterCommitDBEvent);
         }
 }
