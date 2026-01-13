@@ -284,7 +284,7 @@ class WorkflowEmployee extends WorkflowObject
                         $objEmployee = $this->het('employee_id');
                 }
 
-                if ($fields_updated['email']) {
+                if ($fields_updated['email'] and $main_orgunit_id and $email) {
                         $objEmployee = Employee::loadByEmail($main_orgunit_id, $email);
                 }
 
