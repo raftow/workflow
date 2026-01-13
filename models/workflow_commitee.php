@@ -111,6 +111,10 @@ class WorkflowCommitee extends WorkflowObject
                 ) {
                         $this->updateOrgunit($lang = "ar");
                 }
+
+                if ($fields_updated["secretary_employee_id"]) {
+                        $emplObj = $this->het("secretary_employee_id");
+                }
         }
 
         public function getOrgunitInfos()
@@ -155,8 +159,8 @@ class WorkflowCommitee extends WorkflowObject
                 $orgunitObj->set("gender_id", 1);
                 $orgunitObj->set("id_sh_parent", $parent_orgunit_id);
                 $orgunitObj->commit();
-                // $this->set("orgunit_id", $orgunitObj->getId());
-                // $this->commit();
+                $this->set("orgunit_id", $orgunitObj->getId());
+                $this->commit();
 
                 WorkflowOrgunit::loadByMainIndex($orgunitObj->id, true);
         }

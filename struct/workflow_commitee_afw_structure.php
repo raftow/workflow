@@ -150,6 +150,31 @@ class WorkflowWorkflowCommiteeAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
+                'orgunit_id' => array(
+                        'STEP' => 99,
+                        'SHORTNAME' => 'orgunit',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'INTERNAL_QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 40,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'CSS' => 'width_pct_25',
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'orgunit',
+                        'ANSMODULE' => 'hrm',
+                        'RELATION' => 'ManyToOne',
+                        'READONLY' => true,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
+
 
                 'secretary_employee_id' => array(
                         'IMPORTANT' => 'IN',
@@ -165,7 +190,7 @@ class WorkflowWorkflowCommiteeAfwStructure
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_50',
-                        'WHERE' => 'active = "Y" and wrole_mfk like "%,4,%"',
+                        'WHERE' => 'active = "Y" and orgunit_id=§orgunit_id§ and wrole_mfk like "%,4,%"',
                 ),
 
                 'commitee_code' => array(
