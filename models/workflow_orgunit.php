@@ -192,7 +192,7 @@ class WorkflowOrgunit extends WorkflowObject
 
                 $orgunit_id = $this->getVal('orgunit_id');
                 if ($reset) {
-                        $sets_arr = ["assign_date" => '13010101', "employee_id" => 0];
+                        $sets_arr = ["employee_id" => 0]; // "assign_date" => '13010101', 
                         $where_clause = "orgunit_id = $orgunit_id and done = 'N'";
                         $nb_resetted = WorkflowRequest::updateWhere($sets_arr, $where_clause);
                 }
@@ -213,7 +213,7 @@ class WorkflowOrgunit extends WorkflowObject
 
                                 $request_group_title_en  = AfwLanguageHelper::tarjemMessage("For workflow role", 'workflow', "en") .
                                         " $wrole_id & " .
-                                        AfwLanguageHelper::tarjemMessage("workflow scope", 'workflow', $lang) .
+                                        AfwLanguageHelper::tarjemMessage("workflow scope", 'workflow', "en") .
                                         " $wscope_id";
 
                                 unset($inbox_arr);
@@ -258,7 +258,7 @@ class WorkflowOrgunit extends WorkflowObject
                                 /** @var WorkflowRequest $requestWaitingObj */
                                 foreach ($requestWaitingList as $requestWaitingObjId => $requestWaitingObj) {
                                         $employee_to_assign = getPrioEmployee($inbox_arr);
-                                        $war_arr[] = $request_group_title_en . "REQ ID = $requestWaitingObjId";
+                                        $war_arr[] = $request_group_title_en . " REQ ID = $requestWaitingObjId";
                                         if ($employee_to_assign > 0) {
                                                 $requestWaitingObj->assignRequest($employee_to_assign, $lang, 'Y');
                                                 $nb_assigned++;
@@ -268,13 +268,15 @@ class WorkflowOrgunit extends WorkflowObject
                                                 }
                                         } else {
                                                 $err_arr[] = $request_group_title . " " . AfwLanguageHelper::tarjemMessage("No employee available to assign", 'workflow', $lang);
-                                                $tech_arr[] = "Inbox_arr = " . var_export($inbox_arr, true);
+                                                $war_arr[] = "Ignored No employee available to assign : inbox_arr = " . var_export($inbox_arr, true);
                                                 $nb_ignored++;
                                         }
                                 }
 
+                                $nb_resetted_here = $nb_assigned + $nb_ignored;
+
                                 $inf_arr[] = $request_group_title .
-                                        " $nb_resetted " . AfwLanguageHelper::tarjemMessage("resetted requests", 'workflow', $lang) .
+                                        " $nb_resetted_here " . AfwLanguageHelper::tarjemMessage("resetted requests", 'workflow', $lang) .
                                         " $nb_assigned " . AfwLanguageHelper::tarjemMessage("requests assigned", 'workflow', $lang) .
                                         " $nb_ignored " .  AfwLanguageHelper::tarjemMessage("requests ignored", 'workflow', $lang);
                         }
