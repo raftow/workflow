@@ -83,7 +83,7 @@ class WorkflowWorkflowCommiteeMemberAfwStructure
             'DEFAUT' => 0,
             'DISPLAY' => true,
             'STEP' => 1,
-            'RELATION' => 'ManyToOne',
+            'RELATION' => 'OneToMany',
             'MANDATORY' => true,
             'READONLY' => false,
             'AUTOCOMPLETE' => false,
