@@ -304,7 +304,8 @@ class WorkflowEmployee extends WorkflowObject
                 }
 
                 if ($fields_updated['wrole_mfk']) {
-                        $this->resetPrevileges('ar', $objEmployee, false);
+                        $assign = ($fields_updated['wrole_mfk'] != "@SimuleWasEmpty");
+                        $this->resetPrevileges('ar', $objEmployee, false, $assign);
                 }
 
                 return true;
@@ -313,7 +314,7 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param Employee $objEmployee
          */
-        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true)
+        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true)
         {
                 $err_arr = [];
                 $inf_arr = [];
@@ -388,13 +389,16 @@ class WorkflowEmployee extends WorkflowObject
                                 $this->commit();
 
                         $this->getPrevilegesPhpCodeForUser($lang);
-                        list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
-                        if ($err)
-                                $err_arr[] = $err;
-                        if ($inf)
-                                $inf_arr[] = $inf;
-                        if ($war)
-                                $war_arr[] = $war;
+                        if ($assign) {
+                                list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
+                                if ($err)
+                                        $err_arr[] = $err;
+                                if ($inf)
+                                        $inf_arr[] = $inf;
+                                if ($war)
+                                        $war_arr[] = $war;
+                        }
+
 
                         return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, $sep = "<br>\n", $tech_arr);
                 } else {
