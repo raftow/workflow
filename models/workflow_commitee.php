@@ -85,6 +85,18 @@ class WorkflowCommitee extends WorkflowObject
                         $otherLinksArray[] = $link;
                 }
 
+                if ($mode == "mode_workflowCommiteeMemberList") {
+                        unset($link);
+                        $link = array();
+                        $title = "إضافة عضو لجنة جديد";
+                        $title_detailed = $title . "لـ : " . $displ;
+                        $link["URL"] = "main.php?Main_Page=afw_mode_edit.php&cl=WorkflowCommiteeMember&currmod=workflow&sel_workflow_commitee_id=$my_id";
+                        $link["TITLE"] = $title;
+                        $link["UGROUPS"] = array();
+                        $otherLinksArray[] = $link;
+                }
+
+
 
 
                 // check errors on all steps (by default no for optimization)

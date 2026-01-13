@@ -1,16 +1,14 @@
 <?php
-if(!class_exists("AfwSession")) die("Denied access");
+if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
-try
-{
-          
+try {
 
-    
-  
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.interview_type_pattern;");
+  AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_commitee add   orgunit_id int(11) NOT NULL DEFAULT 0  AFTER workflow_role_id;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`interview_type_pattern` (
+  // AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.interview_type_pattern;");
+
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`interview_type_pattern` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -40,11 +38,11 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_interview_type_pattern on ".$server_db_prefix."workflow.interview_type_pattern(lookup_code);");
+  AfwDatabase::db_query("create unique index uk_interview_type_pattern on " . $server_db_prefix . "workflow.interview_type_pattern(lookup_code);");
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.slot_model;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.slot_model;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`slot_model` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`slot_model` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -82,11 +80,11 @@ try
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
 
-    AfwDatabase::db_query("create unique index uk_slot_model on ".$server_db_prefix."workflow.slot_model(interview_type_pattern_id,workflow_session_id,interview_date);");
+  AfwDatabase::db_query("create unique index uk_slot_model on " . $server_db_prefix . "workflow.slot_model(interview_type_pattern_id,workflow_session_id,interview_date);");
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.interview_slot_status;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.interview_slot_status;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`interview_slot_status` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`interview_slot_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -113,12 +111,12 @@ try
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
 
-    AfwDatabase::db_query("create unique index uk_interview_slot_status on ".$server_db_prefix."workflow.interview_slot_status(lookup_code);");
+  AfwDatabase::db_query("create unique index uk_interview_slot_status on " . $server_db_prefix . "workflow.interview_slot_status(lookup_code);");
 
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.interview_slot;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.interview_slot;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`interview_slot` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`interview_slot` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -153,13 +151,13 @@ try
 
 
 
-    AfwDatabase::db_query("create unique index uk_interview_slot on ".$server_db_prefix."workflow.interview_slot(slot_model_id,interview_date,start_time);");
+  AfwDatabase::db_query("create unique index uk_interview_slot on " . $server_db_prefix . "workflow.interview_slot(slot_model_id,interview_date,start_time);");
 
 
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.booking_status;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.booking_status;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`booking_status` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`booking_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL, 
@@ -185,12 +183,12 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_booking_status on ".$server_db_prefix."workflow.booking_status(lookup_code);");
+  AfwDatabase::db_query("create unique index uk_booking_status on " . $server_db_prefix . "workflow.booking_status(lookup_code);");
 
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.interview_cancellation_reason;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.interview_cancellation_reason;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`interview_cancellation_reason` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`interview_cancellation_reason` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -215,13 +213,13 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_interview_cancellation_reason on ".$server_db_prefix."workflow.interview_cancellation_reason(lookup_code);");
+  AfwDatabase::db_query("create unique index uk_interview_cancellation_reason on " . $server_db_prefix . "workflow.interview_cancellation_reason(lookup_code);");
 
 
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.interview_booking;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.interview_booking;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`interview_booking` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`interview_booking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -256,12 +254,12 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_interview_booking on ".$server_db_prefix."workflow.interview_booking(workflow_applicant_id,workflow_session_id,interview_type_pattern_id);");
+  AfwDatabase::db_query("create unique index uk_interview_booking on " . $server_db_prefix . "workflow.interview_booking(workflow_applicant_id,workflow_session_id,interview_type_pattern_id);");
 
 
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.workflow_session;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.workflow_session;");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_session` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -290,10 +288,7 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-        AfwDatabase::db_query("create unique index uk_workflow_session on ".$server_db_prefix."workflow.workflow_session(workflow_model_id,external_code);");
-
+  AfwDatabase::db_query("create unique index uk_workflow_session on " . $server_db_prefix . "workflow.workflow_session(workflow_model_id,external_code);");
+} catch (Exception $e) {
+  $migration_error .= " " . $e->getMessage();
 }
-catch(Exception $e)
-{
-    $migration_error .= " " . $e->getMessage();
-}    
