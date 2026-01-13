@@ -190,6 +190,14 @@ class WorkflowOrgunit extends WorkflowObject
                         return $employee_selected_id;
                 }
 
+                $orgunit_id = $this->getVal('orgunit_id');
+                if ($reset) {
+                        $sets_arr = ["assign_date" => '13010101', "employee_id" => 0];
+                        $where_clause = "orgunit_id = $orgunit_id and done = 'N'";
+                        $nb_resetted = WorkflowRequest::updateWhere($sets_arr, $where_clause);
+                }
+
+
                 $scopeArr = WorkflowScope::loadAllLookupObjects();
                 $wroleArr = WorkflowRole::loadAllLookupObjects();
                 foreach ($wroleArr as $wrole_id => $wroleObj) {
@@ -203,14 +211,21 @@ class WorkflowOrgunit extends WorkflowObject
                                         AfwLanguageHelper::tarjemMessage("workflow scope", 'workflow', $lang) .
                                         " $wscope_title";
 
+                                $request_group_title_en  = AfwLanguageHelper::tarjemMessage("For workflow role", 'workflow', "en") .
+                                        " $wrole_id & " .
+                                        AfwLanguageHelper::tarjemMessage("workflow scope", 'workflow', $lang) .
+                                        " $wscope_id";
+
                                 unset($inbox_arr);
                                 $inbox_arr = array();
-                                // unassign request assigned to non active / non convenient employees
                                 list($arrEmployee, $listEmployee) = WorkflowEmployee::getEmployeeListOfIds($this->getVal('orgunit_id'), $wscope_id, 0, [$wrole_id]);
+
+                                /*
+                                // unassign request assigned to non active / non convenient employees
                                 $arrEmployee[] = 0;
                                 $arrEmployeeTxt = implode(',', $arrEmployee);
                                 $obj = new WorkflowRequest();
-                                $obj->select('orgunit_id', $this->getVal('orgunit_id'));
+                                $obj->select('orgunit_id', $orgunit_id);
                                 $obj->select('workflow_scope_id', $wscope_id);
                                 $obj->where($requests_sql_cond_for_wrole);
                                 if ($reset) {
@@ -219,12 +234,10 @@ class WorkflowOrgunit extends WorkflowObject
                                         $obj->where("done = 'N' and (employee_id is null or employee_id not in ($arrEmployeeTxt))");
                                 }
 
-                                $obj->setForce('employee_id', 0);
-                                // $status_comment = 'requestAssignement reset=' . $reset;
-                                // $this->setForce('status_comment', $status_comment);
-
+                                $obj->setForce('', 0);
                                 $nb_resetted = $obj->update(false);
-                                $inf_arr[] = "For w-role $wrole_id w-scope $wscope_id $nb_resetted " . AfwLanguageHelper::tarjemMessage("resetted requests", 'workflow', $lang);
+                                */
+
                                 // prepare array of inbox count for each of them to be equitable
                                 // on requests distribution
 
@@ -245,6 +258,7 @@ class WorkflowOrgunit extends WorkflowObject
                                 /** @var WorkflowRequest $requestWaitingObj */
                                 foreach ($requestWaitingList as $requestWaitingObjId => $requestWaitingObj) {
                                         $employee_to_assign = getPrioEmployee($inbox_arr);
+                                        $war_arr[] = $request_group_title_en . "REQ ID = $requestWaitingObjId";
                                         if ($employee_to_assign > 0) {
                                                 $requestWaitingObj->assignRequest($employee_to_assign, $lang, 'Y');
                                                 $nb_assigned++;
@@ -259,10 +273,10 @@ class WorkflowOrgunit extends WorkflowObject
                                         }
                                 }
 
-                                $inf_arr[] = $request_group_title . ", $nb_assigned " .
-                                        AfwLanguageHelper::tarjemMessage("requests assigned", 'workflow', $lang) .
-                                        " $nb_ignored " .
-                                        AfwLanguageHelper::tarjemMessage("requests ignored", 'workflow', $lang);
+                                $inf_arr[] = $request_group_title .
+                                        " $nb_resetted " . AfwLanguageHelper::tarjemMessage("resetted requests", 'workflow', $lang) .
+                                        " $nb_assigned " . AfwLanguageHelper::tarjemMessage("requests assigned", 'workflow', $lang) .
+                                        " $nb_ignored " .  AfwLanguageHelper::tarjemMessage("requests ignored", 'workflow', $lang);
                         }
 
 
