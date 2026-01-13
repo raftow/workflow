@@ -298,6 +298,8 @@ class WorkflowEmployee extends WorkflowObject
                 $email = $this->getVal('email');
                 if ($email) {
                         if (!$objEmployee)
+                                $objEmployee = $this->het('employee_id');
+                        if (!$objEmployee)
                                 $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
                                 $objEmployee->set('gender_id', $this->getVal('gender_id'));
