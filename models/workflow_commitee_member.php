@@ -72,6 +72,16 @@ class WorkflowCommiteeMember extends WorkflowObject
                 if ($id) {
                         if ($id_replace == 0) {
                                 // FK part of me - not deletable 
+                                $commObj = $this->het("workflow_commitee_id");
+                                $wEmplObj = WorkflowEmployee::loadByMainIndex($commObj->getVal("orgunit_id"), $this->getVal("employee_id"));
+
+                                if ($wEmplObj->id > 0) {
+                                        if ($commObj->getVal("secretary_employee_id") == $wEmplObj->id) {
+                                                $commObj->setForce("secretary_employee_id", 0);
+                                                $commObj->commit();
+                                        }
+                                        $wEmplObj->delete();
+                                }
 
 
                                 // FK part of me - deletable 
