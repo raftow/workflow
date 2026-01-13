@@ -14,6 +14,32 @@ class WorkflowCommitee extends WorkflowObject
                 WorkflowWorkflowCommiteeAfwStructure::initInstance($this);
         }
 
+
+        /**
+         * @return WorkflowCommitee:
+         */
+        public static function loadByOrgunitId($orgunit_id)
+        {
+                $obj = new WorkflowCommitee();
+                if (!$orgunit_id)
+                        $obj->simpleError('loadByMainIndex : orgunit_id is mandatory field');
+
+                $obj->select('orgunit_id', $orgunit_id);
+
+                if ($obj->load()) {
+                        if ($create_obj_if_not_found)
+                                $obj->activate();
+                        return $obj;
+                } elseif ($create_obj_if_not_found) {
+                        $obj->set('orgunit_id', $orgunit_id);
+
+                        $obj->insert();
+                        $obj->is_new = true;
+                        return $obj;
+                } else
+                        return null;
+        }
+
         public static function loadById($id)
         {
                 $obj = new WorkflowCommitee();

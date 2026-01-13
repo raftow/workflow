@@ -16,8 +16,8 @@ class WorkflowWorkflowCommiteeMemberAfwStructure
             $obj->editByStep = false;
             //$obj->editNbSteps = 1;
 
-            // $obj->after_save_edit = array( 'class'=>'aconditionOriginType', 'attribute'=>'acondition_origin_type_id', 'currmod'=>'workflow', 'currstep'=>1 );
-            $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'workflow', 'class' => 'WorkflowCommiteeMember', 'submit' => true);
+            $obj->after_save_edit = array('class' => 'WorkflowCommitee', 'attribute' => 'workflow_commitee_id', 'currmod' => 'workflow', 'currstep' => 2);
+            // $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'workflow', 'class' => 'WorkflowCommiteeMember', 'submit' => true);
         } else {
             WorkflowCommiteeMemberArTranslator::initData();
             WorkflowCommiteeMemberEnTranslator::initData();

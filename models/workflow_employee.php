@@ -255,20 +255,27 @@ class WorkflowEmployee extends WorkflowObject
                 $main_orgunit_id = AfwSession::config('main_orgunit_id', 1);
                 $email = $this->getVal('email');
                 $objEmployee = null;
+
+                if ($fields_updated['employee_id']) {
+                        $objEmployee = $this->het('employee_id');
+                }
+
                 if ($fields_updated['email']) {
                         $objEmployee = Employee::loadByEmail($main_orgunit_id, $email);
-                        if ($objEmployee and $objEmployee->getVal('firstname')) {
-                                $this->set('gender_id', $objEmployee->getVal('gender_id'));
-                                $this->set('country_id', $objEmployee->getVal('country_id'));
-                                $this->set('firstname', $objEmployee->getVal('firstname'));
-                                $this->set('f_firstname', $objEmployee->getVal('f_firstname'));
-                                $this->set('g_f_firstname', $objEmployee->getVal('g_f_firstname'));
-                                $this->set('lastname', $objEmployee->getVal('lastname'));
-                                $this->set('firstname_en', $objEmployee->getVal('firstname_en'));
-                                $this->set('f_firstname_en', $objEmployee->getVal('f_firstname_en'));
-                                $this->set('g_f_firstname_en', $objEmployee->getVal('g_f_firstname_en'));
-                                $this->set('lastname_en', $objEmployee->getVal('lastname_en'));
-                        }
+                }
+
+                if ($objEmployee and $objEmployee->getVal('firstname')) {
+                        $this->set('gender_id', $objEmployee->getVal('gender_id'));
+                        $this->set('country_id', $objEmployee->getVal('country_id'));
+                        $this->set('firstname', $objEmployee->getVal('firstname'));
+                        $this->set('f_firstname', $objEmployee->getVal('f_firstname'));
+                        $this->set('g_f_firstname', $objEmployee->getVal('g_f_firstname'));
+                        $this->set('lastname', $objEmployee->getVal('lastname'));
+                        $this->set('firstname_en', $objEmployee->getVal('firstname_en'));
+                        $this->set('f_firstname_en', $objEmployee->getVal('f_firstname_en'));
+                        $this->set('g_f_firstname_en', $objEmployee->getVal('g_f_firstname_en'));
+                        $this->set('lastname_en', $objEmployee->getVal('lastname_en'));
+                        $this->set('employee_id', $objEmployee->id);
                 }
 
                 if ($fields_updated['wrole_mfk']) {
@@ -404,25 +411,7 @@ class WorkflowEmployee extends WorkflowObject
                 return $auserObj->calcShowPhpCode($what);
         }
 
-        public function beforeDelete($id, $id_replace)
-        {
-                if ($id) {
-                        if ($id_replace == 0) {
-                                $server_db_prefix = AfwSession::config('db_prefix', 'default_db_');  // FK part of me - not deletable
 
-                                $server_db_prefix = AfwSession::config('db_prefix', 'default_db_');  // FK part of me - deletable
-
-                                // FK not part of me - replaceable
-
-                                // MFK
-                        } else {
-                                $server_db_prefix = AfwSession::config('db_prefix', 'default_db_');  // FK on me
-
-                                // MFK
-                        }
-                        return true;
-                }
-        }
 
         public function calcWorkflow_orgunit_id()
         {
@@ -897,5 +886,62 @@ class WorkflowEmployee extends WorkflowObject
                 }
 
                 return AfwFormatHelper::pbm_result($errors_arr, $infos_arr);
+        }
+
+        public function beforeDelete($id, $id_replace)
+        {
+                $server_db_prefix = AfwSession::config("db_prefix", "nauss_");
+
+                if (!$id) {
+                        $id = $this->getId();
+                        $simul = true;
+                } else {
+                        $simul = false;
+                }
+
+                if ($id) {
+                        if ($id_replace == 0) {
+                                // FK part of me - not deletable 
+
+
+                                // FK part of me - deletable 
+
+
+                                // FK not part of me - replaceable 
+                                // workflow.workflow_commitee-سكرتير اللجنة	secretary_employee_id  حقل يفلتر به
+                                if (!$simul) {
+                                        $employee_id = $this->getVal("employee_id");
+                                        $orgunit_id = $this->getVal("orgunit_id");
+                                        $wCommitee = WorkflowCommitee::loadByOrgunitId($orgunit_id);
+                                        $commitee_id = $wCommitee->id;
+                                        if ($commitee_id) {
+                                                WorkflowCommiteeMember::deleteWhere("workflow_commitee_id='$commitee_id' and employee_id='$employee_id'");
+                                        }
+
+                                        // require_once "../workflow/workflow_commitee.php";
+                                        WorkflowCommitee::updateWhere(array('secretary_employee_id' => $id_replace), "secretary_employee_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_commitee set secretary_employee_id='$id_replace' where secretary_employee_id='$id' ");
+                                }
+
+
+
+                                // MFK
+
+                        } else {
+                                // FK on me 
+                                // workflow.workflow_commitee-سكرتير اللجنة	secretary_employee_id  حقل يفلتر به
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_commitee.php";
+                                        WorkflowCommitee::updateWhere(array('secretary_employee_id' => $id_replace), "secretary_employee_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_commitee set secretary_employee_id='$id_replace' where secretary_employee_id='$id' ");
+                                }
+
+
+                                // MFK
+
+
+                        }
+                        return true;
+                }
         }
 }
