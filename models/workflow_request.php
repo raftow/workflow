@@ -132,7 +132,7 @@ class WorkflowRequest extends WorkflowObject
         {
                 if ($onlyForAuthenticatedEmployee) {
                         $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
-                        if (!$wEmployeeMe) return array();
+                        if (!$wEmployeeMe) die("No user authenticated !!!!"); //return array();
                         $employeeRolesArray = explode(",", trim($this->getVal("wrole_mfk"), ","));
                 } else {
                         $employeeRolesArray = null;
