@@ -27,14 +27,6 @@ class WorkflowCommitee extends WorkflowObject
                 $obj->select('orgunit_id', $orgunit_id);
 
                 if ($obj->load()) {
-                        if ($create_obj_if_not_found)
-                                $obj->activate();
-                        return $obj;
-                } elseif ($create_obj_if_not_found) {
-                        $obj->set('orgunit_id', $orgunit_id);
-
-                        $obj->insert();
-                        $obj->is_new = true;
                         return $obj;
                 } else
                         return null;

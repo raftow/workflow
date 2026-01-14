@@ -628,6 +628,20 @@ class WorkflowRequest extends WorkflowObject
                 return false;
         }
 
+
+        public static function stepOfStage($stageId)
+        {
+                // not good like this to be hardcoded, please fix later @todo-rafik
+                return $stageId + 4;
+        }
+
+        public function reachedStep()
+        {
+
+                $stageId = $this->getVal('workflow_stage_id');
+                return self::stepOfStage($stageId);
+        }
+
         public function weReachedStep($step)
         {
                 // step1 =>  'البيانات الشخصية';
@@ -635,24 +649,11 @@ class WorkflowRequest extends WorkflowObject
                 // step3 =>  'المؤهلات';
                 // step4 =>  'الاختبارات';
                 // step5 =>  'مراجعة الوثائق';
-                if ($step <= 5) {
-                        return true;
-                }
-
-                $stageObj = $this->het('workflow_stage_id');
-
                 // step6 =>  'مراجعة اللجنة';
-                if ($step == 6) {
-                        return ($stageObj->id >= 2);  // not good like this to be hardcoded, please fix later @todo-rafik
-                }
                 // step7 =>  'المقابلة الشخصية';
-                if ($step == 7) {
-                        return ($stageObj->id >= 3);  // not good like this to be hardcoded, please fix later @todo-rafik
-                }
                 // step8 =>  'المفاضلة والقبول';
-                if ($step == 8) {
-                        return ($stageObj->id >= 4);  // not good like this to be hardcoded, please fix later @todo-rafik
-                }
+
+                return ($this->reachedStep() >= $step);
         }
 
         public function calcDiv_step($step, $what = 'value')
@@ -815,6 +816,19 @@ class WorkflowRequest extends WorkflowObject
 
 
                 return true;
+        }
+
+
+        public function current($field_name, $col_struct)
+        {
+                $col_struct = strtolower($col_struct);
+
+                if ($col_struct == "step") {
+                        return $this->reachedStep();
+                }
+
+
+                throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
         }
 
 

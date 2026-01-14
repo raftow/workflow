@@ -451,7 +451,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSMODULE' => 'hrm',
                         'WHERE-SEARCH' => "id in (select we.employee_id from §DBPREFIX§workflow.workflow_employee we where we.active='Y')",
                         'RELATION' => 'OneToMany',
-                        'MANDATORY' => true,
+                        'MANDATORY' => false,
                         'READONLY' => true,
                         'AUDIT' => false,
                         'SEARCH-BY-ONE' => false,
@@ -675,7 +675,7 @@ class WorkflowWorkflowRequestAfwStructure
 
                 'workflow_rejection_reason_id' => array(
                         'FGROUP' => 'rejection_reason',
-                        'STEP' => 'all',
+                        'STEP' => '::current',
                         'SHORTNAME' => 'workflow',
                         'SEARCH' => true,
                         'QSEARCH' => false,
