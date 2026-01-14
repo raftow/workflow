@@ -227,7 +227,9 @@ class WorkflowRequest extends WorkflowObject
                         */
 
                         if (!$this->getVal('workflow_rejection_reason_id')) {
-                                return array($this->tm('This transition needs before to select rejection reason', $lang), '');
+                                $this->set("attempt", "Y");
+                                $this->commit();
+                                return array($this->tm('Please enter in the bottom of this form the rejection reason', $lang), '');
                         }
                 }
 
@@ -245,7 +247,7 @@ class WorkflowRequest extends WorkflowObject
                         $this->set('done', 'Y');
                 }
 
-
+                $this->set("attempt", "N");
                 $this->set('workflow_stage_id', $final_stage_id);
                 $this->set('workflow_status_id', $final_status_id);
                 $this->commit();
@@ -476,9 +478,11 @@ class WorkflowRequest extends WorkflowObject
                 $idn = $appObj->getVal('idn');
                 $name = $this->calcCandidateFullName($what);
 
-                $info = $this->calcCandidateInfo($what);
+                $cand_info = $this->calcCandidateInfo($what);
 
                 $status = $this->decode("workflow_status_id", '', false, $lang);
+                $empl_info = $this->decode("workflow_employee_id", '', false, $lang);
+
                 $status_id = $this->getVal("workflow_status_id");
 
                 $myId = $this->id;
@@ -487,7 +491,8 @@ class WorkflowRequest extends WorkflowObject
                                 <span class='idn'>$idn</span>
                                 <span class='fname'>$name</span>
                                 <span class='fstatus st$status_id'>$status</span>
-                                <span class='wrinfo'>$info</span>
+                                <span class='wrcandinfo'>$cand_info</span>
+                                <span class='wremplinfo'>$empl_info</span>
                         </div>";
         }
 
@@ -814,6 +819,8 @@ class WorkflowRequest extends WorkflowObject
                                 return $this->weReachedStep($step);
                         }
                 }
+
+                if ($attribute == "workflow_rejection_reason_id") return $this->sureIs("attempt");
 
 
                 return true;

@@ -198,13 +198,25 @@ div.wcategory {
     padding: 11px;
 }
 
-span.wrinfo {
+span.wrcandinfo {
     background-color: #e2ec23;
+    color: black;
+    padding: 3px 6px;
+    float: right;
+    margin-top: -2px;
+}
+
+
+span.wremplinfo {
+    background-color: #63f8f8;
     color: black;
     padding: 3px 6px;
     float: left;
     margin-top: -2px;
 }
+
+
+
 
 span.idn {
     background-color: #e2ec23;
@@ -435,12 +447,12 @@ th.col-importance-small.th-comment_date {
     margin-bottom: 10px;
 }
 
-.certiftp a{
+.certiftp a {
     float: right;
     width: 100%;
-    text-align:center;
-    padding-top:10px;
-    color: black;    
+    text-align: center;
+    padding-top: 10px;
+    color: black;
 }
 
 .certiftp.current {

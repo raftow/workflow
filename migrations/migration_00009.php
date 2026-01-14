@@ -1,14 +1,11 @@
 <?php
-if(!class_exists("AfwSession")) die("Denied access");
+if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
-try
-{
-           
-            AfwDatabase::db_query("ALTER TABLE ".$server_db_prefix."workflow.workflow_stage add   interview_ind char(1) NOT NULL DEFAULT 'W'  AFTER workflow_role_id;");
-            
-}
-catch(Exception $e)
-{
+try {
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_request add   attempt char(1) NOT NULL DEFAULT 'N'  AFTER workflow_status_id;");
+
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_stage add   interview_ind char(1) NOT NULL DEFAULT 'W'  AFTER workflow_role_id;");
+} catch (Exception $e) {
     $migration_error .= " " . $e->getMessage();
-}    
+}

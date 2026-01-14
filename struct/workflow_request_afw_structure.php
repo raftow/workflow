@@ -501,6 +501,24 @@ class WorkflowWorkflowRequestAfwStructure
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                 ),
+
+                'attempt' => array(
+                        'FGROUP' => 'assignment',
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'DEFAUT' => 'N',
+                        'TYPE' => 'YN',
+                        'STEP' => 99,
+                        'READONLY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
                 'done' => array(
                         'FGROUP' => 'assignment',
                         'SHOW' => true,
