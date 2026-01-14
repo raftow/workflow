@@ -132,8 +132,8 @@ class WorkflowRequest extends WorkflowObject
         {
                 if ($onlyForAuthenticatedEmployee) {
                         $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
-                        if (!$wEmployeeMe) die("No user authenticated !!!!"); //return array();
-                        $employeeRolesArray = explode(",", trim($this->getVal("wrole_mfk"), ","));
+                        if (!$wEmployeeMe) return array(); // die("No user authenticated !!!!"); //
+                        $employeeRolesArray = explode(",", trim($wEmployeeMe->getVal("wrole_mfk"), ","));
                 } else {
                         $employeeRolesArray = null;
                 }
@@ -340,7 +340,7 @@ class WorkflowRequest extends WorkflowObject
 
                 $employeesList = $this->getEmployees(true);
                 $transitionList = $this->getMyTransitions(true);
-                if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
+                // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
                 // $orgunit_id = $this->getVal('orgunit_id');
                 // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
