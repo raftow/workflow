@@ -340,6 +340,7 @@ class WorkflowRequest extends WorkflowObject
 
                 $employeesList = $this->getEmployees(true);
                 $transitionList = $this->getMyTransitions(true);
+                if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
                 // $orgunit_id = $this->getVal('orgunit_id');
                 // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
                 foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
