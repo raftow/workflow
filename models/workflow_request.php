@@ -481,7 +481,7 @@ class WorkflowRequest extends WorkflowObject
                 $cand_info = $this->calcCandidateInfo($what);
 
                 $status = $this->decode("workflow_status_id", '', false, $lang);
-                $empl_info = $this->decode("workflow_employee_id", '', false, $lang);
+                $empl_info = $this->decode("employee_id", '', false, $lang);
 
                 $status_id = $this->getVal("workflow_status_id");
 
