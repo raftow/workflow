@@ -398,6 +398,13 @@ th.col-importance-small.th-comment_date {
     content: "\f0c0";
 }
 
+.icon-386::before {
+    content: "\f0c1";
+}
+
+
+
+
 /*****     start of upload files css   *********************/
 
 .hzm_data_dragDropDiv {

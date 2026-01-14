@@ -229,7 +229,7 @@ class WorkflowRequest extends WorkflowObject
                         if (!$this->getVal('workflow_rejection_reason_id')) {
                                 $this->set("attempt", "Y");
                                 $this->commit();
-                                return array($this->tm('Please enter in the bottom of this form the rejection reason', $lang), '');
+                                return array('', '', $this->tm('Please enter in the bottom of this form the rejection reason', $lang));
                         }
                 }
 
