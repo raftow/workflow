@@ -261,9 +261,19 @@ class WorkflowRequest extends WorkflowObject
                 return array('', $status_comment);
         }
 
+        public function isStarted()
+        {
+                return (($this->getVal('done') == "W") or ($this->getVal('done') == "Y"));
+        }
+
+        public function isFinished()
+        {
+                return ($this->getVal('done') == "Y");
+        }
+
         public function assignRequest($employeeId, $lang = 'ar')
         {
-                if($this->getVal('done') == "W") {
+                if ($this->getVal('done') == "W") {
                         return array('', $this->tm("Can't change the assign of a request when a work has been started on it. Please cancel this work before.", $lang));
                 }
                 if ((!$employeeId) and $this->getVal('employee_id') > 0)
@@ -343,8 +353,7 @@ class WorkflowRequest extends WorkflowObject
                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                         );
 
-                if($this->getVal("done")=="N")
-                {
+                if ($this->getVal("done") == "N") {
                         $color = 'yellow';
                         $title_ar = 'بدأ العمل على الطلب';
                         $methodName = 'startWork';
@@ -357,9 +366,7 @@ class WorkflowRequest extends WorkflowObject
                                         'PUBLIC' => true,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
-                }
-                elseif($this->getVal("done")=="W")
-                {
+                } elseif ($this->getVal("done") == "W") {
                         $color = 'red';
                         $title_ar = 'إلغاء بدأ العمل على الطلب';
                         $methodName = 'cancelStartWork';
@@ -398,7 +405,8 @@ class WorkflowRequest extends WorkflowObject
                 return $pbms;
         }
 
-        public function cancelStartWork($lang = 'ar'){
+        public function cancelStartWork($lang = 'ar')
+        {
                 $this->set("done", "N");
                 $this->commit();
                 // notify the employee that wis work on this request has been canceled                
@@ -407,10 +415,11 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function startWork($lang = 'ar'){
+        public function startWork($lang = 'ar')
+        {
                 $this->set("done", "W"); // W means started Y means done N means not started
                 $this->commit();
-                
+
 
                 return ["", $this->tm("The work on this request has been started", $lang)];
         }
@@ -532,7 +541,7 @@ class WorkflowRequest extends WorkflowObject
                 $cand_info = $this->calcCandidateInfo($what);
 
                 $status = $this->decode("workflow_status_id", '', false, $lang);
-                $empl_info = $this->decode("employee_id", '', false, $lang)."-".$this->decode("done", '', false, $lang);
+                $empl_info = $this->decode("employee_id", '', false, $lang) . "-" . $this->decode("done", '', false, $lang);
 
                 $status_id = $this->getVal("workflow_status_id");
 
@@ -888,6 +897,29 @@ class WorkflowRequest extends WorkflowObject
 
 
                 throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
+        }
+
+        protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
+        {
+                global $lang;
+                $otherLinksArray = $this->getOtherLinksArrayStandard($mode, false, $step);
+                $my_id = $this->getId();
+                $displ = $this->getDisplay($lang);
+
+                if (!$this->isStarted()) {
+                        unset($link);
+                        $link = array();
+                        $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدأ العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
+                        $link["URL"] = "@help";
+                        $link["CODE"] = "stop.and.debugg";
+                        $link["TITLE"] = $title;
+                        $link["PUBLIC"] = true;
+                        $otherLinksArray[] = $link;
+                }
+
+
+
+                return $otherLinksArray;
         }
 
 
