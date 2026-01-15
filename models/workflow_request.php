@@ -908,15 +908,17 @@ class WorkflowRequest extends WorkflowObject
                 $my_id = $this->getId();
                 $displ = $this->getDisplay($lang);
 
-                if (!$this->isStarted()) {
-                        unset($link);
-                        $link = array();
-                        $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدأ العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
-                        $link["URL"] = "@help";
-                        $link["CODE"] = "stop.and.debugg";
-                        $link["TITLE"] = $title;
-                        $link["PUBLIC"] = true;
-                        $otherLinksArray[] = $link;
+                if ($mode == "mode_category") {
+                        if (!$this->isStarted()) {
+                                unset($link);
+                                $link = array();
+                                $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدأ العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
+                                $link["URL"] = "@help";
+                                $link["CODE"] = "stop.and.debugg";
+                                $link["TITLE"] = $title;
+                                $link["PUBLIC"] = true;
+                                $otherLinksArray[] = $link;
+                        }
                 }
 
 
