@@ -263,6 +263,9 @@ class WorkflowRequest extends WorkflowObject
 
         public function assignRequest($employeeId, $lang = 'ar')
         {
+                if($this->getVal('done') == "W") {
+                        return array('', $this->tm("Can't change the assign of a request when a work has been started on it. Please cancel this work before.", $lang));
+                }
                 if ((!$employeeId) and $this->getVal('employee_id') > 0)
                         throw new AfwRuntimeException('strange attempt to unassign the request ID=' . $this->id);
                 if (!$employeeId)
@@ -340,6 +343,37 @@ class WorkflowRequest extends WorkflowObject
                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                         );
 
+                if($this->getVal("done")=="N")
+                {
+                        $color = 'yellow';
+                        $title_ar = 'بدأ العمل على الطلب';
+                        $methodName = 'startWork';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ROLES' => 'workflow/403',
+                                        'PUBLIC' => true,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+                }
+                elseif($this->getVal("done")=="W")
+                {
+                        $color = 'red';
+                        $title_ar = 'إلغاء بدأ العمل على الطلب';
+                        $methodName = 'cancelStartWork';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ROLES' => 'workflow/393,403',
+                                        'PUBLIC' => true,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+                }
+
                 $employeesList = $this->getEmployees(true);
                 $transitionList = $this->getMyTransitions(true);
                 // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
@@ -362,6 +396,23 @@ class WorkflowRequest extends WorkflowObject
                 // die('rafik dyn pbms=' . var_export($pbms, true));
 
                 return $pbms;
+        }
+
+        public function cancelStartWork($lang = 'ar'){
+                $this->set("done", "N");
+                $this->commit();
+                // notify the employee that wis work on this request has been canceled                
+
+                return ["", $this->tm("The work on this request has been canceled", $lang)];
+        }
+
+
+        public function startWork($lang = 'ar'){
+                $this->set("done", "W"); // W means started Y means done N means not started
+                $this->commit();
+                
+
+                return ["", $this->tm("The work on this request has been started", $lang)];
         }
 
         public function assignBestAvailableEmployee($lang = 'ar', $pbm = true)
@@ -481,7 +532,7 @@ class WorkflowRequest extends WorkflowObject
                 $cand_info = $this->calcCandidateInfo($what);
 
                 $status = $this->decode("workflow_status_id", '', false, $lang);
-                $empl_info = $this->decode("employee_id", '', false, $lang);
+                $empl_info = $this->decode("employee_id", '', false, $lang)."-".$this->decode("done", '', false, $lang);
 
                 $status_id = $this->getVal("workflow_status_id");
 

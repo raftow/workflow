@@ -16,3 +16,5 @@ $messages['requests assigned'] = 'طلبات تم اسنادها';
 $messages['workflow scope'] = 'مجال العمل';
 $messages['resetted requests'] = 'طلبات تم تصفيرها';
 $messages['For workflow role'] = 'فيما يخص الصلاحية';
+$messages['The work on this request has been canceled'] = 'تم إلغاء العمل على هذا الطلب';
+$messages["Can't change the assign of a request when a work has been started on it. Please cancel this work before."] = "لا يمكن تغيير الشخص المسؤول عن الطلب بعد بدء العمل عليه. يرجى إلغاء هذا العمل قبل ذلك.";

@@ -2,6 +2,9 @@
 
 class WorkflowObject extends AfwMomkenObject
 {
+
+    public static $AROLE_OF_ADMISSION_RESPONSIBILITY = 403;
+    public static $AROLE_OF_ADMISSION_MANAGER = 393;
     public static $content_type_picture = 1;
     public static $content_type_publication = 2;
     public static $content_type_banner = 3;
