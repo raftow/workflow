@@ -391,8 +391,10 @@ class WorkflowRequest extends WorkflowObject
                                 $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
                         }
 
-                        if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
-                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep());
+                        if ($this->isStarted()) {
+                                if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
+                                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep());
+                                }
                         }
                 }
 
