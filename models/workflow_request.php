@@ -882,7 +882,7 @@ class WorkflowRequest extends WorkflowObject
                         }
                 }
 
-                if ($attribute == "workflow_rejection_reason_id") return $this->sureIs("attempt");
+                if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and $this->sureIs("attempt"));
 
 
                 return true;
