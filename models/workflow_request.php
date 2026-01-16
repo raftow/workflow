@@ -337,109 +337,109 @@ class WorkflowRequest extends WorkflowObject
                 $log = '';
                 $pbms = array();
 
-                $color = 'purple';
-                $title_ar = 'تحديث البيانات من الأصل';
-                $methodName = 'getOriginalData';
-                $pbms[AfwStringHelper::hzmEncode($methodName)] =
-                        array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'PUBLIC' => true,
-                                'BF-ID' => '',
-                                // 'STEP' => $this->stepOfAttribute('employee_id')
-                        );
+                if ($this->isMine()) {
 
-
-                $color = 'orange';
-                $title_ar = 'فحص الصلاحيات التي أحتاجها';
-                $methodName = 'inspectMyAcceptedRoles';
-                $pbms[AfwStringHelper::hzmEncode($methodName)] =
-                        array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'ADMIN-ONLY' => true,
-                                'BF-ID' => '',
-                                // 'STEP' => $this->stepOfAttribute('employee_id')
-                        );
-
-                $color = 'green';
-                $title_ar = 'تحويل الطلب إلى الموظف الأقل عبئا';
-                $methodName = 'assignBestAvailableEmployee';
-                $pbms[AfwStringHelper::hzmEncode($methodName)] =
-                        array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'ROLES' => 'workflow/393',
-                                'PUBLIC' => true,
-                                // 'STEP' => $this->stepOfAttribute('employee_id')
-                        );
-
-                $color = 'blue';
-                $title_ar = 'تحويل الطلب إلى اللجنة والموظف المناسبين';
-                $methodName = 'resetAssignBestAvailableEmployee';
-                $pbms[AfwStringHelper::hzmEncode($methodName)] =
-                        array(
-                                'METHOD' => $methodName,
-                                'COLOR' => $color,
-                                'LABEL_AR' => $title_ar,
-                                'ROLES' => 'workflow/393',
-                                'PUBLIC' => true,
-                                // 'STEP' => $this->stepOfAttribute('employee_id')
-                        );
-
-
-
-
-                if (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "N")) {
-                        $color = 'yellow';
-                        $title_ar = 'بدأ العمل على الطلب';
-                        $methodName = 'startWork';
+                        $color = 'purple';
+                        $title_ar = 'تحديث البيانات من الأصل';
+                        $methodName = 'getOriginalData';
                         $pbms[AfwStringHelper::hzmEncode($methodName)] =
                                 array(
                                         'METHOD' => $methodName,
                                         'COLOR' => $color,
                                         'LABEL_AR' => $title_ar,
-                                        'ROLES' => 'workflow/403',
                                         'PUBLIC' => true,
+                                        'BF-ID' => '',
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
-                } elseif (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "W")) {
-                        $color = 'gray';
-                        $title_ar = 'إلغاء بدأ العمل على الطلب';
-                        $methodName = 'cancelStartWork';
+
+
+                        $color = 'orange';
+                        $title_ar = 'فحص الصلاحيات التي أحتاجها';
+                        $methodName = 'inspectMyAcceptedRoles';
                         $pbms[AfwStringHelper::hzmEncode($methodName)] =
                                 array(
                                         'METHOD' => $methodName,
                                         'COLOR' => $color,
                                         'LABEL_AR' => $title_ar,
-                                        'ROLES' => 'workflow/393,403',
+                                        'ADMIN-ONLY' => true,
+                                        'BF-ID' => '',
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+                        $color = 'green';
+                        $title_ar = 'تحويل الطلب إلى الموظف الأقل عبئا';
+                        $methodName = 'assignBestAvailableEmployee';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ROLES' => 'workflow/393',
                                         'PUBLIC' => true,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
-                }
 
-                $employeesList = $this->getEmployees(true);
-                $transitionList = $this->getMyTransitions(true);
-                // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
-                // $orgunit_id = $this->getVal('orgunit_id');
-                // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
-                foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
-                        if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
-                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
+                        $color = 'blue';
+                        $title_ar = 'تحويل الطلب إلى اللجنة والموظف المناسبين';
+                        $methodName = 'resetAssignBestAvailableEmployee';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ROLES' => 'workflow/393',
+                                        'PUBLIC' => true,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+
+
+
+                        if (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "N")) {
+                                $color = 'yellow';
+                                $title_ar = 'بدأ العمل على الطلب';
+                                $methodName = 'startWork';
+                                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                        array(
+                                                'METHOD' => $methodName,
+                                                'COLOR' => $color,
+                                                'LABEL_AR' => $title_ar,
+                                                'ROLES' => 'workflow/403',
+                                                'PUBLIC' => true,
+                                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                                        );
+                        } elseif (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "W")) {
+                                $color = 'gray';
+                                $title_ar = 'إلغاء بدأ العمل على الطلب';
+                                $methodName = 'cancelStartWork';
+                                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                        array(
+                                                'METHOD' => $methodName,
+                                                'COLOR' => $color,
+                                                'LABEL_AR' => $title_ar,
+                                                'ROLES' => 'workflow/393,403',
+                                                'PUBLIC' => true,
+                                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                                        );
                         }
 
-                        if ($this->isStarted()) {
-                                if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
-                                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep(), "::getColor");
+                        $employeesList = $this->getEmployees(true);
+                        $transitionList = $this->getMyTransitions(true);
+                        // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
+                        // $orgunit_id = $this->getVal('orgunit_id');
+                        // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
+                        foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
+                                if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
+                                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
+                                }
+
+                                if ($this->isStarted()) {
+                                        if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
+                                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep(), "::getColor");
+                                        }
                                 }
                         }
                 }
-
-
-
 
 
                 // die('rafik dyn pbms=' . var_export($pbms, true));
