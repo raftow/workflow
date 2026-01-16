@@ -980,9 +980,18 @@ class WorkflowEmployee extends WorkflowObject
         public function calcPicture($what = "value")
         {
                 $emplobj = $this->het("employee_id");
-                if (!$emplobj) return "???";
+                if (!$emplobj) return "??";
                 $auserObj = $emplobj->het("auser_id");
-                if (!$auserObj) return "!!!";
-                return $auserObj->getUserPicture();
+                if (!$auserObj) return "!!";
+                $pic = $auserObj->getUserPicture();
+                $user_admin = $auserObj->isAdmin() ? "admin" : "";
+                $ord = $auserObj->id % 5;
+                $user_bg_class = "ubg" . $ord;
+
+                return "<div class=\"hzm-user-account $user_admin hzm-container-center hzm-custom-icon-container $user_bg_class\">
+                <a href=\"#\" data-original-title=\"\" title=\"\">
+                    $pic
+                </a>
+            </div>";
         }
 }
