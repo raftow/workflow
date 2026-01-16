@@ -16,7 +16,6 @@ class WorkflowScope extends WorkflowObject
     {
         parent::__construct('workflow_scope', 'id', 'workflow');
         WorkflowWorkflowScopeAfwStructure::initInstance($this);
-
     }
 
     public static function loadById($id)
@@ -28,7 +27,6 @@ class WorkflowScope extends WorkflowObject
         } else {
             return null;
         }
-
     }
 
     public static function loadByMainIndex($workflow_module_id, $lookup_code, $create_obj_if_not_found = false)
@@ -66,7 +64,6 @@ class WorkflowScope extends WorkflowObject
         } else {
             return null;
         }
-
     }
 
     public function getDisplay($lang = 'ar')
@@ -79,4 +76,26 @@ class WorkflowScope extends WorkflowObject
         return false;
     }
 
+
+    public function select_visibilite_horizontale($dropdown = false)
+    {
+        $objme = AfwSession::getUserConnected();
+
+        if ($objme and $objme->isAdmin()) {
+            // no VH for system admin
+        } else {
+            $employee_id = $objme ? $objme->getEmployeeId() : 0;
+
+            if ($employee_id) {
+                $wEmplObj = WorkflowEmployee::findWorkflowEmployee($employee_id);
+                if ($wEmplObj) {
+                    $wscope_mfk = trim($wEmplObj->getVal("wscope_mfk"), ",");
+                    $this->where("id in ($wscope_mfk)");
+                }
+            }
+        }
+
+        $selects = array();
+        $this->select_visibilite_horizontale_default($dropdown, $selects);
+    }
 }

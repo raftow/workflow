@@ -398,7 +398,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'IMPORTANT' => 'IN',
 			'SEARCH' => false,
 			'SHOW' => true,
-			'MINIBOX' => true,
+			'NO-COTE' => true,
 			'MB_CSS' => 'width_pct_100',
 			'RETRIEVE' => true,
 			'EDIT' => true,
