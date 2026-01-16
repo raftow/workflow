@@ -505,7 +505,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'attempt' => array(
                         'FGROUP' => 'assignment',
                         'SHOW' => true,
-                        'RETRIEVE' => true,
+                        'RETRIEVE' => false,
                         'SEARCH' => true,
                         'QSEARCH' => true,
                         'EDIT' => true,

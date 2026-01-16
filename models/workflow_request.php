@@ -353,6 +353,22 @@ class WorkflowRequest extends WorkflowObject
                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                         );
 
+                $color = 'blue';
+                $title_ar = 'تحويل الطلب إلى اللجنة والموظف المناسبين';
+                $methodName = 'resetAssignBestAvailableEmployee';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                        array(
+                                'METHOD' => $methodName,
+                                'COLOR' => $color,
+                                'LABEL_AR' => $title_ar,
+                                'ROLES' => 'workflow/393',
+                                'PUBLIC' => true,
+                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                        );
+
+
+
+
                 if ($this->getVal("done") == "N") {
                         $color = 'yellow';
                         $title_ar = 'بدأ العمل على الطلب';
@@ -424,6 +440,11 @@ class WorkflowRequest extends WorkflowObject
 
 
                 return ["", $this->tm("The work on this request has been started", $lang)];
+        }
+
+        public function resetAssignBestAvailableEmployee($lang = 'ar', $pbm = true)
+        {
+                $this->assignBestAvailableEmployee($lang, $pbm, $reassignOrgunit = true);
         }
 
         public function assignBestAvailableEmployee($lang = 'ar', $pbm = true, $reassignOrgunit = false)
