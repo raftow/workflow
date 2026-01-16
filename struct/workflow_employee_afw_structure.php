@@ -535,6 +535,26 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'EDIT-UGROUPS' => '',
 		),
 
+		'picture' => array(
+			'STEP' => 1,
+			'CATEGORY' => 'FORMULA',
+			'SHOW' => true,
+			'EDIT' => true,
+			'TYPE' => 'TEXT',
+			'SIZE' => 'AREA',
+			'ROWS' => 16,
+			'DISPLAY' => true,
+			'RETRIEVE' => true,
+			'NO-LABEL' => true,
+			'READONLY' => true,
+			'FORMAT' => 'HTML',
+			'DISPLAY-UGROUPS' => '',
+			'EDIT-UGROUPS' => '',
+			'CSS' => 'width_pct_25',
+			'CAN-BE-SETTED' => false,
+			'INPUT_WIDE' => true,
+		),
+
 		/*
 		 * 'statif_pct' => array(
 		 * 	'SHOW' => true,

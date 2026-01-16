@@ -18,6 +18,7 @@ class WorkflowEmployeeArTranslator
 
 
         $trad['workflow_employee']['employee_id'] = 'الموظف';
+        $trad['workflow_employee']['picture'] = 'الايقونة';
 
         $trad['workflow_employee']['ongoing_requests_count'] = 'عدد الطلبات الجاري العمل عليها';
         $trad['workflow_employee']['done_requests_count'] = 'عدد الطلبات التي تم التحقيق عليها';

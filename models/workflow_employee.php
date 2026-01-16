@@ -975,4 +975,14 @@ class WorkflowEmployee extends WorkflowObject
                         return true;
                 }
         }
+
+
+        public function calcPicture($what = "value")
+        {
+                $emplobj = $this->het("employee_id");
+                if (!$emplobj) return "???";
+                $auserObj = $emplobj->het("auser_id");
+                if (!$auserObj) return "!!!";
+                return $auserObj->getUserPicture();
+        }
 }
