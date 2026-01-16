@@ -369,7 +369,7 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                if ($this->getVal("done") == "N") {
+                if (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "N")) {
                         $color = 'yellow';
                         $title_ar = 'بدأ العمل على الطلب';
                         $methodName = 'startWork';
@@ -382,7 +382,7 @@ class WorkflowRequest extends WorkflowObject
                                         'PUBLIC' => true,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
-                } elseif ($this->getVal("done") == "W") {
+                } elseif (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "W")) {
                         $color = 'red';
                         $title_ar = 'إلغاء بدأ العمل على الطلب';
                         $methodName = 'cancelStartWork';
@@ -576,7 +576,14 @@ class WorkflowRequest extends WorkflowObject
                 $cand_info = $this->calcCandidateInfo($what);
 
                 $status = $this->decode("workflow_status_id", '', false, $lang);
-                $empl_info = $this->decode("employee_id", '', false, $lang) . "-" . $this->decode("done", '', false, $lang);
+                if ($this->getVal("employee_id") > 0) {
+                        $empl_info = $this->decode("employee_id", '', false, $lang) . "-" . $this->decode("done", '', false, $lang);
+                        $cssinfo = "CSS" . $this->decode("done");
+                } else {
+                        $empl_info = "";
+                        $cssinfo = "CSSN";
+                }
+
 
                 $status_id = $this->getVal("workflow_status_id");
 
@@ -587,7 +594,7 @@ class WorkflowRequest extends WorkflowObject
                                 <span class='fname'>$name</span>
                                 <span class='fstatus st$status_id'>$status</span>
                                 <span class='wrcandinfo'>$cand_info</span>
-                                <span class='wremplinfo'>$empl_info</span>
+                                <span class='wremplinfo $cssinfo'>$empl_info</span>
                         </div>";
         }
 
