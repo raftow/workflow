@@ -12,7 +12,7 @@ class WorkflowRequest extends WorkflowObject
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
                         'title' => 'تحويل الطلب إلى [item]',
-                        'color' => 'white',
+                        'color' => 'random',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
                         'confirmation_question' => '',
@@ -23,7 +23,6 @@ class WorkflowRequest extends WorkflowObject
 
                 'runTransition' => array(
                         'title' => 'تنفيذ [item]',
-                        'color' => 'yellow',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
                         'confirmation_question' => '',
