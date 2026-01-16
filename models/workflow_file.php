@@ -463,7 +463,7 @@ zoomWindowOffety:-200
                         $img = "<img class='rafik-img' style='$style' src='$upld_path/$new_name'>";
                         return $img;
                 } else {
-                        return "<img style='$style' src='../lib/images/no-picture.png'>";
+                        return "<img style='width:30%;height:auto' src='../lib/images/no-picture.png'>";
                 }
         }
 
