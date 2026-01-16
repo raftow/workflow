@@ -164,6 +164,14 @@ class WorkflowObject extends AfwMomkenObject
         return self::action_type_enum()[$lang];
     }
 
+    public static function color_of_action($action = null)
+    {
+        if ($action)
+            return self::term_mode()['color'][$action];
+        else
+            return self::term_mode()['color'];
+    }
+
     public static function action_type_enum()
     {
         $arr_list_of_action_type_enum = array();
@@ -171,18 +179,22 @@ class WorkflowObject extends AfwMomkenObject
         $arr_list_of_action_type_enum['en'][1] = 'Rejection';
         $arr_list_of_action_type_enum['ar'][1] = 'رفض';
         $arr_list_of_action_type_enum['code'][1] = 'RJ';
+        $arr_list_of_action_type_enum['color'][1] = 'red';
 
         $arr_list_of_action_type_enum['en'][2] = 'Acceptance';
         $arr_list_of_action_type_enum['ar'][2] = 'قبول';
         $arr_list_of_action_type_enum['code'][2] = 'AC';
+        $arr_list_of_action_type_enum['color'][1] = 'green';
 
         $arr_list_of_action_type_enum['en'][3] = 'Pending';
         $arr_list_of_action_type_enum['ar'][3] = 'تعليق ';
         $arr_list_of_action_type_enum['code'][3] = 'PN';
+        $arr_list_of_action_type_enum['color'][1] = 'blue';
 
         $arr_list_of_action_type_enum['en'][4] = 'return';
         $arr_list_of_action_type_enum['ar'][4] = 'تراجع';
         $arr_list_of_action_type_enum['code'][4] = 'RT';
+        $arr_list_of_action_type_enum['color'][1] = 'orange';
 
         return $arr_list_of_action_type_enum;
     }

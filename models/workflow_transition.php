@@ -5,7 +5,7 @@ $file_dir_name = dirname(__FILE__);
 
 // require_once("$file_dir_name/../afw/afw.php");
 
-class WorkflowTransition extends AFWObject
+class WorkflowTransition extends WorkflowObject
 {
 
     public static $MY_ATABLE_ID = 14017;
@@ -197,5 +197,14 @@ class WorkflowTransition extends AFWObject
         $cond_sql = implode(" or ", $cond_sql_arr);
 
         return $cond_sql;
+    }
+
+
+    public function getColor()
+    {
+        $actionObj = $this->het("workflow_action_id");
+        if (!$actionObj) return "black";
+        $action_type_enum = $actionObj->getVal("action_type_enum");
+        return self::color_of_action($action_type_enum);
     }
 }
