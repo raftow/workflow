@@ -166,7 +166,7 @@ class WorkflowWorkflowStageAfwStructure
                         'TYPE' => 'FK',
                         'ANSWER' => 'orgunit',
                         'ANSMODULE' => 'hrm',
-                        'WHERE' => "id in (select orgunit_id from §DBPREFIX§workflow.workflow_orgunit where active='Y')",
+                        'WHERE' => "id=12420 or id in (select orgunit_id from §DBPREFIX§workflow.workflow_orgunit where active='Y')",
                         'RELATION' => 'ManyToOne',
                         'READONLY' => false,
                         'DISPLAY' => true,
