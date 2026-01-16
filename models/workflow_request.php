@@ -148,6 +148,19 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
+
+        public function getOriginalData($lang = "ar")
+        {
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return array("Original-Object looked up with ($keyLookup) not found  : $error", '');
+
+
+                return $objOriginal->updateDataOfWorkflowRequest($this);
+        }
+
+
         public function inspectMyAcceptedRoles($lang = "ar")
         {
                 return $this->getMyAcceptedRoles($lang, true);
@@ -325,6 +338,18 @@ class WorkflowRequest extends WorkflowObject
                 $log = '';
                 $pbms = array();
 
+                $color = 'purple';
+                $title_ar = 'تحديث البيانات من الأصل';
+                $methodName = 'getOriginalData';
+                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                        array(
+                                'METHOD' => $methodName,
+                                'COLOR' => $color,
+                                'LABEL_AR' => $title_ar,
+                                'PUBLIC' => true,
+                                'BF-ID' => '',
+                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                        );
 
 
                 $color = 'orange';
