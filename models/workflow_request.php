@@ -407,7 +407,7 @@ class WorkflowRequest extends WorkflowObject
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
                 } elseif (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "W")) {
-                        $color = 'red';
+                        $color = 'gray';
                         $title_ar = 'إلغاء بدأ العمل على الطلب';
                         $methodName = 'cancelStartWork';
                         $pbms[AfwStringHelper::hzmEncode($methodName)] =
@@ -948,6 +948,20 @@ class WorkflowRequest extends WorkflowObject
                 throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
         }
 
+
+        public function isMine()
+        {
+                $objme = AfwSession::getUserConnected();
+
+                if ($objme and $objme->isAdmin()) {
+                        return true;
+                } else {
+                        $employee_id = $objme ? $objme->getEmployeeId() : 0;
+                        return ($employee_id and ($employee_id == $this->getVal("employee_id")));
+                }
+        }
+
+
         protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
         {
                 global $lang;
@@ -956,7 +970,16 @@ class WorkflowRequest extends WorkflowObject
                 $displ = $this->getDisplay($lang);
 
                 if ($mode == "mode_category") {
-                        if (!$this->isStarted()) {
+                        if (!$this->isMine()) {
+                                unset($link);
+                                $link = array();
+                                $title = "ليس لك حاليا صلاحية العمل على هذا الطلب، يرجى الضغط على زر انهاء للعودة إلى صندوق الوارد";
+                                $link["URL"] = "@help";
+                                $link["CODE"] = "stop.and.debugg";
+                                $link["TITLE"] = $title;
+                                $link["PUBLIC"] = true;
+                                $otherLinksArray[] = $link;
+                        } elseif (!$this->isStarted()) {
                                 unset($link);
                                 $link = array();
                                 $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدأ العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
