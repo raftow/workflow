@@ -1,60 +1,55 @@
 <?php
-class WorkflowFile extends ContentElement {
+class WorkflowFile extends ContentElement
+{
 
-	public static $DATABASE		= ""; 
-        public static $MODULE		    = "workflow"; 
-        public static $TABLE			= ""; 
-        public static $DB_STRUCTURE = null; 
-        
-        
-        public function __construct(){
-		parent::__construct("workflow_file","id","workflow");
+        public static $DATABASE                = "";
+        public static $MODULE                    = "workflow";
+        public static $TABLE                        = "";
+        public static $DB_STRUCTURE = null;
+
+
+        public function __construct()
+        {
+                parent::__construct("workflow_file", "id", "workflow");
                 WorkflowWorkflowFileAfwStructure::initInstance($this);
-	}
+        }
 
         public static function loadById($id)
         {
-           $obj = new WorkflowFile();
-           $obj->select_visibilite_horizontale();
-           if($obj->load($id))
-           {
-                return $obj;
-           }
-           else return null;
+                $obj = new WorkflowFile();
+                $obj->select_visibilite_horizontale();
+                if ($obj->load($id)) {
+                        return $obj;
+                } else return null;
         }
 
-        public static function loadByMainIndex($original_name, $owner_type, $owner_id, $afile_size,$create_obj_if_not_found=false)
+        public static function loadByMainIndex($original_name, $owner_type, $owner_id, $afile_size, $create_obj_if_not_found = false)
         {
 
 
-           $obj = new WorkflowFile();
-           $obj->select("original_name",$original_name);
-           $obj->select("owner_type",$owner_type);
-           $obj->select("owner_id",$owner_id);
-           $obj->select("afile_size",$afile_size);
+                $obj = new WorkflowFile();
+                $obj->select("original_name", $original_name);
+                $obj->select("owner_type", $owner_type);
+                $obj->select("owner_id", $owner_id);
+                $obj->select("afile_size", $afile_size);
 
-           if($obj->load())
-           {
-                if($create_obj_if_not_found) $obj->activate();
-                return $obj;
-           }
-           elseif($create_obj_if_not_found)
-           {
-                $obj->set("original_name",$original_name);
-                $obj->set("owner_type",$owner_type);
-                $obj->set("owner_id",$owner_id);
-                $obj->set("afile_size",$afile_size);
+                if ($obj->load()) {
+                        if ($create_obj_if_not_found) $obj->activate();
+                        return $obj;
+                } elseif ($create_obj_if_not_found) {
+                        $obj->set("original_name", $original_name);
+                        $obj->set("owner_type", $owner_type);
+                        $obj->set("owner_id", $owner_id);
+                        $obj->set("afile_size", $afile_size);
 
-                $obj->insertNew();
-                if(!$obj->id) return null; // means beforeInsert rejected insert operation
-                $obj->is_new = true;
-                return $obj;
-           }
-           else return null;
-           
+                        $obj->insertNew();
+                        if (!$obj->id) return null; // means beforeInsert rejected insert operation
+                        $obj->is_new = true;
+                        return $obj;
+                } else return null;
         }
-        
-        public function getWideDisplay($lang="ar") 
+
+        public function getWideDisplay($lang = "ar")
         {
                 /*if(!$this->isActive()) $suffix = " (تم التعطيل)";
                 else 
@@ -62,35 +57,35 @@ class WorkflowFile extends ContentElement {
                 $suffix = "<br>";
                 $prefix = "<br>&nbsp;&nbsp;&nbsp;&nbsp;";
                 $separator = "<br><br>";
-                
-                return $prefix. $this->valName() . $separator . $this->valPic_view(). $suffix;   
-	}
 
-        public function getDisplay($lang="ar") 
+                return $prefix . $this->valName() . $separator . $this->valPic_view() . $suffix;
+        }
+
+        public function getDisplay($lang = "ar")
         {
-                
-                return $this->pictureView("width: auto;height:auto;");   
-	}
-        
-        
-        public function getShortDisplay($lang="ar") 
+
+                return $this->pictureView("width: auto;height:auto;");
+        }
+
+
+        public function getShortDisplay($lang = "ar")
         {
-                if(!$this->isActive()) $suffix = "  --             غير مغعل";
+                if (!$this->isActive()) $suffix = "  --             غير مغعل";
                 else
-                $suffix = "";//" ()".$this->valDownload();
-                
-                return $this->valName(). $suffix;   
-	}
-        
-        public function getRetrieveDisplay($lang="ar") 
+                        $suffix = ""; //" ()".$this->valDownload();
+
+                return $this->valName() . $suffix;
+        }
+
+        public function getRetrieveDisplay($lang = "ar")
         {
-                if(!$this->isActive()) $suffix = "  --             غير مغعل";
+                if (!$this->isActive()) $suffix = "  --             غير مغعل";
                 else
-                  $suffix = "<br>".$this->valDownload();
-                
-                return $this->valName(). $suffix;   
-	}
-        
+                        $suffix = "<br>" . $this->valDownload();
+
+                return $this->valName() . $suffix;
+        }
+
         /*
         protected function getOtherLinksArray($mode, $genereLog = false, $step="all")      
         {
@@ -108,20 +103,20 @@ class WorkflowFile extends ContentElement {
              return $otherLinksArray;          
         }
         */
-        
-        public function __toString() 
+
+        public function __toString()
         {
-                return $this->getDisplay(). " - " .$this->valOriginal(); //. " (".$this->valSize().")";   
-	}
-        
-        public function getFileHCode() 
+                return $this->getDisplay() . " - " . $this->valOriginal(); //. " (".$this->valSize().")";   
+        }
+
+        public function getFileHCode()
         {
-               //$afile_ext = $this->getVal("afile_ext");
-               //$afile_size = $this->getVal("afile_size");
-               $original_name = $this->getVal("original_name");
-               $fhcode = substr(md5($original_name),0,5);
-               //die("afile_ext=$afile_ext, afile_size=$afile_size, getFileHCode=".$fhcode);
-               return $fhcode; 
+                //$afile_ext = $this->getVal("afile_ext");
+                //$afile_size = $this->getVal("afile_size");
+                $original_name = $this->getVal("original_name");
+                $fhcode = substr(md5($original_name), 0, 5);
+                //die("afile_ext=$afile_ext, afile_size=$afile_size, getFileHCode=".$fhcode);
+                return $fhcode;
         }
 
         public function getParsedText()
@@ -129,83 +124,77 @@ class WorkflowFile extends ContentElement {
                 // to implement an iuntelligent algorithm that parse pdfs / pictures and take containing text
                 return "** to implement  **";
         }
-        
-        public function getNewName() 
-        {
-             $new_name_prefix = $this->getVal("stakeholder_id")."_".$this->getVal("owner_id");
-             if($new_name_prefix == "_") $new_name_prefix = "customer";
-             return $new_name_prefix."_".$this->getId()."_".$this->getFileHCode().".".$this->getVal("afile_ext");
-	}
 
-        public function getFileHttpPath($relative_path="") 
+        public function getNewName()
         {
-            
-            if(!$relative_path) $relative_path = AfwSession::config("uploads_http_path","");
-            
-            if($this->getVal("doc_type_id")==9)
-                 return $relative_path."/imports";
-            else             
-                 return $relative_path;
-	}
-        
-        
-        
-        public function getFormuleResult($attribute, $what='value') 
+                $new_name_prefix = $this->getVal("stakeholder_id") . "_" . $this->getVal("owner_id");
+                if ($new_name_prefix == "_") $new_name_prefix = "customer";
+                return $new_name_prefix . "_" . $this->getId() . "_" . $this->getFileHCode() . "." . $this->getVal("afile_ext");
+        }
+
+        public function getFileHttpPath($relative_path = "")
         {
-                $upld_path = AfwSession::config("uploads_http_path",""); 
-               
-	       switch($attribute) 
-               {
-                    
-                    case "pic_view" :
-                            return $this->pictureView();
-                             
-                    break;
-                    case "preview" :
-                            return $this->previewMe(0,1000);
-                             
-                    break;
-                    
-                    
-                    case "afile_date" :
-                            list($greg_date,$greg_time) = explode(" ",$this->valdate_aut());
-                            return AfwDateHelper::gregToHijri($greg_date);
-                             
-                    break;
-                    
-                    case "afile_time" :
-                            list($greg_date,$greg_time) = explode(" ",$this->valdate_aut());
-                            return substr($greg_time,0,5);
-                    break;
-                    
-                    case "file_path" :
-                        $new_name = $this->getNewName();
-                        return AfwSession::config("uploads_http_path","")."/$new_name";
-                             
-                    break;
-                    
-                    case "download" :
-                        $new_name = $this->getNewName();
-                        $file_path = $this->getFileHttpPath();
-                        $afile_ext = $this->getVal("afile_ext");
-                        if($afile_ext=="pdf")
-                        {
-                            $fa_class = "file-pdf";
-                            $div_dwld = "";
-                        }
-                        elseif(($afile_ext=="zip") or ($afile_ext=="rar"))
-                        {
-                            $fa_class = "folder";
-                            $div_dwld = "";
-                        }
-                        else
-                        {
-                            $fa_class = "download";
-                            $div_dwld = "<div class=\"${afile_ext}_download\">&nbsp;</div>";
-                        }
-                        
-                        
-                        $url = "<div>
+
+                if (!$relative_path) $relative_path = AfwSession::config("uploads_http_path", "");
+
+                if ($this->getVal("doc_type_id") == 9)
+                        return $relative_path . "/imports";
+                else
+                        return $relative_path;
+        }
+
+
+
+        public function getFormuleResult($attribute, $what = 'value')
+        {
+                $upld_path = AfwSession::config("uploads_http_path", "");
+
+                switch ($attribute) {
+
+                        case "pic_view":
+                                return $this->pictureView();
+
+                                break;
+                        case "preview":
+                                return $this->previewMe(0, 1000);
+
+                                break;
+
+
+                        case "afile_date":
+                                list($greg_date, $greg_time) = explode(" ", $this->valdate_aut());
+                                return AfwDateHelper::gregToHijri($greg_date);
+
+                                break;
+
+                        case "afile_time":
+                                list($greg_date, $greg_time) = explode(" ", $this->valdate_aut());
+                                return substr($greg_time, 0, 5);
+                                break;
+
+                        case "file_path":
+                                $new_name = $this->getNewName();
+                                return AfwSession::config("uploads_http_path", "") . "/$new_name";
+
+                                break;
+
+                        case "download":
+                                $new_name = $this->getNewName();
+                                $file_path = $this->getFileHttpPath();
+                                $afile_ext = $this->getVal("afile_ext");
+                                if ($afile_ext == "pdf") {
+                                        $fa_class = "file-pdf";
+                                        $div_dwld = "";
+                                } elseif (($afile_ext == "zip") or ($afile_ext == "rar")) {
+                                        $fa_class = "folder";
+                                        $div_dwld = "";
+                                } else {
+                                        $fa_class = "download";
+                                        $div_dwld = "<div class=\"${afile_ext}_download\">&nbsp;</div>";
+                                }
+
+
+                                $url = "<div>
                                      <a target='_download' style='' href='$file_path/$new_name' class='downloadbtn fright'>
                                         $div_dwld
                                         <div class=\"file_download\">
@@ -214,44 +203,43 @@ class WorkflowFile extends ContentElement {
                                         </div>      
                                      </a>
                                 </div>";  // alt='انقر هنا لتحميل الملف'  // color: gray !important;
-			return $url;
-		    break;
-                    
-                    case "download_light" :
-                        $new_name = $this->getNewName();
-                        $file_path = $this->getFileHttpPath();
-                        $afile_ext = $this->getVal("afile_ext");
+                                return $url;
+                                break;
 
-                        $stored_name = $this->getVal("stored_file_name");
-                        // added by medali to manage stored_file_name
-                        if(strpos($stored_name,"ApplicantFile_")===0)
-                        {
-                                $file_path = "https://api.bmeholding.com/storage";
-                                $new_name = $stored_name;
-                        }
-                        $url = AfwHtmlHelper::getLightDownloadUrl("$file_path/$new_name", $afile_ext, "very-small");
-			return $url;
-		    break;
-                    
-                    
-                    
-                    case "small_picture" :
-                        $new_name = $this->getNewName();
-                        $id = $this->getId();
-                        
-                        global $small_picture_width, $small_picture_height;
-                        if(!$small_picture_width) $small_picture_width = 128;
-                        if(!$small_picture_height) $small_picture_height = 128;
-                        
-                        $pic_id = "zoom_${id}_$attribute";
-                         
-                        if($this->picture_style) $picture_style = "style='".$this->picture_style."'";
-                        else $picture_style = "style='width: ${small_picture_width}px !important;   height: auto !important;'";
-                        
-//    zoomType: \"inner\",
-                        
-                        $img = "<img style='width: 400px !important;height: auto !important;' id='$pic_id' src='$upld_path/$new_name' $picture_style  data-zoom-image='$upld_path/$new_name'>";  // alt='انقر هنا لتحميل الملف'
-                        $img .= "
+                        case "download_light":
+                                $new_name = $this->getNewName();
+                                $file_path = $this->getFileHttpPath();
+                                $afile_ext = $this->getVal("afile_ext");
+
+                                $stored_name = $this->getVal("stored_file_name");
+                                // added by medali to manage stored_file_name
+                                if (strpos($stored_name, "ApplicantFile_") === 0) {
+                                        $file_path = "https://api.bmeholding.com/storage";
+                                        $new_name = $stored_name;
+                                }
+                                $url = AfwHtmlHelper::getLightDownloadUrl("$file_path/$new_name", $afile_ext, "very-small");
+                                return $url;
+                                break;
+
+
+
+                        case "small_picture":
+                                $new_name = $this->getNewName();
+                                $id = $this->getId();
+
+                                global $small_picture_width, $small_picture_height;
+                                if (!$small_picture_width) $small_picture_width = 128;
+                                if (!$small_picture_height) $small_picture_height = 128;
+
+                                $pic_id = "zoom_${id}_$attribute";
+
+                                if ($this->picture_style) $picture_style = "style='" . $this->picture_style . "'";
+                                else $picture_style = "style='width: ${small_picture_width}px !important;   height: auto !important;'";
+
+                                //    zoomType: \"inner\",
+
+                                $img = "<img style='width: 400px !important;height: auto !important;' id='$pic_id' src='$upld_path/$new_name' $picture_style  data-zoom-image='$upld_path/$new_name'>";  // alt='انقر هنا لتحميل الملف'
+                                $img .= "
 <script>
     $('#$pic_id').elevateZoom({
 cursor: \"crosshair\",
@@ -265,66 +253,61 @@ zoomWindowOffety:-200
    
 </script>
                         ";  // alt='انقر هنا لتحميل الملف'*/
-			return $img;
-		    break;
-                    
-                    case "big_picture" :
-                        $new_name = $this->getNewName();
-                        $id = $this->getId();
-                        
-                        $pic_id = "zoom_${id}_$attribute";
-                         
-                        if($this->picture_style) $picture_style = "style='".$this->picture_style."'";
-                        else $picture_style = "style='width: 598px !important;   height: auto !important;'";
-                        
-                        $img = "<img id='$pic_id' src='$upld_path/$new_name' $picture_style  data-zoom-image='$upld_path/$new_name'>";  // alt='انقر هنا لتحميل الملف'
-                        
-			return $img;
-		    break;
+                                return $img;
+                                break;
 
-                    case "embed" :
-                        $new_name = $this->getNewName();
-                        return "<embed src='$upld_path/$new_name' width='598px' height='598px' internalinstanceid='11' title=''>";;
-		    break;
+                        case "big_picture":
+                                $new_name = $this->getNewName();
+                                $id = $this->getId();
 
-                     
-               }
+                                $pic_id = "zoom_${id}_$attribute";
+
+                                if ($this->picture_style) $picture_style = "style='" . $this->picture_style . "'";
+                                else $picture_style = "style='width: 598px !important;   height: auto !important;'";
+
+                                $img = "<img id='$pic_id' src='$upld_path/$new_name' $picture_style  data-zoom-image='$upld_path/$new_name'>";  // alt='انقر هنا لتحميل الملف'
+
+                                return $img;
+                                break;
+
+                        case "embed":
+                                $new_name = $this->getNewName();
+                                return "<embed src='$upld_path/$new_name' width='598px' height='598px' internalinstanceid='11' title=''>";;
+                                break;
+                }
         }
-        
-        
+
+
         protected function hideNonActiveRowsFor($auser)
         {
-              return true;  
+                return true;
         }
-        
+
         public function isNotViewable()
         {
-            if($this->estPicture()) return false;
-            if($this->estVideo()) return false;
-            return true;
+                if ($this->estPicture()) return false;
+                if ($this->estVideo()) return false;
+                return true;
         }
-        
-        public function showMySelf($style="")
+
+        public function showMySelf($style = "")
         {
-           $lang = AfwLanguageHelper::getGlobalLanguage();
-               $my_id = $this->getId();
-               $float_class = $this->float_class;
-               $display = $this->getShortDisplay($lang);
-               $f_type = $this->valType();
-               if($this->estPicture())
-               {
-                    $this->picture_style = $style;
-                    $small_picture = $this->getFormuleResult("small_picture");
-               }
-               else
-                   $small_picture = "";
-               
-               
-               $span_edit = "<span><a href='main.php?Main_Page=afw_mode_display.php&cl=WorkflowFile&currmod=workflow&id=$my_id'>$display</a></span><br>";
-               
-               if($small_picture)
-               {
-                  $showMySelf = "<table style='width: 100%;'>
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $my_id = $this->getId();
+                $float_class = $this->float_class;
+                $display = $this->getShortDisplay($lang);
+                $f_type = $this->valType();
+                if ($this->estPicture()) {
+                        $this->picture_style = $style;
+                        $small_picture = $this->getFormuleResult("small_picture");
+                } else
+                        $small_picture = "";
+
+
+                $span_edit = "<span><a href='main.php?Main_Page=afw_mode_display.php&cl=WorkflowFile&currmod=workflow&id=$my_id'>$display</a></span><br>";
+
+                if ($small_picture) {
+                        $showMySelf = "<table style='width: 100%;'>
                             <tbody>
                                 <tr>
                                    <td nowrap style='text-align: right !important;'>
@@ -333,12 +316,10 @@ zoomWindowOffety:-200
                                    </td>
                                 </tr>   
                            </tbody></table>";
-               }
-               elseif($this->estVideo())
-               {
-                      $file_path = $this->getVal("file_path");
-                      $extension = strtolower($this->getVal("afile_ext"));
-                      $showMySelf = "<div>
+                } elseif ($this->estVideo()) {
+                        $file_path = $this->getVal("file_path");
+                        $extension = strtolower($this->getVal("afile_ext"));
+                        $showMySelf = "<div>
                                   <video
                                     id='my-video'
                                     class='video-js'
@@ -361,12 +342,10 @@ zoomWindowOffety:-200
                                   <link href='../lib/videojs/video-js.css' rel='stylesheet' />
                                   <script src='../lib/videojs/video.js'></script>
                                 </div>";
-                }
-                elseif($this->estMediaPlayer())
-                {
-                      $file_path = $this->getVal("file_path");
-                      $extension = strtolower($this->getVal("afile_ext"));
-                      $showMySelf = "<object id='mediaPlayer' width='320' height='285' 
+                } elseif ($this->estMediaPlayer()) {
+                        $file_path = $this->getVal("file_path");
+                        $extension = strtolower($this->getVal("afile_ext"));
+                        $showMySelf = "<object id='mediaPlayer' width='320' height='285' 
       classid='CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95' 
       codebase='http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701'
       standby='Loading Microsoft Windows Media Player components...' type='application/x-oleobject'>
@@ -384,9 +363,7 @@ zoomWindowOffety:-200
         src='$file_path' autostart='true' designtimesp='5311' loop='true'>
       </embed>
 </object>";
-                }
-                else
-                {   
+                } else {
                         $download = $this->valDownload();
                         $showMySelf = "<table style='width: 100%;'>
                             <tbody>
@@ -396,335 +373,288 @@ zoomWindowOffety:-200
                                        $download
                                    </td>
                                 </tr>   
-                           </tbody></table>"; 
-                }   
-                return "<div class='topactions $float_class'>$showMySelf</div>"; 
-        
+                           </tbody></table>";
+                }
+                return "<div class='topactions $float_class'>$showMySelf</div>";
         }
-        
-        protected function getSpecificDataErrors($lang="ar",$show_val=true,$step="all",$erroned_attribute=null,$stop_on_first_error=false, $start_step=null, $end_step=null)
-        {
-              $objme = AfwSession::getUserConnected();
-                
-              $sp_errors = array();
-              if(!$this->isActive()) $sp_errors["afile_name"] = "تم حذف أو تعطيل هذا الملف من  معرض المرفقات الخاصة بالموظف";
-              $new_name = $this->getNewName();
-              $file_path = $this->getFilePath().$new_name; 
-              if(!file_exists($file_path))
-              { 
-                  if(($objme) and ($objme->isSuperAdmin()))
-                     $file_full_path = $file_path;
-                  else $file_full_path = "";   
-                  $sp_errors["afile_name"] = "الملف غير موجود بالمعرض $file_full_path";  
-              }
-              $doc_type_id = $this->getVal("doc_type_id");
-              if($doc_type_id==1)
-              {
-                  $sp_errors["doc_type_id"] = "لا بد من تحديد نوع الملف المرفق لتتمكن من استخدامه"; 
-              }
-              
-              return $sp_errors;
-        }
-  
-  
-        public function getFilePath() 
-        {            
-            $uploads_root_path = AfwSession::config("uploads_root_path","");
 
-            if($this->getVal("doc_type_id")==9)
-                 return $uploads_root_path."imports/";
-            else             
-                 return $uploads_root_path;
-	}
-        
-        public function getExcelData($row_num_start=-1, $row_num_end=-1, $caller="not-defined")
+        protected function getSpecificDataErrors($lang = "ar", $show_val = true, $step = "all", $erroned_attribute = null, $stop_on_first_error = false, $start_step = null, $end_step = null)
         {
-             $file_dir_name = dirname(__FILE__); 
+                $objme = AfwSession::getUserConnected();
 
-             $afile_ext = $this->getVal("afile_ext");
-              
-              $xls_ext_arr = ["xls","xlsx"];
-              $doc_type_id = $this->getVal("doc_type_id");
-              
-              if(($doc_type_id==14) and (in_array($afile_ext,$xls_ext_arr)))
-              {
-                     // require_once("$file_dir_name/../lib/hzm/excel/hzm_excel.php");
-                     $new_name = $this->getNewName();
-                     $file_path = $this->getFilePath().$new_name;
-                     if(!file_exists($file_path))
-                     {
-                            throw new AfwRuntimeException("File not found : $file_path");
-                     }
-                     
-                     $excel = new AfwExcel($file_path);
-                     $my_data = $excel->getData($row_num_start, $row_num_end, $caller);
-                     $my_head = $excel->getHeaderTrad();
-                     
-                     return [$excel, $my_head, $my_data];
-              }
-              else
-              {
-                     throw new AfwRuntimeException("getExcelData method can not work on non excel or non importable files, your file extension : $afile_ext, doc type = ".$this->het("doc_type_id"));
-              }            
-        }
-  
-        public function pictureView($style="width:100%;height:auto")
-        {
-                $upld_path = AfwSession::config("uploads_http_path","");
-
-                
-                
-                $afile_ext = strtolower($this->getVal("afile_ext"));
-                
-                $xls_ext_arr = ["xls","xlsx"];
-                $pdf_ext_arr = ["pdf"];
-                $compressed_ext_arr = ["zip","rar"];
-                
+                $sp_errors = array();
+                if (!$this->isActive()) $sp_errors["afile_name"] = "تم حذف أو تعطيل هذا الملف من  معرض المرفقات الخاصة بالموظف";
+                $new_name = $this->getNewName();
+                $file_path = $this->getFilePath() . $new_name;
+                if (!file_exists($file_path)) {
+                        if (($objme) and ($objme->isSuperAdmin()))
+                                $file_full_path = $file_path;
+                        else $file_full_path = "";
+                        $sp_errors["afile_name"] = "الملف غير موجود بالمعرض $file_full_path";
+                }
                 $doc_type_id = $this->getVal("doc_type_id");
-                
-                if(in_array($afile_ext,$xls_ext_arr))
-                { 
-                        return $this->calc("download");
+                if ($doc_type_id == 1) {
+                        $sp_errors["doc_type_id"] = "لا بد من تحديد نوع الملف المرفق لتتمكن من استخدامه";
                 }
-                elseif(in_array($afile_ext,$pdf_ext_arr))
-                {
-                        return $this->calc("download");
-                }
-                elseif(in_array($afile_ext,$compressed_ext_arr))
-                {
-                        return $this->calc("download");
-                }
-                elseif($this->estPicture())
-                {
-                        $new_name = $this->getNewName();
-                        $img = "<img class='rafik-img' style='$style' src='$upld_path/$new_name'>"; 
-                        return $img;
-                }
-                else
-                {
-                        return "<img style='$style' src='lib/images/no-picture.png'>";                      
-                }
-              
+
+                return $sp_errors;
         }
-  
-        public function previewMe($row_num_start=-1, $row_num_end=-1)
+
+
+        public function getFilePath()
         {
-              $afile_ext = $this->getVal("afile_ext");
-              
-              $xls_ext_arr = ["xls","xlsx"];
-              $doc_type_id = $this->getVal("doc_type_id");
-              
-              if(($doc_type_id==14) and (in_array($afile_ext,$xls_ext_arr)))
-              { 
-                      require_once("afw_shower.php");
-                      $new_name = $this->getNewName();
-                      $file_path = $this->getFilePath().$new_name;
-                      if(!file_exists($file_path))
-                      {
-                           return "File not found : $file_path";
-                      }
-                      else
-                      {
-                           list($excel, $my_head, $my_data) = $this->getExcelData($row_num_start, $row_num_end, "previewMe");
-                           list($html, $ids) = AfwHtmlHelper::tableToHtml($my_data, $my_head, count($my_data)>20);
-                           // $log = " my_data = ".var_export($my_data,true)." my_head = ".var_export($my_head,true);
-                           return "<div id='previewMe'>".$html."</div>";
-                           
-                      }
-              }
-              elseif($this->estPicture())
-              {
-                     return $this->getFormuleResult("big_picture");
-              }
-              elseif($this->estVideo())
-              {
-                     return $this->showMe();
-              }
-              else
-              {
-                     return $this->getFormuleResult("embed");                      
-              }
-              
+                $uploads_root_path = AfwSession::config("uploads_root_path", "");
+
+                if ($this->getVal("doc_type_id") == 9)
+                        return $uploads_root_path . "imports/";
+                else
+                        return $uploads_root_path;
         }
-        
+
+        public function getExcelData($row_num_start = -1, $row_num_end = -1, $caller = "not-defined")
+        {
+                $file_dir_name = dirname(__FILE__);
+
+                $afile_ext = $this->getVal("afile_ext");
+
+                $xls_ext_arr = ["xls", "xlsx"];
+                $doc_type_id = $this->getVal("doc_type_id");
+
+                if (($doc_type_id == 14) and (in_array($afile_ext, $xls_ext_arr))) {
+                        // require_once("$file_dir_name/../lib/hzm/excel/hzm_excel.php");
+                        $new_name = $this->getNewName();
+                        $file_path = $this->getFilePath() . $new_name;
+                        if (!file_exists($file_path)) {
+                                throw new AfwRuntimeException("File not found : $file_path");
+                        }
+
+                        $excel = new AfwExcel($file_path);
+                        $my_data = $excel->getData($row_num_start, $row_num_end, $caller);
+                        $my_head = $excel->getHeaderTrad();
+
+                        return [$excel, $my_head, $my_data];
+                } else {
+                        throw new AfwRuntimeException("getExcelData method can not work on non excel or non importable files, your file extension : $afile_ext, doc type = " . $this->het("doc_type_id"));
+                }
+        }
+
+        public function pictureView($style = "width:100%;height:auto")
+        {
+                $upld_path = AfwSession::config("uploads_http_path", "");
+
+
+
+                $afile_ext = strtolower($this->getVal("afile_ext"));
+
+                $xls_ext_arr = ["xls", "xlsx"];
+                $pdf_ext_arr = ["pdf"];
+                $compressed_ext_arr = ["zip", "rar"];
+
+                $doc_type_id = $this->getVal("doc_type_id");
+
+                if (in_array($afile_ext, $xls_ext_arr)) {
+                        return $this->calc("download");
+                } elseif (in_array($afile_ext, $pdf_ext_arr)) {
+                        return $this->calc("download");
+                } elseif (in_array($afile_ext, $compressed_ext_arr)) {
+                        return $this->calc("download");
+                } elseif ($this->estPicture()) {
+                        $new_name = $this->getNewName();
+                        $img = "<img class='rafik-img' style='$style' src='$upld_path/$new_name'>";
+                        return $img;
+                } else {
+                        return "<img style='$style' src='../lib/images/no-picture.png'>";
+                }
+        }
+
+        public function previewMe($row_num_start = -1, $row_num_end = -1)
+        {
+                $afile_ext = $this->getVal("afile_ext");
+
+                $xls_ext_arr = ["xls", "xlsx"];
+                $doc_type_id = $this->getVal("doc_type_id");
+
+                if (($doc_type_id == 14) and (in_array($afile_ext, $xls_ext_arr))) {
+                        require_once("afw_shower.php");
+                        $new_name = $this->getNewName();
+                        $file_path = $this->getFilePath() . $new_name;
+                        if (!file_exists($file_path)) {
+                                return "File not found : $file_path";
+                        } else {
+                                list($excel, $my_head, $my_data) = $this->getExcelData($row_num_start, $row_num_end, "previewMe");
+                                list($html, $ids) = AfwHtmlHelper::tableToHtml($my_data, $my_head, count($my_data) > 20);
+                                // $log = " my_data = ".var_export($my_data,true)." my_head = ".var_export($my_head,true);
+                                return "<div id='previewMe'>" . $html . "</div>";
+                        }
+                } elseif ($this->estPicture()) {
+                        return $this->getFormuleResult("big_picture");
+                } elseif ($this->estVideo()) {
+                        return $this->showMe();
+                } else {
+                        return $this->getFormuleResult("embed");
+                }
+        }
+
         public function select_visibilite_horizontale($dropdown = false)
         {
-            $me = AfwSession::getUserIdActing();
-        
+                $me = AfwSession::getUserIdActing();
+
                 $this->where("active='Y' or (active ='W' and created_by = '$me')");
         }
-        
-        
-        public function beforeMAJ($id, $fields_updated) {
-             return true;
+
+
+        public function beforeMAJ($id, $fields_updated)
+        {
+                return true;
         }
-        
+
         public function getAvailableDocTypeId($doc_type_arr)
         {
-              $file_dir_name = dirname(__FILE__); 
-              
-              $afile_ext = $this->getVal("afile_ext");
-              //die("afile_ext=$afile_ext, doctype array : ".var_export($doc_type_arr,true));
-              foreach($doc_type_arr as $doc_type_id)
-              {
-                    list($ext_arr, $ft_arr) = DocType::getExentionsAllowed($doc_type_id);
-                    if(in_array(strtoupper($afile_ext),$ext_arr)) return $doc_type_id;
-                    elseif($doc_type_id==7) die("for doctype $doc_type_id, $afile_ext not in allowed ext : ".var_export($ext_arr,true));
-              }
-              
-              return 0;
+                $file_dir_name = dirname(__FILE__);
+
+                $afile_ext = $this->getVal("afile_ext");
+                //die("afile_ext=$afile_ext, doctype array : ".var_export($doc_type_arr,true));
+                foreach ($doc_type_arr as $doc_type_id) {
+                        list($ext_arr, $ft_arr) = DocType::getExentionsAllowed($doc_type_id);
+                        if (in_array(strtoupper($afile_ext), $ext_arr)) return $doc_type_id;
+                        elseif ($doc_type_id == 7) die("for doctype $doc_type_id, $afile_ext not in allowed ext : " . var_export($ext_arr, true));
+                }
+
+                return 0;
         }
-        
+
         /**
          * @param Auser $auser
          */
 
         public function userCanDeleteMeSpecial($auser)
         {
-                if(!$auser) return false;
-                if($auser->getId()==$this->getVal("created_by")) return true;
-                if(!$this->getVal("created_by")) return true;
-                if($auser->isSuperAdmin()) return true;
-                if($auser->isAdmin()) return true;
+                if (!$auser) return false;
+                if ($auser->getId() == $this->getVal("created_by")) return true;
+                if (!$this->getVal("created_by")) return true;
+                if ($auser->isSuperAdmin()) return true;
+                if ($auser->isAdmin()) return true;
                 return false;
         }
-        
-        
-        
+
+
+
         public function estMediaPlayer()
         {
-            $extension = strtolower($this->getVal("afile_ext"));
-            // one of wmv,avi,flv
-            // if($extension=="wmv") return true;
-            //if($extension=="flv") return true;
-            //if($extension=="avi") return true;
-            return false;
+                $extension = strtolower($this->getVal("afile_ext"));
+                // one of wmv,avi,flv
+                // if($extension=="wmv") return true;
+                //if($extension=="flv") return true;
+                //if($extension=="avi") return true;
+                return false;
         }
-        
+
         // ie supported by HTML5 Player
         public function estVideo()
         {
-            $extension = strtolower($this->getVal("afile_ext"));
-            // one of mp4,webm,ogg
-            if($extension=="mp4") return true;
-            if($extension=="webm") return true;
-            if($extension=="ogg") return true;
-            return false;
+                $extension = strtolower($this->getVal("afile_ext"));
+                // one of mp4,webm,ogg
+                if ($extension == "mp4") return true;
+                if ($extension == "webm") return true;
+                if ($extension == "ogg") return true;
+                return false;
         }
 
 
-        public function myShortNameToAttributeName($attribute){
-                if($attribute=="original") return "original_name";
-                if($attribute=="name") return "afile_name";
-                if($attribute=="ext") return "afile_ext";
-                if($attribute=="type") return "afile_type";
-                if($attribute=="size") return "afile_size";
+        public function myShortNameToAttributeName($attribute)
+        {
+                if ($attribute == "original") return "original_name";
+                if ($attribute == "name") return "afile_name";
+                if ($attribute == "ext") return "afile_ext";
+                if ($attribute == "type") return "afile_type";
+                if ($attribute == "size") return "afile_size";
                 return $attribute;
         }
-        
 
-        public function AddMeAsContentItemIn($content_id, $lookup_code, $lang="ar")
+
+        public function AddMeAsContentItemIn($content_id, $lookup_code, $lang = "ar")
         {
-            $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_picture, 0, $this->id, 0, $lookup_code, true);
-            return ["", "publication content item object created with id = ".$obj->id];
+                $obj = ContentItem::loadByMainIndex($content_id, self::$content_type_picture, 0, $this->id, 0, $lookup_code, true);
+                return ["", "publication content item object created with id = " . $obj->id];
         }
 
 
         public function getTokens($lang)
         {
-            $tokens = [];
-            $tokens["preview"] = stripslashes($this->calc("preview"));
-            // die("tokens preview = ".var_export($tokens, true));
-            // die("tokens preview 2 = ".$tokens["preview"]);
-            return $tokens;
+                $tokens = [];
+                $tokens["preview"] = stripslashes($this->calc("preview"));
+                // die("tokens preview = ".var_export($tokens, true));
+                // die("tokens preview 2 = ".$tokens["preview"]);
+                return $tokens;
         }
 
         public function disableTheUploadedFile()
         {
                 $new_name =  $this->getNewName();
                 $uploads_root_path = AfwSession::config("uploads_root_path", "");
-                if(!$uploads_root_path) throw new AfwRuntimeException("uploads_root_path is not defined correctly in system config");
+                if (!$uploads_root_path) throw new AfwRuntimeException("uploads_root_path is not defined correctly in system config");
                 $mv_from_file = $uploads_root_path . $new_name;
                 $dt = date("YmdHis");
                 $mv_to_file = $uploads_root_path . $new_name . ".$dt.old";
-                if (rename($mv_from_file, $mv_to_file)) 
-                {
+                if (rename($mv_from_file, $mv_to_file)) {
                         return true;
-                }
-                else 
-                {
+                } else {
                         // throw new AfwRuntimeException("rename from=$mv_from_file to=$mv_to_file failed");
                         return false;
                 }
         }
 
-        public function beforeDelete($id,$id_replace) 
+        public function beforeDelete($id, $id_replace)
         {
-                $server_db_prefix = AfwSession::config("db_prefix","pmu_");
-                
-                if(!$id)
-                {
+                $server_db_prefix = AfwSession::config("db_prefix", "pmu_");
+
+                if (!$id) {
                         $id = $this->getId();
                         $simul = true;
-                }
-                else
-                {
+                } else {
                         $simul = false;
                 }
-                
-                if($id)
-                {   
 
-                        if(!$simul)
-                        {
+                if ($id) {
+
+                        if (!$simul) {
                                 $workfile_settings_arr = AfwSession::config("workfile_settings", []);
-                                foreach($workfile_settings_arr as $className => $classSettingsRow)
-                                {
+                                foreach ($workfile_settings_arr as $className => $classSettingsRow) {
                                         $fields_to_update_arr = $classSettingsRow["fields"];
-                                        foreach($fields_to_update_arr as $field_to_update)
-                                        {
-                                                $className::updateWhere(array($field_to_update=>$id_replace), "$field_to_update='$id'");                            
+                                        foreach ($fields_to_update_arr as $field_to_update) {
+                                                $className::updateWhere(array($field_to_update => $id_replace), "$field_to_update='$id'");
                                         }
                                 }
                         }
 
-                        if($id_replace==0)
-                        {
+                        if ($id_replace == 0) {
                                 // FK part of me - not deletable 
 
 
                                 // FK part of me - deletable 
 
-                        
+
                                 // FK not part of me - replaceable 
-                                
+
                                 // MFK
 
-                        }
-                        else
-                        {
+                        } else {
                                 // FK on me 
                                 // workflow.content_item-الملف	workflow_file_id  حقل يفلتر به
-                                if(!$simul)
-                                {
+                                if (!$simul) {
                                         // require_once "../workflow/content_item.php";
-                                        ContentItem::updateWhere(array('workflow_file_id'=>$id_replace), "workflow_file_id='$id'");
+                                        ContentItem::updateWhere(array('workflow_file_id' => $id_replace), "workflow_file_id='$id'");
                                         // $this->execQuery("update ${server_db_prefix}workflow.content_item set workflow_file_id='$id_replace' where workflow_file_id='$id' ");
                                 }
                                 // MFK
 
-                                
+
                         }
-                        
-                        if(!$simul)
-                        {
+
+                        if (!$simul) {
                                 $this->disableTheUploadedFile();
                         }
                         return true;
-                }    
-	}
-
-
-        
+                }
+        }
 }
-?>
