@@ -966,6 +966,28 @@ class WorkflowRequest extends WorkflowObject
                 return $otherLinksArray;
         }
 
+        public function select_visibilite_horizontale($dropdown = false)
+        {
+                $objme = AfwSession::getUserConnected();
+
+                if ($objme and $objme->isAdmin()) {
+                        // no VH for system admin
+                } else {
+                        $employee_id = $objme ? $objme->getEmployeeId() : 0;
+
+                        if ($employee_id) {
+                                $wEmplObj = WorkflowEmployee::findWorkflowEmployee($employee_id);
+                                if ($wEmplObj) {
+                                        $wscope_mfk = trim($wEmplObj->getVal("wscope_mfk"), ",");
+                                        $this->where("'$wscope_mfk' like concat('%,',workflow_scope_id,',%')");
+                                }
+                        }
+                }
+
+                $selects = array();
+                $this->select_visibilite_horizontale_default($dropdown, $selects);
+        }
+
 
         /**
          * @param Auser $auser
