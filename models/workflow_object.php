@@ -450,7 +450,7 @@ class WorkflowObject extends AfwMomkenObject
 
         $main_company = AfwSession::config('main_company', 'all');
         $file_dir_name = dirname(__FILE__);
-        include ($file_dir_name . "/../extra/qualification_level-$main_company.php");
+        include($file_dir_name . "/../extra/qualification_level-$main_company.php");
 
         foreach ($lookup as $id => $lookup_row) {
             $arr_list_of_level['ar'][$id] = $lookup_row['ar'];

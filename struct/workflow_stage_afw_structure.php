@@ -285,7 +285,7 @@ class WorkflowWorkflowStageAfwStructure
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
                         'STEP' => 1,
-                        'RELATION' => 'ManyToOne-OneToMany',
+                        'RELATION' => 'ManyToOne',
                         'MANDATORY' => false,
                         'READONLY' => false,
                         'AUTOCOMPLETE' => false,

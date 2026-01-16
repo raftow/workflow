@@ -253,7 +253,7 @@ class WorkflowRequest extends WorkflowObject
                 $this->commit();
 
                 // after transition done reassign to best available employee depending on new stage and needed roles for this stage
-                $this->assignBestAvailableEmployee($lang);
+                $this->assignBestAvailableEmployee($lang, true, true);
 
 
                 $status_comment = date('H:i:s') . ': تم تنفيذ الانتقال [' . $objTransition->id . "] " . $objTransition->getDisplay($lang);
@@ -426,8 +426,17 @@ class WorkflowRequest extends WorkflowObject
                 return ["", $this->tm("The work on this request has been started", $lang)];
         }
 
-        public function assignBestAvailableEmployee($lang = 'ar', $pbm = true)
+        public function assignBestAvailableEmployee($lang = 'ar', $pbm = true, $reassignOrgunit = false)
         {
+                $workflow_scope_id = $this->getVal('workflow_scope_id');
+                if ($reassignOrgunit) {
+                        $myStageObj = $this->het('workflow_stage_id');
+                        if ($myStageObj) $orgunit_id = $myStageObj->convenientOrgunitForScope($workflow_scope_id);
+                        $this->set('orgunit_id', $orgunit_id);
+                        $this->commit();
+                }
+
+
                 $strict = false;
                 $except_emp_id = 0;
                 $accepted_roles = $this->getMyAcceptedRoles();
@@ -445,12 +454,15 @@ class WorkflowRequest extends WorkflowObject
                         }
                 }
                 $orgunit_id = $this->getVal('orgunit_id');
-                $workflow_scope_id = $this->getVal('workflow_scope_id');
+
 
                 list($best_employee_id, $wkfEmpl, $allList, $log) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, $workflow_scope_id, $except_emp_id, $strict, $accepted_roles);
                 // $wkfRes = array("best" => $best_employee_id, "res" => $wkfEmpl, 'all' => $allList);
                 // die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($wkfRes, true)."</pre>");
 
+                /**
+                 * @var WorkflowEmployee $wkfEmplObj
+                 */
                 $wkfEmplObj = $wkfEmpl['obj'];
 
                 // assign this Request to this supervisor

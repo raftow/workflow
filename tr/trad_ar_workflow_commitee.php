@@ -18,6 +18,10 @@ class WorkflowCommiteeArTranslator
 		$trad["workflow_commitee"]["workflowCommiteeMemberList"] = "أعضاء اللجنة";
 		$trad["workflow_commitee"]["workflowCommiteeScopeList"] = "برامج اللجنة";
 
+		$trad["workflow_commitee"]["wscope_mfk"] = "برامج اللجنة";
+
+
+
 		$trad["workflow_commitee"]["step1"] = "البيانات العامة";
 		$trad["workflow_commitee"]["step2"] = "أعضاء اللجنة";
 		$trad["workflow_commitee"]["step3"] = "برامج اللجنة";
