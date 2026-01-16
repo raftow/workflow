@@ -167,9 +167,9 @@ class WorkflowObject extends AfwMomkenObject
     public static function color_of_action($action = null)
     {
         if ($action)
-            return self::term_mode()['color'][$action];
+            return self::action_type_enum()['color'][$action];
         else
-            return self::term_mode()['color'];
+            return self::action_type_enum()['color'];
     }
 
     public static function action_type_enum()

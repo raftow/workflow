@@ -205,6 +205,8 @@ class WorkflowTransition extends WorkflowObject
         $actionObj = $this->het("workflow_action_id");
         if (!$actionObj) return "black";
         $action_type_enum = $actionObj->getVal("action_type_enum");
-        return self::color_of_action($action_type_enum);
+        $return = self::color_of_action($action_type_enum);
+
+        return $return;
     }
 }
