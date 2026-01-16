@@ -184,17 +184,17 @@ class WorkflowObject extends AfwMomkenObject
         $arr_list_of_action_type_enum['en'][2] = 'Acceptance';
         $arr_list_of_action_type_enum['ar'][2] = 'قبول';
         $arr_list_of_action_type_enum['code'][2] = 'AC';
-        $arr_list_of_action_type_enum['color'][1] = 'green';
+        $arr_list_of_action_type_enum['color'][2] = 'green';
 
         $arr_list_of_action_type_enum['en'][3] = 'Pending';
         $arr_list_of_action_type_enum['ar'][3] = 'تعليق ';
         $arr_list_of_action_type_enum['code'][3] = 'PN';
-        $arr_list_of_action_type_enum['color'][1] = 'blue';
+        $arr_list_of_action_type_enum['color'][3] = 'blue';
 
         $arr_list_of_action_type_enum['en'][4] = 'return';
         $arr_list_of_action_type_enum['ar'][4] = 'تراجع';
         $arr_list_of_action_type_enum['code'][4] = 'RT';
-        $arr_list_of_action_type_enum['color'][1] = 'orange';
+        $arr_list_of_action_type_enum['color'][4] = 'orange';
 
         return $arr_list_of_action_type_enum;
     }

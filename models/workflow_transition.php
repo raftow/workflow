@@ -207,7 +207,7 @@ class WorkflowTransition extends WorkflowObject
         $action_type_enum = $actionObj->getVal("action_type_enum");
         $return = self::color_of_action($action_type_enum);
 
-        die("$return = self::color_of_action($action_type_enum);");
+        //  die("$return = self::color_of_action($action_type_enum);");
 
         return $return;
     }
