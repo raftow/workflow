@@ -149,6 +149,31 @@ class WorkflowWorkflowStageAfwStructure
                 ),
 
 
+                'orgunit_id' => array(
+                        'STEP' => 1,
+                        'SHORTNAME' => 'orgunit',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'INTERNAL_QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 40,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'CSS' => 'width_pct_25',
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'orgunit',
+                        'ANSMODULE' => 'hrm',
+                        'WHERE' => "me.id in (select orgunit_id from §DBPREFIX§workflow.workflow_orgunit where active='Y')",
+                        'RELATION' => 'ManyToOne',
+                        'READONLY' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
 
                 'step_code' => array(
                         'IMPORTANT' => 'IN',

@@ -1,9 +1,10 @@
 <?php
-class WorkflowStageArTranslator{
+class WorkflowStageArTranslator
+{
 
-    public static function initData()
-    {
-        $trad = [];
+	public static function initData()
+	{
+		$trad = [];
 		$trad["workflow_stage"]["step1"] = "التعريف";
 
 		$trad["workflow_stage"]["workflowstage.single"] = "مرحلة";
@@ -21,13 +22,16 @@ class WorkflowStageArTranslator{
 		$trad["workflow_stage"]["processing_request_responsibility"] = "مسؤولية معالجة الطلب";
 		$trad["workflow_stage"]["workflow_role_id"] = "الدور المعني";
 		$trad["workflow_stage"]["interview_ind"] = "يتضمن مقابلة شخصية";
-		
-        return $trad;
-    }
+		$trad["workflow_stage"]["orgunit_id"] = "الإدارة/اللجنة المعنية";
+		$trad["workflow_stage"]["orgunit_id.short"] = "الإدارة/اللجنة";
 
-    public static function getInstance()
+
+		return $trad;
+	}
+
+	public static function getInstance()
 	{
-                if(false) return new WorkflowStageEnTranslator();
+		if (false) return new WorkflowStageEnTranslator();
 		return new WorkflowStage();
 	}
 }
