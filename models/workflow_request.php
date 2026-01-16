@@ -979,7 +979,7 @@ class WorkflowRequest extends WorkflowObject
                                 $wEmplObj = WorkflowEmployee::findWorkflowEmployee($employee_id);
                                 if ($wEmplObj) {
                                         $wscope_mfk = trim($wEmplObj->getVal("wscope_mfk"), ",");
-                                        $this->where("'$wscope_mfk' like concat('%,',workflow_scope_id,',%')");
+                                        $this->where("employee_id=$employee_id and '$wscope_mfk' like concat('%,',workflow_scope_id,',%')");
                                 }
                         }
                 }
