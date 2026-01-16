@@ -831,6 +831,10 @@ class WorkflowRequest extends WorkflowObject
 
         public function beforeDelete($id, $id_replace)
         {
+                if ($this->getVal("done") != "N") {
+                        $this->deleteNotAllowedReason = "Can't be deleted because some work has started on it.";
+                        return false;
+                }
                 $server_db_prefix = AfwSession::config("db_prefix", "nauss_");
 
                 if (!$id) {
@@ -843,35 +847,14 @@ class WorkflowRequest extends WorkflowObject
                 if ($id) {
                         if ($id_replace == 0) {
                                 // FK part of me - not deletable 
-                                // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
-                                // require_once "../workflow/workflow_request_data.php";
-                                $obj = new WorkflowRequestData();
-                                $obj->where("workflow_request_id = '$id' and active='Y' ");
-                                $nbRecords = $obj->count();
-                                // check if there's no record that block the delete operation
-                                if ($nbRecords > 0) {
-                                        $this->deleteNotAllowedReason = "Used in some Workflow request datas(s) as Workflow request";
-                                        return false;
-                                }
-                                // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
-                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
-
-                                // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
-                                // require_once "../workflow/workflow_request_comment.php";
-                                $obj = new WorkflowRequestComment();
-                                $obj->where("workflow_request_id = '$id' and active='Y' ");
-                                $nbRecords = $obj->count();
-                                // check if there's no record that block the delete operation
-                                if ($nbRecords > 0) {
-                                        $this->deleteNotAllowedReason = "Used in some Workflow session(s) as workflow_request_id";
-                                        return false;
-                                }
-                                // if there's no record that block the delete operation perform the delete of the other records linked with me and deletable
-                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id' and active='N'");
-
-
 
                                 // FK part of me - deletable 
+                                $obj = new WorkflowRequestData();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
+                                $obj = new WorkflowRequestComment();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
 
 
                                 // FK not part of me - replaceable 
