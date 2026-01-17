@@ -128,7 +128,7 @@ class WorkflowRequest extends WorkflowObject
                         $transitionId = intval(substr($name, 18));
                         list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
                         if (!$objOriginal or $error) return ["Failed to load Original Object : $error", ""];
-                        return $this->originalObject->approveProgramWith($transitionId, $arguments[0]);
+                        return $objOriginal->approveProgramWith($transitionId, $arguments[0]);
                 }
 
                 return false;
@@ -139,7 +139,7 @@ class WorkflowRequest extends WorkflowObject
         {
                 list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
                 if (!$objOriginal or $error) return ["Failed to load Original Object : $error", ""];
-                return $this->originalObject->applicationObj->disApproveProgram($lang);
+                return $objOriginal->disApproveProgram($lang);
         }
 
 
