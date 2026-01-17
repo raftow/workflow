@@ -127,6 +127,7 @@ class WorkflowRequest extends WorkflowObject
                 if (substr($name, 0, 18) == 'approveProgramWith') {
                         $transitionId = intval(substr($name, 18));
                         list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                        if (!$objOriginal or $error) return ["Failed to load Original Object : $error", ""];
                         return $this->originalObject->approveProgramWith($transitionId, $arguments[0]);
                 }
 
@@ -137,6 +138,7 @@ class WorkflowRequest extends WorkflowObject
         public function disApproveProgram($lang = 'ar')
         {
                 list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                if (!$objOriginal or $error) return ["Failed to load Original Object : $error", ""];
                 return $this->originalObject->applicationObj->disApproveProgram($lang);
         }
 
