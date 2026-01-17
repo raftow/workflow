@@ -458,7 +458,7 @@ class WorkflowRequest extends WorkflowObject
                 }
 
 
-                die('rafik final pbms=' . var_export($pbms, true));
+                // die('rafik final pbms=' . var_export($pbms, true));
 
                 return $pbms;
         }
