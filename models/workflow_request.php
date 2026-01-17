@@ -450,7 +450,7 @@ class WorkflowRequest extends WorkflowObject
 
                         if ($objOriginal) {
                                 $pbm_arr = $objOriginal->getPublishedMethodsFor($objme, "workflow-commitee");
-
+                                die('rafik Published pbm_arr=' . var_export($pbm_arr, true));
                                 foreach ($pbm_arr as $pbm_code => $pbm_item) {
                                         $pbms[$pbm_code] = $pbm_item;
                                 }
