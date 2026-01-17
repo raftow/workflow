@@ -441,6 +441,20 @@ class WorkflowRequest extends WorkflowObject
                                         }
                                 }
                         }
+
+                        /**
+                         * @var AFWObject $objOriginal
+                         */
+
+                        list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                        if ($objOriginal) {
+                                $pbm_arr = $objOriginal->getPublishedMethodsFor($objme, "workflow-commitee");
+
+                                foreach ($pbm_arr as $pbm_code => $pbm_item) {
+                                        $pbms[$pbm_code] = $pbm_item;
+                                }
+                        }
                 }
 
 
