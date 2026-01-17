@@ -124,8 +124,20 @@ class WorkflowRequest extends WorkflowObject
                         return $this->calcDiv_step($step, $arguments[0], 'Y');
                 }
 
+                if (substr($name, 0, 18) == 'approveProgramWith') {
+                        $transitionId = intval(substr($name, 18));
+                        list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                        return $this->originalObject->approveProgramWith($transitionId, $arguments[0]);
+                }
+
                 return false;
                 // the above return should be keeped if not treated
+        }
+
+        public function disApproveProgram($lang = 'ar')
+        {
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                return $this->originalObject->applicationObj->disApproveProgram($lang);
         }
 
 
