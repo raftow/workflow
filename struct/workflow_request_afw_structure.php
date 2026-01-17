@@ -69,7 +69,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SIZE' => 40,
                         'DEFAUT' => 0,
                         'STEP' => 99,
-                        'RELATION' => 'ManyToOne-OneToMany',
+                        'RELATION' => 'OneToMany',
                         'MANDATORY' => true,
                         'READONLY' => true,
                         'AUTOCOMPLETE' => false,

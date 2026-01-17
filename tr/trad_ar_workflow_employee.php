@@ -59,7 +59,7 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['step1'] = 'البيانات العامة';
         $trad['workflow_employee']['step2'] = 'البيانات الشخصية';
         $trad['workflow_employee']['step3'] = 'الصلاحيات';
-        $trad['workflow_employee']['step4ّ'] = 'صندوق الوارد';
+        $trad['workflow_employee']['step4'] = 'صندوق الوارد';
         $trad['workflow_employee']['inbox'] = 'صندوق الوارد';
 
 
