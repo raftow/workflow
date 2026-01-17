@@ -1,10 +1,11 @@
 <?php
 
-class WorkflowApplicantArTranslator{
-    public static function initData()
-    {
-        $trad = [];
-      
+class WorkflowApplicantArTranslator
+{
+	public static function initData()
+	{
+		$trad = [];
+
 		$trad["workflow_applicant"]["step1"] = "هوية المتقدم";
 		$trad["workflow_applicant"]["step2"] = "بيانات المتقدم";
 		$trad["workflow_applicant"]["step4"] = "الحالة الاكاديمية";
@@ -15,9 +16,9 @@ class WorkflowApplicantArTranslator{
 		$trad["workflow_applicant"]["step11"] = "بيانات فنية";
 
 		$trad["workflow_applicant"]["workflowApplicantFileList"] = "قائمة مرفقات المتقدم";
-		
+
 		$trad["workflow_applicant"]["applicationList"] = "طلبات التقديم";
-		
+
 
 		$trad["workflow_applicant"]["workflowapplicant.single"] = "متقدم";
 		$trad["workflow_applicant"]["workflowapplicant.new"] = "جديد";
@@ -36,6 +37,8 @@ class WorkflowApplicantArTranslator{
 		$trad["workflow_applicant"]["country_id"] = "الجنسية";
 		$trad["workflow_applicant"]["passeport_num"] = "جواز السفر";
 		$trad["workflow_applicant"]["passeport_expiry_gdate"] = "تاريخ إنتهاء جواز السفر";
+		$trad["workflow_applicant"]["birth_gdate"] = "تاريخ الولادة (ميلادي)";
+
 		$trad["workflow_applicant"]["username"] = "اسم المستخدم";
 		$trad["workflow_applicant"]["password"] = "كلمة المرور";
 		$trad["workflow_applicant"]["email"] = "البريد الالكتروني الشخصي";
@@ -57,12 +60,12 @@ class WorkflowApplicantArTranslator{
 		$trad["workflow_applicant"]["signup_acknowldgment"] = "تعهد بصحة البيانات";
 		$trad["workflow_applicant"]["signup_acknowldgment.EUH"] = "ليس بعد";
 		$trad["workflow_applicant"]["profile"] = "البيانات الشخصية";
-		
+
 
 		return $trad;
-    }
+	}
 
-    public static function getInstance()
+	public static function getInstance()
 	{
 		return new WorkflowApplicant();
 	}

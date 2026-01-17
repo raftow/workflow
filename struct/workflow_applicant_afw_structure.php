@@ -281,7 +281,26 @@ class WorkflowWorkflowApplicantAfwStructure
 
 
 
-
+                'birth_gdate' => array(
+                        'FGROUP' => 'profile',
+                        'IMPORTANT' => 'IN',
+                        'STEP' => 2,
+                        'MANDATORY' => true,
+                        'SEARCH' => false,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'CSS' => 'width_pct_25',
+                        'UTF8' => true,
+                        'TYPE' => 'GDATE',
+                        'FORMAT' => 'DATE',
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
 
 
 
