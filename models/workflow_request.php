@@ -9,6 +9,12 @@ class WorkflowRequest extends WorkflowObject
 
         private $originalObject = null;
 
+        public function __construct()
+        {
+                parent::__construct('workflow_request', 'id', 'workflow');
+                WorkflowWorkflowRequestAfwStructure::initInstance($this);
+        }
+
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
                         'title' => 'تحويل الطلب إلى [item]',
@@ -30,11 +36,7 @@ class WorkflowRequest extends WorkflowObject
                 ),
         );
 
-        public function __construct()
-        {
-                parent::__construct('workflow_request', 'id', 'workflow');
-                WorkflowWorkflowRequestAfwStructure::initInstance($this);
-        }
+
 
         public static function loadById($id)
         {
