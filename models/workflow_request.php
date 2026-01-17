@@ -522,12 +522,12 @@ class WorkflowRequest extends WorkflowObject
 
                 if ($pbm) {
                         if ($emplObj)
-                                return array('', $this->tm('request has beeen assigned to ') . $emplObj->getDisplay($lang), $log);
+                                return array('', $this->tm('request has beeen assigned to ') . $emplObj->getDisplay($lang), '', $log);
                         elseif ($strict) {
                                 $emplObj = $this->het('employee_id');
-                                return array('', $this->tm('This request already assigned to ') . $emplObj->getDisplay($lang), $log);
+                                return array('', $this->tm('This request already assigned to ') . $emplObj->getDisplay($lang), '', $log);
                         } else
-                                return array($this->tm('No suitable available employee for the request') . ' ID = ' . $this->id, '', $log);
+                                return array($this->tm('No suitable available employee for the request') . ' ID = ' . $this->id, '', '', $log);
                 }
 
                 return $emplObj;

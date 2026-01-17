@@ -178,7 +178,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT' => 'workflow_applicant_id.birth_gdate',
                         'READONLY' => true,
-                        'MANDATORY' => false,
+                        'MANDATORY' => true,
                         'SEARCH' => false,
                         'QSEARCH' => false,
                         'SHOW' => true,
