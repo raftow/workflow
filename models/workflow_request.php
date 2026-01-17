@@ -745,20 +745,20 @@ class WorkflowRequest extends WorkflowObject
 
         public function shouldBeCalculatedField($attribute)
         {
-                if ($attribute == 'mobile')
-                        return true;
-                if ($attribute == 'email')
-                        return true;
-                if ($attribute == 'country_id')
-                        return true;
-                if ($attribute == 'category')
-                        return true;
-
-                if ($attribute == 'gender_enum')
-                        return true;
-
-                if ($attribute == 'passeport_num')
-                        return true;
+                if ($attribute == "mobile") return true;
+                if ($attribute == "email") return true;
+                if ($attribute == "country_id") return true;
+                if ($attribute == "gender_enum") return true;
+                if ($attribute == "birth_gdate") return true;
+                if ($attribute == "passeport_num") return true;
+                if ($attribute == "category") return true;
+                if ($attribute == "div_step_3") return true;
+                if ($attribute == "div_step_4") return true;
+                if ($attribute == "div_step_5") return true;
+                if ($attribute == "div_step_6") return true;
+                if ($attribute == "div_step_7") return true;
+                if ($attribute == "div_step_8") return true;
+                if ($attribute == "formComments") return true;
                 return false;
         }
 
