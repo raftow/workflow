@@ -396,6 +396,22 @@ class WorkflowRequest extends WorkflowObject
                         }
 
 
+                        if (count($transitionList) == 0) {
+                                $color = 'yellow';
+                                $title_ar = 'تحديث صلاحيات الموظف';
+                                $methodName = 'notImplemented';
+                                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                        array(
+                                                'METHOD' => $methodName,
+                                                'COLOR' => $color,
+                                                'LABEL_AR' => $title_ar,
+                                                'PUBLIC' => true,
+                                                'BF-ID' => '',
+                                                'TITLE-LENGTH' => 72,
+                                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                                        );
+                        }
+
                         $color = 'orange';
                         $title_ar = 'تحديث البيانات من الأصل';
                         $methodName = 'getOriginalData';
