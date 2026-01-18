@@ -210,7 +210,7 @@ class WorkflowRequest extends WorkflowObject
         {
                 $objTransition = WorkflowTransition::loadById($transitionId);
 
-                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
+                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
 
                 $accepted_roles_mfk = trim($objTransition->getVal("workflow_role_mfk"), ",");
 
