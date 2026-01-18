@@ -355,6 +355,45 @@ class WorkflowRequest extends WorkflowObject
 
                 if ($this->isMine()) {
 
+
+
+                        $employeesList = $this->getEmployees(true);
+                        $transitionList = $this->getMyTransitions(true);
+                        // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
+                        // $orgunit_id = $this->getVal('orgunit_id');
+                        // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
+                        foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
+                                if ($this->isStarted()) {
+                                        if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
+                                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep(), "::getColor");
+                                        }
+                                }
+
+
+                                if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
+                                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
+                                }
+                        }
+
+                        /**
+                         * @var AFWObject $objOriginal
+                         */
+
+                        list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                        if ($objOriginal) {
+                                $myStageObj = $this->het('workflow_stage_id');
+                                // @todo ACRV should not be hard coded 
+                                if (($this->isMine()) and ($this->getVal("done") == "W") and ($myStageObj->getVal("step_code") == "ACRV")) {
+                                        $pbm_arr = $objOriginal->getPublishedMethodsFor($objme, "workflow-commitee");
+                                        // die('rafik Published pbm_arr=' . var_export($pbm_arr, true));
+                                        foreach ($pbm_arr as $pbm_code => $pbm_item) {
+                                                $pbms[$pbm_code] = $pbm_item;
+                                        }
+                                }
+                        }
+
+
                         $color = 'purple';
                         $title_ar = 'تحديث البيانات من الأصل';
                         $methodName = 'getOriginalData';
@@ -437,41 +476,6 @@ class WorkflowRequest extends WorkflowObject
                                                 'PUBLIC' => true,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
-                        }
-
-                        $employeesList = $this->getEmployees(true);
-                        $transitionList = $this->getMyTransitions(true);
-                        // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
-                        // $orgunit_id = $this->getVal('orgunit_id');
-                        // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
-                        foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
-                                if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
-                                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
-                                }
-
-                                if ($this->isStarted()) {
-                                        if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
-                                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep(), "::getColor");
-                                        }
-                                }
-                        }
-
-                        /**
-                         * @var AFWObject $objOriginal
-                         */
-
-                        list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
-
-                        if ($objOriginal) {
-                                $myStageObj = $this->het('workflow_stage_id');
-                                // @todo ACRV should not be hard coded 
-                                if (($this->isMine()) and ($this->getVal("done") == "W") and ($myStageObj->getVal("step_code") == "ACRV")) {
-                                        $pbm_arr = $objOriginal->getPublishedMethodsFor($objme, "workflow-commitee");
-                                        // die('rafik Published pbm_arr=' . var_export($pbm_arr, true));
-                                        foreach ($pbm_arr as $pbm_code => $pbm_item) {
-                                                $pbms[$pbm_code] = $pbm_item;
-                                        }
-                                }
                         }
                 }
 
