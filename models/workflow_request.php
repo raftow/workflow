@@ -394,7 +394,7 @@ class WorkflowRequest extends WorkflowObject
                         }
 
 
-                        $color = 'purple';
+                        $color = 'orange';
                         $title_ar = 'تحديث البيانات من الأصل';
                         $methodName = 'getOriginalData';
                         $pbms[AfwStringHelper::hzmEncode($methodName)] =
