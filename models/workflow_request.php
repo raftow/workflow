@@ -463,7 +463,9 @@ class WorkflowRequest extends WorkflowObject
                         list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
 
                         if ($objOriginal) {
-                                if (($this->isMine()) and ($this->getVal("done") == "W")) {
+                                $myStageObj = $this->het('workflow_stage_id');
+                                // @todo ACRV should not be hard coded 
+                                if (($this->isMine()) and ($this->getVal("done") == "W") and ($myStageObj->getVal("step_code") == "ACRV")) {
                                         $pbm_arr = $objOriginal->getPublishedMethodsFor($objme, "workflow-commitee");
                                         // die('rafik Published pbm_arr=' . var_export($pbm_arr, true));
                                         foreach ($pbm_arr as $pbm_code => $pbm_item) {
