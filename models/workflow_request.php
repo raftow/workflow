@@ -1038,8 +1038,6 @@ class WorkflowRequest extends WorkflowObject
                         if ($employee_id) {
                                 $wEmplObj = WorkflowEmployee::findWorkflowEmployee($employee_id);
                                 if ($wEmplObj) {
-                                        // below is strange it results : employee_id=2041 and '4' like concat('%,',workflow_scope_id,',%') ???!!!!!!
-                                        // $wscope_mfk = trim($wEmplObj->getVal("wscope_mfk"), ",");
                                         $wscope_mfk = $wEmplObj->getVal("wscope_mfk");
                                         $this->where("employee_id=$employee_id and '$wscope_mfk' like concat('%,',workflow_scope_id,',%')");
                                 }
