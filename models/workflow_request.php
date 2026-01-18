@@ -148,7 +148,7 @@ class WorkflowRequest extends WorkflowObject
         public function getMyTransitions($onlyForAuthenticatedEmployee = false)
         {
                 if ($onlyForAuthenticatedEmployee) {
-                        $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject();
+                        $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
                         if (!$wEmployeeMe) return array(); // die("No user authenticated !!!!"); //
                         $employeeRolesArray = explode(",", trim($wEmployeeMe->getVal("wrole_mfk"), ","));
                 } else {

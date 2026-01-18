@@ -43,13 +43,13 @@ class WorkflowEmployee extends WorkflowObject
                         return null;
         }
 
-        public static function getAuthenticatedEmployeeObject()
+        public static function getAuthenticatedEmployeeObject($orgunit_id = 0)
         {
                 $objme = AfwSession::getUserConnected();
                 if ($objme) {
                         $employee_id = $objme->getEmployeeId();
                         if ($employee_id) {
-                                return WorkflowEmployee::findWorkflowEmployee($employee_id);
+                                return WorkflowEmployee::findWorkflowEmployee($employee_id, $orgunit_id);
                         }
                 }
                 return null;
