@@ -572,3 +572,21 @@ div#fg-applicationWarningDiv {
 div#fg-desiresLimitWarningDiv {
     min-height: 0;
 }
+
+.acceptance-status {
+    width: 100%;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.standby {
+    color: #cc8400;
+}
+
+.acceptance {
+    color: #098411;
+}
+
+.rejection {
+    color: rgb(227, 34, 34);
+}
