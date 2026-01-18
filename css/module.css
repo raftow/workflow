@@ -595,7 +595,7 @@ div#fg-desiresLimitWarningDiv {
     min-width: 420px !important;
 }
 
-@media screen and (max-width: 718px) {
+@media screen and (max-width: 1339px) {
     .bf.WorkflowRequest {
         min-width: 100% !important;
         width: 100% !important;

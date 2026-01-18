@@ -523,8 +523,11 @@ class WorkflowRequest extends WorkflowObject
                 if ($reassignOrgunit) {
                         $myStageObj = $this->het('workflow_stage_id');
                         if ($myStageObj) $orgunit_id = $myStageObj->convenientOrgunitForScope($workflow_scope_id);
-                        $this->set('orgunit_id', $orgunit_id);
-                        $this->commit();
+                        if ($orgunit_id and ($this->getVal('orgunit_id') != $orgunit_id)) {
+                                $this->set('orgunit_id', $orgunit_id);
+                                $this->set('employee_id', 0);
+                                $this->commit();
+                        }
                 }
 
 
@@ -1048,7 +1051,9 @@ class WorkflowRequest extends WorkflowObject
 
                 if ($objme and $objme->isAdmin()) {
                         // no VH for system admin
-                } else {
+                }
+                /* Amjad whatsapp 18/01/2026 7pm ~ audio say do not limit for users for the moment
+                else {
                         $employee_id = $objme ? $objme->getEmployeeId() : 0;
 
                         if ($employee_id) {
@@ -1058,7 +1063,7 @@ class WorkflowRequest extends WorkflowObject
                                         $this->where("employee_id=$employee_id and '$wscope_mfk' like concat('%,',workflow_scope_id,',%')");
                                 }
                         }
-                }
+                }*/
 
                 $selects = array();
                 $this->select_visibilite_horizontale_default($dropdown, $selects);

@@ -83,7 +83,9 @@ class WorkflowScope extends WorkflowObject
 
         if ($objme and $objme->isAdmin()) {
             // no VH for system admin
-        } else {
+        }
+        /* Amjad whatsapp 18/01/2026 7pm ~ audio say do not limit for users for the moment
+        else {
             $employee_id = $objme ? $objme->getEmployeeId() : 0;
 
             if ($employee_id) {
@@ -93,7 +95,7 @@ class WorkflowScope extends WorkflowObject
                     $this->where("id in ($wscope_mfk)");
                 }
             }
-        }
+        }*/
 
         $selects = array();
         $this->select_visibilite_horizontale_default($dropdown, $selects);
