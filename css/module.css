@@ -592,5 +592,12 @@ div#fg-desiresLimitWarningDiv {
 }
 
 .bf.WorkflowRequest {
-    min-width: 420px;
+    min-width: 420px !important;
+}
+
+@media screen and (max-width: 718px) {
+    .bf.WorkflowRequest {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
 }
