@@ -158,18 +158,7 @@ class WorkflowApplicant extends WorkflowObject
         {
                 //die("beforeMaj fields_updated = ".var_export($fields_updated,true)." id= $id");
                 $lang = AfwLanguageHelper::getGlobalLanguage();
-                $birth_gdate = $this->getVal("birth_gdate");
-                $birth_date = $this->getVal("birth_date");
-
-                if ((!$birth_gdate) and $birth_date) {
-                        $birth_gdate = AfwDateHelper::hijriToGreg($birth_date);
-                        $this->set("birth_gdate", $birth_gdate);
-                }
-
-                if ((!$birth_date) and $birth_gdate) {
-                        $birth_date = AfwDateHelper::to_hijri($birth_gdate);
-                        $this->set("birth_date", $birth_date);
-                }
+                
 
                 $idn = $this->getVal("idn");
                 $idn_type_id = $this->getVal("idn_type_id");
