@@ -590,3 +590,7 @@ div#fg-desiresLimitWarningDiv {
 .rejection {
     color: rgb(227, 34, 34);
 }
+
+.bf.WorkflowRequest {
+    min-width: 420px;
+}

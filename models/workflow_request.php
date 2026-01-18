@@ -24,6 +24,7 @@ class WorkflowRequest extends WorkflowObject
                         'confirmation_question' => '',
                         'itemsMethod' => 'getEmployees',
                         'roles' => "workflow/393",
+                        'title-length' => "72",
                 ),
 
 
@@ -33,6 +34,7 @@ class WorkflowRequest extends WorkflowObject
                         'confirmation_warning' => '',
                         'confirmation_question' => '',
                         'itemsMethod' => 'getMyTransitions',
+                        'title-length' => "72",
                 ),
         );
 
@@ -404,6 +406,7 @@ class WorkflowRequest extends WorkflowObject
                                         'LABEL_AR' => $title_ar,
                                         'PUBLIC' => true,
                                         'BF-ID' => '',
+                                        'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
 
@@ -418,6 +421,7 @@ class WorkflowRequest extends WorkflowObject
                                         'LABEL_AR' => $title_ar,
                                         'ADMIN-ONLY' => true,
                                         'BF-ID' => '',
+                                        'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
 
@@ -431,6 +435,7 @@ class WorkflowRequest extends WorkflowObject
                                         'LABEL_AR' => $title_ar,
                                         'ROLES' => 'workflow/393',
                                         'PUBLIC' => true,
+                                        'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
 
@@ -444,6 +449,7 @@ class WorkflowRequest extends WorkflowObject
                                         'LABEL_AR' => $title_ar,
                                         'ROLES' => 'workflow/393',
                                         'PUBLIC' => true,
+                                        'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
 
@@ -461,6 +467,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'LABEL_AR' => $title_ar,
                                                 'ROLES' => 'workflow/403',
                                                 'PUBLIC' => true,
+                                                'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
                         } elseif (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "W")) {
@@ -474,6 +481,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'LABEL_AR' => $title_ar,
                                                 'ROLES' => 'workflow/393,403',
                                                 'PUBLIC' => true,
+                                                'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
                         }
