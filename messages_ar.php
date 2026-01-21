@@ -22,3 +22,4 @@ $messages["Can't change the assign of a request when a work has been started on 
 $messages["disapprove the program"] = "رفض أهلية التقديم على البرنامج";
 $messages["Still need to approve the requested program or select the needed supplementary programs"] = "لا يزال يتعين الموافقة على البرنامج المطلوب أو اختيار البرامج التكميلية اللازمة";
 $messages["admission decision"] = "قرارات القبول";
+$messages['Start/Stop work'] = "بدأ/ايقاف العمل";

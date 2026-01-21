@@ -481,6 +481,7 @@ class WorkflowRequest extends WorkflowObject
                                         array(
                                                 'METHOD' => $methodName,
                                                 'COLOR' => $color,
+                                                'MGROUP' => 'Start/Stop work',
                                                 'LABEL_AR' => $title_ar,
                                                 'ROLES' => 'workflow/403',
                                                 'PUBLIC' => true,
@@ -495,6 +496,7 @@ class WorkflowRequest extends WorkflowObject
                                         array(
                                                 'METHOD' => $methodName,
                                                 'COLOR' => $color,
+                                                'MGROUP' => 'Start/Stop work',
                                                 'LABEL_AR' => $title_ar,
                                                 'ROLES' => 'workflow/393', // فقط للمدير
                                                 'PUBLIC' => true,
