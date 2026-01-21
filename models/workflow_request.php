@@ -29,7 +29,8 @@ class WorkflowRequest extends WorkflowObject
 
 
                 'runTransition' => array(
-                        'title' => 'تنفيذ [item]',
+                        'title' => '[item]',
+                        'mgroup' => 'admission decision',
                         'confirmation_needed' => false,
                         'confirmation_warning' => '',
                         'confirmation_question' => '',
@@ -405,7 +406,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'METHOD' => $methodName,
                                                 'COLOR' => $color,
                                                 'LABEL_AR' => $title_ar,
-                                                'PUBLIC' => true,
+                                                'ADMIN-ONLY' => true,
                                                 'BF-ID' => '',
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
@@ -420,7 +421,7 @@ class WorkflowRequest extends WorkflowObject
                                         'METHOD' => $methodName,
                                         'COLOR' => $color,
                                         'LABEL_AR' => $title_ar,
-                                        'PUBLIC' => true,
+                                        'ADMIN-ONLY' => true,
                                         'BF-ID' => '',
                                         'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
@@ -495,7 +496,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'METHOD' => $methodName,
                                                 'COLOR' => $color,
                                                 'LABEL_AR' => $title_ar,
-                                                'ROLES' => 'workflow/393,403',
+                                                'ROLES' => 'workflow/393', // فقط للمدير
                                                 'PUBLIC' => true,
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')

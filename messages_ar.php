@@ -21,3 +21,4 @@ $messages['The work on this request has been canceled'] = 'تم إلغاء ال�
 $messages["Can't change the assign of a request when a work has been started on it. Please cancel this work before."] = "لا يمكن تغيير الشخص المسؤول عن الطلب بعد بدء العمل عليه. يرجى إلغاء هذا العمل قبل ذلك.";
 $messages["disapprove the program"] = "رفض أهلية التقديم على البرنامج";
 $messages["Still need to approve the requested program or select the needed supplementary programs"] = "لا يزال يتعين الموافقة على البرنامج المطلوب أو اختيار البرامج التكميلية اللازمة";
+$messages["admission decision"] = "قرارات القبول";
