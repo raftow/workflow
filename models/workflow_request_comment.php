@@ -31,6 +31,41 @@ class WorkflowRequestComment extends AFWObject
         } else return null;
     }
 
+    public static function loadByMainIndex($workflow_request_id, $request_comment_subject_id, $comment_date, $comment = "", $create_obj_if_not_found = false)
+    {
+        if (!$workflow_request_id) throw new AfwRuntimeException("loadByMainIndex : workflow_request_id is mandatory field");
+        if (!$request_comment_subject_id) throw new AfwRuntimeException("loadByMainIndex : request_comment_subject_id is mandatory field");
+        if (!$comment_date) throw new AfwRuntimeException("loadByMainIndex : comment_date is mandatory field");
+        if ($create_obj_if_not_found and !$comment) {
+            throw new AfwRuntimeException("loadByMainIndex : comment is mandatory field when create_obj_if_not_found=true ");
+        }
+
+        $obj = new WorkflowRequestComment();
+        $obj->select("workflow_request_id", $workflow_request_id);
+        $obj->select("request_comment_subject_id", $request_comment_subject_id);
+        $obj->select("comment_date", $comment_date);
+
+        if ($obj->load()) {
+            if ($create_obj_if_not_found) {
+                $obj->set("comment", $comment);
+                $obj->activate();
+            }
+            return $obj;
+        } elseif ($create_obj_if_not_found) {
+            $obj->set("workflow_request_id", $workflow_request_id);
+            $obj->set("request_comment_subject_id", $request_comment_subject_id);
+            $obj->set("comment_date", $comment_date);
+            $obj->set("comment", $comment);
+
+            $obj->insertNew();
+            if (!$obj->id) return null; // means beforeInsert rejected insert operation
+            $obj->is_new = true;
+            return $obj;
+        } else return null;
+    }
+
+
+
     public static function findComment($workflow_request_id, $workflow_stage_id, $request_comment_subject_id)
     {
         if (!$workflow_request_id) throw new AfwRuntimeException("loadByMainIndex : workflow_request_id is mandatory field");

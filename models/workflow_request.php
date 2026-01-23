@@ -318,8 +318,11 @@ class WorkflowRequest extends WorkflowObject
                 // after transition done reassign to best available employee depending on new stage and needed roles for this stage
                 $this->assignBestAvailableEmployee($lang, true, true);
 
-
-                $status_comment = date('H:i:s') . ': تم تنفيذ الانتقال [' . $objTransition->id . "] " . $objTransition->getDisplay($lang);
+                $the_comment = "تم تنفيذ الاجراء : " . $objTransition->getDisplay($lang);
+                $comment_date = date('H:i:s');
+                $status_comment = $comment_date . " : $the_comment [" . $objTransition->id . "]";
+                $request_comment_subject_id = $this->convenientCommentSubjectId();
+                $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_date, $the_comment, true);
 
                 return array('', $status_comment);
         }
@@ -872,6 +875,20 @@ class WorkflowRequest extends WorkflowObject
 
                 $stageId = $this->getVal('workflow_stage_id');
                 return self::stepOfStage($stageId);
+        }
+
+        public function convenientCommentSubjectId()
+        {
+                $request_comment_subject_id = 1;
+                $currstep = $this->reachedStep();
+                if ($currstep <= 2)
+                        $request_comment_subject_id = 1;
+                elseif ($currstep <= 4)
+                        $request_comment_subject_id = 2;
+                elseif ($currstep <= 6)
+                        $request_comment_subject_id = 3;
+
+                return $request_comment_subject_id;
         }
 
         public function weReachedStep($step)
