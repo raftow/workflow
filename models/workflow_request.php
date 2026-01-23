@@ -51,6 +51,10 @@ class WorkflowRequest extends WorkflowObject
                         return null;
         }
 
+        /**
+         * @return WorkflowRequest
+         */
+
         public static function loadByMainIndex($workflow_applicant_id, $workflow_model_id, $create_obj_if_not_found = false)
         {
                 if (!$workflow_applicant_id)
@@ -545,10 +549,10 @@ class WorkflowRequest extends WorkflowObject
                         if ($orgunit_id and ($this->getVal('orgunit_id') != $orgunit_id)) {
                                 $this->set('orgunit_id', $orgunit_id);
                                 $this->set('employee_id', 0);
-                                $this->commit();
                         }
                 }
 
+                $this->commit();
 
                 $strict = false;
                 $except_emp_id = 0;
