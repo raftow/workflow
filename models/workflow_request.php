@@ -53,15 +53,30 @@ class WorkflowRequest extends WorkflowObject
 
         public static function allGetOriginalData()
         {
+                $err_arr = [];
+                $inf_arr = [];
+                $war_arr = [];
+                $tech_arr = [];
                 $obj = new WorkflowRequest();
                 // $obj->select_visibilite_horizontale();
                 $objList = $obj->loadMany();
                 /**
                  * @var WorkflowRequest $objItem
                  */
+                $nb_updated = 0;
                 foreach ($objList as $objItem) {
-                        $objItem->getOriginalData();
+                        list($err, $inf, $war, $tech) = $objItem->getOriginalData();
+
+                        if ($err) $err_arr[] = "$objItem : " . $err;
+                        elseif ($inf) {
+                                $nb_updated++;
+                                // $inf_arr[] = "$student : ".$inf;
+                        }
+                        if ($war) $war_arr[] = "$objItem : " . $war;
+                        if ($tech) $tech_arr[] = $tech;
                 }
+
+                return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, "<br>\n", $tech_arr);
         }
 
         /**
