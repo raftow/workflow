@@ -243,6 +243,11 @@ span.fstatus.st22 {
     color: white;
 }
 
+span.fstatus.st5 {
+    background-color: #ff3d3d;
+    color: white;
+}
+
 .wcomments {
     background-color: #fff;
     color: #0f0f0f;
