@@ -51,6 +51,19 @@ class WorkflowRequest extends WorkflowObject
                         return null;
         }
 
+        public static function allGetOriginalData()
+        {
+                $obj = new WorkflowRequest();
+                // $obj->select_visibilite_horizontale();
+                $objList = $obj->loadMany();
+                /**
+                 * @var WorkflowRequest $objItem
+                 */
+                foreach ($objList as $objItem) {
+                        $objItem->getOriginalData();
+                }
+        }
+
         /**
          * @return WorkflowRequest
          */
