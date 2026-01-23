@@ -1075,7 +1075,7 @@ class WorkflowObject extends AfwMomkenObject
 
         $main_company = AfwSession::currentCompany();
         $file_dir_name = dirname(__FILE__);
-        include($file_dir_name . "/../../client-$main_company/extra/application_class-$main_company.php");
+        include($file_dir_name . "/../../client-$main_company/extra/application_class_$main_company.php");
         $classAC = "ApplicationClass" . AfwStringHelper::firstCharUpper($main_company);
         $lookup = $classAC::getLookup();
         foreach ($lookup as $id => $lookup_row) {
