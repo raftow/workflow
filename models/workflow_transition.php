@@ -53,7 +53,12 @@ class WorkflowTransition extends WorkflowObject
     }
 
 
-
+    public function getNodeDisplay($lang = "ar")
+    {
+        $actionObj = $this->het("workflow_action_id");
+        if (!$actionObj) return $this->getDisplay($lang) . " !!!!";
+        return $actionObj->getDisplay($lang);
+    }
 
 
     protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
