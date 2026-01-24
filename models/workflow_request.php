@@ -347,6 +347,8 @@ class WorkflowRequest extends WorkflowObject
                 return array('', $status_comment);
         }
 
+
+
         public function isStarted()
         {
                 return (($this->getVal('done') == "W") or ($this->getVal('done') == "Y"));
@@ -1174,8 +1176,9 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function prepareInterviewBookingIfNeeded($lang = "ar")
+        public function prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = false)
         {
+                $ibObj = null;
                 $statusObj = $this->het("workflow_status_id");
                 if ($statusObj->sureIs("interview_invite_ind")) {
                         $workflow_stage_id = $this->getVal('workflow_stage_id');
@@ -1197,10 +1200,19 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
-                                        return ["", $this->tm("Interview booking invite has been created", $lang), ""];
-                                } else return [$this->tm("Failed to create interview booking invitation", $lang), ""];
-                        } else return [$this->tm("Interview booking pattern not found", $lang), ""];
-                } else return ["", $this->tm("Interview booking invite not needed", $lang), ""];
+                                        $return = ["", $this->tm("Interview booking invite has been created", $lang), ""];
+                                } else $return = [$this->tm("Failed to create interview booking invitation", $lang), ""];
+                        } else $return = [$this->tm("Interview booking pattern not found", $lang), ""];
+                } else $return = ["", $this->tm("Interview booking invite not needed", $lang), ""];
+
+
+                if ($returnInterviewBookingObject) return $ibObj;
+                else return $return;
+        }
+
+        public function getInterviewBooking()
+        {
+                return $this->prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = true);
         }
 
 
