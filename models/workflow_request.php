@@ -194,7 +194,22 @@ class WorkflowRequest extends WorkflowObject
                 $obj->select('initial_stage_id', $this->getVal('workflow_stage_id'));
                 $obj->select('initial_status_id', $this->getVal('workflow_status_id'));
                 if ($employeeRolesArray) $obj->where("workflow_role_mfk like '%," . implode(",%' or workflow_role_mfk like '%,", $employeeRolesArray) . ",%'");
-                return $obj->loadMany();
+                $transList = $obj->loadMany();
+                $objOriginal = null;
+                $validTransList = [];
+                foreach ($transList as $transItem) {
+                        if ($transItem->sureIs("condition_before")) {
+                                if (!$objOriginal) list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                                $wCondObj = $transItem->het("workflow_condition_id");
+                                list($condition_success, $reason) = $objOriginal->runCondition($wCondObj, $this, "en");
+                        } else $condition_success = true;
+
+                        if ($condition_success) {
+                                $validTransList[$transItem->id] = $transItem;
+                        }
+                }
+
+                return $validTransList;
         }
 
 
