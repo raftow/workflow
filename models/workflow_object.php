@@ -1089,4 +1089,30 @@ class WorkflowObject extends AfwMomkenObject
 
         return $arr_list_of_application_class;
     }
+
+    public static function list_of_workflow_category_enum()
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+        return self::workflow_category()[$lang];
+    }
+
+    public static function workflow_category()
+    {
+        $arr_list_of_application_category = array();
+
+        $main_company = AfwSession::currentCompany();
+        $file_dir_name = dirname(__FILE__);
+        $classAC = "ApplicationClass" . AfwStringHelper::firstCharUpper($main_company);
+        if (!class_exists($classAC)) {
+            include($file_dir_name . "/../../client-$main_company/extra/application_class_$main_company.php");
+        }
+        $lookup = $classAC::getWorkflowCategoryLookup();
+
+        foreach ($lookup as $id => $lookup_row) {
+            $arr_list_of_application_category['ar'][$id] = $lookup_row['ar'];
+            $arr_list_of_application_category['en'][$id] = $lookup_row['en'];
+        }
+
+        return $arr_list_of_application_category;
+    }
 }
