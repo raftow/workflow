@@ -211,4 +211,25 @@ class WorkflowTransition extends WorkflowObject
 
         return $return;
     }
+
+    public function switcherConfig($col, $auser = null)
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+
+        $switcher_authorized = false;
+        $switcher_title = "";
+        $switcher_text = "";
+
+        if ($col == $this->fld_ACTIVE()) {
+            $switcher_authorized = true;
+        }
+
+        if ($col == "condition_before") {
+            $switcher_authorized = true;
+            $switcher_title = $this->tm("Are you sure ?", $lang);
+            $switcher_text = $this->tm("This will show/hide the button before check the condition", $lang);
+        }
+
+        return [$switcher_authorized, $switcher_title, $switcher_text];
+    }
 }

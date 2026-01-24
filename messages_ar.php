@@ -23,3 +23,9 @@ $messages["disapprove the program"] = "رفض أهلية التقديم على �
 $messages["Still need to approve the requested program or select the needed supplementary programs"] = "لا يزال يتعين الموافقة على البرنامج المطلوب أو اختيار البرامج التكميلية اللازمة";
 $messages["admission decision"] = "قرارات القبول";
 $messages['Start/Stop work'] = "بدأ/ايقاف العمل";
+
+$messages["This will show/hide the button before check the condition"] = "سيؤدي هذا إلى إظهار/إخفاء الزر قبل التحقق من الشرط";
+// $messages[""] = "";
+
+
+// $messages[""] = "";
