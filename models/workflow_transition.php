@@ -61,6 +61,9 @@ class WorkflowTransition extends WorkflowObject
     }
 
 
+
+
+
     protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
     {
         $lang = AfwLanguageHelper::getGlobalLanguage();
