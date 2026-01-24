@@ -338,7 +338,7 @@ class WorkflowRequest extends WorkflowObject
                 $comment_time = date('H:i:s');
                 $status_comment = $comment_time . " : $the_comment [" . $objTransition->id . "]";
                 $request_comment_subject_id = $this->convenientCommentSubjectId();
-                $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, true);
+                $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, $final_stage_id, true);
 
                 return array('', $status_comment);
         }

@@ -31,13 +31,17 @@ class WorkflowRequestComment extends AFWObject
         } else return null;
     }
 
-    public static function loadByMainIndex($workflow_request_id, $request_comment_subject_id, $comment_date, $comment = "", $create_obj_if_not_found = false)
+    public static function loadByMainIndex($workflow_request_id, $request_comment_subject_id, $comment_date, $comment = "", $workflow_stage_id = 0, $create_obj_if_not_found = false)
     {
         if (!$workflow_request_id) throw new AfwRuntimeException("loadByMainIndex : workflow_request_id is mandatory field");
         if (!$request_comment_subject_id) throw new AfwRuntimeException("loadByMainIndex : request_comment_subject_id is mandatory field");
         if (!$comment_date) throw new AfwRuntimeException("loadByMainIndex : comment_date is mandatory field");
         if ($create_obj_if_not_found and !$comment) {
             throw new AfwRuntimeException("loadByMainIndex : comment is mandatory field when create_obj_if_not_found=true ");
+        }
+
+        if ($create_obj_if_not_found and !$workflow_stage_id) {
+            throw new AfwRuntimeException("loadByMainIndex : workflow_stage_id is mandatory field when create_obj_if_not_found=true ");
         }
 
         $obj = new WorkflowRequestComment();
@@ -48,6 +52,8 @@ class WorkflowRequestComment extends AFWObject
         if ($obj->load()) {
             if ($create_obj_if_not_found) {
                 $obj->set("comment", $comment);
+                $obj->set("workflow_stage_id", $workflow_stage_id);
+
                 $obj->activate();
             }
             return $obj;
@@ -56,6 +62,7 @@ class WorkflowRequestComment extends AFWObject
             $obj->set("request_comment_subject_id", $request_comment_subject_id);
             $obj->set("comment_date", $comment_date);
             $obj->set("comment", $comment);
+            $obj->set("workflow_stage_id", $workflow_stage_id);
 
             $obj->insertNew();
             if (!$obj->id) return null; // means beforeInsert rejected insert operation
