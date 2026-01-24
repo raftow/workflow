@@ -198,13 +198,15 @@ class WorkflowWorkflowTransitionAfwStructure
         ),
 
         'condition_before' => array(
+            'STEP' => 1,
             'SHOW' => true,
             'RETRIEVE' => true,
             'EDIT' => true,
             'QEDIT' => true,
             "DEFAULT" => 'N',
             'TYPE' => 'YN',
-            'FORMAT' => 'ICON',
+            'FORMAT' => 'icon',
+            'DISPLAY' => true,
         ),
 
         'workflow_action_id' => array(
