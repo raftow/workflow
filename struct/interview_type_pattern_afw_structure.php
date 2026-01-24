@@ -20,6 +20,7 @@ class WorkflowInterviewTypePatternAfwStructure
                         $obj->showQeditErrors = true;
                         $obj->showRetrieveErrors = true;
                         $obj->general_check_errors = true;
+                        $obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
                         // $obj->after_save_edit = array("class"=>'InterviewTypePattern',"attribute"=>'xxxx_id', "currmod"=>'workflow',"currstep"=>2);
                         $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'InterviewTypePattern', "submit" => true);
                 } else {
@@ -201,7 +202,7 @@ class WorkflowInterviewTypePatternAfwStructure
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
-                        'MANDATORY' => true,
+                        'MANDATORY' => false,
                         'UTF8' => false,
                         'TYPE' => 'INT',
                         'READONLY' => false,

@@ -54,7 +54,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
                         'STEP' => 1,
-                        'RELATION' => 'ManyToOne-OneToMany',
+                        'RELATION' => 'OneToMany',
                         'MANDATORY' => true,
                         'READONLY' => false,
                         'AUTOCOMPLETE' => false,
@@ -125,7 +125,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
                         'STEP' => 1,
-                        'RELATION' => 'ManyToOne-OneToMany',
+                        'RELATION' => 'OneToMany',
                         'MANDATORY' => false,
                         'READONLY' => false,
                         'AUTOCOMPLETE' => false,
@@ -297,7 +297,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                 ),
- 
+
 
 
                 'active' => array(

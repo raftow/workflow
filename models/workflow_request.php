@@ -321,24 +321,28 @@ class WorkflowRequest extends WorkflowObject
                 if (($final_stage_id != $workflow_stage_id) or ($final_status_id != $workflow_status_id)) {
                         $this->set('done', 'N');
                         $this->set('employee_id', 0);
+                        $this->set("attempt", "N");
+                        $this->set('workflow_stage_id', $final_stage_id);
+                        $this->set('workflow_status_id', $final_status_id);
+                        $this->commit();
+                        $this->prepareInterviewBookingIfNeeded();
+
+                        // after transition done reassign to best available employee depending on new stage and needed roles for this stage
+                        $this->assignBestAvailableEmployee($lang, true, true);
+
+                        $the_comment = "تم تنفيذ الاجراء : " . $objTransition->getDisplay($lang);
+                        $comment_datetime = date('Y-m-d H:i:s');
+                        $comment_time = date('H:i:s');
+                        $status_comment = $comment_time . " : $the_comment [" . $objTransition->id . "]";
+                        $request_comment_subject_id = $this->convenientCommentSubjectId();
+                        $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, $final_stage_id, true);
                 } else {
-                        $this->set('done', 'Y');
+                        $status_comment = $this->tm("Nothing done", $lang);
                 }
 
-                $this->set("attempt", "N");
-                $this->set('workflow_stage_id', $final_stage_id);
-                $this->set('workflow_status_id', $final_status_id);
-                $this->commit();
 
-                // after transition done reassign to best available employee depending on new stage and needed roles for this stage
-                $this->assignBestAvailableEmployee($lang, true, true);
 
-                $the_comment = "تم تنفيذ الاجراء : " . $objTransition->getDisplay($lang);
-                $comment_datetime = date('Y-m-d H:i:s');
-                $comment_time = date('H:i:s');
-                $status_comment = $comment_time . " : $the_comment [" . $objTransition->id . "]";
-                $request_comment_subject_id = $this->convenientCommentSubjectId();
-                $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, $final_stage_id, true);
+
 
                 return array('', $status_comment);
         }
@@ -477,6 +481,22 @@ class WorkflowRequest extends WorkflowObject
                                         'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
+
+                        $color = 'blue';
+                        $title_ar = 'تحديث دعوة المقابلة';
+                        $methodName = 'prepareInterviewBookingIfNeeded';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ADMIN-ONLY' => true,
+                                        'BF-ID' => '',
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+
 
 
                         $color = 'orange';
@@ -1154,6 +1174,36 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
+        public function prepareInterviewBookingIfNeeded($lang = "ar")
+        {
+                $statusObj = $this->het("workflow_status_id");
+                if ($statusObj->sureIs("interview_invite_ind")) {
+                        $workflow_stage_id = $this->getVal('workflow_stage_id');
+                        $itpObj = InterviewTypePattern::loadByMainIndex($workflow_stage_id);
+                        $workflow_applicant_id = $this->getVal("workflow_applicant_id");
+                        $workflow_session_id = $this->getVal("workflow_session_id");
+                        // if the pattern exists it means we should create a booking invite
+                        if ($itpObj) {
+                                $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
+                                if ($ibObj) {
+                                        $workflow_scope_id = $this->getVal("workflow_scope_id");
+                                        $booking_status_id = 6;
+                                        $reschedule_count = $ibObj->getVal("max_reschedule");
+                                        $can_reschedule_ind = ($reschedule_count > 0) ? "Y" : "N";
+                                        $can_cancel_ind = $ibObj->getVal("can_cancel_ind");
+                                        $ibObj->set("workflow_scope_id", $workflow_scope_id);
+                                        $ibObj->set("booking_status_id", $booking_status_id);
+                                        $ibObj->set("reschedule_count", $reschedule_count);
+                                        $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
+                                        $ibObj->set("can_cancel_ind", $can_cancel_ind);
+                                        $ibObj->commit();
+                                        return ["", $this->tm("Interview booking invite has been created", $lang), ""];
+                                } else return [$this->tm("Failed to create interview booking invitation", $lang), ""];
+                        } else return [$this->tm("Interview booking pattern not found", $lang), ""];
+                } else return ["", $this->tm("Interview booking invite not needed", $lang), ""];
+        }
+
+
         /**
          * @param Auser $auser
          */
@@ -1164,66 +1214,4 @@ class WorkflowRequest extends WorkflowObject
                 return $auser->hasRole($module_code, $role_id);
         }
         */
-
-        /*
-         * public static function assignSupervisorForNonAssigned($reset = false, $silent = false, $lang = 'ar', $limit = '200', $jobContext = null)
-         * {
-         *         $errors_arr = array();
-         *         $infos_arr = array();
-         *         $tech_arr = array();
-         *         $warn_arr = array();
-         *         $nb_errs = 0;
-         *         $nb_done = 0;
-         *
-         *         $obj = new Request();
-         *         if ($jobContext)
-         *                 AfwBatch::print_comment('----------------------- JOB Context : ' . $jobContext . ' -----------------------');
-         *         if ($reset) {
-         *                 $obj->setForce('supervisor_id', 0);
-         *                 $obj->setForce('employee_id', 0);
-         *                 $obj->setForce('status_comment', 'assignSupervisorForNonAssigned-with-reset');
-         *                 $obj->where('employee_id = 0 and status_id not in (' . self::$REQUEST_STATUSES_NO_NEED_ASSIGN . ')');  //  or (supervisor_id = 1917 and employee_id = 1791) //  or (orgunit_id = " . self::$CRM_CENTER_ID . ")
-         *                 $nb_rows_rest = $obj->update(false);
-         *                 $warn_arr[] = "$nb_rows_rest request(s) assignment has been reset";
-         *         } elseif ($jobContext)
-         *                 AfwBatch::print_error("$jobContext >> assignSupervisorForNonAssigned->reset should be true for the moment");
-         *
-         *         $silent = false;
-         *
-         *         $obj->select('supervisor_id', 0);
-         *         $obj->where('status_id not in (' . self::$REQUEST_STATUSES_NO_NEED_ASSIGN . ')');
-         *
-         *         $reqList = $obj->loadMany($limit);
-         *         $total = count($reqList);
-         *         $doing = 0;
-         *         foreach ($reqList as $reqId => $reqItem) {
-         *                 $doing++;
-         *                 if ($jobContext)
-         *                         AfwBatch::print_comment('----------------------- JOB Context : ' . $jobContext . " assignBestAvailableSupervisor For Request ID = $reqId ($doing / $total) -----------------------");
-         *                 list($err, $info) = $reqItem->assignBestAvailableSupervisor($lang, $pbm = true, $commit = true, $re_distribution = false);
-         *
-         *                 if ($err) {
-         *                         $tech_arr[] = 'Error : ' . $err;
-         *                         $nb_errs++;
-         *                         if ($jobContext)
-         *                                 AfwBatch::print_error(">> $jobContext >> Error : .$err");
-         *                 } else
-         *                         $nb_done++;
-         *                 if ($info)
-         *                         $tech_arr[] = $info;
-         *         }
-         *
-         *         $infos_arr[] = "done : $nb_done , errors : $nb_errs";
-         *
-         *         if ((!$silent) and (count($errors_arr) > 0)) {
-         *                 AfwSession::pushError(implode('<br>', $errors_arr));
-         *         }
-         *
-         *         if ((!$silent) and (count($infos_arr) > 0)) {
-         *                 AfwSession::pushInformation(implode('<br>', $infos_arr));
-         *         }
-         *
-         *         return AfwFormatHelper::pbm_result($errors_arr, $infos_arr, $warn_arr, "<br>\n", $tech_arr);
-         * }
-         */
 }
