@@ -20,6 +20,7 @@ class WorkflowInterviewBookingAfwStructure
 			$obj->showQeditErrors = true;
 			$obj->showRetrieveErrors = true;
 			$obj->general_check_errors = true;
+			$obj->public_display = true;
 			// $obj->after_save_edit = array("class"=>'InterviewBooking',"attribute"=>'xxxx_id', "currmod"=>'workflow',"currstep"=>2);
 			$obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'InterviewBooking', "submit" => true);
 		} else {

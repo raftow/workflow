@@ -44,6 +44,9 @@ include('previleges/table/previleges_workflow_table_workflow_stage.php');
 include('previleges/table/previleges_workflow_table_workflow_status.php');
 include('previleges/table/previleges_workflow_table_workflow_task.php');
 include('previleges/table/previleges_workflow_table_workflow_transition.php');
+include('previleges/table/previleges_workflow_table_interview_booking.php');
+
+
 include('previleges/role/previleges_workflow_role395.php');
 include('previleges/role/previleges_workflow_role391.php');
 include('previleges/role/previleges_workflow_role400.php');
@@ -53,6 +56,7 @@ include('previleges/role/previleges_workflow_role402.php');
 include('previleges/role/previleges_workflow_role393.php');
 include('previleges/role/previleges_workflow_role392.php');
 include('previleges/role/previleges_workflow_role401.php');
+
 
 
 include('../adm/previleges/role/previleges_adm_role397.php');
