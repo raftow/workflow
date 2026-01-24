@@ -319,10 +319,11 @@ class WorkflowRequest extends WorkflowObject
                 $this->assignBestAvailableEmployee($lang, true, true);
 
                 $the_comment = "تم تنفيذ الاجراء : " . $objTransition->getDisplay($lang);
-                $comment_date = date('H:i:s');
-                $status_comment = $comment_date . " : $the_comment [" . $objTransition->id . "]";
+                $comment_datetime = date('Y-m-d H:i:s');
+                $comment_time = date('H:i:s');
+                $status_comment = $comment_time . " : $the_comment [" . $objTransition->id . "]";
                 $request_comment_subject_id = $this->convenientCommentSubjectId();
-                $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_date, $the_comment, true);
+                $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, true);
 
                 return array('', $status_comment);
         }
