@@ -29,9 +29,17 @@ $messages["Interview booking invite has been created"] = "تم إنشاء دعو
 $messages["Interview booking pattern not found"] = "لم يتم العثور على نموذج حجز المقابلة";
 $messages["Interview booking invite not needed"] = "";
 $messages["Failed to create interview booking invitation"] = "فشل إنشاء دعوة حجز المقابلة";
+$messages["No interview booking invitation sent"] = "لم يتم إرسال دعوة لحجز موعد للمقابلة";
+$messages["Interview booking invitation sent"] = "تم إرسال دعوة لحجز موعد للمقابلة";
+$messages["Bookings status"] = "حالة الحجز";
+$messages["Note: Proficiency in English is essential for programs taught in English"]
+    = "ملاحظة : إجادة اللغة الإنجليزية ضرورية للبرامج التي تدرس باللغة الإنجليزية";
 
-
-// $messages[""] = "";
+$messages["taught in English"] = "تدرس باللغة الإنجليزية";
+$messages["CV Degree"] = "درجة السيرة الذاتية";
+$messages["No CV found for this applicant"] = "لم يتم العثور على سيرة ذاتية لهذا المتقدم";
+    
+// 
 // $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";
