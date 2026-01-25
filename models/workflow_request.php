@@ -787,8 +787,8 @@ class WorkflowRequest extends WorkflowObject
                 elseif ($currstep <= 6)
                         $request_comment_subject_id = 3;
 
-                $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj);
                 $desc_erase = array('MANDATORY' => false);
+                $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj, ':', $desc_erase);
                 $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj, ':', $desc_erase);
                 $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
                 $add_comment_label = $this->tm('Add comment', $lang);

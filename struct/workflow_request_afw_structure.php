@@ -780,7 +780,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'MANDATORY' => false,
                         'UTF8' => false,
                         'TYPE' => 'PCT', /*'FORMAT'=>'*.2',*/
-                        'READONLY' => true,
+                        'READONLY' => false,
                         'DNA' => true,
                         'CSS' => 'width_pct_50',
                         'STEP' => 7
