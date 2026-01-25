@@ -1115,6 +1115,8 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and $this->sureIs("attempt"));
 
 
+                if ($attribute == "interview_score") return $this->isStarted();
+
                 return true;
         }
 
