@@ -765,6 +765,27 @@ class WorkflowWorkflowRequestAfwStructure
                         'INPUT_WIDE' => true,
                 ),
 
+                'interview_score' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'PCT', /*'FORMAT'=>'*.2',*/
+                        'READONLY' => true,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                        'STEP' => 7
+                ),
+
                 'workflow_rejection_reason_id' => array(
                         'FGROUP' => 'rejection_reason',
                         'STEP' => '::current',
