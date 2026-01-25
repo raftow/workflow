@@ -51,6 +51,34 @@ class WorkflowRequest extends WorkflowObject
                         return null;
         }
 
+        public static function allPrepareInterviewBookingIfNeeded()
+        {
+                $err_arr = [];
+                $inf_arr = [];
+                $war_arr = [];
+                $tech_arr = [];
+                $obj = new WorkflowRequest();
+                // $obj->select_visibilite_horizontale();
+                $objList = $obj->loadMany();
+                /**
+                 * @var WorkflowRequest $objItem
+                 */
+                $nb_updated = 0;
+                foreach ($objList as $objItem) {
+                        list($err, $inf, $war, $tech) = $objItem->prepareInterviewBookingIfNeeded();
+
+                        if ($err) $err_arr[] = "$objItem : " . $err;
+                        elseif ($inf) {
+                                $nb_updated++;
+                                // $inf_arr[] = "$student : ".$inf;
+                        }
+                        if ($war) $war_arr[] = "$objItem : " . $war;
+                        if ($tech) $tech_arr[] = $tech;
+                }
+
+                return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, "<br>\n", $tech_arr);
+        }
+
         public static function allGetOriginalData()
         {
                 $err_arr = [];
@@ -1195,6 +1223,7 @@ class WorkflowRequest extends WorkflowObject
                                         $can_reschedule_ind = ($reschedule_count > 0) ? "Y" : "N";
                                         $can_cancel_ind = $ibObj->getVal("can_cancel_ind");
                                         $ibObj->set("workflow_scope_id", $workflow_scope_id);
+                                        $ibObj->set("workflow_request_id", $this->id);
                                         $ibObj->set("booking_status_id", $booking_status_id);
                                         $ibObj->set("reschedule_count", $reschedule_count);
                                         $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
@@ -1214,6 +1243,9 @@ class WorkflowRequest extends WorkflowObject
         {
                 return $this->prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = true);
         }
+
+
+
 
 
         /**

@@ -11,13 +11,13 @@ if ($objme) {
 
 
         if ($objme->isSuperAdmin()) {
-                /*
-                list($err, $info, $war) = WorkflowRequest::allGetOriginalData();
+
+                list($err, $info, $war) = WorkflowRequest::allPrepareInterviewBookingIfNeeded();
 
                 if ($err) AfwSession::pushError($err);
                 if ($info) AfwSession::pushInformation($info);
                 if ($war) AfwSession::pushWarning($war);
-                */
+
                 $Main_Page = "home.php";
                 $My_Module = $MODULE;
 
