@@ -707,7 +707,7 @@ class WorkflowEmployee extends WorkflowObject
                 else
                         $return = null;
 
-                $log = "strict=$strict sql=$sql stats_arr = " . var_export($stats_arr, true) . " employeeList = " . var_export($employeeList, true);
+                $log = "strict=$strict sql=$sql stats_arr = " . var_export($stats_arr, true) . " employeeList = " . var_export($employeeList, true) . " after self::getEmployeeArray(orgunit_id=$orgunit_id, wscope_id=$wscope_id, except_employee_id=$except_employee_id, accepted_roles=" . var_export($accepted_roles, true) . ")";
                 // die("best_employee_id = $best_employee_id , return = ".var_export($return,true).", employeeList = ".var_export($employeeList,true));
 
                 return array($best_employee_id, $return, $employeeList, $log);
