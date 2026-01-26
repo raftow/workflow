@@ -15,6 +15,56 @@ class WorkflowRequest extends WorkflowObject
                 WorkflowWorkflowRequestAfwStructure::initInstance($this);
         }
 
+        public static $STATS_CONFIG = array(
+                "wr0001" => array(
+                        "STATS_WHERE" => "active = 'Y'", //  and request_date between [date_start_stats] and [date_end_stats]
+                        // "URL_SETTINGS" => "main.php?Main_Page=afw_mode_edit.php&cl=CrmOrgunit&id=80&currmod=crm&currstep=5",
+                        "DISABLE-VH" => true,
+                        "FOOTER_TITLES" => true,
+                        "FOOTER_SUM" => true,
+                        "GROUP_SEP" => ".",
+                        "GROUP_COLS" => array(
+                                0 => array("COLUMN" => "workflow_scope_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
+                        ),
+                        "DISPLAY_COLS" => array(
+                                1 => array("COLUMN" => "in_status_1",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_1",  "FOOTER_SUM" => true),
+                                2 => array("COLUMN" => "in_status_2",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_2",  "FOOTER_SUM" => true),
+                                3 => array("COLUMN" => "in_status_3",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_3",  "FOOTER_SUM" => true),
+                                4 => array("COLUMN" => "in_status_4",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_4",  "FOOTER_SUM" => true),
+                                5 => array("COLUMN" => "in_status_5",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_5",  "FOOTER_SUM" => true),
+                                6 => array("COLUMN" => "in_status_6",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_6",  "FOOTER_SUM" => true),
+                                7 => array("COLUMN" => "in_status_7",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_7",  "FOOTER_SUM" => true),
+                                8 => array("COLUMN" => "in_status_8",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_8",  "FOOTER_SUM" => true),
+                                9 => array("COLUMN" => "in_status_9",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_9",  "FOOTER_SUM" => true),
+                                10 => array("COLUMN" => "in_status_10", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_10", "FOOTER_SUM" => true),
+                                11 => array("COLUMN" => "in_status_11", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_11", "FOOTER_SUM" => true),
+                                12 => array("COLUMN" => "in_status_12", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_12", "FOOTER_SUM" => true),
+                                13 => array("COLUMN" => "in_status_13", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_13", "FOOTER_SUM" => true),
+                                14 => array("COLUMN" => "in_status_14", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_14", "FOOTER_SUM" => true),
+                                15 => array("COLUMN" => "in_status_15", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_15", "FOOTER_SUM" => true),
+                                16 => array("COLUMN" => "in_status_16", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_16", "FOOTER_SUM" => true),
+                                17 => array("COLUMN" => "in_status_17", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_17", "FOOTER_SUM" => true),
+                                18 => array("COLUMN" => "in_status_18", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_18", "FOOTER_SUM" => true),
+                                19 => array("COLUMN" => "in_status_19", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_19", "FOOTER_SUM" => true),
+                                20 => array("COLUMN" => "in_status_20", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_20", "FOOTER_SUM" => true),
+                                21 => array("COLUMN" => "in_status_21", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_21", "FOOTER_SUM" => true),
+                                22 => array("COLUMN" => "in_status_22", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_22", "FOOTER_SUM" => true),
+                                23 => array("COLUMN" => "in_status_23", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_23", "FOOTER_SUM" => true),
+                        ),
+
+                        "FORMULA_COLS" => array(
+                                //0 => array("SHOW-NAME"=>"perf", "METHOD"=>"getPerf"),
+                        ),
+
+                        /*"OPTIONS" => array(
+                                "perf"=> array('count_request' => true, 'request_done' => true, 'request_late' => true, 'request_ongoing' => true, 'perf'=>true),
+                                      ),*/
+                        // "SUPER_HEADER"=>array(0=>array("colspan"=>3, "title"=>""), 1=>array("colspan"=>2, "title"=>"year_36"), 2=>array("colspan"=>2, "title"=>"year_37"),
+                        //                      3=>array("colspan"=>2, "title"=>"year_38"), 4=>array("colspan"=>2, "title"=>"year_39"), 5=>array("colspan"=>2, "title"=>"year_40"), ),
+
+                ),
+        );
+
         public static $PUB_METHODS = array(
                 'assignRequest' => array(
                         'title' => 'تحويل الطلب إلى [item]',
@@ -694,7 +744,7 @@ class WorkflowRequest extends WorkflowObject
                                 $emplObj = $this->het('employee_id');
                                 return array('', $this->tm('This request already assigned to ') . $emplObj->getDisplay($lang), '', $log);
                         } else
-                                return array($this->tm('No suitable available employee for the request') . ' ID = ' . $this->id, '', '', $log);
+                                return array($this->tm('No suitable available employee for the request') . ' : ' . $this->id, '', '', $log);
                 }
 
                 return $emplObj;

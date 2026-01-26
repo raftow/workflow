@@ -39,7 +39,7 @@ $messages["taught in English"] = "تدرس باللغة الإنجليزية";
 $messages["CV Degree"] = "درجة السيرة الذاتية";
 $messages["No CV found for this applicant"] = "لم يتم العثور على سيرة ذاتية لهذا المتقدم";
 $messages["Interview score not sufficient"] = "درجة المقابلة الشخصية غير كافية";
-    
+$messages["No suitable available employee for the request"] = "لا يوجد موظف مناسب متاح لهذا الطلب";    
 // 
 // $messages[""] = "";
 // $messages[""] = "";
