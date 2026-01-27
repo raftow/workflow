@@ -18,8 +18,7 @@ class WorkflowRequest extends WorkflowObject
         public static $STATS_CONFIG = array(
                 "wr0001" => array(
                         "STATS_WHERE" => "active = 'Y'", //  
-                        'SFILTER' => ['application_class_enum' => true, 'workflow_session_id' => true, 'workflow_stage_id' => true],
-                        "URL_SETTINGS" => "main.php?Main_Page=afw_mode_edit.php&cl=CrmOrgunit&id=80&currmod=crm&currstep=5",
+                        'SFILTER' => ['application_class_enum' => true, 'workflow_session_id' => true], // , 'workflow_stage_id' => true
                         "DISABLE-VH" => true,
                         "FOOTER_TITLES" => true,
                         "ROW_SUM" => true,

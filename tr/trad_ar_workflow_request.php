@@ -60,6 +60,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['country_id'] = 'الجنسية';
 		$trad['workflow_request']['passeport_num'] = 'جواز السفر';
 
+		$trad["workflow_request"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
+
 		return $trad;
 	}
 

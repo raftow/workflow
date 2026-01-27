@@ -23,7 +23,7 @@ class WorkflowStatusArTranslator{
 	$trad["workflow_status"]["applicant_can_cancel"] = "يمكن للمتقدم الإلغاء؟";
 	$trad["workflow_status"]["last_payment_deadline"] = "آخر موعد للدفع";
 
-	$trad["workflow_status"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
+	
         return $trad;
         }
 
