@@ -59,7 +59,7 @@ class WorkflowWorkflowCommiteeScopeAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_50',
                 ),
 
                 'workflow_scope_id' => array(
@@ -85,7 +85,7 @@ class WorkflowWorkflowCommiteeScopeAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
+                        'CSS' => 'width_pct_50',
                 ),
 
                 'active' => array(
