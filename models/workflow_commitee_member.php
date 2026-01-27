@@ -78,6 +78,16 @@ class WorkflowCommiteeMember extends WorkflowObject
                 }
         }
 
+        public function getMyWorkflowUnitAndEmployee()
+        {
+                $commObj = $this->het("workflow_commitee_id");
+                if (!$commObj) return [null, null];
+                if (!$commObj->getVal("orgunit_id")) return [$commObj, null];
+                $wEmplObj = WorkflowEmployee::loadByMainIndex($commObj->getVal("orgunit_id"), $this->getVal("employee_id"));
+
+                return [$commObj, $wEmplObj];
+        }
+
 
 
         public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false)
@@ -102,10 +112,9 @@ class WorkflowCommiteeMember extends WorkflowObject
                 if ($id) {
                         if ($id_replace == 0) {
                                 // FK part of me - not deletable 
-                                $commObj = $this->het("workflow_commitee_id");
-                                $wEmplObj = WorkflowEmployee::loadByMainIndex($commObj->getVal("orgunit_id"), $this->getVal("employee_id"));
+                                list($commObj, $wEmplObj) =  $this->getMyWorkflowUnitAndEmployee();
 
-                                if ($wEmplObj->id > 0) {
+                                if ($commObj and $wEmplObj and ($wEmplObj->id > 0)) {
                                         if ($commObj->getVal("secretary_employee_id") == $wEmplObj->id) {
                                                 $commObj->setForce("secretary_employee_id", 0);
                                                 $commObj->commit();
