@@ -57,7 +57,7 @@ class WorkflowCommiteeMember extends WorkflowObject
                 return false;
         }
 
-        public function refreshMyWorkflowEmployeeRolesAndScopes()
+        public function refreshMyWorkflowEmployeeRolesAndScopes($lang = 'ar')
         {
                 /**
                  * @var WorkflowCommitee $commObj
@@ -79,6 +79,8 @@ class WorkflowCommiteeMember extends WorkflowObject
                                 $wEmplObj->resetPrevileges();
                         }
                 }
+
+                return ['', 'done'];
         }
 
         public function getMyWorkflowUnitAndEmployee()
@@ -145,5 +147,27 @@ class WorkflowCommiteeMember extends WorkflowObject
                         }
                         return true;
                 }
+        }
+
+        protected function getPublicMethods()
+        {
+
+                $pbms = array();
+
+                $color = "orange";
+                $title_en = "refresh my roles and programs";
+                $title_ar = $this->tm($title_en, 'ar');
+                $methodName = "refreshMyWorkflowEmployeeRolesAndScopes";
+                $pbms[AfwStringHelper::hzmEncode($methodName)] = array(
+                        "METHOD" => $methodName,
+                        "COLOR" => $color,
+                        "LABEL_AR" => $title_ar,
+                        "LABEL_EN" => $title_en,
+                        "ADMIN-ONLY" => true,
+                        "BF-ID" => "",
+                        'STEPS' => 'all'
+                );
+
+                return $pbms;
         }
 }
