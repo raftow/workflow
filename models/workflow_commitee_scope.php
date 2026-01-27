@@ -37,6 +37,8 @@ class WorkflowCommiteeScope extends WorkflowObject
         {
                 if ($fields_updated["workflow_commitee_id"]) return false; // denied to change the committee it cause problem of roles 
                 // not updated, but remove this record and insert another instead of update ...
+
+                return true;
         }
 
         public function afterMaj($id, $fields_updated)
