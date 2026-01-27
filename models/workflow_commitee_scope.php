@@ -97,7 +97,7 @@ class WorkflowCommiteeScope extends WorkflowObject
                          * @var WorkflowCommiteeMember $secretaryMemberObj
                          */
                         $secretaryMemberObj = $commObj->mySecretaryMember();
-                        if ($secretaryMemberObj) $secretaryMemberObj->refreshMyRoles();
+                        if ($secretaryMemberObj) $secretaryMemberObj->refreshMyWorkflowEmployeeRolesAndScopes();
                 }
         }
 }

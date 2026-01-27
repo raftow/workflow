@@ -57,7 +57,7 @@ class WorkflowCommiteeMember extends WorkflowObject
                 return false;
         }
 
-        public function refreshMyRoles()
+        public function refreshMyWorkflowEmployeeRolesAndScopes()
         {
                 /**
                  * @var WorkflowCommitee $commObj
@@ -70,8 +70,11 @@ class WorkflowCommiteeMember extends WorkflowObject
                         if ($commObj->getVal("orgunit_id")) {
                                 $wEmplObj = WorkflowEmployee::loadByMainIndex($commObj->getVal("orgunit_id"), $this->getVal("employee_id"), true);
                                 $wEmplObj->set("hierarchy_level_enum", 999);
-                                $wEmplObj->set("wrole_mfk", ",4,");
+                                $was = "roles was : " . $wEmplObj->getVal("wrole_mfk") . " scopes was : " . $wEmplObj->getVal("wscope_mfk");
+                                $wEmplObj->addRemoveInMfk("wrole_mfk", [4], []);
                                 $wEmplObj->set("wscope_mfk", $wscope_mfk);
+                                $become = "roles become : " . $wEmplObj->getVal("wrole_mfk") . " scopes become : " . $wEmplObj->getVal("wscope_mfk");
+                                die($was . " " . $become);
                                 $wEmplObj->commit();
                                 $wEmplObj->resetPrevileges();
                         }
@@ -92,7 +95,7 @@ class WorkflowCommiteeMember extends WorkflowObject
 
         public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false)
         {
-                $this->refreshMyRoles();
+                $this->refreshMyWorkflowEmployeeRolesAndScopes();
 
                 return parent::afterInsert($id, $fields_updated, $disableAfterCommitDBEvent);
         }
