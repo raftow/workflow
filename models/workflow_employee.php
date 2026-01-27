@@ -374,15 +374,16 @@ class WorkflowEmployee extends WorkflowObject
                         if ($auserObj) {
                                 $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
                                 $auserObj->commit();
+                                list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
+                                if ($err)
+                                        $err_arr[] = $err;
+                                if ($inf)
+                                        $inf_arr[] = $inf;
+                                if ($war)
+                                        $war_arr[] = $war;
                         }
 
-                        list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
-                        if ($err)
-                                $err_arr[] = $err;
-                        if ($inf)
-                                $inf_arr[] = $inf;
-                        if ($war)
-                                $war_arr[] = $war;
+
 
                         $this->set('employee_id', $objEmployee->id);
                         if ($commit)
