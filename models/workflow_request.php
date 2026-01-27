@@ -17,6 +17,32 @@ class WorkflowRequest extends WorkflowObject
 
         public static $STATS_CONFIG = array(
                 "wr0001" => array(
+                        "STATS_WHERE" => "active = 'Y'", //  
+                        'SFILTER' => ['application_class_enum' => true, 'workflow_session_id' => true, 'workflow_stage_id' => true],
+                        "URL_SETTINGS" => "main.php?Main_Page=afw_mode_edit.php&cl=CrmOrgunit&id=80&currmod=crm&currstep=5",
+                        "DISABLE-VH" => true,
+                        "FOOTER_TITLES" => true,
+                        "ROW_SUM" => true,
+                        "COL_SUM" => true,
+                        "SQL_GROUP_BY" => true,
+                        "GROUP_SEP" => ".",
+                        "GROUP_COLS" => array(
+                                0 => array("COLUMN" => "workflow_scope_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
+                                1 => array("COLUMN" => "workflow_status_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
+                        ),
+                        "CROSS_STATS_COLS" => ["row"=>"workflow_scope_id", "col"=>"workflow_status_id", "val"=>'count_request'],
+                        
+                        "DISPLAY_COLS" => array(
+                                "count_request" => array("COLUMN" => "count_request", "SQL_FORMULA" => "count(id)", "SHOW-NAME" => "count_request", "ROW_SUM" => true, "COL_SUM" => true),
+                        ),
+
+                        "FORMULA_COLS" => array(
+                        ),
+
+
+                        ),
+
+                "wr0002" => array(
                         "STATS_WHERE" => "active = 'Y'", //  and request_date between [date_start_stats] and [date_end_stats]
                         // "URL_SETTINGS" => "main.php?Main_Page=afw_mode_edit.php&cl=CrmOrgunit&id=80&currmod=crm&currstep=5",
                         "DISABLE-VH" => true,
