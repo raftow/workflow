@@ -7,7 +7,7 @@ class WorkflowWorkflowStatusAfwStructure
                 if ($obj instanceof WorkflowStatus) {
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                         $obj->DISPLAY_FIELD = "workflow_status_name_ar";
-                        // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
+                        $obj->ORDER_BY_FIELDS = "workflow_stage_id, id";
                         $obj->UNIQUE_KEY = array('workflow_model_id', 'status_code');
                         // $obj->public_display = true;
                         $obj->IS_LOOKUP = true;
