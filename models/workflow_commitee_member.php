@@ -74,7 +74,7 @@ class WorkflowCommiteeMember extends WorkflowObject
                                 $wEmplObj->addRemoveInMfk("wrole_mfk", [4], []);
                                 $wEmplObj->set("wscope_mfk", $wscope_mfk);
                                 $become = "roles become : " . $wEmplObj->getVal("wrole_mfk") . " scopes become : " . $wEmplObj->getVal("wscope_mfk");
-                                die($was . " " . $become);
+                                // die($was . " " . $become);
                                 $wEmplObj->commit();
                                 $wEmplObj->resetPrevileges();
                         }
