@@ -23,6 +23,30 @@ class WorkflowCommiteeMember extends WorkflowObject
                 } else return null;
         }
 
+        public static function loadByMainIndex($workflow_commitee_id, $employee_id, $create_obj_if_not_found = false)
+        {
+                if (!$workflow_commitee_id) throw new AfwRuntimeException("loadByMainIndex : workflow_commitee_id is mandatory field");
+                if (!$employee_id) throw new AfwRuntimeException("loadByMainIndex : employee_id is mandatory field");
+
+
+                $obj = new WorkflowCommiteeMember();
+                $obj->select("workflow_commitee_id", $workflow_commitee_id);
+                $obj->select("employee_id", $employee_id);
+
+                if ($obj->load()) {
+                        if ($create_obj_if_not_found) $obj->activate();
+                        return $obj;
+                } elseif ($create_obj_if_not_found) {
+                        $obj->set("workflow_commitee_id", $workflow_commitee_id);
+                        $obj->set("employee_id", $employee_id);
+
+                        $obj->insertNew();
+                        if (!$obj->id) return null; // means beforeInsert rejected insert operation
+                        $obj->is_new = true;
+                        return $obj;
+                } else return null;
+        }
+
         public function getDisplay($lang = 'ar')
         {
                 return $this->getDefaultDisplay($lang);
@@ -33,7 +57,7 @@ class WorkflowCommiteeMember extends WorkflowObject
                 return false;
         }
 
-        public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false)
+        public function refreshMyRoles()
         {
                 /**
                  * @var WorkflowCommitee $commObj
@@ -52,7 +76,13 @@ class WorkflowCommiteeMember extends WorkflowObject
                                 $wEmplObj->resetPrevileges();
                         }
                 }
+        }
 
+
+
+        public function afterInsert($id, $fields_updated, $disableAfterCommitDBEvent = false)
+        {
+                $this->refreshMyRoles();
 
                 return parent::afterInsert($id, $fields_updated, $disableAfterCommitDBEvent);
         }

@@ -51,6 +51,16 @@ class WorkflowCommitee extends WorkflowObject
                 return false;
         }
 
+
+        public function mySecretaryMember()
+        {
+                $employee_id = $this->getVal("secretary_employee_id");
+                if (!$employee_id) return null;
+                return WorkflowCommiteeMember::loadByMainIndex($this->id, $employee_id, true);
+        }
+
+
+
         public function calcWscope_mfk($what = "value")
         {
 
