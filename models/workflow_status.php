@@ -24,6 +24,10 @@
                         else return null;
                 }
 
+                public function colorOfMe() {
+                        return '';
+                }
+
                 public static function colorOfStatus($workflow_status_id)
                 {
                         if(!$workflow_status_id) return [null, 'white'];
