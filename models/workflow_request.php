@@ -1321,7 +1321,19 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-
+        public function statsColCategory($col, $stats_code)
+        {
+                if($stats_code=='wr0001')
+                {
+                        if (AfwStringHelper::stringStartsWith($col, "cross_col")) {
+                                $workflow_status_id = substr($col,10);
+                                list($stageObj, $color) = WorkflowStatus::colorOfStatus($workflow_status_id);
+                                return "stats_cross_col stats_$color";
+                        }
+                        else return 'stats_cross_row';
+                }
+                return parent::statsColCategory($col, $stats_code);
+        }
 
 
 
