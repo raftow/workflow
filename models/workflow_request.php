@@ -1335,6 +1335,14 @@ class WorkflowRequest extends WorkflowObject
                 return parent::statsColCategory($col, $stats_code);
         }
 
+        public function colorOf($attribute, $attribute_value) {
+                if($attribute=="workflow_stage_id") {
+                        $obj = WorkflowStage::loadById($attribute_value); 
+                        if($obj) return self::code_of_color_enum($obj->getVal("color_enum"));
+                        else return "black";
+                }
+        }
+
 
 
         /**
