@@ -1,10 +1,11 @@
 <?php
 
-class WorkflowApplicantEnTranslator{
-    public static function initData()
-    {
-        $trad = [];
-      
+class WorkflowApplicantEnTranslator
+{
+	public static function initData()
+	{
+		$trad = [];
+
 		$trad["workflow_applicant"]["step1"] = "Applicant identity";
 		$trad["workflow_applicant"]["step2"] = "Applicant data";
 		$trad["workflow_applicant"]["step4"] = "الحالة الاكاديمية";
@@ -14,14 +15,14 @@ class WorkflowApplicantEnTranslator{
 		$trad["workflow_applicant"]["step9"] = "معلومات متقدمة";
 		$trad["workflow_applicant"]["step11"] = "بيانات فنية";
 		$trad["workflow_applicant"]["workflowApplicantFileList"] = "قائمة مرفقات المتقدم";
-		$trad["workflow_applicant"]["applicationList"] = "طلبات التقديم";
-		$trad["workflow_applicant"]["workflowapplicant.single"] = "متقدم";
-		$trad["workflow_applicant"]["workflowapplicant.new"] = "جديد";
-		$trad["workflow_applicant"]["workflow_applicant"] = "المتقدمون";
-		$trad["workflow_applicant"]["workflow_applicant_"] = "المتقدمين";
-		$trad["workflow_applicant"]["workflow_applicant.short_"] = "المتقدمين";
+		$trad["workflow_applicant"]["applicationList"] = "List of applications";
+		$trad["workflow_applicant"]["workflowapplicant.single"] = "applicant";
+		$trad["workflow_applicant"]["workflowapplicant.new"] = "new";
+		$trad["workflow_applicant"]["workflow_applicant"] = "applicants";
+		$trad["workflow_applicant"]["workflow_applicant_"] = "applicants";
+		$trad["workflow_applicant"]["workflow_applicant.short_"] = "applicants";
 		$trad["workflow_applicant"]["idn"] = "رقم الهوية";
-		$trad["workflow_applicant"]["idn-infos"] = "اعدادات ملف المتقدم"; 
+		$trad["workflow_applicant"]["idn-infos"] = "اعدادات ملف المتقدم";
 		$trad["workflow_applicant"]["idn_type_id"] = "نوع الهوية";
 		$trad["workflow_applicant"]["id_issue_place"] = "مكان إصدار الهوية";
 		$trad["workflow_applicant"]["id_issue_date"] = "تاريخ إصدار الهوية";
@@ -52,9 +53,9 @@ class WorkflowApplicantEnTranslator{
 		$trad["workflow_applicant"]["signup_acknowldgment.EUH"] = "ليس بعد";
 		$trad["workflow_applicant"]["profile"] = "البيانات الشخصية";
 		return $trad;
-    }
+	}
 
-    public static function getInstance()
+	public static function getInstance()
 	{
 		return new WorkflowApplicant();
 	}
