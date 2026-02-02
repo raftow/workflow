@@ -120,4 +120,9 @@ class WorkflowStage extends WorkflowObject
 
                 return $orgunit_id;
         }
+
+        public function colorOfMe()
+        {
+                return self::code_of_color_enum($this->getVal("color_enum"));
+        }
 }

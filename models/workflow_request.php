@@ -29,7 +29,7 @@ class WorkflowRequest extends WorkflowObject
                                 0 => array("COLUMN" => "workflow_scope_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
                                 1 => array("COLUMN" => "workflow_status_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
                         ),
-                        "CROSS_STATS_COLS" => ["row" => "workflow_scope_id", "col" => "workflow_status_id", "val" => 'count_request'],
+                        "CROSS_STATS_COLS" => ["row" => "workflow_scope_id", "col" => "workflow_status_id", "val" => 'count_request', 'bigcol'=>'workflow_stage_id'],
 
                         "DISPLAY_COLS" => array(
                                 "count_request" => array("COLUMN" => "count_request", "SQL_FORMULA" => "count(id)", "SHOW-NAME" => "count_request", "ROW_SUM" => true, "COL_SUM" => true),
@@ -1323,7 +1323,27 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
+        public function statsColCategory($col, $stats_code)
+        {
+                if($stats_code=='wr0001')
+                {
+                        if (AfwStringHelper::stringStartsWith($col, "cross_col")) {
+                                $workflow_status_id = substr($col,10);
+                                list($stageObj, $color) = WorkflowStatus::colorOfStatus($workflow_status_id);
+                                return "stats_cross_col stats_$color";
+                        }
+                        else return 'stats_cross_row';
+                }
+                return parent::statsColCategory($col, $stats_code);
+        }
 
+        public function colorOf($attribute, $attribute_value) {
+                if($attribute=="workflow_stage_id") {
+                        $obj = WorkflowStage::loadById($attribute_value); 
+                        if($obj) return self::code_of_color_enum($obj->getVal("color_enum"));
+                        else return "black";
+                }
+        }
 
 
 

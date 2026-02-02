@@ -315,6 +315,28 @@ class WorkflowWorkflowStageAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
+                'color_enum' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '100',
+                        'MAXLENGTH' => '100',
+                        'UTF8' => true,
+                        'TYPE' => 'ENUM',
+                        'ANSWER' => 'FUNCTION',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'DEFAUT' => 10,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
 
                 'active' => array(
                         'SHOW' => true,

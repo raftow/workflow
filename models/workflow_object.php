@@ -106,6 +106,74 @@ class WorkflowObject extends AfwMomkenObject
         return $arr_list_of_content_type;
     }
 
+    public static function code_of_color_enum($lkp_id = null)
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+        if ($lkp_id)
+            return self::color()['code'][$lkp_id];
+        else
+            return self::color()['code'];
+    }
+
+    public static function name_of_color_enum($color_enum, $lang = 'ar')
+    {
+        return self::color()[$lang][$color_enum];
+    }
+
+    public static function list_of_color_enum()
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
+        return self::color()[$lang];
+    }
+
+    public static function color()
+    {
+        $arr_list_of_color = array();
+
+        $arr_list_of_color['en'][1] = 'Black';
+        $arr_list_of_color['ar'][1] = 'أسود';
+        $arr_list_of_color['code'][1] = 'black';
+
+        $arr_list_of_color['en'][2] = 'Yellow';
+        $arr_list_of_color['ar'][2] = 'أصفر';
+        $arr_list_of_color['code'][2] = 'yellow';
+
+        $arr_list_of_color['en'][3] = 'Orange';
+        $arr_list_of_color['ar'][3] = 'برتقالي';
+        $arr_list_of_color['code'][3] = 'orange';
+
+        $arr_list_of_color['en'][4] = 'Red';
+        $arr_list_of_color['ar'][4] = 'أحمر';
+        $arr_list_of_color['code'][4] = 'red';
+
+        $arr_list_of_color['en'][5] = 'Green';
+        $arr_list_of_color['ar'][6] = 'أخضر';
+        $arr_list_of_color['code'][6] = 'green';
+        
+        $arr_list_of_color['en'][7] = 'Gray';
+        $arr_list_of_color['ar'][7] = 'رمادي';
+        $arr_list_of_color['code'][7] = 'gray';        
+
+        $arr_list_of_color['en'][8] = 'Silver';
+        $arr_list_of_color['ar'][8] = 'فضي';
+        $arr_list_of_color['code'][8] = 'silver';        
+
+        $arr_list_of_color['en'][9] = 'Gold';
+        $arr_list_of_color['ar'][9] = 'ذهبي';
+        $arr_list_of_color['code'][9] = 'gold'; 
+        
+        $arr_list_of_color['en'][10] = 'White';
+        $arr_list_of_color['ar'][10] = 'أبيض';
+        $arr_list_of_color['code'][10] = 'white';
+
+        $arr_list_of_color['en'][11] = 'Blue';
+        $arr_list_of_color['ar'][11] = 'أزرق';
+        $arr_list_of_color['code'][11] = 'blue';
+
+
+        return $arr_list_of_color;
+    }
+
     public static function list_of_content_category_enum()
     {
         $lang = AfwLanguageHelper::getGlobalLanguage();

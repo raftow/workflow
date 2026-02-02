@@ -24,6 +24,8 @@ class WorkflowStageArTranslator
 		$trad["workflow_stage"]["interview_ind"] = "يتضمن مقابلة شخصية";
 		$trad["workflow_stage"]["orgunit_id"] = "الإدارة/اللجنة المعنية";
 		$trad["workflow_stage"]["orgunit_id.short"] = "الإدارة/اللجنة";
+		$trad["workflow_stage"]["color_enum"] = "اللون";
+		
 
 
 		return $trad;

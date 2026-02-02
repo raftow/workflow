@@ -24,6 +24,22 @@
                         else return null;
                 }
 
+                public function colorOfMe() {
+                        return '';
+                }
+
+                public static function colorOfStatus($workflow_status_id)
+                {
+                        if(!$workflow_status_id) return [null, 'white'];
+                        $obj = self::loadById($workflow_status_id);
+                        if(!$obj) return [null, 'white'];
+                        $stageObj = $obj->het("workflow_stage_id");
+                        if(!$stageObj) return [null, 'white'];
+                        $color = self::code_of_color_enum($stageObj->getVal("color_enum"));
+
+                        return [$stageObj, $color];
+                }
+
                 public function getDisplay($lang = 'ar')
                 {
                         return $this->getDefaultDisplay($lang);
