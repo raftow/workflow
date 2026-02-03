@@ -25,7 +25,7 @@ $role_info[404] = array(
       array(        
         'id' => '105235',
         'code' => 'f2-a-workflow_applicant/stats',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إحصائيات المتقدمين',
         'menu_name_en' => 'Applicants statistics',
         'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
@@ -37,7 +37,7 @@ $role_info[404] = array(
       array(
         'id' => '105297',
         'code' => 'f2-a-workflow_request/stats',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'احصائيات الطلبات بحسب البرنامج وحالة الطلب',
         'menu_name_en' => 'Workflow requests statistics',
         'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow&st=wr0001',
@@ -51,7 +51,7 @@ $role_info[404] = array(
       array(
         'id' => '105235',
         'code' => 'f2-a-workflow_applicant/stats',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'إحصائيات المتقدمين',
         'menu_name_en' => 'Applicants statistics',
         'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
@@ -62,7 +62,7 @@ $role_info[404] = array(
       array(
         'id' => '105297',
         'code' => 'f2-a-workflow_request/stats',
-        'level' => '1',
+        'level' => '999',
         'menu_name_ar' => 'احصائيات الطلبات بحسب البرنامج وحالة الطلب',
         'menu_name_en' => 'Workflow requests statistics',
         'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow&st=wr0001',
