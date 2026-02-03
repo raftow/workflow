@@ -51,6 +51,7 @@ include('previleges/role/previleges_workflow_role395.php');
 include('previleges/role/previleges_workflow_role391.php');
 include('previleges/role/previleges_workflow_role400.php');
 include('previleges/role/previleges_workflow_role399.php');
+include('previleges/role/previleges_workflow_role404.php');
 include('previleges/role/previleges_workflow_role403.php');
 include('previleges/role/previleges_workflow_role402.php');
 include('previleges/role/previleges_workflow_role393.php');
