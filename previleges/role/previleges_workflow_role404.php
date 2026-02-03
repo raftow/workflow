@@ -1,26 +1,27 @@
 <?php
 
-	$role_info[404] = array (
+$role_info[404] = array(
   'code' => 'goal-reports',
-  'name' => 
-  array (
+  'name' =>
+  array(
     'ar' => 'التقارير والإحصائيات',
     'en' => 'Reports & Stats',
   ),
-  'menu' => 
-  array (
+  'menu' =>
+  array(
     'need_admin' => false,
     'id' => '404',
+    'menu_name_' => 'التقارير والإحصائيات',
     'menu_name_ar' => 'التقارير والإحصائيات',
     'menu_name_en' => 'Reports & Stats',
     'page' => 'main.php?Main_Page=fm.php&a=1283&r=404',
     'css' => 'info',
     'icon' => ' icon-404',
     'showme' => true,
-    'items' => 
-    array (
-      105235 => 
-      array (
+    'items' =>
+    array(
+      105235 =>
+      array(
         'id' => '105235',
         'code' => 'f2-a-workflow_applicant/stats',
         'level' => '1',
@@ -30,11 +31,22 @@
         'css' => 'bf',
         'icon' => 'bficon-105235 bfc-',
       ),
+      105297 =>
+      array(
+        'id' => '105297',
+        'code' => 'f2-a-workflow_request/stats',
+        'level' => '1',
+        'menu_name_ar' => 'إحصائيات طلبات القبول',
+        'menu_name_en' => 'Workflow requests statistics',
+        'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105297 bfc-',
+      ),
     ),
-    'otherbfs' => 
-    array (
-      105235 => 
-      array (
+    'otherbfs' =>
+    array(
+      105235 =>
+      array(
         'id' => '105235',
         'code' => 'f2-a-workflow_applicant/stats',
         'level' => '1',
@@ -44,9 +56,19 @@
         'css' => 'bf',
         'icon' => 'bficon-105235 bfc-',
       ),
+      105297 =>
+      array(
+        'id' => '105297',
+        'code' => 'f2-a-workflow_request/stats',
+        'level' => '1',
+        'menu_name_ar' => 'إحصائيات طلبات القبول',
+        'menu_name_en' => 'Workflow requests statistics',
+        'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105297 bfc-',
+      ),
     ),
-    'sub-folders' => 
-    array (
-    ),
+    'sub-folders' =>
+    array(),
   ),
 );

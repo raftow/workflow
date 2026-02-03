@@ -13,6 +13,7 @@ class WorkflowWorkflowRequestAfwStructure
                         $obj->DISPLAY_FIELD = 'workflow_request_name_ar';
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
                         $obj->UNIQUE_KEY = array('workflow_applicant_id', 'workflow_model_id');
+                        $obj->STATS_DEFAULT_CODE = "wr0001";
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
 
