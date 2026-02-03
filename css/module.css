@@ -379,6 +379,11 @@ th.col-importance-small.th-comment_date {
     content: "\f084";
 }
 
+/* ٌReports - التقارير */
+.icon-404:before {
+    content: "\f200";
+}
+
 /* Inquiries - الاستفسارات */
 .icon-401:before {
     content: "\f0b0";
@@ -605,4 +610,8 @@ div#fg-desiresLimitWarningDiv {
         min-width: 100% !important;
         width: 100% !important;
     }
+}
+
+.icon-317:before {
+    content: "\f200";
 }
