@@ -20,25 +20,27 @@ $role_info[404] = array(
     'showme' => true,
     'items' =>
     array(
+      /*
       105235 =>
-      array(
+      array(        
         'id' => '105235',
         'code' => 'f2-a-workflow_applicant/stats',
         'level' => '1',
-        'menu_name_ar' => 'إحصائيات المتقدمون',
+        'menu_name_ar' => 'إحصائيات المتقدمين',
         'menu_name_en' => 'Applicants statistics',
         'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
         'css' => 'bf',
         'icon' => 'bficon-105235 bfc-',
       ),
+      */
       105297 =>
       array(
         'id' => '105297',
         'code' => 'f2-a-workflow_request/stats',
         'level' => '1',
-        'menu_name_ar' => 'إحصائيات طلبات القبول',
+        'menu_name_ar' => 'احصائيات الطلبات بحسب البرنامج وحالة الطلب',
         'menu_name_en' => 'Workflow requests statistics',
-        'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow',
+        'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow&st=wr0001',
         'css' => 'bf',
         'icon' => 'bficon-105297 bfc-',
       ),
@@ -50,7 +52,7 @@ $role_info[404] = array(
         'id' => '105235',
         'code' => 'f2-a-workflow_applicant/stats',
         'level' => '1',
-        'menu_name_ar' => 'إحصائيات المتقدمون',
+        'menu_name_ar' => 'إحصائيات المتقدمين',
         'menu_name_en' => 'Applicants statistics',
         'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowApplicant&currmod=workflow',
         'css' => 'bf',
@@ -61,9 +63,9 @@ $role_info[404] = array(
         'id' => '105297',
         'code' => 'f2-a-workflow_request/stats',
         'level' => '1',
-        'menu_name_ar' => 'إحصائيات طلبات القبول',
+        'menu_name_ar' => 'احصائيات الطلبات بحسب البرنامج وحالة الطلب',
         'menu_name_en' => 'Workflow requests statistics',
-        'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow',
+        'page' => 'main.php?Main_Page=afw_mode_stats.php&cl=WorkflowRequest&currmod=workflow&st=wr0001',
         'css' => 'bf',
         'icon' => 'bficon-105297 bfc-',
       ),
