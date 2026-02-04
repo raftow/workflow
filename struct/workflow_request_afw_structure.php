@@ -810,7 +810,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
                         'MANDATORY' => false,
                         'UTF8' => false,
-                        'TYPE' => 'PCT', /*'FORMAT'=>'*.2',*/
+                        'TYPE' => 'PCTG', /*'FORMAT'=>'*.2',*/
                         'READONLY' => false,
                         'DNA' => true,
                         'CSS' => 'width_pct_50',
