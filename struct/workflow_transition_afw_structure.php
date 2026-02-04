@@ -284,7 +284,8 @@ class WorkflowWorkflowTransitionAfwStructure
             'READONLY' => false,
             'DNA' => true,
             'CSS' => 'width_pct_50',
-            'DEPENDENT_OFME' => ['final_status_id']
+            'DEPENDENT_OFME' => ['final_status_id', 'next_transition_id']
+            
         ),
 
         'final_status_id' => array(
@@ -311,6 +312,8 @@ class WorkflowWorkflowTransitionAfwStructure
             'CSS' => 'width_pct_50',
             'WHERE' => 'workflow_stage_id=§final_stage_id§',
             'DEPENDENCY' => 'final_stage_id',
+            'DEPENDENT_OFME' => ['next_transition_id']
+
         ),
 
         'notification_template_id' => array(
@@ -335,7 +338,32 @@ class WorkflowWorkflowTransitionAfwStructure
             'DNA' => true,
             'CSS' => 'width_pct_50',
         ),
-
+    
+    'next_transition_id' => array(
+            'SHORTNAME' => 'next_transition',
+            'SEARCH' => true,
+            'QSEARCH' => false,
+            'SHOW' => true,
+            'AUDIT' => false,
+            'RETRIEVE' => true,
+            'EDIT' => true,
+            'QEDIT' => false,
+            'SIZE' => 32,
+            'MAXLENGTH' => 32,
+            'MIN-SIZE' => 1,
+            'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+            'MANDATORY' => false,
+            'UTF8' => false,
+            'TYPE' => 'FK',
+            'ANSWER' => 'workflow_transition',
+            'ANSMODULE' => 'workflow',
+            'RELATION' => 'ManyToOne',
+            'READONLY' => false,
+            'DNA' => true,
+            'CSS' => 'width_pct_50',
+            'WHERE' => 'initial_status_id=§final_status_id§',
+            'DEPENDENCY' => 'final_status_id',
+        ),
 
         'created_by'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false,  'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'FK', 'ANSWER' => 'auser', 'ANSMODULE' => 'ums', 'FGROUP' => 'tech_fields'),
         'created_at'         => array('STEP' => 99, 'HIDE_IF_NEW' => true, 'SHOW' => true, "TECH_FIELDS-RETRIEVE" => true, 'RETRIEVE' => false, 'QEDIT' => false, 'TYPE' => 'DATETIME', 'FGROUP' => 'tech_fields'),
