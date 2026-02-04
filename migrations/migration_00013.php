@@ -4,6 +4,7 @@ if (!class_exists("AfwSession")) die("Denied access");
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
 
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_request add   workflow_sub_scope_id int(11) NOT NULL DEFAULT 0  AFTER workflow_scope_id;");
     //AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.workflow_sub_scope;");
 
     AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_sub_scope` (
