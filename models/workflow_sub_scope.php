@@ -29,41 +29,31 @@ class WorkflowSubScope extends WorkflowObject
         }
     }
 
-    public static function loadByMainIndex($workflow_module_id, $lookup_code, $create_obj_if_not_found = false)
+    public static function loadByMainIndex($workflow_module_id, $workflow_scope_id, $lookup_code, $create_obj_if_not_found = false)
     {
-        if (! $workflow_module_id) {
-            throw new AfwRuntimeException('loadByMainIndex : workflow_module_id is mandatory field');
-        }
+        if (!$workflow_module_id) throw new AfwRuntimeException("loadByMainIndex : workflow_module_id is mandatory field");
+        if (!$workflow_scope_id) throw new AfwRuntimeException("loadByMainIndex : workflow_scope_id is mandatory field");
+        if (!$lookup_code) throw new AfwRuntimeException("loadByMainIndex : lookup_code is mandatory field");
 
-        if (! $lookup_code) {
-            throw new AfwRuntimeException('loadByMainIndex : lookup_code is mandatory field');
-        }
 
         $obj = new WorkflowSubScope();
-        $obj->select('workflow_module_id', $workflow_module_id);
-        $obj->select('lookup_code', $lookup_code);
+        $obj->select("workflow_module_id", $workflow_module_id);
+        $obj->select("workflow_scope_id", $workflow_scope_id);
+        $obj->select("lookup_code", $lookup_code);
 
         if ($obj->load()) {
-            if ($create_obj_if_not_found) {
-                $obj->activate();
-            }
-
+            if ($create_obj_if_not_found) $obj->activate();
             return $obj;
         } elseif ($create_obj_if_not_found) {
-            $obj->set('workflow_module_id', $workflow_module_id);
-            $obj->set('lookup_code', $lookup_code);
+            $obj->set("workflow_module_id", $workflow_module_id);
+            $obj->set("workflow_scope_id", $workflow_scope_id);
+            $obj->set("lookup_code", $lookup_code);
 
             $obj->insertNew();
-            if (! $obj->id) {
-                return null;
-            }
-
-            // means beforeInsert rejected insert operation
+            if (!$obj->id) return null; // means beforeInsert rejected insert operation
             $obj->is_new = true;
             return $obj;
-        } else {
-            return null;
-        }
+        } else return null;
     }
 
     public function getDisplay($lang = 'ar')

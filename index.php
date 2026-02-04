@@ -12,7 +12,7 @@ if ($objme) {
 
         if ($objme->isSuperAdmin()) {
 
-                list($err, $info, $war) = WorkflowRequest::allPrepareInterviewBookingIfNeeded();
+                list($err, $info, $war) = WorkflowRequest::allGetOriginalData();
 
                 if ($err) AfwSession::pushError($err);
                 if ($info) AfwSession::pushInformation($info);

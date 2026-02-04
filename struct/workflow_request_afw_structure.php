@@ -328,6 +328,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'RELATION' => 'ManyToOne',
                         'CSS' => 'width_pct_50',
                 ),
+
+
                 'workflow_scope_id' => array(
                         'FGROUP' => 'request',
                         'SEARCH' => true,
@@ -351,6 +353,31 @@ class WorkflowWorkflowRequestAfwStructure
                         'RELATION' => 'ManyToOne',
                         'CSS' => 'width_pct_25',
                 ),
+
+                'workflow_sub_scope_id' => array(
+                        'FGROUP' => 'request',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'STEP' => 2,
+                        'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+                        'MANDATORY' => true,
+                        'READONLY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_sub_scope',
+                        'ANSMODULE' => 'workflow',
+                        'RELATION' => 'ManyToOne',
+                        'CSS' => 'width_pct_25',
+                ),
+
                 'workflow_stage_id' => array(
                         'FGROUP' => 'request',
                         'IMPORTANT' => 'IN',
