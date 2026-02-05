@@ -52,6 +52,7 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';
 		$trad['workflow_request']['done_time'] = 'وقت الانتهاء';
+		$trad['workflow_request']['workflow_sub_scope_id'] = 'الفرع';
 
 		$trad['workflow_request']['profile'] = 'البيانات الشخصية';
 		$trad['workflow_request']['category'] = 'صنف العميل';
@@ -59,6 +60,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['gender_enum'] = 'الجنس';
 		$trad['workflow_request']['country_id'] = 'الجنسية';
 		$trad['workflow_request']['passeport_num'] = 'جواز السفر';
+
 
 		$trad["workflow_request"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
 
