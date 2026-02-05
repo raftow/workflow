@@ -25,7 +25,7 @@ try {
         $actions_tpl_arr = array();
 
         $actions_tpl_arr['edit'] = array('framework_action');
-
+        $current_page = "wsorting.php";
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';
 
