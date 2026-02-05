@@ -39,7 +39,7 @@ try {
                 else
                         $out_scr .= '<div class=\'workflow-information hzm-info\'>
         <i class="hzm-container-center hzm-vertical-align-middle hzm-icon-fm hzm-icon-inbox"></i>
-        لا يوجد طلبات في صندوق الوارد
+        لا يوجد طلبات للمفاضلة
         </div>';
         }
 } catch (Exception $e) {
