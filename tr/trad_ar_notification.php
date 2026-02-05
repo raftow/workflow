@@ -23,6 +23,9 @@ class NotificationArTranslator{
 	$trad["notification"]["received_date"] = "تاريخ الاستلام";
 	$trad["notification"]["read"] = "تمت القراءة";
 	$trad["notification"]["read_date"] = "تاريخ القراءة";
+	$trad["notification"]["workflow_applicant_id"] = "المتقدم";
+	$trad["notification"]["workflow_event_id"] = "الحدث";
+	$trad["notification"]["event_date"] = "تاريخ الحدث";
         return $trad;
         }
 

@@ -34,5 +34,26 @@
                         return false;
                 }
 
+                public function list_of_recipient_type_enum()
+                {
+                        $lang = AfwLanguageHelper::getGlobalLanguage();
+                        return self::recipient_type_enum()[$lang];
+                }
+                public static function recipient_type_enum()
+                {
+                        $arr_list_of_recipient_type = array();
+                        
+                                
+                        $arr_list_of_recipient_type["en"][1] = "applicant";
+                        $arr_list_of_recipient_type["ar"][1] = "المتقدم";
+                        $arr_list_of_recipient_type["code"][1] = "APPL";
+
+                        $arr_list_of_recipient_type["en"][2] = "Admin-staff";
+                        $arr_list_of_recipient_type["ar"][2] = "الموظف الإداري";
+                        $arr_list_of_recipient_type["code"][2] = "ADMN";
+
+                        return $arr_list_of_recipient_type;
+                }
+
         }
 ?>

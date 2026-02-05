@@ -23,6 +23,9 @@ class NotificationEnTranslator{
 	$trad["notification"]["received_date"] = "received date";
 	$trad["notification"]["read"] = "read";
 	$trad["notification"]["read_date"] = "read date";
+	 $trad["notification"]["workflow_applicant_id"] = "applicant";
+	 $trad["notification"]["workflow_event_id"] = "Event";
+	$trad["notification"]["event_date"] = "Event date";
         return $trad;
         }
 
