@@ -31,6 +31,7 @@ try {
         );
 
         $current_page = "wsorting.php";
+        $formColumns = ['workflow_model_id', 'workflow_session_id', 'workflow_stage_id', 'workflow_status_id'];
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';
 
