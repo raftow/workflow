@@ -25,6 +25,11 @@ try {
         $actions_tpl_arr = array();
 
         $actions_tpl_arr['edit'] = array('framework_action');
+
+        $fixed_criterea_arr =  array(
+                0 => array('col' => 'workflow_stage_id', 'oper' => '=', 'val' => '4',),
+        );
+
         $current_page = "wsorting.php";
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';
