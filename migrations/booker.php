@@ -17,5 +17,6 @@ $migrations = [
     '00011' => ['by'=>'medali', 'title' => 'add request comment table'],
     '00012' => ['by'=>'medali', 'title' => 'add workflow_request_id and workflow_scope_id to interview_booking'],
     '00013' => ['by'=>'medali', 'title' => 'add reschedule count  to interview_booking'],
-    '00014' => ['by'=>'medali', 'title' => 'add next_transition_id to workflow_transition']
+    '00014' => ['by'=>'medali', 'title' => 'add next_transition_id to workflow_transition'],
+    '00015' => ['by'=>'medali', 'title' => 'fix notification_placeholder field types']
 ];
