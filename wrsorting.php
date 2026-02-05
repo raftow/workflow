@@ -31,7 +31,7 @@ try {
 
         $wp_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
 
-        $out_scr .= "<div class='workflow-title hzm-info'>$wp_title</div>";
+        /*$out_scr .= "<div class='workflow-title hzm-info'>$wp_title</div>";
 
         if ($datatable_on) {
                 if ($data_count > 0)
@@ -42,6 +42,7 @@ try {
         لا يوجد طلبات للمفاضلة
         </div>';
         }
+        */
 } catch (Exception $e) {
         $out_scr .= $e->getMessage() . "<br>\n" . $e->getFile() . ' Line ' . $e->getLine() . "<br>\n" . $e->getTraceAsString();
 }
