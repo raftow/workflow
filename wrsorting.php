@@ -6,7 +6,6 @@ try {
         // old include of afw.php
         // require_once("$file_dir_name/../lib/afw/modes/afw_ config.php");
 
-        $datatable_on = 1;
         $cl = 'WorkflowRequest';
         $currmod = 'workflow';
         $currdb = $server_db_prefix . 'workflow';
