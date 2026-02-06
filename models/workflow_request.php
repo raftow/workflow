@@ -1425,7 +1425,9 @@ class WorkflowRequest extends WorkflowObject
 
         public function getAttributeLabel($attribute, $lang = 'ar', $short = false)
         {
+                $original = "";
                 if (AfwStringHelper::stringStartsWith($attribute, "original_")) {
+                        $original = $attribute;
                         $workflowManagerClass = self::getWorkflowManagerClass();
                         if ($workflowManagerClass) {
                                 list($field_name_group, $field_order) = explode("_", $attribute);
@@ -1435,7 +1437,7 @@ class WorkflowRequest extends WorkflowObject
                 }
                 $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
 
-                die("$return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short)");
+                if ($original) die("case original = $original -> $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short)");
         }
 
 
