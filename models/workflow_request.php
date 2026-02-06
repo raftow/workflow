@@ -1007,6 +1007,16 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "gender_enum") return true;
                 if ($attribute == "birth_gdate") return true;
                 if ($attribute == "passeport_num") return true;
+                if ($attribute == "original_1") return true;
+                if ($attribute == "original_2") return true;
+                if ($attribute == "original_3") return true;
+                if ($attribute == "original_4") return true;
+                if ($attribute == "original_5") return true;
+                if ($attribute == "original_6") return true;
+                if ($attribute == "original_7") return true;
+                if ($attribute == "original_8") return true;
+                if ($attribute == "original_9") return true;
+                if ($attribute == "original_10") return true;
                 if ($attribute == "category") return true;
                 if ($attribute == "div_step_3") return true;
                 if ($attribute == "div_step_4") return true;
@@ -1015,6 +1025,7 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "div_step_7") return true;
                 if ($attribute == "div_step_8") return true;
                 if ($attribute == "formComments") return true;
+                if ($attribute == "originalObject") return true;
                 return false;
         }
 
