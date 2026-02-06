@@ -330,6 +330,30 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
 
 
+                'workflow_source_id' => array(
+                        'FGROUP' => 'request',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'STEP' => 2,
+                        'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
+                        'MANDATORY' => true,
+                        'READONLY' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_source',
+                        'ANSMODULE' => 'workflow',
+                        'RELATION' => 'ManyToOne',
+                        'CSS' => 'width_pct_25',
+                ),
+
                 'workflow_scope_id' => array(
                         'FGROUP' => 'request',
                         'SEARCH' => true,
