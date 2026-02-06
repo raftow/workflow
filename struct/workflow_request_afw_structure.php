@@ -460,7 +460,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'FK',
                         'ANSWER' => 'workflow_status',
                         'ANSMODULE' => 'workflow',
-                        'WHERE' => 'workflow_stage_id = §workflow_stage_id§',
+                        'WHERE' => '§workflow_stage_id§ = 0 or workflow_stage_id = §workflow_stage_id§',
                         'DEPENDENCY' => 'workflow_stage_id',
                         'SIZE' => 40,
                         'DEFAUT' => 0,
