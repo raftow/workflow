@@ -43,6 +43,7 @@ try {
         ];
 
         $forced_retrieve_cols = [
+                'application_class_enum',
                 'original_1',
                 'original_2',
                 'original_3',
@@ -61,6 +62,13 @@ try {
                 'workflow_status_id',
                 'workflow_scope_id',
                 'workflow_sub_scope_id',
+                'active',
+                'done',
+                'orgunit_id',
+                'employee_id',
+                'request_date',
+                'country_id',
+                'workflow_source_id',
         ];
 
         $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
