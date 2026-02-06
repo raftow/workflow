@@ -1438,6 +1438,8 @@ class WorkflowRequest extends WorkflowObject
                 $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
 
                 // if ($original) die("case original = $original -> $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short)");
+
+                return $return;
         }
 
 
