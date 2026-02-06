@@ -1002,6 +1002,7 @@ class WorkflowRequest extends WorkflowObject
         public function shouldBeCalculatedField($attribute)
         {
                 if ($attribute == "mobile") return true;
+                if ($attribute == "idn") return true;
                 if ($attribute == "email") return true;
                 if ($attribute == "country_id") return true;
                 if ($attribute == "gender_enum") return true;
@@ -1404,11 +1405,11 @@ class WorkflowRequest extends WorkflowObject
                 }
                 $is_obsolete = (!$field_order or ($field_order > $nbFields));
                 if ($col_struct == "obsolete") return $is_obsolete;
+                if ($col_struct == "retrieve") return false;
                 if (($col_struct == "show")
                         or ($col_struct == "edit")
                         or ($col_struct == "mandatory")
                         or ($col_struct == "required")
-                        or ($col_struct == "retrieve")
                         or ($col_struct == "css")
                         or ($col_struct == "step")
                 ) {

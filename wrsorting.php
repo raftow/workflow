@@ -41,6 +41,28 @@ try {
                 'workflow_source_id',
                 'workflow_category_enum'
         ];
+
+        $forced_retrieve_cols = [
+                'original_1',
+                'original_2',
+                'original_3',
+                'original_4',
+                'original_5',
+                'original_6',
+                'original_7',
+                'original_8',
+                'original_9',
+                'original_10'
+        ];
+        $hide_retrieve_cols = [
+                'workflow_model_id',
+                'workflow_session_id',
+                'workflow_stage_id',
+                'workflow_status_id',
+                'workflow_scope_id',
+                'workflow_sub_scope_id',
+        ];
+
         $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';

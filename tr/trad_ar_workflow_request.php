@@ -27,6 +27,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
 		$trad['workflow_request']['workflowrequest.new'] = 'جديد';
 		$trad['workflow_request']['workflow_request'] = 'طلبات القبول';
+		$trad['workflow_request']['idn'] = 'رقم الهوية';
 		$trad['workflow_request']['workflow_applicant_id'] = 'المتقدم';
 		$trad["workflow_request"]["birth_gdate"] = "تاريخ الولادة (ميلادي)";
 		$trad['workflow_request']['workflow_model_id'] = 'نموذج القبول';
