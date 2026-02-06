@@ -29,10 +29,12 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['workflow_request'] = 'طلبات القبول';
 		$trad['workflow_request']['workflow_applicant_id'] = 'المتقدم';
 		$trad["workflow_request"]["birth_gdate"] = "تاريخ الولادة (ميلادي)";
-		$trad['workflow_request']['workflow_model_id'] = 'النموذج';
+		$trad['workflow_request']['workflow_model_id'] = 'نموذج القبول';
 		$trad['workflow_request']['workflow_scope_id'] = 'البرنامج';
-		$trad['workflow_request']['workflow_stage_id'] = 'المرحلة';
-		$trad['workflow_request']['workflow_status_id'] = 'حالة الطلب';
+		$trad['workflow_request']['workflow_sub_scope_id'] = 'الفرع';
+		$trad['workflow_request']['workflow_source_id'] = 'مصدر الترشيح';
+		$trad['workflow_request']['workflow_stage_id'] = 'مرحلة القبول';
+		$trad['workflow_request']['workflow_status_id'] = 'حالة القبول';
 		$trad['workflow_request']['external_request_code'] = 'الرمز الخارجي للطلب';
 		$trad['workflow_request']['request_type_code'] = 'رمز نوع الطلب';
 		$trad['workflow_request']['workflow_session_id'] = 'دورة القبول';
@@ -46,13 +48,13 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['done.YES'] = 'تم الانتهاء';
 		$trad['workflow_request']['done.NO'] = 'لم يبدأ العمل';
 		$trad['workflow_request']['done.EUH'] = 'جاري العمل';
-		$trad['workflow_request']['application_class_enum'] = 'قسم طلب التقديم';
-		$trad['workflow_request']['workflow_category_enum'] = 'صنف طلب التقديم';
+		$trad['workflow_request']['application_class_enum'] = 'صنف الطلب';
+		$trad['workflow_request']['workflow_category_enum'] = 'صنف المتقدم';
 
 
 		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';
 		$trad['workflow_request']['done_time'] = 'وقت الانتهاء';
-		$trad['workflow_request']['workflow_sub_scope_id'] = 'الفرع';
+
 
 		$trad['workflow_request']['profile'] = 'البيانات الشخصية';
 		$trad['workflow_request']['category'] = 'صنف العميل';
