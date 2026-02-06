@@ -50,9 +50,9 @@ try {
                 'original_5',
                 'original_6',
                 'original_7',
-                'original_8',
+                /*'original_8',
                 'original_9',
-                'original_10'
+                'original_10'*/
         ];
         $hide_retrieve_cols = [
                 'workflow_model_id',
