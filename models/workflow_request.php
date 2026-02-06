@@ -1432,7 +1432,7 @@ class WorkflowRequest extends WorkflowObject
                         if ($workflowManagerClass) {
                                 list($field_name_group, $field_order) = explode("_", $attribute);
                                 $return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short);
-                                die("$return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short)");
+                                // die("$return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short)");
                                 return $return;
                         }
                 }
