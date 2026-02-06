@@ -42,10 +42,11 @@ try {
                 'workflow_source_id',
                 'workflow_category_enum'
         ];
+        $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';
 
-        $wp_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
+
 
         /*$out_scr .= "<div class='workflow-title hzm-info'>$wp_title</div>";
 

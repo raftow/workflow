@@ -2,9 +2,47 @@
 if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
+$db_prefix = $server_db_prefix . "workflow";
 try {
 
-    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_request add   workflow_sub_scope_id int(11) NOT NULL DEFAULT 0  AFTER workflow_scope_id;");
+    AfwDatabase::db_query("DROP TABLE IF EXISTS $db_prefix.workflow_source;");
+
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS $db_prefix.`workflow_source` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_by` int(11) NOT NULL,
+  `created_at`   datetime NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `validated_by` int(11) DEFAULT NULL,
+  `validated_at` datetime DEFAULT NULL,
+  `active` char(1) NOT NULL,
+  `draft` char(1) NOT NULL default  'Y' ,
+  `version` int(4) DEFAULT NULL,
+  `update_groups_mfk` varchar(255) DEFAULT NULL,
+  `delete_groups_mfk` varchar(255) DEFAULT NULL,
+  `display_groups_mfk` varchar(255) DEFAULT NULL,
+  `sci_id` int(11) DEFAULT NULL,
+  
+    
+   workflow_module_id int(11) NOT NULL , 
+   lookup_code varchar(16)  NOT NULL , 
+   source_name_ar varchar(100)  NOT NULL DEFAULT '' , 
+   source_name_en varchar(100)  NOT NULL DEFAULT '' , 
+   source_description_ar varchar(100)  DEFAULT NULL , 
+   source_description_en varchar(100)  DEFAULT NULL , 
+
+  
+  PRIMARY KEY (`id`)
+) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
+
+
+
+    // -- unique index : 
+    AfwDatabase::db_query("CREATE UNIQUE INDEX uk_workflow_source on $db_prefix.workflow_source(workflow_module_id,lookup_code);");
+
+    AfwDatabase::db_query("ALTER TABLE $db_prefix.workflow_request add   workflow_source_id int(11) NOT NULL DEFAULT 0  AFTER workflow_session_id;");
+
+    AfwDatabase::db_query("ALTER TABLE $db_prefix.workflow_request add   workflow_sub_scope_id int(11) NOT NULL DEFAULT 0  AFTER workflow_scope_id;");
     //AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.workflow_sub_scope;");
 
     AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_sub_scope` (
