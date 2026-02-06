@@ -1419,11 +1419,22 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                return $return;
+                return null;
         }
 
 
-
+        public function getAttributeLabel($attribute, $lang = 'ar', $short = false)
+        {
+                if (AfwStringHelper::stringStartsWith($attribute, "original_")) {
+                        $workflowManagerClass = self::getWorkflowManagerClass();
+                        if ($workflowManagerClass) {
+                                list($field_name_group, $field_order) = explode("_", $attribute);
+                                $return = $workflowManagerClass::getOriginalFieldLabel($field_order);
+                                if ($return) return $this->translate($return, $lang);
+                        }
+                }
+                return AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
+        }
 
 
         /**

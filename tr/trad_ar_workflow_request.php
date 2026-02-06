@@ -65,6 +65,18 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['passeport_num'] = 'جواز السفر';
 
 
+		$trad["workflow_request"]["qualification_id"] = "المؤهل";
+		$trad["workflow_request"]["major_category_id"] = "فئة التخصص";
+		$trad["workflow_request"]["qualification_major_id"] = "تخصص المؤهل";
+		$trad["workflow_request"]["gpa"] = "المعدل";
+		$trad["workflow_request"]["gpa_from"] = "من";
+		$trad["workflow_request"]["date"] = "تاريخ  المؤهل";
+		$trad["workflow_request"]["source"] = "الجهة مصدر المؤهل";
+		$trad["workflow_request"]["source_name"] = "مصدر المؤهل";
+		$trad["workflow_request"]["educational_zone_id"] = "المنطقة التعليمية";
+		$trad["workflow_request"]["grading_scale_id"] = "التقدير";
+
+
 		$trad["workflow_request"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
 
 		return $trad;
