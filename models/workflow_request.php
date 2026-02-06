@@ -1402,7 +1402,8 @@ class WorkflowRequest extends WorkflowObject
                 if ($col_struct == "shortcut") {
                         return $workflowManagerClass::originalField($field_order);
                 }
-                if ($col_struct == "obsolete") return (!$field_order or ($field_order > $nbFields));
+                $is_obsolete = (!$field_order or ($field_order > $nbFields));
+                if ($col_struct == "obsolete") return $is_obsolete;
                 if (($col_struct == "show")
                         or ($col_struct == "edit")
                         or ($col_struct == "mandatory")
@@ -1411,7 +1412,8 @@ class WorkflowRequest extends WorkflowObject
                         or ($col_struct == "css")
                         or ($col_struct == "step")
                 ) {
-                        return $workflowManagerClass::attribProperty($field_name, $col_struct);
+                        if ($is_obsolete) return false;
+                        else return $workflowManagerClass::attribProperty($field_name, $col_struct);
                 }
 
 
