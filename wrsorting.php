@@ -29,7 +29,7 @@ try {
                 0 => array('col' => 'workflow_stage_id', 'oper' => '=', 'val' => '4',),
         );
 
-        $current_page = "wsorting.php";
+        $current_page = "wrsorting.php";
         $formColumns = [
                 'workflow_model_id',
                 'workflow_session_id',
