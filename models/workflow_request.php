@@ -830,6 +830,12 @@ class WorkflowRequest extends WorkflowObject
                 return ['', $this->orginalObject, $keyLookup];
         }
 
+        public function calcOriginalObject($what = 'value')
+        {
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                return AfwLoadHelper::giveWhat($objOriginal, $what);
+        }
+
         public function calcCandidateInfo($what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
@@ -1350,6 +1356,56 @@ class WorkflowRequest extends WorkflowObject
                         else return "black";
                 }
         }
+
+        public static function getWorkflowManagerClass()
+        {
+                $main_company = AfwSession::currentCompany();
+                $workflowManagerClass = AfwStringHelper::firstCharUpper($main_company) . "WorkflowManager";
+                if (!class_exists($workflowManagerClass)) {
+                        $file_dir_name = dirname(__FILE__);
+                        require_once($file_dir_name . "/../../client-$main_company/extra/workflow_manager.php");
+                }
+                return $workflowManagerClass;
+        }
+
+
+        public function original($field_name, $col_struct)
+        {
+                $workflowManagerClass = self::getWorkflowManagerClass();
+                if ($field_name == "originalObject") {
+                        if ($col_struct == "answer") {
+                                return $workflowManagerClass::originalClass();
+                        }
+
+                        if ($col_struct == "ansmodule") {
+                                return $workflowManagerClass::originalModule();
+                        }
+                }
+
+                list($field_name_group, $field_order) = explode("_", $field_name);
+
+
+                $nbFields = $workflowManagerClass::nbFields();
+
+                $col_struct = strtolower($col_struct);
+                if ($col_struct == "obsolete") return (!$field_order or ($field_order > $nbFields));
+                if (($col_struct == "show")
+                        or ($col_struct == "edit")
+                        or ($col_struct == "mandatory")
+                        or ($col_struct == "required")
+                        or ($col_struct == "retrieve")
+                        or ($col_struct == "css")
+                        or ($col_struct == "step")
+                ) {
+                        return $workflowManagerClass::attribProperty($field_name, $col_struct);
+                }
+
+
+
+                return $return;
+        }
+
+
 
 
 
