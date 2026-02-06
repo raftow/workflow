@@ -1399,6 +1399,9 @@ class WorkflowRequest extends WorkflowObject
                 $nbFields = $workflowManagerClass::nbFields();
 
                 $col_struct = strtolower($col_struct);
+                if ($col_struct == "shortcut") {
+                        return $workflowManagerClass::originalField($field_order);
+                }
                 if ($col_struct == "obsolete") return (!$field_order or ($field_order > $nbFields));
                 if (($col_struct == "show")
                         or ($col_struct == "edit")

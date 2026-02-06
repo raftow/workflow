@@ -975,7 +975,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_1' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_1',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -984,7 +984,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_2' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_2',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -993,7 +993,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_3' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_3',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1002,7 +1002,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_4' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_4',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1011,7 +1011,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_5' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_5',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1020,7 +1020,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_6' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_6',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1029,7 +1029,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_7' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_7',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1038,7 +1038,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_8' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_8',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1047,7 +1047,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_9' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_9',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1056,7 +1056,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_10' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'originalObject.wattribute_10',
+                        'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
