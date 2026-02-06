@@ -1429,12 +1429,13 @@ class WorkflowRequest extends WorkflowObject
                         $workflowManagerClass = self::getWorkflowManagerClass();
                         if ($workflowManagerClass) {
                                 list($field_name_group, $field_order) = explode("_", $attribute);
-                                $return = $workflowManagerClass::getOriginalFieldLabel($field_order);
+                                $attribute = $workflowManagerClass::getOriginalFieldLabel($field_order);
                                 // die("$return = $workflowManagerClass::getOriginalFieldLabel($field_order)");
-                                if ($return) return $this->translate($return, $lang);
                         }
                 }
-                return AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
+                $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
+
+                die("$return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short)");
         }
 
 
