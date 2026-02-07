@@ -21,9 +21,10 @@ try {
 
         $sql_order_by = 'request_date asc, id asc';
 
-        $actions_tpl_arr = array();
 
-        $actions_tpl_arr['edit'] = array('framework_action');
+        $actions_tpl_arr = array();
+        $action = "retrieve-simple";
+        // $actions_tpl_arr['edit'] = array('framework_action');
 
         $fixed_criterea_arr =  array(
                 0 => array('col' => 'workflow_stage_id', 'oper' => '=', 'val' => '4',),
