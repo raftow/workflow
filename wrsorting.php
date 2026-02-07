@@ -31,6 +31,21 @@ try {
         );
 
         $current_page = "wrsorting.php";
+
+        $readOnlyColumns = [
+                'workflow_stage_id',
+        ];
+
+
+        $requiredColumns = [
+                'workflow_model_id',
+                'workflow_session_id',
+                'workflow_stage_id',
+                'workflow_status_id',
+                'workflow_scope_id',
+                'workflow_sub_scope_id',
+        ];
+
         $formColumns = [
                 'workflow_model_id',
                 'workflow_session_id',
