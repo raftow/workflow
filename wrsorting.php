@@ -28,6 +28,7 @@ try {
 
         $fixed_criterea_arr =  array(
                 0 => array('col' => 'workflow_stage_id', 'oper' => '=', 'val' => '4',),
+                1 => array('col' => 'datatable_off', 'oper' => '=', 'val' => true,),
         );
 
         $current_page = "wrsorting.php";
