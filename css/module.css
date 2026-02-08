@@ -615,3 +615,7 @@ div#fg-desiresLimitWarningDiv {
 .icon-317:before {
     content: "\f200";
 }
+
+.col-md-12.col-filter-workflow_sub_scope_id>.form-group>label>span>span {
+    min-height: 300px;
+}
