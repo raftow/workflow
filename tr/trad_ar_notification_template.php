@@ -19,6 +19,9 @@ class NotificationTemplateArTranslator{
         $trad["notification_template"]["recipient_type_enum"] = "نوع المستلم";
         $trad["notification_template"]["channel_enum"] = "قناة الإرسال";
         $trad["notification_template"]["language_enum"] = "اللغة";
+        $trad["notification_template"]["notification_email"] = "النص للبريد الإلكتروني";
+        $trad["notification_template"]["notification_email_en"] = "النص للبريد الإلكتروني - انجليزي";
+        
         
         return $trad;
     }
