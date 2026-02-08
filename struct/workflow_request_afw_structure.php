@@ -16,7 +16,7 @@ class WorkflowWorkflowRequestAfwStructure
                         $obj->STATS_DEFAULT_CODE = "wr0001";
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
-                        $obj->ownedBy = array('module' => "workflow", 'afw' => "WorkflowApplicant");
+                        $obj->OwnedBy = array('module' => "workflow", 'afw' => "WorkflowApplicant");
                         $obj->editByStep = true;
                         $obj->editNbSteps = 8;
                         $obj->excelExport = true;
