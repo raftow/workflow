@@ -399,6 +399,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'FGROUP' => 'request',
                         'SEARCH' => true,
                         'QSEARCH' => true,
+                        'SEARCH-MULTIPLE' => true,
                         'SHOW' => true,
                         'AUDIT' => false,
                         'RETRIEVE' => true,
