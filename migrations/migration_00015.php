@@ -42,7 +42,8 @@ try {
     AfwDatabase::db_query("create unique index uk_notification_placeholder on " . $server_db_prefix . "workflow.notification_placeholder(placeholder_code);");
 
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification add   workflow_applicant_id int(11) NOT NULL DEFAULT 0  AFTER id;");
-
+AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email text  DEFAULT NULL  AFTER notification_body_en;");
+AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email_en text  DEFAULT NULL  AFTER notification_email;");
 } catch (Exception $e) {
     $migration_error .= " " . $e->getMessage();
 }
