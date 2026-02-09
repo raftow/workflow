@@ -264,7 +264,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_50',
+                        'SEARCH-MULTIPLE' => true,
+                        'CSS' => 'width_pct_100',
                 ),
                 'workflow_category_enum' => array(
                         'FGROUP' => 'request',

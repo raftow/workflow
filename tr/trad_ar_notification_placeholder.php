@@ -5,9 +5,9 @@ class NotificationPlaceholderArTranslator{
     {
         $trad = [];
 
-		$trad["notification_placeholder"]["notificationplaceholder.single"] = "شفرة عنصر التنبيهات";
+		$trad["notification_placeholder"]["notificationplaceholder.single"] = "حقول الرسائل الديناميكية";
 		$trad["notification_placeholder"]["notificationplaceholder.new"] = "جديد(ة)";
-		$trad["notification_placeholder"]["notification_placeholder"] = "شفرات عناصر التنبيهات";
+		$trad["notification_placeholder"]["notification_placeholder"] = "حقول الرسائل الديناميكية";
 		$trad["notification_placeholder"]["name_ar"] = "مسمى  بالعربية";
 		$trad["notification_placeholder"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["notification_placeholder"]["desc_ar"] = "وصف  بالعربية";

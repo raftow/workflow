@@ -11,7 +11,7 @@ class NotificationArTranslator{
 	$trad["notification"]["notification"] = "إشعارات";
 	$trad["notification"]["workflow_module_id"] = "التطبيق";
 	$trad["notification"]["workflow_entity_id"] = "الكيان";
-	$trad["notification"]["destination_id"] = "الوجهة";
+	$trad["notification"]["destination_id"] = "المستلم";
 	$trad["notification"]["notification_template_id"] = "نموذج الاشعار";
 	$trad["notification"]["email"] = "البريد الاكتروني";
 	$trad["notification"]["mobile"] = "الجوال";

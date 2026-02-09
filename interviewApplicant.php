@@ -33,9 +33,9 @@ try {
 
         $current_page = "interviewApplicant.php";
 
-        $readOnlyColumns = [
+        /*$readOnlyColumns = [
                 'workflow_stage_id',
-        ];
+        ];*/
 
 
         $requiredColumns = [
