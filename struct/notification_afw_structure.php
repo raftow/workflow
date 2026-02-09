@@ -32,7 +32,7 @@
                                                 'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
                                                 'CSS' => 'width_pct_25',),
 
-                                        'workflow_module_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE' => true,  
+                                        'workflow_module_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => false, 'SHOW' => true,  'RETRIEVE' => false,  
         'EDIT' => true,  'QEDIT' => true, 'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
         'TYPE' => 'FK',  'ANSWER' => 'workflow_module',  'ANSMODULE' => 'workflow',  'SIZE' => 40,  'DEFAUT' => 0,    
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => true, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
@@ -40,7 +40,7 @@
         'CSS' => 'width_pct_25', ),	
 
 
-'workflow_entity_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE' => true,  
+'workflow_entity_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => false, 'SHOW' => true,  'RETRIEVE' => false,  
         'EDIT' => true,  'QEDIT' => true, 'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
         'TYPE' => 'FK',  'ANSWER' => 'workflow_entity',  'ANSMODULE' => 'workflow',  'SIZE' => 40,  'DEFAUT' => 0,    
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => true, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
@@ -49,7 +49,7 @@
 
 
 'destination_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE' => true,  
-        'EDIT' => true,  'QEDIT' => true, 'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
+        'EDIT' => true,  'QEDIT' => true, 'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false, 'TEXT-SEARCHABLE-SEPARATED' => true,
         'TYPE' => 'TEXT',  'SIZE' => 24, 'MAXLENGTH' => 24, 'DEFAUT' => 0,    
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => false, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
@@ -63,7 +63,7 @@
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
         'CSS' => 'width_pct_25', ),	
 
-'workflow_event_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE' => true,  
+'workflow_event_id' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => false, 'SHOW' => true,  'RETRIEVE' => false,  
         'EDIT' => true,  'QEDIT' => true, 'SHOW-ADMIN' => true,  'EDIT-ADMIN' => true,  'UTF8' => false,  
         'TYPE' => 'FK',  'ANSWER' => 'workflow_event',  'ANSMODULE' => 'workflow',  'SIZE' => 40,  'DEFAUT' => 0,    
         'DISPLAY' => true,  'STEP' => 1,  'RELATION' => 'ManyToOne-OneToMany', 'MANDATORY' => false, 'READONLY'=>false, 'AUTOCOMPLETE' => false,
@@ -74,7 +74,7 @@
         'IMPORTANT' => 'IN',
         'SEARCH' => true,
         'SHOW' => true,
-        'RETRIEVE' => true,
+        'RETRIEVE' => false,
         'EDIT' => true,
         'QEDIT' => true,
         'SEARCH-ADMIN' => true,
@@ -112,7 +112,7 @@
         
 
 
-'notification_title' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE-AR' => true,  
+'notification_title' => array('IMPORTANT' => 'IN',  'SEARCH' => true, 'QSEARCH' => true, 'SHOW' => true,  'RETRIEVE' => true,  
         'EDIT' => true,  'QEDIT' => true,  'SIZE' => '64', 'MAXLENGTH' => '64', 'UTF8' => true,  
         'TYPE' => 'TEXT',    'DISPLAY' => true,  'STEP' => 1, 'MANDATORY' => false,  
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
@@ -154,7 +154,7 @@
         'CSS' => 'width_pct_25',
     ],
 
-
+/*
 'received' => array('RETRIEVE' => true, 'SHOW' => true, 'EDIT' => true,  'DEFAUT' => 'N',  
         'TYPE' => 'YN',    'DISPLAY' => true,  'STEP' => 1, 'MANDATORY' => false, 'QSEARCH' => false, 
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
@@ -182,8 +182,8 @@
     ],
 
 
-'read' => array('RETRIEVE' => true, 'SHOW' => true, 'EDIT' => true,  'DEFAUT' => 'N',  
-        'TYPE' => 'YN',    'DISPLAY' => true,  'STEP' => 1, 'MANDATORY' => false, 'QSEARCH' => false, 
+'read' => array('RETRIEVE' => false, 'SHOW' => false, 'EDIT' => true,  'DEFAUT' => 'N',  
+        'TYPE' => 'YN',    'DISPLAY' => false,  'STEP' => 1, 'MANDATORY' => false, 'QSEARCH' => false, 
         'DISPLAY-UGROUPS' => '',  'EDIT-UGROUPS' => '', 
         'CSS' => 'width_pct_25',),
 
@@ -206,7 +206,7 @@
         'EDIT-UGROUPS' => '',
         
         'CSS' => 'width_pct_25',
-    ],
+    ],*/
 
 
 
