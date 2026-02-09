@@ -96,6 +96,8 @@ try {
                 'workflow_source_id',
         ];
 
+        
+
         $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';

@@ -92,6 +92,8 @@ try {
                 
         ];
 
+        $specialStructure = ['workflow_stage_id'=>['WHERE'=>'id in (3,6)']];
+
         $qsearch_page_title = AfwLanguageHelper::tt('Interview screen', $lang, $currmod);
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';
