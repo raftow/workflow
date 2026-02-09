@@ -244,6 +244,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
+                        'SEARCH-MULTIPLE' => true,
+                        'QSIZE' => 12,
                         'SFILTER' => true,
                         'SHOW' => true,
                         'RETRIEVE' => false,
@@ -264,7 +266,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        'SEARCH-MULTIPLE' => true,
+                        
                         'CSS' => 'width_pct_100',
                 ),
                 'workflow_category_enum' => array(
