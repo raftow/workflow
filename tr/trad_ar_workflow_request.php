@@ -49,8 +49,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['done.YES'] = 'تم الانتهاء';
 		$trad['workflow_request']['done.NO'] = 'لم يبدأ العمل';
 		$trad['workflow_request']['done.EUH'] = 'جاري العمل';
-		$trad['workflow_request']['application_class_enum'] = 'الترشيح والتمويل';
-		$trad['workflow_request']['workflow_category_enum'] = 'صنف المتقدم';
+		$trad['workflow_request']['application_class_enum'] = 'صنف المتقدم';
+		$trad['workflow_request']['workflow_category_enum'] = 'فئة التقدير';
 
 
 		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';

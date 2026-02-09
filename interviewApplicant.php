@@ -68,7 +68,8 @@ try {
                 'original_5',
                 'original_6',
                 'email',
-                'mobile',
+                'mobile',   
+
                 /*'original_7',
                 'original_8',
                 'original_9',
@@ -79,7 +80,7 @@ try {
                 'workflow_session_id',
                 'workflow_stage_id',
                 'workflow_status_id',
-                'workflow_scope_id',
+                //'workflow_scope_id',
                 'workflow_sub_scope_id',
                 'active',
                 'done',
