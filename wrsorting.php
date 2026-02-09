@@ -17,8 +17,7 @@ try {
         // [field_name] in (Array)
         // IMPORTANT WORKAROUND ^^^^^^^^^^^
         // VVVVVVV  *** DONT REMOVE BELOW *** VVVVVVVV         
-        $genere_xls = true;
-        $xls_on = true;
+        $xls_on = $genere_xls = (count($_POST)>0);
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         $arr_sql_conds = array();
