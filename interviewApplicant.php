@@ -67,6 +67,8 @@ try {
                 'original_4',
                 'original_5',
                 'original_6',
+                'email',
+                'mobile',
                 /*'original_7',
                 'original_8',
                 'original_9',
@@ -85,7 +87,8 @@ try {
                 'employee_id',
                 'request_date',
                 'country_id',
-                'workflow_source_id',
+                'workflow_source_id'
+                
         ];
 
         $qsearch_page_title = AfwLanguageHelper::tt('Interview screen', $lang, $currmod);
