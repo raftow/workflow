@@ -10,7 +10,16 @@ try {
         $currmod = 'workflow';
         $currdb = $server_db_prefix . 'workflow';
         $limite = 0;
-        $genere_xls = 0;
+
+        // Rafik !!!! HARD BUG WORKAROUND !!!!!! 
+        // When the filter criterea contain multiple choice (like mfk) we can not send the value inside hidden input
+        // so the excel should be generated always in each search action otherwise you will get this SQL error 
+        // [field_name] in (Array)
+        // IMPORTANT WORKAROUND ^^^^^^^^^^^
+        // VVVVVVV  *** DONT REMOVE BELOW *** VVVVVVVV         
+        $genere_xls = true;
+        $xls_on = true;
+        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         $arr_sql_conds = array();
         $arr_sql_conds[] = "me.active='Y'";
