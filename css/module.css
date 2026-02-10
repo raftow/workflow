@@ -612,6 +612,13 @@ div#fg-desiresLimitWarningDiv {
     }
 }
 
+.bf.WorkflowRequest.api-method {
+    min-width: 180px !important;
+    max-width: 180px !important;
+    border-radius: 8px;
+    box-shadow: #3a3a3a 3px 3px;
+}
+
 .icon-317:before {
     content: "\f200";
 }

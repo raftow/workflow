@@ -124,6 +124,11 @@ try {
                 $qsearch_page_title = AfwLanguageHelper::tt('Admission process', $lang, $currmod);
         }
 
+        $instanceOptions = [
+                'excelExport' => true,
+                'pdfExport' => true,
+                ];
+
 
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';

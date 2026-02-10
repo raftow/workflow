@@ -19,8 +19,7 @@ class WorkflowWorkflowRequestAfwStructure
                         $obj->OwnedBy = array('module' => "workflow", 'afw' => "WorkflowApplicant");
                         $obj->editByStep = true;
                         $obj->editNbSteps = 8;
-                        $obj->excelExport = true;
-                        $obj->pdfExport = true;
+                        
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         // $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'Workflow', 'class' => 'WorkflowRequest', 'submit' => true);
                         $obj->after_save_edit = array("file" => '../workflow/inbox.php');
