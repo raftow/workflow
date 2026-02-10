@@ -52,6 +52,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['application_class_enum'] = 'صنف المتقدم';
 		$trad['workflow_request']['workflow_category_enum'] = 'فئة التقدير';
 
+		$trad['workflow_request']['run_admission'] = 'تنفيذ القبول';
+
 
 		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';
 		$trad['workflow_request']['done_time'] = 'وقت الانتهاء';
