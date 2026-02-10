@@ -41,8 +41,8 @@ try {
 
         $current_page = "wrsorting.php";
 
-        $current_mode = $_POST["mode"];
-        if (!$current_mode) $current_mode = "sorting";
+        $option = $_REQUEST["option"];
+        if (!$option) $option = "sorting";
 
         $readOnlyColumns = [
                 'workflow_stage_id',
@@ -70,7 +70,7 @@ try {
                 'workflow_category_enum'
         ];
 
-        if ($current_mode == "sorting") {
+        if ($option == "sorting") {
                 $forced_retrieve_cols = [
                         'application_class_enum',
                         'workflow_sub_scope_id',
