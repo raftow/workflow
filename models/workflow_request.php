@@ -367,18 +367,21 @@ class WorkflowRequest extends WorkflowObject
         {
                 $objTransition = WorkflowTransition::loadById($transitionId);
 
-                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
+                $objme = AfwSession::getUserConnected();
+
 
                 $accepted_roles_mfk = trim($objTransition->getVal("workflow_role_mfk"), ",");
 
                 $authorizedRolesArray = explode(",", $accepted_roles_mfk);
-
-                if (!$wEmployeeMe) return array($this->tm('No authenticated workflow employee found', $lang), '');
-
-                if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
-                        $wrole_mfk = $wEmployeeMe->getVal("wrole_mfk");
-                        return array($this->tm('This employee is not authorized to perform this transition', $lang) . '<!-- ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk -->", '');
+                if (!$objme or !$objme->isSuperAdmin()) {
+                        $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
+                        if (!$wEmployeeMe) return array($this->tm('No authenticated workflow employee found', $lang), '');
+                        if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
+                                $wrole_mfk = $wEmployeeMe->getVal("wrole_mfk");
+                                return array($this->tm('This employee is not authorized to perform this transition', $lang) . '<!-- ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk -->", '');
+                        }
                 }
+
 
                 list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
 
