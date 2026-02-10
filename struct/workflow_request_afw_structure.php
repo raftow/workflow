@@ -266,7 +266,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                        
+
                         'CSS' => 'width_pct_100',
                 ),
                 'workflow_category_enum' => array(
@@ -274,6 +274,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'IMPORTANT' => 'IN',
                         'SEARCH' => true,
                         'QSEARCH' => true,
+                        'SEARCH-MULTIPLE' => true,
+                        'QSIZE' => 6,
                         'SHOW' => true,
                         'RETRIEVE' => false,
                         'EDIT' => true,
@@ -353,6 +355,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'FGROUP' => 'request',
                         'SEARCH' => true,
                         'QSEARCH' => true,
+                        'SEARCH-MULTIPLE' => true,
+                        'QSIZE' => 6,
                         'SHOW' => true,
                         'AUDIT' => false,
                         'RETRIEVE' => true,
@@ -405,13 +409,14 @@ class WorkflowWorkflowRequestAfwStructure
                         'SEARCH' => true,
                         'QSEARCH' => true,
                         'SEARCH-MULTIPLE' => true,
+                        'QSIZE' => 12,
                         'SHOW' => true,
                         'AUDIT' => false,
                         'RETRIEVE' => true,
                         'EDIT' => true,
                         'QEDIT' => false,
                         'SIZE' => 32,
-                        'QSIZE' => 12,
+
                         'MIN-SIZE' => 1,
                         'STEP' => 2,
                         'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',

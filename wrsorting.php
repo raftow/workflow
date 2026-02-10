@@ -17,7 +17,7 @@ try {
         // [field_name] in (Array)
         // IMPORTANT WORKAROUND ^^^^^^^^^^^
         // VVVVVVV  *** DONT REMOVE BELOW *** VVVVVVVV         
-        $xls_on = $genere_xls = (count($_POST)>0);
+        $xls_on = $genere_xls = (count($_POST) > 0);
         // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
         $arr_sql_conds = array();
@@ -40,6 +40,9 @@ try {
         );
 
         $current_page = "wrsorting.php";
+
+        $current_mode = $_POST["mode"];
+        if (!$current_mode) $current_mode = "sorting";
 
         $readOnlyColumns = [
                 'workflow_stage_id',
@@ -67,38 +70,61 @@ try {
                 'workflow_category_enum'
         ];
 
-        $forced_retrieve_cols = [
-                'application_class_enum',
-                'original_1',
-                'original_2',
-                'original_3',
-                'original_4',
-                'original_5',
-                'original_6',
-                'original_7',
-                /*'original_8',
+        if ($current_mode == "sorting") {
+                $forced_retrieve_cols = [
+                        'application_class_enum',
+                        'workflow_sub_scope_id',
+                        'original_1',
+                        'original_2',
+                        'original_3',
+                        'original_4',
+                        'original_5',
+                        'original_6',
+                        'original_7',
+                        /*'original_8',
                 'original_9',
                 'original_10'*/
-        ];
-        $hide_retrieve_cols = [
-                'workflow_model_id',
-                'workflow_session_id',
-                'workflow_stage_id',
-                'workflow_status_id',
-                'workflow_scope_id',
-                'workflow_sub_scope_id',
-                'active',
-                'done',
-                'orgunit_id',
-                'employee_id',
-                'request_date',
-                'country_id',
-                'workflow_source_id',
-        ];
+                ];
+                $hide_retrieve_cols = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'workflow_status_id',
+                        'workflow_scope_id',
+                        'active',
+                        'done',
+                        'orgunit_id',
+                        'employee_id',
+                        'request_date',
+                        'country_id',
+                        'workflow_source_id',
+                ];
+                $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
+        } else {
+                $forced_retrieve_cols = [
+                        'workflow_scope_id',
+                        'workflow_sub_scope_id',
+                        'application_class_enum',
+                        'workflow_status_id',
+                        'original_1',
+                        'original_6',
+                        // 'run_transition',
+                ];
+                $hide_retrieve_cols = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'active',
+                        'done',
+                        'orgunit_id',
+                        'employee_id',
+                        'request_date',
+                        'workflow_source_id',
+                ];
+                $qsearch_page_title = AfwLanguageHelper::tt('Admission process', $lang, $currmod);
+        }
 
-        
 
-        $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
         $collapse_in = '';
 
