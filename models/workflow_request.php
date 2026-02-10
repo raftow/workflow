@@ -1482,6 +1482,38 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
+        public function userCanChangeStatus($auser, $csmethod)
+        {
+                // if ($auser->isSuperAdmin()) return true;
+                // @todo-rafik : implement real logic here based on the user roles and the workflow status and stage and the conformity of the request and other factors
+                return true;
+        }
+
+        // قبول مشروط بالمطابقة
+        public function acceptanceConditionnedByConformity($lang = "ar")
+        {
+                // 23	قبول بشرط المطابقة
+                /**
+                 * @var WorkflowTransition $objTransition
+                 */
+                // $objTransition = WorkflowTransition::loadById(23);
+
+                return $this->runTransition(23, $lang);
+        }
+
+        // قبول مشروط بالسداد   
+        public function acceptanceConditionnedBySadad($lang = "ar")
+        {
+                // 11	قبول بشرط السداد
+                /**
+                 * @var WorkflowTransition $objTransition
+                 */
+                // $objTransition = WorkflowTransition::loadById(11);
+                return $this->runTransition(11, $lang);
+        }
+
+
+
         /**
          * @param Auser $auser
          */

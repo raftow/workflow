@@ -78,6 +78,10 @@ class WorkflowRequestArTranslator
 		$trad["workflow_request"]["educational_zone_id"] = "المنطقة التعليمية";
 		$trad["workflow_request"]["grading_scale_id"] = "التقدير";
 
+		$trad["workflow_request"]["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
+		$trad["workflow_request"]["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
+
+
 
 		$trad["workflow_request"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
 
