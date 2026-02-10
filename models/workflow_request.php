@@ -783,10 +783,35 @@ class WorkflowRequest extends WorkflowObject
                 return $emplObj;
         }
 
+        public function isSponsored()
+        {
+                $appClass = $this->getVal("application_class_enum");
+                return ($appClass == 2 or $appClass == 3 or $appClass == 5);
+        }
 
         public function calcRun_admission($what = 'value')
         {
-                $html = AfwHtmlHelper::showHtmlPublicMethodButton($this, 'runadmission-' . $this->id, 'runadmission', AfwLanguageHelper::getGlobalLanguage());
+                $objme = AfwSession::getUserConnected();
+                $method_icon = 'run';
+                if ($this->isSponsored()) {
+                        $method_name = 'acceptanceConditionnedByConformity';
+                        $color = 'green';
+                } else {
+                        $method_name = 'acceptanceConditionnedBySadad';
+                        $color = 'blue';
+                }
+
+                return AfwHtmlHelper::showHtmlOfStatusChangeApiButton(
+                        $this,
+                        'changestatus',
+                        $method_name,
+                        $color,
+                        'WorkflowRequest',
+                        $method_icon,
+                        AfwLanguageHelper::getGlobalLanguage(),
+                        false,
+                        $objme->isSuperAdmin()
+                );
         }
 
 
