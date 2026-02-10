@@ -623,3 +623,7 @@ div#fg-desiresLimitWarningDiv {
 div.col-filter-application_class_enum span.mbsc-ios.mbsc-rtl.mbsc-textfield-inner.mbsc-textfield-inner-outline.mbsc-textarea-inner.mbsc-textfield-tags-inner {
     min-height: 70px !important;
 }
+
+div.col-filter-application_class_enum label.mbsc-ios.mbsc-rtl.mbsc-form-control-wrapper {
+    min-height: 80px;
+}

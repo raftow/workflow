@@ -86,7 +86,6 @@ try {
                 'workflow_stage_id',
                 'workflow_status_id',
                 'workflow_scope_id',
-                'workflow_sub_scope_id',
                 'active',
                 'done',
                 'orgunit_id',
