@@ -108,7 +108,7 @@ try {
                         'workflow_status_id',
                         'original_1',
                         'original_6',
-                        // 'run_transition',
+                        'run_admission',
                 ];
                 $hide_retrieve_cols = [
                         'workflow_model_id',

@@ -783,6 +783,13 @@ class WorkflowRequest extends WorkflowObject
                 return $emplObj;
         }
 
+
+        public function calcRun_admission($what = 'value')
+        {
+                $html = AfwHtmlHelper::showHtmlPublicMethodButton($this, 'runadmission-' . $this->id, 'runadmission', AfwLanguageHelper::getGlobalLanguage());
+        }
+
+
         public function calcCandidateFullName($what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
