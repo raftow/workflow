@@ -801,14 +801,18 @@ class WorkflowRequest extends WorkflowObject
                         $color = 'blue';
                 }
 
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+
+                $swal_title = $this->tm("Are you sure you want to do this admission action", $lang). " : " . $this->tm($method_name, $lang); 
+                $swal_title = $this->tm("This process is subject to auditing and monitoring", $lang);
+
                 return AfwHtmlHelper::showHtmlOfStatusChangeApiButton(
                         $this,
                         'changestatus',
                         $method_name,
                         $color,
-                        'WorkflowRequest',
                         $method_icon,
-                        AfwLanguageHelper::getGlobalLanguage(),
+                        $lang,
                         false,
                         $objme->isSuperAdmin()
                 );

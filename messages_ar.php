@@ -44,10 +44,16 @@ $messages["refresh my roles and programs"] = "تحديث صلاحياتي وبر
 $messages["Sorting screen"] = "شاشة المفاضلة والقبول المبدئي";
 $messages["Interview screen"] = "متابعة المقابلات";
 $messages["Admission process"] = "إجراءات تنفيذ القبول";
+$messages["This process is subject to auditing and monitoring"] = "هذه العملية خاضعة لسياسة التدقيق وتتبع الأثر";
+$messages["Are you sure you want to do this admission action"] = "هل أنت متأكد من رغبتك في القيام بإجراء القبول هذا؟";
+$messages["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
+$messages["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
 
 // 
-// 
-
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";
