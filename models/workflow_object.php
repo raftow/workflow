@@ -149,19 +149,19 @@ class WorkflowObject extends AfwMomkenObject
         $arr_list_of_color['en'][5] = 'Green';
         $arr_list_of_color['ar'][6] = 'أخضر';
         $arr_list_of_color['code'][6] = 'green';
-        
+
         $arr_list_of_color['en'][7] = 'Gray';
         $arr_list_of_color['ar'][7] = 'رمادي';
-        $arr_list_of_color['code'][7] = 'gray';        
+        $arr_list_of_color['code'][7] = 'gray';
 
         $arr_list_of_color['en'][8] = 'Silver';
         $arr_list_of_color['ar'][8] = 'فضي';
-        $arr_list_of_color['code'][8] = 'silver';        
+        $arr_list_of_color['code'][8] = 'silver';
 
         $arr_list_of_color['en'][9] = 'Gold';
         $arr_list_of_color['ar'][9] = 'ذهبي';
-        $arr_list_of_color['code'][9] = 'gold'; 
-        
+        $arr_list_of_color['code'][9] = 'gold';
+
         $arr_list_of_color['en'][10] = 'White';
         $arr_list_of_color['ar'][10] = 'أبيض';
         $arr_list_of_color['code'][10] = 'white';
@@ -1182,5 +1182,18 @@ class WorkflowObject extends AfwMomkenObject
         }
 
         return $arr_list_of_application_category;
+    }
+
+    public static function pageCode($uri_items)
+    {
+        foreach ($uri_items as $item) {
+            if ($item == 'wrsorting')
+                return 'wrsorting';
+
+            if ($item == 'interviewApplicant')
+                return 'interviewApplicant';
+        }
+
+        return 'workflow_default';
     }
 }
