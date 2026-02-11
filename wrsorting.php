@@ -49,14 +49,7 @@ try {
         ];
 
 
-        $requiredColumns = [
-                'workflow_model_id',
-                'workflow_session_id',
-                'workflow_stage_id',
-                'workflow_status_id',
-                /* 'workflow_scope_id',
-                'workflow_sub_scope_id',*/
-        ];
+
 
         $formColumns = [
                 'workflow_model_id',
@@ -99,6 +92,28 @@ try {
                         'country_id',
                         'workflow_source_id',
                 ];
+
+                $requiredColumns = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'workflow_status_id',
+                        /* 'workflow_scope_id',
+                        'workflow_sub_scope_id',*/
+                ];
+
+                $specialStructure = [
+                        'workflow_scope_id' =>
+                        [
+                                'SEARCH-MULTIPLE' => true,
+                        ],
+                        'workflow_sub_scope_id' =>
+                        [
+                                'SEARCH-MULTIPLE' => true,
+                        ],
+
+                ];
+
                 $qsearch_page_title = AfwLanguageHelper::tt('Sorting screen', $lang, $currmod);
         } else {
                 $forced_retrieve_cols = [
@@ -121,13 +136,24 @@ try {
                         'request_date',
                         'workflow_source_id',
                 ];
+
+                $requiredColumns = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'workflow_status_id',
+                        'workflow_scope_id',
+                        'workflow_sub_scope_id',
+                ];
+
+                $specialStructure = [];
                 $qsearch_page_title = AfwLanguageHelper::tt('Admission process', $lang, $currmod);
         }
 
         $instanceOptions = [
                 'excelExport' => true,
                 'pdfExport' => true,
-                ];
+        ];
 
 
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";

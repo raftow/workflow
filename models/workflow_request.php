@@ -455,6 +455,7 @@ class WorkflowRequest extends WorkflowObject
                 }
 
 
+                $objOriginal->afterRunTransition($objTransition, $this, $lang);
 
 
 

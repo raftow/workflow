@@ -19,7 +19,7 @@ class WorkflowWorkflowRequestAfwStructure
                         $obj->OwnedBy = array('module' => "workflow", 'afw' => "WorkflowApplicant");
                         $obj->editByStep = true;
                         $obj->editNbSteps = 8;
-                        
+
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         // $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'Workflow', 'class' => 'WorkflowRequest', 'submit' => true);
                         $obj->after_save_edit = array("file" => '../workflow/inbox.php');
@@ -380,7 +380,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'FGROUP' => 'request',
                         'SEARCH' => true,
                         'QSEARCH' => true,
-                        'SEARCH-MULTIPLE' => true,
+
                         'SHOW' => true,
                         'AUDIT' => false,
                         'RETRIEVE' => true,
@@ -407,7 +407,6 @@ class WorkflowWorkflowRequestAfwStructure
                         'FGROUP' => 'request',
                         'SEARCH' => true,
                         'QSEARCH' => true,
-                        'SEARCH-MULTIPLE' => true,
                         'QSIZE' => 12,
                         'SHOW' => true,
                         'AUDIT' => false,
