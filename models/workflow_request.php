@@ -696,7 +696,22 @@ class WorkflowRequest extends WorkflowObject
 
 
                 //die('rafik final pbms=' . var_export($pbms, true));
+                if(true){//only for testing purpose
+                        $color = 'gray';
+                        $title_ar = 'ارسال اشعار للمتقدم';
+                        $methodName = 'sendNotificationsExample';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        //'ROLES' => 'workflow/393',
+                                        'PUBLIC' => true,
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
 
+                }
                 return $pbms;
         }
 
@@ -1516,7 +1531,11 @@ class WorkflowRequest extends WorkflowObject
                 return $this->runTransition(11, $lang);
         }
 
-
+        public function sendNotificationsExample()
+        {
+                $res = self::sendNotification($this->getId(), 6);
+                return $res;
+        }
 
         /**
          * @param Auser $auser

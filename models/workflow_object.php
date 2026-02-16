@@ -1196,4 +1196,58 @@ class WorkflowObject extends AfwMomkenObject
 
         return 'workflow_default';
     }
+
+
+    /* added by medali */
+    public static function getToken()
+    {
+        $authUrl = 'https://bmeholding.com/system/token';
+        $credentials = [
+            'email' => 'admission@uoh.com',
+            'secret' => 'password123' 
+        ];
+
+        $ch = curl_init($authUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($credentials));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Accept: application/json',
+            'Content-Type: application/json'
+        ]);
+
+        $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            // die('Auth Error: ' . curl_error($ch));
+            return false;
+        }
+        curl_close($ch);
+
+        // استخراج التوكن
+        $result = json_decode($response, true);
+        $token = $result['token'] ?? null;
+
+        if (!$token) {
+            return false;
+        }
+        
+        return $token;
+    }
+
+    public static function sendNotification($reuest_id, $notification_type_id){
+                $token = self::getToken();
+                $ch = curl_init("https://api.bmeholding.com/notification/send/$reuest_id/$notification_type_id/");
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                //curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request));
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                        'Authorization: Bearer ' . $token,
+                        'Accept: application/json'
+                ]);
+
+                $dataResponse = curl_exec($ch);
+                return $dataResponse;
+
+        }
+
 }
