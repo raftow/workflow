@@ -55,8 +55,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['run_admission'] = 'تنفيذ القبول';
 
 
-		$trad['workflow_request']['done_date'] = 'تاريخ الانتهاء';
-		$trad['workflow_request']['done_time'] = 'وقت الانتهاء';
+		$trad['workflow_request']['done_date'] = 'تاريخ آخر اجراء';
+		// $trad['workflow_request']['done_time'] = 'وقت الانتهاء';
 
 
 		$trad['workflow_request']['profile'] = 'البيانات الشخصية';

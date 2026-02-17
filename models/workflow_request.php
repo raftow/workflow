@@ -432,6 +432,7 @@ class WorkflowRequest extends WorkflowObject
 
                 if (($final_stage_id != $workflow_stage_id) or ($final_status_id != $workflow_status_id)) {
                         $this->set('done', 'N');
+                        $this->set('done_date', date('Y-m-d H:i:s'));
                         $this->set('employee_id', 0);
                         $this->set("attempt", "N");
                         $this->set('workflow_stage_id', $final_stage_id);
@@ -696,7 +697,7 @@ class WorkflowRequest extends WorkflowObject
 
 
                 //die('rafik final pbms=' . var_export($pbms, true));
-                if(true){//only for testing purpose
+                if (true) { //only for testing purpose
                         $color = 'gray';
                         $title_ar = 'ارسال اشعار للمتقدم';
                         $methodName = 'sendNotificationsExample';
@@ -710,7 +711,6 @@ class WorkflowRequest extends WorkflowObject
                                         'TITLE-LENGTH' => 72,
                                         // 'STEP' => $this->stepOfAttribute('employee_id')
                                 );
-
                 }
                 return $pbms;
         }
@@ -1368,11 +1368,13 @@ class WorkflowRequest extends WorkflowObject
         {
                 $ibObj = null;
                 $statusObj = $this->het("workflow_status_id");
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $workflow_applicant_id = $this->getVal("workflow_applicant_id");
+                $workflow_session_id = $this->getVal("workflow_session_id");
+                $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
+                if (!$interview_stage_id) $interview_stage_id = $workflow_stage_id;
+                $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 if ($statusObj->sureIs("interview_invite_ind")) {
-                        $workflow_stage_id = $this->getVal('workflow_stage_id');
-                        $itpObj = InterviewTypePattern::loadByMainIndex($workflow_stage_id);
-                        $workflow_applicant_id = $this->getVal("workflow_applicant_id");
-                        $workflow_session_id = $this->getVal("workflow_session_id");
                         // if the pattern exists it means we should create a booking invite
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
@@ -1392,6 +1394,8 @@ class WorkflowRequest extends WorkflowObject
                                         $return = ["", $this->tm("Interview booking invite has been created", $lang), ""];
                                 } else $return = [$this->tm("Failed to create interview booking invitation", $lang), ""];
                         } else $return = [$this->tm("Interview booking pattern not found", $lang), ""];
+                } elseif ($returnInterviewBookingObject and $itpObj) {
+                        $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
                 } else $return = ["", $this->tm("Interview booking invite not needed", $lang), ""];
 
 

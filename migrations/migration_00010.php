@@ -3,7 +3,12 @@ if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
+  AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request` CHANGE `done_date` `done_date` varchar(8) NULL AFTER `done`;");
 
+  AfwDatabase::db_query("UPDATE " . $server_db_prefix . "workflow.`workflow_request` set done_date = null;");
+
+  AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request` CHANGE `done_date` `done_date` datetime NULL AFTER `done`;");
+  AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_session add interview_stage_id int(11) NOT NULL DEFAULT 0  AFTER workflow_model_id;");
 
   AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_commitee add   orgunit_id int(11) NOT NULL DEFAULT 0  AFTER workflow_role_id;");
 
