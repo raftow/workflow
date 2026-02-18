@@ -68,9 +68,10 @@ class WorkflowRequestArTranslator
 
 
 		$trad["workflow_request"]["qualification_id"] = "المؤهل";
-		$trad["workflow_request"]["major_category_id"] = "فئة التخصص";
-		$trad["workflow_request"]["qualification_major_id"] = "تخصص المؤهل";
-		$trad["workflow_request"]["gpa"] = "المعدل";
+		$trad["workflow_request"]["major_category_id"] = "التخصص العام";
+		$trad["workflow_request"]["qualification_major_id"] = "التخصص الدقيق";
+		$trad["workflow_request"]["gpa"] = "الدرجة (%)";
+		$trad["workflow_request"]["study_type_id"] = "نوع الدراسة";
 		$trad["workflow_request"]["gpa_from"] = "من";
 		$trad["workflow_request"]["date"] = "تاريخ  المؤهل";
 		$trad["workflow_request"]["source"] = "الجهة مصدر المؤهل";
