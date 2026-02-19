@@ -1024,6 +1024,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT' => '::original',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1032,6 +1033,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_2' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1041,6 +1043,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_3' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1050,6 +1053,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_4' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1059,6 +1063,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_5' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1069,6 +1074,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT' => '::original',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
                         'EDIT' => '::original',
@@ -1077,6 +1083,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_7' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1086,6 +1093,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_8' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1095,6 +1103,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_9' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',
@@ -1104,6 +1113,7 @@ class WorkflowWorkflowRequestAfwStructure
                 'original_10' => array(
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
+                        'SHORTCUT-CATEGORY' => '::original',
                         'SHORTCUT' => '::original',
                         'SHOW' => '::original',
                         'RETRIEVE' => '::original',

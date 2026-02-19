@@ -1464,6 +1464,11 @@ class WorkflowRequest extends WorkflowObject
                 if ($col_struct == "shortcut") {
                         return $workflowManagerClass::originalField($field_order);
                 }
+
+                if ($col_struct == 'shortcut-category') {
+                        return $workflowManagerClass::originalFieldCategory($field_order);
+                }
+
                 $is_obsolete = (!$field_order or ($field_order > $nbFields));
                 if ($col_struct == "obsolete") return $is_obsolete;
                 if ($col_struct == "retrieve") return false;
