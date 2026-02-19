@@ -78,7 +78,9 @@ class WorkflowRequestArTranslator
 		$trad["workflow_request"]["source_name"] = "مصدر المؤهل";
 		$trad["workflow_request"]["educational_zone_id"] = "المنطقة التعليمية";
 		$trad["workflow_request"]["grading_scale_id"] = "التقدير";
-
+		$trad["workflow_request"]["aptitude_university"] = "درجة اختبار القدرات للجامعيين";
+		$trad["workflow_request"]["aptitude_university.short"] = "درجة القدرات";
+		$trad["workflow_request"]["cv_score"] = "درجة السيرة الذاتية";
 		$trad["workflow_request"]["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
 		$trad["workflow_request"]["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
 

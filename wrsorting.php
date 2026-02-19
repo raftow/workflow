@@ -74,9 +74,9 @@ try {
                         'original_5',
                         'original_6',
                         'original_7',
-                        /*'original_8',
-                'original_9',
-                'original_10'*/
+                        'original_8',
+                        'original_9',
+                        'interview_score',
                 ];
                 $hide_retrieve_cols = [
                         'workflow_model_id',
