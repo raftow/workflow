@@ -152,7 +152,7 @@ try {
 
         $instanceOptions = [
                 'excelExport' => true,
-                'pdfExport' => true,
+                'pdfExport' => false,
         ];
 
 
