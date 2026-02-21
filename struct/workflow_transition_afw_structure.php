@@ -5,9 +5,12 @@ class WorkflowWorkflowTransitionAfwStructure
 {
     public static function pageCode($uri_items)
     {
-        die(var_export($uri_items, true));
-        // 1234566666666666
-        return "edit_workflow_request";
+        die("WorkflowWorkflowTransitionAfwStructure::pageCode uri_items = " . var_export($uri_items, true));
+        if (in_array('afw_mode_qsearch', $uri_items)) {
+            return "qsearch_workflow_transition";
+        }
+
+        return "edit_workflow_transition";
     }
 
     // token separator = §
