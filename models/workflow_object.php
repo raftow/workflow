@@ -1204,7 +1204,7 @@ class WorkflowObject extends AfwMomkenObject
         $authUrl = 'https://bmeholding.com/system/token';
         $credentials = [
             'email' => 'admission@uoh.com',
-            'secret' => 'password123' 
+            'secret' => 'password123'
         ];
 
         $ch = curl_init($authUrl);
@@ -1230,24 +1230,23 @@ class WorkflowObject extends AfwMomkenObject
         if (!$token) {
             return false;
         }
-        
+
         return $token;
     }
 
-    public static function sendNotification($reuest_id, $notification_type_id){
-                $token = self::getToken();
-                $ch = curl_init("https://api.bmeholding.com/notification/send/$reuest_id/$notification_type_id/");
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-                //curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request));
-                curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                        'Authorization: Bearer ' . $token,
-                        'Accept: application/json'
-                ]);
+    public static function sendNotification($reuest_id, $notification_type_id)
+    {
+        $token = self::getToken();
+        $ch = curl_init("https://api.bmeholding.com/notification/send/$reuest_id/$notification_type_id/");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        //curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($request));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $token,
+            'Accept: application/json'
+        ]);
 
-                $dataResponse = curl_exec($ch);
-                return $dataResponse;
-
-        }
-
+        $dataResponse = curl_exec($ch);
+        return $dataResponse;
+    }
 }

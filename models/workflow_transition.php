@@ -22,6 +22,16 @@ class WorkflowTransition extends WorkflowObject
         WorkflowWorkflowTransitionAfwStructure::initInstance($this);
     }
 
+    public static function pageCode($uri_items)
+    {
+        foreach ($uri_items as $item) {
+            if ($item == 'afw_mode_qsearch')
+                return 'qsearch_workflow_transition';
+        }
+
+        return 'edit_workflow_transition';
+    }
+
     public static function loadById($id)
     {
         $obj = new WorkflowTransition();
