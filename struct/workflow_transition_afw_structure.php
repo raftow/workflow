@@ -5,7 +5,7 @@ class WorkflowWorkflowTransitionAfwStructure
 {
     public static function pageCode($uri_items)
     {
-        die("WorkflowWorkflowTransitionAfwStructure::pageCode uri_items = " . var_export($uri_items, true));
+        // die("WorkflowWorkflowTransitionAfwStructure::pageCode uri_items = " . var_export($uri_items, true));
         if (in_array('afw_mode_qsearch', $uri_items)) {
             return "qsearch_workflow_transition";
         }
