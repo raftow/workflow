@@ -3,6 +3,12 @@
 
 class WorkflowWorkflowTransitionAfwStructure
 {
+    public static function pageCode($uri_items)
+    {
+        die(var_export($uri_items, true));
+        return "edit_workflow_request";
+    }
+
     // token separator = §
     public static function initInstance(&$obj)
     {
@@ -285,7 +291,7 @@ class WorkflowWorkflowTransitionAfwStructure
             'DNA' => true,
             'CSS' => 'width_pct_50',
             'DEPENDENT_OFME' => ['final_status_id', 'next_transition_id']
-            
+
         ),
 
         'final_status_id' => array(
@@ -338,8 +344,8 @@ class WorkflowWorkflowTransitionAfwStructure
             'DNA' => true,
             'CSS' => 'width_pct_50',
         ),
-    
-    'next_transition_id' => array(
+
+        'next_transition_id' => array(
             'SHORTNAME' => 'next_transition',
             'SEARCH' => true,
             'QSEARCH' => false,
