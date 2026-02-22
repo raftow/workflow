@@ -237,7 +237,9 @@ class WorkflowRequest extends WorkflowObject
 
         public static function inboxSqlCond($employee_id, $prefix = 'me.')
         {
-                return $prefix . "employee_id='$employee_id' and " . $prefix . "done != 'Y'";
+                // list of stages that does not need assignment to be visible in inbox
+                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
+                return "(" . $prefix . "employee_id='$employee_id' or " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . "))  and " . $prefix . "done != 'Y'";
         }
 
         public static function inboxCountFor($employee_id)
@@ -440,9 +442,6 @@ class WorkflowRequest extends WorkflowObject
                         $this->commit();
                         $this->prepareInterviewBookingIfNeeded();
 
-                        // after transition done reassign to best available employee depending on new stage and needed roles for this stage
-                        $this->assignBestAvailableEmployee($lang, true, true);
-
                         $the_comment = "تم تنفيذ الاجراء : " . $objTransition->getDisplay($lang);
                         $comment_datetime = date('Y-m-d H:i:s');
                         $comment_time = date('H:i:s');
@@ -451,6 +450,12 @@ class WorkflowRequest extends WorkflowObject
                         $request_comment_subject_id = $this->convenientCommentSubjectId();
                         $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, $final_stage_id, true);
                         */
+
+                        // after transition done reassign to best available employee depending on new stage and needed roles for this stage
+                        $finalStageObj = $this->het('workflow_stage_id');
+                        if ($finalStageObj and $finalStageObj->sureIs("auto_assign_ind")) {
+                                $this->assignBestAvailableEmployee($lang, true, true);
+                        }
                 } else {
                         $status_comment = $this->tm("Nothing done", $lang);
                 }
