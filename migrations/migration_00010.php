@@ -3,6 +3,10 @@ if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
+
+  AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_stage add   auto_assign_ind char(1) DEFAULT NULL  AFTER interview_ind;");
+  AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_stage add   see_only_assigned_ind char(1) DEFAULT NULL  AFTER auto_assign_ind;");
+
   AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request` CHANGE `done_date` `done_date` varchar(8) NULL AFTER `done`;");
 
   AfwDatabase::db_query("UPDATE " . $server_db_prefix . "workflow.`workflow_request` set done_date = null;");
