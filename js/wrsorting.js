@@ -19,3 +19,8 @@ function workflow_scope_id_onchange() {
 function workflow_sub_scope_id_onchange() {
 
 }
+
+
+function apiChangeStatusDoneOn(the_module, afwclass, obj_id, csmethod) {
+    
+}
