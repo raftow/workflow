@@ -13,7 +13,7 @@ class WorkflowScopeArTranslator
 		$trad["workflow_scope"]["scope_name_en"] = "اسم البرنامج - انجليزي";
 		$trad["workflow_scope"]["scope_description_ar"] = "وصف البرنامج - عربي";
 		$trad["workflow_scope"]["scope_description_en"] = "وصف البرنامج - انجليزي";
-		$trad["workflow_scope"]["workflow_module_id"] = "وحدة العمل";
+		$trad["workflow_scope"]["workflow_module_id"] = "التطبيق";
 		return $trad;
 	}
 

@@ -25,6 +25,7 @@ class WorkflowTransitionArTranslator
 		$trad["workflow_transition"]["condition_before.short"] = "إخفاء الزر";
 		$trad["workflow_transition"]["next_transition_id"] = "الإجراء الآلي";
 
+		$trad["workflow_transition"]["financial_transaction_enum"] = "الحركة المالية";
 
 		// steps
 		return $trad;
