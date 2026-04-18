@@ -4,6 +4,7 @@ if (!class_exists("AfwSession")) die("Denied access");
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
 
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_transition add   application_model_financial_transaction_id int(11) DEFAULT NULL  AFTER next_transition_id;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_code varchar(32)  NOT NULL DEFAULT ''  AFTER id;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   recipient_type_enum smallint NOT NULL DEFAULT 0  AFTER workflow_entity_id;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   channel_enum text  DEFAULT NULL  AFTER recipient_type_enum;");
@@ -42,8 +43,8 @@ try {
     AfwDatabase::db_query("create unique index uk_notification_placeholder on " . $server_db_prefix . "workflow.notification_placeholder(placeholder_code);");
 
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification add   workflow_applicant_id int(11) NOT NULL DEFAULT 0  AFTER id;");
-AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email text  DEFAULT NULL  AFTER notification_body_en;");
-AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email_en text  DEFAULT NULL  AFTER notification_email;");
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email text  DEFAULT NULL  AFTER notification_body_en;");
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email_en text  DEFAULT NULL  AFTER notification_email;");
 } catch (Exception $e) {
     $migration_error .= " " . $e->getMessage();
 }
