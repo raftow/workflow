@@ -69,6 +69,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'UTF8' => false,
                         'TYPE' => 'FK',
                         'ANSWER' => 'workflow_applicant',
+                        'INTERNAL_QSEARCH' => true,
                         'ANSMODULE' => 'workflow',
                         'SIZE' => 40,
                         'DEFAUT' => 0,
