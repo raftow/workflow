@@ -65,6 +65,9 @@ try {
 
         if ($option == "sorting") {
                 $forced_retrieve_cols = [
+                        'gender_enum',
+                        'workflow_source_id',
+                        'country_id',
                         'application_class_enum',
                         'workflow_sub_scope_id',
                         'original_1',
@@ -86,11 +89,10 @@ try {
                         'workflow_scope_id',
                         'active',
                         'done',
+                        'done_date',
                         'orgunit_id',
                         'employee_id',
                         'request_date',
-                        'country_id',
-                        'workflow_source_id',
                 ];
 
                 $requiredColumns = [

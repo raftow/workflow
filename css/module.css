@@ -635,3 +635,9 @@ div.col-filter-application_class_enum span.mbsc-ios.mbsc-rtl.mbsc-textfield-inne
 div.col-filter-application_class_enum label.mbsc-ios.mbsc-rtl.mbsc-form-control-wrapper {
     min-height: 80px;
 }
+
+table.search_result_table.wrsorting {
+    margin-right: 0% !important;
+    margin-left: 0% !important;
+    width: 100%;
+}
