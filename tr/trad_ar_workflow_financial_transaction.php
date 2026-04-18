@@ -1,5 +1,5 @@
 <?php
-class WorkflowScopeArTranslator
+class WorkflowFinancialTransactionArTranslator
 {
 
 	public static function initData()
@@ -20,7 +20,7 @@ class WorkflowScopeArTranslator
 
 	public static function getInstance()
 	{
-		if (false) return new WorkflowScopeEnTranslator();
-		return new WorkflowScope();
+		//if (false) return new WorkflowFinancialTransactionEnTranslator();
+		return new WorkflowFinancialTransaction();
 	}
 }
