@@ -813,6 +813,12 @@ class WorkflowRequest extends WorkflowObject
                 return ($appClass == 2 or $appClass == 3 or $appClass == 5);
         }
 
+        public function isNotSponsored()
+        {
+                $appClass = $this->getVal("application_class_enum");
+                return ($appClass == 1 or $appClass == 4);
+        }
+
         public function calcRun_admission($what = 'value')
         {
                 $objme = AfwSession::getUserConnected();
