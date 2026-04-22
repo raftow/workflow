@@ -1281,6 +1281,10 @@ class WorkflowRequest extends WorkflowObject
                         }
                 }
 
+                if ($attribute == "interview_score") {
+                        return $this->weReachedStep(7);
+                }
+
                 if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and $this->sureIs("attempt"));
 
 
