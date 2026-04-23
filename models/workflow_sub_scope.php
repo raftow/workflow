@@ -12,6 +12,9 @@ class WorkflowSubScope extends WorkflowObject
     public static $DB_STRUCTURE = null;
     // public static $copypast = true;
 
+    private $subScopeOriginalObject = null;
+
+
     public function __construct()
     {
         parent::__construct('workflow_sub_scope', 'id', 'workflow');
@@ -58,7 +61,16 @@ class WorkflowSubScope extends WorkflowObject
 
     public function getDisplay($lang = 'ar')
     {
-        return $this->getDefaultDisplay($lang);
+        $return =  $this->getDefaultDisplay($lang);
+        list($error,$originalSubScopeObject) =  $this->loadOriginalSubScopeObject();
+        $main_company = AfwSession::currentCompany();
+        if ($originalSubScopeObject) {
+            $return .= "(".$originalSubScopeObject->getStatusDisplay($lang, $main_company).")";
+        }
+        else {
+            $return .= "($error)";
+        }
+        
     }
 
     public function stepsAreOrdered()
@@ -89,5 +101,30 @@ class WorkflowSubScope extends WorkflowObject
 
         $selects = array();
         $this->select_visibilite_horizontale_default($dropdown, $selects);
+    }
+
+
+    public function loadOriginalSubScopeObject()
+    {
+            if (!$this->subScopeOriginalObject) {
+                    
+                    $moduleObj = $this->het('workflow_module_id');
+                    if (!$moduleObj)
+                            return ['No module for this request', null];
+
+                    $lookup_code = $moduleObj->getVal('lookup_code');
+                    if (!$lookup_code)
+                            return ['No code for the module of this request', null];
+
+                    $moduleCode = strtolower($lookup_code);
+
+                    AfwAutoLoader::addModule($moduleCode);
+
+                    $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($moduleCode) . 'WorkflowService';
+
+                    $this->subScopeOriginalObject = $moduleWorkflowServiceClass::loadOriginalSubScopeObject($this);
+            }
+
+            return ['', $this->subScopeOriginalObject];
     }
 }

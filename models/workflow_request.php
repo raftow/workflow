@@ -14,7 +14,7 @@ class WorkflowRequest extends WorkflowObject
         public static $DB_STRUCTURE = null;
         // public static $copypast = true;
 
-        private $originalObject = null;
+        private $orginalObject = null;
 
         public function __construct()
         {
