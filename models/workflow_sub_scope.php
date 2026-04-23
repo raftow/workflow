@@ -70,6 +70,8 @@ class WorkflowSubScope extends WorkflowObject
         else {
             $return .= "($error)";
         }
+
+        return $return;
         
     }
 
