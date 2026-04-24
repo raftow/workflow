@@ -1394,7 +1394,8 @@ class WorkflowRequest extends WorkflowObject
                 $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
                 if (!$interview_stage_id) $interview_stage_id = $workflow_stage_id;
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
-                if ($statusObj->sureIs("interview_invite_ind")) {
+                $ibObj = null;
+                if ($statusObj->sureIs("interview_invite_ind")) { // 
                         // if the pattern exists it means we should create a booking invite
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
@@ -1411,16 +1412,16 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
-                                        $return = ["", $this->tm("Interview booking invite has been created", $lang), ""];
-                                } else $return = [$this->tm("Failed to create interview booking invitation", $lang), ""];
-                        } else $return = [$this->tm("Interview booking pattern not found", $lang), ""];
+                                        $return = ["", $this->tm("Interview booking invite has been created", $lang), "", null];
+                                } else $return = [$this->tm("Failed to create interview booking invitation", $lang), "", "", null];
+                        } else $return = [$this->tm("Interview booking pattern not found", $lang), "", "", null];
                 } elseif ($returnInterviewBookingObject and $itpObj) {
                         $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
-                } else $return = ["", $this->tm("Interview booking invite not needed", $lang), ""];
+                        $return[3] = $ibObj;
+                } else $return = ["", $this->tm("Interview booking invite not needed", $lang), "", null];
 
 
-                if ($returnInterviewBookingObject) return $ibObj;
-                else return $return;
+                return $return;
         }
 
         public function getInterviewBooking()
