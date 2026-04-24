@@ -173,7 +173,6 @@ class WorkflowWorkflowSessionAfwStructure
 
 
         'interview_stage_id' => array(
-            'FGROUP' => 'request',
             'IMPORTANT' => 'IN',
             'SEARCH' => true,
             'QSEARCH' => true,
@@ -194,7 +193,6 @@ class WorkflowWorkflowSessionAfwStructure
             'STEP' => 1,
             'RELATION' => 'ManyToOne',
             'MANDATORY' => true,
-            'READONLY' => true,
             'AUTOCOMPLETE' => false,
             'DISPLAY-UGROUPS' => '',
             'EDIT-UGROUPS' => '',
