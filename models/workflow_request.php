@@ -1386,18 +1386,23 @@ class WorkflowRequest extends WorkflowObject
 
         public function prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = false)
         {
+                $error = "";
+                $info = "";
+                $warning = "";
+
                 $ibObj = null;
                 $statusObj = $this->het("workflow_status_id");
                 $workflow_stage_id = $this->getVal('workflow_stage_id');
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
                 $workflow_session_id = $this->getVal("workflow_session_id");
                 $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
-                if (!$interview_stage_id) $interview_stage_id = $workflow_stage_id;
+                if (!$interview_stage_id) {
+                        $interview_stage_id = $workflow_stage_id;
+                        $warning = $this->tm("Interview stage not defined in the current session", $lang);
+                }
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 $ibObj = null;
-                $error = "";
-                $info = "";
-                $warning = "";
+
                 if ($statusObj->sureIs("interview_invite_ind")) { // 
                         // if the pattern exists it means we should create a booking invite
                         if ($itpObj) {
@@ -1421,7 +1426,7 @@ class WorkflowRequest extends WorkflowObject
                 } elseif ($returnInterviewBookingObject) {
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
-                                if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang);
+                                if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
                         } else $error = $this->tm("Interview booking pattern not found", $lang);
                 }
 

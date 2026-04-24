@@ -33,7 +33,7 @@ $messages["No interview booking invitation sent"] = "لم يتم إرسال دع
 $messages["Interview booking invitation sent"] = "تم إرسال دعوة لحجز موعد للمقابلة";
 $messages["Interview booking invitation not found"] = "لم يتم العثور على دعوة حجز المقابلة";
 $messages["Interview booking invitation has been created"] = "تم إنشاء دعوة لحجز موعد المقابلة";
-
+$messages["Interview stage not defined in the current session"] = "لم يتم تحديد مرحلة المقابلة في الدورة الحالية";
 $messages["Bookings status"] = "حالة الحجز";
 $messages["Note: Proficiency in English is essential for programs taught in English"]
     = "ملاحظة : إجادة اللغة الإنجليزية ضرورية للبرامج التي تدرس باللغة الإنجليزية";
