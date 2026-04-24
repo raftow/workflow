@@ -27,10 +27,13 @@ $messages['Start/Stop work'] = "بدأ/ايقاف العمل";
 $messages["This will show/hide the button before check the condition"] = "سيؤدي هذا إلى إظهار/إخفاء الزر قبل التحقق من الشرط";
 $messages["Interview booking invite has been created"] = "تم إنشاء دعوة لحجز المقابلة";
 $messages["Interview booking pattern not found"] = "لم يتم العثور على نموذج حجز المقابلة";
-$messages["Interview booking invite not needed"] = "";
+// $messages["Interview booking invite not needed"] = "";
 $messages["Failed to create interview booking invitation"] = "فشل إنشاء دعوة حجز المقابلة";
 $messages["No interview booking invitation sent"] = "لم يتم إرسال دعوة لحجز موعد للمقابلة";
 $messages["Interview booking invitation sent"] = "تم إرسال دعوة لحجز موعد للمقابلة";
+$messages["Interview booking invitation not found"] = "لم يتم العثور على دعوة حجز المقابلة";
+$messages["Interview booking invitation has been created"] = "تم إنشاء دعوة لحجز موعد المقابلة";
+
 $messages["Bookings status"] = "حالة الحجز";
 $messages["Note: Proficiency in English is essential for programs taught in English"]
     = "ملاحظة : إجادة اللغة الإنجليزية ضرورية للبرامج التي تدرس باللغة الإنجليزية";
