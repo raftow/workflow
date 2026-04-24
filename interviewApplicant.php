@@ -33,9 +33,9 @@ try {
 
         $current_page = "interviewApplicant.php";
 
-        /*$readOnlyColumns = [
+        $readOnlyColumns = [
                 'workflow_stage_id',
-        ];*/
+        ];
 
 
         $requiredColumns = [
@@ -68,7 +68,7 @@ try {
                 'original_5',
                 'original_6',
                 'email',
-                'mobile',   
+                'mobile',
 
                 /*'original_7',
                 'original_8',
@@ -89,10 +89,10 @@ try {
                 'request_date',
                 'country_id',
                 'workflow_source_id'
-                
+
         ];
 
-        $specialStructure = ['workflow_stage_id'=>['WHERE'=>'id in (3,6)']];
+        $specialStructure = ['workflow_stage_id' => ['WHERE' => 'id in (3,6)']];
 
         $qsearch_page_title = AfwLanguageHelper::tt('Interview screen', $lang, $currmod);
         include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";

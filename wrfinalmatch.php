@@ -1,0 +1,180 @@
+<?php
+try {
+        $file_dir_name = dirname(__FILE__);
+
+        require_once("$file_dir_name/../config/global_config.php");
+        // old include of afw.php
+        // require_once("$file_dir_name/../lib/afw/modes/afw_ config.php");
+
+        $cl = 'WorkflowRequest';
+        $currmod = 'workflow';
+        $currdb = $server_db_prefix . 'workflow';
+        $limite = 0;
+
+        // Rafik !!!! HARD BUG WORKAROUND !!!!!! 
+        // When the filter criterea contain multiple choice (like mfk) we can not send the value inside hidden input
+        // so the excel should be generated always in each search action otherwise you will get this SQL error 
+        // [field_name] in (Array)
+        // IMPORTANT WORKAROUND ^^^^^^^^^^^
+        // VVVVVVV  *** DONT REMOVE BELOW *** VVVVVVVV         
+        $xls_on = $genere_xls = (count($_POST) > 0);
+        // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        $arr_sql_conds = array();
+        $arr_sql_conds[] = "me.active='Y'";
+        $objme = AfwSession::getUserConnected();
+        $myEmplObj = $objme->getEmployee();
+        $myEmplId = $objme->getEmployeeId();
+
+
+        $sql_order_by = 'request_date asc, id asc';
+
+
+        $actions_tpl_arr = array();
+        $action = "retrieve-simple";
+        // $actions_tpl_arr['edit'] = array('framework_action');
+
+        $fixed_criterea_arr =  array(
+                0 => array('col' => 'workflow_stage_id', 'oper' => '=', 'val' => '6',),
+                1 => array('col' => 'datatable_off', 'oper' => '=', 'val' => true,),
+        );
+
+        $current_page = "wrfinalmatch.php";
+
+        $option = $_REQUEST["option"];
+        if (!$option) $option = "finalmatch";
+
+        $readOnlyColumns = [
+                'workflow_stage_id',
+        ];
+
+
+
+
+        $formColumns = [
+                'workflow_model_id',
+                'workflow_session_id',
+                'workflow_stage_id',
+                'workflow_status_id',
+                'workflow_scope_id',
+                'workflow_sub_scope_id',
+                'application_class_enum',
+                'workflow_source_id',
+                'workflow_category_enum'
+        ];
+
+        if ($option == "finalmatch") {
+                $forced_retrieve_cols = [
+                        'gender_enum',
+                        'workflow_source_id',
+                        'country_id',
+                        'application_class_enum',
+                        'workflow_sub_scope_id',
+                        'original_1',
+                        'original_2',
+                        'original_3',
+                        'original_4',
+                        'original_5',
+                        'original_6',
+                        'original_7',
+                        'original_8',
+                        'original_9',
+                        'interview_score',
+                ];
+                $hide_retrieve_cols = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'workflow_status_id',
+                        'workflow_scope_id',
+                        'active',
+                        'done',
+                        'done_date',
+                        'orgunit_id',
+                        'employee_id',
+                        'request_date',
+                ];
+
+                $requiredColumns = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'workflow_status_id',
+                        /* 'workflow_scope_id',
+                        'workflow_sub_scope_id',*/
+                ];
+
+                $specialStructure = [
+                        'workflow_scope_id' =>
+                        [
+                                'SEARCH-MULTIPLE' => true,
+                        ],
+                        'workflow_sub_scope_id' =>
+                        [
+                                'SEARCH-MULTIPLE' => true,
+                        ],
+
+                ];
+
+                $qsearch_page_title = AfwLanguageHelper::tt('Final match screen', $lang, $currmod);
+        } else {
+                $forced_retrieve_cols = [
+                        'workflow_scope_id',
+                        'workflow_sub_scope_id',
+                        'application_class_enum',
+                        'workflow_status_id',
+                        'original_1',
+                        'original_6',
+                        'run_admission',
+                ];
+                $hide_retrieve_cols = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'active',
+                        'done',
+                        'orgunit_id',
+                        'employee_id',
+                        'request_date',
+                        'workflow_source_id',
+                ];
+
+                $requiredColumns = [
+                        'workflow_model_id',
+                        'workflow_session_id',
+                        'workflow_stage_id',
+                        'workflow_status_id',
+                        'workflow_scope_id',
+                        'workflow_sub_scope_id',
+                ];
+
+                $specialStructure = [];
+                $qsearch_page_title = AfwLanguageHelper::tt('Admission process', $lang, $currmod);
+        }
+
+        $instanceOptions = [
+                'excelExport' => true,
+                'pdfExport' => true,
+        ];
+
+
+        include "$file_dir_name/../lib/afw/modes/afw_mode_qsearch.php";
+        $collapse_in = '';
+
+
+
+        /*$out_scr .= "<div class='workflow-title hzm-info'>$wp_title</div>";
+
+        if ($datatable_on) {
+                if ($data_count > 0)
+                        $out_scr .= $search_result_html;  // die("search_result_html=".$search_result_html); //
+                else
+                        $out_scr .= '<div class=\'workflow-information hzm-info\'>
+        <i class="hzm-container-center hzm-vertical-align-middle hzm-icon-fm hzm-icon-inbox"></i>
+        لا يوجد طلبات للمفاضلة
+        </div>';
+        }
+        */
+} catch (Exception $e) {
+        $out_scr .= $e->getMessage() . "<br>\n" . $e->getFile() . ' Line ' . $e->getLine() . "<br>\n" . $e->getTraceAsString();
+}
