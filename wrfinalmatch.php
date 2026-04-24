@@ -70,7 +70,7 @@ try {
                         'country_id',
                         'application_class_enum',
                         'workflow_sub_scope_id',
-                        'original_1',
+                        /*'original_1',
                         'original_2',
                         'original_3',
                         'original_4',
@@ -79,7 +79,7 @@ try {
                         'original_7',
                         'original_8',
                         'original_9',
-                        'interview_score',
+                        'interview_score',*/
                 ];
                 $hide_retrieve_cols = [
                         'workflow_model_id',
