@@ -1395,6 +1395,9 @@ class WorkflowRequest extends WorkflowObject
                 if (!$interview_stage_id) $interview_stage_id = $workflow_stage_id;
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 $ibObj = null;
+                $error = "";
+                $info = "";
+                $warning = "";
                 if ($statusObj->sureIs("interview_invite_ind")) { // 
                         // if the pattern exists it means we should create a booking invite
                         if ($itpObj) {
@@ -1412,13 +1415,22 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
-                                        $return = ["", $this->tm("Interview booking invite has been created", $lang), "", null];
-                                } else $return = [$this->tm("Failed to create interview booking invitation", $lang), "", "", null];
-                        } else $return = [$this->tm("Interview booking pattern not found", $lang), "", "", null];
-                } elseif ($returnInterviewBookingObject and $itpObj) {
-                        $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
-                        $return[3] = $ibObj;
-                } else $return = ["", $this->tm("Interview booking invite not needed", $lang), "", null];
+                                        $info = $this->tm("Interview booking invitation has been created", $lang);
+                                } else $error = $this->tm("Failed to create interview booking invitation", $lang);
+                        } else $error = $this->tm("Interview booking pattern not found", $lang);
+                } elseif ($returnInterviewBookingObject) {
+                        if ($itpObj) {
+                                $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
+                                if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang);
+                        } else $error = $this->tm("Interview booking pattern not found", $lang);
+                }
+
+                $return = [];
+                $return[0] = $error;
+                $return[1] = $info;
+                $return[2] = $warning;
+                $return[3] = $ibObj;
+                $return[4] = $itpObj;
 
 
                 return $return;
