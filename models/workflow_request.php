@@ -1600,6 +1600,11 @@ class WorkflowRequest extends WorkflowObject
                 }
         }
 
+        protected function customLastEditedStep($simulation = true)
+        {
+                return $this->reachedStep();
+        }
+
         /**
          * @param Auser $auser
          */
