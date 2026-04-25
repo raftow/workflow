@@ -1592,7 +1592,7 @@ class WorkflowRequest extends WorkflowObject
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $originalObject = $this->calcOriginalObject('object');
                 if ($originalObject) {
-                        return $originalObject->showMyLinks();
+                        return $originalObject->showMyLinks($lang);
                 } else {
                         $error_msg = $this->tm("not found", $lang);
                         return "<span class='error'>$error_msg</span>";
