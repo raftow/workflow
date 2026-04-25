@@ -34,10 +34,10 @@ $role_info[403]['menu']['items'][10000000003] = array(
 
 $role_info[403]['menu']['items'][10000000004] = array(
     'id' => '10000000004',
-    'code' => 'comparison',
-    'level' => '100',
-    'menu_name_ar' => 'المفاضلة والقبول المبدئي',
-    'menu_name_en' => 'Preliminary admission and comparison screen',
+    'code' => 'fmatch',
+    'level' => '999',
+    'menu_name_ar' => 'المطابقة النهائية',
+    'menu_name_en' => 'Final Match',
     'page' => 'main.php?Main_Page=wrfinalmatch.php',
     'css' => 'bf',
     'icon' => 'bficon-std bfc-',
