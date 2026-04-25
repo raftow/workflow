@@ -1606,6 +1606,12 @@ class WorkflowRequest extends WorkflowObject
                 return $this->reachedStep() - 1;
         }
 
+        public function getDefaultCurrentStep()
+        {
+                $currstep = $this->reachedStep();
+                return [$currstep, "amjad logic"];
+        }
+
         /**
          * @param Auser $auser
          */
