@@ -641,3 +641,15 @@ table.search_result_table.wrsorting {
     margin-left: 0% !important;
     width: 100%;
 }
+
+li.wizardv1_li.cl_Worest.AlreadyStep {
+    background-color: #7cb93d !important;
+}
+
+li.wizardv1_li.cl_Worest.AlreadyStep>a {
+    color: white !important;
+}
+
+li.wizardv1_li.cl_Worest.AlreadyStep.CurrentStep {
+    background-color: #2dd69d !important;
+}
