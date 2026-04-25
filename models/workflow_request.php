@@ -536,6 +536,7 @@ class WorkflowRequest extends WorkflowObject
                 global $lang;
 
                 $objme = AfwSession::getUserConnected();
+                $isSuperAdmin = $objme->isSuperAdmin();
                 $log = '';
                 $pbms = array();
 
@@ -672,7 +673,7 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                        if (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "N")) {
+                        if ((($this->getVal("employee_id") > 0) or $isSuperAdmin) and ($this->getVal("done") == "N")) {
                                 $color = 'yellow';
                                 $title_ar = 'بدأ العمل على الطلب';
                                 $methodName = 'startWork';
@@ -687,7 +688,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
-                        } elseif (($this->getVal("employee_id") > 0) and ($this->getVal("done") == "W")) {
+                        } elseif ((($this->getVal("employee_id") > 0) or $isSuperAdmin) and ($this->getVal("done") == "W")) {
                                 $color = 'gray';
                                 $title_ar = 'إلغاء بدأ العمل على الطلب';
                                 $methodName = 'cancelStartWork';

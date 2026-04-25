@@ -1014,7 +1014,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SIZE' => 40,
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
-                        'STEP' => 8,
+                        'STEP' => 99,
                         'MANDATORY' => false,
                         'READONLY' => true,
                         'DISPLAY-UGROUPS' => '',
