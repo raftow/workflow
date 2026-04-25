@@ -72,7 +72,7 @@ try {
                         'workflow_sub_scope_id',
                         'original_1',
                         'original_6',
-                        'myOriginalObjectLink',
+                        'myOriginalObjectLinks',
                         /*
                         'original_2',
                         'original_3',
