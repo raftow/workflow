@@ -1584,6 +1584,17 @@ class WorkflowRequest extends WorkflowObject
                 return $res;
         }
 
+        public function calcMyOriginalObjectLink($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $originalObject = $this->calcOriginalObject('object');
+                if ($originalObject) return $originalObject->showMyLink();
+                else {
+                        $error_msg = $this->tm("not found", $lang);
+                        return "<span class='error'>$error_msg</span>";
+                }
+        }
+
         /**
          * @param Auser $auser
          */

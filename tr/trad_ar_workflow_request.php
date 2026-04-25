@@ -57,6 +57,8 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['done_date'] = 'تاريخ آخر اجراء';
 		// $trad['workflow_request']['done_time'] = 'وقت الانتهاء';
+		$trad['workflow_request']['myOriginalObjectLink'] = 'الملف الأصلي';
+
 
 
 		$trad['workflow_request']['profile'] = 'البيانات الشخصية';
