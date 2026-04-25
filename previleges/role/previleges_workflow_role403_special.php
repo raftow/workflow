@@ -31,3 +31,14 @@ $role_info[403]['menu']['items'][10000000003] = array(
     'css' => 'bf',
     'icon' => 'bficon-std bfc-',
 );
+
+$role_info[403]['menu']['items'][10000000004] = array(
+    'id' => '10000000004',
+    'code' => 'comparison',
+    'level' => '100',
+    'menu_name_ar' => 'المفاضلة والقبول المبدئي',
+    'menu_name_en' => 'Preliminary admission and comparison screen',
+    'page' => 'main.php?Main_Page=wrfinalmatch.php',
+    'css' => 'bf',
+    'icon' => 'bficon-std bfc-',
+);
