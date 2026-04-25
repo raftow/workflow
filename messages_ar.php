@@ -51,6 +51,7 @@ $messages["This process is subject to auditing and monitoring"] = "هذه الع
 $messages["Are you sure you want to do this admission action"] = "هل أنت متأكد من رغبتك في القيام بإجراء القبول هذا؟";
 $messages["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
 $messages["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
+$messages["Final match screen"] = "شاشة المطابقة النهائية";
 
 // 
 // $messages[""] = "";
