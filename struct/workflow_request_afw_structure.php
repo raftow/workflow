@@ -998,7 +998,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                'myOriginalObjectLink' => array(
+                'myOriginalObjectLinks' => array(
                         'IMPORTANT' => 'IN',
                         'SEARCH' => false,
                         'QSEARCH' => false,
