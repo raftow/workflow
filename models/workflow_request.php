@@ -1602,7 +1602,7 @@ class WorkflowRequest extends WorkflowObject
 
         protected function customLastEditedStep($simulation = true)
         {
-                return $this->reachedStep();
+                return $this->reachedStep() - 1;
         }
 
         /**
