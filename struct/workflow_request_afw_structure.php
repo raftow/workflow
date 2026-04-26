@@ -18,7 +18,7 @@ class WorkflowWorkflowRequestAfwStructure
                         // $obj->IS_LOOKUP = true;
                         $obj->OwnedBy = array('module' => "workflow", 'afw' => "WorkflowApplicant");
                         $obj->editByStep = true;
-                        $obj->editNbSteps = 8;
+                        $obj->editNbSteps = 10;
 
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         // $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'Workflow', 'class' => 'WorkflowRequest', 'submit' => true);
@@ -855,6 +855,26 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
                 'div_step_8' => array(
                         'STEP' => 8,
+                        'CATEGORY' => 'FORMULA',
+                        'SHOW' => true,
+                        'EDIT' => true,
+                        'DEFAUT' => 'Y',
+                        'TYPE' => 'TEXT',
+                        'SIZE' => 'AREA',
+                        'ROWS' => 16,
+                        'DISPLAY' => true,
+                        'NO-LABEL' => true,
+                        'READONLY' => true,
+                        'FORMAT' => 'HTML',
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                        'CAN-BE-SETTED' => false,
+                        'INPUT_WIDE' => true,
+                ),
+
+                'div_step_10' => array(
+                        'STEP' => 10,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
                         'EDIT' => true,

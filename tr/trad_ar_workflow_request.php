@@ -23,6 +23,8 @@ class WorkflowRequestArTranslator
 		$trad["workflow_request"]["rejection_reason"] = "بيان سبب الرفض في حالة الرفض";
 
 		$trad['workflow_request']['workflowRequestDataList'] = 'بيانات الطلب';
+		$trad['workflow_request']['action-convenient'] = 'الإجراء المناسب';
+		
 
 		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
 		$trad['workflow_request']['workflowrequest.new'] = 'جديد';
