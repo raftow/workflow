@@ -13,6 +13,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['step6'] = 'مراجعة اللجنة';
 		$trad['workflow_request']['step7'] = 'المقابلة الشخصية';
 		$trad['workflow_request']['step8'] = 'المفاضلة والقبول';
+		$trad['workflow_request']['step9'] = 'قرار القبول';
+		$trad['workflow_request']['step10'] = 'المطابقة النهائية';
 
 
 		$trad['workflow_request']['interview_score'] = 'درجة المقابلة الشخصية';

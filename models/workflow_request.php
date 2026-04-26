@@ -1595,7 +1595,7 @@ class WorkflowRequest extends WorkflowObject
                 if ($originalObject) {
                         $return = $originalObject->showMyLinks($lang);
                         $title = $this->translate("action-convenient", $lang); 
-                        $return .= " " . $this->showMyLink(9, '', $title);
+                        $return .= " " . $this->showMyLink(10, '', $title);
                         return $return;
                 } else {
                         $error_msg = $this->tm("not found", $lang);
