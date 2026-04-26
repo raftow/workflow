@@ -107,6 +107,7 @@ try {
                 ];
 
                 $specialStructure = [
+                        /*
                         'workflow_scope_id' =>
                         [
                                 'SEARCH-MULTIPLE' => true,
@@ -114,7 +115,7 @@ try {
                         'workflow_sub_scope_id' =>
                         [
                                 'SEARCH-MULTIPLE' => true,
-                        ],
+                        ],*/
 
                 ];
 
