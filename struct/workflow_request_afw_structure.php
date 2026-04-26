@@ -987,7 +987,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ITEM' => 'workflow_request_id',
                         'READONLY' => true,
                         'CAN-BE-SETTED' => true,
-                        'CSS' => 'width_pct_50',
+                        'CSS' => 'width_pct_100',
                 ),
                 'workflowRequestDataList' => array(
                         'STEP' => 9,

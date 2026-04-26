@@ -1585,17 +1585,20 @@ class WorkflowRequest extends WorkflowObject
                 return $res;
         }
 
-        public function calcMyOriginalObjectLinks($what = 'value')
+        public function calcMyOriginalObjectLinks($what = 'value', $actionconvenient=true)
         {
                 /**
                  * @var AFWObject $originalObject
                  */
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $originalObject = $this->calcOriginalObject('object');
-                if ($originalObject) {
+                if ($originalObject) {                        
                         $return = $originalObject->showMyLinks($lang);
-                        $title = $this->translate("action-convenient", $lang); 
-                        $return .= " " . $this->showMyLink(10, '', $title);
+                        if($actionconvenient) {
+                                $title = $this->translate("action-convenient", $lang);                         
+                                $return .= " " . $this->showMyLink(10, '', $title);
+                        }
+                        
                         return $return;
                 } else {
                         $error_msg = $this->tm("not found", $lang);
