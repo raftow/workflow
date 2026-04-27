@@ -39,7 +39,7 @@ $MODULE = 'workflow';
 AfwAutoLoader::addMainModule($MODULE);
 
 $reqObj = WorkflowRequest::loadById($workflow_request_id);
-
+die(var_dump($reqObj));
 if (!$reqObj) {
     $data['status']  = 'error';
     $data['message'] = "$api_name : workflow request not found for id=$workflow_request_id";
