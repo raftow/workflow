@@ -30,7 +30,7 @@ if (!$workflow_request_id || !$transitionId || !$applicant_id) {
         . " workflow_request_id=$workflow_request_id"
         . " transitionId=$transitionId"
         . " applicant_id=$applicant_id";
-    return json_encode($data);
+    die(json_encode($data));
 }
 
 //AfwSession::setUser($applicant_id);
@@ -43,7 +43,7 @@ $reqObj = WorkflowRequest::loadById($workflow_request_id);
 if (!$reqObj) {
     $data['status']  = 'error';
     $data['message'] = "$api_name : workflow request not found for id=$workflow_request_id";
-    return json_encode($data);
+    die(json_encode($data));
 }
 
 list($error, $status_comment) = $reqObj->runTransition($transitionId, $lang);
@@ -56,4 +56,4 @@ if ($error) {
     $data['message'] = $status_comment;
 }
 
-return json_encode($data);
+die(json_encode($data));
