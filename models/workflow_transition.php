@@ -32,6 +32,10 @@ class WorkflowTransition extends WorkflowObject
         return 'edit_workflow_transition';
     }
 
+    /**
+     * @param mixed $id
+     * @return WorkflowTransition
+     */
     public static function loadById($id)
     {
         $obj = new WorkflowTransition();

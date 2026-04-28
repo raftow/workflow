@@ -3,7 +3,8 @@ $messages['Add comment'] = 'إضافة تعليق';
 $messages['Condition for this transition not satisfied'] = 'الشرط لهذا الانتقال غير متحقق';
 $messages['This employee is not authorized to perform this transition'] = 'هذا الموظف غير مخول للقيام بهذا الانتقال';
 $messages['No application object found'] = 'لم يتم العثور على كائن الطلب';
-$messages['No authenticated workflow employee found'] = 'المعذرة حصل خطأ حيث لم يتم التعرف بشكل قطعي على الموظف الذي قام بتسجيل الدخول';
+$messages['Session terminated or no authenticated employee found when this transition need one of the following previleges'] =
+         'المعذرة انتهت الجلسة أو لم يتم تعريف الموظف الذي قام بتسجيل الدخول في الوقت الذي تتطلب هذه العملية الانتقالية أحد الصلاحيات التالية';
 $messages['Please enter in the bottom of this form the rejection reason'] = 'يرجى إدخال سبب الرفض في أسفل هذا النموذج';
 $messages['This transition needs before to enter rejection comments justifications'] = 'هذا الانتقال يحتاج قبل ذلك إلى إدخال مبررات تعليقات الرفض';
 $messages['No available employee found for assignment'] = 'لم يتم العثور على موظف متاح لتكليفه';

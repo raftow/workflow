@@ -384,7 +384,11 @@ class WorkflowRequest extends WorkflowObject
                 if(count($authorizedRolesArray)>0) {
                         if (!$objme or !$objme->isSuperAdmin()) {
                                 $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
-                                if (!$wEmployeeMe) return array($this->tm('No authenticated workflow employee found', $lang), '');
+                                if (!$wEmployeeMe) {
+                                        $error = $this->tm('Session terminated or no authenticated employee found when this transition need one of the following previleges', $lang);
+                                        $error .= " : " . $objTransition->showAttribute("workflow_role_mfk", null, true, $lang);
+                                        return array($error, '');
+                                }
                                 if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
                                         $wrole_mfk = $wEmployeeMe->getVal("wrole_mfk");
                                         return array($this->tm('This employee is not authorized to perform this transition', $lang) . '<!-- ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk -->", '');
