@@ -69,9 +69,9 @@
 				'CSS' => 'width_pct_50', ),
 
 		'interview_date' => array('SEARCH' => true,  'QSEARCH' => true,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => true,  
-				'EDIT' => true,  'QEDIT' => true, 'TEXT-SEARCHABLE-SEPARATED' => true,//'QSEARCH_OPER' => 'between',
+				'EDIT' => true,  'QEDIT' => true, 'TEXT-SEARCHABLE-SEPARATED' => true,'QSEARCH_OPER' => 'between',
 				'SIZE' => 10,  'MAXLENGTH' => 10,  'MIN-SIZE' => 1,  'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",  'MANDATORY' => true,  'UTF8' => true,  
-				'TYPE' => 'GDAT',    'READONLY' => false,  'DNA' => true, 
+				'TYPE' => 'GDAT',    'READONLY' => false,  'DNA' => true, 'SEARCH-ADMIN' => true,'SHOW-ADMIN' => true,'EDIT-ADMIN' => true,
 				'CSS' => 'width_pct_50', ),
 
 		'start_time' => array('SEARCH' => true,  'QSEARCH' => false,  'SHOW' => true,  'AUDIT' => false,  'RETRIEVE' => false,  
