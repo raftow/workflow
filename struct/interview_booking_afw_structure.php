@@ -224,7 +224,7 @@ class WorkflowInterviewBookingAfwStructure
 		),
 		'workflow_applicant_id' => array(
 			'SEARCH' => true,
-			'QSEARCH' => false,
+			'QSEARCH' => true,
 			'SHOW' => true,
 			'AUDIT' => false,
 			'RETRIEVE' => false,
@@ -244,7 +244,7 @@ class WorkflowInterviewBookingAfwStructure
 
 		'workflow_session_id' => array(
 			'SEARCH' => true,
-			'QSEARCH' => false,
+			'QSEARCH' => true,
 			'SHOW' => true,
 			'AUDIT' => false,
 			'RETRIEVE' => false,

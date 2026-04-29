@@ -380,7 +380,7 @@ class WorkflowRequest extends WorkflowObject
                 $accepted_roles_mfk = trim($objTransition->getVal("workflow_role_mfk"), ",");
                 if($accepted_roles_mfk=="5") $accepted_roles_mfk=""; // المتقدم ليس صلاحية حقيقية
 
-                $authorizedRolesArray = explode(",", $accepted_roles_mfk);
+                $authorizedRolesArray = array_filter(explode(",", $accepted_roles_mfk));
                 if(count($authorizedRolesArray)>0) {
                         if (!$objme or !$objme->isSuperAdmin()) {
                                 $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
