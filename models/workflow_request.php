@@ -823,8 +823,10 @@ class WorkflowRequest extends WorkflowObject
 
         public function isSponsored()
         {
-                $appClass = $this->getVal("application_class_enum");
-                return ($appClass == 2 or $appClass == 3 or $appClass == 5);
+                //$appClass = $this->getVal("application_class_enum");
+                //return ($appClass == 2 or $appClass == 3 or $appClass == 5);
+                $applicationClassObj = ApplicationClass::loadById($this->getVal("application_class_enum"));   
+                return $applicationClassObj->getVal("budgeting_ind") == "Y";
         }
 
         public function isNotSponsored()

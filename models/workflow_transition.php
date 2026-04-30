@@ -254,4 +254,28 @@ class WorkflowTransition extends WorkflowObject
 
         return [$switcher_authorized, $switcher_title, $switcher_text];
     }
+
+    public function sendNotificationForTransition($workflow_request_id, $lang)
+    {
+            $request_id = $workflow_request_id;
+            $template_id = $this->getVal('notification_template_id');
+            $base_url = AfwSession::config("api_base_url", "https://api.bmeholding.com/notification");
+            $token = AfwSession::config("api_token", ""); // get it from config or env variable
+
+            $ch = curl_init("$base_url/notification/send/$request_id/$template_id");
+
+            curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER     => [
+                    "Authorization: Bearer $token",
+                    "Accept: application/json",
+            ],
+            ]);
+
+            $response = curl_exec($ch);
+            $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            return ["status"=>$status, "response"=>$response];
+    }  
 }
