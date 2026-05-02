@@ -33,7 +33,7 @@ class SectionTemplate extends WorkflowObject{
 
         public function get_template_full_path($module_code="")
         {
-            if(!$module_code) $module_code = AfwUrlManager::currentURIModule();
+            if(!$module_code) $module_code = UfwUrlManager::currentURIModule();
             $lookup_code = $this->getVal("lookup_code");
             $file_dir_name = dirname(__FILE__); 
             $template_full_path_name = "$file_dir_name/../../$module_code/tpl/template_$lookup_code.php";
