@@ -106,7 +106,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'FORMAT' => 'ALPHA-NUMERIC',
                         'CSS' => 'width_pct_25'
                 ),
-                
+
 
                 'mobile' => array(
                         'FGROUP' => 'profile',
@@ -1065,6 +1065,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT' => false,
                         'UTF8' => false,
                         'TYPE' => 'FK',
+                        "NOT-PAGGABLE" => true,
                         'ANSWER' => '::original',
                         'ANSMODULE' => '::original',
                         'SIZE' => 40,
