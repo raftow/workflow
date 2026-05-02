@@ -82,18 +82,31 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_50',
                 ),
+
                 'idn' => array(
                         'FGROUP' => 'profile',
-                        'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'workflow_applicant_id.idn',
-                        'STEP' => 1,
-                        'MANDATORY' => true,
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
                         'SHOW' => true,
                         'RETRIEVE' => true,
-                        'CSS' => 'width_pct_25',
+                        'RETRIEVE_LAST' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '32',
+                        'MAXLENGTH' => '32',
+                        'TYPE' => 'TEXT',
                         'DISPLAY' => true,
+                        'STEP' => 1,
+                        'REQUIRED' => true,
                         'READONLY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'TEXT-SEARCHABLE-SEPARATED' => true,
+                        'FORMAT' => 'ALPHA-NUMERIC',
+                        'CSS' => 'width_pct_25'
                 ),
+                
 
                 'mobile' => array(
                         'FGROUP' => 'profile',
