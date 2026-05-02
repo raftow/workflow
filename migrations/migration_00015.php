@@ -4,6 +4,8 @@ if (!class_exists("AfwSession")) die("Denied access");
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
 
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_request add   idn varchar(32)  NOT NULL DEFAULT ''  AFTER workflow_applicant_id;");
+    // update nauss_workflow.workflow_request set idn = workflow_applicant_id;
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.workflow_transition add   application_model_financial_transaction_id int(11) DEFAULT NULL  AFTER next_transition_id;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_code varchar(32)  NOT NULL DEFAULT ''  AFTER id;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   recipient_type_enum smallint NOT NULL DEFAULT 0  AFTER workflow_entity_id;");
