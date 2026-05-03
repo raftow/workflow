@@ -273,7 +273,7 @@ class WorkflowTransition extends WorkflowObject
             ]);
 
             $response = curl_exec($ch);
-            die(var_dump($response));
+            die("sendNotificationForTransition : ".var_dump($response));
             $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
 
