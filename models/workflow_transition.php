@@ -259,8 +259,8 @@ class WorkflowTransition extends WorkflowObject
     {
             $request_id = $workflow_request_id;
             $template_id = $this->getVal('notification_template_id');
-            $base_url = AfwSession::config("api_base_url", "https://api.bmeholding.com/notification");
-            $token = AfwSession::config("api_token", ""); // get it from config or env variable
+            $base_url = AfwSession::config("api_base_url", "https://api.bmeholding.com/");
+            $token = AfwSession::config("api_token", "891|RM4bJNyLZ0zSnTR0Dd4LAygvox6xlhpXihqMcVftda0342ec"); // get it from config or env variable
 
             $ch = curl_init("$base_url/notification/send/$request_id/$template_id");
             curl_setopt_array($ch, [
