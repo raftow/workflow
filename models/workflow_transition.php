@@ -263,7 +263,6 @@ class WorkflowTransition extends WorkflowObject
             $token = AfwSession::config("api_token", ""); // get it from config or env variable
 
             $ch = curl_init("$base_url/notification/send/$request_id/$template_id");
-die("$base_url/notification/send/$request_id/$template_id");
             curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER     => [
@@ -275,6 +274,7 @@ die("$base_url/notification/send/$request_id/$template_id");
             $response = curl_exec($ch);
             $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
+die(var_dump($response));
 
             return ["status"=>$status, "response"=>$response];
     }  
