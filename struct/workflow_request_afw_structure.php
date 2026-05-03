@@ -82,18 +82,31 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_50',
                 ),
+
                 'idn' => array(
                         'FGROUP' => 'profile',
-                        'CATEGORY' => 'SHORTCUT',
-                        'SHORTCUT' => 'workflow_applicant_id.idn',
-                        'STEP' => 1,
-                        'MANDATORY' => true,
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
                         'SHOW' => true,
                         'RETRIEVE' => true,
-                        'CSS' => 'width_pct_25',
+                        'RETRIEVE_LAST' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '32',
+                        'MAXLENGTH' => '32',
+                        'TYPE' => 'TEXT',
                         'DISPLAY' => true,
+                        'STEP' => 1,
+                        'REQUIRED' => true,
                         'READONLY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'TEXT-SEARCHABLE-SEPARATED' => true,
+                        'FORMAT' => 'ALPHA-NUMERIC',
+                        'CSS' => 'width_pct_25'
                 ),
+
 
                 'mobile' => array(
                         'FGROUP' => 'profile',
@@ -1052,6 +1065,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT' => false,
                         'UTF8' => false,
                         'TYPE' => 'FK',
+                        "NOT-PAGGABLE" => true,
                         'ANSWER' => '::original',
                         'ANSMODULE' => '::original',
                         'SIZE' => 40,
@@ -1066,6 +1080,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
                 'original_1' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT' => '::original',
@@ -1076,6 +1091,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_2' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1086,6 +1102,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_3' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1096,6 +1113,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_4' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1106,6 +1124,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_5' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1116,6 +1135,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_6' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT' => '::original',
@@ -1126,6 +1146,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_7' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1136,6 +1157,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_8' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1146,6 +1168,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_9' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',
@@ -1156,6 +1179,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'STEP' => '::original',
                 ),
                 'original_10' => array(
+                        "NOT-PAGGABLE" => true,
                         'OBSOLETE' => '::original',
                         'CATEGORY' => 'SHORTCUT',
                         'SHORTCUT-CATEGORY' => '::original',

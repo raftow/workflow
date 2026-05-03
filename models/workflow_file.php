@@ -428,7 +428,7 @@ zoomWindowOffety:-200
                                 throw new AfwRuntimeException("File not found : $file_path");
                         }
 
-                        $excel = new AfwExcel($file_path);
+                        $excel = new UfwExcel($file_path);
                         $my_data = $excel->getData($row_num_start, $row_num_end, $caller);
                         $my_head = $excel->getHeaderTrad();
 

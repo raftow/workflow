@@ -60,7 +60,8 @@ try {
                 'workflow_sub_scope_id',
                 'application_class_enum',
                 'workflow_source_id',
-                'workflow_category_enum'
+                'workflow_category_enum',
+                'idn'
         ];
 
         if ($option == "finalmatch") {
@@ -115,9 +116,7 @@ try {
                         'workflow_sub_scope_id' =>
                         [
                                 'SEARCH-MULTIPLE' => true,
-                        ],*/
-
-                ];
+                        ],*/];
 
                 $qsearch_page_title = AfwLanguageHelper::tt('Final match screen', $lang, $currmod);
         } else {

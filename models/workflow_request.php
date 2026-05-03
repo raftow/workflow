@@ -207,6 +207,11 @@ class WorkflowRequest extends WorkflowObject
                         if ($create_obj_if_not_found) {
                                 if (!$obj->getVal('request_date'))
                                         $obj->set('request_date', AfwDateHelper::currentHijriDate());
+                                $wApplicantObj = $obj->het('workflow_applicant_id');
+                                if(!$wApplicantObj) {
+                                        throw new AfwRuntimeException('loadByMainIndex : workflow applicant object not found');
+                                }
+                                $obj->set('idn', $wApplicantObj->getVal("idn"));
                                 $obj->activate();
                         }
 
@@ -216,6 +221,12 @@ class WorkflowRequest extends WorkflowObject
                         $obj->set('workflow_model_id', $workflow_model_id);
                         $obj->set('request_date', AfwDateHelper::currentHijriDate());
                         $obj->set('done', 'N');
+                        $wApplicantObj = $obj->het('workflow_applicant_id');
+                        if(!$wApplicantObj) {
+                                throw new AfwRuntimeException('loadByMainIndex : workflow applicant object not found');
+                        }
+                        $obj->set('idn', $wApplicantObj->getVal("idn"));
+
                         $obj->insertNew();
                         if (!$obj->id)
                                 return null;  // means beforeInsert rejected insert operation
