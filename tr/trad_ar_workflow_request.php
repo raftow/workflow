@@ -51,7 +51,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['assign_date'] = 'تاريخ التكليف';
 		$trad['workflow_request']['assign_time'] = 'وقت التكليف';
 		$trad['workflow_request']['assignment'] = 'التكليف';
-		$trad['workflow_request']['done'] = 'تم الانتهاء؟';
+		$trad['workflow_request']['done'] = 'حالة العمل';
 		$trad['workflow_request']['done.YES'] = 'تم الانتهاء';
 		$trad['workflow_request']['done.NO'] = 'لم يبدأ العمل';
 		$trad['workflow_request']['done.EUH'] = 'جاري العمل';
@@ -61,8 +61,8 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['run_admission'] = 'تنفيذ القبول';
 
 
-		$trad['workflow_request']['done_date'] = 'تاريخ آخر اجراء';
-		// $trad['workflow_request']['done_time'] = 'وقت الانتهاء';
+		$trad['workflow_request']['done_date'] = 'تاريخ العمل';
+		$trad['workflow_request']['done_time'] = 'وقت العمل';
 		$trad['workflow_request']['myOriginalObjectLinks'] = 'بيانات المتقدم';
 
 
