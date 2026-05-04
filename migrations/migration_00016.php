@@ -23,7 +23,7 @@ AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workf
   `sci_id` int(11) DEFAULT NULL,
   
     
-   workflow_applicant_id int(11) NOT NULL , 
+   workflow_applicant_id bigint(20) NOT NULL , 
    idn varchar(32)  NOT NULL DEFAULT '' , 
    application_class_enum smallint NOT NULL DEFAULT 0 , 
    workflow_category_enum smallint NOT NULL DEFAULT 0 , 
