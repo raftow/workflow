@@ -1333,6 +1333,23 @@ class WorkflowRequest extends WorkflowObject
                 throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
         }
 
+        public function whereIam($lang) {
+                $employee_id = $this->getVal("employee_id");
+                if ($employee_id) {
+                        $emplObj = $this->het('employee_id');
+                        if ($emplObj) {
+                                return $this->tm("This request is assigned to",$lang) . " : " . $emplObj->getDisplay($lang);
+                        }
+                }
+
+                $finalStageObj = $this->het('workflow_stage_id');
+                if ($finalStageObj and !$finalStageObj->sureIs("auto_assign_ind")) {
+                        return $this->tm("This request does not require assignment to an employee",$lang);
+                }
+
+                return $this->tm("This request is not assigned to anyone yet",$lang);
+                
+        }
 
         public function isMine()
         {
@@ -1364,7 +1381,9 @@ class WorkflowRequest extends WorkflowObject
                         if (!$this->isMine()) {
                                 unset($link);
                                 $link = array();
-                                $title = "ليس لك حاليا صلاحية العمل على هذا الطلب، يرجى الضغط على زر انهاء للعودة إلى صندوق الوارد";
+                                $currEmpl = $this->whereIam($lang);
+                                $title = "ليس لك حاليا صلاحية العمل على هذا الطلب، [$currEmpl]
+                                          يرجى الضغط على زر انهاء للعودة إلى صندوق الوارد";
                                 $link["URL"] = "@help";
                                 $link["CODE"] = "stop.and.debugg";
                                 $link["TITLE"] = $title;
