@@ -1343,7 +1343,9 @@ class WorkflowRequest extends WorkflowObject
                 }
 
                 $finalStageObj = $this->het('workflow_stage_id');
-                if ($finalStageObj and !$finalStageObj->sureIs("auto_assign_ind")) {
+                if(!$finalStageObj) return $this->tm("This request is gone in no existsant stage",$lang);
+                $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
+                if (!$auto_assign_ind) {
                         return $this->tm("This request does not require assignment to an employee",$lang);
                 }
 
@@ -1364,7 +1366,9 @@ class WorkflowRequest extends WorkflowObject
                         }
                         else {
                                 $finalStageObj = $this->het('workflow_stage_id');
-                                return ($finalStageObj and (!$finalStageObj->sureIs("auto_assign_ind")));
+                                if(!$finalStageObj) return false;
+                                $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
+                                return (!$auto_assign_ind);
                         }
                 }
         }
