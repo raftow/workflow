@@ -11,9 +11,15 @@ class WorkflowRequest extends WorkflowObject
         public static $DATABASE = '';
         public static $MODULE = 'workflow';
         public static $TABLE = 'workflow_request';
+        /**
+         * @var array|null
+         */
         public static $DB_STRUCTURE = null;
         // public static $copypast = true;
 
+        /**
+         * @var AFWObject|null
+         */
         private $orginalObject = null;
 
         public function __construct()
