@@ -1333,9 +1333,21 @@ class WorkflowRequest extends WorkflowObject
                 throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
         }
 
-        public function whereIam($lang) {
-                $employee_id = $this->getVal("employee_id");
-                if ($employee_id) {
+        /**
+         * @param string $lang
+         * @return string
+         */
+
+        public function whereIam($lang) 
+        {
+                $objme = AfwSession::getUserConnected();
+                if ($objme and $objme->isAdmin()) {
+                        return $this->tm("Super admin users can work on any request",$lang);
+                }
+
+                $employee_id = $objme ? $objme->getEmployeeId() : 0;
+                $assigned_employee_id = $this->getVal("employee_id");
+                if ($assigned_employee_id) {
                         $emplObj = $this->het('employee_id');
                         if ($emplObj) {
                                 return $this->tm("This request is assigned to",$lang) . " : " . $emplObj->getDisplay($lang);
@@ -1360,9 +1372,10 @@ class WorkflowRequest extends WorkflowObject
                 if ($objme and $objme->isAdmin()) {
                         return true;
                 } else {
+                        $assigned_employee_id = $this->getVal("employee_id");
                         $employee_id = $objme ? $objme->getEmployeeId() : 0;
-                        if ($employee_id) {
-                                return ($employee_id == $this->getVal("employee_id"));
+                        if ($assigned_employee_id) {
+                                return ($employee_id == $assigned_employee_id);
                         }
                         else {
                                 $finalStageObj = $this->het('workflow_stage_id');
