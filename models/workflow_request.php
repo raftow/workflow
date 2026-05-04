@@ -1364,7 +1364,7 @@ class WorkflowRequest extends WorkflowObject
                         }
                         else {
                                 $finalStageObj = $this->het('workflow_stage_id');
-                                return ($finalStageObj and !$finalStageObj->sureIs("auto_assign_ind"));
+                                return ($finalStageObj and (!$finalStageObj->sureIs("auto_assign_ind")));
                         }
                 }
         }
