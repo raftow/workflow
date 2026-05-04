@@ -300,5 +300,5 @@ try {
 
   AfwDatabase::db_query("create unique index uk_workflow_session on " . $server_db_prefix . "workflow.workflow_session(workflow_model_id,external_code);");
 } catch (Exception $e) {
-  $migration_error .= " " . $e->getMessage();
+  $migration_error = " " . $e->getMessage();
 }

@@ -1342,7 +1342,13 @@ class WorkflowRequest extends WorkflowObject
                         return true;
                 } else {
                         $employee_id = $objme ? $objme->getEmployeeId() : 0;
-                        return ($employee_id and ($employee_id == $this->getVal("employee_id")));
+                        if ($employee_id) {
+                                return ($employee_id == $this->getVal("employee_id"));
+                        }
+                        else {
+                                $finalStageObj = $this->het('workflow_stage_id');
+                                return ($finalStageObj and !$finalStageObj->sureIs("auto_assign_ind"));
+                        }
                 }
         }
 
