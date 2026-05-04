@@ -754,6 +754,7 @@ class WorkflowRequest extends WorkflowObject
         public function cancelStartWork($lang = 'ar')
         {
                 $this->set("done", "N");
+                $this->set('done_date', date('Y-m-d H:i:s'));
                 $this->commit();
                 // notify the employee that wis work on this request has been canceled                
 
@@ -764,6 +765,7 @@ class WorkflowRequest extends WorkflowObject
         public function startWork($lang = 'ar')
         {
                 $this->set("done", "W"); // W means started Y means done N means not started
+                $this->set('done_date', date('Y-m-d H:i:s'));
                 $this->commit();
 
 
