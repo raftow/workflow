@@ -674,6 +674,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'READONLY' => true,
                         'SEARCH-BY-ONE' => false,
                         'DISPLAY' => true,
+                        'AUDIT' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                 ),
