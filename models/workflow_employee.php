@@ -15,6 +15,9 @@ class WorkflowEmployee extends WorkflowObject
         public static $DATABASE = '';
         public static $MODULE = 'workflow';
         public static $TABLE = 'workflow_employee';
+        /**
+         * @var array|null
+         */
         public static $DB_STRUCTURE = null;
 
         public function __construct()
