@@ -284,7 +284,7 @@ class WorkflowRequest extends WorkflowObject
 
                 if (substr($name, 0, 13) == 'calcDiv_step_') {
                         $step = intval(substr($name, 13));
-                        return $this->calcDiv_step($step, $arguments[0], 'Y');
+                        return $this->calcDiv_step($step, $arguments[0]);
                 }
 
                 if (substr($name, 0, 18) == 'approveProgramWith') {
@@ -1128,6 +1128,8 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "div_step_6") return true;
                 if ($attribute == "div_step_7") return true;
                 if ($attribute == "div_step_8") return true;
+                if ($attribute == "div_step_9") return true;
+                if ($attribute == "div_step_10") return true;
                 if ($attribute == "formComments") return true;
                 if ($attribute == "originalObject") return true;
                 return false;
@@ -1310,7 +1312,7 @@ class WorkflowRequest extends WorkflowObject
 
         public function attributeIsApplicable($attribute)
         {
-                for ($step = 1; $step <= 8; $step++) {
+                for ($step = 1; $step <= 10; $step++) {
                         if ($attribute == "div_step_$step") {
                                 return $this->weReachedStep($step);
                         }
@@ -1319,6 +1321,17 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "interview_score") {
                         return $this->weReachedStep(7);
                 }
+
+                if ($attribute == "workflowRequestDataList") {
+                        return $this->weReachedStep(9);
+                }
+
+                if ($attribute == "workflowRequestCommentList") {
+                        return $this->weReachedStep(10);
+                }
+
+
+                
 
                 if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and ($this->sureIs("attempt") or $this->getVal("workflow_rejection_reason_id")));
 
