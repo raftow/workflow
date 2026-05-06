@@ -735,14 +735,15 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'ERROR-CHECK' => true,
                 ),
-                'done_time' => array(
+                
+                /* 'done_time' => array(
                         'FGROUP' => 'assignment',
-                        'STEP' => 2,
-                        'SEARCH' => true,
+                        'STEP' => 999,
+                        'SEARCH' => false,
                         'QSEARCH' => false,
-                        'SHOW' => true,
+                        'SHOW' => false,
                         'RETRIEVE' => false,
-                        'EDIT' => true,
+                        'EDIT' => false,
                         'QEDIT' => false,
                         'CSS' => 'width_pct_25',
                         'SIZE' => 6,
@@ -754,7 +755,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'DISPLAY' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
-                ),
+                ),*/
 
                 'run_admission' => array(
                         'STEP' => 99,

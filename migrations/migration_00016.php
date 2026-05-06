@@ -44,7 +44,7 @@ AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workf
    attempt char(1) DEFAULT NULL , 
    done char(1) DEFAULT NULL , 
    done_date datetime DEFAULT NULL , 
-   done_time varchar(8) DEFAULT NULL , 
+   -- done_time varchar(8) DEFAULT NULL , 
    interview_score decimal(5,2) DEFAULT NULL , 
    workflow_rejection_reason_id int(11) DEFAULT NULL , 
 

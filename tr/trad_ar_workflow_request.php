@@ -61,7 +61,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['run_admission'] = 'تنفيذ القبول';
 
 
-		$trad['workflow_request']['done_date'] = 'تاريخ ووقت الختم';
+		$trad['workflow_request']['done_date'] = 'تاريخ ووقت الحركة';
 		// $trad['workflow_request']['done_time'] = 'وقت العمل'; this field is not used and should be removed in the future
 		$trad['workflow_request']['myOriginalObjectLinks'] = 'بيانات المتقدم';
 
