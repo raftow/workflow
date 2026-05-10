@@ -48,5 +48,5 @@ try {
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email text  DEFAULT NULL  AFTER notification_body_en;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.notification_template add   notification_email_en text  DEFAULT NULL  AFTER notification_email;");
 } catch (Exception $e) {
-    $migration_error .= " " . $e->getMessage();
+    $migration_error = " " . $e->getMessage();
 }

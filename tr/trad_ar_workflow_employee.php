@@ -9,6 +9,8 @@ class WorkflowEmployeeArTranslator
         $trad['workflow_employee']['workflowemployee.single.short'] = 'موظف';
         $trad['workflow_employee']['workflowemployee.new'] = 'جديد';
         $trad['workflow_employee']['workflow_employee'] = 'الموظفون';
+        $trad['workflow_employee']['workflow_employee_'] = 'الموظفين';
+        $trad['workflow_employee']['workflow_employee_.short'] = 'الموظفين';
         $trad['workflow_employee']['workflow_employee.short'] = 'الموظفون';
         $trad['workflow_employee']['orgunit_id'] = 'الإدارة';
         $trad['workflow_employee']['workflow_orgunit_id'] = 'الجهة التابع لها';

@@ -53,9 +53,11 @@ $messages["Are you sure you want to do this admission action"] = "هل أنت م
 $messages["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
 $messages["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
 $messages["Final match screen"] = "شاشة المطابقة النهائية";
-
+$messages["This request is assigned to"] = "هذا الطلب معين إلى";
+$messages["This request is not assigned to anyone yet"] = "هذا الطلب لم يُعين بعد إلى أي شخص";
+$messages["This request does not require assignment to an employee"] = "هذا الطلب لا يتطلب تعيين موظف";
 // 
-// $messages[""] = "";
+// 
 // $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";

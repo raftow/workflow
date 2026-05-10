@@ -11,9 +11,15 @@ class WorkflowRequest extends WorkflowObject
         public static $DATABASE = '';
         public static $MODULE = 'workflow';
         public static $TABLE = 'workflow_request';
+        /**
+         * @var array|null
+         */
         public static $DB_STRUCTURE = null;
         // public static $copypast = true;
 
+        /**
+         * @var AFWObject|null
+         */
         private $orginalObject = null;
 
         public function __construct()
@@ -246,11 +252,20 @@ class WorkflowRequest extends WorkflowObject
                 return false;
         }
 
+        /**
+         * @param int $employee_id
+         */
         public static function inboxSqlCond($employee_id, $prefix = 'me.')
         {
                 // list of stages that does not need assignment to be visible in inbox
-                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
-                return "(" . $prefix . "employee_id='$employee_id' or " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . "))  and " . $prefix . "done != 'Y'";
+                // $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
+                // or " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . ")
+                // Amjad whatsApp 2026-05-10 (inside word document : admission cycle test 09052026) :
+                // 2.	Show only the workflow request assigned to the admin user connected
+                // 3.	Don’t show the workflow request assigned to another user
+                // 4.	Don’t show the non-assigned workflow request - مرحلة المطابقة و المفاضلة 
+
+                return "(" . $prefix . "employee_id='$employee_id')  and " . $prefix . "done != 'Y'"; 
         }
 
         public static function inboxCountFor($employee_id)
@@ -278,7 +293,7 @@ class WorkflowRequest extends WorkflowObject
 
                 if (substr($name, 0, 13) == 'calcDiv_step_') {
                         $step = intval(substr($name, 13));
-                        return $this->calcDiv_step($step, $arguments[0], 'Y');
+                        return $this->calcDiv_step($step, $arguments[0]);
                 }
 
                 if (substr($name, 0, 18) == 'approveProgramWith') {
@@ -692,7 +707,7 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                        if ((($this->getVal("employee_id") > 0) or $isSuperAdmin) and ($this->getVal("done") == "N")) {
+                        if (($this->isMine()) and ($this->getVal("done") == "N")) {
                                 $color = 'yellow';
                                 $title_ar = 'بدأ العمل على الطلب';
                                 $methodName = 'startWork';
@@ -707,7 +722,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
-                        } elseif ((($this->getVal("employee_id") > 0) or $isSuperAdmin) and ($this->getVal("done") == "W")) {
+                        } elseif (($this->isMine()) and ($this->getVal("done") == "W")) {
                                 $color = 'gray';
                                 $title_ar = 'إلغاء بدأ العمل على الطلب';
                                 $methodName = 'cancelStartWork';
@@ -748,6 +763,7 @@ class WorkflowRequest extends WorkflowObject
         public function cancelStartWork($lang = 'ar')
         {
                 $this->set("done", "N");
+                $this->set('done_date', date('Y-m-d H:i:s'));
                 $this->commit();
                 // notify the employee that wis work on this request has been canceled                
 
@@ -758,6 +774,7 @@ class WorkflowRequest extends WorkflowObject
         public function startWork($lang = 'ar')
         {
                 $this->set("done", "W"); // W means started Y means done N means not started
+                $this->set('done_date', date('Y-m-d H:i:s'));
                 $this->commit();
 
 
@@ -1120,6 +1137,8 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "div_step_6") return true;
                 if ($attribute == "div_step_7") return true;
                 if ($attribute == "div_step_8") return true;
+                if ($attribute == "div_step_9") return true;
+                if ($attribute == "div_step_10") return true;
                 if ($attribute == "formComments") return true;
                 if ($attribute == "originalObject") return true;
                 return false;
@@ -1302,7 +1321,7 @@ class WorkflowRequest extends WorkflowObject
 
         public function attributeIsApplicable($attribute)
         {
-                for ($step = 1; $step <= 8; $step++) {
+                for ($step = 1; $step <= 10; $step++) {
                         if ($attribute == "div_step_$step") {
                                 return $this->weReachedStep($step);
                         }
@@ -1312,7 +1331,18 @@ class WorkflowRequest extends WorkflowObject
                         return $this->weReachedStep(7);
                 }
 
-                if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and $this->sureIs("attempt"));
+                if ($attribute == "workflowRequestDataList") {
+                        return $this->weReachedStep(9);
+                }
+
+                if ($attribute == "workflowRequestCommentList") {
+                        return $this->weReachedStep(10);
+                }
+
+
+                
+
+                if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and ($this->sureIs("attempt") or $this->getVal("workflow_rejection_reason_id")));
 
 
                 if ($attribute == "interview_score") return $this->isStarted();
@@ -1333,6 +1363,37 @@ class WorkflowRequest extends WorkflowObject
                 throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
         }
 
+        /**
+         * @param string $lang
+         * @return string
+         */
+
+        public function whereIam($lang) 
+        {
+                $objme = AfwSession::getUserConnected();
+                if ($objme and $objme->isAdmin()) {
+                        return $this->tm("Super admin users can work on any request",$lang);
+                }
+
+                $employee_id = $objme ? $objme->getEmployeeId() : 0;
+                $assigned_employee_id = $this->getVal("employee_id");
+                if ($assigned_employee_id) {
+                        $emplObj = $this->het('employee_id');
+                        if ($emplObj) {
+                                return $this->tm("This request is assigned to",$lang) . " : " . $emplObj->getDisplay($lang);
+                        }
+                }
+
+                $finalStageObj = $this->het('workflow_stage_id');
+                if(!$finalStageObj) return $this->tm("This request is gone in no existsant stage",$lang);
+                $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
+                if (!$auto_assign_ind) {
+                        return $this->tm("This request does not require assignment to an employee",$lang);
+                }
+
+                return $this->tm("This request is not assigned to anyone yet",$lang);
+                
+        }
 
         public function isMine()
         {
@@ -1341,8 +1402,17 @@ class WorkflowRequest extends WorkflowObject
                 if ($objme and $objme->isAdmin()) {
                         return true;
                 } else {
+                        $assigned_employee_id = $this->getVal("employee_id");
                         $employee_id = $objme ? $objme->getEmployeeId() : 0;
-                        return ($employee_id and ($employee_id == $this->getVal("employee_id")));
+                        if ($assigned_employee_id) {
+                                return ($employee_id == $assigned_employee_id);
+                        }
+                        else {
+                                $finalStageObj = $this->het('workflow_stage_id');
+                                if(!$finalStageObj) return false;
+                                $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
+                                return (!$auto_assign_ind);
+                        }
                 }
         }
 
@@ -1358,7 +1428,9 @@ class WorkflowRequest extends WorkflowObject
                         if (!$this->isMine()) {
                                 unset($link);
                                 $link = array();
-                                $title = "ليس لك حاليا صلاحية العمل على هذا الطلب، يرجى الضغط على زر انهاء للعودة إلى صندوق الوارد";
+                                $currEmpl = $this->whereIam($lang);
+                                $title = "ليس لك حاليا صلاحية العمل على هذا الطلب، [$currEmpl]
+                                          يرجى الضغط على زر انهاء للعودة إلى صندوق الوارد";
                                 $link["URL"] = "@help";
                                 $link["CODE"] = "stop.and.debugg";
                                 $link["TITLE"] = $title;
