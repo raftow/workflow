@@ -252,11 +252,20 @@ class WorkflowRequest extends WorkflowObject
                 return false;
         }
 
+        /**
+         * @param int $employee_id
+         */
         public static function inboxSqlCond($employee_id, $prefix = 'me.')
         {
                 // list of stages that does not need assignment to be visible in inbox
-                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
-                return "(" . $prefix . "employee_id='$employee_id' or " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . "))  and " . $prefix . "done != 'Y'";
+                // $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
+                // or " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . ")
+                // Amjad whatsApp 2026-05-10 (inside word document : admission cycle test 09052026) :
+                // 2.	Show only the workflow request assigned to the admin user connected
+                // 3.	Don’t show the workflow request assigned to another user
+                // 4.	Don’t show the non-assigned workflow request - مرحلة المطابقة و المفاضلة 
+
+                return "(" . $prefix . "employee_id='$employee_id')  and " . $prefix . "done != 'Y'"; 
         }
 
         public static function inboxCountFor($employee_id)
