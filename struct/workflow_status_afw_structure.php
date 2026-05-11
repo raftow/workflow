@@ -302,6 +302,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'RETRIEVE' => false,
                         'SHOW' => true,
                         'EDIT' => true,
+                        'QEDIT' => true,
                         'DEFAUT' => 'N',
                         'TYPE' => 'TEXT',
                         'SIZE' => 16,
