@@ -20,4 +20,5 @@ $migrations = [
     '00014' => ['by'=>'medali', 'title' => 'add next_transition_id to workflow_transition'],
     '00015' => ['by'=>'medali', 'title' => 'fix notification_placeholder field types'],
     '00016' => ['by'=>'rafik', 'title' => 'workflow audit tables '],
+    '00017' => ['by'=>'medali', 'title' => 'add sis_status_code to workflow_status'],
 ];

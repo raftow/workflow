@@ -298,7 +298,23 @@ class WorkflowWorkflowStatusAfwStructure
                         'CSS' => 'width_pct_25',
                 ),
 
-
+                'sis_status_code' => array(
+                        'RETRIEVE' => false,
+                        'SHOW' => true,
+                        'EDIT' => true,
+                        'DEFAUT' => 'N',
+                        'TYPE' => 'TEXT',
+                        'SIZE' => 16,
+                        'MAXLENGTH' => 16,
+                        'UTF8' => true,
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => false,
+                        'QSEARCH' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
 
                 'active' => array(
                         'SHOW' => true,
