@@ -33,7 +33,7 @@ if (!$workflow_request_id || !$transitionId || !$applicant_id) {
     die(json_encode($data));
 }
 
-//AfwSession::setUser($applicant_id);
+AfwSession::setUser(3);
 
 $MODULE = 'workflow';
 AfwAutoLoader::addMainModule($MODULE);
