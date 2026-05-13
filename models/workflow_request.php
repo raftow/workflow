@@ -1501,7 +1501,7 @@ class WorkflowRequest extends WorkflowObject
                         // if the pattern exists it means we should create a booking invite
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
-                                if ($ibObj) {
+                                if ($ibObj && $ibObj->is_new) {
                                         $workflow_scope_id = $this->getVal("workflow_scope_id");
                                         $booking_status_id = 6;
                                         $reschedule_count = $ibObj->getVal("max_reschedule");
@@ -1515,7 +1515,7 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
                                         $info = $this->tm("Interview booking invitation has been created", $lang);
-                                } else $error = $this->tm("Failed to create interview booking invitation", $lang);
+                                } elseif(!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
                         } else $error = $this->tm("Interview booking pattern not found", $lang);
                 } elseif ($returnInterviewBookingObject) {
                         if ($itpObj) {
