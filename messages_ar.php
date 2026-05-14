@@ -56,6 +56,9 @@ $messages["Final match screen"] = "شاشة المطابقة النهائية";
 $messages["This request is assigned to"] = "هذا الطلب معين إلى";
 $messages["This request is not assigned to anyone yet"] = "هذا الطلب لم يُعين بعد إلى أي شخص";
 $messages["This request does not require assignment to an employee"] = "هذا الطلب لا يتطلب تعيين موظف";
+
+$messages["sendAllDataToSIS"] = "ترحيل البيانات";
+
 // 
 // 
 // $messages[""] = "";
