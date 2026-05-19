@@ -322,7 +322,11 @@ class WorkflowRequest extends WorkflowObject
                         if ($objme->isSuperAdmin()) {
                                 $employeeRolesArray = null;
                         } else {
-                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
+                                $assigned_orgunit_id = $this->getVal('orgunit_id');
+                                $assigned_employee_id = $this->getVal('employee_id');
+                                if(!$assigned_employee_id) $assigned_orgunit_id = 0; // all people have previleges can do it
+                                
+                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($assigned_orgunit_id);
                                 if (!$wEmployeeMe) return array(); // die("No user authenticated !!!!"); //
                                 $employeeRolesArray = explode(",", trim($wEmployeeMe->getVal("wrole_mfk"), ","));
                         }
