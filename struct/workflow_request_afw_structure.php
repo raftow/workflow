@@ -107,7 +107,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_50',
                 ),
 
-                
+
 
 
                 'mobile' => array(
@@ -426,7 +426,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'QSIZE' => 12,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => true,
+                        'RETRIEVE' => false,
                         'EDIT' => true,
                         'QEDIT' => false,
                         'SIZE' => 32,
@@ -736,7 +736,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'EDIT-UGROUPS' => '',
                         'ERROR-CHECK' => true,
                 ),
-                
+
                 /* 'done_time' => array(
                         'FGROUP' => 'assignment',
                         'STEP' => 999,
