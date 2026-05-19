@@ -59,6 +59,10 @@ try {
         $takeDeleteAction = false;
         $takeAuditAction = false;
 
+        $hide_retrieve_cols = [
+                'workflow_sub_scope_id ',
+        ];
+
         if ($datatable_on) {
                 include  dirname(__FILE__) . "/../lib/afw/modes/afw_handle_default_search.php";
                 $collapse_in = '';
