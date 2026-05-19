@@ -26,9 +26,9 @@ class WorkflowRequestArTranslator
 
 		$trad['workflow_request']['workflowRequestDataList'] = 'بيانات الطلب';
 		$trad['workflow_request']['workflowRequestCommentList'] = 'ملاحظات وتعليقات الموظفين';
-		 
+
 		$trad['workflow_request']['action-convenient'] = 'الإجراء المناسب';
-		
+
 
 		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
 		$trad['workflow_request']['workflowrequest.new'] = 'جديد';
@@ -66,6 +66,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['myOriginalObjectLinks'] = 'بيانات المتقدم';
 
 
+		$trad['workflow_request']['view'] = 'اختيار';
 
 		$trad['workflow_request']['profile'] = 'البيانات الشخصية';
 		$trad['workflow_request']['category'] = 'صنف العميل';
