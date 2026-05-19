@@ -1,15 +1,20 @@
 <?php
-try {
-        $file_dir_name = dirname(__FILE__);
 
-        require_once("$file_dir_name/../config/global_config.php");
+/**
+ * @var string $out_scr
+ * @var string $lang
+ */
+try {
+
+
+        require_once(dirname(__FILE__) . "/../config/global_config.php");
         // old include of afw.php
-        // require_once("$file_dir_name/../lib/afw/modes/afw_ config.php");
+        // require_once( dirname(__FILE__)."/../lib/afw/modes/afw_ config.php");
 
         $datatable_on = 1;
         $cl = 'WorkflowRequest';
         $currmod = 'workflow';
-        $currdb = $server_db_prefix . 'workflow';
+        //$currdb = $server_db_prefix . 'workflow';
         $limite = 0;
         $genere_xls = 0;
 
@@ -45,12 +50,17 @@ try {
         // $my_class = new $cl();
         $result_page_title = 'صندوق الوارد';
         $tit_qedit_ppp_fixm = 'عرض التذكرة';
-        $actions_tpl_arr = array();
+        // $actions_tpl_arr = array();
+        // $actions_tpl_arr['edit'] = array('framework_action');
 
-        $actions_tpl_arr['edit'] = array('framework_action');
+        $addHeader = false;
+        $takeViewIcon = true;
+        $takeEditAction = false;
+        $takeDeleteAction = false;
+        $takeAuditAction = false;
 
         if ($datatable_on) {
-                include "$file_dir_name/../lib/afw/modes/afw_handle_default_search.php";
+                include  dirname(__FILE__) . "/../lib/afw/modes/afw_handle_default_search.php";
                 $collapse_in = '';
         } else
                 $collapse_in = 'in';
