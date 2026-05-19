@@ -409,12 +409,15 @@ class WorkflowRequest extends WorkflowObject
                 $authorizedRolesArray = array_filter(explode(",", $accepted_roles_mfk));
                 if(count($authorizedRolesArray)>0) {
                         if (!$objme or !$objme->isSuperAdmin()) {
-                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
+                                $assigned_orgunit_id = $this->getVal('orgunit_id');
+                                $assigned_employee_id = $this->getVal('employee_id');
+                                if(!$assigned_employee_id) $assigned_orgunit_id = 0; // all people have previleges can do it
+                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($assigned_orgunit_id);
                                 if (!$wEmployeeMe) {
                                         $error = $this->tm('Session terminated or no authenticated employee found when this transition need one of the following previleges', $lang);
                                         $error .= " : " . $objTransition->showAttribute("workflow_role_mfk", null, true, $lang);
                                         $error .= ". ".$this->tm('Knowing that',$lang);
-                                        if($this->getVal('orgunit_id')>0) {
+                                        if($assigned_orgunit_id>0) {
                                                 $orgunit_name = $this->showAttribute("orgunit_id", null, true, $lang);
                                                 $error .= " ".$this->tm('The request is assigned to',$lang). " [$orgunit_name] ";
                                         }
