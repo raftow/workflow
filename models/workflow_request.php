@@ -413,6 +413,14 @@ class WorkflowRequest extends WorkflowObject
                                 if (!$wEmployeeMe) {
                                         $error = $this->tm('Session terminated or no authenticated employee found when this transition need one of the following previleges', $lang);
                                         $error .= " : " . $objTransition->showAttribute("workflow_role_mfk", null, true, $lang);
+                                        $error .= ". ".$this->tm('Knowing that',$lang);
+                                        if($this->getVal('orgunit_id')>0) {
+                                                $orgunit_name = $this->showAttribute("orgunit_id", null, true, $lang);
+                                                $error .= " ".$this->tm('The request is assigned to',$lang). " [$orgunit_name] ";
+                                        }
+                                        else {
+                                                $error .= " ".$this->tm('The request is not assigned to any department',$lang);
+                                        }
                                         return array($error, '');
                                 }
                                 if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
