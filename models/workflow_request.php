@@ -1502,11 +1502,9 @@ class WorkflowRequest extends WorkflowObject
                 $workflow_stage_id = $this->getVal('workflow_stage_id');
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
                 $workflow_session_id = $this->getVal("workflow_session_id");
-                $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
-                if (!$interview_stage_id) {
-                        $interview_stage_id = $workflow_stage_id;
-                        $warning = $this->tm("Interview stage not defined in the current session", $lang);
-                }
+                $interview_stage_id = $workflow_stage_id;
+                if (!$interview_stage_id) $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
+
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 $ibObj = null;
 
