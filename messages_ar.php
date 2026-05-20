@@ -62,6 +62,8 @@ $messages["Knowing that"] = "مع العلم أن";
 $messages["The request is assigned to"] = "الطلب مسند إلى";
 $messages["The request is not assigned to any department"] = "لم يتم إسناد الطلب إلى أي جهة أو لجنة";
 $messages["roles before adding Jobrole"] = "الأدوار قبل إضافة الصلاحية الوظيفة";
+$messages["roles after adding Jobrole"] = "الأدوار بعد إضافة الصلاحية الوظيفة";
+
 
 // 
 // 
