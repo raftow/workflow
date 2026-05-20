@@ -342,7 +342,7 @@ class WorkflowWorkflowStageAfwStructure
                         'QSEARCH' => false,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => false,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SIZE' => 32,
