@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @var string $out_scr
+ * @var string $lang
+ */
+
 try {
         $file_dir_name = dirname(__FILE__);
 
@@ -8,7 +14,7 @@ try {
 
         $cl = 'WorkflowRequest';
         $currmod = 'workflow';
-        $currdb = $server_db_prefix . 'workflow';
+        // $currdb = $server_db_prefix . 'workflow';
         $limite = 0;
 
         // Rafik !!!! HARD BUG WORKAROUND !!!!!! 
