@@ -258,8 +258,8 @@ class WorkflowRequest extends WorkflowObject
         public static function inboxSqlCond($employee_id, $prefix = 'me.')
         {
                 // list of stages to be visible in inbox
-                // see_only_assigned_ind = في صندوق الوارد لا نعرض الطلبات التي في هذه المرحلة
-                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
+                // see_only_assigned_ind = في صندوق الوارد نعرض الطلبات التي في هذه المرحلة
+                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='Y'");
                 // 
                 // Amjad whatsApp 2026-05-10 (inside word document : admission cycle test 09052026) :
                 // 2.	Show only the workflow request assigned to the admin user connected
