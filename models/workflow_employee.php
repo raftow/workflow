@@ -351,12 +351,21 @@ class WorkflowEmployee extends WorkflowObject
                         $wroleList = $this->get('wrole_mfk');
                         foreach ($wroleList as $wroleItem) {
                                 $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
+
+                                $jobroleList = $wroleItem->get('jobrole_mfk');
                                 foreach ($jobroleArr as $jobroleId) {
-                                        $inf_arr[] = "roles before Add Jobrolw $jobroleId";
-                                        $inf_arr[] = $objEmployee->myPrevilegesDescription();
-                                        $objEmployee->addMeThisJobrole($jobroleId);
-                                        $inf_arr[] = "roles after Add Jobrolw $jobroleId";
-                                        $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                        $jobroleItem = $jobroleList[$jobroleId];
+                                        if($jobroleItem) {
+                                                $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
+                                                $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang)."($jobroleId) $jobroleItemDisplay";
+                                                $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang)."($jobroleId) $jobroleItemDisplay";
+                                                $inf_arr[] =  $roles_before_phrase;                                                
+                                                $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                                $objEmployee->addMeThisJobrole($jobroleId);
+                                                $inf_arr[] = $roles_after_phrase;
+                                                $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                        }
+                                        
                                 }
                         }
                         $objEmployee->commit();
