@@ -1503,7 +1503,10 @@ class WorkflowRequest extends WorkflowObject
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
                 $workflow_session_id = $this->getVal("workflow_session_id");
                 $interview_stage_id = $workflow_stage_id;
-                if (!$interview_stage_id) $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
+                // below is obsolete to review
+                // I dont khnw=ow why I do it because in same plan (wkflow session)
+                // we can have multiple interviews
+                // if (!$interview_stage_id) $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
 
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 $ibObj = null;

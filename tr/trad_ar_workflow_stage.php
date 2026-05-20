@@ -28,6 +28,8 @@ class WorkflowStageArTranslator
 		$trad["workflow_stage"]["see_only_assigned_ind.tooltip"] = "في صندوق الوارد نعرض الطلبات التي في هذه المرحلة";
 		$trad["workflow_stage"]["auto_assign_ind"] = "التعيين التلقائي";
 		$trad["workflow_stage"]["color_enum"] = "اللون";
+		$trad["workflow_stage"]["interviewTypePatternList"] = "نماذج المقابلات";
+
 
 
 
