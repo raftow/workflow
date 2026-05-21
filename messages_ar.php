@@ -4,7 +4,7 @@ $messages['Condition for this transition not satisfied'] = 'الشرط لهذا 
 $messages['This employee is not authorized to perform this transition'] = 'هذا الموظف غير مخول للقيام بهذا الانتقال';
 $messages['No application object found'] = 'لم يتم العثور على كائن الطلب';
 $messages['Session terminated or no authenticated employee found when this transition need one of the following previleges'] =
-         'المعذرة انتهت الجلسة أو لم يتم تعريف الموظف الذي قام بتسجيل الدخول في الوقت الذي تتطلب هذه العملية الانتقالية أحد الصلاحيات التالية';
+    'المعذرة انتهت الجلسة أو لم يتم تعريف الموظف الذي قام بتسجيل الدخول في الوقت الذي تتطلب هذه العملية الانتقالية أحد الصلاحيات التالية';
 $messages['Please enter in the bottom of this form the rejection reason'] = 'يرجى إدخال سبب الرفض في أسفل هذا النموذج';
 $messages['This transition needs before to enter rejection comments justifications'] = 'هذا الانتقال يحتاج قبل ذلك إلى إدخال مبررات تعليقات الرفض';
 $messages['No available employee found for assignment'] = 'لم يتم العثور على موظف متاح لتكليفه';
@@ -64,11 +64,18 @@ $messages["The request is not assigned to any department"] = "لم يتم إسن
 $messages["roles before adding Jobrole"] = "الأدوار قبل إضافة الصلاحية الوظيفة";
 $messages["roles after adding Jobrole"] = "الأدوار بعد إضافة الصلاحية الوظيفة";
 
-
-// 
-// 
-// 
-// 
+$messages["Please note: No appointments are available. Please create them"] = "انتبه لا يوجد مواعيد متاحة يرجى انشاءها";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";

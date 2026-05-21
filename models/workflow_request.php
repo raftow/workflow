@@ -1530,6 +1530,10 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
+                                        if (!$ibObj->calcNbSlotsAvailable() > 0) {
+                                                AfwSession::pushWarning($this->tm("Please note: No appointments are available. Please create them", $lang));
+                                        }
+
                                         $info = $this->tm("Interview booking invitation has been created", $lang);
                                 } elseif (!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
                         } else $error = $this->tm("Interview booking pattern not found", $lang);
