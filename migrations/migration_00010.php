@@ -249,7 +249,7 @@ try {
    interview_slot_id int(11) NOT NULL , 
    workflow_applicant_id bigint(20) NOT NULL , 
    workflow_session_id int(11) NOT NULL , 
-   interview_type_pattern_id int(11) NOT NULL DEFAULT 0;
+   interview_type_pattern_id int(11) NOT NULL DEFAULT 0,
    booking_status_id int(11) NOT NULL DEFAULT 0 , 
    booked_at datetime DEFAULT NULL , 
    booked_by int(11) DEFAULT NULL , 

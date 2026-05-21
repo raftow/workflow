@@ -295,6 +295,8 @@ class SlotModel extends AFWObject
             $objInterviewSlot = InterviewSlot::loadByMainIndex($slot_model_id, $interview_date, $slot_start, true);
             $objInterviewSlot->set("slot_model_id", $slot_model_id);
             $objInterviewSlot->set("interview_date", $this->getVal("interview_date"));
+            $objInterviewSlot->set("workflow_session_id", $this->getVal("workflow_session_id"));
+            $objInterviewSlot->set("interview_type_pattern_id", $this->getVal("interview_type_pattern_id"));
             $objInterviewSlot->set("start_time", $slot_start);
             $objInterviewSlot->set("end_time", $slot_end);
             $objInterviewSlot->set("duration", $this->getVal("single_duration"));
