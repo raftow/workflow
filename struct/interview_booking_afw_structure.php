@@ -658,6 +658,7 @@ class WorkflowInterviewBookingAfwStructure
 			'CATEGORY' => 'ITEMS',
 			'ITEM' => '', //'HIDE_COLS' => ['employee_id','orgunit_id'],
 			'WHERE' => "workflow_session_id = §workflow_session_id§ 
+					and workflow_scope_id = §workflow_scope_id§   -- if pattern not by program both will be zero so always this cond is ok
 					and interview_type_pattern_id = §interview_type_pattern_id§ 
 					and interview_slot_status_id=2
 					and concat(interview_date, ' ', start_time,':00') >= now()",
