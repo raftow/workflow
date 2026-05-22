@@ -168,6 +168,10 @@ class InterviewBooking extends AFWObject
         return  "active";
     }
 
+    public function calcNbSlotsAvailable($what = "value")
+    {
+        return $this->getRelation("availableSlotList")->count();
+    }
 
 
     public function beforeMaj($id, $fields_updated)

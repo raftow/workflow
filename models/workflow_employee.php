@@ -328,6 +328,9 @@ class WorkflowEmployee extends WorkflowObject
 
                 $email = $this->getVal('email');
                 if ($email or $objEmployee) {
+                        /**
+                         * @var Employee $objEmployee
+                         */
                         if (!$objEmployee)
                                 $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
@@ -355,17 +358,16 @@ class WorkflowEmployee extends WorkflowObject
                                 $jobroleList = $wroleItem->get('jobrole_mfk');
                                 foreach ($jobroleArr as $jobroleId) {
                                         $jobroleItem = $jobroleList[$jobroleId];
-                                        if($jobroleItem) {
+                                        if ($jobroleItem) {
                                                 $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
-                                                $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang)."($jobroleId) $jobroleItemDisplay";
-                                                $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang)."($jobroleId) $jobroleItemDisplay";
-                                                $inf_arr[] =  $roles_before_phrase;                                                
+                                                $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
+                                                $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
+                                                $inf_arr[] =  $roles_before_phrase;
                                                 $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                                 $objEmployee->addMeThisJobrole($jobroleId);
                                                 $inf_arr[] = $roles_after_phrase;
                                                 $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                         }
-                                        
                                 }
                         }
                         $objEmployee->commit();
