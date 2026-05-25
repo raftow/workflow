@@ -362,24 +362,25 @@ class WorkflowEmployee extends WorkflowObject
                                                 $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
                                                 $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
                                                 $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
-                                                $inf_arr[] =  $roles_before_phrase;
-                                                $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                                AfwSession::console($roles_before_phrase);
+                                                // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                                 $objEmployee->addMeThisJobrole($jobroleId);
-                                                $inf_arr[] = $roles_after_phrase;
-                                                $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                                AfwSession::console($objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
+                                                list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
+                                                if ($err) AfwSession::console($err, "error");
+                                                if ($inf) AfwSession::console($inf, "information");
+                                                if ($war) AfwSession::console($war, "warning");
+
+                                                AfwSession::console($roles_after_phrase);
+                                                // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                         }
                                 }
                         }
                         $objEmployee->commit();
-                        $inf_arr[] = $objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang);
-                        list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
 
-                        if ($err)
-                                $err_arr[] = $err;
-                        if ($inf)
-                                $inf_arr[] = $inf;
-                        if ($war)
-                                $war_arr[] = $war;
+
+
+
                         // if($tech) $tech_arr[] = $tech;
 
                         // die('xxx1  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
