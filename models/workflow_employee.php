@@ -362,16 +362,16 @@ class WorkflowEmployee extends WorkflowObject
                                                 $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
                                                 $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
                                                 $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
-                                                AfwSession::console($roles_before_phrase);
+                                                AfwSession::console($roles_before_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
                                                 // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                                 $objEmployee->addMeThisJobrole($jobroleId);
-                                                AfwSession::console($objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
+                                                AfwSession::console($roles_after_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
                                                 list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
                                                 if ($err) AfwSession::console($err, "error");
                                                 if ($inf) AfwSession::console($inf, "information");
                                                 if ($war) AfwSession::console($war, "warning");
 
-                                                AfwSession::console($roles_after_phrase);
+
                                                 // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                         }
                                 }
