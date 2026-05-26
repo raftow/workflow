@@ -1,13 +1,14 @@
 <?php
 
-class InterviewTypePatternArTranslator{
-    public static function initData()
-    {
-        $trad = [];
+class InterviewTypePatternArTranslator
+{
+	public static function initData()
+	{
+		$trad = [];
 
 		$trad["interview_type_pattern"]["interviewtypepattern.single"] = "نموذج مقابلة";
 		$trad["interview_type_pattern"]["interviewtypepattern.new"] = "جديد(ة)";
-		$trad["interview_type_pattern"]["interview_type_pattern"] = "نماذج مقابلات";
+		$trad["interview_type_pattern"]["interview_type_pattern"] = "نماذج المقابلات";
 		$trad["interview_type_pattern"]["name_ar"] = "مسمى  بالعربية";
 		$trad["interview_type_pattern"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["interview_type_pattern"]["desc_ar"] = "وصف  بالعربية";
@@ -18,13 +19,13 @@ class InterviewTypePatternArTranslator{
 		$trad["interview_type_pattern"]["Max_reschedule"] = "العدد المسموح لإعادة جدولة الموعد";
 		$trad["interview_type_pattern"]["workflow_stage_id"] = "مرحلة القبول";
 		$trad["interview_type_pattern"]["can_cancel_ind"] = "يمكن الإلغاء";
-        // steps
-        return $trad;
-    }
+		// steps
+		return $trad;
+	}
 
-    public static function getInstance()
+	public static function getInstance()
 	{
-        if(false) return new InterviewTypePatternEnTranslator();
+		if (false) return new InterviewTypePatternEnTranslator();
 		return new InterviewTypePattern();
 	}
 }
