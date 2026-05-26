@@ -45,6 +45,11 @@ include('previleges/table/previleges_workflow_table_workflow_status.php');
 include('previleges/table/previleges_workflow_table_workflow_task.php');
 include('previleges/table/previleges_workflow_table_workflow_transition.php');
 include('previleges/table/previleges_workflow_table_interview_booking.php');
+include('previleges/table/previleges_workflow_table_booking_status.php');
+include('previleges/table/previleges_workflow_table_interview_slot.php');
+include('previleges/table/previleges_workflow_table_interview_slot_status.php');
+include('previleges/table/previleges_workflow_table_interview_type_pattern.php');
+include('previleges/table/previleges_workflow_table_slot_model.php');
 
 
 include('previleges/role/previleges_workflow_role395.php');
