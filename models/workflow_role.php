@@ -45,6 +45,7 @@ class WorkflowRole extends WorkflowObject
         public function afterMaj($id, $fields_updated)
         {
                 if ($fields_updated["jobrole_mfk"]) {
+                        UfwQueryAnalyzer::startProcessLourdMode();
                         $arr_roles = [$this->id];
                         $wEmplList = WorkflowEmployee::getEmployeeList($orgunit_id = 0, $wscope_id = 0, $except_employee_id = 0, $arr_roles, $hrm = false);
                         /**
@@ -53,6 +54,7 @@ class WorkflowRole extends WorkflowObject
                         foreach ($wEmplList as $wEmplItem) {
                                 $wEmplItem->resetPrevileges();
                         }
+                        UfwQueryAnalyzer::stopProcessLourdMode();
                 }
         }
 }
