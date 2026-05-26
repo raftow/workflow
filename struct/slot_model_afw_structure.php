@@ -16,7 +16,6 @@ class WorkflowSlotModelAfwStructure
 			$obj->ENABLE_DISPLAY_MODE_IN_QEDIT = true;
 			$obj->ORDER_BY_FIELDS = "";
 			$obj->editByStep = true;
-			$obj->IS_LOOKUP = true;
 			$obj->editNbSteps = 2;
 
 			$obj->UNIQUE_KEY = array("interview_type_pattern_id", "workflow_session_id", "interview_date");
