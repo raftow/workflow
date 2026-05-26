@@ -83,13 +83,15 @@ class InterviewBooking extends AFWObject
 
     public function shouldBeCalculatedField($attribute)
     {
+        if ($attribute == "workflow_session_id") return true;
         if ($attribute == "interview_date") return true;
-        if ($attribute == "first_name") return true;
-        if ($attribute == "last_name") return true;
-        if ($attribute == "idn") return true;
-        if ($attribute == "start_time") return true;
         if ($attribute == "interview_type") return true;
         if ($attribute == "workflow_commitee_id") return true;
+        if ($attribute == "first_name") return true;
+        if ($attribute == "last_name") return true;
+        if ($attribute == "start_time") return true;
+        if ($attribute == "idn") return true;
+        if ($attribute == "slot_model_id") return true;
         return false;
     }
 

@@ -7,14 +7,14 @@ class InterviewBookingArTranslator
 		$trad = [];
 
 		$trad["interview_booking"]["availableSlotList"] = "المواعيد المتاحة";
-		$trad["interview_booking"]["interviewbooking.single"] = "حجز المقابلة";
-		$trad["interview_booking"]["interviewbooking.new"] = "جديد(ة)";
-		$trad["interview_booking"]["interview_booking"] = "حجوزات المقابلة";
+		$trad["interview_booking"]["interviewbooking.single"] = "حجز";
+		$trad["interview_booking"]["interviewbooking.new"] = "جديد";
+		$trad["interview_booking"]["interview_booking"] = "الحجوزات";
 		$trad["interview_booking"]["name_ar"] = "مسمى  بالعربية";
 		$trad["interview_booking"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["interview_booking"]["desc_ar"] = "وصف  بالعربية";
 		$trad["interview_booking"]["desc_en"] = "وصف  بالانجليزية";
-		$trad["interview_booking"]["interview_slot_id"] = "موعد الالمقابلة";
+		$trad["interview_booking"]["interview_slot_id"] = "موعد المقابلة";
 		$trad["interview_booking"]["applicant_id"] = "المتقدم";
 		$trad["interview_booking"]["application_plan_id"] = "خطة التقديم";
 		$trad["interview_booking"]["application_simulation_id"] = "-----";
