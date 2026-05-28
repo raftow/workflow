@@ -48,7 +48,9 @@ try {
         $sql_order_by = 'request_date asc, id asc';
 
         // $my_class = new $cl();
+
         $result_page_title = 'صندوق الوارد';
+        $result_page_title = UfwReplacement::trans_replace($result_page_title, "workflow", $lang);
         $tit_qedit_ppp_fixm = 'عرض التذكرة';
         // $actions_tpl_arr = array();
         // $actions_tpl_arr['edit'] = array('framework_action');
@@ -69,7 +71,7 @@ try {
         } else
                 $collapse_in = 'in';
 
-        $wb_prefix = AfwLanguageHelper::tt('صندوق الوارد لـ');
+        $wb_prefix = AfwLanguageHelper::tt('صندوق الوارد لـ', $lang);
 
         $out_scr .= "<div class='workflow-title hzm-info'>$wb_prefix$employee_title</div>";
 
@@ -79,7 +81,7 @@ try {
                 else
                         $out_scr .= '<div class=\'workflow-information hzm-info\'>
         <i class="hzm-container-center hzm-vertical-align-middle hzm-icon-fm hzm-icon-inbox"></i>
-        لا يوجد طلبات في صندوق الوارد
+        لا يوجد طلبات في ' . $result_page_title . '
         </div>';
         }
 } catch (Exception $e) {
