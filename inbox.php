@@ -30,14 +30,14 @@ try {
         } elseif ($myEmplObj->hasRole("workflow", 393))  // مدير قبول
         {
                 $arr_sql_conds[] = "me.done != 'Y'";
-                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('مدير القبول في'));
+                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('مدير القبول في', $lang));
                 $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
 
                 if ($orgunit_name)
                         $employee_title .= ' ' . $orgunit_name;
         } else {
                 $arr_sql_conds[] = WorkflowRequest::inboxSqlCond($myEmplId);
-                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('موظف القبول في'));
+                $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('موظف القبول في', $lang));
                 $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
 
                 if ($orgunit_name)
@@ -71,7 +71,7 @@ try {
         } else
                 $collapse_in = 'in';
 
-        $wb_prefix = AfwLanguageHelper::tt('صندوق الوارد لـ', $lang);
+        $wb_prefix = AfwLanguageHelper::tt('صندوق الوارد لـ', $lang, "workflow");
 
         $out_scr .= "<div class='workflow-title hzm-info'>$wb_prefix$employee_title</div>";
 
