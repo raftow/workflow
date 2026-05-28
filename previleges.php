@@ -66,3 +66,4 @@ include('previleges/role/previleges_workflow_role411.php');
 
 
 include('../adm/previleges/role/previleges_adm_role397.php');
+include('../adm/previleges/role/previleges_adm_role386.php');
