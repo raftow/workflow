@@ -29,7 +29,7 @@ try {
                 $employee_title = "No employee account defined for this user";
         } elseif ($myEmplObj->hasRole("workflow", 393))  // مدير قبول
         {
-                $arr_sql_conds[] = "me.done != 'Y'";
+                $arr_sql_conds[] = WorkflowRequest::inboxSqlCond($myEmplId);
                 $orgunit_name = WorkflowEmployee::orgOfEmployee($myEmplId, false, false, AfwLanguageHelper::tt('مدير القبول في', $lang));
                 $employee_title = '<b>' . $objme->getShortDisplay($lang) . '</b>';
 
