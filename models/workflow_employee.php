@@ -1010,4 +1010,16 @@ class WorkflowEmployee extends WorkflowObject
                 </a>
             </div>";
         }
+
+
+        /**
+         * @param string $field_name
+         * @param string $col_struct
+         * 
+         */
+        public function whereInbox($field_name, $col_struct)
+        {
+                $myEmplId = $this->getVal("employee_id");
+                return WorkflowRequest::inboxSqlCond($myEmplId, '');
+        }
 }
