@@ -18,7 +18,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['step7'] = 'قرار القبول';
 		$trad['workflow_request']['step8'] = 'المطابقة النهائية';
 
-		$trad['workflow_request']['dipeval'] = 'المؤهلات والاختبارات';
+		$trad['workflow_request']['dipeval'] = 'شهادات التخرج والاختبارات';
 		$trad['workflow_request']['interview_score'] = 'درجة المقابلة الشخصية';
 
 		$trad['workflow_request']['formComments'] = 'الملاحظات';
