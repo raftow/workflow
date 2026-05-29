@@ -781,6 +781,7 @@ class WorkflowWorkflowRequestAfwStructure
                 ),
 
                 'div_block_3' => array(
+                        'FGROUP' => 'dipeval',
                         'STEP' => 2,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
@@ -800,6 +801,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'INPUT_WIDE' => true,
                 ),
                 'div_block_4' => array(
+                        'FGROUP' => 'dipeval',
                         'STEP' => 2,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,

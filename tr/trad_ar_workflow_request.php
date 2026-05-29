@@ -10,6 +10,7 @@ class WorkflowRequestArTranslator
 		//$trad['workflow_request']['step2'] = 'طلب التقديم';
 		//$trad['workflow_request']['step3'] = 'المؤهلات';
 		//$trad['workflow_request']['step4'] = 'الاختبارات';
+
 		$trad['workflow_request']['step3'] = 'مراجعة الوثائق';
 		$trad['workflow_request']['step4'] = 'مراجعة اللجنة';
 		$trad['workflow_request']['step5'] = 'المقابلة الشخصية';
@@ -17,7 +18,7 @@ class WorkflowRequestArTranslator
 		$trad['workflow_request']['step7'] = 'قرار القبول';
 		$trad['workflow_request']['step8'] = 'المطابقة النهائية';
 
-
+		$trad['workflow_request']['dipeval'] = 'المؤهلات والاختبارات';
 		$trad['workflow_request']['interview_score'] = 'درجة المقابلة الشخصية';
 
 		$trad['workflow_request']['formComments'] = 'الملاحظات';
