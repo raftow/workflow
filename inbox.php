@@ -62,7 +62,12 @@ try {
         $takeAuditAction = false;
 
         $hide_retrieve_cols = [
+                'country_id ',
+                'application_class_enum ',
+                'workflow_source_id ',
                 'workflow_sub_scope_id ',
+                'orgunit_id ',
+                'employee_id ',
         ];
 
         if ($datatable_on) {
