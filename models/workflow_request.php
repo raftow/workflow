@@ -292,7 +292,7 @@ class WorkflowRequest extends WorkflowObject
                         return $this->assignRequest($employeeId, $arguments[0]);
                 }
 
-                if (substr($name, 0, 13) == 'calcDiv_block_') {
+                if (substr($name, 0, 14) == 'calcDiv_block_') {
                         $block = intval(substr($name, 13));
                         return $this->calcDiv_block($block, $arguments[0]);
                 }
