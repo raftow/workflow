@@ -293,7 +293,7 @@ class WorkflowRequest extends WorkflowObject
                 }
 
                 if (substr($name, 0, 14) == 'calcDiv_block_') {
-                        $block = intval(substr($name, 13));
+                        $block = intval(substr($name, 14));
                         return $this->calcDiv_block($block, $arguments[0]);
                 }
 
