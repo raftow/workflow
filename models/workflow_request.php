@@ -348,7 +348,8 @@ class WorkflowRequest extends WorkflowObject
                         if ($transItem->sureIs("condition_before")) {
                                 if (!$objOriginal) list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
                                 $wCondObj = $transItem->het("workflow_condition_id");
-                                list($condition_success, $reason) = $objOriginal->runCondition($wCondObj, $this, "en");
+                                if ($objOriginal) list($condition_success, $reason) = $objOriginal->runCondition($wCondObj, $this, "en");
+                                else $condition_success = 0;
                         } else $condition_success = true;
 
                         if ($condition_success) {
