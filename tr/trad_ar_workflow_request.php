@@ -6,21 +6,22 @@ class WorkflowRequestArTranslator
 		$trad = [];
 
 		$trad['workflow_request']['step1'] = 'البيانات الشخصية';
-		$trad['workflow_request']['step2'] = 'طلب التقديم';
-		$trad['workflow_request']['step3'] = 'المؤهلات';
-		$trad['workflow_request']['step4'] = 'الاختبارات';
-		$trad['workflow_request']['step5'] = 'مراجعة الوثائق';
-		$trad['workflow_request']['step6'] = 'مراجعة اللجنة';
-		$trad['workflow_request']['step7'] = 'المقابلة الشخصية';
-		$trad['workflow_request']['step8'] = 'المفاضلة والقبول';
-		$trad['workflow_request']['step9'] = 'قرار القبول';
-		$trad['workflow_request']['step10'] = 'المطابقة النهائية';
+		$trad['workflow_request']['step2'] = 'طلب القبول';
+		//$trad['workflow_request']['step2'] = 'طلب التقديم';
+		//$trad['workflow_request']['step3'] = 'المؤهلات';
+		//$trad['workflow_request']['step4'] = 'الاختبارات';
+		$trad['workflow_request']['step3'] = 'مراجعة الوثائق';
+		$trad['workflow_request']['step4'] = 'مراجعة اللجنة';
+		$trad['workflow_request']['step5'] = 'المقابلة الشخصية';
+		$trad['workflow_request']['step6'] = 'المفاضلة والقبول';
+		$trad['workflow_request']['step7'] = 'قرار القبول';
+		$trad['workflow_request']['step8'] = 'المطابقة النهائية';
 
 
 		$trad['workflow_request']['interview_score'] = 'درجة المقابلة الشخصية';
 
 		$trad['workflow_request']['formComments'] = 'الملاحظات';
-		$trad['workflow_request']['request'] = 'حيثيات الطلب';
+		$trad['workflow_request']['request'] = 'طلب القبول';
 		$trad["workflow_request"]["workflow_rejection_reason_id"] = "سبب الرفض";
 		$trad["workflow_request"]["rejection_reason"] = "بيان سبب الرفض في حالة الرفض";
 

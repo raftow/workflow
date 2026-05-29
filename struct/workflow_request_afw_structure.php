@@ -18,7 +18,7 @@ class WorkflowWorkflowRequestAfwStructure
                         // $obj->IS_LOOKUP = true;
                         $obj->OwnedBy = array('module' => "workflow", 'afw' => "WorkflowApplicant");
                         $obj->editByStep = true;
-                        $obj->editNbSteps = 10;
+                        $obj->editNbSteps = 8;
                         $obj->AUDIT_DATA = "byrow_audit";
                         $obj->OBJECT_CODE = "idn";
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
@@ -780,7 +780,45 @@ class WorkflowWorkflowRequestAfwStructure
                         'INPUT_WIDE' => true,
                 ),
 
-                'div_step_3' => array(
+                'div_block_3' => array(
+                        'STEP' => 2,
+                        'CATEGORY' => 'FORMULA',
+                        'SHOW' => true,
+                        'EDIT' => true,
+                        'DEFAUT' => 'Y',
+                        'TYPE' => 'TEXT',
+                        'SIZE' => 'AREA',
+                        'ROWS' => 16,
+                        'DISPLAY' => true,
+                        'NO-LABEL' => true,
+                        'READONLY' => true,
+                        'FORMAT' => 'HTML',
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                        'CAN-BE-SETTED' => false,
+                        'INPUT_WIDE' => true,
+                ),
+                'div_block_4' => array(
+                        'STEP' => 2,
+                        'CATEGORY' => 'FORMULA',
+                        'SHOW' => true,
+                        'EDIT' => true,
+                        'DEFAUT' => 'Y',
+                        'TYPE' => 'TEXT',
+                        'SIZE' => 'AREA',
+                        'ROWS' => 16,
+                        'DISPLAY' => true,
+                        'NO-LABEL' => true,
+                        'READONLY' => true,
+                        'FORMAT' => 'HTML',
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                        'CAN-BE-SETTED' => false,
+                        'INPUT_WIDE' => true,
+                ),
+                'div_block_5' => array(
                         'STEP' => 3,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
@@ -799,7 +837,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CAN-BE-SETTED' => false,
                         'INPUT_WIDE' => true,
                 ),
-                'div_step_4' => array(
+                'div_block_6' => array(
                         'STEP' => 4,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
@@ -818,7 +856,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CAN-BE-SETTED' => false,
                         'INPUT_WIDE' => true,
                 ),
-                'div_step_5' => array(
+                'div_block_7' => array(
                         'STEP' => 5,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
@@ -837,7 +875,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CAN-BE-SETTED' => false,
                         'INPUT_WIDE' => true,
                 ),
-                'div_step_6' => array(
+                'div_block_8' => array(
                         'STEP' => 6,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
@@ -856,47 +894,9 @@ class WorkflowWorkflowRequestAfwStructure
                         'CAN-BE-SETTED' => false,
                         'INPUT_WIDE' => true,
                 ),
-                'div_step_7' => array(
-                        'STEP' => 7,
-                        'CATEGORY' => 'FORMULA',
-                        'SHOW' => true,
-                        'EDIT' => true,
-                        'DEFAUT' => 'Y',
-                        'TYPE' => 'TEXT',
-                        'SIZE' => 'AREA',
-                        'ROWS' => 16,
-                        'DISPLAY' => true,
-                        'NO-LABEL' => true,
-                        'READONLY' => true,
-                        'FORMAT' => 'HTML',
-                        'DISPLAY-UGROUPS' => '',
-                        'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_100',
-                        'CAN-BE-SETTED' => false,
-                        'INPUT_WIDE' => true,
-                ),
-                'div_step_8' => array(
-                        'STEP' => 8,
-                        'CATEGORY' => 'FORMULA',
-                        'SHOW' => true,
-                        'EDIT' => true,
-                        'DEFAUT' => 'Y',
-                        'TYPE' => 'TEXT',
-                        'SIZE' => 'AREA',
-                        'ROWS' => 16,
-                        'DISPLAY' => true,
-                        'NO-LABEL' => true,
-                        'READONLY' => true,
-                        'FORMAT' => 'HTML',
-                        'DISPLAY-UGROUPS' => '',
-                        'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_100',
-                        'CAN-BE-SETTED' => false,
-                        'INPUT_WIDE' => true,
-                ),
 
-                'div_step_10' => array(
-                        'STEP' => 10,
+                'div_block_10' => array(
+                        'STEP' => 8,
                         'CATEGORY' => 'FORMULA',
                         'SHOW' => true,
                         'EDIT' => true,
@@ -934,7 +934,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'READONLY' => false,
                         'DNA' => true,
                         'CSS' => 'width_pct_50',
-                        'STEP' => 7
+                        'STEP' => 5,
                 ),
 
                 'workflow_rejection_reason_id' => array(
@@ -982,7 +982,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_100',
                 ),
                 'workflowRequestCommentList' => array(
-                        'STEP' => 10,
+                        'STEP' => 8,
                         'SHOW' => true,
                         'FORMAT' => 'retrieve',
                         'ICONS' => true,
@@ -1012,7 +1012,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'CSS' => 'width_pct_100',
                 ),
                 'workflowRequestDataList' => array(
-                        'STEP' => 9,
+                        'STEP' => 7,
                         'SHOW' => true,
                         'FORMAT' => 'retrieve',
                         'ICONS' => true,

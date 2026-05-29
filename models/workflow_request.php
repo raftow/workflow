@@ -292,9 +292,9 @@ class WorkflowRequest extends WorkflowObject
                         return $this->assignRequest($employeeId, $arguments[0]);
                 }
 
-                if (substr($name, 0, 13) == 'calcDiv_step_') {
-                        $step = intval(substr($name, 13));
-                        return $this->calcDiv_step($step, $arguments[0]);
+                if (substr($name, 0, 13) == 'calcDiv_block_') {
+                        $block = intval(substr($name, 13));
+                        return $this->calcDiv_block($block, $arguments[0]);
                 }
 
                 if (substr($name, 0, 18) == 'approveProgramWith') {
@@ -758,7 +758,7 @@ class WorkflowRequest extends WorkflowObject
 
 
                 //die('rafik final pbms=' . var_export($pbms, true));
-                if (true) { //only for testing purpose
+                if (false) { //only for testing purpose
                         $color = 'gray';
                         $title_ar = 'ارسال اشعار للمتقدم';
                         $methodName = 'sendNotificationsExample';
@@ -1024,13 +1024,16 @@ class WorkflowRequest extends WorkflowObject
                  * ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
                  */
                 $request_comment_subject_id = 0;
+                /* after merging steps by amajad (request of 29/05/2026) we are not able to 
+                   pre-define the request_comment_subject_id we let the user do it
+                   manually I alerted amjad by whatsapp
                 $currstep = $_REQUEST['currstep'];
                 if ($currstep <= 2)
                         $request_comment_subject_id = 1;
                 elseif ($currstep <= 4)
                         $request_comment_subject_id = 2;
                 elseif ($currstep <= 6)
-                        $request_comment_subject_id = 3;
+                        $request_comment_subject_id = 3;*/
 
                 $desc_erase = array('MANDATORY' => false);
                 $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj, ':', $desc_erase);
@@ -1147,14 +1150,14 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "original_9") return true;
                 if ($attribute == "original_10") return true;
                 if ($attribute == "category") return true;
-                if ($attribute == "div_step_3") return true;
-                if ($attribute == "div_step_4") return true;
-                if ($attribute == "div_step_5") return true;
-                if ($attribute == "div_step_6") return true;
-                if ($attribute == "div_step_7") return true;
-                if ($attribute == "div_step_8") return true;
-                if ($attribute == "div_step_9") return true;
-                if ($attribute == "div_step_10") return true;
+                if ($attribute == "div_block_3") return true;
+                if ($attribute == "div_block_4") return true;
+                if ($attribute == "div_block_5") return true;
+                if ($attribute == "div_block_6") return true;
+                if ($attribute == "div_block_7") return true;
+                if ($attribute == "div_block_8") return true;
+                if ($attribute == "div_block_9") return true;
+                if ($attribute == "div_block_10") return true;
                 if ($attribute == "formComments") return true;
                 if ($attribute == "originalObject") return true;
                 return false;
@@ -1164,7 +1167,7 @@ class WorkflowRequest extends WorkflowObject
         public static function stepOfStage($stageId)
         {
                 // not good like this to be hardcoded, please fix later @todo-rafik
-                return $stageId + 4;
+                return $stageId + 2;
         }
 
         public function reachedStep()
@@ -1174,6 +1177,11 @@ class WorkflowRequest extends WorkflowObject
                 return self::stepOfStage($stageId);
         }
 
+        /*
+        after merging steps by amajad (request of 29/05/2026) we are not able to 
+                   pre-define the request_comment_subject_id we let the user do it
+                   manually I alerted amjad by whatsapp
+                   this method become obsolete
         public function convenientCommentSubjectId()
         {
                 $request_comment_subject_id = 1;
@@ -1186,23 +1194,22 @@ class WorkflowRequest extends WorkflowObject
                         $request_comment_subject_id = 3;
 
                 return $request_comment_subject_id;
-        }
+        }*/
 
         public function weReachedStep($step)
         {
                 // step1 =>  'البيانات الشخصية';
-                // step2 =>  'طلب التقديم';
-                // step3 =>  'المؤهلات';
-                // step4 =>  'الاختبارات';
-                // step5 =>  'مراجعة الوثائق';
-                // step6 =>  'مراجعة اللجنة';
-                // step7 =>  'المقابلة الشخصية';
-                // step8 =>  'المفاضلة والقبول';
+                // step2 =>  'طلب القبول';
+
+                // step3 =>  'مراجعة الوثائق';
+                // step4 =>  'مراجعة اللجنة';
+                // step5 =>  'المقابلة الشخصية';
+                // step6 =>  'المفاضلة والقبول';
 
                 return ($this->reachedStep() >= $step);
         }
 
-        public function calcDiv_step($step, $what = 'value')
+        public function calcDiv_block($block, $what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
 
@@ -1211,7 +1218,7 @@ class WorkflowRequest extends WorkflowObject
                 if (!$objOriginal)
                         return "not found Original-Object looked up with ($keyLookup) : $error";
 
-                return $objOriginal->calcDivForWorkflowStep($step, $what, $this);
+                return $objOriginal->calcDivForWorkflowBlock($block, $what, $this);
         }
 
         public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200')
@@ -1335,24 +1342,36 @@ class WorkflowRequest extends WorkflowObject
                 }
         }
 
+        /**
+         * @param int $block
+         */
+
+        public function stepOfBlock($block)
+        {
+                return $this->stepOfAttribute("div_block_$block");
+        }
+
+        /**
+         * @param string $attribute
+         */
         public function attributeIsApplicable($attribute)
         {
-                for ($step = 1; $step <= 10; $step++) {
-                        if ($attribute == "div_step_$step") {
-                                return $this->weReachedStep($step);
+                for ($block = 1; $block <= 10; $block++) {
+                        if ($attribute == "div_block_$block") {
+                                return $this->weReachedStep($this->stepOfBlock($block));
                         }
                 }
 
                 if ($attribute == "interview_score") {
-                        return $this->weReachedStep(7);
+                        return $this->weReachedStep($this->stepOfAttribute("interview_score"));
                 }
 
                 if ($attribute == "workflowRequestDataList") {
-                        return $this->weReachedStep(9);
+                        return $this->weReachedStep($this->stepOfAttribute("workflowRequestDataList"));
                 }
 
                 if ($attribute == "workflowRequestCommentList") {
-                        return $this->weReachedStep(10);
+                        return $this->weReachedStep($this->stepOfAttribute("workflowRequestCommentList"));
                 }
 
 
