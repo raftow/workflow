@@ -1772,4 +1772,9 @@ class WorkflowRequest extends WorkflowObject
         {
                 return false;
         }
+
+        public function takeDeleteAction($mode = 'search')
+        {
+                return false;
+        }
 }

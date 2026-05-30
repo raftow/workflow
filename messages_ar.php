@@ -64,7 +64,7 @@ $messages["The request is not assigned to any department"] = "لم يتم إسن
 $messages["roles before adding Jobrole"] = "الأدوار قبل إضافة الصلاحية الوظيفة";
 $messages["roles after adding Jobrole"] = "الأدوار بعد إضافة الصلاحية الوظيفة";
 
-$messages["Please note: No appointments are available. Please create them"] = "انتبه لا يوجد مواعيد متاحة يرجى انشاءها";
+$messages["Please note: No appointments are available. Please create them"] = "لا يوجد مواعيد متاحة للمقابلة يرجى إضافة مواعيد جديدة عاجلا حتى يتمكن المتقدمون من الحجز";
 // $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";
