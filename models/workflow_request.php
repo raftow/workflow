@@ -1761,4 +1761,15 @@ class WorkflowRequest extends WorkflowObject
                 return $auser->hasRole($module_code, $role_id);
         }
         */
+
+
+        public function takeViewIcon($mode = 'search')
+        {
+                return true;
+        }
+
+        public function takeEditAction($mode = 'search')
+        {
+                return false;
+        }
 }
