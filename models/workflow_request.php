@@ -1520,6 +1520,7 @@ class WorkflowRequest extends WorkflowObject
                 $ibObj = null;
                 $statusObj = $this->het("workflow_status_id");
                 $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $workflow_stage_title = $this->decode('workflow_stage_id', '', false, $lang);
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
                 $workflow_session_id = $this->getVal("workflow_session_id");
                 $interview_stage_id = $workflow_stage_id;
@@ -1551,17 +1552,17 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
                                         if (!$ibObj->calcNbSlotsAvailable() > 0) {
-                                                AfwSession::pushWarning($this->tm("Please note: No appointments are available. Please create them", $lang));
+                                                AfwSession::pushAlert($this->tm("Please note: No appointments are available. Please create them", $lang));
                                         }
 
                                         $info = $this->tm("Interview booking invitation has been created", $lang);
                                 } elseif (!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
-                        } else $error = $this->tm("Interview booking pattern not found", $lang);
+                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $workflow_stage_title);
                 } elseif ($returnInterviewBookingObject) {
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
                                 if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
-                        } else $error = $this->tm("Interview booking pattern not found", $lang);
+                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $workflow_stage_title);
                 }
 
                 $return = [];
