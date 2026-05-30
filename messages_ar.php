@@ -27,7 +27,7 @@ $messages['Start/Stop work'] = "بدأ/ايقاف العمل";
 
 $messages["This will show/hide the button before check the condition"] = "سيؤدي هذا إلى إظهار/إخفاء الزر قبل التحقق من الشرط";
 $messages["Interview booking invite has been created"] = "تم إنشاء دعوة لحجز المقابلة";
-$messages["Interview booking pattern not found for this stage"] = "لم يتم العثور على نموذج حجز المقابلة في هذه المرحلة";
+$messages["Interview booking pattern not found for this status"] = "لم يتم العثور على نموذج حجز المقابلة في هذه الحالة";
 // $messages["Interview booking invite not needed"] = "";
 $messages["Failed to create interview booking invitation"] = "فشل إنشاء دعوة حجز المقابلة";
 $messages["No interview booking invitation sent"] = "لم يتم إرسال دعوة لحجز موعد للمقابلة";
