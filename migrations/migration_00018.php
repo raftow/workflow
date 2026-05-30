@@ -3,6 +3,8 @@ if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request_braudit` DROP INDEX `uk_workflow_request_braudit`;");
+
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.interview_slot add workflow_session_id int(11) NOT NULL DEFAULT 0;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.interview_slot add interview_type_pattern_id int(11) NOT NULL DEFAULT 0;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.interview_slot add workflow_scope_id int(11) NOT NULL DEFAULT 0;");
