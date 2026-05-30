@@ -3,6 +3,9 @@ if (!class_exists("AfwSession")) die("Denied access");
 
 $server_db_prefix = AfwSession::currentDBPrefix();
 try {
+
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request` add interview_comment varchar(255) after interview_score;");
+    AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request_braudit` add interview_comment varchar(255) after interview_score;");
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.`workflow_request_braudit` DROP INDEX `uk_workflow_request_braudit`;");
 
     AfwDatabase::db_query("ALTER TABLE " . $server_db_prefix . "workflow.interview_slot add workflow_session_id int(11) NOT NULL DEFAULT 0;");
