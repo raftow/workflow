@@ -91,7 +91,7 @@ class InterviewBooking extends AFWObject
         if ($attribute == "last_name") return true;
         if ($attribute == "start_time") return true;
         if ($attribute == "idn") return true;
-        if ($attribute == "slot_model_id") return true;
+        // if ($attribute == "slot_model_id") return true;
         return false;
     }
 

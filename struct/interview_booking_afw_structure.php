@@ -598,7 +598,7 @@ class WorkflowInterviewBookingAfwStructure
 			'DNA' => true,
 			'CSS' => 'width_pct_50',
 		),
-
+		/*
 		'slot_model_id' => array(
 			'STEP' => 3,
 			'CATEGORY' => 'FORMULA',
@@ -624,7 +624,7 @@ class WorkflowInterviewBookingAfwStructure
 			'DNA' => true,
 			'CSS' => 'width_pct_50',
 		),
-
+		
 		'workflow_session_id' => array(
 			'CATEGORY' => 'SHORTCUT',
 			'SHORTCUT' => 'slot_model_id.workflow_session_id',
@@ -648,7 +648,7 @@ class WorkflowInterviewBookingAfwStructure
 			'DNA' => true,
 			'AUTOCOMPLETE' => true,
 			'CSS' => 'width_pct_33',
-		),
+		),*/
 
 		'availableSlotList' => array(
 			'STEP' => 3,
