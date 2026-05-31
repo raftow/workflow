@@ -365,9 +365,12 @@ class WorkflowEmployee extends WorkflowObject
                                         $jobroleItem = $jobroleList[$jobroleId];
                                         if ($jobroleItem) {
                                                 $mainApp = $jobroleItem->calcMainApplication();
-                                                $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
-                                                if ($mainApp) $rolesFromScratchForModules[$mainApp->id] = true;
-                                                else AfwSession::console("No main application for job role : " . $jobroleItemDisplay, "error");
+                                                $jobroleItemDisplay = $jobroleItem->getShortDisplay('en');
+                                                if ($mainApp) {
+                                                        $mainAppDisplay = $mainApp->getShortDisplay('en');
+                                                        $rolesFromScratchForModules[$mainApp->id] = true;
+                                                        AfwSession::console("The main application for job role : $jobroleItemDisplay = $mainAppDisplay id = " . $mainApp->id);
+                                                } else AfwSession::console("No main application for job role : " . $jobroleItemDisplay, "error");
 
                                                 $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
                                                 $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
