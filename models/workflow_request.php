@@ -252,6 +252,16 @@ class WorkflowRequest extends WorkflowObject
                 return false;
         }
 
+
+        public function isInboxable()
+        {
+                $stageObj = $this->het("workflow_stage_id");
+
+                if (!$stageObj) return false;
+
+                return $stageObj->sureIs("see_only_assigned_ind");
+        }
+
         /**
          * @param int $employee_id
          */
@@ -723,7 +733,7 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                        if (($this->isMine()) and ($this->getVal("done") == "N")) {
+                        if (($this->isMine()) and ($this->isInboxable()) and ($this->getVal("done") == "N")) {
                                 $color = 'yellow';
                                 $title_ar = 'بدأ العمل على الطلب';
                                 $methodName = 'startWork';
@@ -738,7 +748,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
-                        } elseif (($this->isMine()) and ($this->getVal("done") == "W")) {
+                        } elseif (($this->isMine()) and ($this->isInboxable()) and ($this->getVal("done") == "W")) {
                                 $color = 'gray';
                                 $title_ar = 'إلغاء بدأ العمل على الطلب';
                                 $methodName = 'cancelStartWork';
@@ -1428,6 +1438,8 @@ class WorkflowRequest extends WorkflowObject
 
                 return $this->tm("This request is not assigned to anyone yet", $lang);
         }
+
+
 
         public function isMine()
         {
