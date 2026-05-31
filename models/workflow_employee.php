@@ -361,7 +361,7 @@ class WorkflowEmployee extends WorkflowObject
                                 foreach ($jobroleArr as $jobroleId) {
                                         $jobroleItem = $jobroleList[$jobroleId];
                                         if ($jobroleItem) {
-                                                $mainApp = $jobroleItem->calc("mainApplication");
+                                                $mainApp = $jobroleItem->get("mainApplication");
                                                 if ($mainApp) $rolesFromScratchForModules[$mainApp->id] = true;
                                                 $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
                                                 $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
