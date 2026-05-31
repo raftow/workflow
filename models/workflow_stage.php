@@ -125,4 +125,28 @@ class WorkflowStage extends WorkflowObject
         {
                 return self::code_of_color_enum($this->getVal("color_enum"));
         }
+
+        /**
+         * @param string $step_code
+         */
+        public static function loadByMainIndex($step_code, $create_obj_if_not_found = false)
+        {
+                if (!$step_code) throw new AfwRuntimeException("loadByMainIndex : step_code is mandatory field");
+
+
+                $obj = new WorkflowStage();
+                $obj->select("step_code", $step_code);
+
+                if ($obj->load()) {
+                        if ($create_obj_if_not_found) $obj->activate();
+                        return $obj;
+                } elseif ($create_obj_if_not_found) {
+                        $obj->set("step_code", $step_code);
+
+                        $obj->insertNew();
+                        if (!$obj->id) return null; // means beforeInsert rejected insert operation
+                        $obj->is_new = true;
+                        return $obj;
+                } else return null;
+        }
 }
