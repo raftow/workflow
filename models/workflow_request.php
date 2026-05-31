@@ -1511,7 +1511,7 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = false)
+        public function prepareInterviewBookingIfNeeded($lang = "ar")
         {
                 $error = "";
                 $info = "";
@@ -1519,7 +1519,7 @@ class WorkflowRequest extends WorkflowObject
 
                 $ibObj = null;
                 $statusObj = $this->het("workflow_status_id");
-                $workflow_status_title = $this->decode('workflow_status_id', '', false, $lang);
+                // $workflow_status_title = $this->decode('workflow_status_id', '', false, $lang);
                 $workflow_stage_id = $this->getVal('workflow_stage_id');
                 $workflow_stage_title = $this->decode('workflow_stage_id', '', false, $lang);
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
@@ -1558,12 +1558,7 @@ class WorkflowRequest extends WorkflowObject
 
                                         $info = $this->tm("Interview booking invitation has been created", $lang);
                                 } elseif (!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
-                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this status", $lang) . " : " . $workflow_status_title);
-                } elseif ($returnInterviewBookingObject) {
-                        if ($itpObj) {
-                                $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
-                                if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
-                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this status", $lang) . " : " . $workflow_status_title);
+                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $workflow_stage_title);
                 }
 
                 $return = [];
@@ -1577,9 +1572,23 @@ class WorkflowRequest extends WorkflowObject
                 return $return;
         }
 
-        public function getInterviewBooking()
+        /**
+         * @param int $interview_stage_id
+         */
+        public function getInterviewBooking($interview_stage_id)
         {
-                return $this->prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = true);
+                $interview_stage_title = AfwFormatHelper::decodeAnswerOfAttribute($this, 'workflow_stage_id', $interview_stage_id);
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
+                $ibObj = null;
+                if ($itpObj) {
+                        $workflow_applicant_id = $this->getVal("workflow_applicant_id");
+                        $workflow_session_id = $this->getVal("workflow_session_id");
+                        $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
+                        // if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
+                } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $interview_stage_title);
+
+                return $ibObj;
         }
 
 
