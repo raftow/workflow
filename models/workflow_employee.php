@@ -359,9 +359,12 @@ class WorkflowEmployee extends WorkflowObject
 
                                 $jobroleList = $wroleItem->get('jobrole_mfk');
                                 foreach ($jobroleArr as $jobroleId) {
+                                        /**
+                                         * @var Jobrole $jobroleItem
+                                         */
                                         $jobroleItem = $jobroleList[$jobroleId];
                                         if ($jobroleItem) {
-                                                $mainApp = $jobroleItem->get("mainApplication");
+                                                $mainApp = $jobroleItem->calcMainApplication();
                                                 $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
                                                 if ($mainApp) $rolesFromScratchForModules[$mainApp->id] = true;
                                                 else AfwSession::console("No main application for job role : " . $jobroleItemDisplay, "error");
