@@ -351,6 +351,8 @@ class WorkflowEmployee extends WorkflowObject
                         $hierarchy_level_enum = $this->getVal('hierarchy_level_enum');
                         $objEmployee->set('domain_id', $domain_id);
 
+                        $rolesFromScratchForModules = [];
+
                         $wroleList = $this->get('wrole_mfk');
                         foreach ($wroleList as $wroleItem) {
                                 $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
@@ -359,6 +361,8 @@ class WorkflowEmployee extends WorkflowObject
                                 foreach ($jobroleArr as $jobroleId) {
                                         $jobroleItem = $jobroleList[$jobroleId];
                                         if ($jobroleItem) {
+                                                $mainApp = $jobroleItem->calc("mainApplication");
+                                                if ($mainApp) $rolesFromScratchForModules[$mainApp->id] = true;
                                                 $jobroleItemDisplay = $jobroleItem->getShortDisplay($lang);
                                                 $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
                                                 $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
@@ -366,10 +370,7 @@ class WorkflowEmployee extends WorkflowObject
                                                 // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                                 $objEmployee->addMeThisJobrole($jobroleId);
                                                 AfwSession::console($roles_after_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
-                                                list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
-                                                if ($err) AfwSession::console($err, "error");
-                                                if ($inf) AfwSession::console($inf, "information");
-                                                if ($war) AfwSession::console($war, "warning");
+
 
 
                                                 // $inf_arr[] = $objEmployee->myPrevilegesDescription();
@@ -377,6 +378,18 @@ class WorkflowEmployee extends WorkflowObject
                                 }
                         }
                         $objEmployee->commit();
+
+                        list($err, $inf, $war) = $objEmployee->updateMyUserInformation(
+                                $lang,
+                                $from_ldap = '',
+                                true,
+                                $force_reset_pwd_for_user = false,
+                                $update_obj_if_found = true,
+                                $rolesFromScratchForModules
+                        );
+                        if ($err) AfwSession::console($err, "error");
+                        if ($inf) AfwSession::console($inf, "information");
+                        if ($war) AfwSession::console($war, "warning");
 
 
 
@@ -387,6 +400,7 @@ class WorkflowEmployee extends WorkflowObject
 
                         $auserObj = $objEmployee->het('auser_id');
                         if ($auserObj) {
+
                                 $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
                                 $auserObj->commit();
                                 list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
