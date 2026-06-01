@@ -1276,7 +1276,7 @@ class WorkflowRequest extends WorkflowObject
 
 
                 if ($inJournal) {
-                        AfwSession::consolePbmResult($errors_arr, $infos_arr, $war_arr);
+                        AfwSession::consolePbmResult($errors_arr, $infos_arr, $war_arr, "re-assign");
                         $errors_arr = [];
                         $infos_arr = [];
                         $war_arr = [];

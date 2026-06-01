@@ -458,9 +458,9 @@ class WorkflowEmployee extends WorkflowObject
                         if ($commit)
                                 $this->commit();
 
-                        $this->getPrevilegesPhpCodeForUser($lang);
+                        // $this->getPrevilegesPhpCodeForUser($lang);
                         if ($need_to_re_assign and $assign) {
-                                AfwSession::console("need to re assign because : $need_to_re_assign", "reason");
+                                AfwSession::console("need to re-assign because : $need_to_re_assign", "reason");
                                 list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(true, $lang, 1000, true);
                                 if ($err)
                                         $err_arr[] = $err;
@@ -493,6 +493,9 @@ class WorkflowEmployee extends WorkflowObject
                 $objEmployee = $this->het('employee_id');
                 if (!$objEmployee)
                         return [$this->tm('Failed to find the employee profile record', $lang), ''];
+                /**
+                 * @var Auser $auserObj
+                 */
                 $auserObj = $objEmployee->het('auser_id');
                 if (!$auserObj)
                         return [$this->tm('Failed to find this system user', $lang), ''];
