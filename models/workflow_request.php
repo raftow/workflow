@@ -1231,7 +1231,7 @@ class WorkflowRequest extends WorkflowObject
                 return $objOriginal->calcDivForWorkflowBlock($block, $what, $this);
         }
 
-        public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200')
+        public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200', $inJournal = false)
         {
                 $server_db_prefix = AfwSession::currentDBPrefix();
                 $obj = new WorkflowRequest();
@@ -1257,6 +1257,7 @@ class WorkflowRequest extends WorkflowObject
 
                 $errors_arr = array();
                 $infos_arr = array();
+                $war_arr = array();
 
                 foreach ($reqList as $reqItem) {
                         /** @var WorkflowRequest $reqItem */
@@ -1269,8 +1270,17 @@ class WorkflowRequest extends WorkflowObject
                 }
 
                 $nb_errs = count($errors_arr);
+                $nb_all = count($reqList);
+                $nb_done = $nb_all - $nb_errs;
 
-                $infos_arr[] = 'assign done for ' . count($reqList) . " request(s) with $nb_errs error(s)";
+
+
+                if ($inJournal) {
+                        AfwSession::consolePbmResult($errors_arr, $infos_arr, $war_arr);
+                        $errors_arr = [];
+                        $infos_arr = [];
+                        $war_arr = [];
+                }
 
                 if ((!$silent) and (count($errors_arr) > 0)) {
                         AfwSession::pushError(implode('<br>', $errors_arr));
@@ -1280,7 +1290,15 @@ class WorkflowRequest extends WorkflowObject
                         AfwSession::pushInformation(implode('<br>', $infos_arr));
                 }
 
-                return AfwFormatHelper::pbm_result($errors_arr, $infos_arr);
+                if ((!$silent) and (count($war_arr) > 0)) {
+                        AfwSession::pushWarning(implode('<br>', $war_arr));
+                }
+
+                $message_result = "attempt to assign $nb_all request(s) : $nb_done done and $nb_errs error(s)";
+                if ($nb_errs == 0) $infos_arr[] = $message_result;
+                else $war_arr[] = $message_result;
+
+                return AfwFormatHelper::pbm_result($errors_arr, $infos_arr, $war_arr);
         }
 
 

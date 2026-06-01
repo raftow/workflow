@@ -308,7 +308,7 @@ class WorkflowEmployee extends WorkflowObject
 
                 if ($fields_updated['wrole_mfk']) {
                         $assign = ($fields_updated['wrole_mfk'] != "@SimuleWasEmpty");
-                        $this->resetPrevileges('ar', $objEmployee, false, $assign);
+                        $this->resetPrevileges('ar', $objEmployee, false, $assign, $fields_updated['wrole_mfk']);
                 }
 
                 return true;
@@ -317,7 +317,7 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param Employee $objEmployee
          */
-        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true)
+        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true, $old_wrole_mfk = "")
         {
                 $err_arr = [];
                 $inf_arr = [];
@@ -327,6 +327,18 @@ class WorkflowEmployee extends WorkflowObject
                         $objEmployee = $this->het('employee_id');
 
                 $email = $this->getVal('email');
+
+                $need_to_re_assign = false;
+
+                $wrole_mfk = $this->getVal('wrole_mfk');
+
+                list($idsAdded, $idsRemoved) = AfwFormatHelper::mfkDiff($wrole_mfk, $old_wrole_mfk);
+                foreach ($idsAdded as $idwrole) {
+                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = true;
+                }
+                foreach ($idsRemoved as $idwrole) {
+                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = true;
+                }
                 if ($email or $objEmployee) {
                         /**
                          * @var Employee $objEmployee
@@ -354,7 +366,15 @@ class WorkflowEmployee extends WorkflowObject
                         // @todo here below we should only remove the jobroles of the current domain / application(s)
                         // not for other domains or applications
                         // reset all my jobroles to recalculate them :
+                        $previousJobroleArr = explode(',', trim($objEmployee->getVal('jobrole_mfk'), ','));
                         $objEmployee->set('jobrole_mfk', ",");
+                        $previousJobrole = [];
+                        $previousJobroleRemoved = [];
+                        $newJobroleAdded = [];
+                        foreach ($previousJobroleArr as $ojrId) {
+                                $previousJobrole[$ojrId] = true;
+                                $previousJobroleRemoved[$ojrId] = true;
+                        }
 
                         $rolesFromScratchForModules = [];
 
@@ -382,6 +402,11 @@ class WorkflowEmployee extends WorkflowObject
                                                 AfwSession::console($roles_before_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
                                                 // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                                 $objEmployee->addMeThisJobrole($jobroleId);
+                                                if ($previousJobrole[$jobroleId]) {
+                                                        $previousJobroleRemoved[$jobroleId] = false;
+                                                } else {
+                                                        $newJobroleAdded[$jobroleId] = true;
+                                                }
                                                 AfwSession::console($roles_after_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
 
 
@@ -390,6 +415,8 @@ class WorkflowEmployee extends WorkflowObject
                                         }
                                 }
                         }
+
+
                         $objEmployee->commit();
 
                         list($err, $inf, $war) = $objEmployee->updateMyUserInformation(
@@ -432,8 +459,8 @@ class WorkflowEmployee extends WorkflowObject
                                 $this->commit();
 
                         $this->getPrevilegesPhpCodeForUser($lang);
-                        if ($assign) {
-                                list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
+                        if ($need_to_re_assign and $assign) {
+                                list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(true, $lang, 1000, true);
                                 if ($err)
                                         $err_arr[] = $err;
                                 if ($inf)
