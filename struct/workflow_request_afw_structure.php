@@ -25,6 +25,12 @@ class WorkflowWorkflowRequestAfwStructure
                                                 'workflow_source_id',
                                                 'workflow_category_enum',
                                                 'idn', // 10
+                                                'request_date'
+                                        ],
+
+                                        'requiredColumns' => [
+                                                'workflow_model_id',
+                                                'workflow_session_id',
                                         ]
                                 ];
                 }
@@ -360,6 +366,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'DISPLAY' => true,
                         'STEP' => 2,
                         'RELATION' => 'ManyToOne',
+                        'DEPENDENT_OFME' => ['workflow_session_id'],
                         'MANDATORY' => true,
                         'READONLY' => true,
                         'AUTOCOMPLETE' => false,
@@ -389,6 +396,8 @@ class WorkflowWorkflowRequestAfwStructure
                         'TYPE' => 'FK',
                         'ANSWER' => 'workflow_session',
                         'ANSMODULE' => 'workflow',
+                        'WHERE' => 'workflow_model_id = §workflow_model_id§',
+                        'DEPENDENCY' => 'workflow_model_id',
                         'RELATION' => 'ManyToOne',
                         'CSS' => 'width_pct_50',
                 ),
@@ -611,7 +620,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SEARCH' => false,
                         'QSEARCH' => false,
                         'SHOW' => true,
-                        'RETRIEVE' => true,
+                        'RETRIEVE' => false,
                         'EXCEL' => true,
                         'EDIT' => true,
                         'QEDIT' => true,

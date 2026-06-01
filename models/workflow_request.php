@@ -1328,6 +1328,9 @@ class WorkflowRequest extends WorkflowObject
                                 $obj = new WorkflowRequestComment();
                                 if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
 
+                                $obj = new InterviewBooking();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
 
 
                                 // FK not part of me - replaceable 
@@ -1359,6 +1362,10 @@ class WorkflowRequest extends WorkflowObject
 
                                 }
 
+                                if (!$simul) {
+                                        InterviewBooking::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                }
+
 
 
 
@@ -1366,6 +1373,9 @@ class WorkflowRequest extends WorkflowObject
 
 
                         }
+
+                        AfwAuditHelper::deleteAllAuditFor($id);
+
                         return true;
                 }
         }
@@ -1816,6 +1826,7 @@ class WorkflowRequest extends WorkflowObject
 
         public function takeDeleteAction($mode = 'search')
         {
-                return false;
+                $objme = AfwSession::getUserConnected();
+                return $objme->isSuperAdmin();
         }
 }
