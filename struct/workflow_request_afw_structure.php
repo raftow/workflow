@@ -19,11 +19,12 @@ class WorkflowWorkflowRequestAfwStructure
                                                 'workflow_session_id',
                                                 'workflow_scope_id',
                                                 'workflow_sub_scope_id',
-                                                'application_class_enum',
+                                                'application_class_enum', // 5
                                                 'workflow_stage_id',
                                                 'workflow_status_id',
                                                 'workflow_source_id',
-                                                'workflow_category_enum'
+                                                'workflow_category_enum',
+                                                'idn', // 10
                                         ]
                                 ];
                 }
@@ -354,6 +355,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSWER' => 'workflow_model',
                         'ANSMODULE' => 'workflow',
                         'SIZE' => 40,
+                        'QSIZE' => 6,
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
                         'STEP' => 2,
@@ -378,6 +380,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'SIZE' => 32,
                         'MAXLENGTH' => 32,
                         'MIN-SIZE' => 1,
+                        'QSIZE' => 6,
                         'STEP' => 2,
                         'CHAR_TEMPLATE' => 'ALPHABETIC,SPACE',
                         'MANDATORY' => true,
@@ -490,6 +493,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'ANSMODULE' => 'workflow',
                         'DEPENDENT_OFME' => ['workflow_status_id'],
                         'SIZE' => 40,
+                        'QSIZE' => 6,
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
                         'STEP' => 2,
@@ -520,6 +524,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'WHERE' => '§workflow_stage_id§ = 0 or workflow_stage_id = §workflow_stage_id§',
                         'DEPENDENCY' => 'workflow_stage_id',
                         'SIZE' => 40,
+                        'QSIZE' => 6,
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
                         'STEP' => 2,
