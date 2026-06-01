@@ -64,12 +64,18 @@ class WorkflowRole extends WorkflowObject
                         UfwQueryAnalyzer::startProcessLourdMode();
                         $arr_roles = [$this->id];
                         $wEmplList = WorkflowEmployee::getEmployeeList($orgunit_id = 0, $wscope_id = 0, $except_employee_id = 0, $arr_roles, $hrm = false);
-                        /**
-                         * @var WorkflowEmployee $wEmplItem
-                         */
+
+                        $count = 0;
+                        $counterr = 0;
                         foreach ($wEmplList as $wEmplItem) {
-                                $wEmplItem->resetPrevileges();
+                                /**
+                                 * @var WorkflowEmployee $wEmplItem
+                                 */
+                                list($err,) = $wEmplItem->resetPrevileges();
+                                if ($err) $counterr++;
+                                else $count++;
                         }
+                        AfwSession::console("afterMaj of jobrole_mfk of workflow role [employees previlege resetted : $count | errors : $counterr]", "information");
                         UfwQueryAnalyzer::stopProcessLourdMode();
                 }
         }
