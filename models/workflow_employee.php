@@ -334,10 +334,10 @@ class WorkflowEmployee extends WorkflowObject
 
                 list($idsAdded, $idsRemoved) = AfwFormatHelper::mfkDiff($wrole_mfk, $old_wrole_mfk);
                 foreach ($idsAdded as $idwrole) {
-                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = true;
+                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "added-$idwrole";
                 }
                 foreach ($idsRemoved as $idwrole) {
-                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = true;
+                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "removed-$idwrole";
                 }
                 if ($email or $objEmployee) {
                         /**
@@ -460,6 +460,7 @@ class WorkflowEmployee extends WorkflowObject
 
                         $this->getPrevilegesPhpCodeForUser($lang);
                         if ($need_to_re_assign and $assign) {
+                                AfwSession::console("need to re assign because : $need_to_re_assign", "reason");
                                 list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(true, $lang, 1000, true);
                                 if ($err)
                                         $err_arr[] = $err;
