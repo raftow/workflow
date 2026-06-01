@@ -351,6 +351,11 @@ class WorkflowEmployee extends WorkflowObject
                         $hierarchy_level_enum = $this->getVal('hierarchy_level_enum');
                         $objEmployee->set('domain_id', $domain_id);
 
+                        // @todo here below we should only remove the jobroles of the current domain / application(s)
+                        // not for other domains or applications
+                        // reset all my jobroles to recalculate them :
+                        $objEmployee->set('jobrole_mfk', ",");
+
                         $rolesFromScratchForModules = [];
 
                         $wroleList = $this->get('wrole_mfk');
