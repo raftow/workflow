@@ -317,7 +317,7 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param Employee $objEmployee
          */
-        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true, $old_wrole_mfk = "")
+        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true, $old_wrole_mfk = null)
         {
                 $err_arr = [];
                 $inf_arr = [];
@@ -330,15 +330,19 @@ class WorkflowEmployee extends WorkflowObject
 
                 $need_to_re_assign = false;
 
-                $wrole_mfk = $this->getVal('wrole_mfk');
+                if ($old_wrole_mfk) {
+                        $wrole_mfk = $this->getVal('wrole_mfk');
 
-                list($idsAdded, $idsRemoved) = AfwFormatHelper::mfkDiff($wrole_mfk, $old_wrole_mfk);
-                foreach ($idsAdded as $idwrole) {
-                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "added-$idwrole";
+                        list($idsAdded, $idsRemoved) = AfwFormatHelper::mfkDiff($wrole_mfk, $old_wrole_mfk);
+                        foreach ($idsAdded as $idwrole) {
+                                if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "added-$idwrole";
+                        }
+                        foreach ($idsRemoved as $idwrole) {
+                                if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "removed-$idwrole";
+                        }
                 }
-                foreach ($idsRemoved as $idwrole) {
-                        if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "removed-$idwrole";
-                }
+
+
                 if ($email or $objEmployee) {
                         /**
                          * @var Employee $objEmployee

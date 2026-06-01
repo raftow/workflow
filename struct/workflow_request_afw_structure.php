@@ -6,6 +6,29 @@ class WorkflowWorkflowRequestAfwStructure
                 return "edit_workflow_request";
         }
 
+        /**
+         * @param string $mode
+         */
+        public static function getParameters($mode, $selection = "default")
+        {
+                if ($mode == "qsearch") {
+                        if ($selection == "default")
+                                return [
+                                        'formColumns' => [
+                                                'workflow_model_id',
+                                                'workflow_session_id',
+                                                'workflow_scope_id',
+                                                'workflow_sub_scope_id',
+                                                'application_class_enum',
+                                                'workflow_stage_id',
+                                                'workflow_status_id',
+                                                'workflow_source_id',
+                                                'workflow_category_enum'
+                                        ]
+                                ];
+                }
+        }
+
         public static function initInstance(&$obj)
         {
                 if ($obj instanceof WorkflowRequest) {
@@ -21,6 +44,8 @@ class WorkflowWorkflowRequestAfwStructure
                         $obj->editNbSteps = 8;
                         $obj->AUDIT_DATA = "byrow_audit";
                         $obj->OBJECT_CODE = "idn";
+                        $obj->excelExport = true;
+                        $obj->pdfExport = true;
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         // $obj->after_save_edit = array('mode' => 'qsearch', 'currmod' => 'Workflow', 'class' => 'WorkflowRequest', 'submit' => true);
                         $obj->after_save_edit = array("file" => '../workflow/inbox.php');
