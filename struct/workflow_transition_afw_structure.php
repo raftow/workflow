@@ -328,12 +328,12 @@ class WorkflowWorkflowTransitionAfwStructure
 
         'notification_template_id' => array(
             'SHORTNAME' => 'template',
-            'SEARCH' => true,
+            'SEARCH' => false,
             'QSEARCH' => false,
-            'SHOW' => true,
+            'SHOW' => false,
             'AUDIT' => false,
-            'RETRIEVE' => true,
-            'EDIT' => true,
+            'RETRIEVE' => false,
+            'EDIT' => false,
             'QEDIT' => false,
             'SIZE' => 32,
             'MAXLENGTH' => 32,
