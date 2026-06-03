@@ -262,34 +262,28 @@ class WorkflowTransition extends WorkflowObject
             $template_mfk = $this->get('notification_template_mfk');
             $base_url = AfwSession::config("api_base_url", "https://api.bmeholding.com/api");
             $token = AfwSession::config("api_token","XXXXYYY"); // get it from config or env variable
-            $log_arr = [];
             foreach ($template_mfk as $template_id) {
-                 $log_arr[$template_id] = $this->callNotificationApi($base_url, $token, $request_id, $template_id);
+                 $this->callNotificationApi($base_url, $token, $request_id, $template_id);
             }
-            return $log_arr;
+            
     }
     public function callNotificationApi($base_url, $token, $request_id, $template_id)
     {
-        $url = "$base_url/notification/send/$request_id/$template_id";
-        $data = [
-            "request_id" => $request_id,
-            "template_id" => $template_id
-        ];
+       $ch = curl_init("$base_url/notification/send/$request_id/$template_id");
+        curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER     => [
+                "Authorization: Bearer $token",
+                "Accept: application/json",
+        ],
+        ]);
 
-        $options = [
-            'http' => [
-                'header'  => "Content-Type: application/json\r\n" .
-                             "Authorization: Bearer $token\r\n",
-                'method'  => 'POST',
-                'content' => json_encode($data),
-            ],
-        ];
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        if ($result === FALSE) {
-            // Handle error
-            error_log("Failed to send notification for request_id: $request_id with template_id: $template_id");
-        }
+        $response = curl_exec($ch);
+        $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        return ["status"=>$status, "response"=>$response];
+        
     }
     
     
