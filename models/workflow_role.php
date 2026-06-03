@@ -5,6 +5,7 @@ class WorkflowRole extends WorkflowObject
         public static $DATABASE                = "";
         public static $MODULE                    = "workflow";
         public static $TABLE                        = "workflow_role";
+        private static $roleIsForAssignArr = [];
         public static $DB_STRUCTURE = null;
         // public static $copypast = true;
 
@@ -21,6 +22,21 @@ class WorkflowRole extends WorkflowObject
                 if ($obj->load($id)) {
                         return $obj;
                 } else return null;
+        }
+
+        /**
+         * @param int $id
+         */
+        public static function roleIsForAssign($id)
+        {
+                if (!isset($roleIsForAssignArr[$id])) {
+                        $obj = new WorkflowTransition();
+                        $obj->select("active", "Y");
+                        $obj->mfkContain("workflow_role_mfk", $id);
+                        $roleIsForAssignArr[$id] = ($obj->count() > 0);
+                }
+
+                return $roleIsForAssignArr[$id];
         }
 
         public function getDisplay($lang = 'ar')
@@ -45,14 +61,22 @@ class WorkflowRole extends WorkflowObject
         public function afterMaj($id, $fields_updated)
         {
                 if ($fields_updated["jobrole_mfk"]) {
+                        UfwQueryAnalyzer::startProcessLourdMode();
                         $arr_roles = [$this->id];
                         $wEmplList = WorkflowEmployee::getEmployeeList($orgunit_id = 0, $wscope_id = 0, $except_employee_id = 0, $arr_roles, $hrm = false);
-                        /**
-                         * @var WorkflowEmployee $wEmplItem
-                         */
+
+                        $count = 0;
+                        $counterr = 0;
                         foreach ($wEmplList as $wEmplItem) {
-                                $wEmplItem->resetPrevileges();
+                                /**
+                                 * @var WorkflowEmployee $wEmplItem
+                                 */
+                                list($err,) = $wEmplItem->resetPrevileges();
+                                if ($err) $counterr++;
+                                else $count++;
                         }
+                        AfwSession::console("afterMaj of jobrole_mfk of workflow role [employees previlege resetted : $count | errors : $counterr]", "information");
+                        UfwQueryAnalyzer::stopProcessLourdMode();
                 }
         }
 }

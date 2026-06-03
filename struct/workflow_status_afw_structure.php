@@ -56,12 +56,35 @@ class WorkflowWorkflowStatusAfwStructure
                         'STEP' => 1,
                         'RELATION' => 'OneToMany',
                         'MANDATORY' => true,
-                        'READONLY' => false,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
                         'DEPENDENT_OFME' => ['workflow_stage_id']
+                ),
+
+                'status_code' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '16',
+                        'MAXLENGTH' => '16',
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => true,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
                 ),
 
 
@@ -144,7 +167,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'SHOW' => true,
                         'RETRIEVE' => false,
                         'EDIT' => true,
-                        'QEDIT' => true,
+                        'QEDIT' => false,
                         'SIZE' => 'AEREA',
                         'UTF8' => true,
                         'TYPE' => 'TEXT',
@@ -165,7 +188,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'SHOW' => true,
                         'RETRIEVE' => false,
                         'EDIT' => true,
-                        'QEDIT' => true,
+                        'QEDIT' => false,
                         'SIZE' => 'AEREA',
                         'UTF8' => false,
                         'TYPE' => 'TEXT',
@@ -179,25 +202,7 @@ class WorkflowWorkflowStatusAfwStructure
 
 
 
-                'status_code' => array(
-                        'IMPORTANT' => 'IN',
-                        'SEARCH' => true,
-                        'QSEARCH' => true,
-                        'SHOW' => true,
-                        'RETRIEVE-AR' => true,
-                        'EDIT' => true,
-                        'QEDIT' => true,
-                        'SIZE' => '16',
-                        'MAXLENGTH' => '16',
-                        'UTF8' => true,
-                        'TYPE' => 'TEXT',
-                        'DISPLAY' => true,
-                        'STEP' => 1,
-                        'MANDATORY' => false,
-                        'DISPLAY-UGROUPS' => '',
-                        'EDIT-UGROUPS' => '',
-                        'CSS' => 'width_pct_25',
-                ),
+
 
 
 
@@ -205,6 +210,7 @@ class WorkflowWorkflowStatusAfwStructure
                         'RETRIEVE' => true,
                         'SHOW' => true,
                         'EDIT' => true,
+                        'QEDIT' => true,
                         'DEFAUT' => 'N',
                         'TYPE' => 'YN',
                         'DISPLAY' => true,

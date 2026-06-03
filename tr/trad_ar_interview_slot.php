@@ -1,13 +1,14 @@
 <?php
 
-class InterviewSlotArTranslator{
-    public static function initData()
-    {
-        $trad = [];
+class InterviewSlotArTranslator
+{
+	public static function initData()
+	{
+		$trad = [];
 
-		$trad["interview_slot"]["interviewslot.single"] = "موعد المقابلة";
+		$trad["interview_slot"]["interviewslot.single"] = "موعد";
 		$trad["interview_slot"]["interviewslot.new"] = "جديد(ة)";
-		$trad["interview_slot"]["interview_slot"] = "مواعيد المقابلة";
+		$trad["interview_slot"]["interview_slot"] = "المواعيد";
 		$trad["interview_slot"]["name_ar"] = "مسمى  بالعربية";
 		$trad["interview_slot"]["name_en"] = "مسمى  بالانجليزية";
 		$trad["interview_slot"]["desc_ar"] = "وصف  بالعربية";
@@ -24,13 +25,13 @@ class InterviewSlotArTranslator{
 		$trad["interview_slot"]["virtual_meeting_url"] = "رابط الاجتماع الافتراضي";
 		$trad["interview_slot"]["workflow_commitee_id"] = "اللجنة/المحاورون";
 		$trad["interview_slot"]["interview_slot_status_id"] = "حالة موعد المقابلة";
-        // steps
-        return $trad;
-    }
+		// steps
+		return $trad;
+	}
 
-    public static function getInstance()
+	public static function getInstance()
 	{
-        if(false) return new InterviewSlotEnTranslator();
+		if (false) return new InterviewSlotEnTranslator();
 		return new InterviewSlot();
 	}
 }

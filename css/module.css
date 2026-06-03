@@ -198,6 +198,11 @@ div.wcategory {
     padding: 11px;
 }
 
+div.wcategory>span {
+    white-space: nowrap;
+    /* margin-top: 5px !important; */
+}
+
 span.wrcandinfo {
     background-color: #e2ec23;
     color: black;
@@ -412,6 +417,9 @@ th.col-importance-small.th-comment_date {
     content: "\f0c1";
 }
 
+.icon-411:before {
+    content: "\f500";
+}
 
 
 

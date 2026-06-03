@@ -214,7 +214,7 @@ class WorkflowRequest extends WorkflowObject
                                 if (!$obj->getVal('request_date'))
                                         $obj->set('request_date', AfwDateHelper::currentHijriDate());
                                 $wApplicantObj = $obj->het('workflow_applicant_id');
-                                if(!$wApplicantObj) {
+                                if (!$wApplicantObj) {
                                         throw new AfwRuntimeException('loadByMainIndex : workflow applicant object not found');
                                 }
                                 $obj->set('idn', $wApplicantObj->getVal("idn"));
@@ -228,7 +228,7 @@ class WorkflowRequest extends WorkflowObject
                         $obj->set('request_date', AfwDateHelper::currentHijriDate());
                         $obj->set('done', 'N');
                         $wApplicantObj = $obj->het('workflow_applicant_id');
-                        if(!$wApplicantObj) {
+                        if (!$wApplicantObj) {
                                 throw new AfwRuntimeException('loadByMainIndex : workflow applicant object not found');
                         }
                         $obj->set('idn', $wApplicantObj->getVal("idn"));
@@ -252,20 +252,31 @@ class WorkflowRequest extends WorkflowObject
                 return false;
         }
 
+
+        public function isInboxable()
+        {
+                $stageObj = $this->het("workflow_stage_id");
+
+                if (!$stageObj) return false;
+
+                return $stageObj->sureIs("see_only_assigned_ind");
+        }
+
         /**
          * @param int $employee_id
          */
         public static function inboxSqlCond($employee_id, $prefix = 'me.')
         {
-                // list of stages that does not need assignment to be visible in inbox
-                // $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='N'");
-                // or " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . ")
+                // list of stages to be visible in inbox
+                // see_only_assigned_ind = في صندوق الوارد نعرض الطلبات التي في هذه المرحلة
+                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='Y'");
+                // 
                 // Amjad whatsApp 2026-05-10 (inside word document : admission cycle test 09052026) :
                 // 2.	Show only the workflow request assigned to the admin user connected
                 // 3.	Don’t show the workflow request assigned to another user
                 // 4.	Don’t show the non-assigned workflow request - مرحلة المطابقة و المفاضلة 
 
-                return "(" . $prefix . "employee_id='$employee_id')  and " . $prefix . "done != 'Y'"; 
+                return "(" . $prefix . "employee_id='$employee_id' and " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . "))  and " . $prefix . "done != 'Y'";
         }
 
         public static function inboxCountFor($employee_id)
@@ -291,9 +302,9 @@ class WorkflowRequest extends WorkflowObject
                         return $this->assignRequest($employeeId, $arguments[0]);
                 }
 
-                if (substr($name, 0, 13) == 'calcDiv_step_') {
-                        $step = intval(substr($name, 13));
-                        return $this->calcDiv_step($step, $arguments[0]);
+                if (substr($name, 0, 14) == 'calcDiv_block_') {
+                        $block = intval(substr($name, 14));
+                        return $this->calcDiv_block($block, $arguments[0]);
                 }
 
                 if (substr($name, 0, 18) == 'approveProgramWith') {
@@ -322,7 +333,11 @@ class WorkflowRequest extends WorkflowObject
                         if ($objme->isSuperAdmin()) {
                                 $employeeRolesArray = null;
                         } else {
-                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
+                                $assigned_orgunit_id = $this->getVal('orgunit_id');
+                                $assigned_employee_id = $this->getVal('employee_id');
+                                if (!$assigned_employee_id) $assigned_orgunit_id = 0; // all people have previleges can do it
+
+                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($assigned_orgunit_id);
                                 if (!$wEmployeeMe) return array(); // die("No user authenticated !!!!"); //
                                 $employeeRolesArray = explode(",", trim($wEmployeeMe->getVal("wrole_mfk"), ","));
                         }
@@ -343,7 +358,8 @@ class WorkflowRequest extends WorkflowObject
                         if ($transItem->sureIs("condition_before")) {
                                 if (!$objOriginal) list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
                                 $wCondObj = $transItem->het("workflow_condition_id");
-                                list($condition_success, $reason) = $objOriginal->runCondition($wCondObj, $this, "en");
+                                if ($objOriginal) list($condition_success, $reason) = $objOriginal->runCondition($wCondObj, $this, "en");
+                                else $condition_success = 0;
                         } else $condition_success = true;
 
                         if ($condition_success) {
@@ -404,15 +420,25 @@ class WorkflowRequest extends WorkflowObject
 
 
                 $accepted_roles_mfk = trim($objTransition->getVal("workflow_role_mfk"), ",");
-                if($accepted_roles_mfk=="5") $accepted_roles_mfk=""; // المتقدم ليس صلاحية حقيقية
+                if ($accepted_roles_mfk == "5") $accepted_roles_mfk = ""; // المتقدم ليس صلاحية حقيقية
 
                 $authorizedRolesArray = array_filter(explode(",", $accepted_roles_mfk));
-                if(count($authorizedRolesArray)>0) {
+                if (count($authorizedRolesArray) > 0) {
                         if (!$objme or !$objme->isSuperAdmin()) {
-                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($this->getVal('orgunit_id'));
+                                $assigned_orgunit_id = $this->getVal('orgunit_id');
+                                $assigned_employee_id = $this->getVal('employee_id');
+                                if (!$assigned_employee_id) $assigned_orgunit_id = 0; // all people have previleges can do it
+                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($assigned_orgunit_id);
                                 if (!$wEmployeeMe) {
                                         $error = $this->tm('Session terminated or no authenticated employee found when this transition need one of the following previleges', $lang);
                                         $error .= " : " . $objTransition->showAttribute("workflow_role_mfk", null, true, $lang);
+                                        $error .= ". " . $this->tm('Knowing that', $lang);
+                                        if ($assigned_orgunit_id > 0) {
+                                                $orgunit_name = $this->showAttribute("orgunit_id", null, true, $lang);
+                                                $error .= " " . $this->tm('The request is assigned to', $lang) . " [$orgunit_name] ";
+                                        } else {
+                                                $error .= " " . $this->tm('The request is not assigned to any department', $lang);
+                                        }
                                         return array($error, '');
                                 }
                                 if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
@@ -421,7 +447,7 @@ class WorkflowRequest extends WorkflowObject
                                 }
                         }
                 }
-                
+
 
 
                 list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
@@ -707,7 +733,7 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                        if (($this->isMine()) and ($this->getVal("done") == "N")) {
+                        if (($this->isMine()) and ($this->isInboxable()) and ($this->getVal("done") == "N")) {
                                 $color = 'yellow';
                                 $title_ar = 'بدأ العمل على الطلب';
                                 $methodName = 'startWork';
@@ -722,7 +748,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
-                        } elseif (($this->isMine()) and ($this->getVal("done") == "W")) {
+                        } elseif (($this->isMine()) and ($this->isInboxable()) and ($this->getVal("done") == "W")) {
                                 $color = 'gray';
                                 $title_ar = 'إلغاء بدأ العمل على الطلب';
                                 $methodName = 'cancelStartWork';
@@ -742,7 +768,7 @@ class WorkflowRequest extends WorkflowObject
 
 
                 //die('rafik final pbms=' . var_export($pbms, true));
-                if (true) { //only for testing purpose
+                if (false) { //only for testing purpose
                         $color = 'gray';
                         $title_ar = 'ارسال اشعار للمتقدم';
                         $methodName = 'sendNotificationsExample';
@@ -853,7 +879,7 @@ class WorkflowRequest extends WorkflowObject
         {
                 //$appClass = $this->getVal("application_class_enum");
                 //return ($appClass == 2 or $appClass == 3 or $appClass == 5);
-                $applicationClassObj = ApplicationClass::loadById($this->getVal("application_class_enum"));   
+                $applicationClassObj = ApplicationClass::loadById($this->getVal("application_class_enum"));
                 return $applicationClassObj->getVal("budgeting_ind") == "Y";
         }
 
@@ -1008,13 +1034,16 @@ class WorkflowRequest extends WorkflowObject
                  * ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
                  */
                 $request_comment_subject_id = 0;
+                /* after merging steps by amajad (request of 29/05/2026) we are not able to 
+                   pre-define the request_comment_subject_id we let the user do it
+                   manually I alerted amjad by whatsapp
                 $currstep = $_REQUEST['currstep'];
                 if ($currstep <= 2)
                         $request_comment_subject_id = 1;
                 elseif ($currstep <= 4)
                         $request_comment_subject_id = 2;
                 elseif ($currstep <= 6)
-                        $request_comment_subject_id = 3;
+                        $request_comment_subject_id = 3;*/
 
                 $desc_erase = array('MANDATORY' => false);
                 $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj, ':', $desc_erase);
@@ -1131,14 +1160,14 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "original_9") return true;
                 if ($attribute == "original_10") return true;
                 if ($attribute == "category") return true;
-                if ($attribute == "div_step_3") return true;
-                if ($attribute == "div_step_4") return true;
-                if ($attribute == "div_step_5") return true;
-                if ($attribute == "div_step_6") return true;
-                if ($attribute == "div_step_7") return true;
-                if ($attribute == "div_step_8") return true;
-                if ($attribute == "div_step_9") return true;
-                if ($attribute == "div_step_10") return true;
+                if ($attribute == "div_block_3") return true;
+                if ($attribute == "div_block_4") return true;
+                if ($attribute == "div_block_5") return true;
+                if ($attribute == "div_block_6") return true;
+                if ($attribute == "div_block_7") return true;
+                if ($attribute == "div_block_8") return true;
+                if ($attribute == "div_block_9") return true;
+                if ($attribute == "div_block_10") return true;
                 if ($attribute == "formComments") return true;
                 if ($attribute == "originalObject") return true;
                 return false;
@@ -1148,7 +1177,7 @@ class WorkflowRequest extends WorkflowObject
         public static function stepOfStage($stageId)
         {
                 // not good like this to be hardcoded, please fix later @todo-rafik
-                return $stageId + 4;
+                return $stageId + 2;
         }
 
         public function reachedStep()
@@ -1158,6 +1187,11 @@ class WorkflowRequest extends WorkflowObject
                 return self::stepOfStage($stageId);
         }
 
+        /*
+        after merging steps by amajad (request of 29/05/2026) we are not able to 
+                   pre-define the request_comment_subject_id we let the user do it
+                   manually I alerted amjad by whatsapp
+                   this method become obsolete
         public function convenientCommentSubjectId()
         {
                 $request_comment_subject_id = 1;
@@ -1170,23 +1204,22 @@ class WorkflowRequest extends WorkflowObject
                         $request_comment_subject_id = 3;
 
                 return $request_comment_subject_id;
-        }
+        }*/
 
         public function weReachedStep($step)
         {
                 // step1 =>  'البيانات الشخصية';
-                // step2 =>  'طلب التقديم';
-                // step3 =>  'المؤهلات';
-                // step4 =>  'الاختبارات';
-                // step5 =>  'مراجعة الوثائق';
-                // step6 =>  'مراجعة اللجنة';
-                // step7 =>  'المقابلة الشخصية';
-                // step8 =>  'المفاضلة والقبول';
+                // step2 =>  'طلب القبول';
+
+                // step3 =>  'مراجعة الوثائق';
+                // step4 =>  'مراجعة اللجنة';
+                // step5 =>  'المقابلة الشخصية';
+                // step6 =>  'المفاضلة والقبول';
 
                 return ($this->reachedStep() >= $step);
         }
 
-        public function calcDiv_step($step, $what = 'value')
+        public function calcDiv_block($block, $what = 'value')
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
 
@@ -1195,10 +1228,10 @@ class WorkflowRequest extends WorkflowObject
                 if (!$objOriginal)
                         return "not found Original-Object looked up with ($keyLookup) : $error";
 
-                return $objOriginal->calcDivForWorkflowStep($step, $what, $this);
+                return $objOriginal->calcDivForWorkflowBlock($block, $what, $this);
         }
 
-        public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200')
+        public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200', $inJournal = false)
         {
                 $server_db_prefix = AfwSession::currentDBPrefix();
                 $obj = new WorkflowRequest();
@@ -1224,6 +1257,7 @@ class WorkflowRequest extends WorkflowObject
 
                 $errors_arr = array();
                 $infos_arr = array();
+                $war_arr = array();
 
                 foreach ($reqList as $reqItem) {
                         /** @var WorkflowRequest $reqItem */
@@ -1236,8 +1270,17 @@ class WorkflowRequest extends WorkflowObject
                 }
 
                 $nb_errs = count($errors_arr);
+                $nb_all = count($reqList);
+                $nb_done = $nb_all - $nb_errs;
 
-                $infos_arr[] = 'assign done for ' . count($reqList) . " request(s) with $nb_errs error(s)";
+
+
+                if ($inJournal) {
+                        AfwSession::consolePbmResult($errors_arr, $infos_arr, $war_arr, "re-assign");
+                        $errors_arr = [];
+                        $infos_arr = [];
+                        $war_arr = [];
+                }
 
                 if ((!$silent) and (count($errors_arr) > 0)) {
                         AfwSession::pushError(implode('<br>', $errors_arr));
@@ -1247,7 +1290,15 @@ class WorkflowRequest extends WorkflowObject
                         AfwSession::pushInformation(implode('<br>', $infos_arr));
                 }
 
-                return AfwFormatHelper::pbm_result($errors_arr, $infos_arr);
+                if ((!$silent) and (count($war_arr) > 0)) {
+                        AfwSession::pushWarning(implode('<br>', $war_arr));
+                }
+
+                $message_result = "attempt to assign $nb_all request(s) : $nb_done done and $nb_errs error(s)";
+                if ($nb_errs == 0) $infos_arr[] = $message_result;
+                else $war_arr[] = $message_result;
+
+                return AfwFormatHelper::pbm_result($errors_arr, $infos_arr, $war_arr);
         }
 
 
@@ -1275,6 +1326,9 @@ class WorkflowRequest extends WorkflowObject
                                 if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
 
                                 $obj = new WorkflowRequestComment();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
+                                $obj = new InterviewBooking();
                                 if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
 
 
@@ -1308,6 +1362,10 @@ class WorkflowRequest extends WorkflowObject
 
                                 }
 
+                                if (!$simul) {
+                                        InterviewBooking::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                }
+
 
 
 
@@ -1315,32 +1373,47 @@ class WorkflowRequest extends WorkflowObject
 
 
                         }
+
+                        AfwAuditHelper::deleteAllAuditFor($id);
+
                         return true;
                 }
         }
 
+        /**
+         * @param int $block
+         */
+
+        public function stepOfBlock($block)
+        {
+                return $this->stepOfAttribute("div_block_$block");
+        }
+
+        /**
+         * @param string $attribute
+         */
         public function attributeIsApplicable($attribute)
         {
-                for ($step = 1; $step <= 10; $step++) {
-                        if ($attribute == "div_step_$step") {
-                                return $this->weReachedStep($step);
+                for ($block = 1; $block <= 10; $block++) {
+                        if ($attribute == "div_block_$block") {
+                                return $this->weReachedStep($this->stepOfBlock($block));
                         }
                 }
 
                 if ($attribute == "interview_score") {
-                        return $this->weReachedStep(7);
+                        return $this->weReachedStep($this->stepOfAttribute("interview_score"));
                 }
 
                 if ($attribute == "workflowRequestDataList") {
-                        return $this->weReachedStep(9);
+                        return $this->weReachedStep($this->stepOfAttribute("workflowRequestDataList"));
                 }
 
                 if ($attribute == "workflowRequestCommentList") {
-                        return $this->weReachedStep(10);
+                        return $this->weReachedStep($this->stepOfAttribute("workflowRequestCommentList"));
                 }
 
 
-                
+
 
                 if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and ($this->sureIs("attempt") or $this->getVal("workflow_rejection_reason_id")));
 
@@ -1368,11 +1441,11 @@ class WorkflowRequest extends WorkflowObject
          * @return string
          */
 
-        public function whereIam($lang) 
+        public function whereIam($lang)
         {
                 $objme = AfwSession::getUserConnected();
                 if ($objme and $objme->isAdmin()) {
-                        return $this->tm("Super admin users can work on any request",$lang);
+                        return $this->tm("Super admin users can work on any request", $lang);
                 }
 
                 $employee_id = $objme ? $objme->getEmployeeId() : 0;
@@ -1380,20 +1453,21 @@ class WorkflowRequest extends WorkflowObject
                 if ($assigned_employee_id) {
                         $emplObj = $this->het('employee_id');
                         if ($emplObj) {
-                                return $this->tm("This request is assigned to",$lang) . " : " . $emplObj->getDisplay($lang);
+                                return $this->tm("This request is assigned to", $lang) . " : " . $emplObj->getDisplay($lang);
                         }
                 }
 
                 $finalStageObj = $this->het('workflow_stage_id');
-                if(!$finalStageObj) return $this->tm("This request is gone in no existsant stage",$lang);
+                if (!$finalStageObj) return $this->tm("This request is gone in no existsant stage", $lang);
                 $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
                 if (!$auto_assign_ind) {
-                        return $this->tm("This request does not require assignment to an employee",$lang);
+                        return $this->tm("This request does not require assignment to an employee", $lang);
                 }
 
-                return $this->tm("This request is not assigned to anyone yet",$lang);
-                
+                return $this->tm("This request is not assigned to anyone yet", $lang);
         }
+
+
 
         public function isMine()
         {
@@ -1406,10 +1480,9 @@ class WorkflowRequest extends WorkflowObject
                         $employee_id = $objme ? $objme->getEmployeeId() : 0;
                         if ($assigned_employee_id) {
                                 return ($employee_id == $assigned_employee_id);
-                        }
-                        else {
+                        } else {
                                 $finalStageObj = $this->het('workflow_stage_id');
-                                if(!$finalStageObj) return false;
+                                if (!$finalStageObj) return false;
                                 $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
                                 return (!$auto_assign_ind);
                         }
@@ -1478,7 +1551,7 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = false)
+        public function prepareInterviewBookingIfNeeded($lang = "ar")
         {
                 $error = "";
                 $info = "";
@@ -1486,14 +1559,17 @@ class WorkflowRequest extends WorkflowObject
 
                 $ibObj = null;
                 $statusObj = $this->het("workflow_status_id");
+                // $workflow_status_title = $this->decode('workflow_status_id', '', false, $lang);
                 $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $workflow_stage_title = $this->decode('workflow_stage_id', '', false, $lang);
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
                 $workflow_session_id = $this->getVal("workflow_session_id");
-                $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
-                if (!$interview_stage_id) {
-                        $interview_stage_id = $workflow_stage_id;
-                        $warning = $this->tm("Interview stage not defined in the current session", $lang);
-                }
+                $interview_stage_id = $workflow_stage_id;
+                // below is obsolete to review
+                // I dont khnw=ow why I do it because in same plan (wkflow session)
+                // we can have multiple interviews
+                // if (!$interview_stage_id) $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
+
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 $ibObj = null;
 
@@ -1502,7 +1578,9 @@ class WorkflowRequest extends WorkflowObject
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
                                 if ($ibObj && $ibObj->is_new) {
-                                        $workflow_scope_id = $this->getVal("workflow_scope_id");
+
+                                        if ($ibObj->sureIs("booking_program_ind")) $workflow_scope_id = $this->getVal("workflow_scope_id");
+                                        else $workflow_scope_id = 0;
                                         $booking_status_id = 6;
                                         $reschedule_count = $ibObj->getVal("max_reschedule");
                                         $can_reschedule_ind = ($reschedule_count > 0) ? "Y" : "N";
@@ -1514,14 +1592,13 @@ class WorkflowRequest extends WorkflowObject
                                         $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
                                         $ibObj->set("can_cancel_ind", $can_cancel_ind);
                                         $ibObj->commit();
+                                        if (!$ibObj->calcNbSlotsAvailable() > 0) {
+                                                AfwSession::pushAlert($this->tm("Please note: No appointments are available. Please create them", $lang));
+                                        }
+
                                         $info = $this->tm("Interview booking invitation has been created", $lang);
-                                } elseif(!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
-                        } else $error = $this->tm("Interview booking pattern not found", $lang);
-                } elseif ($returnInterviewBookingObject) {
-                        if ($itpObj) {
-                                $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
-                                if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
-                        } else $error = $this->tm("Interview booking pattern not found", $lang);
+                                } elseif (!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
+                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $workflow_stage_title);
                 }
 
                 $return = [];
@@ -1535,9 +1612,23 @@ class WorkflowRequest extends WorkflowObject
                 return $return;
         }
 
-        public function getInterviewBooking()
+        /**
+         * @param int $interview_stage_id
+         */
+        public function getInterviewBooking($interview_stage_id)
         {
-                return $this->prepareInterviewBookingIfNeeded($lang = "ar", $returnInterviewBookingObject = true);
+                $interview_stage_title = AfwFormatHelper::decodeAnswerOfAttribute($this, 'workflow_stage_id', $interview_stage_id);
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
+                $ibObj = null;
+                if ($itpObj) {
+                        $workflow_applicant_id = $this->getVal("workflow_applicant_id");
+                        $workflow_session_id = $this->getVal("workflow_session_id");
+                        $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
+                        // if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
+                } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $interview_stage_title);
+
+                return $ibObj;
         }
 
 
@@ -1678,20 +1769,20 @@ class WorkflowRequest extends WorkflowObject
                 return $res;
         }
 
-        public function calcMyOriginalObjectLinks($what = 'value', $actionconvenient=true)
+        public function calcMyOriginalObjectLinks($what = 'value', $actionconvenient = true)
         {
                 /**
                  * @var AFWObject $originalObject
                  */
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $originalObject = $this->calcOriginalObject('object');
-                if ($originalObject) {                        
+                if ($originalObject) {
                         $return = $originalObject->showMyLinks($lang);
-                        if($actionconvenient) {
-                                $title = $this->translate("action-convenient", $lang);                         
+                        if ($actionconvenient) {
+                                $title = $this->translate("action-convenient", $lang);
                                 $return .= " " . $this->showMyLink(10, '', $title);
                         }
-                        
+
                         return $return;
                 } else {
                         $error_msg = $this->tm("not found", $lang);
@@ -1721,4 +1812,21 @@ class WorkflowRequest extends WorkflowObject
                 return $auser->hasRole($module_code, $role_id);
         }
         */
+
+
+        public function takeViewIcon($mode = 'search')
+        {
+                return true;
+        }
+
+        public function takeEditAction($mode = 'search')
+        {
+                return false;
+        }
+
+        public function takeDeleteAction($mode = 'search')
+        {
+                $objme = AfwSession::getUserConnected();
+                return $objme->isSuperAdmin();
+        }
 }

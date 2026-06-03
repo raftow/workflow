@@ -8,12 +8,12 @@ class WorkflowWorkflowStageAfwStructure
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
                         $obj->DISPLAY_FIELD = "workflow_stage_name_ar";
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
-                        $obj->UNIQUE_KEY = array('workflow_model_id', 'workflow_stage_name_ar', 'workflow_stage_name_en');
+                        $obj->UNIQUE_KEY = array('step_code'); // array('workflow_model_id', 'workflow_stage_name_ar', 'workflow_stage_name_en');
                         // $obj->public_display = true;
                         // $obj->IS_LOOKUP = true;
 
-                        $obj->editByStep = false;
-                        //$obj->editNbSteps = 1; 
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 3;
                         // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
                         $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowStage', "submit" => true);
                 } else {
@@ -56,7 +56,8 @@ class WorkflowWorkflowStageAfwStructure
                         'STEP' => 1,
                         'RELATION' => 'OneToMany',
                         'MANDATORY' => true,
-                        'READONLY' => false,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
                         'AUTOCOMPLETE' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -79,6 +80,8 @@ class WorkflowWorkflowStageAfwStructure
                         'DISPLAY' => true,
                         'STEP' => 1,
                         'MANDATORY' => true,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
@@ -101,6 +104,8 @@ class WorkflowWorkflowStageAfwStructure
                         'DISPLAY' => true,
                         'STEP' => 1,
                         'MANDATORY' => false,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
@@ -120,7 +125,7 @@ class WorkflowWorkflowStageAfwStructure
                         'UTF8' => true,
                         'TYPE' => 'TEXT',
                         'DISPLAY' => true,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'MANDATORY' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -141,7 +146,7 @@ class WorkflowWorkflowStageAfwStructure
                         'UTF8' => false,
                         'TYPE' => 'TEXT',
                         'DISPLAY' => true,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'MANDATORY' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -150,7 +155,7 @@ class WorkflowWorkflowStageAfwStructure
 
 
                 'orgunit_id' => array(
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'SHORTNAME' => 'orgunit',
                         'SEARCH' => true,
                         'QSEARCH' => true,
@@ -188,7 +193,7 @@ class WorkflowWorkflowStageAfwStructure
                         'UTF8' => true,
                         'TYPE' => 'TEXT',
                         'DISPLAY' => true,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'MANDATORY' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -205,7 +210,7 @@ class WorkflowWorkflowStageAfwStructure
                         'EDIT' => true,
                         'TYPE' => 'INT',
                         'MANDATORY' => false,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
@@ -220,7 +225,7 @@ class WorkflowWorkflowStageAfwStructure
                         'EDIT' => true,
                         'TYPE' => 'INT',
                         'MANDATORY' => false,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
@@ -236,7 +241,7 @@ class WorkflowWorkflowStageAfwStructure
                         'EDIT' => true,
                         'TYPE' => 'INT',
                         'MANDATORY' => false,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
@@ -258,7 +263,7 @@ class WorkflowWorkflowStageAfwStructure
                         'TYPE' => 'ENUM',
                         'ANSWER' => 'FUNCTION',
                         'DISPLAY' => true,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'MANDATORY' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
@@ -284,7 +289,7 @@ class WorkflowWorkflowStageAfwStructure
                         'SIZE' => 40,
                         'DEFAUT' => 0,
                         'DISPLAY' => true,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'RELATION' => 'ManyToOne',
                         'MANDATORY' => false,
                         'READONLY' => false,
@@ -342,7 +347,7 @@ class WorkflowWorkflowStageAfwStructure
                         'QSEARCH' => false,
                         'SHOW' => true,
                         'AUDIT' => false,
-                        'RETRIEVE' => false,
+                        'RETRIEVE' => true,
                         'EDIT' => true,
                         'QEDIT' => true,
                         'SIZE' => 32,
@@ -373,12 +378,42 @@ class WorkflowWorkflowStageAfwStructure
                         'TYPE' => 'ENUM',
                         'ANSWER' => 'FUNCTION',
                         'DISPLAY' => true,
-                        'STEP' => 1,
+                        'STEP' => 2,
                         'DEFAUT' => 10,
                         'MANDATORY' => false,
                         'DISPLAY-UGROUPS' => '',
                         'EDIT-UGROUPS' => '',
                         'CSS' => 'width_pct_25',
+                ),
+
+
+                'interviewTypePatternList' => array(
+                        'STEP' => 2,
+                        'SHOW' => true,
+                        'FORMAT' => 'retrieve',
+                        'ICONS' => true,
+                        'DELETE-ICON' => true,
+                        'BUTTONS' => true,
+                        'SEARCH' => false,
+                        'QSEARCH' => false,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'CATEGORY' => 'ITEMS',
+                        'ANSWER' => 'interview_type_pattern',
+                        'ANSMODULE' => 'workflow',
+                        'ITEM' => 'workflow_stage_id',
+                        'READONLY' => true,
+                        'CAN-BE-SETTED' => true,
+                        'CSS' => 'width_pct_100',
                 ),
 
 

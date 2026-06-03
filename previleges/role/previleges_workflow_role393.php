@@ -19,39 +19,6 @@ $role_info[393] = array(
     'showme' => true,
     'items' =>
     array(
-      105038 =>
-      array(
-        'id' => '105038',
-        'code' => 'f2-a-workflow_commitee_member/qsearch',
-        'level' => '999',
-        'menu_name_ar' => 'أعضاء اللجان',
-        'menu_name_en' => 'Workflow commitee members',
-        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommiteeMember&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105038 bfc-',
-      ),
-      105199 =>
-      array(
-        'id' => '105199',
-        'code' => 'f2-a-workflow_commitee/qsearch',
-        'level' => '999',
-        'menu_name_ar' => 'اللجان',
-        'menu_name_en' => 'Workflow commitees',
-        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowCommitee&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105199 bfc-',
-      ),
-      105045 =>
-      array(
-        'id' => '105045',
-        'code' => 'f2-a-workflow_employee/qsearch',
-        'level' => '999',
-        'menu_name_ar' => 'موظفي إدارة أعمال',
-        'menu_name_en' => 'Workflow employees',
-        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowEmployee&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105045 bfc-',
-      ),
       105206 =>
       array(
         'id' => '105206',

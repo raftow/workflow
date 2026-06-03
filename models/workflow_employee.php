@@ -308,7 +308,7 @@ class WorkflowEmployee extends WorkflowObject
 
                 if ($fields_updated['wrole_mfk']) {
                         $assign = ($fields_updated['wrole_mfk'] != "@SimuleWasEmpty");
-                        $this->resetPrevileges('ar', $objEmployee, false, $assign);
+                        $this->resetPrevileges('ar', $objEmployee, false, $assign, $fields_updated['wrole_mfk']);
                 }
 
                 return true;
@@ -317,7 +317,7 @@ class WorkflowEmployee extends WorkflowObject
         /**
          * @param Employee $objEmployee
          */
-        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true)
+        public function resetPrevileges($lang = 'ar', $objEmployee = null, $commit = true, $assign = true, $old_wrole_mfk = null)
         {
                 $err_arr = [];
                 $inf_arr = [];
@@ -327,7 +327,26 @@ class WorkflowEmployee extends WorkflowObject
                         $objEmployee = $this->het('employee_id');
 
                 $email = $this->getVal('email');
+
+                $need_to_re_assign = false;
+
+                if ($old_wrole_mfk) {
+                        $wrole_mfk = $this->getVal('wrole_mfk');
+
+                        list($idsAdded, $idsRemoved) = AfwFormatHelper::mfkDiff($wrole_mfk, $old_wrole_mfk);
+                        foreach ($idsAdded as $idwrole) {
+                                if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "added-$idwrole";
+                        }
+                        foreach ($idsRemoved as $idwrole) {
+                                if (WorkflowRole::roleIsForAssign($idwrole)) $need_to_re_assign = "removed-$idwrole";
+                        }
+                }
+
+
                 if ($email or $objEmployee) {
+                        /**
+                         * @var Employee $objEmployee
+                         */
                         if (!$objEmployee)
                                 $objEmployee = Employee::loadByEmail(1, $email, true);
                         if ($objEmployee->is_new or (!$objEmployee->getVal('firstname'))) {
@@ -348,33 +367,84 @@ class WorkflowEmployee extends WorkflowObject
                         $hierarchy_level_enum = $this->getVal('hierarchy_level_enum');
                         $objEmployee->set('domain_id', $domain_id);
 
+                        // @todo here below we should only remove the jobroles of the current domain / application(s)
+                        // not for other domains or applications
+                        // reset all my jobroles to recalculate them :
+                        $previousJobroleArr = explode(',', trim($objEmployee->getVal('jobrole_mfk'), ','));
+                        $objEmployee->set('jobrole_mfk', ",");
+                        $previousJobrole = [];
+                        $previousJobroleRemoved = [];
+                        $newJobroleAdded = [];
+                        foreach ($previousJobroleArr as $ojrId) {
+                                $previousJobrole[$ojrId] = true;
+                                $previousJobroleRemoved[$ojrId] = true;
+                        }
+
+                        $rolesFromScratchForModules = [];
+
                         $wroleList = $this->get('wrole_mfk');
                         foreach ($wroleList as $wroleItem) {
                                 $jobroleArr = explode(',', trim($wroleItem->getVal('jobrole_mfk'), ','));
+
+                                $jobroleList = $wroleItem->get('jobrole_mfk');
                                 foreach ($jobroleArr as $jobroleId) {
-                                        $inf_arr[] = "roles before Add Jobrolw $jobroleId";
-                                        $inf_arr[] = $objEmployee->myPrevilegesDescription();
-                                        $objEmployee->addMeThisJobrole($jobroleId);
-                                        $inf_arr[] = "roles after Add Jobrolw $jobroleId";
-                                        $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                        /**
+                                         * @var Jobrole $jobroleItem
+                                         */
+                                        $jobroleItem = $jobroleList[$jobroleId];
+                                        if ($jobroleItem) {
+                                                $mainApp = $jobroleItem->calcMainApplication();
+                                                $jobroleItemDisplay = $jobroleItem->getShortDisplay('en');
+                                                if ($mainApp) {
+                                                        $mainAppDisplay = $mainApp->getShortDisplay('en');
+                                                        $rolesFromScratchForModules[$mainApp->id] = true;
+                                                        AfwSession::console("The main application for job role : $jobroleItemDisplay = $mainAppDisplay id = " . $mainApp->id);
+                                                } else AfwSession::console("No main application for job role : " . $jobroleItemDisplay, "error");
+
+                                                $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
+                                                $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
+                                                AfwSession::console($roles_before_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
+                                                // $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                                $objEmployee->addMeThisJobrole($jobroleId);
+                                                if ($previousJobrole[$jobroleId]) {
+                                                        $previousJobroleRemoved[$jobroleId] = false;
+                                                } else {
+                                                        $newJobroleAdded[$jobroleId] = true;
+                                                }
+                                                AfwSession::console($roles_after_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
+
+
+
+                                                // $inf_arr[] = $objEmployee->myPrevilegesDescription();
+                                        }
                                 }
                         }
-                        $objEmployee->commit();
-                        $inf_arr[] = $objEmployee->translate('jobrole_mfk', $lang) . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang);
-                        list($err, $inf, $war) = $objEmployee->updateMyUserInformation();
 
-                        if ($err)
-                                $err_arr[] = $err;
-                        if ($inf)
-                                $inf_arr[] = $inf;
-                        if ($war)
-                                $war_arr[] = $war;
+
+                        $objEmployee->commit();
+
+                        list($err, $inf, $war) = $objEmployee->updateMyUserInformation(
+                                $lang,
+                                $from_ldap = '',
+                                true,
+                                $force_reset_pwd_for_user = false,
+                                $update_obj_if_found = true,
+                                $rolesFromScratchForModules
+                        );
+                        if ($err) AfwSession::console($err, "error");
+                        if ($inf) AfwSession::console($inf, "information");
+                        if ($war) AfwSession::console($war, "warning");
+
+
+
+
                         // if($tech) $tech_arr[] = $tech;
 
                         // die('xxx1  rafik : err_arr=' . implode(',', $err_arr) . ' inf_arr=' . implode(',', $inf_arr) . ' war_arr = ' . implode(',', $war_arr));
 
                         $auserObj = $objEmployee->het('auser_id');
                         if ($auserObj) {
+
                                 $auserObj->set('hierarchy_level_enum', $hierarchy_level_enum);
                                 $auserObj->commit();
                                 list($err, $inf, $war) = $auserObj->generateCacheFile($lang, false, true);
@@ -392,9 +462,10 @@ class WorkflowEmployee extends WorkflowObject
                         if ($commit)
                                 $this->commit();
 
-                        $this->getPrevilegesPhpCodeForUser($lang);
-                        if ($assign) {
-                                list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(false, $lang, 1000);
+                        // $this->getPrevilegesPhpCodeForUser($lang);
+                        if ($need_to_re_assign and $assign) {
+                                AfwSession::console("need to re-assign because : $need_to_re_assign", "reason");
+                                list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(true, $lang, 1000, true);
                                 if ($err)
                                         $err_arr[] = $err;
                                 if ($inf)
@@ -426,6 +497,9 @@ class WorkflowEmployee extends WorkflowObject
                 $objEmployee = $this->het('employee_id');
                 if (!$objEmployee)
                         return [$this->tm('Failed to find the employee profile record', $lang), ''];
+                /**
+                 * @var Auser $auserObj
+                 */
                 $auserObj = $objEmployee->het('auser_id');
                 if (!$auserObj)
                         return [$this->tm('Failed to find this system user', $lang), ''];
@@ -997,5 +1071,17 @@ class WorkflowEmployee extends WorkflowObject
                     $pic
                 </a>
             </div>";
+        }
+
+
+        /**
+         * @param string $field_name
+         * @param string $col_struct
+         * 
+         */
+        public function whereInbox($field_name, $col_struct)
+        {
+                $myEmplId = $this->getVal("employee_id");
+                return WorkflowRequest::inboxSqlCond($myEmplId, '');
         }
 }

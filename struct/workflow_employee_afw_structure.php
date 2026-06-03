@@ -157,7 +157,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
 			'ERROR-CHECK' => true,
-			'CSS' => 'width_pct_25',
 		),
 		'f_firstname' => array(
 			'IMPORTANT' => 'IN',
@@ -176,7 +175,6 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'DISPLAY' => true,
 			'DISPLAY-UGROUPS' => '',
 			'EDIT-UGROUPS' => '',
-			'CSS' => 'width_pct_25',
 		),
 		'g_f_firstname' => array(
 			'IMPORTANT' => 'IN',
@@ -437,7 +435,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			'ANSMODULE' => 'workflow',
 			'CATEGORY' => 'ITEMS',
 			'ITEM' => '', //'HIDE_COLS' => ['employee_id','orgunit_id'],
-			'WHERE' => "employee_id = §employee_id§ and done != 'Y'",
+			'WHERE' => "::whereInbox",
 			'FORMAT' => 'retrieve',
 			'SHOW' => true,
 			'EDIT' => false,
