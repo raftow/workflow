@@ -259,7 +259,8 @@ class WorkflowTransition extends WorkflowObject
     {
             $request_id = $workflow_request_id;
             //$template_id = $this->getVal('notification_template_id');
-            $template_mfk = $this->get('notification_template_mfk');
+            $template_mfk = explode(",", trim($this->getVal("notification_template_mfk"), ","));
+
             $base_url = AfwSession::config("api_base_url", "https://api.bmeholding.com/api");
             $token = AfwSession::config("api_token","XXXXYYY"); // get it from config or env variable
             foreach ($template_mfk as $template_id) {
