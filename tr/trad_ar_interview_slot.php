@@ -25,6 +25,9 @@ class InterviewSlotArTranslator
 		$trad["interview_slot"]["virtual_meeting_url"] = "رابط الاجتماع الافتراضي";
 		$trad["interview_slot"]["workflow_commitee_id"] = "اللجنة/المحاورون";
 		$trad["interview_slot"]["interview_slot_status_id"] = "حالة موعد المقابلة";
+		$trad["interview_slot"]["interview_type_pattern_id"] = "نمط نوع المقابلة";
+		$trad["interview_slot"]["workflow_session_id"] = "جلسة العمل";
+		$trad["interview_slot"]["workflow_scope_id"] = "نطاق العمل";
 		// steps
 		return $trad;
 	}

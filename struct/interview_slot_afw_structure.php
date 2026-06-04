@@ -39,11 +39,11 @@ class WorkflowInterviewSlotAfwStructure
 
 		'slot_model_id' => array(
 			'SHORTNAME' => 'model',
-			'SEARCH' => true,
-			'QSEARCH' => true,
+			'SEARCH' => false,
+			'QSEARCH' => false,
 			'SHOW' => true,
 			'AUDIT' => false,
-			'RETRIEVE' => true,
+			'RETRIEVE' => false,
 			'EDIT' => true,
 			'QEDIT' => true,
 			'SIZE' => 32,
@@ -271,7 +271,7 @@ class WorkflowInterviewSlotAfwStructure
 		'interview_slot_status_id' => array(
 			'SHORTNAME' => 'slot_status',
 			'SEARCH' => true,
-			'QSEARCH' => false,
+			'QSEARCH' => true,
 			'SHOW' => true,
 			'AUDIT' => false,
 			'RETRIEVE' => true,
