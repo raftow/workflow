@@ -18,7 +18,7 @@ class WorkflowSlotModelAfwStructure
 			$obj->editByStep = true;
 			$obj->editNbSteps = 2;
 
-			$obj->UNIQUE_KEY = array("interview_type_pattern_id", "workflow_session_id", "interview_date");
+			$obj->UNIQUE_KEY = array("interview_type_pattern_id", "workflow_session_id", "interview_date","workflow_scope_id");
 
 			$obj->showQeditErrors = true;
 			$obj->showRetrieveErrors = true;
