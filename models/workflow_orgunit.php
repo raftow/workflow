@@ -61,7 +61,7 @@ class WorkflowOrgunit extends WorkflowObject
         {
                 $obj = new WorkflowOrgunit();
                 if (!$orgunit_id)
-                        $obj->simpleError('loadByMainIndex : orgunit_id is mandatory field');
+                        throw new AfwRuntimeException('loadByMainIndex : orgunit_id is mandatory field');
 
                 $obj->select('orgunit_id', $orgunit_id);
 

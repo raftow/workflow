@@ -733,7 +733,7 @@ class WorkflowRequest extends WorkflowObject
 
 
 
-                        if (($this->isMine()) and ($this->isInboxable()) and ($this->getVal("done") == "N")) {
+                        if (($this->isMine()) and (!$this->isExceptionallyForManager()) and ($this->getVal("done") == "N")) {
                                 $color = 'yellow';
                                 $title_ar = 'بدأ العمل على الطلب';
                                 $methodName = 'startWork';
@@ -748,7 +748,7 @@ class WorkflowRequest extends WorkflowObject
                                                 'TITLE-LENGTH' => 72,
                                                 // 'STEP' => $this->stepOfAttribute('employee_id')
                                         );
-                        } elseif (($this->isMine()) and ($this->isInboxable()) and ($this->getVal("done") == "W")) {
+                        } elseif (($this->isMine()) and (!$this->isExceptionallyForManager()) and ($this->getVal("done") == "W")) {
                                 $color = 'gray';
                                 $title_ar = 'إلغاء بدأ العمل على الطلب';
                                 $methodName = 'cancelStartWork';
@@ -1468,6 +1468,12 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
+        public function isExceptionallyForManager() {
+                $finalStageObj = $this->het('workflow_stage_id');
+                if(!$finalStageObj) return false;
+                $wRoleObj = $finalStageObj->het("workflow_role_id");
+                return ($wRoleObj and ($wRoleObj->getVal("lookup_code")=="DIRECTOR")); // @todo : The correct way is to add hierarchy level to table workflow_role
+        }
 
         public function isMine()
         {
