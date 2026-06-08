@@ -39,31 +39,38 @@ class SlotModel extends AFWObject
         return 0;
     }
 
-    public static function loadByMainIndex($interview_type_pattern_id, $workflow_session_id, $interview_date, $create_obj_if_not_found = false)
+    public static function loadByMainIndex($interview_type_pattern_id, $workflow_session_id, $workflow_scope_id, $interview_date,$create_obj_if_not_found=false)
     {
-        if (!$interview_type_pattern_id) throw new AfwRuntimeException("loadByMainIndex : interview_type_pattern_id is mandatory field");
-        if (!$workflow_session_id) throw new AfwRuntimeException("loadByMainIndex : workflow_session_id is mandatory field");
-        if (!$interview_date) throw new AfwRuntimeException("loadByMainIndex : interview_date is mandatory field");
+        if(!$interview_type_pattern_id) throw new AfwRuntimeException("loadByMainIndex : interview_type_pattern_id is mandatory field");
+        if(!$workflow_session_id) throw new AfwRuntimeException("loadByMainIndex : workflow_session_id is mandatory field");
+        if(!$interview_date) throw new AfwRuntimeException("loadByMainIndex : interview_date is mandatory field");
 
 
         $obj = new SlotModel();
-        $obj->select("interview_type_pattern_id", $interview_type_pattern_id);
-        $obj->select("workflow_session_id", $workflow_session_id);
-        $obj->select("interview_date", $interview_date);
+        $obj->select("interview_type_pattern_id",$interview_type_pattern_id);
+        $obj->select("workflow_session_id",$workflow_session_id);
+        $obj->select("workflow_scope_id",$workflow_scope_id);
+        $obj->select("interview_date",$interview_date);
 
-        if ($obj->load()) {
-            if ($create_obj_if_not_found) $obj->activate();
+        if($obj->load())
+        {
+            if($create_obj_if_not_found) $obj->activate();
             return $obj;
-        } elseif ($create_obj_if_not_found) {
-            $obj->set("interview_type_pattern_id", $interview_type_pattern_id);
-            $obj->set("workflow_session_id", $workflow_session_id);
-            $obj->set("interview_date", $interview_date);
+        }
+        elseif($create_obj_if_not_found)
+        {
+            $obj->set("interview_type_pattern_id",$interview_type_pattern_id);
+            $obj->set("workflow_session_id",$workflow_session_id);
+            $obj->set("workflow_scope_id",$workflow_scope_id);
+            $obj->set("interview_date",$interview_date);
 
             $obj->insertNew();
-            if (!$obj->id) return null; // means beforeInsert rejected insert operation
+            if(!$obj->id) return null; // means beforeInsert rejected insert operation
             $obj->is_new = true;
             return $obj;
-        } else return null;
+        }
+        else return null;
+        
     }
 
     public function getDisplay($lang = "ar") {}

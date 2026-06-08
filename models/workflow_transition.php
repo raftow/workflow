@@ -258,23 +258,34 @@ class WorkflowTransition extends WorkflowObject
     public function sendNotificationForTransition($workflow_request_id, $lang)
     {
             $request_id = $workflow_request_id;
-            $template_id = $this->getVal('notification_template_id');
+            //$template_id = $this->getVal('notification_template_id');
+            $template_mfk = explode(",", trim($this->getVal("notification_template_mfk"), ","));
+
             $base_url = AfwSession::config("api_base_url", "https://api.bmeholding.com/api");
             $token = AfwSession::config("api_token","XXXXYYY"); // get it from config or env variable
+            foreach ($template_mfk as $template_id) {
+                 $this->callNotificationApi($base_url, $token, $request_id, $template_id);
+            }
+            
+    }
+    public function callNotificationApi($base_url, $token, $request_id, $template_id)
+    {
+       $ch = curl_init("$base_url/notification/send/$request_id/$template_id");
+        curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER     => [
+                "Authorization: Bearer $token",
+                "Accept: application/json",
+        ],
+        ]);
 
-            $ch = curl_init("$base_url/notification/send/$request_id/$template_id");
-            curl_setopt_array($ch, [
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_HTTPHEADER     => [
-                    "Authorization: Bearer $token",
-                    "Accept: application/json",
-            ],
-            ]);
+        $response = curl_exec($ch);
+        $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
 
-            $response = curl_exec($ch);
-            $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-
-            return ["status"=>$status, "response"=>$response];
-    }  
+        return ["status"=>$status, "response"=>$response];
+        
+    }
+    
+    
 }
