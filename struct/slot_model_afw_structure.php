@@ -130,7 +130,7 @@ class WorkflowSlotModelAfwStructure
 			'RELATION' => 'unkn',
 			'READONLY' => false,
 			'DNA' => true,
-			'WHERE' => "id in (select workflow_stage_id from interview_type_pattern where id='§interview_type_pattern_id§')",
+			'WHERE' => "id in (select workflow_stage_id from interview_type_pattern where id=§interview_type_pattern_id§)",
 			'DEPENDENCIES' => ['interview_type_pattern_id'],
 			'CSS' => 'width_pct_50',
 		),
