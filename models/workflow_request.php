@@ -1564,13 +1564,15 @@ class WorkflowRequest extends WorkflowObject
                 $warning = "";
 
                 $ibObj = null;
-                $statusObj = $this->het("workflow_status_id");
-                // $workflow_status_title = $this->decode('workflow_status_id', '', false, $lang);
-                $workflow_stage_id = $this->getVal('workflow_stage_id');
-                $workflow_stage_title = $this->decode('workflow_stage_id', '', false, $lang);
+                // The status and stage here below are the ones after running transition
+                $statusFinalObj = $this->het("workflow_status_id");
+                // $final_workflow_status_title = $this->decode('workflow_status_id', '', false, $lang);
+                $final_workflow_stage_id = $this->getVal('workflow_stage_id');
+                $final_workflow_stage_title = $this->decode('workflow_stage_id', '', false, $lang);
+
                 $workflow_applicant_id = $this->getVal("workflow_applicant_id");
                 $workflow_session_id = $this->getVal("workflow_session_id");
-                $interview_stage_id = $workflow_stage_id;
+                $interview_stage_id = $final_workflow_stage_id;
                 // below is obsolete to review
                 // I dont khnw=ow why I do it because in same plan (wkflow session)
                 // we can have multiple interviews
@@ -1579,7 +1581,7 @@ class WorkflowRequest extends WorkflowObject
                 $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
                 $ibObj = null;
 
-                if ($statusObj->sureIs("interview_invite_ind")) { // 
+                if ($statusFinalObj->sureIs("interview_invite_ind")) { // 
                         // if the pattern exists it means we should create a booking invite
                         if ($itpObj) {
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
@@ -1604,7 +1606,7 @@ class WorkflowRequest extends WorkflowObject
 
                                         $info = $this->tm("Interview booking invitation has been created", $lang);
                                 } elseif (!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
-                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $workflow_stage_title);
+                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $final_workflow_stage_title);
                 }
 
                 $return = [];
