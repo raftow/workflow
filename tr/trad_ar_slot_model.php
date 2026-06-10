@@ -32,6 +32,7 @@ class SlotModelArTranslator
 		$trad["slot_model"]["buffer_minutes"] = "المدة الفاصلة: مدة بالدقائق";
 		$trad["slot_model"]["workflow_commitee_id"] = "اللجنة/المحاورون";
 		$trad["slot_model"]["InterviewSlotList"] = "قائمة مواعيد المقابلة";
+		$trad["slot_model"]["total_capacity"] = "الطاقة الاستيعابية الإجمالية";
 		// steps
 		return $trad;
 	}

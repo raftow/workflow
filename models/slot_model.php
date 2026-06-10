@@ -320,4 +320,16 @@ class SlotModel extends AFWObject
             }
         }
     }
+
+    public function shouldBeCalculatedField($attribute)
+    {
+        if ($attribute == "total_capacity") return true;
+        return false;
+    }
+
+    public function calctotal_capacity($what = "value")
+    {
+        return $this->getVal("capacity") * $this->getVal("single_interviews_total");
+    }
+
 }
