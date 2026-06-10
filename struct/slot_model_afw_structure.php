@@ -61,6 +61,7 @@ class WorkflowSlotModelAfwStructure
 			'READONLY' => false,
 			'DNA' => true,
 			'CSS' => 'width_pct_50',
+			'DEPENDENT_OFME' => ['workflow_stage_id']
 		),
 
 		'workflow_session_id' => array(
@@ -105,6 +106,7 @@ class WorkflowSlotModelAfwStructure
 			'CSS' => 'width_pct_50',
 			'DISPLAY' => true,
 			'STEP' => 1,
+			'DEPENDENT_OFME' => ['workflow_commitee_id']
 		),
 
 		'workflow_stage_id' => array(
@@ -128,6 +130,8 @@ class WorkflowSlotModelAfwStructure
 			'RELATION' => 'unkn',
 			'READONLY' => false,
 			'DNA' => true,
+			'WHERE' => "id in (select workflow_stage_id from interview_type_pattern where id='§interview_type_pattern_id§')",
+			'DEPENDENCIES' => ['interview_type_pattern_id'],
 			'CSS' => 'width_pct_50',
 		),
 
@@ -337,6 +341,8 @@ class WorkflowSlotModelAfwStructure
 			'READONLY' => false,
 			'DNA' => true,
 			'CSS' => 'width_pct_50',
+			'DEPENDENCIES' => ['workflow_scope_id'],
+			'WHERE' => "id in (select workflow_commitee_id from workflow_committee_scope where workflow_scope_id='§workflow_scope_id§')",
 		),
 
 		'buffer_minutes' => array(

@@ -40,7 +40,7 @@ class WorkflowWorkflowRequestAfwStructure
         {
                 if ($obj instanceof WorkflowRequest) {
                         $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
-                        $obj->DISPLAY_FIELD = 'workflow_request_name_ar';
+                        $obj->DISPLAY_FIELD = 'workflow_applicant_id';
                         // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
                         $obj->UNIQUE_KEY = array('workflow_applicant_id', 'workflow_model_id');
                         $obj->STATS_DEFAULT_CODE = "wr0001";
