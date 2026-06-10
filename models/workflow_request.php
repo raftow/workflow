@@ -1556,6 +1556,11 @@ class WorkflowRequest extends WorkflowObject
                 $this->select_visibilite_horizontale_default($dropdown, $selects);
         }
 
+        public function checkDataReadyToRunTransition($finalWorkflowStageObject, $finalStatusObject)
+        {
+                // if the new stage will need interview that check that interviews are 
+
+        }
 
         public function prepareInterviewBookingIfNeeded($lang = "ar")
         {
