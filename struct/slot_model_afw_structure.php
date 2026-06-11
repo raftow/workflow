@@ -279,7 +279,7 @@ class WorkflowSlotModelAfwStructure
 			'DNA' => true,
 			'CSS' => 'width_pct_50',
 		),
-'total_capacity' => array(
+/*'total_capacity' => array(
 			'SEARCH' => false,
 			'QSEARCH' => false,
 			'SHOW' => true,
@@ -296,7 +296,7 @@ class WorkflowSlotModelAfwStructure
 			'TYPE' => 'FORMULA',
 			'READONLY' => true,
 			'DNA' => true,
-		),
+		),*/
 		'interview_type' => array(
 			'SEARCH' => true,
 			'QSEARCH' => false,
