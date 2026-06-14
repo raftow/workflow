@@ -19,6 +19,8 @@ class InterviewTypePatternArTranslator
 		$trad["interview_type_pattern"]["Max_reschedule"] = "العدد المسموح لإعادة جدولة الموعد";
 		$trad["interview_type_pattern"]["workflow_stage_id"] = "مرحلة القبول";
 		$trad["interview_type_pattern"]["can_cancel_ind"] = "يمكن الإلغاء";
+		
+		$trad["interview_type_pattern"]["manual_booking_ind"] = "حجز يدوي";
 		// steps
 		return $trad;
 	}

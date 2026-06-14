@@ -66,6 +66,11 @@ $messages["roles after adding Jobrole"] = "الأدوار بعد إضافة ال
 
 $messages["Please note: No appointments are available. Please create them"] = 
      "لا يوجد مواعيد متاحة للمقابلة يرجى إضافة مواعيد جديدة عاجلا حتى يتمكن المتقدمون من الحجز";
+$messages["Cannot update: there are valid interview slots that must be removed or cancelled first"] = "لا يمكن التحديث: هناك مواعيد مقابلة معتمدة يجب حذفها أو إلغاؤها أولاً";
+$messages["Interview booked for"] = "تم حجز المقابلة لـ";
+$messages["No interview booked"] = "لم يتم حجز المقابلة";
+$messages["Interview cancelled for"] = "تم إلغاء المقابلة لـ";
+
 // $messages[""] = "";
 // $messages[""] = "";
 // $messages[""] = "";

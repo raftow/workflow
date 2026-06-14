@@ -23,4 +23,5 @@ $migrations = [
     '00017' => ['by' => 'medali', 'title' => 'add sis_status_code to workflow_status'],
     '00018' => ['by' => 'rafik', 'title' => 'improve interview booking related tables'],
     '00019' => ['by' => 'medali', 'title' => 'add notification template mfk to workflow_transition'],
+    '00020' => ['by' => 'medali', 'title' => 'add manual booking indicator to interview type pattern'],
 ];

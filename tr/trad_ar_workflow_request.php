@@ -100,7 +100,7 @@ class WorkflowRequestArTranslator
 
 
 		$trad["workflow_request"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
-
+		$trad["workflow_request"]["BookingStatusDiv"] = "حالة الحجز";
 		return $trad;
 	}
 

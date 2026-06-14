@@ -16,6 +16,8 @@ class InterviewTypePatternEnTranslator{
 		$trad["interview_type_pattern"]["buffer_hours"] = "Enable booking after";
 		$trad["interview_type_pattern"]["booking_program_ind"] = "char.1";
 		$trad["interview_type_pattern"]["Max_reschedule"] = "Max reschedule";
+
+		$trad["interview_type_pattern"]["manual_booking_ind"] = "Manual booking";
         // steps
         return $trad;
     }

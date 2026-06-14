@@ -1170,6 +1170,7 @@ class WorkflowRequest extends WorkflowObject
                 if ($attribute == "div_block_10") return true;
                 if ($attribute == "formComments") return true;
                 if ($attribute == "originalObject") return true;
+                if ($attribute == "BookingStatusDiv") return true;
                 return false;
         }
 
@@ -1186,7 +1187,22 @@ class WorkflowRequest extends WorkflowObject
                 $stageId = $this->getVal('workflow_stage_id');
                 return self::stepOfStage($stageId);
         }
-
+        public function calcBookingStatusDiv($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $stageId = $this->getVal('workflow_stage_id');
+                $bookingObj = $this->getInterviewBooking($stageId);
+                $bookingStatus = $bookingObj ? $bookingObj->getVal('status_enum') : null;
+                if($bookingStatus == 6)
+                {
+                        $time = $bookingObj->getVal('interview_time');
+                        $text = $this->tm('Interview booked for', $lang) . " : " . AfwDateHelper::formatDate($time, 'Y-m-d') . " " . AfwDateHelper::formatDate($time, 'H:i');
+                }else{
+                        $text = $this->tm('No interview booked', $lang);
+                        $color = 'red';
+                }
+                return "<div class='booking_status_div' style='color: $color;'>$text</div>";
+        }
         /*
         after merging steps by amajad (request of 29/05/2026) we are not able to 
                    pre-define the request_comment_subject_id we let the user do it
@@ -1594,7 +1610,7 @@ class WorkflowRequest extends WorkflowObject
 
                                         if ($itpObj->sureIs("booking_program_ind")) $workflow_scope_id = $this->getVal("workflow_scope_id");
                                         else $workflow_scope_id = 0;
-                                        $booking_status_id = 6;
+                                        $booking_status_id = $itpObj->getVal("manual_booking_ind") == "Y" ? 7 : 6;
                                         $reschedule_count = $ibObj->getVal("max_reschedule");
                                         $can_reschedule_ind = ($reschedule_count > 0) ? "Y" : "N";
                                         $can_cancel_ind = $ibObj->getVal("can_cancel_ind");

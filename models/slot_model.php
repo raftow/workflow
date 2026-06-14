@@ -164,7 +164,24 @@ class SlotModel extends AFWObject
         return  "active";
     }
 
+    public function beforeUpdate($id, $fields_updated)
+    {
+        $lang = AfwLanguageHelper::getGlobalLanguage();
 
+        $objSlot = new InterviewSlot();
+        $objSlot->select("slot_model_id", $this->id);
+        $objSlot->select("interview_slot_status_id", 2); // pending
+        $pendingSlots = $objSlot->loadMany();
+
+        if (count($pendingSlots) > 0) {
+            AfwSession::pushError(
+                $this->tm('Cannot update: there are valid interview slots that must be removed or cancelled first', $lang)
+            );
+            return false;
+        }
+
+        return $this->beforeMaj($id, $fields_updated);
+    }
 
     public function beforeMaj($id, $fields_updated)
     {

@@ -69,6 +69,7 @@ try {
                 'original_6',
                 'email',
                 'mobile',
+                'BookingStatusDiv',
 
                 /*'original_7',
                 'original_8',
