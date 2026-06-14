@@ -1630,8 +1630,10 @@ class WorkflowRequest extends WorkflowObject
                                 $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
                                 if ($ibObj && $ibObj->is_new) {
 
-                                        if ($itpObj->sureIs("booking_program_ind")) $workflow_scope_id = $this->getVal("workflow_scope_id");
-                                        else $workflow_scope_id = 0;
+                                        /*if ($itpObj->sureIs("booking_program_ind")) $workflow_scope_id = $this->getVal("workflow_scope_id");
+                                        else $workflow_scope_id = 0;*/
+                                        $workflow_scope_id = $this->getVal("workflow_scope_id");
+
                                         $booking_status_id = $itpObj->getVal("manual_booking_ind") == "Y" ? 7 : 6;
                                         $reschedule_count = $ibObj->getVal("max_reschedule");
                                         $can_reschedule_ind = ($reschedule_count > 0) ? "Y" : "N";
