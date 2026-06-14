@@ -1221,7 +1221,7 @@ class WorkflowRequest extends WorkflowObject
 
                 }else{
                         $text = $this->tm('Not Invited', $lang);
-                        $color = 'red';
+                        $color = 'grey';
                 }
                 return "<div class='booking_status_div' style='color: $color;'>$text</div>";
         }
