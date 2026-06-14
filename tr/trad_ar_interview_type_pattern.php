@@ -16,11 +16,11 @@ class InterviewTypePatternArTranslator
 		$trad["interview_type_pattern"]["workflow_stage_id_"] = "مرحلة القبول";
 		$trad["interview_type_pattern"]["buffer_hours"] = "تمكين الحجز بعد";
 		$trad["interview_type_pattern"]["booking_program_ind"] = "حجز خاص بالبرنامج";
-		$trad["interview_type_pattern"]["Max_reschedule"] = "العدد المسموح لإعادة جدولة الموعد";
 		$trad["interview_type_pattern"]["workflow_stage_id"] = "مرحلة القبول";
 		$trad["interview_type_pattern"]["can_cancel_ind"] = "يمكن الإلغاء";
-		
+		$trad["interview_type_pattern"]["max_reschedule"] = "الحد الأقصى لإعادة الجدولة";
 		$trad["interview_type_pattern"]["manual_booking_ind"] = "حجز يدوي";
+		$trad["interview_type_pattern"]["add_interview_mandatory_ind"] = "يجب إضافة مواعيد قبل الإحالة للمقابلة";
 		// steps
 		return $trad;
 	}

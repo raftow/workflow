@@ -1191,15 +1191,31 @@ class WorkflowRequest extends WorkflowObject
         {
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $stageId = $this->getVal('workflow_stage_id');
-                $bookingObj = $this->getInterviewBooking($stageId);
-                $bookingStatusObj = $bookingObj ? $bookingObj->getVal('status_enum') : null;
+                $interviewTypePatternObj = new InterviewTypePattern();
+                $interviewTypePatternObj->select("workflow_stage_id", $stageId);
+                $interviewTypePatternObj->load();
+                $workflow_applicant_id = $this->getVal('workflow_applicant_id');
+                $workflow_session_id = $this->getVal('workflow_session_id');
+                $interview_type_pattern_id = $interviewTypePatternObj ? $interviewTypePatternObj->getVal('id') : null;
+                if($interview_type_pattern_id && $workflow_applicant_id && $workflow_session_id)
+                {
+                        $bookingObj = InterviewBooking :: loadByMainIndex($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id);
+                }
+
+                $bookingStatusObj = $bookingObj ? $bookingObj->het('booking_status_id') : null;
                 if($bookingStatusObj)
                 {
-                        $time = $bookingObj->getVal('interview_time');
-                        $label = $lang == 'ar' ? $bookingObj->getVal('name_ar') : $bookingObj->getVal('name_en');
-                        if($time)
-                                $text = $label . " : " . AfwDateHelper::formatDate($time, 'Y-m-d') . " " . AfwDateHelper::formatDate($time, 'H:i');
-                        else
+                        $interviewSlotObj = $bookingObj->het("interview_slot_id");
+                        
+                        $label = $lang == 'ar' ? $bookingStatusObj->getVal('name_ar') : $bookingStatusObj->getVal('name_en');
+                        
+                        if($interviewSlotObj)
+                        {
+                                $day = $interviewSlotObj->getVal('interview_date');
+                                $time = $interviewSlotObj->getVal('start_time');
+                                $text = $label . " : " . $day . " " . $time;
+
+                        }else
                                 $text = $label;
                         $color = 'green';
 
