@@ -1220,7 +1220,7 @@ class WorkflowRequest extends WorkflowObject
                         $color = 'green';
 
                 }else{
-                        $text = $this->tm('No interview booked', $lang);
+                        $text = $this->tm('Not Invited', $lang);
                         $color = 'red';
                 }
                 return "<div class='booking_status_div' style='color: $color;'>$text</div>";
