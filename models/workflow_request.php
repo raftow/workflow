@@ -1192,11 +1192,17 @@ class WorkflowRequest extends WorkflowObject
                 $lang = AfwLanguageHelper::getGlobalLanguage();
                 $stageId = $this->getVal('workflow_stage_id');
                 $bookingObj = $this->getInterviewBooking($stageId);
-                $bookingStatus = $bookingObj ? $bookingObj->getVal('status_enum') : null;
-                if($bookingStatus == 6)
+                $bookingStatusObj = $bookingObj ? $bookingObj->getVal('status_enum') : null;
+                if($bookingStatusObj)
                 {
                         $time = $bookingObj->getVal('interview_time');
-                        $text = $this->tm('Interview booked for', $lang) . " : " . AfwDateHelper::formatDate($time, 'Y-m-d') . " " . AfwDateHelper::formatDate($time, 'H:i');
+                        $label = $lang == 'ar' ? $bookingObj->getVal('name_ar') : $bookingObj->getVal('name_en');
+                        if($time)
+                                $text = $label . " : " . AfwDateHelper::formatDate($time, 'Y-m-d') . " " . AfwDateHelper::formatDate($time, 'H:i');
+                        else
+                                $text = $label;
+                        $color = 'green';
+
                 }else{
                         $text = $this->tm('No interview booked', $lang);
                         $color = 'red';
