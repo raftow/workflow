@@ -1,5 +1,10 @@
 <?php
+/**
+ * @var string $out_scr
+ * @var string $lang
+ */
 try {
+        
         $file_dir_name = dirname(__FILE__);
 
         require_once("$file_dir_name/../config/global_config.php");
@@ -8,7 +13,7 @@ try {
 
         $cl = 'WorkflowRequest';
         $currmod = 'workflow';
-        $currdb = $server_db_prefix . 'workflow';
+        //$currdb = $server_db_prefix . 'workflow';
         $limite = 0;
 
         // Rafik !!!! HARD BUG WORKAROUND !!!!!! 
@@ -73,8 +78,9 @@ try {
                         'workflow_sub_scope_id',
                         'original_1',
                         'original_6',
-                        'myOriginalObjectLinks',
+
                         /*
+                        'myOriginalObjectLinks',                    
                         'original_2',
                         'original_3',
                         'original_4',
