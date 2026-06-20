@@ -41,17 +41,7 @@ $role_info[392] = array(
         'css' => 'bf',
         'icon' => 'bficon-105115 bfc-',
       ),
-      105118 =>
-      array(
-        'id' => '105118',
-        'code' => 'f2-a-workflow_status/qedit',
-        'level' => '1',
-        'menu_name_ar' => 'إدارة حالات الطلبات',
-        'menu_name_en' => 'Workflow statuss administration',
-        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowStatus&currmod=workflow&ids=all&newo=3',
-        'css' => 'bf',
-        'icon' => 'bficon-105118 bfc-',
-      ),
+
       105213 =>
       array(
         'id' => '105213',
@@ -385,61 +375,7 @@ $role_info[392] = array(
         'css' => 'bf',
         'icon' => 'bficon-105117 bfc-',
       ),
-      105118 =>
-      array(
-        'id' => '105118',
-        'code' => 'f2-a-workflow_status/qedit',
-        'level' => '1',
-        'menu_name_ar' => 'إدارة حالات الطلبات',
-        'menu_name_en' => 'Workflow statuss administration',
-        'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=WorkflowStatus&currmod=workflow&ids=all&newo=3',
-        'css' => 'bf',
-        'icon' => 'bficon-105118 bfc-',
-      ),
-      105119 =>
-      array(
-        'id' => '105119',
-        'code' => 'f2-a-workflow_status/delete',
-        'level' => '1',
-        'menu_name_ar' => 'مسح حالة طلب',
-        'menu_name_en' => 'delete Workflow status',
-        'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=WorkflowStatus&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105119 bfc-',
-      ),
-      105120 =>
-      array(
-        'id' => '105120',
-        'code' => 'f2-a-workflow_status/display',
-        'level' => '999',
-        'menu_name_ar' => 'عرض تفاصيل حالة طلب',
-        'menu_name_en' => 'display details of Workflow status',
-        'page' => 'main.php?Main_Page=afw_mode_display.php&cl=WorkflowStatus&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105120 bfc-',
-      ),
-      105121 =>
-      array(
-        'id' => '105121',
-        'code' => 'f2-a-workflow_status/search',
-        'level' => '1',
-        'menu_name_ar' => 'البحث في حالات الطلبات',
-        'menu_name_en' => 'Workflow statuss search',
-        'page' => 'main.php?Main_Page=afw_mode_search.php&cl=WorkflowStatus&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105121 bfc-',
-      ),
-      105122 =>
-      array(
-        'id' => '105122',
-        'code' => 'f2-a-workflow_status/qsearch',
-        'level' => '999',
-        'menu_name_ar' => 'حالات الطلبات',
-        'menu_name_en' => 'Workflow statuss',
-        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowStatus&currmod=workflow',
-        'css' => 'bf',
-        'icon' => 'bficon-105122 bfc-',
-      ),
+
       105173 =>
       array(
         'id' => '105173',
