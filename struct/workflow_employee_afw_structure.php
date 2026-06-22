@@ -20,7 +20,7 @@ class WorkflowWorkflowEmployeeAfwStructure
 			$obj->showQeditErrors = true;
 			$obj->showRetrieveErrors = true;
 
-			$obj->OwnedBy = array('module' => 'workflow', 'afw' => 'WorkflowOrgunit');
+			// $obj->OwnedBy = array('module' => 'workflow', 'afw' => 'WorkflowOrgunit');
 			$obj->editByStep = true;
 			$obj->editNbSteps = 4;
 			$obj->showQeditErrors = true;
