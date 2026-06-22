@@ -973,7 +973,7 @@ class WorkflowWorkflowRequestAfwStructure
                         'UTF8' => false,
                         'TYPE' => 'PCTG',
                         'FORMAT' => 'STEP:0:100:0.01',
-                        'READONLY' => false,
+                        'READONLY' => '::interview_score_readonly',
                         'DNA' => true,
                         'CSS' => 'width_pct_25',
                         'STEP' => 5,

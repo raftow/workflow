@@ -1878,4 +1878,9 @@ class WorkflowRequest extends WorkflowObject
                 $objme = AfwSession::getUserConnected();
                 return $objme->isSuperAdmin();
         }
+
+        public function interview_score_readonly($field_name, $col_struct)
+        {
+                return ($this->getVal('workflow_stage_id') == 3);
+        }
 }
