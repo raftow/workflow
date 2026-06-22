@@ -735,7 +735,7 @@ class WorkflowRequest extends WorkflowObject
 
                         if (($this->isMine()) and (!$this->isExceptionallyForManager()) and ($this->getVal("done") == "N")) {
                                 $color = 'yellow';
-                                $title_ar = 'بدأ العمل على الطلب';
+                                $title_ar = 'بدء العمل على الطلب';
                                 $methodName = 'startWork';
                                 $pbms[AfwStringHelper::hzmEncode($methodName)] =
                                         array(
@@ -750,7 +750,7 @@ class WorkflowRequest extends WorkflowObject
                                         );
                         } elseif (($this->isMine()) and (!$this->isExceptionallyForManager()) and ($this->getVal("done") == "W")) {
                                 $color = 'gray';
-                                $title_ar = 'إلغاء بدأ العمل على الطلب';
+                                $title_ar = 'إلغاء بدء العمل على الطلب';
                                 $methodName = 'cancelStartWork';
                                 $pbms[AfwStringHelper::hzmEncode($methodName)] =
                                         array(
@@ -1197,29 +1197,24 @@ class WorkflowRequest extends WorkflowObject
                 $workflow_applicant_id = $this->getVal('workflow_applicant_id');
                 $workflow_session_id = $this->getVal('workflow_session_id');
                 $interview_type_pattern_id = $interviewTypePatternObj ? $interviewTypePatternObj->getVal('id') : null;
-                if($interview_type_pattern_id && $workflow_applicant_id && $workflow_session_id)
-                {
-                        $bookingObj = InterviewBooking :: loadByMainIndex($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id);
+                if ($interview_type_pattern_id && $workflow_applicant_id && $workflow_session_id) {
+                        $bookingObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id);
                 }
 
                 $bookingStatusObj = $bookingObj ? $bookingObj->het('booking_status_id') : null;
-                if($bookingStatusObj)
-                {
+                if ($bookingStatusObj) {
                         $interviewSlotObj = $bookingObj->het("interview_slot_id");
-                        
+
                         $label = $lang == 'ar' ? $bookingStatusObj->getVal('name_ar') : $bookingStatusObj->getVal('name_en');
-                        
-                        if($interviewSlotObj)
-                        {
+
+                        if ($interviewSlotObj) {
                                 $day = $interviewSlotObj->getVal('interview_date');
                                 $time = $interviewSlotObj->getVal('start_time');
                                 $text = $label . " : " . $day . " " . $time;
-
-                        }else
+                        } else
                                 $text = $label;
                         $color = 'green';
-
-                }else{
+                } else {
                         $text = $this->tm('Not Invited', $lang);
                         $color = 'grey';
                 }
@@ -1506,11 +1501,12 @@ class WorkflowRequest extends WorkflowObject
         }
 
 
-        public function isExceptionallyForManager() {
+        public function isExceptionallyForManager()
+        {
                 $finalStageObj = $this->het('workflow_stage_id');
-                if(!$finalStageObj) return false;
+                if (!$finalStageObj) return false;
                 $wRoleObj = $finalStageObj->het("workflow_role_id");
-                return ($wRoleObj and ($wRoleObj->getVal("lookup_code")=="DIRECTOR")); // @todo : The correct way is to add hierarchy level to table workflow_role
+                return ($wRoleObj and ($wRoleObj->getVal("lookup_code") == "DIRECTOR")); // @todo : The correct way is to add hierarchy level to table workflow_role
         }
 
         public function isMine()
@@ -1556,7 +1552,7 @@ class WorkflowRequest extends WorkflowObject
                         } elseif (!$this->isStarted()) {
                                 unset($link);
                                 $link = array();
-                                $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدأ العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
+                                $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدء العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
                                 $link["URL"] = "@help";
                                 $link["CODE"] = "stop.and.debugg";
                                 $link["TITLE"] = $title;
