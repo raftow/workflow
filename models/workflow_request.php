@@ -1881,6 +1881,6 @@ class WorkflowRequest extends WorkflowObject
 
         public function interview_score_readonly($field_name, $col_struct)
         {
-                return ($this->getVal('workflow_stage_id') == 3);
+                return ($this->getVal('workflow_stage_id') != 3);
         }
 }
