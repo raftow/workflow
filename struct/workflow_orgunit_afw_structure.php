@@ -57,18 +57,23 @@ class WorkflowWorkflowOrgunitAfwStructure
 			'TYPE' => 'FK',
 			'ANSWER' => 'orgunit',
 			'ANSMODULE' => 'hrm',
-			'WHERE' => 'id not in (
+			'WHERE' => "id not in (
 					 			select orgunit_id 
 								from §DBPREFIX§workflow.workflow_orgunit 
 					            where orgunit_id != §orgunit_id§
 								) 
-					        and id in (
-							         select id_sh_org from §DBPREFIX§hrm.employee where active=\'Y\' and id_sh_org is not null
+					        and (hrm_code like 'commitee-%' or hrm_code like 'adm-%')
+							         
+									",
+			/* id in (
+select id_sh_org from §DBPREFIX§hrm.employee where active=\'Y\' and id_sh_org is not null
 						              union 
 								     select id_sh_dep from §DBPREFIX§hrm.employee where active=\'Y\' and id_sh_dep is not null
 								      union
 								     select id_sh_div from §DBPREFIX§hrm.employee where active=\'Y\' and id_sh_div is not null
-									)',
+		)
+*/
+
 			'RELATION' => 'OneToMany',
 			'READONLY' => false,
 			'SEARCH-BY-ONE' => false,
