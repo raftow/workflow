@@ -75,7 +75,7 @@ select id_sh_org from §DBPREFIX§hrm.employee where active=\'Y\' and id_sh_org 
 */
 
 			'RELATION' => 'OneToMany',
-			'READONLY' => false,
+			'READONLY' => true,
 			'SEARCH-BY-ONE' => false,
 			'DISPLAY' => true,
 			'AUTOCOMPLETE' => true,
