@@ -1847,8 +1847,10 @@ class WorkflowRequest extends WorkflowObject
 
         public function getDefaultCurrentStep()
         {
-                $currstep = $this->reachedStep();
+                /*$currstep = $this->reachedStep();
                 return [$currstep, "amjad logic 24/04/2026"];
+                */
+                return [2, "amjad logic 23/06/2026 Jira NI-27"];
         }
 
         /**
