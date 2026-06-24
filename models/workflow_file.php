@@ -214,7 +214,7 @@ class WorkflowFile extends ContentElement
                                 $stored_name = $this->getVal("stored_file_name");
                                 // added by medali to manage stored_file_name
                                 if (strpos($stored_name, "ApplicantFile_") === 0) {
-                                        $file_path = "https://api.bmeholding.com/storage";
+                                        $file_path = AfwSession::config("external_file_path", "https://api.bmeholding.com/storage");
                                         $new_name = $stored_name;
                                 }
                                 $url = AfwHtmlHelper::getLightDownloadUrl("$file_path/$new_name", $afile_ext, "very-small");
