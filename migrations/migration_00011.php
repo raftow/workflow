@@ -1,16 +1,18 @@
 <?php
-if(!class_exists("AfwSession")) die("Denied access");
+if (!class_exists("AfwSession")) die("Denied access");
+/**
+ * @var string $migration_error
+ */
 
 $server_db_prefix = AfwSession::currentDBPrefix();
-try
-{
-          
+try {
 
-    
-  
-    
-    AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.request_comment_subject;");
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`request_comment_subject` (
+
+
+
+
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.request_comment_subject;");
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`request_comment_subject` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -38,11 +40,11 @@ try
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
 
-AfwDatabase::db_query("create unique index uk_request_comment_subject on ".$server_db_prefix."workflow.request_comment_subject(lookup_code);");
+  AfwDatabase::db_query("create unique index uk_request_comment_subject on " . $server_db_prefix . "workflow.request_comment_subject(lookup_code);");
 
-  AfwDatabase::db_query("DROP TABLE IF EXISTS ".$server_db_prefix."workflow.workflow_request_comment;");
+  AfwDatabase::db_query("DROP TABLE IF EXISTS " . $server_db_prefix . "workflow.workflow_request_comment;");
 
-AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_request_comment` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_request_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -67,9 +69,6 @@ AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.
   
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
-
+} catch (Exception $e) {
+  $migration_error .= " " . $e->getMessage();
 }
-catch(Exception $e)
-{
-    $migration_error .= " " . $e->getMessage();
-}    

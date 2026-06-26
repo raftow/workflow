@@ -1,11 +1,13 @@
 <?php
-if(!class_exists("AfwSession")) die("Denied access");
+if (!class_exists("AfwSession")) die("Denied access");
+/**
+ * @var string $migration_error
+ */
 
 $server_db_prefix = AfwSession::currentDBPrefix();
-try
-{
-  
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_model` (
+try {
+
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_model` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -32,10 +34,10 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    
-AfwDatabase::db_query("create unique index uk_workflow_model on ".$server_db_prefix."workflow.workflow_model(workflow_model_name_ar);");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_stage` (
+  AfwDatabase::db_query("create unique index uk_workflow_model on " . $server_db_prefix . "workflow.workflow_model(workflow_model_name_ar);");
+
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_stage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -67,11 +69,11 @@ AfwDatabase::db_query("create unique index uk_workflow_model on ".$server_db_pre
   
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
-    
-AfwDatabase::db_query("create unique index uk_workflow_stage on ".$server_db_prefix."workflow.workflow_stage(workflow_model_id,workflow_stage_name_ar,workflow_stage_name_en);");
-    
-    
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_status` (
+
+  AfwDatabase::db_query("create unique index uk_workflow_stage on " . $server_db_prefix . "workflow.workflow_stage(workflow_model_id,workflow_stage_name_ar,workflow_stage_name_en);");
+
+
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -104,11 +106,11 @@ AfwDatabase::db_query("create unique index uk_workflow_stage on ".$server_db_pre
   
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
-    
-AfwDatabase::db_query("create unique index uk_workflow_status on ".$server_db_prefix."workflow.workflow_status(workflow_model_id,workflow_status_name_ar,workflow_status_name_en);");
+
+  AfwDatabase::db_query("create unique index uk_workflow_status on " . $server_db_prefix . "workflow.workflow_status(workflow_model_id,workflow_status_name_ar,workflow_status_name_en);");
 
 
-AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_request` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_request` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -139,10 +141,10 @@ AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.
 
 
 
-AfwDatabase::db_query("create unique index uk_workflow_request on ".$server_db_prefix."workflow.workflow_request(workflow_applicant_id,workflow_model_id);");
+  AfwDatabase::db_query("create unique index uk_workflow_request on " . $server_db_prefix . "workflow.workflow_request(workflow_applicant_id,workflow_model_id);");
 
 
-AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_request_data` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_request_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -167,9 +169,9 @@ AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-AfwDatabase::db_query("create unique index uk_workflow_request_data on ".$server_db_prefix."workflow.workflow_request_data(workflow_request_id,application_field_id);");
+  AfwDatabase::db_query("create unique index uk_workflow_request_data on " . $server_db_prefix . "workflow.workflow_request_data(workflow_request_id,application_field_id);");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_action` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_action` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -199,9 +201,9 @@ AfwDatabase::db_query("create unique index uk_workflow_request_data on ".$server
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-AfwDatabase::db_query("create unique index uk_workflow_action on ".$server_db_prefix."workflow.workflow_action(workflow_model_id,workflow_action_name_ar,workflow_stage_id);");
+  AfwDatabase::db_query("create unique index uk_workflow_action on " . $server_db_prefix . "workflow.workflow_action(workflow_model_id,workflow_action_name_ar,workflow_stage_id);");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_rejection_reason` (
+  AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_rejection_reason` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -225,9 +227,6 @@ AfwDatabase::db_query("create unique index uk_workflow_action on ".$server_db_pr
   
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1");
-
+} catch (Exception $e) {
+  $migration_error .= " " . $e->getMessage();
 }
-catch(Exception $e)
-{
-    $migration_error .= " " . $e->getMessage();
-}    

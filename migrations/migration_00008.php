@@ -1,12 +1,14 @@
 <?php
-if(!class_exists("AfwSession")) die("Denied access");
+if (!class_exists("AfwSession")) die("Denied access");
+/**
+ * @var string $migration_error
+ */
 
 $server_db_prefix = AfwSession::currentDBPrefix();
-try
-{
-  
-    
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_module` (
+try {
+
+
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_module` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `created_by` int(11) NOT NULL,
     `created_at`   datetime NOT NULL,
@@ -32,9 +34,9 @@ try
     PRIMARY KEY (`id`)
     ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_workflow_module on ".$server_db_prefix."workflow.workflow_module(lookup_code);");
+    AfwDatabase::db_query("create unique index uk_workflow_module on " . $server_db_prefix . "workflow.workflow_module(lookup_code);");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_entity` (
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_entity` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `created_by` int(11) NOT NULL,
     `created_at`   datetime NOT NULL,
@@ -62,9 +64,9 @@ try
     PRIMARY KEY (`id`)
     ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_workflow_entity on ".$server_db_prefix."workflow.workflow_entity(lookup_code);");
-    
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`workflow_event` (
+    AfwDatabase::db_query("create unique index uk_workflow_entity on " . $server_db_prefix . "workflow.workflow_entity(lookup_code);");
+
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`workflow_event` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_by` int(11) NOT NULL,
   `created_at`   datetime NOT NULL,
@@ -92,9 +94,9 @@ try
   PRIMARY KEY (`id`)
 ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_workflow_event on ".$server_db_prefix."workflow.workflow_event(lookup_code);");
+    AfwDatabase::db_query("create unique index uk_workflow_event on " . $server_db_prefix . "workflow.workflow_event(lookup_code);");
 
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`notification_template` (
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`notification_template` (
         `id` int(11) NOT NULL AUTO_INCREMENT,
         `created_by` int(11) NOT NULL,
         `created_at`   datetime NOT NULL,
@@ -120,8 +122,8 @@ try
         PRIMARY KEY (`id`)
         ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_notification_template on ".$server_db_prefix."workflow.notification_template(workflow_module_id,workflow_entity_id);");
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`notification_schedule` (
+    AfwDatabase::db_query("create unique index uk_notification_template on " . $server_db_prefix . "workflow.notification_template(workflow_module_id,workflow_entity_id);");
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`notification_schedule` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `created_by` int(11) NOT NULL,
     `created_at`   datetime NOT NULL,
@@ -147,9 +149,9 @@ try
     PRIMARY KEY (`id`)
     ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    AfwDatabase::db_query("create unique index uk_notification_schedule on ".$server_db_prefix."workflow.notification_schedule(workflow_module_id,workflow_entity_id,workflow_event_id,notification_template_id);");
-    
-    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS ".$server_db_prefix."workflow.`notification` (
+    AfwDatabase::db_query("create unique index uk_notification_schedule on " . $server_db_prefix . "workflow.notification_schedule(workflow_module_id,workflow_entity_id,workflow_event_id,notification_template_id);");
+
+    AfwDatabase::db_query("CREATE TABLE IF NOT EXISTS " . $server_db_prefix . "workflow.`notification` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `created_by` int(11) NOT NULL,
     `created_at`   datetime NOT NULL,
@@ -187,11 +189,8 @@ try
     PRIMARY KEY (`id`)
     ) ENGINE=innodb DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;");
 
-    
-    AfwDatabase::db_query("create unique index uk_notification on ".$server_db_prefix."workflow.notification(workflow_module_id,workflow_entity_id,destination_id,notification_template_id,workflow_event_id,event_date);");
-    
-}
-catch(Exception $e)
-{
+
+    AfwDatabase::db_query("create unique index uk_notification on " . $server_db_prefix . "workflow.notification(workflow_module_id,workflow_entity_id,destination_id,notification_template_id,workflow_event_id,event_date);");
+} catch (Exception $e) {
     $migration_error .= " " . $e->getMessage();
-}    
+}
