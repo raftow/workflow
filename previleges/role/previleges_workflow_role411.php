@@ -57,7 +57,7 @@ $role_info[411] = array(
             array(
                 'id' => '105387',
                 'code' => 'f2-a-slot_model/qsearch',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'نماذج المواعيد',
                 'menu_name_en' => 'Slot model',
                 'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=SlotModel&currmod=workflow',
@@ -423,7 +423,7 @@ $role_info[411] = array(
             array(
                 'id' => '105382',
                 'code' => 'f2-a-slot_model/edit',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'إنشاء نموذج موعد',
                 'menu_name_en' => 'create Slot Model',
                 'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=SlotModel&currmod=workflow',
@@ -434,7 +434,7 @@ $role_info[411] = array(
             array(
                 'id' => '105383',
                 'code' => 'f2-a-slot_model/qedit',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'إدارة نماذج المواعيد',
                 'menu_name_en' => 'Slot model administration',
                 'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=SlotModel&currmod=workflow&ids=all&newo=3',
@@ -445,7 +445,7 @@ $role_info[411] = array(
             array(
                 'id' => '105384',
                 'code' => 'f2-a-slot_model/delete',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'مسح نموذج موعد',
                 'menu_name_en' => 'delete Slot Model',
                 'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=SlotModel&currmod=workflow',
@@ -456,7 +456,7 @@ $role_info[411] = array(
             array(
                 'id' => '105385',
                 'code' => 'f2-a-slot_model/display',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'عرض تفاصيل نموذج موعد',
                 'menu_name_en' => 'display details of Slot Model',
                 'page' => 'main.php?Main_Page=afw_mode_display.php&cl=SlotModel&currmod=workflow',
@@ -467,7 +467,7 @@ $role_info[411] = array(
             array(
                 'id' => '105386',
                 'code' => 'f2-a-slot_model/search',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'البحث في نماذج المواعيد',
                 'menu_name_en' => 'Slot model search',
                 'page' => 'main.php?Main_Page=afw_mode_search.php&cl=SlotModel&currmod=workflow',
@@ -478,7 +478,7 @@ $role_info[411] = array(
             array(
                 'id' => '105387',
                 'code' => 'f2-a-slot_model/qsearch',
-                'level' => '1',
+                'level' => '1500',
                 'menu_name_ar' => 'نماذج المواعيد',
                 'menu_name_en' => 'Slot model',
                 'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=SlotModel&currmod=workflow',
