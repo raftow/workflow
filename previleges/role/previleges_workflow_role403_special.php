@@ -24,7 +24,7 @@ $role_info[403]['menu']['items'][10000000002] = array(
 $role_info[403]['menu']['items'][10000000003] = array(
     'id' => '10000000003',
     'code' => 'interview',
-    'level' => '100',
+    'level' => '1500',
     'menu_name_ar' => 'متابعة المقابلات',
     'menu_name_en' => 'Interview follow-up',
     'page' => 'main.php?Main_Page=interviewApplicant.php',
