@@ -43,6 +43,18 @@ $role_info[403] = array(
         'css' => 'bf',
         'icon' => 'bficon-105290 bfc-',
       ),
+
+      105247 =>
+      array(
+        'id' => '105247',
+        'code' => 'f2-a-workflow_request/qsearch',
+        'level' => '999',
+        'menu_name_ar' => 'طلبات القبول',
+        'menu_name_en' => 'Workflow requests',
+        'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=WorkflowRequest&currmod=workflow',
+        'css' => 'bf',
+        'icon' => 'bficon-105247 bfc-',
+      ),
     ),
     'otherbfs' =>
     array(
