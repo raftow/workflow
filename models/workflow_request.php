@@ -815,7 +815,10 @@ class WorkflowRequest extends WorkflowObject
         public function assignBestAvailableEmployee($lang = 'ar', $pbm = true, $reassignOrgunit = false)
         {
                 $workflow_scope_id = $this->getVal('workflow_scope_id');
-                if ($reassignOrgunit) {
+                if ($reassignOrgunit or !$this->getVal('orgunit_id')) {
+                        /**
+                         * @var WorkflowStage $myStageObj 
+                         */
                         $myStageObj = $this->het('workflow_stage_id');
                         if ($myStageObj) $orgunit_id = $myStageObj->convenientOrgunitForScope($workflow_scope_id);
                         if ($orgunit_id and ($this->getVal('orgunit_id') != $orgunit_id)) {

@@ -88,11 +88,23 @@ class WorkflowStage extends WorkflowObject
                 ];
         }
 
+        /**
+         * @param int $workflow_scope_id
+         */
+
         public function convenientOrgunitForScope($workflow_scope_id)
         {
                 $department_academic_review_according_to_program = 12420;
                 $orgunit_id = $this->getVal("orgunit_id");
-                if ($orgunit_id == $department_academic_review_according_to_program) {
+                if ((!$orgunit_id) or ($orgunit_id == $department_academic_review_according_to_program)) {
+
+                        $sql_stats = "SELECT orgunit_id, count(*) as nb
+                                FROM `workflow_request`
+                                where workflow_scope_id = $workflow_scope_id
+                                GROUP BY orgunit_id";
+
+                        $statsIndex = AfwDatabase::db_recup_index($sql_stats, "orgunit_id", "nb");
+
                         $workflow_role_id = $this->getVal("workflow_role_id");
 
                         $server_db_prefix = AfwSession::currentDBPrefix();
@@ -109,11 +121,18 @@ class WorkflowStage extends WorkflowObject
 
                         // @todo select the committee having lowest charge
                         // for the moment IO will take the first one because normally only one for nauss by role
+                        $nb_best_charge = 99999;
+                        $orgunit_id = 0;
                         foreach ($wcsList as $wcsItem) {
                                 if ($wcsItem) {
                                         $commItem = $wcsItem->het("workflow_commitee_id");
-                                        $orgunit_id = $commItem->getVal("orgunit_id");
-                                        break;
+                                        $comm_orgunit_id = $commItem->getVal("orgunit_id");
+                                        $nb = $statsIndex[$comm_orgunit_id] ?? 0;
+                                        if ($nb < $nb_best_charge) {
+                                                $orgunit_id = $comm_orgunit_id;
+                                                $nb_best_charge = $nb;
+                                                if ($nb_best_charge == 0) break;
+                                        }
                                 }
                         }
                 }
