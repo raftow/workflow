@@ -46,7 +46,7 @@ $role_info[411] = array(
             array(
                 'id' => '105369',
                 'code' => 'f2-a-interview_slot/qsearch',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'المواعيد',
                 'menu_name_en' => 'Interview Slot',
                 'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=InterviewSlot&currmod=workflow',
@@ -225,7 +225,7 @@ $role_info[411] = array(
             array(
                 'id' => '105364',
                 'code' => 'f2-a-interview_slot/edit',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'إنشاء موعد',
                 'menu_name_en' => 'create Interview Slot',
                 'page' => 'main.php?Main_Page=afw_mode_edit.php&cl=InterviewSlot&currmod=workflow',
@@ -236,7 +236,7 @@ $role_info[411] = array(
             array(
                 'id' => '105365',
                 'code' => 'f2-a-interview_slot/qedit',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'إدارة المواعيد',
                 'menu_name_en' => 'Interview Slot administration',
                 'page' => 'main.php?Main_Page=afw_mode_qedit.php&cl=InterviewSlot&currmod=workflow&ids=all&newo=3',
@@ -247,7 +247,7 @@ $role_info[411] = array(
             array(
                 'id' => '105366',
                 'code' => 'f2-a-interview_slot/delete',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'مسح موعد',
                 'menu_name_en' => 'delete Interview Slot',
                 'page' => 'main.php?Main_Page=afw_mode_delete.php&cl=InterviewSlot&currmod=workflow',
@@ -258,7 +258,7 @@ $role_info[411] = array(
             array(
                 'id' => '105367',
                 'code' => 'f2-a-interview_slot/display',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'عرض تفاصيل موعد',
                 'menu_name_en' => 'display details of Interview Slot',
                 'page' => 'main.php?Main_Page=afw_mode_display.php&cl=InterviewSlot&currmod=workflow',
@@ -269,7 +269,7 @@ $role_info[411] = array(
             array(
                 'id' => '105368',
                 'code' => 'f2-a-interview_slot/search',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'البحث في المواعيد',
                 'menu_name_en' => 'Interview Slot search',
                 'page' => 'main.php?Main_Page=afw_mode_search.php&cl=InterviewSlot&currmod=workflow',
@@ -280,7 +280,7 @@ $role_info[411] = array(
             array(
                 'id' => '105369',
                 'code' => 'f2-a-interview_slot/qsearch',
-                'level' => '999',
+                'level' => '1500',
                 'menu_name_ar' => 'المواعيد',
                 'menu_name_en' => 'Interview Slot',
                 'page' => 'main.php?Main_Page=afw_mode_qsearch.php&cl=InterviewSlot&currmod=workflow',
