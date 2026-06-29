@@ -153,7 +153,8 @@ class WorkflowCommitee extends WorkflowObject
                 }
 
                 if ($fields_updated["secretary_employee_id"]) {
-                        $emplObj = $this->het("secretary_employee_id");
+                        $secretaryMemberObj = $this->mySecretaryMember();
+                        if ($secretaryMemberObj) $secretaryMemberObj->refreshMyWorkflowEmployeeRolesAndScopes();
                 }
         }
 
