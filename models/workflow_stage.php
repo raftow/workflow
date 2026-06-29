@@ -94,12 +94,13 @@ class WorkflowStage extends WorkflowObject
 
         public function convenientOrgunitForScope($workflow_scope_id)
         {
+                $server_db_prefix = AfwSession::currentDBPrefix();
                 $department_academic_review_according_to_program = 12420;
                 $orgunit_id = $this->getVal("orgunit_id");
                 if ((!$orgunit_id) or ($orgunit_id == $department_academic_review_according_to_program)) {
 
                         $sql_stats = "SELECT orgunit_id, count(*) as nb
-                                FROM `workflow_request`
+                                FROM $server_db_prefix" . "workflow.`workflow_request`
                                 where workflow_scope_id = $workflow_scope_id
                                 GROUP BY orgunit_id";
 
@@ -107,7 +108,7 @@ class WorkflowStage extends WorkflowObject
 
                         $workflow_role_id = $this->getVal("workflow_role_id");
 
-                        $server_db_prefix = AfwSession::currentDBPrefix();
+
 
                         // find list of commitees having this role and the workflow_scope_id
                         $rows = AfwDatabase::db_recup_rows("select id from $server_db_prefix" . "workflow.workflow_commitee where active = 'Y' and workflow_role_id=$workflow_role_id");
