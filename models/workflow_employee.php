@@ -306,7 +306,7 @@ class WorkflowEmployee extends WorkflowObject
                         $this->set('employee_id', $objEmployee->id);
                 }
 
-                if ($fields_updated['wrole_mfk']) {
+                if ($fields_updated['wrole_mfk'] or $fields_updated['hierarchy_level_enum']) {
                         $assign = ($fields_updated['wrole_mfk'] != "@SimuleWasEmpty");
                         $this->resetPrevileges('ar', $objEmployee, false, $assign, $fields_updated['wrole_mfk']);
                 }
@@ -321,9 +321,9 @@ class WorkflowEmployee extends WorkflowObject
         {
                 $runConsole = AfwSession::hasOption("RUN_CONSOLE");
                 $activateProcessLourd = AfwSession::hasOption("PROCESS_LOURD_MODE");
-                if($activateProcessLourd) {
+                if ($activateProcessLourd) {
                         UfwQueryAnalyzer::startProcessLourdMode();
-                        if($runConsole) AfwSession::console("Activate lourd processes mode for resetPrevileges of workflow employee id = " . $this->id, "information");
+                        if ($runConsole) AfwSession::console("Activate lourd processes mode for resetPrevileges of workflow employee id = " . $this->id, "information");
                 }
                 $err_arr = [];
                 $inf_arr = [];
@@ -404,12 +404,12 @@ class WorkflowEmployee extends WorkflowObject
                                                 if ($mainApp) {
                                                         $mainAppDisplay = $mainApp->getShortDisplay('en');
                                                         $rolesFromScratchForModules[$mainApp->id] = true;
-                                                        if($runConsole) AfwSession::console("The main application for job role : $jobroleItemDisplay = $mainAppDisplay id = " . $mainApp->id);
-                                                } else if($runConsole) AfwSession::console("No main application for job role : " . $jobroleItemDisplay, "error");
+                                                        if ($runConsole) AfwSession::console("The main application for job role : $jobroleItemDisplay = $mainAppDisplay id = " . $mainApp->id);
+                                                } else if ($runConsole) AfwSession::console("No main application for job role : " . $jobroleItemDisplay, "error");
 
                                                 $roles_before_phrase = $this->tm("roles before adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
                                                 $roles_after_phrase = $this->tm("roles after adding Jobrole", $lang) . "($jobroleId) $jobroleItemDisplay";
-                                                if($runConsole) AfwSession::console($roles_before_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
+                                                if ($runConsole) AfwSession::console($roles_before_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
                                                 // $inf_arr[] = $objEmployee->myPrevilegesDescription();
                                                 $objEmployee->addMeThisJobrole($jobroleId);
                                                 if ($previousJobrole[$jobroleId]) {
@@ -417,7 +417,7 @@ class WorkflowEmployee extends WorkflowObject
                                                 } else {
                                                         $newJobroleAdded[$jobroleId] = true;
                                                 }
-                                                if($runConsole) AfwSession::console($roles_after_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
+                                                if ($runConsole) AfwSession::console($roles_after_phrase . ' : ' . $objEmployee->decode('jobrole_mfk', '', false, $lang));
 
 
 
@@ -437,9 +437,9 @@ class WorkflowEmployee extends WorkflowObject
                                 $update_obj_if_found = true,
                                 $rolesFromScratchForModules
                         );
-                        if ($err) if($runConsole) AfwSession::console($err, "error");
-                        if ($inf) if($runConsole) AfwSession::console($inf, "information");
-                        if ($war) if($runConsole) AfwSession::console($war, "warning");
+                        if ($err) if ($runConsole) AfwSession::console($err, "error");
+                        if ($inf) if ($runConsole) AfwSession::console($inf, "information");
+                        if ($war) if ($runConsole) AfwSession::console($war, "warning");
 
 
 
@@ -470,7 +470,7 @@ class WorkflowEmployee extends WorkflowObject
 
                         // $this->getPrevilegesPhpCodeForUser($lang);
                         if ($need_to_re_assign and $assign) {
-                                if($runConsole) AfwSession::console("need to re-assign because : $need_to_re_assign", "reason");
+                                if ($runConsole) AfwSession::console("need to re-assign because : $need_to_re_assign", "reason");
                                 list($err, $inf, $war) = WorkflowRequest::assignEmployeeForNonAssigned(true, $lang, 1000, true);
                                 if ($err)
                                         $err_arr[] = $err;
@@ -486,13 +486,12 @@ class WorkflowEmployee extends WorkflowObject
                         $return = ['No email defined for the workflow employee', ''];
                 }
 
-                if($activateProcessLourd) {
+                if ($activateProcessLourd) {
                         UfwQueryAnalyzer::stopProcessLourdMode();
-                        if($runConsole) AfwSession::console("Stop lourd processes mode for resetPrevileges of workflow employee id = " . $this->id, "information");
+                        if ($runConsole) AfwSession::console("Stop lourd processes mode for resetPrevileges of workflow employee id = " . $this->id, "information");
                 }
 
                 return $return;
-                
         }
 
         public function resetPassword($lang = 'ar', $password_sent_by = null, $message_prefix = '')
