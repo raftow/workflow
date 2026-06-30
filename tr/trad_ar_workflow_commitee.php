@@ -25,6 +25,8 @@ class WorkflowCommiteeArTranslator
 		$trad["workflow_commitee"]["step1"] = "البيانات العامة";
 		$trad["workflow_commitee"]["step2"] = "أعضاء اللجنة";
 		$trad["workflow_commitee"]["step3"] = "برامج اللجنة";
+		$trad["workflow_commitee"]["orgunit_id"] = "الإدارة";
+
 
 
 
