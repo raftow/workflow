@@ -1,6 +1,9 @@
 <?php
+
+// @todo : rafik, better if we find a way to avoid below include and make autoloader know automatic the path
 $file_dir_name = dirname(__FILE__);
 include_once("$file_dir_name/../../lib/afw/interfaces/afw_storable.php");
+
 class WorkflowFile extends ContentElement implements AfwStorable
 {
 
