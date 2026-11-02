@@ -1,0 +1,115 @@
+<?php
+class WorkflowRequestArTranslator
+{
+	public static function initData()
+	{
+		$trad = [];
+
+		$trad['workflow_request']['step1'] = 'البيانات الشخصية';
+		$trad['workflow_request']['step2'] = 'طلب القبول';
+		//$trad['workflow_request']['step2'] = 'طلب التقديم';
+		//$trad['workflow_request']['step3'] = 'المؤهــلات';
+		//$trad['workflow_request']['step4'] = 'الاختبارات';
+
+		$trad['workflow_request']['step3'] = 'مراجعة الوثائق';
+		$trad['workflow_request']['step4'] = 'مراجعة اللجنة';
+		$trad['workflow_request']['step5'] = 'المقابلة الشخصية';
+		$trad['workflow_request']['step6'] = 'المفاضلة والقبول';
+		$trad['workflow_request']['step7'] = 'قرار القبول';
+		$trad['workflow_request']['step8'] = 'المطابقة النهائية';
+
+		$trad['workflow_request']['dipeval'] = 'شهادات التخرج والاختبارات';
+		$trad['workflow_request']['interview_score'] = 'درجة المقابلة الشخصية';
+		$trad['workflow_request']['interview_comment'] = 'ملاحظات المقابلة الشخصية';
+
+		$trad['workflow_request']['formComments'] = 'الملاحظات';
+		$trad['workflow_request']['request'] = 'طلب القبول';
+		$trad["workflow_request"]["workflow_rejection_reason_id"] = "سبب الرفض";
+		$trad["workflow_request"]["rejection_reason"] = "بيان سبب الرفض في حالة الرفض";
+
+		$trad['workflow_request']['workflowRequestDataList'] = 'بيانات الطلب';
+		$trad['workflow_request']['workflowRequestCommentList'] = 'ملاحظات وتعليقات الموظفين';
+
+		$trad['workflow_request']['action-convenient'] = 'الإجراء المناسب';
+
+
+		$trad['workflow_request']['workflowrequest.single'] = 'طلب قبول';
+		$trad['workflow_request']['workflowrequest.new'] = 'جديد';
+		$trad['workflow_request']['workflow_request'] = 'طلبات القبول';
+		$trad['workflow_request']['idn'] = 'رقم الهوية';
+		$trad['workflow_request']['workflow_applicant_id'] = 'المتقدم';
+		$trad["workflow_request"]["birth_gdate"] = "تاريخ الولادة (ميلادي)";
+		$trad['workflow_request']['workflow_model_id'] = 'نموذج القبول';
+		$trad['workflow_request']['workflow_scope_id'] = 'البرنامج';
+		$trad['workflow_request']['workflow_sub_scope_id'] = 'الفرع';
+		$trad['workflow_request']['workflow_source_id'] = 'مصدر الترشيح';
+		$trad['workflow_request']['workflow_stage_id'] = 'مرحلة القبول';
+		$trad['workflow_request']['workflow_status_id'] = 'حالة القبول';
+		$trad['workflow_request']['external_request_code'] = 'الرمز الخارجي للطلب';
+		$trad['workflow_request']['request_type_code'] = 'رمز نوع الطلب';
+		$trad['workflow_request']['workflow_session_id'] = 'دورة القبول';
+		$trad['workflow_request']['request_date'] = 'تاريخ الطلب';
+		$trad['workflow_request']['orgunit_id'] = 'الإدارة المكلفة';
+		$trad['workflow_request']['employee_id'] = 'الموظف المكلف';
+		$trad['workflow_request']['assign_date'] = 'تاريخ التكليف';
+		$trad['workflow_request']['assign_time'] = 'وقت التكليف';
+		$trad['workflow_request']['assignment'] = 'التكليف';
+		$trad['workflow_request']['done'] = 'حالة العمل';
+		$trad['workflow_request']['done.YES'] = 'تم الانتهاء';
+		$trad['workflow_request']['done.NO'] = 'لم يبدأ العمل';
+		$trad['workflow_request']['done.EUH'] = 'جاري العمل';
+		$trad['workflow_request']['application_class_enum'] = 'صنف المتقدم';
+		$trad['workflow_request']['workflow_category_enum'] = 'فئة التقدير';
+		$trad['workflow_request']['aptitude_category_enum'] = 'قدرات المتقدم';
+
+		$trad['workflow_request']['run_admission'] = 'تنفيذ القبول';
+
+
+		// $trad['workflow_request']['done_date'] = 'تاريخ ووقت الحركة';
+		$trad['workflow_request']['done_date'] = 'تاريخ الحركة';
+		// $trad['workflow_request']['done_time'] = 'وقت العمل'; this field is not used and should be removed in the future
+		$trad['workflow_request']['myOriginalObjectLinks'] = 'بيانات المتقدم';
+
+
+		$trad['workflow_request']['view'] = 'اختيار';
+
+		$trad['workflow_request']['profile'] = 'البيانات الشخصية';
+		$trad['workflow_request']['category'] = 'صنف العميل';
+		$trad['workflow_request']['mobile'] = 'رقم الجوال';
+		$trad['workflow_request']['gender_enum'] = 'الجنس';
+		$trad['workflow_request']['country_id'] = 'الجنسية';
+		$trad['workflow_request']['passeport_num'] = 'جواز السفر';
+
+
+		$trad["workflow_request"]["qualification_id"] = "المؤهل";
+		$trad["workflow_request"]["major_category_id"] = "التخصص العام";
+		$trad["workflow_request"]["qualification_major_id"] = "التخصص الدقيق";
+		$trad["workflow_request"]["gpa"] = "الدرجة";
+		$trad["workflow_request"]["study_type_id"] = "نوع الدراسة";
+		$trad["workflow_request"]["gpa_from"] = "من";
+		$trad["workflow_request"]["date"] = "تاريخ  المؤهل";
+		$trad["workflow_request"]["source"] = "الجهة مصدر المؤهل";
+		$trad["workflow_request"]["source_name"] = "مصدر المؤهل";
+		$trad["workflow_request"]["educational_zone_id"] = "المنطقة التعليمية";
+		$trad["workflow_request"]["grading_scale_id"] = "التقدير";
+		$trad["workflow_request"]["aptitude_university"] = "درجة اختبار القدرات للجامعيين";
+		$trad["workflow_request"]["aptitude_university.short"] = "درجة القدرات";
+		$trad["workflow_request"]["cv_score"] = "درجة السيرة الذاتية";
+		$trad["workflow_request"]["cv_exists"] = "يوجد سيرة ذاتية";
+		$trad["workflow_request"]["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
+		$trad["workflow_request"]["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
+
+
+
+		$trad["workflow_request"]["stats.wr0001"] = "تقرير احصائيات الطلبات بحسب البرنامج وحالة الطلب";
+		$trad["workflow_request"]["BookingStatusDiv"] = "حالة الحجز";
+		return $trad;
+	}
+
+	public static function getInstance()
+	{
+		if (false)
+			return new WorkflowRequestEnTranslator();
+		return new WorkflowRequest();
+	}
+}

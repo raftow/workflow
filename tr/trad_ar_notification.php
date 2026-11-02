@@ -1,0 +1,39 @@
+<?php
+class NotificationArTranslator{
+
+    public static function initData()
+    {
+        $trad = [];
+	$trad["notification"]["step1"] = "التعريف";
+
+	$trad["notification"]["notification.single"] = "إشعار";
+	$trad["notification"]["notification.new"] = "جديد";
+	$trad["notification"]["notification"] = "إشعارات";
+	$trad["notification"]["workflow_module_id"] = "التطبيق";
+	$trad["notification"]["workflow_entity_id"] = "الكيان";
+	$trad["notification"]["destination_id"] = "المستلم";
+	$trad["notification"]["notification_template_id"] = "نموذج الاشعار";
+	$trad["notification"]["email"] = "البريد الاكتروني";
+	$trad["notification"]["mobile"] = "الجوال";
+	$trad["notification"]["notification_title"] = "الموضوع";
+	$trad["notification"]["notification_body"] = "النص";
+	$trad["notification"]["the_body"] = "التفاصيل";
+	
+	$trad["notification"]["sent"] = "تم الإرسال";
+	$trad["notification"]["sent_date"] = "تاريخ الإرسال";
+	$trad["notification"]["received"] = "تم الاستلام";
+	$trad["notification"]["received_date"] = "تاريخ الاستلام";
+	$trad["notification"]["read"] = "تمت القراءة";
+	$trad["notification"]["read_date"] = "تاريخ القراءة";
+	$trad["notification"]["workflow_applicant_id"] = "المتقدم";
+	$trad["notification"]["workflow_event_id"] = "الحدث";
+	$trad["notification"]["event_date"] = "تاريخ الحدث";
+        return $trad;
+        }
+
+        public static function getInstance()
+	{
+                if(false) return new NotificationEnTranslator();
+		return new Notification();
+	}
+}

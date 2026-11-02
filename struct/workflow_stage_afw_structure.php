@@ -1,0 +1,594 @@
+<?php
+class WorkflowWorkflowStageAfwStructure
+{
+
+        public static function initInstance(&$obj)
+        {
+                if ($obj instanceof WorkflowStage) {
+                        $obj->QEDIT_MODE_NEW_OBJECTS_DEFAULT_NUMBER = 3;
+                        $obj->DISPLAY_FIELD = "workflow_stage_name_ar";
+                        // $obj->ORDER_BY_FIELDS = "xxxx, yyyy";
+                        $obj->UNIQUE_KEY = array('step_code'); // array('workflow_model_id', 'workflow_stage_name_ar', 'workflow_stage_name_en');
+                        // $obj->public_display = true;
+                        // $obj->IS_LOOKUP = true;
+
+                        $obj->editByStep = true;
+                        $obj->editNbSteps = 3;
+                        // $obj->after_save_edit = array("class"=>'aconditionOriginType',"attribute"=>'acondition_origin_type_id', "currmod"=>'workflow',"currstep"=>1);
+                        $obj->after_save_edit = array("mode" => "qsearch", "currmod" => 'workflow', "class" => 'WorkflowStage', "submit" => true);
+                } else {
+                        WorkflowStageArTranslator::initData();
+                        WorkflowStageEnTranslator::initData();
+                }
+        }
+
+
+        public static $DB_STRUCTURE = array(
+                'id' => array(
+                        'SHOW' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => false,
+                        'TYPE' => 'PK',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+                'workflow_model_id' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SHOW-ADMIN' => true,
+                        'EDIT-ADMIN' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_model',
+                        'ANSMODULE' => 'workflow',
+                        'SIZE' => 40,
+                        'DEFAUT' => 0,
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'RELATION' => 'OneToMany',
+                        'MANDATORY' => true,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
+                        'AUTOCOMPLETE' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+                'workflow_stage_name_ar' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '100',
+                        'MAXLENGTH' => '100',
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => true,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+
+                'workflow_stage_name_en' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-EN' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '100',
+                        'MAXLENGTH' => '100',
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 1,
+                        'MANDATORY' => false,
+                        'READONLY' => true,
+                        'EDIT_IF_EMPTY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+
+                'workflow_stage_desc_ar' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 'AEREA',
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 2,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+
+
+                'workflow_stage_desc_en' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 'AEREA',
+                        'UTF8' => false,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 2,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+
+                'orgunit_id' => array(
+                        'STEP' => 2,
+                        'SHORTNAME' => 'orgunit',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'INTERNAL_QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 40,
+                        'MANDATORY' => true,
+                        'UTF8' => false,
+                        'CSS' => 'width_pct_25',
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'orgunit',
+                        'ANSMODULE' => 'hrm',
+                        'WHERE' => "id=12420 or id in (select orgunit_id from §DBPREFIX§workflow.workflow_orgunit where active='Y')",
+                        'RELATION' => 'ManyToOne',
+                        'READONLY' => false,
+                        'DISPLAY' => true,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'ERROR-CHECK' => true,
+                ),
+
+                'step_code' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '16',
+                        'MAXLENGTH' => '16',
+                        'UTF8' => true,
+                        'TYPE' => 'TEXT',
+                        'DISPLAY' => true,
+                        'STEP' => 2,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+
+                'required_application_field_mfk' => array(
+                        'IMPORTANT' => 'IN',
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => true,
+                        'EDIT' => true,
+                        'TYPE' => 'INT',
+                        'MANDATORY' => false,
+                        'STEP' => 2,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+                'standard_processing_time' => array(
+                        'IMPORTANT' => 'IN',
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => true,
+                        'EDIT' => true,
+                        'TYPE' => 'INT',
+                        'MANDATORY' => false,
+                        'STEP' => 2,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+
+                'time_unit' => array(
+                        'IMPORTANT' => 'IN',
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => true,
+                        'EDIT' => true,
+                        'TYPE' => 'INT',
+                        'MANDATORY' => false,
+                        'STEP' => 2,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+
+                'processing_request_responsibility' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '100',
+                        'MAXLENGTH' => '100',
+                        'UTF8' => true,
+                        'TYPE' => 'ENUM',
+                        'ANSWER' => 'FUNCTION',
+                        'DISPLAY' => true,
+                        'STEP' => 2,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+
+                'workflow_role_id' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SHOW-ADMIN' => true,
+                        'EDIT-ADMIN' => true,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'workflow_role',
+                        'ANSMODULE' => 'workflow',
+                        'SIZE' => 40,
+                        'DEFAUT' => 0,
+                        'DISPLAY' => true,
+                        'STEP' => 2,
+                        'RELATION' => 'ManyToOne',
+                        'MANDATORY' => false,
+                        'READONLY' => false,
+                        'AUTOCOMPLETE' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+                'interview_ind' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'YN',
+                        'CHECKBOX' => true,
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'auto_assign_ind' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'YN',
+                        'DEFAULT' => 'Y',
+                        'CHECKBOX' => true,
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'see_only_assigned_ind' => array(
+                        'SEARCH' => true,
+                        'QSEARCH' => false,
+                        'SHOW' => true,
+                        'AUDIT' => false,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'YN',
+                        'DEFAULT' => 'Y',
+                        'CHECKBOX' => true,
+                        'READONLY' => false,
+                        'DNA' => true,
+                        'CSS' => 'width_pct_50',
+                ),
+
+                'color_enum' => array(
+                        'IMPORTANT' => 'IN',
+                        'SEARCH' => true,
+                        'QSEARCH' => true,
+                        'SHOW' => true,
+                        'RETRIEVE-AR' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'SIZE' => '100',
+                        'MAXLENGTH' => '100',
+                        'UTF8' => true,
+                        'TYPE' => 'ENUM',
+                        'ANSWER' => 'FUNCTION',
+                        'DISPLAY' => true,
+                        'STEP' => 2,
+                        'DEFAUT' => 10,
+                        'MANDATORY' => false,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+
+                'interviewTypePatternList' => array(
+                        'STEP' => 2,
+                        'SHOW' => true,
+                        'FORMAT' => 'retrieve',
+                        'ICONS' => true,
+                        'DELETE-ICON' => true,
+                        'BUTTONS' => true,
+                        'SEARCH' => false,
+                        'QSEARCH' => false,
+                        'AUDIT' => false,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'SIZE' => 32,
+                        'MAXLENGTH' => 32,
+                        'MIN-SIZE' => 1,
+                        'CHAR_TEMPLATE' => "ALPHABETIC,SPACE",
+                        'MANDATORY' => false,
+                        'UTF8' => false,
+                        'TYPE' => 'FK',
+                        'CATEGORY' => 'ITEMS',
+                        'ANSWER' => 'interview_type_pattern',
+                        'ANSMODULE' => 'workflow',
+                        'ITEM' => 'workflow_stage_id',
+                        'READONLY' => true,
+                        'CAN-BE-SETTED' => true,
+                        'CSS' => 'width_pct_100',
+                ),
+
+
+                'active' => array(
+                        'SHOW' => true,
+                        'RETRIEVE' => true,
+                        'EDIT' => true,
+                        'QEDIT' => true,
+                        'DEFAUT' => 'Y',
+                        'TYPE' => 'YN',
+                        'FORMAT' => 'icon',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_25',
+                ),
+
+                'created_by' => array(
+                        'SHOW-ADMIN' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'auser',
+                        'ANSMODULE' => 'ums',
+                        'DISPLAY' => '',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+                'created_at' => array(
+                        'SHOW-ADMIN' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'GDAT',
+                        'DISPLAY' => '',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+                'updated_by' => array(
+                        'SHOW-ADMIN' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'auser',
+                        'ANSMODULE' => 'ums',
+                        'DISPLAY' => '',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+                'updated_at' => array(
+                        'SHOW-ADMIN' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'GDAT',
+                        'DISPLAY' => '',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+                'validated_by' => array(
+                        'SHOW-ADMIN' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'auser',
+                        'ANSMODULE' => 'ums',
+                        'DISPLAY' => '',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+                'validated_at' => array(
+                        'SHOW-ADMIN' => true,
+                        'RETRIEVE' => false,
+                        'EDIT' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'GDAT',
+                        'DISPLAY' => '',
+                        'STEP' => 99,
+                        'DISPLAY-UGROUPS' => '',
+                        'EDIT-UGROUPS' => '',
+                        'CSS' => 'width_pct_100',
+                ),
+
+
+
+
+                'version'                  => array(
+                        'STEP' => 99,
+                        'HIDE_IF_NEW' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'INT',
+                        'FGROUP' => 'tech_fields'
+                ),
+
+                'update_groups_mfk'             => array(
+                        'STEP' => 99,
+                        'HIDE_IF_NEW' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => false,
+                        'ANSWER' => 'ugroup',
+                        'ANSMODULE' => 'ums',
+                        'TYPE' => 'MFK',
+                        'FGROUP' => 'tech_fields'
+                ),
+
+                'delete_groups_mfk'             => array(
+                        'STEP' => 99,
+                        'HIDE_IF_NEW' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => false,
+                        'ANSWER' => 'ugroup',
+                        'ANSMODULE' => 'ums',
+                        'TYPE' => 'MFK',
+                        'FGROUP' => 'tech_fields'
+                ),
+
+                'display_groups_mfk'            => array(
+                        'STEP' => 99,
+                        'HIDE_IF_NEW' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => false,
+                        'ANSWER' => 'ugroup',
+                        'ANSMODULE' => 'ums',
+                        'TYPE' => 'MFK',
+                        'FGROUP' => 'tech_fields'
+                ),
+
+                'sci_id'                        => array(
+                        'STEP' => 99,
+                        'HIDE_IF_NEW' => true,
+                        'SHOW' => true,
+                        'RETRIEVE' => false,
+                        'QEDIT' => false,
+                        'TYPE' => 'FK',
+                        'ANSWER' => 'scenario_item',
+                        'ANSMODULE' => 'ums',
+                        'FGROUP' => 'tech_fields'
+                ),
+
+                'tech_notes'                         => array(
+                        'STEP' => 99,
+                        'HIDE_IF_NEW' => true,
+                        'TYPE' => 'TEXT',
+                        'CATEGORY' => 'FORMULA',
+                        'SHOW-ADMIN' => true,
+                        'QEDIT' => false,
+                        'TOKEN_SEP' => '§',
+                        'READONLY' => true,
+                        'NO-ERROR-CHECK' => true,
+                        'FGROUP' => 'tech_fields'
+                ),
+
+
+        );
+}

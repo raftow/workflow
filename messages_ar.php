@@ -1,0 +1,88 @@
+<?php
+$messages['Add comment'] = 'إضافة تعليق';
+$messages['Condition for this transition not satisfied'] = 'الشرط لهذا الانتقال غير متحقق';
+$messages['This employee is not authorized to perform this transition'] = 'هذا الموظف غير مخول للقيام بهذا الانتقال';
+$messages['No application object found'] = 'لم يتم العثور على كائن الطلب';
+$messages['Session terminated or no authenticated employee found when this transition need one of the following previleges'] =
+    'المعذرة انتهت الجلسة أو لم يتم تعريف الموظف الذي قام بتسجيل الدخول في الوقت الذي تتطلب هذه العملية الانتقالية أحد الصلاحيات التالية';
+$messages['Please enter in the bottom of this form the rejection reason'] = 'يرجى إدخال سبب الرفض في أسفل هذا النموذج';
+$messages['This transition needs before to enter rejection comments justifications'] = 'هذا الانتقال يحتاج قبل ذلك إلى إدخال مبررات تعليقات الرفض';
+$messages['No available employee found for assignment'] = 'لم يتم العثور على موظف متاح لتكليفه';
+$messages['Auto-assigned to best available employee'] = 'تم تحويل الطلب تلقائيًا إلى أفضل موظف متاح';
+$messages['No role defined for workflow stage'] = 'لا يوجد دور محدد لمرحلة سير العمل';
+$messages['Employee assigned based on role: '] = 'الموظف المعين بناءً على الدور: ';
+$messages['No employee available to assign'] = 'لا يوجد موظفين متاحين بهذه الصلاحية والبرنامج';
+$messages['requests ignored'] =  'طلبات تم تجاهلها';
+$messages['requests assigned'] = 'طلبات تم اسنادها';
+$messages['workflow scope'] = 'مجال العمل';
+$messages['resetted requests'] = 'طلبات تم تصفيرها';
+$messages['For workflow role'] = 'فيما يخص الصلاحية';
+$messages['The work on this request has been started'] = 'بدأ العمل على هذا الطلب';
+$messages['The work on this request has been canceled'] = 'تم إلغاء العمل على هذا الطلب';
+$messages["Can't change the assign of a request when a work has been started on it. Please cancel this work before."] = "لا يمكن تغيير الشخص المسؤول عن الطلب بعد بدء العمل عليه. يرجى إلغاء هذا العمل قبل ذلك.";
+$messages["disapprove the program"] = "رفض أهلية التقديم على البرنامج";
+$messages["Still need to approve the requested program or select the needed supplementary programs"] = "لا يزال يتعين الموافقة على البرنامج المطلوب أو اختيار البرامج التكميلية اللازمة";
+$messages["admission decision"] = "قرارات القبول";
+$messages['Start/Stop work'] = "بدأ/ايقاف العمل";
+
+$messages["This will show/hide the button before check the condition"] = "سيؤدي هذا إلى إظهار/إخفاء الزر قبل التحقق من الشرط";
+$messages["Interview booking invite has been created"] = "تم إنشاء دعوة لحجز المقابلة";
+$messages["Interview booking pattern not found for this stage"] = "لم يتم العثور على نموذج حجز المقابلة في هذه المرحلة";
+// $messages["Interview booking invite not needed"] = "";
+$messages["Failed to create interview booking invitation"] = "فشل إنشاء دعوة حجز المقابلة";
+$messages["No interview booking invitation sent"] = "لم يتم إرسال دعوة لحجز موعد للمقابلة";
+$messages["Interview booking invitation sent"] = "تم إرسال دعوة لحجز موعد للمقابلة";
+$messages["Interview booking invitation not found"] = "لم يتم العثور على دعوة حجز المقابلة";
+$messages["Interview booking invitation has been created"] = "تم إنشاء دعوة لحجز موعد المقابلة";
+$messages["Interview stage not defined in the current session"] = "لم يتم تحديد مرحلة المقابلة في الدورة الحالية";
+$messages["Bookings status"] = "حالة الحجز";
+$messages["Note: Proficiency in English is essential for programs taught in English"]
+    = "ملاحظة : إجادة اللغة الإنجليزية ضرورية للبرامج التي تدرس باللغة الإنجليزية";
+
+$messages["taught in English"] = "تدرس باللغة الإنجليزية";
+$messages["CV Degree"] = "درجة السيرة الذاتية";
+$messages["No CV found for this applicant"] = "لم يتم العثور على سيرة ذاتية لهذا المتقدم";
+$messages["Interview score not sufficient"] = "درجة المقابلة الشخصية غير كافية";
+$messages["No suitable available employee for the request"] = "لا يوجد موظف مناسب متاح لهذا الطلب";
+$messages["refresh my roles and programs"] = "تحديث صلاحياتي وبرامجي";
+$messages["Sorting screen"] = "شاشة المفاضلة والقبول المبدئي";
+$messages["Interview screen"] = "متابعة المقابلات";
+$messages["Admission process"] = "إجراءات تنفيذ القبول";
+$messages["This process is subject to auditing and monitoring"] = "هذه العملية خاضعة لسياسة التدقيق وتتبع الأثر";
+$messages["Are you sure you want to do this admission action"] = "هل أنت متأكد من رغبتك في القيام بإجراء القبول هذا؟";
+$messages["acceptanceConditionnedByConformity"] = "قبول مشروط بالمطابقة";
+$messages["acceptanceConditionnedBySadad"] = "قبول مشروط بالسداد";
+$messages["Final match screen"] = "شاشة المطابقة النهائية";
+$messages["This request is assigned to"] = "هذا الطلب معين إلى";
+$messages["This request is not assigned to anyone yet"] = "هذا الطلب لم يُعين بعد إلى أي شخص";
+$messages["This request does not require assignment to an employee"] = "هذا الطلب لا يتطلب تعيين موظف";
+
+$messages["sendAllDataToSIS"] = "ترحيل البيانات";
+$messages["Knowing that"] = "مع العلم أن";
+$messages["The request is assigned to"] = "الطلب مسند إلى";
+$messages["The request is not assigned to any department"] = "لم يتم إسناد الطلب إلى أي جهة أو لجنة";
+$messages["roles before adding Jobrole"] = "الأدوار قبل إضافة الصلاحية الوظيفة";
+$messages["roles after adding Jobrole"] = "الأدوار بعد إضافة الصلاحية الوظيفة";
+
+$messages["Please note: No appointments are available. Please create them"] = 
+     "لا يوجد مواعيد متاحة للمقابلة يرجى إضافة مواعيد جديدة عاجلا حتى يتمكن المتقدمون من الحجز";
+$messages["Cannot update: there are valid interview slots that must be removed or cancelled first"] = "لا يمكن التحديث: هناك مواعيد مقابلة معتمدة يجب حذفها أو إلغاؤها أولاً";
+$messages["Interview booked for"] = "تم حجز المقابلة لـ";
+$messages["Not Invited"] = "لم تتم دعوته";
+$messages["Interview cancelled for"] = "تم إلغاء المقابلة لـ";
+
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";
+// $messages[""] = "";

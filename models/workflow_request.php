@@ -1,0 +1,1975 @@
+<?php
+// RB : 04 FEB 2026 : cleaning bad data
+// -- select applicant_id from  nauss_adm.application_desire where application_plan_branch_id not in (select id from nauss_adm.application_plan_branch)
+// delete from nauss_workflow.workflow_request where workflow_applicant_id in ('1091929602','3000000006','1013585300');
+// delete from  nauss_adm.application_desire where application_plan_branch_id not in (select id from nauss_adm.application_plan_branch);
+
+
+
+class WorkflowRequest extends WorkflowObject
+{
+        public static $DATABASE = '';
+        public static $MODULE = 'workflow';
+        public static $TABLE = 'workflow_request';
+        /**
+         * @var array|null
+         */
+        public static $DB_STRUCTURE = null;
+        // public static $copypast = true;
+
+        /**
+         * @var AFWObject|null
+         */
+        private $orginalObject = null;
+
+        public function __construct()
+        {
+                parent::__construct('workflow_request', 'id', 'workflow');
+                WorkflowWorkflowRequestAfwStructure::initInstance($this);
+        }
+
+        public static $STATS_CONFIG = array(
+                "wr0001" => array(
+                        "STATS_WHERE" => "active = 'Y'", //  
+                        'SFILTER' => ['application_class_enum' => true, 'workflow_session_id' => true], // , 'workflow_stage_id' => true
+                        "DISABLE-VH" => true,
+                        "FOOTER_TITLES" => true,
+                        "ROW_SUM" => true,
+                        "COL_SUM" => true,
+                        "SQL_GROUP_BY" => true,
+                        "GROUP_SEP" => ".",
+                        "GROUP_COLS" => array(
+                                0 => array("COLUMN" => "workflow_scope_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
+                                1 => array("COLUMN" => "workflow_status_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
+                        ),
+                        "CROSS_STATS_COLS" => ["row" => "workflow_scope_id", "col" => "workflow_status_id", "val" => 'count_request', 'bigcol' => 'workflow_stage_id'],
+
+                        "DISPLAY_COLS" => array(
+                                "count_request" => array("COLUMN" => "count_request", "SQL_FORMULA" => "count(id)", "SHOW-NAME" => "count_request", "ROW_SUM" => true, "COL_SUM" => true),
+                        ),
+
+                        "FORMULA_COLS" => array(),
+
+
+                ),
+
+                "wr0002" => array(
+                        "STATS_WHERE" => "active = 'Y'", //  and request_date between [date_start_stats] and [date_end_stats]
+                        // "URL_SETTINGS" => "main.php?Main_Page=afw_mode_edit.php&cl=CrmOrgunit&id=80&currmod=crm&currstep=5",
+                        "DISABLE-VH" => true,
+                        "FOOTER_TITLES" => true,
+                        "FOOTER_SUM" => true,
+                        "GROUP_SEP" => ".",
+                        "GROUP_COLS" => array(
+                                0 => array("COLUMN" => "workflow_scope_id", "DISPLAY-FORMAT" => "decode", "FOOTER_SUM_TITLE" => "الإجمــالـي"),
+                        ),
+                        "DISPLAY_COLS" => array(
+                                1 => array("COLUMN" => "in_status_1",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_1",  "FOOTER_SUM" => true),
+                                2 => array("COLUMN" => "in_status_2",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_2",  "FOOTER_SUM" => true),
+                                3 => array("COLUMN" => "in_status_3",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_3",  "FOOTER_SUM" => true),
+                                4 => array("COLUMN" => "in_status_4",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_4",  "FOOTER_SUM" => true),
+                                5 => array("COLUMN" => "in_status_5",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_5",  "FOOTER_SUM" => true),
+                                6 => array("COLUMN" => "in_status_6",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_6",  "FOOTER_SUM" => true),
+                                7 => array("COLUMN" => "in_status_7",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_7",  "FOOTER_SUM" => true),
+                                8 => array("COLUMN" => "in_status_8",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_8",  "FOOTER_SUM" => true),
+                                9 => array("COLUMN" => "in_status_9",  "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_9",  "FOOTER_SUM" => true),
+                                10 => array("COLUMN" => "in_status_10", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_10", "FOOTER_SUM" => true),
+                                11 => array("COLUMN" => "in_status_11", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_11", "FOOTER_SUM" => true),
+                                12 => array("COLUMN" => "in_status_12", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_12", "FOOTER_SUM" => true),
+                                13 => array("COLUMN" => "in_status_13", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_13", "FOOTER_SUM" => true),
+                                14 => array("COLUMN" => "in_status_14", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_14", "FOOTER_SUM" => true),
+                                15 => array("COLUMN" => "in_status_15", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_15", "FOOTER_SUM" => true),
+                                16 => array("COLUMN" => "in_status_16", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_16", "FOOTER_SUM" => true),
+                                17 => array("COLUMN" => "in_status_17", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_17", "FOOTER_SUM" => true),
+                                18 => array("COLUMN" => "in_status_18", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_18", "FOOTER_SUM" => true),
+                                19 => array("COLUMN" => "in_status_19", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_19", "FOOTER_SUM" => true),
+                                20 => array("COLUMN" => "in_status_20", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_20", "FOOTER_SUM" => true),
+                                21 => array("COLUMN" => "in_status_21", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_21", "FOOTER_SUM" => true),
+                                22 => array("COLUMN" => "in_status_22", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_22", "FOOTER_SUM" => true),
+                                23 => array("COLUMN" => "in_status_23", "COLUMN_IS_FORMULA" => true, "GROUP-FUNCTION" => "sum", "SHOW-NAME" => "in_status_23", "FOOTER_SUM" => true),
+                        ),
+
+                        "FORMULA_COLS" => array(
+                                //0 => array("SHOW-NAME"=>"perf", "METHOD"=>"getPerf"),
+                        ),
+
+                        /*"OPTIONS" => array(
+                                "perf"=> array('count_request' => true, 'request_done' => true, 'request_late' => true, 'request_ongoing' => true, 'perf'=>true),
+                                      ),*/
+                        // "SUPER_HEADER"=>array(0=>array("colspan"=>3, "title"=>""), 1=>array("colspan"=>2, "title"=>"year_36"), 2=>array("colspan"=>2, "title"=>"year_37"),
+                        //                      3=>array("colspan"=>2, "title"=>"year_38"), 4=>array("colspan"=>2, "title"=>"year_39"), 5=>array("colspan"=>2, "title"=>"year_40"), ),
+
+                ),
+        );
+
+        public static $PUB_METHODS = array(
+                'assignRequest' => array(
+                        'title' => 'تحويل الطلب إلى [item]',
+                        'color' => 'random',
+                        'confirmation_needed' => false,
+                        'confirmation_warning' => '',
+                        'confirmation_question' => '',
+                        'itemsMethod' => 'getEmployees',
+                        'roles' => "workflow/393",
+                        'title-length' => "72",
+                ),
+
+
+                'runTransition' => array(
+                        'title' => '[item]',
+                        'mgroup' => 'admission decision',
+                        'confirmation_needed' => false,
+                        'confirmation_warning' => '',
+                        'confirmation_question' => '',
+                        'itemsMethod' => 'getMyTransitions',
+                        'title-length' => "72",
+                ),
+        );
+
+
+
+        public static function loadById($id)
+        {
+                $obj = new WorkflowRequest();
+
+                if ($obj->load($id)) {
+                        return $obj;
+                } else
+                        return null;
+        }
+
+        public static function allPrepareInterviewBookingIfNeeded()
+        {
+                $err_arr = [];
+                $inf_arr = [];
+                $war_arr = [];
+                $tech_arr = [];
+                $obj = new WorkflowRequest();
+                // $obj->select_visibilite_horizontale();
+                $objList = $obj->loadMany();
+                /**
+                 * @var WorkflowRequest $objItem
+                 */
+                $nb_updated = 0;
+                foreach ($objList as $objItem) {
+                        list($err, $inf, $war, $tech) = $objItem->prepareInterviewBookingIfNeeded();
+
+                        if ($err) $err_arr[] = "$objItem : " . $err;
+                        elseif ($inf) {
+                                $nb_updated++;
+                                // $inf_arr[] = "$student : ".$inf;
+                        }
+                        if ($war) $war_arr[] = "$objItem : " . $war;
+                        if ($tech) $tech_arr[] = $tech;
+                }
+
+                return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, "<br>\n", $tech_arr);
+        }
+
+        /**
+         * @return array<WorkflowRequest>
+         */
+        public static function loadAll()
+        {
+                $obj = new WorkflowRequest();
+                $obj->select("active", 'Y');
+
+                $objList = $obj->loadMany();
+
+                return $objList;
+        }
+
+        public static function repare_all_requests($lang = 'ar')
+        {
+                UfwQueryAnalyzer::startProcessLourdMode();
+                $wrObjList = self::loadAll();
+
+                $objPbmMatrix = new HtmlyProcessResultMatrix(count($wrObjList));
+                foreach ($wrObjList as $wrObjItem) {
+                        list($err, $inf, $war) = $wrObjItem->repareMe($lang);
+                        $objPbmMatrix->addResult($wrObjItem, $err, $war, $inf);
+                }
+                UfwQueryAnalyzer::stopProcessLourdMode();
+                return $objPbmMatrix->renderHtml();
+        }
+
+        public static function allGetOriginalData()
+        {
+                $err_arr = [];
+                $inf_arr = [];
+                $war_arr = [];
+                $tech_arr = [];
+                $obj = new WorkflowRequest();
+                // $obj->select_visibilite_horizontale();
+                $objList = $obj->loadMany();
+                /**
+                 * @var WorkflowRequest $objItem
+                 */
+                $nb_updated = 0;
+                foreach ($objList as $objItem) {
+                        list($err, $inf, $war, $tech) = $objItem->getOriginalData();
+
+                        if ($err) $err_arr[] = "$objItem : " . $err;
+                        elseif ($inf) {
+                                $nb_updated++;
+                                // $inf_arr[] = "$student : ".$inf;
+                        }
+                        if ($war) $war_arr[] = "$objItem : " . $war;
+                        if ($tech) $tech_arr[] = $tech;
+                }
+
+                return AfwFormatHelper::pbm_result($err_arr, $inf_arr, $war_arr, "<br>\n", $tech_arr);
+        }
+
+        /**
+         * @return WorkflowRequest
+         */
+
+        public static function loadByMainIndex($workflow_applicant_id, $workflow_model_id, $create_obj_if_not_found = false)
+        {
+                if (!$workflow_applicant_id)
+                        throw new AfwRuntimeException('loadByMainIndex : workflow_applicant_id is mandatory field');
+                if (!$workflow_model_id)
+                        throw new AfwRuntimeException('loadByMainIndex : workflow_model_id is mandatory field');
+
+                $obj = new WorkflowRequest();
+                $obj->select('workflow_applicant_id', $workflow_applicant_id);
+                $obj->select('workflow_model_id', $workflow_model_id);
+
+                if ($obj->load()) {
+                        if ($create_obj_if_not_found) {
+                                if (!$obj->getVal('request_date'))
+                                        $obj->set('request_date', AfwDateHelper::currentHijriDate());
+                                $wApplicantObj = $obj->het('workflow_applicant_id');
+                                if (!$wApplicantObj) {
+                                        throw new AfwRuntimeException('loadByMainIndex : workflow applicant object not found');
+                                }
+                                $obj->set('idn', $wApplicantObj->getVal("idn"));
+                                $obj->activate();
+                        }
+
+                        return $obj;
+                } elseif ($create_obj_if_not_found) {
+                        $obj->set('workflow_applicant_id', $workflow_applicant_id);
+                        $obj->set('workflow_model_id', $workflow_model_id);
+                        $obj->set('request_date', AfwDateHelper::currentHijriDate());
+                        $obj->set('done', 'N');
+                        $wApplicantObj = $obj->het('workflow_applicant_id');
+                        if (!$wApplicantObj) {
+                                throw new AfwRuntimeException('loadByMainIndex : workflow applicant object not found');
+                        }
+                        $obj->set('idn', $wApplicantObj->getVal("idn"));
+
+                        $obj->insertNew();
+                        if (!$obj->id)
+                                return null;  // means beforeInsert rejected insert operation
+                        $obj->is_new = true;
+                        return $obj;
+                } else
+                        return null;
+        }
+
+        public function getDisplay($lang = 'ar')
+        {
+                return $this->getDefaultDisplay($lang);
+        }
+
+        public function stepsAreOrdered()
+        {
+                return false;
+        }
+
+
+        public function isInboxable()
+        {
+                $stageObj = $this->het("workflow_stage_id");
+
+                if (!$stageObj) return false;
+
+                return $stageObj->sureIs("see_only_assigned_ind");
+        }
+
+        /**
+         * @param int $employee_id
+         */
+        public static function inboxSqlCond($employee_id, $prefix = 'me.')
+        {
+                // list of stages to be visible in inbox
+                // see_only_assigned_ind = في صندوق الوارد نعرض الطلبات التي في هذه المرحلة
+                $arrIds = WorkflowStage::loadListeWhere("see_only_assigned_ind='Y'");
+                // 
+                // Amjad whatsApp 2026-05-10 (inside word document : admission cycle test 09052026) :
+                // 2.	Show only the workflow request assigned to the admin user connected
+                // 3.	Don’t show the workflow request assigned to another user
+                // 4.	Don’t show the non-assigned workflow request - مرحلة المطابقة و المفاضلة 
+
+                return "(" . $prefix . "employee_id='$employee_id' and " . $prefix . "workflow_stage_id in (" . implode(",", $arrIds) . "))  and " . $prefix . "done != 'Y'";
+        }
+
+        public static function inboxCountFor($employee_id)
+        {
+                $obj = new WorkflowRequest();
+                $sql = self::inboxSqlCond($employee_id, $prefix = '');
+                $obj->where($sql);
+                return $obj->count();
+        }
+
+        protected function afwCall($name, $arguments)
+        {
+
+
+
+                if (substr($name, 0, 13) == 'runTransition') {
+                        $transitionId = intval(substr($name, 13));
+                        return $this->runTransition($transitionId, $arguments[0]);
+                }
+
+                if (substr($name, 0, 13) == 'assignRequest') {
+                        $employeeId = intval(substr($name, 13));
+                        return $this->assignRequest($employeeId, $arguments[0]);
+                }
+
+                if (substr($name, 0, 14) == 'calcDiv_block_') {
+                        $block = intval(substr($name, 14));
+                        return $this->calcDiv_block($block, $arguments[0]);
+                }
+
+                if (substr($name, 0, 18) == 'approveProgramWith') {
+                        $transitionId = intval(substr($name, 18));
+                        list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                        if (!$objOriginal or $error) return ["Failed to load Original Object : $error", ""];
+                        return $objOriginal->approveProgramWith($transitionId, $arguments[0]);
+                }
+
+                return false;
+                // the above return should be keeped if not treated
+        }
+
+        public function disApproveProgram($lang = 'ar')
+        {
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                if (!$objOriginal or $error) return ["Failed to load Original Object : $error", ""];
+                return $objOriginal->disApproveProgram($lang);
+        }
+
+
+        public function getMyTransitions($onlyForAuthenticatedEmployee = false)
+        {
+                if ($onlyForAuthenticatedEmployee) {
+                        $objme = AfwSession::getUserConnected();
+                        if ($objme->isSuperAdmin()) {
+                                $employeeRolesArray = null;
+                        } else {
+                                $assigned_orgunit_id = $this->getVal('orgunit_id');
+                                $assigned_employee_id = $this->getVal('employee_id');
+                                if (!$assigned_employee_id) $assigned_orgunit_id = 0; // all people have previleges can do it
+
+                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($assigned_orgunit_id);
+                                if (!$wEmployeeMe) return array(); // die("No user authenticated !!!!"); //
+                                $employeeRolesArray = explode(",", trim($wEmployeeMe->getVal("wrole_mfk"), ","));
+                        }
+                } else {
+                        $employeeRolesArray = null;
+                }
+
+
+                $obj = new WorkflowTransition();
+                $obj->select('workflow_model_id', $this->getVal('workflow_model_id'));
+                $obj->select('initial_stage_id', $this->getVal('workflow_stage_id'));
+                $obj->select('initial_status_id', $this->getVal('workflow_status_id'));
+                if ($employeeRolesArray) $obj->where("workflow_role_mfk like '%," . implode(",%' or workflow_role_mfk like '%,", $employeeRolesArray) . ",%'");
+                $transList = $obj->loadMany();
+                $objOriginal = null;
+                $validTransList = [];
+                foreach ($transList as $transItem) {
+                        if ($transItem->sureIs("condition_before")) {
+                                if (!$objOriginal) list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                                $wCondObj = $transItem->het("workflow_condition_id");
+                                if ($objOriginal) list($condition_success, $reason) = $objOriginal->runCondition($wCondObj, $this, "en");
+                                else $condition_success = 0;
+                        } else $condition_success = true;
+
+                        if ($condition_success) {
+                                $validTransList[$transItem->id] = $transItem;
+                        }
+                }
+
+                return $validTransList;
+        }
+
+
+
+        public function getOriginalData($lang = "ar")
+        {
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return array("Original-Object looked up with ($keyLookup) not found  : $error", '');
+
+
+                return $objOriginal->updateDataOfWorkflowRequest($this);
+        }
+
+
+        public function inspectMyAcceptedRoles($lang = "ar")
+        {
+                return $this->getMyAcceptedRoles($lang, true);
+        }
+
+        public function getMyAcceptedRoles($lang = "ar", $pbm = false)
+        {
+                $result = array();
+                $transitionList = $this->getMyTransitions();
+
+                $journal = [];
+
+                if ($pbm) $journal[] = "My Transitions Found : " . count($transitionList);
+
+                foreach ($transitionList as $transition) {
+                        $accepted_roles_mfk = trim($transition->getVal("workflow_role_mfk"), ",");
+                        if ($pbm) $journal[] = $transition->getDisplay($lang) . " : roles = $accepted_roles_mfk";
+                        $authorizedRolesArray = explode(",", $accepted_roles_mfk);
+                        $result = array_merge($result, $authorizedRolesArray);
+                        if ($pbm) $journal[] = $transition->getDisplay($lang) . " : merged = " . implode("/", $result);
+                }
+
+
+                if ($pbm) return AfwFormatHelper::pbm_result('', $journal);
+                else return $result;
+        }
+
+
+        public function runTransition($transitionId, $lang = 'ar')
+        {
+                $objTransition = WorkflowTransition::loadById($transitionId);
+
+                $objme = AfwSession::getUserConnected();
+
+
+                $accepted_roles_mfk = trim($objTransition->getVal("workflow_role_mfk"), ",");
+                if ($accepted_roles_mfk == "5") $accepted_roles_mfk = ""; // المتقدم ليس صلاحية حقيقية
+
+                $authorizedRolesArray = array_filter(explode(",", $accepted_roles_mfk));
+                if (count($authorizedRolesArray) > 0) {
+                        if (!$objme or !$objme->isSuperAdmin()) {
+                                $assigned_orgunit_id = $this->getVal('orgunit_id');
+                                $assigned_employee_id = $this->getVal('employee_id');
+                                if (!$assigned_employee_id) $assigned_orgunit_id = 0; // all people have previleges can do it
+                                $wEmployeeMe = WorkflowEmployee::getAuthenticatedEmployeeObject($assigned_orgunit_id);
+                                if (!$wEmployeeMe) {
+                                        $error = $this->tm('Session terminated or no authenticated employee found when this transition need one of the following previleges', $lang);
+                                        $error .= " : " . $objTransition->showAttribute("workflow_role_mfk", null, true, $lang);
+                                        $error .= ". " . $this->tm('Knowing that', $lang);
+                                        if ($assigned_orgunit_id > 0) {
+                                                $orgunit_name = $this->showAttribute("orgunit_id", null, true, $lang);
+                                                $error .= " " . $this->tm('The request is assigned to', $lang) . " [$orgunit_name] ";
+                                        } else {
+                                                $error .= " " . $this->tm('The request is not assigned to any department', $lang);
+                                        }
+                                        return array($error, '');
+                                }
+                                if (!$wEmployeeMe->hasOneOfWRoles($authorizedRolesArray)) {
+                                        $wrole_mfk = $wEmployeeMe->getVal("wrole_mfk");
+                                        return array($this->tm('This employee is not authorized to perform this transition', $lang) . '<!-- ID=' . $transitionId . " : accepted roles=$accepted_roles_mfk | my roles=$wrole_mfk -->", '');
+                                }
+                        }
+                }
+
+
+
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return array("Original-Object looked up with ($keyLookup) not found  : $error", '');
+
+                // $moduleObj = $objTransition->het("workflow_module_id");
+                $wCondObj = $objTransition->het("workflow_condition_id");
+                list($result, $reason) = $objOriginal->runCondition($wCondObj, $this, $lang);
+                $wCondObjCode = $wCondObj->getVal("lookup_code");
+                // return array("Condition for this transition is $wCondObjCode result = $result <br> reason = $reason", '');
+
+                if (!$result)
+                        return array($this->tm("Condition for this transition not satisfied", $lang) . " : " . $reason, '');
+
+
+
+
+                $wActionObj = $objTransition->het("workflow_action_id");
+
+                if (($wActionObj->getVal("action_type_enum") == 1) and ($wActionObj->sureIs("comments_mandatory"))) {
+                        // Rjection needs rejection justifications comments
+                        /*
+                        $objComment = WorkflowRequestComment::findComment($this->id, $this->getVal('workflow_stage_id'), RequestCommentSubject::$REQUEST_COMMENT_SUBJECT_REJECT_REASON);
+                        if ($objComment) {
+                                $commentText = trim($objComment->getVal('comment'));
+                                if (strlen($commentText) < 5) {
+                                        return array('This transition needs rejection comments justifications of at least 5 characters', '');
+                                }
+                        } else {
+                                return array('This transition needs before to enter rejection comments justifications', '');
+                        }
+                        */
+
+                        if (!$this->getVal('workflow_rejection_reason_id')) {
+                                $this->set("attempt", "Y");
+                                $this->commit();
+                                return array('', '', $this->tm('Please enter in the bottom of this form the rejection reason', $lang));
+                        }
+                }
+
+                $final_stage_id = $objTransition->getVal('final_stage_id');
+                $final_status_id = $objTransition->getVal('final_status_id');
+
+
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $workflow_status_id = $this->getVal('workflow_status_id');
+
+                if (($final_stage_id != $workflow_stage_id) or ($final_status_id != $workflow_status_id)) {
+                        $this->set('done', 'N');
+                        $this->set('done_date', date('Y-m-d H:i:s'));
+                        $this->set('employee_id', 0);
+                        $this->set("attempt", "N");
+                        $this->set('workflow_stage_id', $final_stage_id);
+                        $this->set('workflow_status_id', $final_status_id);
+                        $this->commit();
+                        $this->prepareInterviewBookingIfNeeded();
+
+                        $the_comment = "تم تنفيذ الاجراء : " . $objTransition->getDisplay($lang);
+                        $comment_datetime = date('Y-m-d H:i:s');
+                        $comment_time = date('H:i:s');
+                        $status_comment = $comment_time . " : $the_comment [" . $objTransition->id . "]";
+                        /*
+                        $request_comment_subject_id = $this->convenientCommentSubjectId();
+                        $wrcObj = WorkflowRequestComment::loadByMainIndex($this->id, $request_comment_subject_id, $comment_datetime, $the_comment, $final_stage_id, true);
+                        */
+
+                        // after transition done reassign to best available employee depending on new stage and needed roles for this stage
+                        $finalStageObj = $this->het('workflow_stage_id');
+                        if ($finalStageObj and $finalStageObj->sureIs("auto_assign_ind")) {
+                                $this->assignBestAvailableEmployee($lang, true, true);
+                        }
+                } else {
+                        $status_comment = $this->tm("Nothing done", $lang);
+                }
+
+
+                $objOriginal->afterRunTransition($objTransition, $this, $lang);
+
+
+
+                return array('', $status_comment, '');
+        }
+
+
+
+        public function isStarted()
+        {
+                return (($this->getVal('done') == "W") or ($this->getVal('done') == "Y"));
+        }
+
+        public function isFinished()
+        {
+                return ($this->getVal('done') == "Y");
+        }
+
+        public function assignRequest($employeeId, $lang = 'ar')
+        {
+                if ($this->getVal('done') == "W") {
+                        return array('', $this->tm("Can't change the assign of a request when a work has been started on it. Please cancel this work before.", $lang));
+                }
+                if ((!$employeeId) and $this->getVal('employee_id') > 0)
+                        throw new AfwRuntimeException('strange attempt to unassign the request ID=' . $this->id);
+                if (!$employeeId)
+                        return array('', 'attempt to unassign the request nothing-done');
+
+                $this->set('employee_id', $employeeId);
+
+                // $objOrgunit = null;
+                // $objEmployee = $this->het("employee_id");
+                $this->set('assign_date', AfwDateHelper::currentHijriDate());
+                $this->set('assign_time', date('H:i:s'));
+                $this->commit();
+                $status_comment = date('H:i:s') . ': تم اسناد الطلب [' . $this->id . "] للموظف(ة) $employeeId " . $this->showAttribute('employee_id');
+                return array('', $status_comment);
+        }
+
+        public function getEmployees($excludeCurrentAssigned = false)
+        {
+                if (!$this->getVal('orgunit_id') or !$this->getVal('workflow_scope_id'))
+                        return array();
+
+                if (!$excludeCurrentAssigned)
+                        $except_employee_id = 0;
+                else
+                        $except_employee_id = $this->getVal('employee_id');
+
+                $accepted_roles = $this->getMyAcceptedRoles();
+
+                return WorkflowEmployee::getEmployeeList($this->getVal('orgunit_id'), $this->getVal('workflow_scope_id'), $except_employee_id, $accepted_roles);  // $this->getVal("employee_id")
+        }
+
+        public function getMethodTitle($methodName, $lang = 'ar')
+        {
+                return $this->tm(self::$PUB_METHODS[$methodName]['title'], $lang);
+        }
+
+        public function getMethodTooltip($methodName, $lang = 'ar')
+        {
+                return $this->tm(self::$PUB_METHODS[$methodName]['tooltip'], $lang);
+        }
+
+        protected function getPublicMethods()
+        {
+                global $lang;
+
+                $objme = AfwSession::getUserConnected();
+                $isSuperAdmin = $objme->isSuperAdmin();
+                $log = '';
+                $pbms = array();
+
+                if ($this->isMine()) {
+
+
+
+                        $employeesList = $this->getEmployees(true);
+                        $transitionList = $this->getMyTransitions(true);
+                        // if ($this->id == 16) die("rafik dyn getMyTransitions=" . var_export($transitionList, true));
+                        // $orgunit_id = $this->getVal('orgunit_id');
+                        // die("rafik dyn orgunit_id=$orgunit_id employeesList=" . var_export($employeesList, true));
+                        foreach (self::$PUB_METHODS as $methodName0 => $publicDynamicMethodProps) {
+                                if ($this->isStarted()) {
+                                        if ($publicDynamicMethodProps['itemsMethod'] == 'getMyTransitions') {
+                                                $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $transitionList, false, true, $this->reachedStep(), "::getColor");
+                                        }
+                                }
+
+
+                                if ($publicDynamicMethodProps['itemsMethod'] == 'getEmployees') {
+                                        $pbms = AfwDynamicPublicMethodHelper::splitMethodWithItems($pbms, $publicDynamicMethodProps, $methodName0, $this, $log, $employeesList, false, true);
+                                }
+                        }
+
+                        /**
+                         * @var AFWObject $objOriginal
+                         */
+
+                        list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                        if ($objOriginal) {
+                                $myStageObj = $this->het('workflow_stage_id');
+                                // @todo ACRV should not be hard coded 
+                                if (($this->isMine()) and ($this->getVal("done") == "W") and ($myStageObj->getVal("step_code") == "ACRV")) {
+                                        $pbm_arr = $objOriginal->getPublishedMethodsFor($objme, "workflow-commitee");
+                                        // die('rafik Published pbm_arr=' . var_export($pbm_arr, true));
+                                        foreach ($pbm_arr as $pbm_code => $pbm_item) {
+                                                $pbms[$pbm_code] = $pbm_item;
+                                        }
+                                }
+                        }
+
+
+                        if (count($transitionList) == 0) {
+                                $color = 'yellow';
+                                $title_ar = 'تحديث صلاحيات الموظف';
+                                $methodName = 'notImplemented';
+                                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                        array(
+                                                'METHOD' => $methodName,
+                                                'COLOR' => $color,
+                                                'LABEL_AR' => $title_ar,
+                                                'ADMIN-ONLY' => true,
+                                                'BF-ID' => '',
+                                                'TITLE-LENGTH' => 72,
+                                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                                        );
+                        }
+
+                        $color = 'orange';
+                        $title_ar = 'تحديث البيانات من الأصل';
+                        $methodName = 'getOriginalData';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ADMIN-ONLY' => true,
+                                        'BF-ID' => '',
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+                        $color = 'blue';
+                        $title_ar = 'تحديث دعوة المقابلة';
+                        $methodName = 'prepareInterviewBookingIfNeeded';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ADMIN-ONLY' => true,
+                                        'BF-ID' => '',
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+
+
+
+                        $color = 'orange';
+                        $title_ar = 'فحص الصلاحيات التي أحتاجها';
+                        $methodName = 'inspectMyAcceptedRoles';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ADMIN-ONLY' => true,
+                                        'BF-ID' => '',
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+                        $color = 'green';
+                        $title_ar = 'تحويل الطلب إلى الموظف الأقل عبئا';
+                        $methodName = 'assignBestAvailableEmployee';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ROLES' => 'workflow/393',
+                                        'PUBLIC' => true,
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+                        $color = 'blue';
+                        $title_ar = 'تحويل الطلب إلى اللجنة والموظف المناسبين';
+                        $methodName = 'resetAssignBestAvailableEmployee';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        'ROLES' => 'workflow/393',
+                                        'PUBLIC' => true,
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+
+
+
+
+                        if (($this->isMine()) and (!$this->isExceptionallyForManager()) and ($this->getVal("done") == "N")) {
+                                $color = 'yellow';
+                                $title_ar = 'بدء العمل على الطلب';
+                                $methodName = 'startWork';
+                                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                        array(
+                                                'METHOD' => $methodName,
+                                                'COLOR' => $color,
+                                                'MGROUP' => 'Start/Stop work',
+                                                'LABEL_AR' => $title_ar,
+                                                'ROLES' => 'workflow/403',
+                                                'PUBLIC' => true,
+                                                'TITLE-LENGTH' => 72,
+                                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                                        );
+                        } elseif (($this->isMine()) and (!$this->isExceptionallyForManager()) and ($this->getVal("done") == "W")) {
+                                $color = 'gray';
+                                $title_ar = 'إلغاء بدء العمل على الطلب';
+                                $methodName = 'cancelStartWork';
+                                $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                        array(
+                                                'METHOD' => $methodName,
+                                                'COLOR' => $color,
+                                                'MGROUP' => 'Start/Stop work',
+                                                'LABEL_AR' => $title_ar,
+                                                'ROLES' => 'workflow/393', // فقط للمدير
+                                                'PUBLIC' => true,
+                                                'TITLE-LENGTH' => 72,
+                                                // 'STEP' => $this->stepOfAttribute('employee_id')
+                                        );
+                        }
+                }
+
+
+                //die('rafik final pbms=' . var_export($pbms, true));
+                if (false) { //only for testing purpose
+                        $color = 'gray';
+                        $title_ar = 'ارسال اشعار للمتقدم';
+                        $methodName = 'sendNotificationsExample';
+                        $pbms[AfwStringHelper::hzmEncode($methodName)] =
+                                array(
+                                        'METHOD' => $methodName,
+                                        'COLOR' => $color,
+                                        'LABEL_AR' => $title_ar,
+                                        //'ROLES' => 'workflow/393',
+                                        'PUBLIC' => true,
+                                        'TITLE-LENGTH' => 72,
+                                        // 'STEP' => $this->stepOfAttribute('employee_id')
+                                );
+                }
+                return $pbms;
+        }
+
+        public function cancelStartWork($lang = 'ar')
+        {
+                $this->set("done", "N");
+                $this->set('done_date', date('Y-m-d H:i:s'));
+                $this->commit();
+                // notify the employee that wis work on this request has been canceled                
+
+                return ["", $this->tm("The work on this request has been canceled", $lang)];
+        }
+
+
+        public function startWork($lang = 'ar')
+        {
+                $this->set("done", "W"); // W means started Y means done N means not started
+                $this->set('done_date', date('Y-m-d H:i:s'));
+                $this->commit();
+
+
+                return ["", $this->tm("The work on this request has been started", $lang)];
+        }
+
+        public function resetAssignBestAvailableEmployee($lang = 'ar', $pbm = true)
+        {
+                $this->assignBestAvailableEmployee($lang, $pbm, $reassignOrgunit = true);
+        }
+
+        public function assignBestAvailableEmployee($lang = 'ar', $pbm = true, $reassignOrgunit = false)
+        {
+                $workflow_scope_id = $this->getVal('workflow_scope_id');
+                if ($reassignOrgunit or !$this->getVal('orgunit_id')) {
+                        /**
+                         * @var WorkflowStage $myStageObj 
+                         */
+                        $myStageObj = $this->het('workflow_stage_id');
+                        if ($myStageObj) $orgunit_id = $myStageObj->convenientOrgunitForScope($workflow_scope_id);
+                        if ($orgunit_id and ($this->getVal('orgunit_id') != $orgunit_id)) {
+                                $this->set('orgunit_id', $orgunit_id);
+                                $this->set('employee_id', 0);
+                        }
+                }
+
+                $this->commit();
+
+                $strict = false;
+                $except_emp_id = 0;
+                $accepted_roles = $this->getMyAcceptedRoles();
+                // die("For me w-request id=" . $this->id . " ac-roles are : " . var_export($accepted_roles, true));
+                // find the best available employee
+                if ($this->getVal('employee_id') > 0) {
+
+                        $wEmployeeObj = WorkflowEmployee::findWorkflowEmployee($this->getVal('employee_id'));
+                        if ($wEmployeeObj) {
+                                $strict = true;
+                                if (!$wEmployeeObj->hasOneOfWRoles($accepted_roles)) {
+                                        $strict = false;
+                                        $except_emp_id = $this->getVal('employee_id');
+                                }
+                        }
+                }
+                $orgunit_id = $this->getVal('orgunit_id');
+
+
+                list($best_employee_id, $wkfEmpl, $allList, $log) = WorkflowEmployee::getBestAvailableEmployee($orgunit_id, $workflow_scope_id, $except_emp_id, $strict, $accepted_roles);
+                // $wkfRes = array("best" => $best_employee_id, "res" => $wkfEmpl, 'all' => $allList);
+                // die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($wkfRes, true)."</pre>");
+
+                /**
+                 * @var WorkflowEmployee $wkfEmplObj
+                 */
+                $wkfEmplObj = $wkfEmpl['obj'];
+
+                // assign this Request to this supervisor
+                $emplObj = null;
+                if ($wkfEmplObj) {
+                        $wkfEmplObj->assignMeOnWorkflowRequest($this, $lang);
+                        $emplObj = $wkfEmplObj->hetEmployee();
+                }
+                // else die("<pre>CrmEmployee::assignBestAvailableEmployee() returned object : ". var_export($crmRes, true)."</pre>");
+
+                if ($pbm) {
+                        if ($emplObj)
+                                return array('', $this->tm('request has beeen assigned to ') . $emplObj->getDisplay($lang), '', $log);
+                        elseif ($strict) {
+                                $emplObj = $this->het('employee_id');
+                                return array('', $this->tm('This request already assigned to ') . $emplObj->getDisplay($lang), '', $log);
+                        } else
+                                return array($this->tm('No suitable available employee for the request') . ' : ' . $this->id, '', '', $log);
+                }
+
+                return $emplObj;
+        }
+
+        public function isSponsored()
+        {
+                //$appClass = $this->getVal("application_class_enum");
+                //return ($appClass == 2 or $appClass == 3 or $appClass == 5);
+                $applicationClassObj = ApplicationClass::loadById($this->getVal("application_class_enum"));
+                return $applicationClassObj->getVal("budgeting_ind") == "Y";
+        }
+
+        public function isNotSponsored()
+        {
+                $appClass = $this->getVal("application_class_enum");
+                return ($appClass == 1 or $appClass == 4);
+        }
+
+        public function calcRun_admission($what = 'value')
+        {
+                $objme = AfwSession::getUserConnected();
+                $method_icon = 'run';
+                if ($this->isSponsored()) {
+                        $method_name = 'acceptanceConditionnedByConformity';
+                        $color = 'green';
+                } else {
+                        $method_name = 'acceptanceConditionnedBySadad';
+                        $color = 'blue';
+                }
+
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+
+                $swal_title = $this->tm("Are you sure you want to do this admission action", $lang) . " : " . $this->tm($method_name, $lang);
+                $swal_text = $this->tm("This process is subject to auditing and monitoring", $lang);
+
+                return AfwHtmlHelper::showHtmlOfStatusChangeApiButton(
+                        $this,
+                        'changestatus',
+                        $method_name,
+                        $color,
+                        $swal_title,
+                        $swal_text,
+                        $method_icon,
+                        $lang,
+                        false,
+                        $objme->isSuperAdmin()
+                );
+        }
+
+
+        public function calcCandidateFullName($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+
+                $appObj = $this->het('workflow_applicant_id');
+                if (!$appObj)
+                        return '??????';
+                return $appObj->getVal("first_name_$lang") . ' ' . $appObj->getVal("father_name_$lang") . ' ' . $appObj->getVal("last_name_$lang");
+        }
+
+        public function loadOriginalObject()
+        {
+                if (!$this->orginalObject) {
+                        $modelObj = $this->het('workflow_model_id');
+                        if (!$modelObj)
+                                return ['No model for this request', null];
+
+                        $moduleObj = $modelObj->het('workflow_module_id');
+                        if (!$moduleObj)
+                                return ['No module for this request', null];
+
+                        $lookup_code = $moduleObj->getVal('lookup_code');
+                        if (!$lookup_code)
+                                return ['No code for the module of this request', null];
+
+                        $moduleCode = strtolower($lookup_code);
+
+                        AfwAutoLoader::addModule($moduleCode);
+
+                        $moduleWorkflowServiceClass = AfwStringHelper::firstCharUpper($moduleCode) . 'WorkflowService';
+
+                        $sessionObj = $this->het('workflow_session_id');
+                        if (!$sessionObj)
+                                return ['No session for this request', null];;
+
+                        // $external_code = $sessionObj->getVal("external_code")
+
+                        $appObj = $this->het('workflow_applicant_id');
+                        if (!$appObj)
+                                return ['No applicant for this request', null];
+
+                        list($this->orginalObject, $keyLookup) = $moduleWorkflowServiceClass::loadOriginalObject($appObj, $sessionObj, $modelObj, $this);
+                }
+
+                return ['', $this->orginalObject, $keyLookup];
+        }
+
+        public function calcOriginalObject($what = 'value')
+        {
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+                return AfwLoadHelper::giveWhat($objOriginal, $what);
+        }
+
+        public function calcCandidateInfo($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return "not found Original-Object looked up with ($keyLookup) : $error";
+
+                return $objOriginal->calcCandidateInfo($what);
+        }
+
+        public function calcCategory($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $appObj = $this->het('workflow_applicant_id');
+                $idn = $appObj->getVal('idn');
+                $name = $this->calcCandidateFullName($what);
+
+                $cand_info = $this->calcCandidateInfo($what);
+
+                $status = $this->decode("workflow_status_id", '', false, $lang);
+                if ($this->getVal("employee_id") > 0) {
+                        $empl_info = $this->decode("employee_id", '', false, $lang) . "-" . $this->decode("done", '', false, $lang);
+                        $cssinfo = "CSS" . $this->decode("done");
+                } else {
+                        $empl_info = "";
+                        $cssinfo = "CSSN";
+                }
+
+
+                $status_id = $this->getVal("workflow_status_id");
+
+                $myId = $this->id;
+
+                return "<div id='wreq-$myId-category' class='wcategory'>
+                                <span class='idn'>$idn</span>
+                                <span class='fname'>$name</span>
+                                <span class='fstatus st$status_id'>$status</span>
+                                <span class='wrcandinfo'>$cand_info</span>
+                                <span class='wremplinfo $cssinfo'>$empl_info</span>
+                        </div>";
+        }
+
+        public function calcFormComments($what = 'value')
+        {
+                $workflow_stage_id = $this->getVal('workflow_stage_id');
+                $myId = $this->id;
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $obj = new WorkflowRequestComment();
+                $obj->set('workflow_request_id', $myId);
+                $obj->set('workflow_stage_id', $workflow_stage_id);
+                $inputStage = '';
+
+                /*
+                 * list(
+                 *         $inputStage,
+                 * ) = AfwInputHelper::hidden_input('comment_workflow_stage_id', null, $this->getVal('workflow_stage_id'), $obj);
+                 */
+                $request_comment_subject_id = 0;
+                /* after merging steps by amajad (request of 29/05/2026) we are not able to 
+                   pre-define the request_comment_subject_id we let the user do it
+                   manually I alerted amjad by whatsapp
+                $currstep = $_REQUEST['currstep'];
+                if ($currstep <= 2)
+                        $request_comment_subject_id = 1;
+                elseif ($currstep <= 4)
+                        $request_comment_subject_id = 2;
+                elseif ($currstep <= 6)
+                        $request_comment_subject_id = 3;*/
+
+                $desc_erase = array('MANDATORY' => false);
+                $inputSubject = AfwInputHelper::simpleEditInputForAttribute('request_comment_subject_id', $request_comment_subject_id, null, $obj, ':', $desc_erase);
+                $inputComment = AfwInputHelper::simpleEditInputForAttribute('comment', '', null, $obj, ':', $desc_erase);
+                $add_title = AfwLanguageHelper::translateKeyword('ADD', $lang);
+                $add_comment_label = $this->tm('Add comment', $lang);
+
+                $objme = AfwSession::getUserConnected();
+                $you_dont_have_rights = $objme->translateMessage('CANT_DO_THIS', $lang);
+
+                if ((!$objme) or (!$objme->isAdmin()))
+                        $response_data_format = "data = '';\n";
+                else
+                        $response_data_format = '';
+                return $this->showAttribute('workflowRequestCommentList')
+                        . "<div id='wreq-$myId-comments' class='wcomments'>
+                                <label>$add_comment_label</label>
+                                $inputStage
+                                <div class='subject'>$inputSubject</div>
+                                <div class='comment'>$inputComment</div>
+                                <div class='ppsave'><input type='button' name='addwrcomment' id='addwrcomment' request='$myId' class='fa greenbtn wizardbtn' value='&nbsp;$add_title&nbsp;' style='margin-right: 5px;'></div>
+                        </div>
+                        <script>
+                                function addTr(id,dd,stage,subject,comment)
+                                {
+                                        // Construct the new row's HTML
+                                        rowHtml = \"<tr id='tr-object-\"+id+\"' class='ky addeditem workf csr_active hzm_row_Y'>\\n\";
+                                        rowHtml = rowHtml + \"<td id='comment_date-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment_date'>\\n\";
+                                        rowHtml = rowHtml + \"<span class='comment_date-span'>\"+dd+\"\\n\";
+                                        rowHtml = rowHtml + \"</span></td>\\n\";
+                                        rowHtml = rowHtml + \"<td id='request_comment_subject_id-\"+id+\"' class='col-importance-high hzm_col hzm_col_afw hzm_col_afw_reque hzm_col_afw_request_comment_subject_id'>\\n\";
+                                        rowHtml = rowHtml + \"<span class='request_comment_subject_id-span'>\"+subject+\"\\n\";
+                                        rowHtml = rowHtml + \"</span></td>\\n\";
+                                        rowHtml = rowHtml + \"<td id='workflow_stage_id-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_workf hzm_col_afw_workflow_stage_id'>\\n\";
+                                        rowHtml = rowHtml + \"<span class='workflow_stage_id-span'>\"+stage+\"\\n\";
+                                        rowHtml = rowHtml + \"</span></td>\\n\";
+                                        rowHtml = rowHtml + \"<td id='comment-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_comme hzm_col_afw_comment'>\\n\";
+                                        rowHtml = rowHtml + \"<span class='comment-span'>\"+comment+\"\\n\";
+                                        rowHtml = rowHtml + \"</span></td>\\n\";
+                                        rowHtml = rowHtml + \"<td id='عرض-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_3Ru hzm_col_afw_3Ru'>\\n\";
+                                        rowHtml = rowHtml + \"<span class='عرض-span'>\\n\";
+                                        rowHtml = rowHtml + \"<a href='main.php?Main_Page=afw_mode_display.php&amp;cl=WorkflowRequestComment&amp;currmod=workflow&amp;id=\"+id+\"&amp;currstep=1' data-original-title='' title=''>\\n\";
+                                        rowHtml = rowHtml + \"<img src='../lib/images/view_ok.png' width='24' heigth='24' data-toggle='tooltip' data-placement='top' title='' data-original-title=''></a>\\n\";
+                                        rowHtml = rowHtml + \"</span></td>\\n\";
+                                        rowHtml = rowHtml + \"<td id='مسح-\"+id+\"' class='col-importance-small hzm_col hzm_col_afw hzm_col_afw_MS7 hzm_col_afw_MS7'>\\n\";
+                                        rowHtml = rowHtml + \"<a href='#' here='afw_shwr' id='\"+id+\"' cl='WorkflowRequestComment' md='workflow' lbl='' lvl='2' class='trash showmany' data-original-title='' title=''>\\n\";
+                                        rowHtml = rowHtml + \"<img src='../lib/images/trash.png' style='height: 22px !important;'></a></td>\\n\";
+                                        rowHtml = rowHtml + \"</tr>\";
+
+                                        let newRowHtml = rowHtml;
+                                        
+                                        // Append the new row to the tbody
+                                        \$(\"#workflowRequestCommentListTableBody\").append(newRowHtml);
+                                }       
+
+                                function addWorkflowRequestComment()
+                                {
+                                the_idreq = $myId;
+                                the_stage = $workflow_stage_id;
+                                the_lang = '$lang';
+                                the_subject = \$('#request_comment_subject_id').val();
+                                the_comment = \$('#comment').val();
+                                \$.ajax({
+                                        type:'POST',
+                                        url:'../workflow/api/wkfaddcomment.php',                                           
+                                        data:{idreq:the_idreq, stage:the_stage, subject:the_subject, comment:the_comment, lang:the_lang},
+                                        dataType: 'json',
+                                        success: function(data)
+                                        {
+                                                // console.log('idreq='+idreq+' stage='+stage+' subject='+subject+' comment='+comment+' wkfaddcomment response = ', data);
+                                                if(data.status=='success')
+                                                {
+                                                        addTr(data.aff.id,data.aff.dd,data.aff.stage,data.aff.subject,data.aff.comment);                    
+                                                }
+                                                else
+                                                {
+                                                        $response_data_format
+                                                        swal('$you_dont_have_rights ['+data.message+']'); // 
+                                                        return [false, null];
+                                                }
+                                        }
+
+                                });
+                                }
+
+                                \$(document).ready(function(){
+                                        \$(\"#addwrcomment\").click(function()
+                                        {                            
+                                                addWorkflowRequestComment();                                        
+                                        });
+                                });
+
+                        </script>
+                        ";
+        }
+
+        public function shouldBeCalculatedField($attribute)
+        {
+                if ($attribute == "mobile") return true;
+                if ($attribute == "idn") return true;
+                if ($attribute == "email") return true;
+                if ($attribute == "country_id") return true;
+                if ($attribute == "gender_enum") return true;
+                if ($attribute == "birth_gdate") return true;
+                if ($attribute == "passeport_num") return true;
+                if ($attribute == "original_1") return true;
+                if ($attribute == "original_2") return true;
+                if ($attribute == "original_3") return true;
+                if ($attribute == "original_4") return true;
+                if ($attribute == "original_5") return true;
+                if ($attribute == "original_6") return true;
+                if ($attribute == "original_7") return true;
+                if ($attribute == "original_8") return true;
+                if ($attribute == "original_9") return true;
+                if ($attribute == "original_10") return true;
+                if ($attribute == "category") return true;
+                if ($attribute == "div_block_3") return true;
+                if ($attribute == "div_block_4") return true;
+                if ($attribute == "div_block_5") return true;
+                if ($attribute == "div_block_6") return true;
+                if ($attribute == "div_block_7") return true;
+                if ($attribute == "div_block_8") return true;
+                if ($attribute == "div_block_9") return true;
+                if ($attribute == "div_block_10") return true;
+                if ($attribute == "formComments") return true;
+                if ($attribute == "originalObject") return true;
+                if ($attribute == "BookingStatusDiv") return true;
+                return false;
+        }
+
+
+        public static function stepOfStage($stageId)
+        {
+                // not good like this to be hardcoded, please fix later @todo-rafik
+                return $stageId + 2;
+        }
+
+        public function reachedStep()
+        {
+
+                $stageId = $this->getVal('workflow_stage_id');
+                return self::stepOfStage($stageId);
+        }
+        public function calcBookingStatusDiv($what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $bookingObj = null;
+                $stageId = $this->getVal('workflow_stage_id');
+                $interviewTypePatternObj = InterviewTypePattern::loadByMainIndex($stageId);
+                $workflow_applicant_id = $this->getVal('workflow_applicant_id');
+                $workflow_session_id = $this->getVal('workflow_session_id');
+                $interview_type_pattern_id = $interviewTypePatternObj ? $interviewTypePatternObj->getVal('id') : null;
+                $no_booking_reason = "";
+                $bookingStatusObj = null;
+                if ($interview_type_pattern_id && $workflow_applicant_id && $workflow_session_id) {
+                        $bookingObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $interview_type_pattern_id);
+                        if (!$bookingObj) $no_booking_reason = 'Not Invited';
+                        else {
+                                $bookingStatusObj = $bookingObj->het('booking_status_id');
+                                if (!$bookingStatusObj) $no_booking_reason = 'Bad booking status = ' . $bookingObj->getVal('booking_status_id');
+                        }
+                } else {
+                        if (!$interview_type_pattern_id) $no_booking_reason = "No interview type pattern";
+                        if (!$workflow_applicant_id) $no_booking_reason = "No applicant";
+                        if (!$workflow_session_id) $no_booking_reason = "No session";
+                }
+
+
+                if ($bookingStatusObj) {
+                        $label = $lang == 'ar' ? $bookingStatusObj->getVal('name_ar') : $bookingStatusObj->getVal('name_en');
+                        $interviewSlotObj = $bookingObj->het("interview_slot_id");
+                        if ($interviewSlotObj) {
+                                $day = $interviewSlotObj->getVal('interview_date');
+                                $time = $interviewSlotObj->getVal('start_time');
+                                $text = $label . " : " . $day . " " . $time;
+                        } else
+                                $text = $label;
+                        $color = 'green';
+                } else {
+                        $text = $this->tm($no_booking_reason, $lang);
+                        $color = 'grey';
+                }
+                return "<div class='booking_status_div' style='color: $color;'>$text</div>";
+        }
+        /*
+        after merging steps by amajad (request of 29/05/2026) we are not able to 
+                   pre-define the request_comment_subject_id we let the user do it
+                   manually I alerted amjad by whatsapp
+                   this method become obsolete
+        public function convenientCommentSubjectId()
+        {
+                $request_comment_subject_id = 1;
+                $currstep = $this->reachedStep();
+                if ($currstep <= 2)
+                        $request_comment_subject_id = 1;
+                elseif ($currstep <= 4)
+                        $request_comment_subject_id = 2;
+                elseif ($currstep <= 6)
+                        $request_comment_subject_id = 3;
+
+                return $request_comment_subject_id;
+        }*/
+
+        public function weReachedStep($step)
+        {
+                // step1 =>  'البيانات الشخصية';
+                // step2 =>  'طلب القبول';
+
+                // step3 =>  'مراجعة الوثائق';
+                // step4 =>  'مراجعة اللجنة';
+                // step5 =>  'المقابلة الشخصية';
+                // step6 =>  'المفاضلة والقبول';
+
+                return ($this->reachedStep() >= $step);
+        }
+
+        public function calcDiv_block($block, $what = 'value')
+        {
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+
+                list($error, $objOriginal, $keyLookup) = $this->loadOriginalObject();
+
+                if (!$objOriginal)
+                        return "not found Original-Object looked up with ($keyLookup) : $error";
+
+                return $objOriginal->calcDivForWorkflowBlock($block, $what, $this);
+        }
+
+        public static function assignEmployeeForNonAssigned($silent = false, $lang = 'ar', $limit = '200', $inJournal = false)
+        {
+                $server_db_prefix = AfwSession::currentDBPrefix();
+                $obj = new WorkflowRequest();
+
+                $obj->setForce('employee_id', 0);
+                $obj->setForce('status_comment', 'assignEmployeeForNonAssigned-doing-reset');
+                $obj->where('me.orgunit_id > 0 
+                        and 
+                                        (
+                                                (
+                                                        me.employee_id > 0 
+                                                        and me.employee_id not in (select employee_id from ' . $server_db_prefix . "workflow.workflow_employee we where we.orgunit_id = me.orgunit_id and me.active='Y')
+                                                ) 
+                                                or me.employee_id is null
+                                        ) 
+                        and done = 'N'");
+                $obj->update(false);
+                unset($obj);
+
+                $obj = new WorkflowRequest();
+                $obj->where("employee_id=0 and orgunit_id > 0 and done = 'N'");
+                $reqList = $obj->loadMany($limit);
+
+                $errors_arr = array();
+                $infos_arr = array();
+                $war_arr = array();
+
+                foreach ($reqList as $reqItem) {
+                        /** @var WorkflowRequest $reqItem */
+                        list($err, $info) = $reqItem->assignBestAvailableEmployee($lang, $pbm = true);
+
+                        if ($err)
+                                $errors_arr[] = $err;
+                        if ($info)
+                                $infos_arr[] = $info;
+                }
+
+                $nb_errs = count($errors_arr);
+                $nb_all = count($reqList);
+                $nb_done = $nb_all - $nb_errs;
+
+
+
+                if ($inJournal) {
+                        AfwSession::consolePbmResult($errors_arr, $infos_arr, $war_arr, "re-assign");
+                        $errors_arr = [];
+                        $infos_arr = [];
+                        $war_arr = [];
+                }
+
+                if ((!$silent) and (count($errors_arr) > 0)) {
+                        AfwSession::pushError(implode('<br>', $errors_arr));
+                }
+
+                if ((!$silent) and (count($infos_arr) > 0)) {
+                        AfwSession::pushInformation(implode('<br>', $infos_arr));
+                }
+
+                if ((!$silent) and (count($war_arr) > 0)) {
+                        AfwSession::pushWarning(implode('<br>', $war_arr));
+                }
+
+                $message_result = "attempt to assign $nb_all request(s) : $nb_done done and $nb_errs error(s)";
+                if ($nb_errs == 0) $infos_arr[] = $message_result;
+                else $war_arr[] = $message_result;
+
+                return AfwFormatHelper::pbm_result($errors_arr, $infos_arr, $war_arr);
+        }
+
+
+        public function beforeDelete($id, $id_replace)
+        {
+                if ($this->getVal("done") != "N") {
+                        $this->deleteNotAllowedReason = "Can't be deleted because some work has started on it.";
+                        return false;
+                }
+                $server_db_prefix = AfwSession::config("db_prefix", "nauss_");
+
+                if (!$id) {
+                        $id = $this->getId();
+                        $simul = true;
+                } else {
+                        $simul = false;
+                }
+
+                if ($id) {
+                        if ($id_replace == 0) {
+                                // FK part of me - not deletable 
+
+                                // FK part of me - deletable 
+                                $obj = new WorkflowRequestData();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
+                                $obj = new WorkflowRequestComment();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
+                                $obj = new InterviewBooking();
+                                if (!$simul) $obj->deleteWhere("workflow_request_id = '$id'");
+
+
+
+                                // FK not part of me - replaceable 
+
+
+
+                                // MFK
+
+                        } else {
+                                // FK on me 
+
+
+                                // workflow.workflow_request_data-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_request_data.php";
+                                        WorkflowRequestData::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_data set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
+
+                                }
+
+
+
+
+                                // workflow.workflow_request_comment-الطلب	workflow_request_id  أنا تفاصيل لها (required field)
+                                if (!$simul) {
+                                        // require_once "../workflow/workflow_request_comment.php";
+                                        WorkflowRequestComment::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                        // $this->execQuery("update ${server_db_prefix}workflow.workflow_request_comment set workflow_request_id='$id_replace' where workflow_request_id='$id' ");
+
+                                }
+
+                                if (!$simul) {
+                                        InterviewBooking::updateWhere(array('workflow_request_id' => $id_replace), "workflow_request_id='$id'");
+                                }
+
+
+
+
+                                // MFK
+
+
+                        }
+
+                        AfwAuditHelper::deleteAllAuditFor($id);
+
+                        return true;
+                }
+        }
+
+        /**
+         * @param int $block
+         */
+
+        public function stepOfBlock($block)
+        {
+                return $this->stepOfAttribute("div_block_$block");
+        }
+
+        /**
+         * @param string $attribute
+         */
+        public function attributeIsApplicable($attribute)
+        {
+                for ($block = 1; $block <= 10; $block++) {
+                        if ($attribute == "div_block_$block") {
+                                return $this->weReachedStep($this->stepOfBlock($block));
+                        }
+                }
+
+                if ($attribute == "interview_score") {
+                        return $this->weReachedStep($this->stepOfAttribute("interview_score"));
+                }
+
+                if ($attribute == "workflowRequestDataList") {
+                        return $this->weReachedStep($this->stepOfAttribute("workflowRequestDataList"));
+                }
+
+                if ($attribute == "workflowRequestCommentList") {
+                        return $this->weReachedStep($this->stepOfAttribute("workflowRequestCommentList"));
+                }
+
+
+
+
+                if ($attribute == "workflow_rejection_reason_id") return ($this->isStarted() and ($this->sureIs("attempt") or $this->getVal("workflow_rejection_reason_id")));
+
+
+                // if ($attribute == "interview_score") return $this->isStarted();
+
+                return true;
+        }
+
+
+        public function current($field_name, $col_struct)
+        {
+                $col_struct = strtolower($col_struct);
+
+                if ($col_struct == "step") {
+                        return $this->reachedStep();
+                }
+
+
+                throw new AfwRuntimeException("current(field_name=$field_name, col_struct=$col_struct) not implemented");
+        }
+
+        /**
+         * @param string $lang
+         * @return string
+         */
+
+        public function whereIam($lang)
+        {
+                $objme = AfwSession::getUserConnected();
+                if ($objme and $objme->isAdmin()) {
+                        return $this->tm("Super admin users can work on any request", $lang);
+                }
+
+                $employee_id = $objme ? $objme->getEmployeeId() : 0;
+                $assigned_employee_id = $this->getVal("employee_id");
+                if ($assigned_employee_id) {
+                        $emplObj = $this->het('employee_id');
+                        if ($emplObj) {
+                                return $this->tm("This request is assigned to", $lang) . " : " . $emplObj->getDisplay($lang);
+                        }
+                }
+
+                $finalStageObj = $this->het('workflow_stage_id');
+                if (!$finalStageObj) return $this->tm("This request is gone in no existsant stage", $lang);
+                $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
+                if (!$auto_assign_ind) {
+                        return $this->tm("This request does not require assignment to an employee", $lang);
+                }
+
+                return $this->tm("This request is not assigned to anyone yet", $lang);
+        }
+
+
+        public function isExceptionallyForManager()
+        {
+                $finalStageObj = $this->het('workflow_stage_id');
+                if (!$finalStageObj) return false;
+                $wRoleObj = $finalStageObj->het("workflow_role_id");
+                return ($wRoleObj and ($wRoleObj->getVal("lookup_code") == "DIRECTOR")); // @todo : The correct way is to add hierarchy level to table workflow_role
+        }
+
+        public function isMine()
+        {
+                $objme = AfwSession::getUserConnected();
+
+                if ($objme and $objme->isAdmin()) {
+                        return true;
+                } else {
+                        $assigned_employee_id = $this->getVal("employee_id");
+                        $employee_id = $objme ? $objme->getEmployeeId() : 0;
+                        if ($assigned_employee_id) {
+                                return ($employee_id == $assigned_employee_id);
+                        } else {
+                                $finalStageObj = $this->het('workflow_stage_id');
+                                if (!$finalStageObj) return false;
+                                $auto_assign_ind = $finalStageObj->sureIs("auto_assign_ind");
+                                return (!$auto_assign_ind);
+                        }
+                }
+        }
+
+
+        protected function getOtherLinksArray($mode, $genereLog = false, $step = "all")
+        {
+                global $lang;
+                $otherLinksArray = $this->getOtherLinksArrayStandard($mode, false, $step);
+                $my_id = $this->getId();
+                $displ = $this->getDisplay($lang);
+
+                if ($mode == "mode_category") {
+                        if (!$this->isMine()) {
+                                unset($link);
+                                $link = array();
+                                $currEmpl = $this->whereIam($lang);
+                                $title = "ليس لك حاليا صلاحية العمل على هذا الطلب، [$currEmpl]
+                                          يرجى الضغط على زر انهاء للعودة إلى صندوق الوارد";
+                                $link["URL"] = "@help";
+                                $link["CODE"] = "stop.and.debugg";
+                                $link["TITLE"] = $title;
+                                $link["PUBLIC"] = true;
+                                $otherLinksArray[] = $link;
+                        } elseif (!$this->isStarted()) {
+                                unset($link);
+                                $link = array();
+                                $title = "لم يبدأ العمل على هذا الطلب رجاء الضغط على زر 'بدء العمل على الطلب' في أسفل صفحة لتتمكن من تنفيذ الاجراءات عليه";
+                                $link["URL"] = "@help";
+                                $link["CODE"] = "stop.and.debugg";
+                                $link["TITLE"] = $title;
+                                $link["PUBLIC"] = true;
+                                $otherLinksArray[] = $link;
+                        }
+                }
+
+
+
+                return $otherLinksArray;
+        }
+
+        public function select_visibilite_horizontale($dropdown = false)
+        {
+                $objme = AfwSession::getUserConnected();
+
+                if ($objme and $objme->isAdmin()) {
+                        // no VH for system admin
+                }
+                /* Amjad whatsapp 18/01/2026 7pm ~ audio say do not limit for users for the moment
+                else {
+                        $employee_id = $objme ? $objme->getEmployeeId() : 0;
+
+                        if ($employee_id) {
+                                $wEmplObj = WorkflowEmployee::findWorkflowEmployee($employee_id);
+                                if ($wEmplObj) {
+                                        $wscope_mfk = $wEmplObj->getVal("wscope_mfk");
+                                        $this->where("employee_id=$employee_id and '$wscope_mfk' like concat('%,',workflow_scope_id,',%')");
+                                }
+                        }
+                }*/
+
+                $selects = array();
+                $this->select_visibilite_horizontale_default($dropdown, $selects);
+        }
+
+        public function checkDataReadyToRunTransition($finalWorkflowStageObject, $finalStatusObject)
+        {
+                // if the new stage will need interview that check that interviews are 
+
+        }
+
+        public function prepareInterviewBookingIfNeeded($lang = "ar")
+        {
+                $error = "";
+                $info = "";
+                $warning = "";
+
+                $ibObj = null;
+                // The status and stage here below are the ones after running transition
+                $statusFinalObj = $this->het("workflow_status_id");
+                // $final_workflow_status_title = $this->decode('workflow_status_id', '', false, $lang);
+                $final_workflow_stage_id = $this->getVal('workflow_stage_id');
+                $final_workflow_stage_title = $this->decode('workflow_stage_id', '', false, $lang);
+
+                $workflow_applicant_id = $this->getVal("workflow_applicant_id");
+                $workflow_session_id = $this->getVal("workflow_session_id");
+                $interview_stage_id = $final_workflow_stage_id;
+                // below is obsolete to review
+                // I dont khnw=ow why I do it because in same plan (wkflow session)
+                // we can have multiple interviews
+                // if (!$interview_stage_id) $interview_stage_id = $this->calc("workflow_session_id.interview_stage_id");
+
+                $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
+                $ibObj = null;
+
+                if ($statusFinalObj->sureIs("interview_invite_ind")) { // 
+                        // if the pattern exists it means we should create a booking invite
+                        if ($itpObj) {
+                                $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id, true);
+                                if ($ibObj && $ibObj->is_new) {
+
+                                        /*if ($itpObj->sureIs("booking_program_ind")) $workflow_scope_id = $this->getVal("workflow_scope_id");
+                                        else $workflow_scope_id = 0;*/
+                                        $workflow_scope_id = $this->getVal("workflow_scope_id");
+
+                                        $booking_status_id = $itpObj->getVal("manual_booking_ind") == "Y" ? 7 : 6;
+                                        $reschedule_count = $ibObj->getVal("max_reschedule");
+                                        $can_reschedule_ind = ($reschedule_count > 0) ? "Y" : "N";
+                                        $can_cancel_ind = $ibObj->getVal("can_cancel_ind");
+                                        $ibObj->set("workflow_scope_id", $workflow_scope_id);
+                                        $ibObj->set("workflow_request_id", $this->id);
+                                        $ibObj->set("booking_status_id", $booking_status_id);
+                                        $ibObj->set("reschedule_count", $reschedule_count);
+                                        $ibObj->set("can_reschedule_ind", $can_reschedule_ind);
+                                        $ibObj->set("can_cancel_ind", $can_cancel_ind);
+                                        $ibObj->commit();
+                                        if (!$ibObj->calcNbSlotsAvailable() > 0) {
+                                                AfwSession::pushAlert($this->tm("Please note: No appointments are available. Please create them", $lang));
+                                        }
+
+                                        $info = $this->tm("Interview booking invitation has been created", $lang);
+                                } elseif (!$ibObj->is_new) $error = $this->tm("Failed to create interview booking invitation", $lang);
+                        } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $final_workflow_stage_title);
+                }
+
+                $return = [];
+                $return[0] = $error;
+                $return[1] = $info;
+                $return[2] = $warning;
+                $return[3] = $ibObj;
+                $return[4] = $itpObj;
+
+
+                return $return;
+        }
+
+        /**
+         * @param int $interview_stage_id
+         */
+        public function getInterviewBooking($interview_stage_id)
+        {
+                $interview_stage_title = AfwFormatHelper::decodeAnswerOfAttribute($this, 'workflow_stage_id', $interview_stage_id);
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $itpObj = InterviewTypePattern::loadByMainIndex($interview_stage_id);
+                $ibObj = null;
+                if ($itpObj) {
+                        $workflow_applicant_id = $this->getVal("workflow_applicant_id");
+                        $workflow_session_id = $this->getVal("workflow_session_id");
+                        $ibObj = InterviewBooking::loadByMainIndex($workflow_applicant_id, $workflow_session_id, $itpObj->id);
+                        // if (!$ibObj) $warning = $this->tm("Interview booking invitation not found", $lang) . " [stage=]";
+                } else AfwSession::pushAlert($this->tm("Interview booking pattern not found for this stage", $lang) . " : " . $interview_stage_title);
+
+                return $ibObj;
+        }
+
+
+        public function statsColCategory($col, $stats_code)
+        {
+                if ($stats_code == 'wr0001') {
+                        if (AfwStringHelper::stringStartsWith($col, "cross_col")) {
+                                $workflow_status_id = substr($col, 10);
+                                list($stageObj, $color) = WorkflowStatus::colorOfStatus($workflow_status_id);
+                                return "stats_cross_col stats_$color";
+                        } else return 'stats_cross_row';
+                }
+                return parent::statsColCategory($col, $stats_code);
+        }
+
+        public function colorOf($attribute, $attribute_value)
+        {
+                if ($attribute == "workflow_stage_id") {
+                        $obj = WorkflowStage::loadById($attribute_value);
+                        if ($obj) return self::code_of_color_enum($obj->getVal("color_enum"));
+                        else return "black";
+                }
+        }
+
+        public static function getWorkflowManagerClass()
+        {
+                $main_company = AfwSession::currentCompany();
+                $workflowManagerClass = AfwStringHelper::firstCharUpper($main_company) . "WorkflowManager";
+                if (!class_exists($workflowManagerClass)) {
+                        $file_dir_name = dirname(__FILE__);
+                        require_once($file_dir_name . "/../../client-$main_company/extra/workflow_manager.php");
+                }
+                return $workflowManagerClass;
+        }
+
+
+        public function original($field_name, $col_struct)
+        {
+                $workflowManagerClass = self::getWorkflowManagerClass();
+                if ($field_name == "originalObject") {
+                        if ($col_struct == "answer") {
+                                return $workflowManagerClass::originalClass();
+                        }
+
+                        if ($col_struct == "ansmodule") {
+                                return $workflowManagerClass::originalModule();
+                        }
+                }
+
+                list($field_name_group, $field_order) = explode("_", $field_name);
+
+
+                $nbFields = $workflowManagerClass::nbFields();
+
+                $col_struct = strtolower($col_struct);
+                if ($col_struct == "shortcut") {
+                        return $workflowManagerClass::originalField($field_order);
+                }
+
+                if ($col_struct == 'shortcut-category') {
+                        return $workflowManagerClass::originalFieldCategory($field_order);
+                }
+
+                $is_obsolete = (!$field_order or ($field_order > $nbFields));
+                if ($col_struct == "obsolete") return $is_obsolete;
+                if ($col_struct == "retrieve") return false;
+                if (($col_struct == "show")
+                        or ($col_struct == "edit")
+                        or ($col_struct == "mandatory")
+                        or ($col_struct == "required")
+                        or ($col_struct == "css")
+                        or ($col_struct == "step")
+                ) {
+                        if ($is_obsolete) return false;
+                        else return $workflowManagerClass::attribProperty($field_name, $col_struct);
+                }
+
+
+
+                return null;
+        }
+
+
+        /**
+         * @param string $attribute
+         */
+        public function getAttributeLabel($attribute, $lang = 'ar', $short = false, $AIT = true)
+        {
+                $original = "";
+                if (AfwStringHelper::stringStartsWith($attribute, "original_copied_")) {
+                        $original = $attribute;
+                        $workflowManagerClass = self::getWorkflowManagerClass();
+                        if ($workflowManagerClass) {
+                                list($field_name_group1, $field_name_group2, $field_order) = explode("_", $attribute);
+                                $return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short);
+                                // die("$return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short)");
+                                return $return;
+                        }
+                }
+
+                if (AfwStringHelper::stringStartsWith($attribute, "original_")) {
+                        $original = $attribute;
+                        $workflowManagerClass = self::getWorkflowManagerClass();
+                        if ($workflowManagerClass) {
+                                list($field_name_group, $field_order) = explode("_", $attribute);
+                                $return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short);
+                                // die("$return = $workflowManagerClass::getOriginalFieldLabel($field_order, $lang, $short)");
+                                return $return;
+                        }
+                }
+                $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short);
+
+                // if ($original) die("case original = $original -> $return = AfwLanguageHelper::getAttributeTranslation($this, $attribute, $lang, $short)");
+
+                return $return;
+        }
+
+
+        public function userCanChangeStatus($auser, $csmethod)
+        {
+                // if ($auser->isSuperAdmin()) return true;
+                // @todo-rafik : implement real logic here based on the user roles and the workflow status and stage and the conformity of the request and other factors
+                return true;
+        }
+
+        // قبول مشروط بالمطابقة
+        public function acceptanceConditionnedByConformity($lang = "ar")
+        {
+                // 23	قبول بشرط المطابقة
+                /**
+                 * @var WorkflowTransition $objTransition
+                 */
+                // $objTransition = WorkflowTransition::loadById(23);
+
+                return $this->runTransition(23, $lang);
+        }
+
+        // قبول مشروط بالسداد   
+        public function acceptanceConditionnedBySadad($lang = "ar")
+        {
+                // 11	قبول بشرط السداد
+                /**
+                 * @var WorkflowTransition $objTransition
+                 */
+                // $objTransition = WorkflowTransition::loadById(11);
+                return $this->runTransition(11, $lang);
+        }
+
+        public function sendNotificationsExample()
+        {
+                $res = self::sendNotification($this->getId(), 6);
+                return $res;
+        }
+
+        public function calcMyOriginalObjectLinks($what = 'value', $actionconvenient = true)
+        {
+                /**
+                 * @var AFWObject $originalObject
+                 */
+                $lang = AfwLanguageHelper::getGlobalLanguage();
+                $originalObject = $this->calcOriginalObject('object');
+                if ($originalObject) {
+                        $return = $originalObject->showMyLinks($lang);
+                        if ($actionconvenient) {
+                                $title = $this->translate("action-convenient", $lang);
+                                $return .= " " . $this->showMyLink(10, '', $title);
+                        }
+
+                        return $return;
+                } else {
+                        $error_msg = $this->tm("not found", $lang);
+                        return "<span class='error'>$error_msg</span>";
+                }
+        }
+
+
+        protected function customLastEditedStep($simulation = true)
+        {
+                return $this->reachedStep() - 1;
+        }
+
+        public function getDefaultCurrentStep()
+        {
+                /*$currstep = $this->reachedStep();
+                return [$currstep, "amjad logic 24/04/2026"];
+                */
+                return [2, "amjad logic 23/06/2026 Jira NI-27"];
+        }
+
+        /**
+         * @param Auser $auser
+         */
+
+        /*
+        public function canAssignRequest($auser, $mode)
+        {
+                return $auser->hasRole($module_code, $role_id);
+        }
+        */
+
+
+        public function takeViewIcon($mode = 'search')
+        {
+                return true;
+        }
+
+        public function takeEditAction($mode = 'search')
+        {
+                return false;
+        }
+
+        public function takeDeleteAction($mode = 'search')
+        {
+                $objme = AfwSession::getUserConnected();
+                return $objme->isSuperAdmin();
+        }
+
+        public function interview_score_readonly($field_name, $col_struct)
+        {
+                return ($this->getVal('workflow_stage_id') != 3);
+        }
+
+
+        public function copyOriginals($lang = 'ar', $commit = true)
+        {
+                for ($k = 1; $k <= 10; $k++) {
+                        $attr = "original_$k";
+                        $this->set('original_copied_' . $k,  $this->attributeAsSOBJ($attr, false));
+                }
+
+                if ($commit) $this->commit();
+
+                return ['', 'done'];
+        }
+
+        public function repareMe($lang = 'ar', $commit = true)
+        {
+                $this->loadOriginalObject();
+                $this->copyOriginals($lang, $commit);
+                if ($this->orginalObject) {
+                        $application_class_enum = $this->orginalObject->calcApplication_class_enum();
+                        $this->set('application_class_enum', $application_class_enum);
+
+                        $workflow_category_enum = $this->orginalObject->calcWorkflow_category_enum();
+                        $this->set('workflow_category_enum', $workflow_category_enum);
+
+                        $aptitude_category_enum = $this->orginalObject->calcAptitude_category_enum();
+                        $this->set('aptitude_category_enum', $aptitude_category_enum);
+
+                        if ($commit) $this->commit();
+
+                        return ['', 'done'];
+                } else {
+                        return ['original Object NOT FOUND', ''];
+                }
+        }
+}
