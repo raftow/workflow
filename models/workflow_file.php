@@ -29,7 +29,8 @@ class WorkflowFile extends ContentElement implements AfwStorable
         }
 
 
-        public function getStoredFileName() {
+        public function getStoredFileName()
+        {
                 return $this->getVal("afile_name");
         }
 
@@ -467,6 +468,8 @@ zoomWindowOffety:-200
                         throw new AfwRuntimeException("getExcelData method can not work on non excel or non importable files, your file extension : $afile_ext, doc type = " . $this->het("doc_type_id"));
                 }
         }
+
+
 
         public function pictureView($style = "width:100%;height:auto")
         {
